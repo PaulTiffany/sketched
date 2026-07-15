@@ -1,0 +1,1226 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[final,expansion=false]{microtype}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{3em}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem*{theoremtarget}{Theorem Target}
+\newtheorem*{conjecture}{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{assumption}{Assumption}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\newcommand{\forcesH}{\Vdash_{H}}
+\newcommand{\nforcesH}{\nVdash_{H}}
+\newcommand{\forcesnn}{\Vdash_{\neg\neg}}
+\newcommand{\nforcesnn}{\nVdash_{\neg\neg}}
+\newcommand{\PH}{\mathbb{P}_{H}}
+\newcommand{\PHeta}{\mathbb{P}_{H}^{\eta}}
+\newcommand{\refines}{\leq}
+\newcommand{\Gam}{\tilde{\Gamma}}
+\newcommand{\lmin}{\lambda_{\min}}
+\newcommand{\Adm}{\mathrm{Adm}}
+\newcommand{\Stab}{\mathrm{Stab}}
+\newcommand{\Kt}{K_{t}}
+\newcommand{\Dadm}{\mathcal{D}_{\mathrm{adm}}}
+\newcommand{\Jadm}{J_{\mathrm{adm}}}
+\newcommand{\Jwit}{J_{\mathrm{wit}}}
+\newcommand{\Jnn}{J_{\neg\neg}}
+\newcommand{\Sspec}{\mathcal{S}_{\mathrm{spec}}}
+
+\title{Forcing Correspondence (v15):\\ Calibrated Structural Transduction Between\\
+Set-Theoretic Forcing and the Hypothesis Surface}
+\author{Paul Tiffany}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We give a structural correspondence between set-theoretic (Cohen) forcing and the refinement
+ dynamics of a resource-bounded hypothesis surface. Geometric forcing is \emph{not} identical to
+ Cohen forcing; the claim is a conditional transduction theorem. Both instantiate a common
+ \emph{forcing-over-a-site} schema: the forcing relation is \emph{dense stabilization}---a condition
+ forces a proposition when the refinements stabilizing it are dense below it in the channel-margin
+ subposet---and the operationally admissible dense requirements \emph{generate} a Grothendieck
+ topology $\Jadm$ on the channel-margin subposet, sandwiched below the double-negation topology, so
+ the Kripke--Joyal interpretation transfers clause by clause. The site is the closure of obligation
+ under refinement: raw admissible obligations $\Dadm$ generate the semantic site $\Jadm$, of which a
+ finite-prefix \emph{witnessed} fragment $\Jwit\subseteq\Jadm$ is the executable discipline.
+ Channel-margin preservation is a path-budget perturbation lemma (the per-step form does not
+ iterate); separativity is carried by certificate disagreement, not by the metric margin; generic existence is Rasiowa--Sikorski under the observer
+ bounded-countability condition; the generic is read geometrically as a Cauchy-generic completion in
+ an observer completion, with an order--metric compatibility lemma tying the generic filter to the
+ limit state, conditional on a smooth descent contract coextensive with the channel margin. Atomic
+ soundness follows from eventual stabilization; propositional soundness follows by the standard
+ forcing induction, conditional on a decision-reachability lemma and a calibration hypothesis here
+ decomposed into a finite theorem queue rather than asserted. Inter-observer transfer is restored as
+ an essential interface medium $M$: the void supplies commensurability; a public medium and protocol
+ transport only encoded residues $E_A(T_Ax_A)$, and reconstruction is generically not identity---an
+ equality-condition theorem. The executable interpretation is witness-only PyLantern/Chalked traces.
+ Quantifiers, fullness/witness clauses, and implementation calibration remain open; every load-bearing
+ claim is tagged P/D/S/M/C/O in a status ledger (\S\ref{sec:ledger}).
+\end{abstract}
+
+\section{Two senses of ``forcing''}
+
+The word is currently overloaded across this program; separating the two uses is notation, not a
+retraction.
+
+\emph{Control forcing} (Hypothesis Surface \S4.1) is the precondition: the geometric cost of
+joint progress on $k$ claims diverges at the conflict threshold, so a bounded observer is forced,
+dynamically, to stop differentiating and integrate. This is the event that deposits the observer
+onto a refinement poset.
+
+\emph{Logical forcing} ($\forcesH$, this note) is the relation that then lives on that poset. We
+reserve ``forces'' for the second and ``forced transition'' for the first.
+
+\section{Core definitions (instantiated)}
+
+\begin{definition}[Conditions]\label{def:cond}
+$P_H$ is the set of claim complexes $\Kt$ with fibers $f_i=(\sigma_i,r_i,W_i)$ and exit cone
+$E(x_0)$. A condition is a finite partial epistemic state.
+\end{definition}
+
+\begin{assumption}[Smoothness contract]\label{asm:smooth}
+Fix a margin $\eta>0$ and an anchor condition $p_0$ with $\lmin(\Gam(p_0))\ge\eta$. Along
+admissible trajectories from $p_0$: (a)~$\Gam$ is $L_\Gamma$-Lipschitz in spectral norm with
+respect to the projected state displacement; (b)~the cumulative displacement obeys the budget
+$\sum_n\|\Delta_n\|\le\eta/(2L_\Gamma)$. This is the displacement contract of Cacophony \S2.1 in
+path form; it is \emph{measured, not assumed} (see the remark following the Channel-Margin Lemma
+in \S\ref{sec:target}), and it is the single calibration debt written ``(ii)'' in earlier versions
+of this note.
+\end{assumption}
+
+\begin{definition}[Refinement order and channel-margin subposet]\label{def:refine}
+$q\refines p$ iff $q$ is reachable from $p$ by an admissible move retaining $p$'s commitments. The
+\emph{channel-margin subposet} $\PHeta$ consists of the conditions reachable from the anchor $p_0$
+by admissible moves within the displacement budget of Assumption~\ref{asm:smooth}. All forcing
+below is relative to $\PHeta$. (That $\lmin(\Gam)\ge\eta/2$ holds throughout $\PHeta$ is proved,
+not stipulated, by the Channel-Margin Lemma of \S\ref{sec:target}; the definition consumes only the budget.)
+\end{definition}
+
+\begin{definition}[Sieves and dense requirements]\label{def:req}
+For $p\in\PHeta$ a \emph{sieve} on $p$ is a downward-closed subset $S\subseteq{\downarrow}p=\{q\in\PHeta:q\refines p\}$.
+A family $D$ of conditions below $p$ is an \emph{admissible dense
+requirement} if for every $q\refines p$ in $\PHeta$ there is a further \emph{admissible} refinement
+$r\refines q$ in $\PHeta$ meeting $D$ (the paradigm cases are certificate transitions and voids,
+but the class is not restricted to them---deciding families must be eligible); the sieve it generates is
+$S_D=\{q\refines p:\exists\,\text{admissible }r\refines q,\ r\in D\}$. Only admissible dense
+requirements count; not every void or certificate the observer names qualifies. Write $\Dadm$ for the
+class of all admissible dense requirements on $\PHeta$.
+\end{definition}
+
+\begin{definition}[Stability, atomic]\label{def:stab}
+For \emph{atomic} $\varphi$ in the enrolled vocabulary, $\Stab(q,\varphi)$ holds when $\varphi$
+holds at $q$ and persists under further admissible refinement (the soft-min propagation of Eq.~1
+makes confidence monotone down the order; that Eq.~1 propagates this way is a modeling postulate
+about the apparatus---the highest-leverage postulate in this note, consumed by \emph{every} truth
+lemma below, tracked as (M-Pers) in \S\ref{sec:ledger}). The \emph{stability set} of atomic
+$\varphi$ below $p$ is
+\[
+  A_\varphi(p)=\{\,q\refines p:\Stab(q,\varphi)\,\}.
+\]
+By (M-Pers), $A_\varphi(p)$ is closed under further refinement, hence a sieve on $p$. $\Stab$ is
+\emph{not} defined for compound formulas; compound forcing is defined recursively by the
+propositional clauses of \S\ref{sec:schema}, and the torsion remark of \S\ref{sec:target} records
+where a compound-$\Stab$ reading would diverge from them.
+\end{definition}
+
+\begin{definition}[Preservation set]
+$\mathcal{I}=\{$I1 No Bare Claims (well-definedness), I2 Anti-Masking (boundedness: keeps $\Gam$
+faithful, hence $\lmin$ honest), I3 Certificate Classification (obstruction typing)$\}$.
+\end{definition}
+
+\section{The generated admissible site: raw, generated, witnessed}\label{sec:site}
+
+The forcing-over-refinement schema needs a site. We do \emph{not} claim that the raw operational
+class $\Dadm$ is already closed under the Grothendieck operations---raw admissibility depends on
+channel margin, smoothness, finite witnessability, resource bounds, and protocol constraints, and may
+fail pullback/transitivity closure as an operational class. Instead we \emph{generate} the topology.
+
+\begin{definition}[Generated admissible site]\label{def:site}
+Let $B=\{S_D:D\in\Dadm\}$ be the collection of sieves generated by admissible dense requirements
+(Def.~\ref{def:req}). Let
+\[
+  \Jadm=\langle B\rangle
+\]
+be the least Grothendieck topology on the poset $\PHeta$ containing $B$. The pair $(\PHeta,\Jadm)$ is
+the \emph{generated admissible site}.
+\end{definition}
+
+
+\begin{lemma}[Site bound]\label{lem:sitebound}
+$\Jadm$ exists and is a Grothendieck topology, and $\Jadm\subseteq\Jnn$, where $\Jnn$ is the
+double-negation (dense) topology whose covers are exactly the dense sieves. In particular
+$(\PHeta,\Jadm)$ is a genuine site.
+\end{lemma}
+
+\begin{proof}
+The least Grothendieck topology containing an arbitrary collection of sieves always exists: the
+intersection of all Grothendieck topologies containing $B$ is again a Grothendieck topology and is
+the least such. For the bound, recall that on any poset the dense sieves form a Grothendieck topology,
+the double-negation topology $\Jnn$ (a sieve $S$ on $p$ is $\Jnn$-covering iff for every $q\refines p$
+some $r\refines q$ lies in $S$; see \cite{maclane-moerdijk}). Each generator $S_D\in B$ is dense below
+$p$ by admissible density (Def.~\ref{def:req}), hence $S_D\in\Jnn$. Since $\Jnn$ is a Grothendieck
+topology containing $B$, the least such is contained in it: $\Jadm\subseteq\Jnn$.
+\end{proof}
+
+\begin{definition}[Forcing relations]\label{def:force}
+For $p\in\PHeta$ and atomic $\varphi$ (stability sets $A_\varphi(p)$, Def.~\ref{def:stab}):
+\[
+  p \forcesH \varphi \;:\Longleftrightarrow\; A_\varphi(p)\in\Jadm(p),
+  \qquad\qquad
+  p \forcesnn \varphi \;:\Longleftrightarrow\; A_\varphi(p)\ \text{is dense below }p\ \text{(a }\Jnn\text{-cover)}.
+\]
+$\forcesH$ is the \emph{calibrated} relation of this note; $\forcesnn$ is the ambient dense-below
+reading, the characterization of Cohen forcing transported onto $\Kt$. By
+Lemma~\ref{lem:sitebound}, $p\forcesH\varphi\Rightarrow p\forcesnn\varphi$. The two relations are
+distinguished notationally throughout; each lemma below states which relation it is about, and
+transfer between them is never silent (it is exactly the Decision Reachability question). Both
+extend to compound formulas by the recursive clauses of \S\ref{sec:schema}. The strictly stronger
+condition ``$\Stab(q,\varphi)$ for \emph{every} $q\refines p$'' (the maximal sieve, a cover in
+every topology) forces under both relations and is reserved for torsion (\S\ref{sec:target},
+Remark).
+\end{definition}
+
+\begin{remark}[The site is the closure of obligation under refinement]
+Rigor does not flatten admissibility; it completes it. The operational layer supplies admissible
+dense \emph{obligations} $\Dadm$; the mathematical layer closes them under the Grothendieck operations
+into the site $(\PHeta,\Jadm)$. Kripke--Joyal forcing over $(\PHeta,\Jadm)$ supplies the abstract
+forcing semantics (\S\ref{sec:schema}). $\forcesnn$ is the Kripke--Joyal reading for the ambient
+$\Jnn$; the calibrated relation $\forcesH$ uses the generated subtopology $\Jadm\subseteq\Jnn$,
+hence is \emph{at least as strong}. Whether a given deciding sieve is actually a $\Jadm$-cover is
+the Decision Reachability question (Lemma~\ref{lem:reach}).
+\end{remark}
+
+\begin{definition}[Witnessed fragment]\label{def:wit}
+The \emph{witnessed fragment} $\Jwit\subseteq\Jadm$ is the sub-collection of $\Jadm$-covers that admit
+a finite admissible protocol witness: a finite prefix of refinements, each carrying a certificate,
+admissibility check, provenance, and (where required) a human-gated decision, whose density below $p$
+is verified by that finite data. $\Jwit$ is in general \emph{not} a topology; it is the executable
+basis. The three layers
+\[
+  \Dadm \;\leadsto\; \Jadm \;\leadsto\; \Jwit\subseteq\Jadm
+\]
+read: raw operational obligations $\leadsto$ generated semantic closure $\leadsto$ finite-prefix,
+PyLantern/Chalked-witnessable fragment.
+\end{definition}
+
+\begin{remark}[Self / other / global]
+The three layers are the self/other/global stack. Raw is what the self emits; generated is what the
+other may require; witnessed is what the global surface can audit. A hypothesis leaves the self as a
+raw obligation, meets the other as generated refinement pressure, and stabilizes globally only as
+witnessed residue. Formal closure must not silently authorize operational traversal: \emph{the
+generated site supplies semantics; the witnessed fragment supplies executable discipline}
+($\Jadm\supseteq\Jwit$ is a containment, not an equality, and \S\ref{sec:pylantern} operates only in
+$\Jwit$). This is exactly why Chalked (\S\ref{sec:chalked}) matters: it is the finite witness surface
+on which $\Jwit$ becomes consent-gated and inspectable.
+\end{remark}
+
+\section{Correspondence table}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}p{0.21\textwidth} p{0.30\textwidth} p{0.41\textwidth}@{}}
+\toprule
+\textbf{Component} & \textbf{Cohen / set-theoretic} & \textbf{Hypothesis Surface (concrete)} \\
+\midrule
+Condition & Finite partial function & Claim complex $\Kt$ + fibers; exit cone $E(x_0)$ \\
+Refinement $q\refines p$ & Stronger condition & Admissible move in $\PHeta$ \\
+Channel viability & (nondegeneracy of extensions) & $\lmin(\Gam)>0$ (off-cliff; $\rho(k-1)<1$) \\
+Separativity / incompatibility & Incompatible extensions below $p$ & \emph{Certificate disagreement} (I3); undecided obstruction (Lem~\ref{lem:nonatom}) \\
+Requirement / cover & Dense set of conditions & Admissible dense requirement (Def.~\ref{def:req}); $\Jadm$-cover (Def.~\ref{def:site}) \\
+Generic / completion & Generic filter $G$ & Admissible-complete trajectory in $\PHeta$ \\
+Forcing $p\Vdash\varphi$ & Forcing-set dense below $p$ & $A_\varphi(p)$ a $\Jadm$-cover of $p$ ($\forcesH$); dense form is $\forcesnn$ \\
+Extension & $M[G]$ & Stabilized surface along the completed trajectory \\
+Preservation & Ground theory preserved & Invariants I1--I3 survive completion \\
+Forced negation & $p\Vdash\neg\varphi$ & Torsion certificate (atomic $\varphi$ refuted on \emph{all} refinements; \S\ref{sec:target}) \\
+Undecided & $p\nVdash\varphi,\ p\nVdash\neg\varphi$ & Non-torsion certificate (contingent) \\
+Soundness & Truth Lemma & Atomic + Propositional Truth Lemma (Thm.~\ref{thm:prop}); quantifiers open \\
+Shared zero / origin & Top condition $\mathbb{1}$ & Void (Axiom H.0); unique shared depth-$0$ condition \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent\textbf{Separativity correction.} The metric margin and separativity are distinct roles:
+\emph{margin keeps the channel open; certificates make branches incompatible.} The convex metric part
+of every exit cone is self-compatible (Lemma~\ref{lem:nonatom}, using convexity), so $\lmin>0$
+supplies channel \emph{viability}---the existence of admissible refinements---not separativity.
+Incompatibility, hence the separativity needed for a nondegenerate forcing poset, is carried by the
+discrete certificate axis (I3): two refinements are incompatible exactly when they disagree on an
+undecided obstruction.
+
+\section{Formal schema}\label{sec:schema}
+
+\begin{quote}
+\textbf{Forcing schema.} $p\forcesH\varphi$ when the refinements of $p$ that stabilize $\varphi$
+form a $\Jadm$-cover of $p$ in the channel-margin subposet.
+\end{quote}
+
+\begin{remark}[Rigorous home]
+The schema is the persistence-monotone (intuitionistic) reading of forcing on a site: Kripke--Joyal
+forcing semantics over $(\PHeta,\Jadm)$, with admissible dense requirements generating the covering
+families. Cohen forcing is the set-theoretic instance; its topos presentation routes through
+Kripke--Joyal semantics and the double-negation/classicalization construction \cite{maclane-moerdijk},
+i.e.\ through $\Jnn$, of which $\Jadm$ is the generated subtopology (Lemma~\ref{lem:sitebound}).
+``Calibrated structural transduction'' is then the claim that both Cohen forcing and the Hypothesis
+Surface instantiate forcing-over-a-site, the calibration being which requirements generate the site,
+and the preserved invariant being the Kripke--Joyal interpretation of the connectives. The transfer is
+verifiable clause by clause.
+\end{remark}
+
+\begin{definition}[Propositional clauses and deciding sets]\label{def:clauses}
+Let $J\in\{\Jadm,\Jnn\}$ and write $\Vdash$ for the corresponding atomic relation of
+Def.~\ref{def:force}. Take $\neg,\wedge,\vee$ primitive over $\PHeta$ and define
+$\varphi\to\psi:=\neg\varphi\vee\psi$:
+\begin{align*}
+p\Vdash\varphi\wedge\psi &\iff p\Vdash\varphi \text{ and } p\Vdash\psi;\\
+p\Vdash\varphi\vee\psi &\iff \{q\refines p: q\Vdash\varphi \text{ or } q\Vdash\psi\}\in J(p);\\
+p\Vdash\neg\varphi &\iff \text{no } q\refines p \text{ has } q\Vdash\varphi.
+\end{align*}
+The last is the universal-refinement clause; at the void it is the across-every-branch statement of
+\S\ref{sec:void}. The \emph{deciding set} of $\varphi$ is
+$D_\varphi=\{q: q\Vdash\varphi \text{ or } q\Vdash\neg\varphi\}$ (relation as per context;
+$\forcesH$ unless marked).
+\end{definition}
+
+\begin{lemma}[Persistence and consistency]\label{lem:pers}
+For $\Vdash\in\{\forcesH,\forcesnn\}$ and every propositional $\varphi$: if $p\Vdash\varphi$ and
+$q\refines p$ then $q\Vdash\varphi$; and no $p$ forces both $\varphi$ and $\neg\varphi$.
+\end{lemma}
+\begin{proof}
+Persistence by induction on $\varphi$: atomic because $A_\varphi(q)=A_\varphi(p)\cap{\downarrow}q$
+is the pullback of the sieve $A_\varphi(p)$ along $q\refines p$, and covers pull back in any
+Grothendieck topology (for $\Jnn$: dense restricts to dense); $\wedge$ componentwise; $\vee$
+because a $J$-cover of $p$ restricts to a $J$-cover of any $q\refines p$ (stability axiom); $\neg$
+because its defining cone is downward-closed. Consistency: $p\Vdash\neg\varphi$ says no
+$q\refines p$ forces $\varphi$, yet $p\refines p$, so $p\not\Vdash\varphi$. Beyond the
+well-formedness of the atomic relation ($A_\varphi$ a sieve, which is (M-Pers),
+Def.~\ref{def:stab}), clause-level persistence consumes no additional postulate---it is pullback
+stability of the topology; (M-Pers) does further substantive work only in the Atomic Truth Lemma.
+\end{proof}
+
+\begin{lemma}[Deciding sets are order-dense]\label{lem:dec}
+For $\Vdash\in\{\forcesH,\forcesnn\}$ and every propositional $\varphi$, the deciding set
+$D_\varphi$ is dense in the order.
+\end{lemma}
+\begin{proof}
+Given $p$: if some $q\refines p$ forces $\varphi$ then $q\in D_\varphi$; otherwise no $q\refines p$
+forces $\varphi$, which is exactly $p\Vdash\neg\varphi$, so $p\in D_\varphi$. Density is the
+$\neg$-clause read contrapositively---uniform in $\varphi$ and in the choice of relation.
+\end{proof}
+
+\begin{remark}
+Order-density of $D_\varphi$ is free; whether $D_\varphi$ is \emph{admissibly} dense---a
+$\Jadm$-cover---is not, and is precisely the Decision Reachability question of \S\ref{sec:target}. By
+Lemma~\ref{lem:pers}, $D_\varphi$ is closed under refinement, hence a sieve on any $p$ when
+restricted below it.
+\end{remark}
+
+\section{Calibration as a finite theorem queue}\label{sec:calibration}
+
+The forcing lemmas below are theorems about the abstract site semantics. Their bearing on the
+Hypothesis Surface pipeline requires a calibration hypothesis: the concrete surface operations must
+realize the Kripke--Joyal clauses they are claimed to instantiate. Calibration is not one foggy
+assumption; it is a \emph{finite theorem queue}, each item with a definite home.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}r p{0.36\textwidth} p{0.42\textwidth}@{}}
+\toprule
+\# & \textbf{Calibration lemma} & \textbf{Home / status}\\
+\midrule
+1 & Atomic Stabilization & claim stabilization $=\Stab$; \emph{Hypothesis Surface}\\
+2 & Refinement Audit & admissible move $=$ refinement, audit-visible; \emph{PyLantern}\\
+3 & Dense Requirement & operational requirements admissibly dense; measurable (C, Assumption~\ref{asm:smooth})\\
+4 & Certificate Conjunction & certificate combination $=\wedge$-clause; \emph{Hypothesis Surface}\\
+5 & Admissible-Cover Disjunction & branching $=$ dense-cover $\vee$-clause; \emph{Hypothesis Surface}\\
+6 & Torsion Negation & torsion certificate $=$ universal-refinement $\neg$; discharged for \emph{atomic} $\varphi$ (\S\ref{sec:atomic}, Remark); compound case \textbf{O} (finite countermodel)\\
+7 & Soft-Min Persistence & Eq.~1 $=$ monotone persistence; \emph{Hypothesis Surface} (M-Pers)\\
+8 & Decision Reachability & deciding sieve is a $\Jadm$-cover; Lem~\ref{lem:reach}, conditional on Assumption~\ref{asm:smooth}\\
+9 & Observer Completion & $(P_O,d_O)$ metric, completion exists; \emph{Principia}\\
+10 & Interface Reconstruction & $E_A,D_B$ carry witness/provenance/consent, $D_B\!\circ\! E_A\neq\mathrm{id}$; \emph{PyLantern/Chalked} + Thm~\ref{thm:nonid}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Items 1, 4, 5, 7 are supplied by \emph{The Hypothesis Surface}; 2, 10 by PyLantern/Chalked
+implementation; 3, 8 reduce to the measurable smoothness contract (Assumption~\ref{asm:smooth}); 6
+is discharged here for atomic formulas only; 9 is an interface to \emph{Principia}. \emph{None is a
+fresh unknown.} The Propositional Truth Lemma
+is operationally meaningful under this queue; discharging it is more urgent than adding quantifiers,
+because it is the check that turns structural analogy into verified transduction for the actual
+pipeline.
+
+\begin{assumption}[Calibration queue]\label{asm:calibration}
+The realization lemmas 1--10 of the table above hold for the deployed pipeline: the concrete
+surface operations realize the Kripke--Joyal clauses they are claimed to instantiate. Items already
+discharged or reduced retain their homes as listed; the assumption is the conjunction of the
+remainder. Status \textbf{O} overall; consumed explicitly wherever a result is claimed \emph{about
+the pipeline} rather than about the site semantics.
+\end{assumption}
+
+\section{Theorem target, with proofs of the joints}\label{sec:target}
+
+\begin{theoremtarget}
+Let $H$ be a hypothesis surface carried by a resource-bounded observer, with claim complex $\Kt$,
+interaction matrix $\Gam_t=G_tG_t^{\top}$, and channel projector $T_t$. Suppose: (1)
+$\lmin(\Gam_t(p))\ge\eta>0$ at the anchor; (2) admissible trajectories satisfy the smoothness
+contract (Assumption~\ref{asm:smooth}), so the Channel-Margin Lemma
+(Lemma~\ref{lem:margin}) applies; (3) $\mathcal{D}_p$ is a countable family of admissible dense requirements
+generating (with the deciding closure) $\Jadm$-covers, with decision reachability
+(Lemma~\ref{lem:reach}); (4) the observer-completion axioms supply Cauchy convergence for admissible
+refinement towers (Lemma~\ref{lem:cauchy}) and order--metric compatibility (Lemma~\ref{lem:ordmet}).
+Then there is a Cauchy-generic trajectory $G$ through $p$ meeting every requirement and converging to
+$x_G\in\overline{P}_O$; along $G$, $\forcesH$ is monotone, $\mathcal{I}$ is preserved, atomic forced
+propositions are exactly those eventually stable (Lemma~\ref{lem:atomic}), and soundness extends to
+the propositional connectives (Thm.~\ref{thm:prop}) under the calibration queue.
+\end{theoremtarget}
+
+\begin{enumerate}[leftmargin=1.6em]
+\item \textbf{Monotonicity (persistence).} $p\forcesH\varphi\Rightarrow q\forcesH\varphi$ for
+  $q\refines p$, by pullback stability of covers (Lemma~\ref{lem:pers}); no apparatus postulate is
+  consumed.
+\item \textbf{Channel viability, persistence, branching (Lemmas~\ref{lem:margin}, \ref{lem:nonatom}).}
+  $\lmin(\Gam)>0$ is the metric nondegeneracy making admissible refinements exist (viability); the
+  Channel-Margin Lemma keeps the margin positive; separativity/branching is carried by certificate
+  disagreement (Lemma~\ref{lem:nonatom}), not the convex metric.
+\item \textbf{Generic existence (Lemma~\ref{lem:bdd} + Rasiowa--Sikorski).}
+\item \textbf{Decision reachability (Lemma~\ref{lem:reach}).}
+\item \textbf{Atomic soundness (Lemma~\ref{lem:atomic}); propositional soundness (Thm.~\ref{thm:prop}).}
+  Open layers: quantifiers, and the calibration queue (\S\ref{sec:calibration}).
+\end{enumerate}
+
+\begin{lemma}[Channel-Margin, path form]\label{lem:margin}
+Let $\lambda(q)=\lmin(\Gam(q))$ and let $q$ be reachable from the anchor $p_0$ by an admissible
+trajectory with steps $\Delta_1,\dots,\Delta_n$. Under Assumption~\ref{asm:smooth}
+($\lambda(p_0)\ge\eta$; $L_\Gamma$-Lipschitz; budget $\sum_i\|\Delta_i\|\le\eta/(2L_\Gamma)$),
+\[
+  \lambda(q)\;\ge\;\lambda(p_0)-L_\Gamma\sum_{i\le n}\|\Delta_i\|\;\ge\;\eta/2\;>\;0 .
+\]
+Hence $\PHeta$ (Def.~\ref{def:refine}) stays in the channel regime, uniformly in the depth of the
+descent.
+\end{lemma}
+
+\begin{proof}
+$\lmin$ is $1$-Lipschitz in the spectral norm (Weyl): $|\lambda(q)-\lambda(p_0)|\le\|\Gam(q)-\Gam(p_0)\|$.
+By the Lipschitz hypothesis and the triangle inequality along the trajectory,
+$\|\Gam(q)-\Gam(p_0)\|\le L_\Gamma\sum_i\|\Delta_i\|\le\eta/2$, so
+$\lambda(q)\ge\eta-\eta/2=\eta/2$.
+\end{proof}
+
+\begin{remark}[Why the budget, not a step bound]
+The v14 form of this lemma imposed only the per-step bound $\|\Delta\|\le\eta/(2L_\Gamma)$ and
+claimed the margin ``inductively along the whole selected descent.'' That induction is unsound: from
+$\lambda(q_1)\ge\eta/2$ a second step of the same size yields only $\lambda(q_2)\ge0$; per-step
+control lets the margin decay linearly in depth. Depth-uniform margin needs the \emph{cumulative}
+budget of Assumption~\ref{asm:smooth}(b)---which is exactly the Lyapunov summability that
+Lemma~\ref{lem:cauchy} independently requires for the Cauchy-generic completion. Margin preservation
+and generic convergence are funded by the same contract; the budget is spent once. Both directions
+are machine-checked in the accompanying verification suite (\texttt{Margin.lean}): the path form is
+proved, and the per-step form is formally refuted by the linear-decay countermodel
+$\lambda_i=4-2i$.
+\end{remark}
+
+\begin{remark}[The smoothness hypothesis is substrate-relative and measurable]
+Assumption~\ref{asm:smooth}---Lipschitz continuity of $\Gam$ with a summable displacement
+budget---is the smooth-regime condition of the displacement contract (Cacophony \S2.1),
+$\|x_{t+1}-x_t\|\le L$, and is measured, not assumed: under audit-observer measurement it holds on a
+small fraction of trajectories and fails (pivots) on the rest. An observer with continuous internal
+state realizes it natively; a stateless sampler realizes it only on the smooth fraction and
+otherwise recovers the descent through external staging, re-imposing the budget as explicit
+checkpoints. The quantity governing how close to the cliff one may operate is the perturbation
+sensitivity $\sim 1/\lmin$ of Cacophony's Thm.~M.20.
+\end{remark}
+
+\begin{lemma}[Non-atomicity is undecidedness]\label{lem:nonatom}
+Assume $p$ is in the channel-margin regime, so admissible refinements of $p$ exist and fit the
+margin budget (the min-norm feasible displacement $\sqrt{\alpha^{\top}\Gam^{-1}\alpha}$ is finite
+exactly when $\Gam\succ0$), and assume incompatibility is generated by certificate disagreement (the
+metric part of every exit cone being convex, hence self-compatible---postulate M-Cvx). Then $p$ is
+\emph{non-atomic}---there are admissible $q_1,q_2\refines p$ with no common admissible lower
+bound---iff some obstruction $\omega$ below $p$ is \emph{undecided for the dense reading}:
+$p\nforcesnn\varphi_\omega$ and $p\nforcesnn\neg\varphi_\omega$. The lemma is stated for
+$\forcesnn$, where ``not forcing'' unpacks densely.
+\end{lemma}
+
+\begin{proof}
+$(\Leftarrow)$ $p\nforcesnn\neg\varphi_\omega$ unpacks, by the $\neg$-clause, to: some $q_1\refines
+p$ has $q_1\forcesnn\varphi_\omega$. And $p\nforcesnn\varphi_\omega$ means $A_{\varphi_\omega}(p)$
+is not dense below $p$: some $q_2\refines p$ has no $\varphi_\omega$-stabilizer below it, whence no
+$r\refines q_2$ forces $\varphi_\omega$ ($A_{\varphi_\omega}(r)$ is empty and empty sieves are not
+dense), i.e.\ $q_2\forcesnn\neg\varphi_\omega$. A common admissible lower bound $r$ would, by
+persistence (Lemma~\ref{lem:pers}), force both $\varphi_\omega$ and $\neg\varphi_\omega$,
+contradicting consistency; so $q_1\perp q_2$ and $p$ is non-atomic. $(\Rightarrow)$ If every
+obstruction below $p$ is decided, any two admissible refinements agree with $p$ on every certificate
+classification (persistence); by M-Cvx their only remaining relation is metric and convex, so they
+admit a common admissible continuation; $p$ is atomic. Contrapositively, non-atomic implies some
+obstruction is undecided.
+\end{proof}
+
+\begin{remark}[Where the generic adds information]
+Atoms are exactly the decided leaves; branching, hence nontrivial extension, occurs precisely over
+undecided obstructions. Metric nondegeneracy ($\lmin>0$) is necessary (viability) but the branching
+is carried by the discrete certificate axis (I3): the convex exit cone is by itself atomic. This is
+the sharp form of the v7 caution that ``$\lmin>0$ does not by itself prove incompatible extensions
+exist''; the missing ingredient is undecidedness, and with it the implication is an equivalence. The
+generic adds information over, and only over, the undecided region---the same region the
+deparameterization residue of \S\ref{sec:deparam} occupies. The undecidedness criterion is stated
+for the dense reading $\forcesnn$; it transfers to the calibrated $\forcesH$ exactly where Decision
+Reachability (Lemma~\ref{lem:reach}) makes the two readings agree on deciding sieves.
+\end{remark}
+
+\begin{lemma}[Boundedness yields countability for Rasiowa--Sikorski]\label{lem:bdd}
+$\mathcal{D}_p$ is countable, the atomic propositions it tracks form a countable vocabulary, and a
+filter $G$ through $p$ meeting every admissible dense requirement exists.
+\end{lemma}
+
+\begin{proof}
+That a resource-bounded observer holds finitely many active claims per stage and at most countably
+many over a run is the observer-bound postulate (M-Bound); it supplies only \emph{countability}, not
+density. Once each $D\in\mathcal{D}_p$ is verified admissibly dense (Def.~\ref{def:req}), its
+generated sieve is a $\Jadm$-cover, in particular order-dense (Lemma~\ref{lem:sitebound}). The
+Rasiowa--Sikorski construction applied to this countable family of dense sets yields the filter $G$
+\cite{rasiowa-sikorski,gpst}.
+\end{proof}
+
+\begin{lemma}[Decision Reachability, conditional]\label{lem:reach}
+Assume the smoothness contract (Assumption~\ref{asm:smooth}). Then for every $p\in\PHeta$ and
+propositional formula $\varphi$ there is an admissible refinement $q\refines p$, inside the
+channel-margin subposet, deciding $\varphi$ ($q\forcesH\varphi$ or $q\forcesH\neg\varphi$);
+equivalently, the deciding sieve $D_\varphi\cap{\downarrow}p$ is a $\Jadm$-cover of $p$. Where the
+contract fails, order-density need not be admissibly realizable and $D_\varphi$ need not be a
+$\Jadm$-cover.
+\end{lemma}
+
+\begin{proof}
+$D_\varphi$ is dense in the order (Lemma~\ref{lem:dec}) and closed under refinement
+(Lemma~\ref{lem:pers}), hence a sieve below any $p$. Under Assumption~\ref{asm:smooth} the
+refinements witnessing order-density are realized by margin-respecting admissible moves within the
+budget, so $D_\varphi$ is an admissible dense requirement in the sense of Def.~\ref{def:req} (the
+definition places no type restriction beyond admissible density). Its generated sieve therefore lies
+in the generating family $B$ of Def.~\ref{def:site}, so $D_\varphi\cap{\downarrow}p\in\Jadm(p)$.
+The conditionality is irreducible: the step from order-density to admissible density \emph{is} the
+contract, not a consequence of it---this is calibration item~8, and the finite model checker of the
+verification suite exhibits a site where it fails.
+\end{proof}
+
+\begin{remark}[Why this is not free]
+Standard forcing gives order-density of deciding refinements (Lemma~\ref{lem:dec}); the Surface needs
+\emph{admissible} density inside the channel-margin contract. Decision Reachability names exactly the
+missing step: that a deciding refinement is reachable without leaving the channel. It is item~8 of the
+calibration queue and is coextensive with the smooth regime, tying bivalence to
+Assumption~\ref{asm:smooth} rather than to countability alone. Bivalence
+(Lemma~\ref{lem:bivalence}) is therefore P \emph{consuming C}, not P consuming only countability.
+\end{remark}
+
+\begin{definition}[Admissible deciding closure]\label{def:closure}
+Given a countable admissible dense family $\mathcal{D}_p$, its \emph{admissible deciding closure}
+$\mathcal{D}_p^\ast$ adds the atomic stability sets $A_\varphi(p)$ (Def.~\ref{def:stab}) and the
+propositional deciding sets $D_\varphi$ (Def.~\ref{def:clauses}), retaining only those that are
+$\Jadm$-covers (Lemma~\ref{lem:reach}). Because the observer vocabulary is countable (Lemma~\ref{lem:bdd})
+and the propositional closure of a countable vocabulary is countable, $\mathcal{D}_p^\ast$ is still
+countable.
+\end{definition}
+
+\begin{lemma}[Cauchy--Forcing Completion]\label{lem:cauchy}
+Let $(p_n)$ be the admissible chain generating a channel-margin generic $G$ through $p$, with states
+$z_n=\Phi(p_n)$ and steps $\Delta_n=z_{n+1}-z_n$. Suppose (a) a residual-instability potential
+$V:P_H\to[0,\infty)$ is nonincreasing along admissible refinement; (b) the descent inequality
+$V(p_n)-V(p_{n+1})\ge\kappa\|\Delta_n\|$ holds for some $\kappa>0$; and (c) the observer metric
+$d_O$ is comparable to the embedding norm along the trajectory. Then $\sum_n\|\Delta_n\|<\infty$,
+so $(z_n)$ is Cauchy in the observer metric and converges to $x_G\in\overline{P}_O$.
+\end{lemma}
+
+\begin{proof}
+By (a), $V(p_n)\downarrow V_\infty\ge0$, so $\sum_n(V(p_n)-V(p_{n+1}))=V(p_0)-V_\infty<\infty$.
+By (b), $\|\Delta_n\|\le\kappa^{-1}(V(p_n)-V(p_{n+1}))$, whence $\sum_n\|\Delta_n\|<\infty$.
+Absolutely summable increments are Cauchy; by (c), $(z_n)$ is $d_O$-Cauchy and converges in the
+completion $\overline{P}_O$.
+\end{proof}
+
+\begin{lemma}[Order--Metric Compatibility, atomic]\label{lem:ordmet}
+For \emph{atomic} $\varphi$ (the only formulas $\Stab$ is defined for, Def.~\ref{def:stab}), define
+two satisfaction relations: $G\models_{\mathrm{ord}}\varphi$ iff the generic filter $G$ meets
+the stabilizer requirement $A_\varphi=\{q:\Stab(q,\varphi)\}$; and $x_G\models_{\mathrm{met}}\varphi$ iff the
+Cauchy limit $x_G\in\overline{P}_O$ lies in the stabilized region of $\varphi$. Suppose (M-Pers)
+persistence, the Cauchy descent of Lemma~\ref{lem:cauchy}, and that the stabilized region
+$\{x:\Stab_x(\varphi)\}$ is $d_O$-closed (postulate M-Cl). Then
+$G\models_{\mathrm{ord}}\varphi\Rightarrow x_G\models_{\mathrm{met}}\varphi$.
+\end{lemma}
+
+\begin{proof}
+$G\models_{\mathrm{ord}}\varphi$ gives $q_N\in G$ with $\Stab(q_N,\varphi)$; by (M-Pers)
+$\Stab(q_n,\varphi)$ for all $n\ge N$ along the chain, so $z_n$ lies in the stabilized region for
+$n\ge N$. By Lemma~\ref{lem:cauchy}, $z_n\to x_G$ in $d_O$; by (M-Cl) the stabilized region is closed,
+so its limit $x_G$ lies in it, i.e.\ $x_G\models_{\mathrm{met}}\varphi$.
+\end{proof}
+
+\begin{remark}[Convergence is coextensive with the smooth regime]
+Hypothesis (b) is the displacement contract (Assumption~\ref{asm:smooth}) in Lyapunov form; its
+summability is the same budget that funds the Channel-Margin Lemma. Where the contract holds the descent is
+absolutely summable and the generic converges; in the pivot regime (b) fails and the completion can
+diverge.
+ The convergence of the Cauchy-generic is coextensive with the smooth regime---the same
+boundary marked by the channel margin, the deparameterization floor (\S\ref{sec:deparam}), and the
+reconstruction floor. The Cauchy debt is that standing hypothesis; completion exists exactly where the
+contract holds. Lemma~\ref{lem:ordmet} adds one interface postulate (M-Cl) tying the order-generic to
+the metric limit, without which ``$G$ meets requirements'' and ``$x_G$ realizes them'' are distinct
+statements.
+\end{remark}
+
+\begin{lemma}[Atomic Truth Lemma]\label{lem:atomic}
+Let $G$ be an admissible-complete trajectory through $p$ meeting every $\Jadm$-cover in
+$\mathcal{D}_p^\ast$, and define $G\models_H\varphi$ iff $\Stab(q,\varphi)$ for some $q\in G$. Then for
+atomic $\varphi$ in the observer's countable vocabulary,
+$G\models_H\varphi \iff \exists\,p\in G:\ p\forcesH\varphi$.
+\end{lemma}
+
+\begin{proof}
+$(\Leftarrow)$ If $p\forcesH\varphi$ then $A_\varphi(p)$ is a $\Jadm$-cover (Def.~\ref{def:force});
+being a cover, it is included in $\mathcal{D}_p^\ast$ (Def.~\ref{def:closure}), which $G$ meets, so
+some $q\in G$ has $\Stab(q,\varphi)$. $(\Rightarrow)$ If $G\models_H\varphi$, some $q\in G$
+stabilizes $\varphi$; by (M-Pers), $\Stab(r,\varphi)$ holds for \emph{every} $r\refines q$, so
+$A_\varphi(q)={\downarrow}q$ is the maximal sieve on $q$, which belongs to every Grothendieck
+topology---in particular to $\Jadm$. Hence $q\forcesH\varphi$ with $q\in G$. (The v14 text
+concluded from density here; density does not imply $\Jadm$-covering---the maximal sieve does.)
+\end{proof}
+
+\begin{remark}[Certificate typing is forcing-theoretic---atomic case only]\label{rem:torsion}
+I3 classifies each impossibility as torsion (structural, permanent) or non-torsion (contingent).
+For \emph{atomic} $\varphi$, a torsion certificate at $p$ says $\varphi$ is refuted at every
+$q\refines p$; then no $q$ can stabilize $\varphi$, $A_\varphi(q)=\emptyset$ for all $q\refines p$,
+no refinement forces $\varphi$ under either relation, and $p\forcesH\neg\varphi$ by the
+$\neg$-clause---permanence needing no generic. Conversely, $p\forcesH\neg\varphi$ for atomic
+$\varphi$ means no $q$ forces $\varphi$; since a single stabilizing condition forces (its maximal
+sieve covers), no $q\refines p$ satisfies $\varphi$ stably. This discharges calibration item~6
+\emph{for atomic formulas}. For compound $\varphi$ the identification fails: ``no refinement forces
+$\varphi$'' and ``$\neg\varphi$ classically stable everywhere below'' come apart (minimal
+countermodel: $\varphi=\neg\beta$ with $\beta$ stabilized exactly at the leaves of a $7$-condition
+spine model; no condition forces $\neg\beta$, yet $\neg\neg\beta$ is nowhere classically stable at
+interior nodes---see the accompanying verification suite). The compound case is \textbf{O}. In the
+Kripke--Joyal reading the split marks where the double-negation construction can later collapse an
+undecided condition.
+\end{remark}
+
+\section{Propositional soundness: the connective Truth Lemma}\label{sec:atomic}
+
+The remaining joint---extending soundness past atomic propositions---closes at the propositional level,
+inside the frame of \S\ref{sec:void}: the obstructing clauses are the universal-refinement ones, which
+bottom out at the void. The clauses, persistence, and order-density of deciding sets were established
+in \S\ref{sec:schema} (Def.~\ref{def:clauses}, Lemmas~\ref{lem:pers}, \ref{lem:dec}); this section
+works with the calibrated relation $\forcesH$ throughout.
+
+\begin{lemma}[Genericity decides every formula]\label{lem:bivalence}
+Assume Decision Reachability (Lemma~\ref{lem:reach}). Then a generic $G$ meeting the admissible
+deciding closure $\mathcal{D}_p^\ast$ decides every propositional $\varphi$: for each $\varphi$
+there is $q\in G$ with $q\forcesH\varphi$ or $q\forcesH\neg\varphi$.
+\end{lemma}
+\begin{proof}
+The propositional closure of the countable atomic vocabulary (Lemma~\ref{lem:bdd}) is countable, so
+$\{D_\varphi\}_\varphi$ is countable. Under Lemma~\ref{lem:reach} each $D_\varphi$ restricts to a
+$\Jadm$-cover, so each belongs to $\mathcal{D}_p^\ast$ (Def.~\ref{def:closure}), which is countable;
+$G$ meets every member, in particular every $D_\varphi$. \emph{Bivalence on $G$ is thus P
+conditional on Decision Reachability (C), not on countability alone.}
+\end{proof}
+
+\begin{theorem}[Propositional Truth Lemma, conditional on calibration]\label{thm:prop}
+Assume the calibration queue (Assumption~\ref{asm:calibration}; in particular Decision
+Reachability). Let $G$ be a generic deciding every propositional formula, truth defined classically on
+$G$ (bivalence by Lemma~\ref{lem:bivalence}) and atomically by eventual stabilization. Then, under
+(C), for every propositional $\varphi$,
+$G\models_H\varphi \iff \exists\,p\in G:\ p\forcesH\varphi$.
+The forcing-theoretic content is unconditional; (C) is what ties that content to the pipeline, and it
+is the antecedent, not a consequence.
+\end{theorem}
+\begin{proof}
+Induction on $\varphi$. \emph{Atomic}: Lemma~\ref{lem:atomic}. \emph{$\wedge$}: $(\Leftarrow)$ a
+forcing $p$ gives both conjuncts by the IH; $(\Rightarrow)$ witnesses $p_1,p_2$ have a common lower
+bound $p\in G$ (filter), forcing both by persistence. \emph{$\vee$}: $(\Rightarrow)$
+$G\models\varphi$ or $\psi$; the IH gives a witness $p\in G$ forcing a disjunct; then the
+$\vee$-cover of $p$ contains all of ${\downarrow}p$ by persistence, i.e.\ is the maximal sieve, so
+$p\forcesH\varphi\vee\psi$. $(\Leftarrow)$ Let $p\in G$ force $\varphi\vee\psi$ and suppose, for
+contradiction, $G\not\models\varphi$ and $G\not\models\psi$. $G$ decides both
+(Lemma~\ref{lem:bivalence}), so witnesses $q_1,q_2\in G$ force $\neg\varphi,\neg\psi$; a common
+lower bound $s\in G$ of $p,q_1,q_2$ forces $\varphi\vee\psi$, $\neg\varphi$, and $\neg\psi$
+(persistence). The $\vee$-cover of $s$ is a $\Jadm$-cover, hence dense
+(Lemma~\ref{lem:sitebound}), hence nonempty below $s$: some $r\refines s$ forces $\varphi$ or
+$\psi$, contradicting consistency with the persisted $\neg\varphi,\neg\psi$ at $r$
+(Lemma~\ref{lem:pers}). (The v14 text appealed to $G$ meeting the $\vee$-cover ``cofinally'';
+genericity only guarantees meeting members of $\mathcal{D}_p^\ast$, so the argument now routes
+through deciding sets.) \emph{$\neg$}: $(\Leftarrow)$ if $p\in G$ forces $\neg\varphi$ but
+$G\models\varphi$, a witness $q\in G$ forces $\varphi$ (IH); a common lower bound $r\in G$ forces both,
+contradicting Lemma~\ref{lem:pers}. $(\Rightarrow)$ $G$ decides $\varphi$ (Lemma~\ref{lem:bivalence});
+$G\not\models\varphi$ excludes a witness, so the deciding witness forces $\neg\varphi$. Case $\to$
+follows from $\neg,\vee$.
+\end{proof}
+
+\begin{remark}[Intuitionistic relation, classical extension]
+$G$ is classical (bivalent) though the clauses are the intuitionistic (Kripke) ones. This is the
+Cohen phenomenon: an intuitionistic forcing relation with a classical generic extension, mediated by
+the generic meeting every $\neg\neg$-dense deciding set. The classicality of $G$ is the surface-level
+shadow of ``$M[G]$ models the classical theory,'' the operational content of the double-negation
+construction of \S\ref{sec:schema}.
+\end{remark}
+
+\section{Inter-observer forcing: the shared zeroth-order zero}\label{sec:void}
+
+Single-observer forcing descends within one surface. Two observers with surfaces $\PH^A,\PH^B$
+\emph{disjoint below the top}---sharing no condition except the void---raise a separate question: on
+what can they agree, when neither can occupy the other's conditions?
+
+\medskip\noindent\textbf{Construction (wedge at the void).} Glue the surfaces at their common top,
+\[
+  R \;=\; \bigl(\PH^A \sqcup \PH^B\bigr)\big/\bigl(\mathbb{1}_A=\mathbb{1}_B=\mathbb{1}\bigr),
+\]
+where $\mathbb{1}$ is the void (Axiom H.0): zero commitments, the maximum condition every refinement
+descends from. The order on $R$ is the disjoint union of the two branch orders together with
+$x\refines\mathbb{1}$ for every $x$; there are \emph{no} cross-branch relations. Each branch keeps
+its own order; $\mathbb{1}$ sits above both.
+
+\begin{lemma}[The void is the unique shared point]\label{lem:void}
+For $p\in\PH^A\setminus\{\mathbb{1}\}$ and $q\in\PH^B\setminus\{\mathbb{1}\}$, $p$ and $q$ are
+incompatible in $R$. Hence $\mathbb{1}$ is the unique condition compatible with both branches, and
+any filter in $R$ lies entirely in one branch (plus $\mathbb{1}$).
+\end{lemma}
+
+\begin{proof}
+A common lower bound $r$ of $p$ and $q$ would satisfy $r\refines p$ and $r\refines q$, and
+$r\ne\mathbb{1}$ since $\mathbb{1}$ is above every condition, not below any. By the definition of
+the order on $R$ (no cross-branch relations), $r\refines p$ places $r$ in branch $A$ and
+$r\refines q$ places $r$ in branch $B$; but $\PH^A\cap\PH^B=\{\mathbb{1}\}$ in $R$. So no common
+lower bound exists. A filter is downward-directed, so it cannot contain non-void conditions from
+both branches.
+\end{proof}
+
+An observer may stand at the origin but descends into only one surface: observation is the choice of
+branch, and the two cannot be occupied at once.
+
+\begin{proposition}[The shared point is forced to zeroth order]\label{prop:zeroth}
+Order conditions in $R$ by refinement depth from the top. The only condition shareable between
+disjoint observers is the unique depth-$0$ condition $\mathbb{1}$---``shared zero point'' is a
+consequence, not a choice.
+\end{proposition}
+
+\begin{proof}
+$\mathbb{1}$ is the unique condition reached by \emph{zero} admissible moves; every other condition
+is at depth $\ge1$ and, by Lemma~\ref{lem:void}, branch-private, hence occupiable by at most one of
+the two observers. \end{proof}
+
+\noindent(The \emph{order} fact is Proposition~\ref{prop:zeroth}; the identification of that stratum
+with the diagnostic zeroth-order register $(\hat\rho,\mu)$, and below with the loopback address, is
+a modeling bridge, not a theorem.)
+
+\begin{remark}[Forced from the void]
+By Def.~\ref{def:force}, $\mathbb{1}\forcesH\varphi$ iff $\Stab(\cdot,\varphi)$ covers $\mathbb{1}$ in
+\emph{both} branches---the branch-invariant propositions. Disjoint observers force the same atomic
+$\varphi$ iff it is forced from the void. They agree exactly on the zeroth-order, pre-observational
+kernel and on nothing contingent. \emph{The shared zero buys commensurability---a common $\mathbb{1}$
+to quantify over, hence the ability to state ``we agree''---not communion.} It transports no contingent
+claim across.
+\end{remark}
+
+\section{Interface layer: medium, protocol, and the non-identity theorem}\label{sec:interface}
+
+The void is the unique shared depth-$0$ condition. It supplies commensurability, not communication.
+Communication requires a first-order medium: a public surface on which one observer exports a
+floor-stable residue and another reconstructs it inside its own surface. Networking is therefore
+essential to inter-observer work, but its formal role is interface/transport, not shared occupancy:
+\emph{void is shared orientation; medium is shared inscription; protocol is shared constraint.}
+
+Let $X_A,X_B$ be the observers' state spaces, carrying the channel projectors $T_A,T_B$ (states
+relate to conditions through the embedding $\Phi$ of Lemma~\ref{lem:cauchy}; in v14 the encoding was
+typed on the condition poset and applied to states---a category slip, corrected here). Let $M$ be an
+interface medium with partial encoding and decoding maps
+\[
+  E_A: T_A(X_A)\rightharpoonup M,\qquad D_B: M\rightharpoonup X_B .
+\]
+Observer $A$ exports not the ceiling-state $x_A$ but its floor-stable residue $r_A=T_Ax_A$, encoded
+as $m=E_A(r_A)$; $B$ receives a reconstruction $D_B(m)$ inside $B$'s surface.
+
+\begin{definition}[Transfer]\label{def:transfer}
+A \emph{transfer of contingent content} from $A$ to $B$ is any correspondence between depth-$\ge1$
+content of $A$'s surface and depth-$\ge1$ content of $B$'s that is realized either by shared
+occupancy of a condition or by a composite of maps through third objects.
+\end{definition}
+
+\begin{theorem}[Factoring, architectural]\label{thm:factor}
+If $\PH^A,\PH^B$ are disjoint below the void, then no contingent (depth $\ge 1$) content is shared by
+occupancy (Lemma~\ref{lem:void}); hence any transfer of contingent content from $A$ to $B$
+(Def.~\ref{def:transfer}) is not occupancy but an external composite
+\[
+  T_A(X_A) \xrightarrow{\ E_A\ } M \xrightarrow{\ D_B\ } X_B ,
+\]
+through a third object $M$ that both may address.
+\end{theorem}
+
+\begin{proof}
+Immediate from Lemma~\ref{lem:void} and Def.~\ref{def:transfer}: the occupancy disjunct is excluded
+below the void, leaving the third-object composite. (The theorem is architectural---its content is
+the exclusion, carried by Lemma~\ref{lem:void}; it is tagged D, not P, in the ledger.)
+\end{proof}
+
+\begin{theorem}[Non-identity of transport, with equality condition]\label{thm:nonid}
+Let $T_A$ be the channel projector ($T_A^2=T_A$). For $x_A$ with
+$\epsilon_{T_A}(x_A)=\|(\mathrm{id}-T_A)x_A\|/\|x_A\|>0$,
+\[
+  T_Ax_A\neq x_A,
+\]
+so the medium is \emph{not} where identity first fails---bounded projection already breaks it.
+Consequently $D_B(E_A(T_Ax_A))=x_A$ can hold only under a \emph{named identity-transport condition}:
+\begin{enumerate}[leftmargin=1.8em,label=(\roman*)]
+\item \textbf{zero projection loss:} $x_A\in\operatorname{im}(T_A)$ (equivalently $\epsilon_{T_A}(x_A)=0$);
+\item \textbf{faithful encoding:} $E_A$ injective on the residue $r_A=T_Ax_A$;
+\item \textbf{calibrated decoding:} $D_B\circ E_A=\mathrm{id}$ on the residue subobject (a
+  section/retraction, i.e.\ an isomorphism of the transported subobjects of $\PH^A$ and $\PH^B$).
+\end{enumerate}
+Absent any of (i)--(iii), the received state is a reconstruction, not identity.
+\end{theorem}
+
+\begin{proof}
+$T_Ax_A=x_A\iff x_A\in\ker(\mathrm{id}-T_A)=\operatorname{im}(T_A)\iff\epsilon_{T_A}(x_A)=0$, giving
+the first claim and the necessity of (i). If (i) holds, $x_A=r_A$ and
+$D_B(E_A(x_A))=x_A$ requires $E_A$ to lose no information on $r_A$ (necessity of (ii)) and
+$D_B\circ E_A$ to return $r_A$ within $B$'s surface (necessity of (iii)); failure of either yields a
+distinct element. Conversely (i)--(iii) give $D_B(E_A(T_Ax_A))=D_B(E_A(x_A))=x_A$.
+\end{proof}
+
+\begin{remark}
+Non-identity is generic; identity is a calibrated degeneracy. This is central for Chalked
+(\S\ref{sec:chalked}): the board carries residues, not ceilings; a reader gets $D_B(m)$, a
+reconstruction, never the author's private state. The invariant is concise: \emph{the void gives
+commensurability; the network gives communication}---and communication is reconstruction under $B$'s
+projection, priors, and constraints.
+\end{remark}
+
+\begin{remark}[Loopback as icon, not transport]
+The loopback address \texttt{127.0.0.1} remains useful iconography for indexical self-reference: the
+address whose form is universal but whose referent is local. It illustrates the zeroth-order
+self-interface; it does not bridge observers. Inter-observer transport requires a non-loopback edge:
+a public medium, address, protocol, artifact, or utterance. (Appendix~\ref{sec:appendix}.)
+\end{remark}
+
+\section{Interpretive appendix: boundary projection and exportability}\label{sec:eureka}
+
+Lemma~\ref{lem:cauchy} has an observer-side reading we call the \emph{Eureka Tub}: a working term for
+the pre-artifact state of insight, not a literal object. A bounded observer momentarily holds a
+high-dimensional \emph{ceiling} state---richer than it can carry into record. Exiting imposes a
+projection $\pi_O$ onto the \emph{floor}: the residue that can be written, tested, or witnessed. We
+identify $\pi_O$ with the channel projector $T_t$ of \S2 (a modeling bridge, M). Define
+\[
+  \chi_T(x)=\frac{\|T_t x\|}{\|x\|},\qquad
+  \epsilon_T(x)=\frac{\|(\mathrm{id}-T_t)x\|}{\|x\|}.
+\]
+
+\begin{proposition}[Exportability identity, under orthogonality]\label{prop:chi}
+If $T_t$ is an orthogonal projection ($T_t=T_t^2=T_t^{*}$), then for $x\neq0$,
+\[
+  \chi_T(x)^2+\epsilon_T(x)^2=1 .
+\]
+If $T_t$ is merely idempotent (oblique), only the triangle bound
+$\chi_T(x)+\epsilon_T(x)\ge1$ survives (hence $\chi_T^2+\epsilon_T^2\ge\tfrac12$); the Pythagorean
+identity fails in general, with the defect controlled by the principal angle between
+$\operatorname{im}T_t$ and $\ker T_t$. Orthogonality must not be smuggled in.
+\end{proposition}
+
+\begin{proof}
+Orthogonal case: $T_tx\perp(\mathrm{id}-T_t)x$ gives
+$\|x\|^2=\|T_tx\|^2+\|(\mathrm{id}-T_t)x\|^2$; divide by $\|x\|^2$. Oblique case:
+$x=T_tx+(\mathrm{id}-T_t)x$ and the triangle inequality give
+$\|x\|\le\|T_tx\|+\|(\mathrm{id}-T_t)x\|$, i.e.\ $\chi_T+\epsilon_T\ge1$; Cauchy--Schwarz on the
+pair $(\chi_T,\epsilon_T)$ gives the quadratic form. That the identity fails obliquely is witnessed
+by any idempotent with $\|T_t\|>1$.
+\end{proof}
+
+\begin{proposition}[Non-determination of the ceiling-state]\label{prop:skeleton}
+Suppose the ceiling space has dimension exceeding the bounded rank of $\pi_O$ (finitely many active
+claims). Then $\pi_O$ is non-injective, so no single residue determines the ceiling-state, and
+recovery is possible only as the limit of residues along an increasing filtration
+$\pi_{O,1}\preceq\pi_{O,2}\preceq\cdots$ whose images are Cauchy---the observer reading of
+Lemma~\ref{lem:cauchy}.
+\end{proposition}
+
+\begin{proof}
+A linear map of rank $r$ on a space of dimension $>r$ has nontrivial kernel, so distinct
+ceiling-states share a residue; single-residue recovery fails. The filtration statement is
+Lemma~\ref{lem:cauchy} applied to the residue sequence, and consumes the bridge $\pi_O=T_t$ (M) and
+that lemma's hypotheses.
+\end{proof}
+
+\begin{conjecture}[Exportability correlates with regime]
+Smooth insights have high $\chi_T$; pivot-heavy insights have high $\epsilon_T$. By
+Prop.~\ref{prop:chi} (orthogonal case) these are one scalar on the unit sphere; the conjecture is
+that this scalar correlates with the measured smooth/pivot label. Falsifiable, not proved (C).
+\end{conjecture}
+
+\begin{remark}[What remains around the skeleton]
+The skeleton (bounded rank $\Rightarrow$ non-determination $\Rightarrow$ Cauchy-filtration
+recovery, Prop.~\ref{prop:skeleton}) is P consuming M; the conjecture above is its only empirical
+residue.
+\[
+  \text{rich insight} \to \text{bounded residue} \to \text{witnessed refinement} \to \text{stable completion}.
+\]
+PyLantern (\S\ref{sec:pylantern}) is the floor instrument; it records residues, not the private
+ceiling.
+\end{remark}
+
+\begin{remark}[Weak Born analogy only, firewalled]
+Projecting a rich state onto a bounded record is Born-\emph{like} only in the weak sense that a
+high-dimensional configuration is compressed into what an observer can register. No claim about literal
+quantum measurement is intended. This weak analogy is kept distinct from, and does not assume, the
+strong route (a genuine Born derivation via \S\ref{sec:void} branch-invariance supplying Gleason's
+non-contextuality hypothesis, with category-theoretic typicality). That route is a separate, stronger,
+\emph{unclaimed} target.
+\end{remark}
+
+\begin{definition}[Representation-independence obstruction]\label{def:rio}
+A \emph{representation-independence obstruction} (RIO) is a triple: a structure-preserving
+projection/quotient faithful on a distinguished sub-object, a complement on which it is lossy, and a
+non-contextuality (representation-independence) hypothesis asserting the complement
+inessential---which the projection alone does not supply.
+\end{definition}
+
+\begin{remark}[One obstruction, four axes]
+Formalize the shape once (Def.~\ref{def:rio}). Four gaps in this program are RIO-instances:
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{0.26\textwidth} p{0.30\textwidth} p{0.36\textwidth}@{}}
+\toprule
+\textbf{Axis} & \textbf{Low end (projection exists)} & \textbf{High end (complement inessential)}\\
+\midrule
+Forcing correspondence & structural transduction (KJ clauses transfer) & identity with Cohen forcing (poset representation-independent)\\
+Born & compression onto bounded register & $|\psi|^2$ forced by Gleason non-contextuality\\
+Deparameterization (\S\ref{sec:deparam}) & Reading~A: floor fixed by family $R$ & Reading~B: floor fixed by \emph{every} reduction family\\
+Inter-observer (\S\ref{sec:void}) & commensurability at the void (Lem~\ref{lem:void}) & contingent claim transported across branches\\
+\bottomrule
+\end{tabular}
+\end{center}
+Each low end is functorial and cheap; each high end is a uniqueness/non-contextuality theorem strong
+enough to fail generically. \emph{Why coupled here:} \S\ref{sec:void} branch-invariance is the common
+upstream input, consumed at two strengths---as commensurability it is proved (Lem~\ref{lem:void}); as
+the non-contextuality hypothesis a Born derivation would need, it is open. \emph{Against overclaiming:}
+the four share a \emph{shape} and one upstream hypothesis; they are not the same \emph{object}, and
+discharging one high end does not discharge another. The claim earned is schema-level: all four are
+RIO-instances with a common load-bearing input. Reading the table as a transport would reintroduce the
+identity-for-transduction inflation the note refuses.
+\end{remark}
+
+\section{Deparameterization and the judgment residue}\label{sec:deparam}
+
+Each preceding section replaced a free parameter by an object the remaining structure already forces.
+This section makes that operation the object, and is explicit about how little is proved.
+
+\medskip\noindent\textbf{The operator.} A \emph{specification} $s$ fixes values for parameters
+$\Theta(s)$ of the apparatus. Order specifications by parameter removal,
+$s \preceq s' :\Longleftrightarrow \Theta(s')\subseteq\Theta(s)$ and $s'$ agrees with $s$ on
+$\Theta(s')$; the top $\mathbf{1}$ is the fully deparameterized apparatus, $\Theta=\emptyset$. Let
+$R(s)$ be $s$ with every parameter \emph{forced by the rest} removed; $R$ is inflationary,
+$R(s)\succeq s$.
+
+\begin{lemma}[Deparameterization closure]\label{lem:bw}
+If the specification poset $\Sspec$ is chain-complete, $R$ has a fixed point above every $s$
+(Bourbaki--Witt \cite{bourbaki-witt}), and the iterates reach $R^\infty(s_0)$, the most reduced
+specification forced from $s_0$. The internal Bourbaki--Witt principle \cite{bw-topos} places this in
+the same topos as the Kripke--Joyal semantics of \S\ref{sec:schema}.
+\end{lemma}
+
+\begin{proof}
+$R$ is inflationary on $\Sspec$ by construction; Bourbaki--Witt applies verbatim to inflationary
+maps on chain-complete posets, yielding a fixed point above each $s$ as the stationary value of the
+transfinite iteration. The internalization is \cite{bw-topos}. Chain-completeness of $\Sspec$ is the
+consumed hypothesis, recorded in the ledger.
+\end{proof}
+
+\begin{proposition}[Residue dichotomy]\label{prop:dich}
+$R^\infty(s_0)$ is either the top $\mathbf{1}$ or a fixed point $\prec\mathbf{1}$: a \emph{residue}
+carrying at least one parameter the remaining structure does not force. This is relative to the family
+$R$ (``Reading~A'').
+\end{proposition}
+
+\begin{proof}
+$R^\infty(s_0)$ is a fixed point of $R$ (Lemma~\ref{lem:bw}). If it is not $\mathbf{1}$, it retains
+a nonempty parameter set $\Theta$; fixedness means $R$ removes none of them, and $R$ removes exactly
+the parameters forced by the remaining structure, so at least one retained parameter is unforced.
+Relativity to the family $R$ is definitional.
+\end{proof}
+
+\medskip\noindent\textbf{The bridge to the void (replacing $\mathbf{1}=\bot$).} $\mathbf{1}$ lives in
+$\Sspec$; the void $\mathbb{1}$ lives in the condition poset $P_H$. Object-level equality would be a
+category error. Instead posit a monotone bridge map (modeling postulate M-Bridge)
+\[
+  F:\Sspec\to P_H,\qquad F(\mathbf{1})=\mathbb{1},
+\]
+transporting the terminal specification to the void condition: \emph{the equality is not object-level;
+it is functorial transport of the terminal specification to the void.} Under M-Bridge, the fully
+deparameterized apparatus maps to the self-determined indexical origin.
+
+\begin{theoremtarget}[Structural irreducibility]
+Under M-Bridge, the universal reduction closure is either $\mathbf{1}$---in which case, via
+$F(\mathbf{1})=\mathbb{1}$, the irreducible term is not a residual parameter but the indexical origin
+itself, irreducible structurally (the fixed point of removal, and by Lemma~\ref{lem:void} the unique
+zeroth-order point no first-order operation reaches, while $R$ is first-order)---or a floor
+$s_*\prec\mathbf{1}$ fixed by every reduction, a genuine Reading-B residue distinct from the origin.
+Deciding which is the open problem.
+\end{theoremtarget}
+
+\begin{remark}[One floor, three charts]
+The deparameterization floor, the smooth/pivot boundary, and the reconstruction floor / $K$ parameter
+of a companion formalism are \emph{conjecturally} the same object: a floor either real or the artifact
+of a bounded reconstructor. What is established is that they share a \emph{shape} (an RIO), not that
+they are one object; asserting identity would itself be a Reading-B claim. That the same fork recurs
+across independent formalisms is evidence it is an invariant of the program, not an artifact of one.
+\end{remark}
+
+\begin{conjecture}[Residue $=$ contract break]
+The deparameterization residue $s_*\prec\mathbf{1}$, when it exists, coincides with the boundary of
+the smooth regime: the retained parameter is exactly the one whose forcing would require crossing a
+break of the displacement contract (Assumption~\ref{asm:smooth}). The measurable form uses the
+contact ratio and the label-free router of the companion instrumentation (external to this note);
+status C, falsifiable under audit-observer measurement.
+\end{conjecture}
+
+\section{Executable interpretation: PyLantern as witness layer}\label{sec:pylantern}
+
+PyLantern is the executable witness layer, \emph{not} an autonomous closure engine. It is a calibrated
+structural transducer along
+\[
+  \text{symbolic claim} \to \text{bounded observer state} \to \text{admissible refinement}
+  \to \text{witness/certificate} \to \text{human-gated decision},
+\]
+under one invariant: \emph{witness and request access only; no direct autonomous loop closure}.
+In the language of \S\ref{sec:site}, PyLantern operates strictly inside the witnessed fragment
+$\Jwit$: it verifies whether a refinement path is witnessed, bounded, logged, and admissible (a finite
+$\Jwit$-witness), and must \emph{not} become the generic filter that autonomously executes every
+$\Jadm$-cover. Meeting requirements is the mathematical content of completion in $\Jadm$, not a license
+for a running system to enact them. This is precisely the containment $\Jwit\subseteq\Jadm$: the
+generated site supplies semantics; the witnessed fragment supplies executable discipline.
+
+PyLantern is also a protocol discipline for exporting residues into the interface medium: it
+constrains $E_A$ to carry witnesses, provenance, uncertainty, and consent gates, and constrains $D_B$
+so received artifacts are treated as reconstructions (Thm.~\ref{thm:nonid}), not identity with the
+sender's ceiling-state.
+
+\section{Chalked as the canonical witnessed medium}\label{sec:chalked}
+
+Chalked is not application fluff; it is the canonical model of the interface layer.
+
+\begin{quote}
+Chalked implements the witnessed fragment $\Jwit$ of the generated admissible site: a consent-gated
+shared witness surface where bounded observers exchange floor-stable residues under explicit protocol.
+\end{quote}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{0.34\textwidth} p{0.60\textwidth}@{}}
+\toprule
+\textbf{Chalked} & \textbf{Interface layer} \\
+\midrule
+board & medium $M$ \\
+mark & encoded residue $E_A(T_Ax_A)$ \\
+reading a mark & reconstruction $D_B(m)$ in the reader's surface \\
+chalk color & protocol / contract selector \\
+eraser & revision authority \\
+blank / void & mapped ignorance (depth-$0$, $\mathbb{1}$) \\
+certificate & witness attachment \\
+permission gate & non-actuation boundary \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{proposition}[Chalked correctness invariant]\label{prop:chalked}
+A Chalked mark is valid only if it preserves provenance, permission, residue type, and revision
+authority, while refusing identity with the originating observer-state: it is $E_A(T_Ax_A)$, never
+$x_A$. Equivalently, \emph{a valid mark carries residue, not ceiling; reconstruction, not possession}
+(Thm.~\ref{thm:nonid}).
+\end{proposition}
+
+Chalked is the smallest object on which the Factoring Theorem (Thm.~\ref{thm:factor}) and the
+Non-identity Theorem (Thm.~\ref{thm:nonid}) are simultaneously realized and auditable---hence the
+canonical, not incidental, model.
+
+\section{Non-actuation boundary}
+
+Proving the semantics does not require, and does not authorize, actuating the system it describes.
+\emph{No proof may require the system to close the loop it claims to make safe.} The executable
+interpretation is restricted to shadow execution, dry-runs, bounded witnesses, reproducible traces,
+and human-gated transitions ($\Jwit$ only). Quantum resources, if present, are queried as bounded
+witnesses or simulators, not autonomous optimizers or actuators. The Cauchy-generic completion
+(Lemma~\ref{lem:cauchy}) is a statement about the existence of a limit in $\overline{P}_O$; it is not
+an instruction for any process to traverse the trajectory autonomously.
+
+\section{Status ledger}\label{sec:ledger}
+
+Every load-bearing claim carries exactly one status: \textbf{P}~= proved relative to stated
+hypotheses; \textbf{D}~= definitional architecture (no proof obligation beyond well-formedness);
+\textbf{S}~= specification / implementation-conformance contract; \textbf{M}~= modeling postulate;
+\textbf{C}~= measurable conjecture or contract; \textbf{O}~= open. A \textbf{P} result is only as
+strong as the \textbf{M}/\textbf{C} it consumes, and the Consumes column lists the \emph{transitive}
+closure of named debts, not only the direct ones (the accompanying verification suite recomputes
+this column mechanically). The site bound, persistence/consistency, deciding density,
+Rasiowa--Sikorski, the propositional Truth Lemma, the margin path form (with a formal refutation of
+the v14 per-step induction), the Cauchy--Forcing completion, order--metric compatibility,
+non-identity of transport, and the exportability identity are machine-verified in Lean~4 (core
+kernel + mathlib layer) in that suite. One debt is \emph{ambient} and stated here once rather than per row:
+every result below lives on $\PHeta$, whose definition (Def.~\ref{def:refine}) consumes the
+smoothness contract (Assumption~\ref{asm:smooth}); rows list the contract only where it enters
+\emph{beyond} that ambient dependence.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{0.40\textwidth} c p{0.42\textwidth}@{}}
+\toprule
+\textbf{Claim} & \textbf{Status} & \textbf{Consumes / conditional on}\\
+\midrule
+Generated site $\Jadm=\langle B\rangle$ (Def~\ref{def:site}) & D & existence is P (proof of Lem~\ref{lem:sitebound})\\
+Site bound $\Jadm\subseteq\Jnn$ (Lem~\ref{lem:sitebound}) & P & admissible density of generators\\
+Witnessed fragment $\Jwit\subseteq\Jadm$ (Def~\ref{def:wit}) & D & finite-witness definition; discipline\\
+Smoothness contract (Asm~\ref{asm:smooth}) & C & measured, substrate-relative\\
+Persistence \& consistency (Lem~\ref{lem:pers}) & P & pullback stability; M-Pers only via well-formedness ($A_\varphi$ a sieve)\\
+Channel-Margin, path form (Lem~\ref{lem:margin}) & P & Asm~\ref{asm:smooth} (C): Lipschitz + budget\\
+Separativity $=$ certificate disagreement (Lem~\ref{lem:nonatom}) & P & stated for $\forcesnn$; M-Cvx; M-Pers (certificate persistence)\\
+Boundedness $\Rightarrow$ countability (Lem~\ref{lem:bdd}) & P & observer bound: M-Bound\\
+Decision Reachability (Lem~\ref{lem:reach}) & P & Asm~\ref{asm:smooth} (C); M-Pers (via Def~\ref{def:force}); item 8 of queue\\
+Cauchy--Forcing completion (Lem~\ref{lem:cauchy}) & P & $V$: M; descent (b): C; $d_O$ comparability (c): M (\emph{Principia})\\
+Order--Metric compatibility, atomic (Lem~\ref{lem:ordmet}) & P & M-Pers; stabilized region closed: M-Cl\\
+Atomic Truth Lemma (Lem~\ref{lem:atomic}) & P & M-Pers; Asm~\ref{asm:smooth} (C) and M-Bound via $\mathcal{D}_p^\ast$\\
+Deciding sets order-dense (Lem~\ref{lem:dec}) & P & M-Pers (via Def~\ref{def:force}: $A_\varphi$ a sieve)\\
+Genericity decides (Lem~\ref{lem:bivalence}) & P & Lem~\ref{lem:reach} (hence Asm~\ref{asm:smooth}: C); M-Bound; M-Pers\\
+Propositional Truth Lemma (Thm~\ref{thm:prop}) & P & M-Pers; Asm~\ref{asm:smooth} (C, via reach); M-Bound; calibration queue: \textbf{O}\\
+Torsion $=$ $\neg$-clause, atomic (Rem.~\ref{rem:torsion}) & P & atomic only; M-Pers (via $A_\varphi$); compound case \textbf{O} (finite countermodel)\\
+Void is unique shared point (Lem~\ref{lem:void}) & P & wedge construction\\
+Forced-to-zeroth-order (Prop~\ref{prop:zeroth}) & P & refinement depth; Lem~\ref{lem:void}\\
+\;\;$\hookrightarrow$ diagnostic-register id. & M & modeling bridge, not the order fact\\
+Transfer (Def~\ref{def:transfer}) & D & interface architecture\\
+Factoring through $M$ (Thm~\ref{thm:factor}) & D & Lem~\ref{lem:void} + Def~\ref{def:transfer}; exclusion content is P\\
+Non-identity of transport (Thm~\ref{thm:nonid}) & P & $T_A$ idempotent; equality condition named\\
+Interface maps $E_A,D_B$ semantics & M & protocol discipline\\
+Chalked correctness invariant (Prop~\ref{prop:chalked}) & S & implements Thm~\ref{thm:nonid} discipline\\
+\midrule
+\multicolumn{3}{@{}l}{\textit{Interpretive bridges / appendices}}\\
+Eureka-Tub skeleton (Prop~\ref{prop:skeleton}) & P & $\pi_O=T_t$: M; Lem~\ref{lem:cauchy} hypotheses\\
+Exportability identity $\chi^2+\epsilon^2=1$ (Prop~\ref{prop:chi}) & P & $T_t$ orthogonal; oblique case: triangle bound only\\
+$\chi/\epsilon \leftrightarrow$ smooth/pivot correlation & C & measured\\
+Weak Born (compression) & M & analogy; strong route (Gleason): \textbf{O}\\
+RIO schema (Def~\ref{def:rio}; one obstruction, four axes) & D & schema-level only; not object identity\\
+Deparameterization closure (Lem~\ref{lem:bw}) & P & chain-completeness (Bourbaki--Witt)\\
+Residue dichotomy (Prop~\ref{prop:dich}) & P & relative to family $R$ (Reading~A)\\
+Bridge $F(\mathbf{1})=\mathbb{1}$ & M & M-Bridge (functorial transport, not equality)\\
+Residue $=$ contract break (Conjecture) & C & contact ratio + label-free router\\
+Residue is the origin (Reading~B) & O & the program's single open problem\\
+Loopback as self-reference icon & M & iconographic, nonessential to proof\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent \textbf{(M-Pers) is the highest-leverage postulate}, with a sharper blast radius than v14
+claimed: clause-level persistence of the forcing relations (Lemma~\ref{lem:pers}) consumes it only
+through the well-formedness of the atomic relation---the persistence \emph{argument} is pullback
+stability of the topology, and survives M-Pers removal at the dense reading (mutation-tested in
+the verification suite). What M-Pers substantively funds is (i) the sieve-hood of the stability sets
+$A_\varphi$ (well-formedness of Def.~\ref{def:force}), (ii) the $(\Rightarrow)$ direction of the
+Atomic Truth Lemma, and (iii) the Order--Metric Compatibility Lemma; through (ii) it reaches the
+Propositional Truth Lemma. If it fails, the truth lemmas fail while the forcing calculus itself
+stands. It remains the first target for derivation from the apparatus. No entry is an unconditional
+\textbf{P} about the world; each is a \textbf{P} about the mathematics plus a named
+\textbf{M}/\textbf{C}/\textbf{O} debt to the substrate.
+
+\section{Boundary and caution}
+
+This is structural correspondence, not identity with Cohen forcing. The generated-site framing
+(\S\ref{sec:site}) makes the schema a theorem---forcing over $(\PHeta,\Jadm)$, with $\Jadm\subseteq\Jnn$
+free---rather than an analogy, while keeping raw operational admissibility from bearing a brittle
+closure claim. Channel viability with persistence (Lem~\ref{lem:margin}), certificate separativity
+(Lem~\ref{lem:nonatom}), generic existence (Lem~\ref{lem:bdd}), Cauchy-generic completion with
+order--metric compatibility (Lems~\ref{lem:cauchy}, \ref{lem:ordmet}), atomic soundness
+(Lem~\ref{lem:atomic}), and propositional soundness (Thm~\ref{thm:prop}) are discharged relative to the
+ledger. Two layers remain genuinely open. \emph{Quantifiers}: $\exists,\forall$ need covering/fullness
+clauses and witness construction (candidate: obstruction-dual generators 3a--3d; not verified).
+\emph{Calibration}: the finite theorem queue of \S\ref{sec:calibration}, of which Decision
+Reachability and the per-connective realization lemmas are the load-bearing items---an implementation
+check, the transduction-not-identity discipline one level up.
+
+\section{Suggested paragraph for \emph{The Hypothesis Surface}}
+
+\begin{quote}
+The surface carries an order: one state refines another when it keeps the earlier commitments and
+resolves more, under the admissible moves the budget allows. The admissible dense obligations the
+observer emits \emph{generate} a site; on it a forcing relation appears---a state forces a proposition
+when the stabilizing refinements cover it---and it is tempting to read it as Cohen forcing relocated.
+We hold the weaker claim: both instantiate the same site semantics, the Kripke--Joyal interpretation
+that makes Cohen's construction work, differing only in which requirements generate the covers. Two
+conditions the reading demands are present rather than imposed: the channel keeps a positive margin,
+$\lambda_{\min}(\tilde\Gamma)\ge\eta/2$, by a path-budget perturbation estimate (the metric nondegeneracy
+that makes refinements exist, while incompatibility is carried by certificate disagreement); and the
+generic completion exists because a bounded observer holds only countably many requirements, the
+hypothesis Rasiowa--Sikorski consumes. Soundness holds for atomic propositions and, conditional on a
+finite calibration queue, for the connectives; what remains is the quantifier layer and the check that
+the surface operations realize the clauses.
+\end{quote}
+
+\section*{Closing invariant}
+
+The result is a conditional transduction theorem: if the Hypothesis Surface supplies a calibrated
+refinement poset whose admissible dense obligations generate a site, with smooth channel-margin
+descent, observer completion, and operational connectives realizing the Kripke--Joyal clauses, then the
+standard forcing machinery yields generic completion and propositional truth. \emph{The raw self emits
+obligations; generated coverage makes them other-addressable; witnessed finite prefixes make them
+globally auditable. The site is the closure of obligation under refinement, and Chalked is the finite
+witness surface on which that closure becomes consent-gated and inspectable.} No inevitability is
+implied, and no operational activation is intended.
+
+\begin{center}
+\emph{Lantern, not throne: the witness layer illuminates admissible refinements; it does not
+authorize autonomous closure.}
+\end{center}
+
+\appendix
+\section{Iconography, firewalls, and scope}\label{sec:appendix}
+
+\noindent\textbf{Loopback.} \texttt{127.0.0.1} is retained as iconography for indexical self-reference
+(universal form, local referent); it is nonessential to every proof and bridges no observers.
+
+\noindent\textbf{Weak Born firewall.} The compression analogy of \S\ref{sec:eureka} is Born-\emph{like}
+only; the strong route (Gleason non-contextuality via \S\ref{sec:void} branch-invariance) is a
+separate, unclaimed \textbf{O} target and must not be read as discharged.
+
+\noindent\textbf{Singularity, myth, authority.} In a venue where ``singularity'' is field vocabulary,
+this work argues for a non-actuating interpretation: witness surfaces, bounded refinement, human-gated
+completion, not autonomous closure. The correspondence is not prophecy, revelation, or command;
+symbolic or archetypal readings are ethical warning and interpretive context, not operational
+authority. A reader may mistake symbolic structure for authorization; this section forecloses that
+reading.
+
+\begin{thebibliography}{9}
+\bibitem{rasiowa-sikorski} H.~Rasiowa and R.~Sikorski. A proof of the completeness theorem of
+G\"odel. \emph{Fundamenta Mathematicae} \textbf{37} (1950), 193--200.
+\bibitem{gpst} E.~Gunther, M.~Pagano, and P.~S\'anchez Terraf. Formalization of forcing in
+Isabelle/ZF. In \emph{Automated Reasoning} (IJCAR 2020), LNCS \textbf{12167}, Springer, 2020.
+\bibitem{chow} T.~Y.~Chow. A beginner's guide to forcing. In \emph{Communicating Mathematics},
+Contemporary Mathematics \textbf{479}, AMS, 2009, 25--40. arXiv:0712.1320.
+\bibitem{maclane-moerdijk} S.~Mac Lane and I.~Moerdijk. \emph{Sheaves in Geometry and Logic: A
+First Introduction to Topos Theory}. Springer, 1992.
+\bibitem{bourbaki-witt} N.~Bourbaki. Sur le th\'eor\`eme de Zorn. \emph{Archiv der Mathematik}
+\textbf{2} (1949/50), 434--437; E.~Witt. Beweisstudien zum Satz von M.~Zorn. \emph{Mathematische
+Nachrichten} \textbf{4} (1951), 434--438.
+\bibitem{bw-topos} The internal Bourbaki--Witt principle in toposes; arXiv:1201.0340.
+\end{thebibliography}
+
+\bigskip
+\noindent\rule{\linewidth}{0.4pt}\\[0.3em]
+\footnotesize
+The collapse geometry ($\delta_{\min}\propto\sqrt{k/(1-\rho(k-1))}$, the cliff at $\rho(k-1)=1$,
+the perturbation sensitivity $\sim 1/\lmin$) is from \emph{The Cost of Cacophony} (Tiffany, in
+preparation). \emph{Source/author attribution: Paul Tiffany.}
+
+\end{document}

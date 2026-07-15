@@ -1,0 +1,146 @@
+{
+  "schema": "sketched.anchor-attestation.v1",
+  "id": "attest-010-book7",
+  "paper": "principia_atlas (book7) + forcing_correspondence",
+  "moves": [
+    {
+      "math_id": "lemma:bk7_budgetlimited_minimizer",
+      "from": null,
+      "to": "8dc53246d498"
+    },
+    {
+      "math_id": "theorem:bk7_emergent_lp_norm",
+      "from": null,
+      "to": "fef1d06c8f64"
+    },
+    {
+      "math_id": "theorem:bk7_hilbert_banach_bridge",
+      "from": null,
+      "to": "b2dc487eca1a"
+    },
+    {
+      "math_id": "corollary:bk7_bridge_no_interior_transition",
+      "from": null,
+      "to": "98c97a80596b"
+    },
+    {
+      "math_id": "definition:bk7_contextuality_defect",
+      "from": null,
+      "to": "13ff353078b6"
+    },
+    {
+      "math_id": "lemma:bk7_frame_temperature_exponent_correspondence",
+      "from": null,
+      "to": "ad246e66b97f"
+    },
+    {
+      "math_id": "lemma:bk7_involutive_dual_symmetry",
+      "from": null,
+      "to": "234c0151f1d1"
+    },
+    {
+      "math_id": "proposition:bk7_power_uncertainty_duality",
+      "from": null,
+      "to": "1536e8a9dacd"
+    },
+    {
+      "math_id": "definition:bk7_adaptive_refinement_recurrence",
+      "from": null,
+      "to": "bbe431defe00"
+    },
+    {
+      "math_id": "theorem:bk7_adaptive_refinement_deadband_stabilization",
+      "from": null,
+      "to": "94510770be93"
+    },
+    {
+      "math_id": "corollary:bk7_self_correction_criterion",
+      "from": null,
+      "to": "a7e213616b69"
+    },
+    {
+      "math_id": "axiom:bk7_convergence_potential",
+      "from": null,
+      "to": "7c55514391c1"
+    },
+    {
+      "math_id": "axiom:bk7_caristi_descent_for_reflection",
+      "from": null,
+      "to": "92600b81306a"
+    },
+    {
+      "math_id": "theorem:bk7_reflective_convergence_to_stable_identity",
+      "from": null,
+      "to": "aaab4765ce85"
+    },
+    {
+      "math_id": "corollary:bk7_observer_converges",
+      "from": null,
+      "to": "981b6207a566"
+    },
+    {
+      "math_id": "corollary:bk7_geometric_convergence_rate",
+      "from": null,
+      "to": "3fb28b18786e"
+    },
+    {
+      "math_id": "proposition:bk7_stabilization_as_orbit_limit",
+      "from": null,
+      "to": "9229e4c2979f"
+    },
+    {
+      "math_id": "definition:bk7_interactive_drift_reflection_pair",
+      "from": null,
+      "to": "f75c84f2f443"
+    },
+    {
+      "math_id": "definition:bk7_reflective_interaction_operator_",
+      "from": null,
+      "to": "5082496d7f21"
+    },
+    {
+      "math_id": "theorem:bk7_two_way_street_convergence",
+      "from": null,
+      "to": "4839c87ddc77"
+    },
+    {
+      "math_id": "theorem:bk7_two_way_street_fixed_point",
+      "from": null,
+      "to": "3607ba5a950a"
+    },
+    {
+      "math_id": "corollary:bk7_stability_near_reciprocity",
+      "from": null,
+      "to": "50fc4c1c5f89"
+    },
+    {
+      "math_id": "lemma:bk7_coarsegrained_convexity",
+      "from": null,
+      "to": "b2c18437b8c6"
+    },
+    {
+      "math_id": "lemma:bk7_reflective_integration_lemma___formalized",
+      "from": null,
+      "to": "d18cd9f5320c"
+    },
+    {
+      "math_id": "axiom:bk7_reflective_stabilization",
+      "from": null,
+      "to": "077e1420bc5d"
+    },
+    {
+      "math_id": "axiom:bk7_emergence_of_coherence_via_convergence",
+      "from": null,
+      "to": "ad6400d13a5e"
+    }
+  ],
+  "artifacts_reviewed": [
+    "verification/kernel/interface_model.py",
+    "verification/lean/ForcingAnalysis/ForcingAnalysis/Asymptotics.lean",
+    "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7.lean"
+  ],
+  "note": "Lean PS sprint-era anchors for book7: 26 statement placements across 3 artifact(s). Shas were computed live from the principia atlas at transcription time by the lead session; accepting this receipt attests that the named artifacts faithfully transcribe/kernelize these statements per their coverage-map honesty notes (verification/*_lean_map.json) and module headers. To sign: set status to 'accepted', attested_by to 'human', supply attested_at, then run: python verification/tools/binding_audit.py --adopt attest-010-book7",
+  "status": "proposed",
+  "attested_by": null,
+  "attested_at": null
+}

@@ -1,0 +1,160 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,hyperref}
+\usepackage[T1]{fontenc}
+\input{generated_book5_counts.tex}
+
+\title{Lean PS: Typed Correspondence, Witness Persistence,\\
+and a Verified Kernel for Principia Symbolica Book V}
+\author{Working paper scaffold for the AGI-26 correspondence program}
+\date{July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We describe a machine-checked architecture connecting three formally distinct
+domains: Kripke--Joyal forcing under refinement, covariance of physical force
+laws, and selected arithmetic and conditional-system claims from
+\emph{Principia Symbolica} Book V.  The connection is a shared typed
+commutation interface, not an identification of semantics.  The current receipt
+contains \VerifiedDeclarationCount\ verified declarations across the analysis
+stack.  Of these, \MappedBookFiveDeclarationCount\ declarations map to
+\MappedBookFiveAnchorCount\ Book V anchors.  The Book V atlas contains
+\BookFiveClaimNodeCount\ theorem-like claims, of which
+\OpenBookFiveClaimCount\ remain explicitly unmapped.  We present the proof
+boundary, negative controls, and a receipt-driven pedagogy pipeline that refuses
+to promote paper prose to kernel fact.
+\end{abstract}
+
+\section{The correspondence is an interface}
+
+The common object is a commuting condition.  In the total setting,
+equivariance states
+\[
+  f(g\cdot x)=g\cdot f(x).
+\]
+In the relational forcing setting, an admissible refinement step is preserved
+by the forcing predicate.  The two constructions instantiate one interface but
+differ in totality, equality strength, and semantics.  The formal architecture
+therefore retains domain, process schema, observer scope, adjudication mode,
+and transport-loss class as independent coordinates.
+
+This separation blocks two invalid inferences.  First, agreement across
+observers does not imply persistence under refinement.  Second, commutation of
+a physical square does not reflect membership in the Lorentz group without
+nondegeneracy.  Both failures have machine-checked finite or algebraic
+countermodels.
+
+\section{Witness preservation and M-Pers}
+
+A witness system assigns certificate types $W(o,p,a)$ to observer $o$,
+condition $p$, and atom $a$, together with restriction
+\[
+  q\preceq p \quad\Longrightarrow\quad W(o,p,a)\to W(o,q,a).
+\]
+Stability is inhabitation of the certificate type.  Hence local persistence is
+derived:
+\[
+  \operatorname{Stable}(o,p,a)\land q\preceq p
+  \Longrightarrow \operatorname{Stable}(o,q,a).
+\]
+Cross-observer transport is a second structure with a named naturality law.
+Material persistence may use both axes, but horizontal agreement alone does
+not establish the vertical theorem.
+
+\section{Book V proof families}
+
+\subsection{Balanced memory and reciprocity}
+
+Balanced two-step memory uses
+\[
+ A=\begin{pmatrix}1&1\\1&0\end{pmatrix}.
+\]
+Lean checks the eigenpair $(\varphi,1)$, uniqueness of the positive root of
+$x^2=x+1$, and convergence of consecutive Fibonacci ratios.  Weighted
+reciprocity uses
+\[
+ T_w=\begin{pmatrix}1&w\\1&0\end{pmatrix},\qquad
+ \lambda_w=\frac{1+\sqrt{1+4w}}2.
+\]
+The kernel proves $\lambda_w^2=\lambda_w+w$, the corresponding eigenvector,
+$\lambda_1=\varphi$, sub-golden rates for $0<w<1$, and super-golden rates for
+$w>1$.  Claims about ethics, decency, or agency remain interpretations of this
+conditional model.
+
+\subsection{Fracture and product spectra}
+
+For a nonzero equal-coordinate plane diagonal, Lean proves
+\[
+ \frac{\|v\|_1}{\|v\|_2}=\sqrt2,
+ \qquad
+ \frac{\|v\|_1}{\|v\|_\infty}=2.
+\]
+Separate countermodels show that fixing the memory regime does not determine
+the norm regime and fixing the norm regime does not determine memory.  Thus the
+symbolic-geometric interface is represented by typed product coordinates
+rather than a single sovereign classification.  The finite-support kernel now
+includes positive finite $p$, the infinity regime, sharp equality cases,
+effective support dimension, and finite symbolic-path decoherence.
+
+\subsection{Conditional thermodynamics}
+
+Free energy and viability are definitions.  Conservation, entropy production,
+fixed-point equivalence, persistence, and covenant stability are represented by
+structures carrying their laws.  Lean proves consequences from those fields;
+it does not install Book V's modeling laws as global axioms.  For example,
+nonnegative entropy rate follows from the explicit comparison
+\[
+  \rho_{\mathrm{reflection}}\leq\sigma_{\mathrm{production}},
+\]
+and persistence follows only after supplying a positive-energy persistence
+bridge.
+
+Coherence balance is likewise an energy-budget identity, not zero energy.
+When drift and reflection rates agree, Lean proves only that the energy rate
+equals the external rate.  Conservation requires the additional closed-budget
+hypothesis; a concrete compiled countermodel refutes conservation from balance
+alone.
+
+\section{Receipt-driven pedagogy}
+
+The build emits a theorem receipt containing declaration name, source module,
+axiom dependencies, and a no-\texttt{sorry} gate.  A second projection maps
+Principia anchors to exact, conditional, partial, or definitional coverage.
+Matt consumes these claims; Ellie composes a semantic lesson; the transcript
+gate rejects ungrounded numbers, status words, and guarded universalizations.
+The same semantic program is suitable input for textbook, slides, audio, or
+video renderers.  Rendering is downstream of proof and does not strengthen it.
+
+\section{Open program and workshop ingestion}
+
+The immediate proof queue is:
+\begin{enumerate}
+  \item deployed Surface witness types and a construction of M-Pers for actual
+        transition rules;
+  \item trajectory-response hypotheses for Book V adaptation, kept separate
+        from life classification and metabolic regulation;
+  \item spectral hypotheses sufficient for the MAD--MAP--MAS classification;
+  \item compact or measurable path-space extensions when later claims require
+        more than the finite symbolic-decoherence kernel;
+  \item functorial witness restriction and observer transport.
+\end{enumerate}
+
+A future AGI-26 workshop paper can be ingested by mapping each statement to
+this receipt discipline: definition, proved theorem, conditional theorem,
+measurable conjecture, modeling postulate, or open debt.  Shared diagrams do
+not merge their domains.  The weakest adequate composition remains the
+governing rule.
+
+\section{Reproducibility boundary}
+
+The paper compiles only after
+\texttt{book5\_lean\_coverage.py} generates the count macros above.
+The JSON coverage packet lists every mapped anchor and every unmapped
+claim-bearing Book V node.  The Lean root prints the axiom closure of each
+headline declaration.  Numerical Lorentz and Plomp--Levelt witnesses remain
+separate conformance artifacts.  Poems and interpretive prose are preserved as
+authored content and are not represented as proof obligations.
+
+\end{document}

@@ -1,0 +1,67 @@
+{
+  "schema_version": 2,
+  "note": "Witnessed pre-prompts over the REAL book plus explicit bridge topics. observer.assumed_ground is the chapters the learner has done; emphasis biases which ready chapter is next. mode 'teach' has a grounded instrument; mode 'bridge' attaches a sourced external substrate; mode 'prove' does not yet (honest gap = the proof-gap campaign, not wired).",
+  "goals": [
+    {
+      "id": "onramp",
+      "mode": "teach",
+      "objective": "Bring a newcomer in at the door of the book.",
+      "observer": {"audience": "technical_generalist", "assumed_ground": []},
+      "priors": {"emphasis": {}, "beta": 3.0, "duration_min": 12},
+      "outputs": ["podcast", "textbook", "slides"]
+    },
+    {
+      "id": "medium-deep",
+      "mode": "teach",
+      "objective": "For a reader who has the room-at-zero and refinement, go to the medium.",
+      "observer": {"audience": "technical_generalist", "assumed_ground": ["ch01", "ch02"]},
+      "priors": {"emphasis": {"ch07": 5.0}, "beta": 8.0, "duration_min": 12},
+      "outputs": ["podcast", "textbook", "slides"]
+    },
+    {
+      "id": "prove-gap",
+      "mode": "prove",
+      "objective": "Discharge an unproved claim in the next chapter.",
+      "observer": {"audience": "researcher", "assumed_ground": ["ch01", "ch02", "ch03", "ch04", "ch05", "ch06"]},
+      "priors": {"emphasis": {}, "beta": 3.0, "duration_min": 12},
+      "outputs": ["report"]
+    },
+    {
+      "id": "fabricpc-bridge",
+      "mode": "bridge",
+      "topic": "fabricpc-predictive-coding",
+      "topic_title": "FabricPC predictive-coding bridge",
+      "objective": "Attach FabricPC as a sourced predictive-coding substrate for pedagogy and future experiments.",
+      "observer": {"audience": "builders_and_agent_collaborators", "assumed_ground": ["ch01", "ch02", "ch07"]},
+      "priors": {"emphasis": {}, "beta": 3.0, "duration_min": 12},
+      "outputs": ["instrument-plan", "podcast", "textbook"]
+    },
+    {
+      "id": "leanps-slice",
+      "mode": "teach",
+      "topic": "lorentz-equivariance",
+      "topic_title": "One schema, two instances: Lorentz-force equivariance and forcing persistence",
+      "objective": "Teach the Lean PS vertical slice: the shared commuting interface, the proved physics instance, the conditional reflection with its countermodel, and why the domains are not identified.",
+      "observer": {"audience": "researcher", "assumed_ground": ["ch01", "ch02"]},
+      "priors": {"emphasis": {}, "beta": 3.0, "duration_min": 12},
+      "outputs": ["podcast", "textbook"]
+    },
+    {
+      "id": "book5-lean",
+      "mode": "teach",
+      "topic": "book5-lean",
+      "topic_title": "Book Five: verified persistence, memory, reciprocity, and fracture",
+      "objective": "Teach Book Five from the generated Lean coverage while preserving conditional laws, partial coverage, and authored interpretation.",
+      "observer": {
+        "audience": "researcher_and_builder",
+        "assumed_ground": ["ch01", "ch02"]
+      },
+      "priors": {
+        "emphasis": {},
+        "beta": 3.0,
+        "duration_min": 12
+      },
+      "outputs": ["podcast", "textbook", "slides", "video", "proof-report"]
+    }
+  ]
+}

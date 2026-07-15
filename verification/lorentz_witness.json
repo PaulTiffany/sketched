@@ -1,0 +1,95 @@
+{
+  "schema": "sketched.lorentz-witness.v1",
+  "tolerances": {
+    "exact": 1e-12,
+    "slope": 0.15,
+    "separation": 1000.0
+  },
+  "positive_control": {
+    "boost(0.7)": {
+      "lorentz_defect": 2.220446049250313e-16,
+      "residual": 1.1102230246251565e-16,
+      "u_norm_drift": 2.220446049250313e-16,
+      "invariant_F_drift": 8.326672684688674e-17
+    },
+    "rotation(0.9)": {
+      "lorentz_defect": 1.1102230246251565e-16,
+      "residual": 5.551115123125783e-17,
+      "u_norm_drift": 0.0,
+      "invariant_F_drift": 2.7755575615628914e-17
+    },
+    "boost*rot*boost": {
+      "lorentz_defect": 3.3306690738754696e-16,
+      "residual": 5.551115123125783e-17,
+      "u_norm_drift": 2.220446049250313e-16,
+      "invariant_F_drift": 1.942890293094024e-16
+    }
+  },
+  "negative_control": {
+    "sweep": [
+      {
+        "delta": 1e-12,
+        "residual": 4.759526106568046e-13
+      },
+      {
+        "delta": 1e-11,
+        "residual": 4.757527705123721e-12
+      },
+      {
+        "delta": 1e-10,
+        "residual": 4.757494398432982e-11
+      },
+      {
+        "delta": 1e-09,
+        "residual": 4.757487737094834e-10
+      },
+      {
+        "delta": 1e-08,
+        "residual": 4.757488403228649e-09
+      },
+      {
+        "delta": 1e-07,
+        "residual": 4.757487592765841e-08
+      },
+      {
+        "delta": 1e-06,
+        "residual": 4.7574831552044117e-07
+      },
+      {
+        "delta": 1e-05,
+        "residual": 4.757438863634e-06
+      },
+      {
+        "delta": 0.0001,
+        "residual": 4.7569959318871646e-05
+      },
+      {
+        "delta": 0.001,
+        "residual": 0.00047525660377500945
+      },
+      {
+        "delta": 0.01,
+        "residual": 0.004708209352156323
+      },
+      {
+        "delta": 0.1,
+        "residual": 0.04258868075941358
+      }
+    ],
+    "slope": 0.999948467250153,
+    "separation_over_floor": 142824034041.66666
+  },
+  "countermodel_echo": {
+    "residual": 0.0,
+    "lorentz_defect": 1.0
+  },
+  "conformal_control": {
+    "c": 1.5,
+    "residual": 0.9808030083669628,
+    "lorentz_defect": 1.25
+  },
+  "representation_check": {
+    "antisymmetry_residual": 7.50432529690696e-17
+  },
+  "verdict": "pass"
+}

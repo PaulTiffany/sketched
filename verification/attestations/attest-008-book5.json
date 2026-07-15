@@ -1,0 +1,148 @@
+{
+  "schema": "sketched.anchor-attestation.v1",
+  "id": "attest-008-book5",
+  "paper": "principia_atlas (book5) + forcing_correspondence",
+  "moves": [
+    {
+      "math_id": "definition:bk5_balanced_two_step_memory_closure",
+      "from": null,
+      "to": "f8c787333af7"
+    },
+    {
+      "math_id": "theorem:bk5_golden_ratio_spectral_invariant",
+      "from": null,
+      "to": "7d8ca1f46f1d"
+    },
+    {
+      "math_id": "definition:bk5_symbolic_regime_detection",
+      "from": null,
+      "to": "0574c6d229cf"
+    },
+    {
+      "math_id": "theorem:bk5_sqrt2_maximal_fracture",
+      "from": null,
+      "to": "ad2cabf71222"
+    },
+    {
+      "math_id": "proposition:bk5_complementary_constants",
+      "from": null,
+      "to": "f0020f4b1256"
+    },
+    {
+      "math_id": "theorem:bk5_fundamental_dichotomy",
+      "from": null,
+      "to": "95550ba27be8"
+    },
+    {
+      "math_id": "definition:bk5_symbolic_free_energy_und",
+      "from": null,
+      "to": "59966c0cbdfa"
+    },
+    {
+      "math_id": "theorem:bk5_symbolic_entropy_production",
+      "from": null,
+      "to": "cc382c9dd5e6"
+    },
+    {
+      "math_id": "axiom:bk5_energy_conservation",
+      "from": null,
+      "to": "0e48e9ed685b"
+    },
+    {
+      "math_id": "axiom:bk5_positive_free_energy",
+      "from": null,
+      "to": "aa7e6745999b"
+    },
+    {
+      "math_id": "theorem:bk5_covenant_stability_theorem",
+      "from": null,
+      "to": "9cc378d6526e"
+    },
+    {
+      "math_id": "definition:bk5_two_way_street_tensor",
+      "from": null,
+      "to": "c350acf7d667"
+    },
+    {
+      "math_id": "theorem:bk5_golden_rule_reciprocity",
+      "from": null,
+      "to": "a04397dacc7b"
+    },
+    {
+      "math_id": "lemma:bk5_balanced_observer_normalization",
+      "from": null,
+      "to": "afbfe76983f1"
+    },
+    {
+      "math_id": "theorem:bk5_lp_norm_fracture_hierarchy",
+      "from": null,
+      "to": "2d7e3118647f"
+    },
+    {
+      "math_id": "theorem:bk5_symbolic_norm_spectrum",
+      "from": null,
+      "to": "a9d0581b333a"
+    },
+    {
+      "math_id": "proposition:bk5_complete_symbolic_regime_classification",
+      "from": null,
+      "to": "3a090179b451"
+    },
+    {
+      "math_id": "theorem:bk5_grand_unified_symbolic_geometric",
+      "from": null,
+      "to": "206691856db0"
+    },
+    {
+      "math_id": "definition:bk5_symbolic_covenant",
+      "from": null,
+      "to": "26e2bd137981"
+    },
+    {
+      "math_id": "definition:bk5_reflective_coupling_tens",
+      "from": null,
+      "to": "b9c153d6974e"
+    },
+    {
+      "math_id": "definition:bk5_mutually_assured_progress",
+      "from": null,
+      "to": "2c130a28a898"
+    },
+    {
+      "math_id": "theorem:bk5_map_equilibrium",
+      "from": null,
+      "to": "0979194a1b3b"
+    },
+    {
+      "math_id": "axiom:bk5_reflective_equilibrium_stability_flux",
+      "from": null,
+      "to": "ba0783f8afda"
+    },
+    {
+      "math_id": "proposition:bk5_map_mad_dichotomy",
+      "from": null,
+      "to": "cce52468d690"
+    },
+    {
+      "math_id": "definition:bk5_map_nash_point",
+      "from": null,
+      "to": "7e0c7e3d7e3b"
+    },
+    {
+      "math_id": "theorem:bk5_map_mad_critical_temperature",
+      "from": null,
+      "to": "c04cb6e75068"
+    }
+  ],
+  "artifacts_reviewed": [
+    "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5.lean",
+    "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5MAP.lean",
+    "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5Reciprocity.lean",
+    "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5Spectrum.lean",
+    "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5Thermodynamics.lean"
+  ],
+  "note": "Lean PS sprint-era anchors for book5: 26 statement placements across 5 artifact(s). Shas were computed live from the principia atlas at transcription time by the lead session; accepting this receipt attests that the named artifacts faithfully transcribe/kernelize these statements per their coverage-map honesty notes (verification/*_lean_map.json) and module headers. To sign: set status to 'accepted', attested_by to 'human', supply attested_at, then run: python verification/tools/binding_audit.py --adopt attest-008-book5",
+  "status": "proposed",
+  "attested_by": null,
+  "attested_at": null
+}

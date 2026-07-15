@@ -1,0 +1,79 @@
+{
+  "schema": "sketched.fabricpc-witness.v1",
+  "regime": {
+    "n": 6,
+    "eps": 0.3,
+    "delta": 0.1,
+    "betas": [
+      0.5,
+      2.0,
+      8.0,
+      32.0
+    ],
+    "steps": 200,
+    "seed": 20260713
+  },
+  "per_beta": {
+    "0.5": {
+      "min_mass": 0.05658120194897667,
+      "floor": 0.016666666666666666,
+      "kl_budget": 0.3289769961536071,
+      "final_kl": 0.0032721464305118467,
+      "fixed_point_dist": 1.8041124150158794e-16,
+      "offset_from_target": 0.05896360065390571,
+      "offset_predicted": 0.05896360065390569
+    },
+    "2.0": {
+      "min_mass": 0.033457258036247425,
+      "floor": 0.016666666666666666,
+      "kl_budget": 0.5308012543747216,
+      "final_kl": 0.058588793235511555,
+      "fixed_point_dist": 1.457167719820518e-16,
+      "offset_from_target": 0.14693727388752603,
+      "offset_predicted": 0.14693727388752598
+    },
+    "8.0": {
+      "min_mass": 0.03104320148670085,
+      "floor": 0.016666666666666666,
+      "kl_budget": 3.6838103215518876,
+      "final_kl": 0.701750960952962,
+      "fixed_point_dist": 4.163336342344337e-17,
+      "offset_from_target": 0.3032844105133649,
+      "offset_predicted": 0.3032844105133649
+    },
+    "32.0": {
+      "min_mass": 0.031043144423183844,
+      "floor": 0.016666666666666666,
+      "kl_budget": 18.497031043066684,
+      "final_kl": 4.265167447391049,
+      "fixed_point_dist": 2.7755575615628914e-17,
+      "offset_from_target": 0.4019231049178916,
+      "offset_predicted": 0.4019231049178915
+    }
+  },
+  "checks": {
+    "G1_novelty_floor": true,
+    "G1_dark_room_collapses": true,
+    "G2_budget_invariant": true,
+    "G2_per_step_contraction": true,
+    "G3_converges_to_guarded_fixed_point": true,
+    "G3_offset_exact": true,
+    "G3_no_arrival": true
+  },
+  "dark_room": {
+    "beta": 32.0,
+    "unguarded_min_mass": 6.571711730841269e-27,
+    "guarded_floor": 0.016666666666666666,
+    "collapse_ratio": 3.943027038504761e-25
+  },
+  "measurements": {
+    "worst_floor_margin": 0.014376477756517177,
+    "worst_budget_excess": -0.22118291219406677,
+    "worst_step_excess": -0.003379223683683932,
+    "worst_fixed_point_dist": 1.8041124150158794e-16,
+    "worst_offset_error": 1.1102230246251565e-16,
+    "min_no_arrival_ratio": 0.9999999999999994,
+    "dark_room_min_mass": 6.571711730841269e-27
+  },
+  "verdict": "pass"
+}

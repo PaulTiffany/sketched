@@ -1,0 +1,41 @@
+{
+  "schema": "sketched.fabricpc-install-receipt.v1",
+  "recorded_at": "2026-07-15",
+  "source": {
+    "repository": "https://github.com/trueagi-io/FabricPC.git",
+    "commit": "b6f64adf9314863ce665085a92d544807d585819",
+    "checkout": "fabric/FabricPC"
+  },
+  "environment": {
+    "platform": "Windows",
+    "python": "3.11",
+    "virtualenv": "fabric/FabricPC/.venv",
+    "fabricpc": "0.3.1",
+    "jax": "0.10.2",
+    "device": "TFRT_CPU_0"
+  },
+  "verification": {
+    "pip_check": "pass: no broken requirements",
+    "upstream_tests": {
+      "verdict": "pass",
+      "passed": 269,
+      "warnings": 2,
+      "elapsed_seconds": 147.20
+    },
+    "mnist_demo": {
+      "verdict": "pass",
+      "epochs": 20,
+      "test_accuracy_percent": 98.13,
+      "average_epoch_seconds": 5.25,
+      "nodes": 4,
+      "edges": 3,
+      "parameters": 218058
+    }
+  },
+  "notes": [
+    "CPU installation used the upstream editable [all] extra.",
+    "The two test warnings are Optuna experimental-feature warnings, not failures.",
+    "The external checkout is ignored by the parent repository; this receipt pins its exact commit."
+  ],
+  "verdict": "pass"
+}

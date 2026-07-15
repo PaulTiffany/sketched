@@ -1,0 +1,150 @@
+{
+  "schema": "sketched.pedagogy.projection.v1",
+  "source_digest": "8046ced49edc6d12518fd5eb83ad2ab32d5edfa02eb684e7e8da3da5214b4cf0",
+  "title": "Forcing at the Surface: A Witnessed Introduction",
+  "medium": {
+    "kind": "localhost-browser-interface",
+    "statement": "The browser carries bounded pedagogical projections. It is a medium, not shared occupancy.",
+    "calibration": "interpretation-only; asm:calibration remains open"
+  },
+  "projection": {
+    "id": "repair-room",
+    "title": "The Repair Room",
+    "description": "Study the v14 failure, the cumulative-budget repair, and its verification triangle.",
+    "audience": "Readers interested in proof repair and verification",
+    "assumed_chapter_ids": [
+      "ch01",
+      "ch02"
+    ],
+    "chapter_ids": [
+      "ch06"
+    ],
+    "includes_content_b": false,
+    "browser_path": "/book/path/repair-room",
+    "json_path": "/book/context/repair-room.json",
+    "chapter_count": 1,
+    "assumption_count": 2
+  },
+  "chain": {
+    "assumed_chapter_ids": [
+      "ch01",
+      "ch02"
+    ],
+    "sequence": [
+      "ch06"
+    ],
+    "edges": [
+      {
+        "from": "ch02",
+        "to": "ch06"
+      }
+    ]
+  },
+  "content_b": {
+    "id": "content-b",
+    "status": "reserved-not-included",
+    "owner": "OmegaClaw",
+    "browser_path": "/book/content-b"
+  },
+  "chapters": [
+    {
+      "schema": "sketched.pedagogy.chapter.v1",
+      "id": "ch06",
+      "title": "The Margin: Anatomy of a Repair",
+      "status": "drafted",
+      "prerequisite_ids": [
+        "ch02"
+      ],
+      "source_path": "book/ch06_the_margin.md",
+      "browser_path": "/book/chapter/ch06",
+      "json_path": "/book/chapters/ch06.json",
+      "aim": "This chapter teaches one lemma three ways — as a bug, as a theorem, and\nas an eigenvalue you can watch fall off a cliff — and, through it, the\nbook's method: a claim is not done when it sounds right; it is done when\nthe machinery that found it wrong once can no longer find it wrong. After\nthis chapter you can state the Channel-Margin Lemma correctly, exhibit\nthe precise failure of its earlier form, and explain why margin\npreservation and convergence are *one* budget, spent once.",
+      "boundary_note": "Weyl's inequality and the Lipschitz behavior of Γ are *consumed* here\n(the contract is **C**: measured, substrate-relative, honest about\npivots), not proved — the Lean formalization packages them as the\nper-step drift hypothesis and checks everything downstream of it. And\nnothing in this chapter says real sessions satisfy the budget; it says\nwhat you are owed **if** they do, and precisely how the guarantee dies\nwhen they do not.",
+      "atlas_refs": [
+        "asm:smooth",
+        "def:refine",
+        "lem:margin",
+        "lem:cauchy"
+      ],
+      "code_refs": [],
+      "lab": {
+        "kind": "python",
+        "path": "book/labs/lab06_margin.py"
+      },
+      "word_count": 845,
+      "sections": [
+        {
+          "id": "aim",
+          "title": "Aim",
+          "markdown": "This chapter teaches one lemma three ways — as a bug, as a theorem, and\nas an eigenvalue you can watch fall off a cliff — and, through it, the\nbook's method: a claim is not done when it sounds right; it is done when\nthe machinery that found it wrong once can no longer find it wrong. After\nthis chapter you can state the Channel-Margin Lemma correctly, exhibit\nthe precise failure of its earlier form, and explain why margin\npreservation and convergence are *one* budget, spent once."
+        },
+        {
+          "id": "prerequisites",
+          "title": "Prerequisites",
+          "markdown": "Chapter 02 (refinement, the channel-margin subposet `def:refine`).\nLinear algebra: smallest eigenvalue of a symmetric matrix; that\neigenvalues move at most as far as the matrix does (Weyl's inequality —\nwe consume it, we do not prove it)."
+        },
+        {
+          "id": "the-setup",
+          "title": "The setup",
+          "markdown": "Motion on the surface is admissible only while the channel stays open:\nthe smallest eigenvalue λ_min of the interaction matrix Γ must keep a\npositive margin. The smoothness contract (`asm:smooth`, **C** — measured,\nnot assumed) says Γ moves Lipschitz-continuously with your displacement.\nAnchor at margin η. How far may you wander before the channel closes?"
+        },
+        {
+          "id": "the-bug-v14",
+          "title": "The bug (v14)",
+          "markdown": "The old lemma reasoned: bound each *step* by η/(2L); then each step moves\nλ_min by at most η/2; so λ_min ≥ η/2 \"inductively along the whole\ndescent.\" Read that twice. From λ ≥ η/2, one more legal step gives only\nλ ≥ 0. The induction consumed its own slack and never noticed: per-step\ncontrol lets the margin decay **linearly in depth**. Two legal steps and\nyou are on the cliff.\n\nNobody caught it by reading — it *sounds* like perturbation lemmas sound.\nIt was caught structurally: the loop detector flagged the definition of\nthe subposet citing the lemma while the lemma's proof presupposed the\ndefinition, and unwinding that knot exposed the induction. Moral one of\nthis book: **circular paper structure and unsound arguments travel\ntogether.** Audit the graph, not the vibes."
+        },
+        {
+          "id": "the-repair-v15-lemmargin-p",
+          "title": "The repair (v15) — `lem:margin`, P",
+          "markdown": "Replace the per-step allowance with a **cumulative budget**: total\ndisplacement ≤ η/(2L). Then by Weyl + Lipschitz + the triangle\ninequality, at every depth\n\n> λ_min ≥ η − L · (total displacement) ≥ η/2.\n\nOne inequality, uniform in depth. And the budget was already on the\nbooks: it is the same summability the Cauchy completion lemma\n(`lem:cauchy`, **P**, machine-verified) demands for the trajectory to\nconverge at all. Margin preservation and generic convergence are funded\nby the **same contract** — the budget is spent once. Nothing new was\npurchased; a debt was consolidated."
+        },
+        {
+          "id": "the-verification-triangle",
+          "title": "The verification triangle",
+          "markdown": "The repair would still be prose if it merely sounded better than the\nbug. It is instead pinned from three independent directions:\n\n1. **Proof** (Lean, constructive — no choice axiom):\n   `margin_path_form` — budget ⇒ depth-uniform floor.\n2. **Refutation** (Lean, same file): `per_step_bound_insufficient` — the\n   v14 hypothesis *provably* fails to give a uniform floor; witness\n   λ_i = 4 − 2i. The old argument is not \"superseded\"; it is a theorem\n   that it never worked.\n3. **Matrices** (numpy): Γ(x) = [[1,x],[x,1]] has λ_min = 1 − |x|\n   exactly, and ‖Γ(x) − Γ(y)‖ = |x − y| exactly, so L = 1 with no\n   estimates hiding anywhere. The v14-legal path 0 → 0.5 → 1.0 lands\n   λ_min on 0.000 — the cliff — while fifty budgeted steps never dip\n   below 0.500.\n\nA lemma with a proof, a refutation of its predecessor, and a numerical\nincarnation is what this book means by *solidified*."
+        },
+        {
+          "id": "worked-example-the-schedule-doesnt-matter",
+          "title": "Worked example: the schedule doesn't matter",
+          "markdown": "Spend the same total budget (0.5) in 1, 2, 5, or 50 steps. The lab prints\nthe floor of λ_min along each path: 0.500, four times. The margin cares\nabout the *sum* of your displacements, never their schedule — which is\nexactly why per-step control could not work: it constrained the schedule\nand left the sum free."
+        },
+        {
+          "id": "lab",
+          "title": "Lab",
+          "markdown": "```bash\npython book/labs/lab06_margin.py\n```\n\nPart 1 replays the collapse and the preservation on real eigenvalues;\nPart 2 is the schedule table above. Both are asserted."
+        },
+        {
+          "id": "exercises",
+          "title": "Exercises",
+          "markdown": "1. **Predict, then run.** With per-step allowance 0.25 (half of v14's),\n   how many legal steps until λ_min ≤ 0? Check against Part 1's family.\n2. Prove the one-inequality repair from Weyl + Lipschitz + triangle\n   inequality (three lines).\n3. In `lam_min`'s family, why is L exactly 1? Compute\n   ‖Γ(x) − Γ(y)‖₂ by hand.\n4. The Lean refutation uses λ_i = 4 − 2i with ε = 2. Map its three\n   hypotheses onto the numeric path of Part 1 (what plays ε? what plays\n   the drift?).\n5. (Sketched reading.) A knob turned in many tiny consented steps and a\n   knob yanked once through the same arc spend the same channel budget.\n   Which EULA Part A clause is the contractual shadow of this fact?"
+        },
+        {
+          "id": "boundary-note",
+          "title": "Boundary note",
+          "markdown": "Weyl's inequality and the Lipschitz behavior of Γ are *consumed* here\n(the contract is **C**: measured, substrate-relative, honest about\npivots), not proved — the Lean formalization packages them as the\nper-step drift hypothesis and checks everything downstream of it. And\nnothing in this chapter says real sessions satisfy the budget; it says\nwhat you are owed **if** they do, and precisely how the guarantee dies\nwhen they do not."
+        }
+      ],
+      "raw_markdown": "# Chapter 06 · The Margin: Anatomy of a Repair\n\n## Aim\n\nThis chapter teaches one lemma three ways — as a bug, as a theorem, and\nas an eigenvalue you can watch fall off a cliff — and, through it, the\nbook's method: a claim is not done when it sounds right; it is done when\nthe machinery that found it wrong once can no longer find it wrong. After\nthis chapter you can state the Channel-Margin Lemma correctly, exhibit\nthe precise failure of its earlier form, and explain why margin\npreservation and convergence are *one* budget, spent once.\n\n## Prerequisites\n\nChapter 02 (refinement, the channel-margin subposet `def:refine`).\nLinear algebra: smallest eigenvalue of a symmetric matrix; that\neigenvalues move at most as far as the matrix does (Weyl's inequality —\nwe consume it, we do not prove it).\n\n## The setup\n\nMotion on the surface is admissible only while the channel stays open:\nthe smallest eigenvalue λ_min of the interaction matrix Γ must keep a\npositive margin. The smoothness contract (`asm:smooth`, **C** — measured,\nnot assumed) says Γ moves Lipschitz-continuously with your displacement.\nAnchor at margin η. How far may you wander before the channel closes?\n\n## The bug (v14)\n\nThe old lemma reasoned: bound each *step* by η/(2L); then each step moves\nλ_min by at most η/2; so λ_min ≥ η/2 \"inductively along the whole\ndescent.\" Read that twice. From λ ≥ η/2, one more legal step gives only\nλ ≥ 0. The induction consumed its own slack and never noticed: per-step\ncontrol lets the margin decay **linearly in depth**. Two legal steps and\nyou are on the cliff.\n\nNobody caught it by reading — it *sounds* like perturbation lemmas sound.\nIt was caught structurally: the loop detector flagged the definition of\nthe subposet citing the lemma while the lemma's proof presupposed the\ndefinition, and unwinding that knot exposed the induction. Moral one of\nthis book: **circular paper structure and unsound arguments travel\ntogether.** Audit the graph, not the vibes.\n\n## The repair (v15) — `lem:margin`, P\n\nReplace the per-step allowance with a **cumulative budget**: total\ndisplacement ≤ η/(2L). Then by Weyl + Lipschitz + the triangle\ninequality, at every depth\n\n> λ_min ≥ η − L · (total displacement) ≥ η/2.\n\nOne inequality, uniform in depth. And the budget was already on the\nbooks: it is the same summability the Cauchy completion lemma\n(`lem:cauchy`, **P**, machine-verified) demands for the trajectory to\nconverge at all. Margin preservation and generic convergence are funded\nby the **same contract** — the budget is spent once. Nothing new was\npurchased; a debt was consolidated.\n\n## The verification triangle\n\nThe repair would still be prose if it merely sounded better than the\nbug. It is instead pinned from three independent directions:\n\n1. **Proof** (Lean, constructive — no choice axiom):\n   `margin_path_form` — budget ⇒ depth-uniform floor.\n2. **Refutation** (Lean, same file): `per_step_bound_insufficient` — the\n   v14 hypothesis *provably* fails to give a uniform floor; witness\n   λ_i = 4 − 2i. The old argument is not \"superseded\"; it is a theorem\n   that it never worked.\n3. **Matrices** (numpy): Γ(x) = [[1,x],[x,1]] has λ_min = 1 − |x|\n   exactly, and ‖Γ(x) − Γ(y)‖ = |x − y| exactly, so L = 1 with no\n   estimates hiding anywhere. The v14-legal path 0 → 0.5 → 1.0 lands\n   λ_min on 0.000 — the cliff — while fifty budgeted steps never dip\n   below 0.500.\n\nA lemma with a proof, a refutation of its predecessor, and a numerical\nincarnation is what this book means by *solidified*.\n\n## Worked example: the schedule doesn't matter\n\nSpend the same total budget (0.5) in 1, 2, 5, or 50 steps. The lab prints\nthe floor of λ_min along each path: 0.500, four times. The margin cares\nabout the *sum* of your displacements, never their schedule — which is\nexactly why per-step control could not work: it constrained the schedule\nand left the sum free.\n\n## Lab\n\n```bash\npython book/labs/lab06_margin.py\n```\n\nPart 1 replays the collapse and the preservation on real eigenvalues;\nPart 2 is the schedule table above. Both are asserted.\n\n## Exercises\n\n1. **Predict, then run.** With per-step allowance 0.25 (half of v14's),\n   how many legal steps until λ_min ≤ 0? Check against Part 1's family.\n2. Prove the one-inequality repair from Weyl + Lipschitz + triangle\n   inequality (three lines).\n3. In `lam_min`'s family, why is L exactly 1? Compute\n   ‖Γ(x) − Γ(y)‖₂ by hand.\n4. The Lean refutation uses λ_i = 4 − 2i with ε = 2. Map its three\n   hypotheses onto the numeric path of Part 1 (what plays ε? what plays\n   the drift?).\n5. (Sketched reading.) A knob turned in many tiny consented steps and a\n   knob yanked once through the same arc spend the same channel budget.\n   Which EULA Part A clause is the contractual shadow of this fact?\n\n## Boundary note\n\nWeyl's inequality and the Lipschitz behavior of Γ are *consumed* here\n(the contract is **C**: measured, substrate-relative, honest about\npivots), not proved — the Lean formalization packages them as the\nper-step drift hypothesis and checks everything downstream of it. And\nnothing in this chapter says real sessions satisfy the budget; it says\nwhat you are owed **if** they do, and precisely how the guarantee dies\nwhen they do not.\n",
+      "prerequisites": [
+        {
+          "id": "ch02",
+          "title": "Conditions and Refinement",
+          "browser_path": "/book/chapter/ch02"
+        }
+      ],
+      "dependents": [
+        {
+          "id": "ch08",
+          "title": "The Contract and the Debt",
+          "browser_path": "/book/chapter/ch08"
+        },
+        {
+          "id": "appb",
+          "title": "Appendix B · The Mechanical Witnesses",
+          "browser_path": "/book/chapter/appb"
+        }
+      ],
+      "source_digest": "8046ced49edc6d12518fd5eb83ad2ab32d5edfa02eb684e7e8da3da5214b4cf0"
+    }
+  ]
+}

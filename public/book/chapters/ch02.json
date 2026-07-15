@@ -1,0 +1,108 @@
+{
+  "schema": "sketched.pedagogy.chapter.v1",
+  "id": "ch02",
+  "title": "Conditions and Refinement",
+  "status": "drafted",
+  "prerequisite_ids": [
+    "ch01"
+  ],
+  "source_path": "book/ch02_conditions_and_refinement.md",
+  "browser_path": "/book/chapter/ch02",
+  "json_path": "/book/chapters/ch02.json",
+  "aim": "After this chapter you can read the order everything else in this book\ncomputes over: what a condition is, what refinement preserves, why two\ncommitments can be *incompatible* forever, and what a coherent course of\ncommitments (a filter) looks like. You will build the **spine model** —\nthe seven-condition bench the labs of chapters 03–05 run on — and verify\nits structure by brute force. You will also learn to hear two words,\n*channel* and *forcing*, that mean different things in the paper and in\nSketched, before the collision can hurt you.",
+  "boundary_note": "This chapter does **not** claim that real Sketched sessions satisfy the\ndisplacement budget — the smoothness contract (`asm:smooth`, C) is\nmeasured per substrate, and chapter 06 shows exactly what you are owed\nwhen it holds and how the guarantee dies when it does not. It also does\nnot claim the spine model *is* the paper's condition poset; it is the\nsmallest honest bench, and every brute-force **obs** fact above is a\nfact about the bench. The general statements live in the paper and, for\nthe load-bearing ones, in Lean.",
+  "atlas_refs": [
+    "def:cond",
+    "def:refine",
+    "asm:smooth"
+  ],
+  "code_refs": [],
+  "lab": {
+    "kind": "python",
+    "path": "book/labs/lab02_conditions.py"
+  },
+  "word_count": 1153,
+  "sections": [
+    {
+      "id": "aim",
+      "title": "Aim",
+      "markdown": "After this chapter you can read the order everything else in this book\ncomputes over: what a condition is, what refinement preserves, why two\ncommitments can be *incompatible* forever, and what a coherent course of\ncommitments (a filter) looks like. You will build the **spine model** —\nthe seven-condition bench the labs of chapters 03–05 run on — and verify\nits structure by brute force. You will also learn to hear two words,\n*channel* and *forcing*, that mean different things in the paper and in\nSketched, before the collision can hurt you."
+    },
+    {
+      "id": "prerequisites",
+      "title": "Prerequisites",
+      "markdown": "Chapter 01 (the void, depth, the wedge). No topology yet; that is\nchapter 03."
+    },
+    {
+      "id": "definitions",
+      "title": "Definitions",
+      "markdown": "**Condition** (`def:cond`, D). A finite partial epistemic state. In the\npaper: a claim complex with fibers and an exit cone. In Sketched: a\nstage — which layers exist, who owns them, what has been consented to so\nfar. You always know only finitely much; a condition records exactly\nthat much and no more.\n\n**Refinement and the arena** (`def:refine`, D). `q ⊑ p` iff q is\nreachable from p by an admissible move that *retains p's commitments*.\nTwo consequences, both load-bearing:\n\n- **Work descends.** More knowledge = lower in the order. The root is\n  the condition that commits to nothing.\n- **The arena is bounded.** All forcing in the paper happens in the\n  *channel-margin subposet*: the conditions reachable from the anchor\n  within the displacement budget of the smoothness contract\n  (`asm:smooth`, C — measured, not assumed). The definition consumes\n  only the budget; that the margin actually survives throughout is\n  *proved*, not stipulated — chapter 06 is the anatomy of exactly that\n  proof.\n\n**Filter** (book-local; the paper uses it from chapter 05 on). A\nnonempty set of conditions that is upward closed (whatever you commit\nto, you had committed to its weakenings) and downward directed (any two\nof its members have a common refinement *inside it*). A filter is a\ncoherent course of commitments: no member ever contradicts another.\n\n**The spine model.** Conditions `r > {0,1} > {00,01,10,11}` — a depth-2\nbinary tree. `r` is the root; each address extends the one above it.\nThis is the smallest model where everything interesting in chapters\n03–05 already happens, and the lab builds it from\n`verification/kernel/spine.py`."
+    },
+    {
+      "id": "two-words-that-collide-read-this-box-twice",
+      "title": "Two words that collide (read this box twice)",
+      "markdown": "The paper and Sketched share vocabulary but not referents. The book\nalways means the paper's sense unless it says otherwise.\n\n- **Channel.** Paper: the *channel-margin subposet* — the region where\n  the interaction matrix keeps a positive spectral margin; \"the channel\n  is open\" is a statement about an eigenvalue. Sketched: a *consent\n  lease* — a bounded authority a human grants a knob by press-and-hold.\n  The two are related by design (the lease is the operational shadow of\n  the margin) but they are *not the same object*, and the operator map\n  (`docs/13_OPERATOR_MAP.md`) tracks the correspondence explicitly.\n- **Forcing.** Paper, two senses it itself separates: a *forced\n  transition* (control: the dynamics push a state) versus *p forces φ*\n  (logic: the relation this book teaches). Sketched adds a third\n  colloquial sense — nobody \"forces\" a mark onto the shared surface —\n  which is precisely what the coordination model forbids. When this\n  book says *forces*, it means the logical relation, always.\n\nThis box covers the two worst offenders only. The full, machine-checked\naccount — every double-booked term the book uses, all its senses, and a\nverified anchor for each — lives in `book/glossary_collisions.md`\n(browser: `/book/glossary`); by the time you reach chapter 08 it also\ncovers *void* and *surface*, which this book comes to use in more than\none sense of its own."
+    },
+    {
+      "id": "claims",
+      "title": "Claims",
+      "markdown": "This chapter's claims are structural facts about the spine model, every\none verified by brute force in the lab — status **obs**, the honest tag\nfor \"a machine checked all 128 subsets; nobody wrote a proof.\"\n\n- Refinement on the spine is a partial order: reflexive, antisymmetric,\n  transitive (**obs**).\n- `00` and `1` have no common refinement (**obs**). Incompatibility is\n  a *permanent* geometric fact — remember it when torsion appears in\n  chapter 04.\n- The spine has **exactly 7 filters**, one per condition: every filter\n  is a principal up-set `up(x)` (**obs**). Coherent histories in a tree\n  are just \"descend, stopping wherever honesty requires.\"\n- The **4 maximal filters are exactly the branches** — the upward\n  closures of the leaves (**obs**). Chapter 05 will call these the\n  finite stand-ins for generics.\n- No filter contains both `0` and `1` (**obs**): incompatible\n  commitments never cohere, which is chapter 01's wedge lemma in\n  miniature."
+    },
+    {
+      "id": "worked-example-you-never-un-know",
+      "title": "Worked example: you never un-know",
+      "markdown": "Stabilize atom `a` on the left subtree `{0, 00, 01}` — this is the\nvaluation chapters 04 and 05 use. It is *refinement-closed*: every\nrefinement of a condition where a holds is again a condition where a\nholds. The kernel's `persistent()` check accepts it.\n\nNow mutate it: let a hold at `0` but *not* at `00` or `01`. The kernel\nrejects the valuation, and `Stab(0, a)` flips from true to false — a\ncondition below which a can be forgotten never stabilized a in the\nfirst place. Persistence is not decoration; it is what makes the\nstability set a sieve (chapter 03) and what the ledger tracks as the\npaper's highest-leverage modeling postulate (M-Pers). The lab asserts\nboth directions."
+    },
+    {
+      "id": "lab",
+      "title": "Lab",
+      "markdown": "```bash\npython book/labs/lab02_conditions.py\n```\n\nIt prints the down-sets, counts the filters by checking all 2⁷\nsubsets, and asserts every fact quoted above. If the kernel and this\nchapter ever disagree, the build fails."
+    },
+    {
+      "id": "exercises",
+      "title": "Exercises",
+      "markdown": "1. **Predict, then run.** How many filters does the depth-3 binary tree\n   have? How many are maximal? Write both numbers down; then change\n   `binary_tree(2)` to `binary_tree(3)` in a copy of the lab's filter\n   count and check.\n2. Show by hand that `{r, 0, 1}` is upward closed but not a filter.\n   Which pair breaks downward directedness, and why is that the same\n   fact as \"the wedge has no cross-branch relations\"?\n3. In a poset that is *not* a tree (draw one with a diamond), exhibit a\n   filter that is not principal-along-a-chain. What does Sketched's\n   stage graph look like when two consented edits merge?\n4. The mutated valuation (\"a holds at 0 only\") describes a system that\n   *revokes* a claim under refinement. Sketched has a legitimate\n   operation that looks like forgetting — shake. Say precisely why\n   shake is not a counterexample to persistence. (Hint: chapter 01's\n   depth-0; a fresh context window is a new descent, not a move within\n   the old one.)"
+    },
+    {
+      "id": "boundary-note",
+      "title": "Boundary note",
+      "markdown": "This chapter does **not** claim that real Sketched sessions satisfy the\ndisplacement budget — the smoothness contract (`asm:smooth`, C) is\nmeasured per substrate, and chapter 06 shows exactly what you are owed\nwhen it holds and how the guarantee dies when it does not. It also does\nnot claim the spine model *is* the paper's condition poset; it is the\nsmallest honest bench, and every brute-force **obs** fact above is a\nfact about the bench. The general statements live in the paper and, for\nthe load-bearing ones, in Lean."
+    }
+  ],
+  "raw_markdown": "# Chapter 02 · Conditions and Refinement\n\n## Aim\n\nAfter this chapter you can read the order everything else in this book\ncomputes over: what a condition is, what refinement preserves, why two\ncommitments can be *incompatible* forever, and what a coherent course of\ncommitments (a filter) looks like. You will build the **spine model** —\nthe seven-condition bench the labs of chapters 03–05 run on — and verify\nits structure by brute force. You will also learn to hear two words,\n*channel* and *forcing*, that mean different things in the paper and in\nSketched, before the collision can hurt you.\n\n## Prerequisites\n\nChapter 01 (the void, depth, the wedge). No topology yet; that is\nchapter 03.\n\n## Definitions\n\n**Condition** (`def:cond`, D). A finite partial epistemic state. In the\npaper: a claim complex with fibers and an exit cone. In Sketched: a\nstage — which layers exist, who owns them, what has been consented to so\nfar. You always know only finitely much; a condition records exactly\nthat much and no more.\n\n**Refinement and the arena** (`def:refine`, D). `q ⊑ p` iff q is\nreachable from p by an admissible move that *retains p's commitments*.\nTwo consequences, both load-bearing:\n\n- **Work descends.** More knowledge = lower in the order. The root is\n  the condition that commits to nothing.\n- **The arena is bounded.** All forcing in the paper happens in the\n  *channel-margin subposet*: the conditions reachable from the anchor\n  within the displacement budget of the smoothness contract\n  (`asm:smooth`, C — measured, not assumed). The definition consumes\n  only the budget; that the margin actually survives throughout is\n  *proved*, not stipulated — chapter 06 is the anatomy of exactly that\n  proof.\n\n**Filter** (book-local; the paper uses it from chapter 05 on). A\nnonempty set of conditions that is upward closed (whatever you commit\nto, you had committed to its weakenings) and downward directed (any two\nof its members have a common refinement *inside it*). A filter is a\ncoherent course of commitments: no member ever contradicts another.\n\n**The spine model.** Conditions `r > {0,1} > {00,01,10,11}` — a depth-2\nbinary tree. `r` is the root; each address extends the one above it.\nThis is the smallest model where everything interesting in chapters\n03–05 already happens, and the lab builds it from\n`verification/kernel/spine.py`.\n\n## Two words that collide (read this box twice)\n\nThe paper and Sketched share vocabulary but not referents. The book\nalways means the paper's sense unless it says otherwise.\n\n- **Channel.** Paper: the *channel-margin subposet* — the region where\n  the interaction matrix keeps a positive spectral margin; \"the channel\n  is open\" is a statement about an eigenvalue. Sketched: a *consent\n  lease* — a bounded authority a human grants a knob by press-and-hold.\n  The two are related by design (the lease is the operational shadow of\n  the margin) but they are *not the same object*, and the operator map\n  (`docs/13_OPERATOR_MAP.md`) tracks the correspondence explicitly.\n- **Forcing.** Paper, two senses it itself separates: a *forced\n  transition* (control: the dynamics push a state) versus *p forces φ*\n  (logic: the relation this book teaches). Sketched adds a third\n  colloquial sense — nobody \"forces\" a mark onto the shared surface —\n  which is precisely what the coordination model forbids. When this\n  book says *forces*, it means the logical relation, always.\n\nThis box covers the two worst offenders only. The full, machine-checked\naccount — every double-booked term the book uses, all its senses, and a\nverified anchor for each — lives in `book/glossary_collisions.md`\n(browser: `/book/glossary`); by the time you reach chapter 08 it also\ncovers *void* and *surface*, which this book comes to use in more than\none sense of its own.\n\n## Claims\n\nThis chapter's claims are structural facts about the spine model, every\none verified by brute force in the lab — status **obs**, the honest tag\nfor \"a machine checked all 128 subsets; nobody wrote a proof.\"\n\n- Refinement on the spine is a partial order: reflexive, antisymmetric,\n  transitive (**obs**).\n- `00` and `1` have no common refinement (**obs**). Incompatibility is\n  a *permanent* geometric fact — remember it when torsion appears in\n  chapter 04.\n- The spine has **exactly 7 filters**, one per condition: every filter\n  is a principal up-set `up(x)` (**obs**). Coherent histories in a tree\n  are just \"descend, stopping wherever honesty requires.\"\n- The **4 maximal filters are exactly the branches** — the upward\n  closures of the leaves (**obs**). Chapter 05 will call these the\n  finite stand-ins for generics.\n- No filter contains both `0` and `1` (**obs**): incompatible\n  commitments never cohere, which is chapter 01's wedge lemma in\n  miniature.\n\n## Worked example: you never un-know\n\nStabilize atom `a` on the left subtree `{0, 00, 01}` — this is the\nvaluation chapters 04 and 05 use. It is *refinement-closed*: every\nrefinement of a condition where a holds is again a condition where a\nholds. The kernel's `persistent()` check accepts it.\n\nNow mutate it: let a hold at `0` but *not* at `00` or `01`. The kernel\nrejects the valuation, and `Stab(0, a)` flips from true to false — a\ncondition below which a can be forgotten never stabilized a in the\nfirst place. Persistence is not decoration; it is what makes the\nstability set a sieve (chapter 03) and what the ledger tracks as the\npaper's highest-leverage modeling postulate (M-Pers). The lab asserts\nboth directions.\n\n## Lab\n\n```bash\npython book/labs/lab02_conditions.py\n```\n\nIt prints the down-sets, counts the filters by checking all 2⁷\nsubsets, and asserts every fact quoted above. If the kernel and this\nchapter ever disagree, the build fails.\n\n## Exercises\n\n1. **Predict, then run.** How many filters does the depth-3 binary tree\n   have? How many are maximal? Write both numbers down; then change\n   `binary_tree(2)` to `binary_tree(3)` in a copy of the lab's filter\n   count and check.\n2. Show by hand that `{r, 0, 1}` is upward closed but not a filter.\n   Which pair breaks downward directedness, and why is that the same\n   fact as \"the wedge has no cross-branch relations\"?\n3. In a poset that is *not* a tree (draw one with a diamond), exhibit a\n   filter that is not principal-along-a-chain. What does Sketched's\n   stage graph look like when two consented edits merge?\n4. The mutated valuation (\"a holds at 0 only\") describes a system that\n   *revokes* a claim under refinement. Sketched has a legitimate\n   operation that looks like forgetting — shake. Say precisely why\n   shake is not a counterexample to persistence. (Hint: chapter 01's\n   depth-0; a fresh context window is a new descent, not a move within\n   the old one.)\n\n## Boundary note\n\nThis chapter does **not** claim that real Sketched sessions satisfy the\ndisplacement budget — the smoothness contract (`asm:smooth`, C) is\nmeasured per substrate, and chapter 06 shows exactly what you are owed\nwhen it holds and how the guarantee dies when it does not. It also does\nnot claim the spine model *is* the paper's condition poset; it is the\nsmallest honest bench, and every brute-force **obs** fact above is a\nfact about the bench. The general statements live in the paper and, for\nthe load-bearing ones, in Lean.\n",
+  "prerequisites": [
+    {
+      "id": "ch01",
+      "title": "The Room at Zero",
+      "browser_path": "/book/chapter/ch01"
+    }
+  ],
+  "dependents": [
+    {
+      "id": "ch03",
+      "title": "Sieves, Covers, and Two Topologies",
+      "browser_path": "/book/chapter/ch03"
+    },
+    {
+      "id": "ch04",
+      "title": "Forcing: When Does a Claim Hold?",
+      "browser_path": "/book/chapter/ch04"
+    },
+    {
+      "id": "ch05",
+      "title": "Generics and Truth",
+      "browser_path": "/book/chapter/ch05"
+    },
+    {
+      "id": "ch06",
+      "title": "The Margin: Anatomy of a Repair",
+      "browser_path": "/book/chapter/ch06"
+    },
+    {
+      "id": "ch07",
+      "title": "Residues Across the Medium",
+      "browser_path": "/book/chapter/ch07"
+    }
+  ],
+  "source_digest": "8046ced49edc6d12518fd5eb83ad2ab32d5edfa02eb684e7e8da3da5214b4cf0"
+}

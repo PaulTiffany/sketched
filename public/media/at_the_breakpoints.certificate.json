@@ -1,0 +1,186 @@
+{
+  "schema": "principia-episode/3",
+  "content_hash": "3563a0349909a1ad7fabcf26359d7965402ba707f9b4298c84228cbe6476e4b9",
+  "title": "At the Break-Points",
+  "slug": "at_the_breakpoints",
+  "source": "C:/src/principia/bib/principia_atlas.json + C:/src/principia/build/main.pdf",
+  "atlas_sha256": "ba0192febb8b90bf81a3d2cf680a54b9e6ca5b0895487db403ca5b5959e68646",
+  "pdf_sha256": "b9fd4e1a5c4246989b1d506480e6e7df783d6eb3c7c8d107a316e55274d2d12a",
+  "voices": {
+    "ellie": "en-US-JennyNeural",
+    "matt": "en-US-AndrewNeural",
+    "source": "en-US-AndrewNeural",
+    "plain": "en-US-JennyNeural",
+    "interpretation": "en-US-JennyNeural",
+    "limit": "en-US-JennyNeural"
+  },
+  "segments": [
+    {
+      "sid": "S01",
+      "role": "ellie",
+      "chapter": "S01"
+    },
+    {
+      "sid": "S02",
+      "role": "essay",
+      "chapter": "S02"
+    },
+    {
+      "sid": "S03",
+      "role": "ellie",
+      "chapter": "S03"
+    },
+    {
+      "sid": "S04",
+      "role": "ellie",
+      "chapter": "S04"
+    },
+    {
+      "sid": "S05",
+      "role": "ellie",
+      "chapter": "S05"
+    },
+    {
+      "sid": "S06",
+      "role": "ellie",
+      "chapter": "S06"
+    },
+    {
+      "sid": "S07",
+      "role": "ellie",
+      "chapter": "S07"
+    },
+    {
+      "sid": "S08",
+      "role": "ellie",
+      "chapter": "S08"
+    },
+    {
+      "sid": "S09",
+      "role": "ellie",
+      "chapter": "S09"
+    },
+    {
+      "sid": "S10",
+      "role": "ellie",
+      "chapter": "S10"
+    },
+    {
+      "sid": "S11",
+      "role": "ellie",
+      "chapter": "S11"
+    },
+    {
+      "sid": "S12",
+      "role": "ellie",
+      "chapter": "S12"
+    },
+    {
+      "sid": "S13",
+      "role": "essay",
+      "chapter": "S13"
+    },
+    {
+      "sid": "S14",
+      "role": "ellie",
+      "chapter": "S14"
+    },
+    {
+      "sid": "S15",
+      "role": "ellie",
+      "chapter": "S15"
+    },
+    {
+      "sid": "S16",
+      "role": "ellie",
+      "chapter": "S16"
+    },
+    {
+      "sid": "S17",
+      "role": "ellie",
+      "chapter": "S17"
+    },
+    {
+      "sid": "S18",
+      "role": "ellie",
+      "chapter": "S18"
+    },
+    {
+      "sid": "S19",
+      "role": "ellie",
+      "chapter": "S19"
+    },
+    {
+      "sid": "S20",
+      "role": "ellie",
+      "chapter": "S20"
+    },
+    {
+      "sid": "S21",
+      "role": "ellie",
+      "chapter": "S21"
+    },
+    {
+      "sid": "S22",
+      "role": "ellie",
+      "chapter": "S22"
+    },
+    {
+      "sid": "S23",
+      "role": "ellie",
+      "chapter": "S23"
+    },
+    {
+      "sid": "S24",
+      "role": "ellie",
+      "chapter": "S24"
+    },
+    {
+      "sid": "S25",
+      "role": "ellie",
+      "chapter": "S25"
+    },
+    {
+      "sid": "S26",
+      "role": "ellie",
+      "chapter": "S26"
+    },
+    {
+      "sid": "S27",
+      "role": "ellie",
+      "chapter": "S27"
+    },
+    {
+      "sid": "S28",
+      "role": "ellie",
+      "chapter": "S28"
+    },
+    {
+      "sid": "S29",
+      "role": "ellie",
+      "chapter": "S29"
+    },
+    {
+      "sid": "S30",
+      "role": "ellie",
+      "chapter": "S30"
+    },
+    {
+      "sid": "S31",
+      "role": "ellie",
+      "chapter": "S31"
+    }
+  ],
+  "sidecars": {
+    "subtitles": "at_the_breakpoints.srt",
+    "chapters": "chapters.txt",
+    "contact_sheet": "contact_sheet.jpg"
+  },
+  "output": {
+    "path": "at_the_breakpoints.mp4",
+    "sha256": "c6d0b27cb6feac09539b0303c31dcad6153647202e6ae2af4ff6852baa0270a3",
+    "bytes": 11249805
+  },
+  "compiled_at_utc": "2026-06-25T19:47:35.534822+00:00",
+  "note": "SOURCE segments are atlas/PDF grounded. PLAIN LANGUAGE, INTERPRETATION, and LIMIT segments are marked heuristic layers."
+}

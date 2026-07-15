@@ -1,0 +1,97 @@
+{
+  "schema": "sketched.anchor-attestation.v1",
+  "id": "attest-013-forcing-paper",
+  "paper": "principia_atlas (forcing-paper) + forcing_correspondence",
+  "moves": [
+    {
+      "math_id": "prop:chi",
+      "from": null,
+      "to": "fecf9ecfcee2"
+    },
+    {
+      "math_id": "conj:exportability-correlates-with-regime",
+      "from": null,
+      "to": "ff67145f33f1"
+    },
+    {
+      "math_id": "lem:sitebound",
+      "from": null,
+      "to": "eedfa1f5220d"
+    },
+    {
+      "math_id": "lem:pers",
+      "from": null,
+      "to": "99c507d2a575"
+    },
+    {
+      "math_id": "lem:dec",
+      "from": null,
+      "to": "f868533eafc0"
+    },
+    {
+      "math_id": "lem:bdd",
+      "from": null,
+      "to": "962f1acbb53b"
+    },
+    {
+      "math_id": "thm:prop",
+      "from": null,
+      "to": "e12c86e11d07"
+    },
+    {
+      "math_id": "lem:margin",
+      "from": null,
+      "to": "2badf87468ba"
+    },
+    {
+      "math_id": "lem:cauchy",
+      "from": null,
+      "to": "a34a13c8b574"
+    },
+    {
+      "math_id": "lem:ordmet",
+      "from": null,
+      "to": "a1a99fb86b03"
+    },
+    {
+      "math_id": "thm:nonid",
+      "from": null,
+      "to": "7707d4f50575"
+    },
+    {
+      "math_id": "def:wit",
+      "from": null,
+      "to": "1f70d018fc18"
+    },
+    {
+      "math_id": "prop:chalked",
+      "from": null,
+      "to": "61ca001054ab"
+    },
+    {
+      "math_id": "thm:factor",
+      "from": null,
+      "to": "b355720d8fe3"
+    }
+  ],
+  "artifacts_reviewed": [
+    "src/witness/residue.ts",
+    "src/witness/validate.ts",
+    "src/witness/witness.ts",
+    "verification/kernel/interface_model.py",
+    "verification/kernel/model_checker.py",
+    "verification/kernel/numeric_margin.py",
+    "verification/kernel/sweep.py",
+    "verification/lean/ForcingAnalysis/ForcingAnalysis/Descent.lean",
+    "verification/lean/ForcingAnalysis/ForcingAnalysis/Transport.lean",
+    "verification/lean/ForcingKernel/ForcingKernel/Forcing.lean",
+    "verification/lean/ForcingKernel/ForcingKernel/Generic.lean",
+    "verification/lean/ForcingKernel/ForcingKernel/Margin.lean",
+    "verification/lean/ForcingKernel/ForcingKernel/Schema.lean",
+    "verification/lean/ForcingKernel/ForcingKernel/Site.lean"
+  ],
+  "note": "Lean PS sprint-era anchors for forcing-paper: 14 statement placements across 14 artifact(s). Shas were computed live from the principia atlas at transcription time by the lead session; accepting this receipt attests that the named artifacts faithfully transcribe/kernelize these statements per their coverage-map honesty notes (verification/*_lean_map.json) and module headers. To sign: set status to 'accepted', attested_by to 'human', supply attested_at, then run: python verification/tools/binding_audit.py --adopt attest-013-forcing-paper",
+  "status": "proposed",
+  "attested_by": null,
+  "attested_at": null
+}

@@ -1,0 +1,22 @@
+{
+  "schema": "sketched.anchor-attestation.v1",
+  "id": "attest-001-interface-model",
+  "paper": "forcing_correspondence_v15.tex + principia_atlas (Book 7)",
+  "moves": [
+    { "math_id": "prop:chi", "from": null, "to": "fecf9ecfcee2" },
+    { "math_id": "conj:exportability-correlates-with-regime", "from": null, "to": "ff67145f33f1" },
+    { "math_id": "lemma:bk7_budgetlimited_minimizer", "from": null, "to": "8dc53246d498" },
+    { "math_id": "theorem:bk7_emergent_lp_norm", "from": null, "to": "fef1d06c8f64" },
+    { "math_id": "theorem:bk7_hilbert_banach_bridge", "from": null, "to": "b2dc487eca1a" },
+    { "math_id": "corollary:bk7_bridge_no_interior_transition", "from": null, "to": "98c97a80596b" },
+    { "math_id": "definition:bk7_contextuality_defect", "from": null, "to": "13ff353078b6" },
+    { "math_id": "lemma:bk7_frame_temperature_exponent_correspondence", "from": null, "to": "ad246e66b97f" }
+  ],
+  "artifacts_reviewed": [
+    "verification/kernel/interface_model.py"
+  ],
+  "note": "First cross-repo anchors: the finite interface model transcribes six Principia Symbolica Book 7 statements (read verbatim from the principia atlas, all proof_status=proven) and two forcing-paper nodes (prop:chi orthogonal case; the exportability conjecture under test). Machine-stamped bootstrap 2026-07-05; accepting this receipt attests that interface_model.py faithfully miniaturizes those statements. Set status to 'accepted', attested_by to 'human', supply attested_at, then run: python verification/tools/binding_audit.py --adopt attest-001-interface-model",
+  "status": "proposed",
+  "attested_by": null,
+  "attested_at": null
+}

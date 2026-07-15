@@ -1,0 +1,102 @@
+{
+  "schema": "sketched.pedagogy.chapter.v1",
+  "id": "ch05",
+  "title": "Generics and Truth",
+  "status": "drafted",
+  "prerequisite_ids": [
+    "ch02",
+    "ch03",
+    "ch04"
+  ],
+  "source_path": "book/ch05_generics_and_truth.md",
+  "browser_path": "/book/chapter/ch05",
+  "json_path": "/book/chapters/ch05.json",
+  "aim": "After this chapter you can state Rasiowa–Sikorski genericity, say what\nDecision Reachability adds beyond plain order-density, and explain why a\ngeneric *decides every formula* (bivalence) without that fact being\nmagic. You will also learn this chapter's hardest lesson: the spine\nmodel is small enough to compute on and too small to show you the\ninteresting part. Naming that gap honestly is the chapter's real\ncontent.",
+  "boundary_note": "This chapter does **not** claim the lab demonstrates Rasiowa–Sikorski\nconstructing anything, or that Decision Reachability's conditionality is\nexercised here — both require either a genuinely infinite dense family\nor a site where the smoothness contract actually fails, and the\n7-condition spine has neither. What the lab *does* verify: the\ntruth-lemma pattern holds exactly where the paper says it must, and the\nundecided-root/decided-branch asymmetry that motivates the whole\napparatus is a real, computed fact, not a story. The substantive proofs\n— that the construction terminates for genuinely unbounded families, and\nwhat happens when the contract is violated — live in the paper's proof\nenvironments and, for the base cases, in the Lean kernel\n(`rasiowa_sikorski`, `truth_lemma`, `exists_generic_truth`); this chapter\nis not a substitute for either.",
+  "atlas_refs": [
+    "rem:torsion",
+    "asm:smooth",
+    "def:closure",
+    "lem:dec",
+    "lem:bdd",
+    "lem:reach",
+    "lem:bivalence",
+    "lem:atomic",
+    "thm:prop",
+    "asm:calibration"
+  ],
+  "code_refs": [],
+  "lab": {
+    "kind": "python",
+    "path": "book/labs/lab05_generics.py"
+  },
+  "word_count": 1046,
+  "sections": [
+    {
+      "id": "aim",
+      "title": "Aim",
+      "markdown": "After this chapter you can state Rasiowa–Sikorski genericity, say what\nDecision Reachability adds beyond plain order-density, and explain why a\ngeneric *decides every formula* (bivalence) without that fact being\nmagic. You will also learn this chapter's hardest lesson: the spine\nmodel is small enough to compute on and too small to show you the\ninteresting part. Naming that gap honestly is the chapter's real\ncontent."
+    },
+    {
+      "id": "prerequisites",
+      "title": "Prerequisites",
+      "markdown": "Chapters 02–04 (conditions, the two topologies, forcing, torsion,\nDecision Reachability introduced informally). This chapter states the\nlemma that names it."
+    },
+    {
+      "id": "definitions",
+      "title": "Definitions",
+      "markdown": "**Generic (finite stand-in).** A filter `G` through `p` meeting every\nadmissible dense requirement. On the spine, the four **branches** — root-\nto-leaf chains — are the finite stand-ins: total, maximal, decided at\nevery leaf by construction.\n\n**Admissible deciding closure** `D_p*` (`def:closure`, D). The countable\nfamily obtained by adding every atomic stability set and every\npropositional deciding set to `D_p`, keeping only those that are\n`J_adm`-covers (which Decision Reachability, below, says exist). A\ngeneric meeting `D_p*` is what \"decides every formula\" means precisely."
+    },
+    {
+      "id": "claims",
+      "title": "Claims",
+      "markdown": "**Boundedness yields countability for Rasiowa–Sikorski** (`lem:bdd`,\n**P**, machine-verified — `rasiowa_sikorski` in the Lean kernel). A\nresource-bounded observer tracks only countably many claims over a run\n(the observer-bound postulate M-Bound supplies *countability*, not\ndensity); Rasiowa–Sikorski applied to a countable family of dense sets\nproduces a filter meeting all of them. This is where the classical\nforcing machinery — built for countably infinite dense sets — actually\ndoes work: the theorem is only interesting when the family is genuinely\nunbounded, not when it has seven elements.\n\n**Decision Reachability, conditional** (`lem:reach`, **P** consuming the\nsmoothness contract). Under the smoothness contract (`asm:smooth`, C),\nevery condition has an admissible refinement deciding any given formula\n— equivalently, the deciding sieve is not just order-dense but an actual\n`J_adm`-cover. This is *not* free: order-density (`lem:dec`, chapter 04)\nholds unconditionally, but admissible density is the contract's payoff,\nand where the contract fails, the finite model checker exhibits sites\nwhere it does fail. The step from order-dense to admissibly-dense **is**\nthe calibration debt, not a consequence of it.\n\n**Genericity decides every formula** (`lem:bivalence`, **P** consuming\nC). A generic meeting `D_p*` decides every propositional formula — some\ncondition in it forces φ or forces ¬φ. Bivalence on the generic is P\n*conditional on Decision Reachability*, not on countability alone.\n\n**Propositional Truth Lemma, conditional on calibration** (`thm:prop`,\n**P** — `truth_lemma`/`exists_generic_truth` in the Lean kernel, under\nthe calibration queue `asm:calibration`). For a generic G deciding every\nformula: `G ⊨_H φ ⟺ ∃p ∈ G : p ⊩_H φ`. Induction on φ; the atomic base\ncase is `lem:atomic`, whose (⇒) direction routes through the *maximal\nsieve* — the v14 text's mistake was concluding this from density alone,\nwhich does not imply `J_adm`-covering; only the maximal sieve, present\nin every Grothendieck topology, does."
+    },
+    {
+      "id": "worked-example-the-truth-lemma-pattern-live-and-its-trivialization",
+      "title": "Worked example: the truth lemma pattern, live — and its trivialization",
+      "markdown": "The lab checks, over all 4 branches and 7 formulas (a, b, ¬a, ¬b, ¬¬b,\na∧b, a∨b): **`G ⊨ φ` iff some `q ∈ G` forces φ under `⊩_adm`.** Every one\nof the 28 checks matches. That is a genuine, computed instance of\n`thm:prop`'s pattern — not asserted, verified.\n\nNow the honest part. Every branch on this model **decides every\nformula, trivially** — bivalence never fails, in fact *cannot* fail,\nbecause the valuation is total on the leaves: a leaf is either in `V(a)`\nor it isn't, full stop, and a branch's classical truth is read straight\noff its leaf. That is not Rasiowa–Sikorski doing work; that is what\n\"finite and total\" means. `lem:bdd`'s countability payoff matters when\nthe dense family is genuinely infinite and you need a *construction*\nthat meets all of it without ever finishing; here there is nothing to\nconstruct — you can just look. Compare the root: `r` itself, per chapter\n04, does **not** decide b under `⊩_adm` — the lab reasserts this — even\nthough *every branch through r* decides it. The generic's job is exactly\nto descend far enough to buy the decision; on a finite spine the\ndescent is three steps and always terminates in a leaf that already\nknew everything. On an unbounded observer's actual dense family,\nnothing guarantees a leaf, and that is precisely where `lem:reach`'s\nconditionality and `lem:bdd`'s Rasiowa–Sikorski construction earn their\nkeep."
+    },
+    {
+      "id": "lab",
+      "title": "Lab",
+      "markdown": "```bash\npython book/labs/lab05_generics.py\n```\n\nChecks the truth-lemma pattern over every branch and the small formula\nset, checks bivalence holds on every branch, and reasserts (from chapter\n04's kernel) that r remains undecided on b under `⊩_adm`."
+    },
+    {
+      "id": "exercises",
+      "title": "Exercises",
+      "markdown": "1. **Predict, then run.** Add atom `c`, stabilized only at leaf `01`.\n   Predict, for the branch `{r, 0, 01}`, whether `G ⊨ c` and which\n   condition in `G` forces it; then extend the lab's formula list and\n   check.\n2. Explain in one sentence why a branch on *any* finite tree with a\n   total leaf valuation must decide every formula in the propositional\n   closure of the atoms — no appeal to Rasiowa–Sikorski required.\n3. `lem:reach` requires the smoothness contract. Sketch (prose, not\n   code) a modification of the spine's `J_adm` generator such that some\n   deciding sieve stops being a `J_adm`-cover even though it stays\n   order-dense — you are building a miniature failure of Decision\n   Reachability. (You do not need to prove the general contract fails;\n   exhibit the local symptom.)\n4. (Harder.) `thm:prop`'s induction handles ∨ by routing through\n   deciding sets rather than the naive \"disjunct-forcers form a cover.\"\n   Using the ¬¬b countermodel from chapter 04 (`rem:torsion`), explain\n   why the naive routing would have broken exactly at a disjunction\n   built from that compound."
+    },
+    {
+      "id": "boundary-note",
+      "title": "Boundary note",
+      "markdown": "This chapter does **not** claim the lab demonstrates Rasiowa–Sikorski\nconstructing anything, or that Decision Reachability's conditionality is\nexercised here — both require either a genuinely infinite dense family\nor a site where the smoothness contract actually fails, and the\n7-condition spine has neither. What the lab *does* verify: the\ntruth-lemma pattern holds exactly where the paper says it must, and the\nundecided-root/decided-branch asymmetry that motivates the whole\napparatus is a real, computed fact, not a story. The substantive proofs\n— that the construction terminates for genuinely unbounded families, and\nwhat happens when the contract is violated — live in the paper's proof\nenvironments and, for the base cases, in the Lean kernel\n(`rasiowa_sikorski`, `truth_lemma`, `exists_generic_truth`); this chapter\nis not a substitute for either."
+    }
+  ],
+  "raw_markdown": "# Chapter 05 · Generics and Truth\n\n## Aim\n\nAfter this chapter you can state Rasiowa–Sikorski genericity, say what\nDecision Reachability adds beyond plain order-density, and explain why a\ngeneric *decides every formula* (bivalence) without that fact being\nmagic. You will also learn this chapter's hardest lesson: the spine\nmodel is small enough to compute on and too small to show you the\ninteresting part. Naming that gap honestly is the chapter's real\ncontent.\n\n## Prerequisites\n\nChapters 02–04 (conditions, the two topologies, forcing, torsion,\nDecision Reachability introduced informally). This chapter states the\nlemma that names it.\n\n## Definitions\n\n**Generic (finite stand-in).** A filter `G` through `p` meeting every\nadmissible dense requirement. On the spine, the four **branches** — root-\nto-leaf chains — are the finite stand-ins: total, maximal, decided at\nevery leaf by construction.\n\n**Admissible deciding closure** `D_p*` (`def:closure`, D). The countable\nfamily obtained by adding every atomic stability set and every\npropositional deciding set to `D_p`, keeping only those that are\n`J_adm`-covers (which Decision Reachability, below, says exist). A\ngeneric meeting `D_p*` is what \"decides every formula\" means precisely.\n\n## Claims\n\n**Boundedness yields countability for Rasiowa–Sikorski** (`lem:bdd`,\n**P**, machine-verified — `rasiowa_sikorski` in the Lean kernel). A\nresource-bounded observer tracks only countably many claims over a run\n(the observer-bound postulate M-Bound supplies *countability*, not\ndensity); Rasiowa–Sikorski applied to a countable family of dense sets\nproduces a filter meeting all of them. This is where the classical\nforcing machinery — built for countably infinite dense sets — actually\ndoes work: the theorem is only interesting when the family is genuinely\nunbounded, not when it has seven elements.\n\n**Decision Reachability, conditional** (`lem:reach`, **P** consuming the\nsmoothness contract). Under the smoothness contract (`asm:smooth`, C),\nevery condition has an admissible refinement deciding any given formula\n— equivalently, the deciding sieve is not just order-dense but an actual\n`J_adm`-cover. This is *not* free: order-density (`lem:dec`, chapter 04)\nholds unconditionally, but admissible density is the contract's payoff,\nand where the contract fails, the finite model checker exhibits sites\nwhere it does fail. The step from order-dense to admissibly-dense **is**\nthe calibration debt, not a consequence of it.\n\n**Genericity decides every formula** (`lem:bivalence`, **P** consuming\nC). A generic meeting `D_p*` decides every propositional formula — some\ncondition in it forces φ or forces ¬φ. Bivalence on the generic is P\n*conditional on Decision Reachability*, not on countability alone.\n\n**Propositional Truth Lemma, conditional on calibration** (`thm:prop`,\n**P** — `truth_lemma`/`exists_generic_truth` in the Lean kernel, under\nthe calibration queue `asm:calibration`). For a generic G deciding every\nformula: `G ⊨_H φ ⟺ ∃p ∈ G : p ⊩_H φ`. Induction on φ; the atomic base\ncase is `lem:atomic`, whose (⇒) direction routes through the *maximal\nsieve* — the v14 text's mistake was concluding this from density alone,\nwhich does not imply `J_adm`-covering; only the maximal sieve, present\nin every Grothendieck topology, does.\n\n## Worked example: the truth lemma pattern, live — and its trivialization\n\nThe lab checks, over all 4 branches and 7 formulas (a, b, ¬a, ¬b, ¬¬b,\na∧b, a∨b): **`G ⊨ φ` iff some `q ∈ G` forces φ under `⊩_adm`.** Every one\nof the 28 checks matches. That is a genuine, computed instance of\n`thm:prop`'s pattern — not asserted, verified.\n\nNow the honest part. Every branch on this model **decides every\nformula, trivially** — bivalence never fails, in fact *cannot* fail,\nbecause the valuation is total on the leaves: a leaf is either in `V(a)`\nor it isn't, full stop, and a branch's classical truth is read straight\noff its leaf. That is not Rasiowa–Sikorski doing work; that is what\n\"finite and total\" means. `lem:bdd`'s countability payoff matters when\nthe dense family is genuinely infinite and you need a *construction*\nthat meets all of it without ever finishing; here there is nothing to\nconstruct — you can just look. Compare the root: `r` itself, per chapter\n04, does **not** decide b under `⊩_adm` — the lab reasserts this — even\nthough *every branch through r* decides it. The generic's job is exactly\nto descend far enough to buy the decision; on a finite spine the\ndescent is three steps and always terminates in a leaf that already\nknew everything. On an unbounded observer's actual dense family,\nnothing guarantees a leaf, and that is precisely where `lem:reach`'s\nconditionality and `lem:bdd`'s Rasiowa–Sikorski construction earn their\nkeep.\n\n## Lab\n\n```bash\npython book/labs/lab05_generics.py\n```\n\nChecks the truth-lemma pattern over every branch and the small formula\nset, checks bivalence holds on every branch, and reasserts (from chapter\n04's kernel) that r remains undecided on b under `⊩_adm`.\n\n## Exercises\n\n1. **Predict, then run.** Add atom `c`, stabilized only at leaf `01`.\n   Predict, for the branch `{r, 0, 01}`, whether `G ⊨ c` and which\n   condition in `G` forces it; then extend the lab's formula list and\n   check.\n2. Explain in one sentence why a branch on *any* finite tree with a\n   total leaf valuation must decide every formula in the propositional\n   closure of the atoms — no appeal to Rasiowa–Sikorski required.\n3. `lem:reach` requires the smoothness contract. Sketch (prose, not\n   code) a modification of the spine's `J_adm` generator such that some\n   deciding sieve stops being a `J_adm`-cover even though it stays\n   order-dense — you are building a miniature failure of Decision\n   Reachability. (You do not need to prove the general contract fails;\n   exhibit the local symptom.)\n4. (Harder.) `thm:prop`'s induction handles ∨ by routing through\n   deciding sets rather than the naive \"disjunct-forcers form a cover.\"\n   Using the ¬¬b countermodel from chapter 04 (`rem:torsion`), explain\n   why the naive routing would have broken exactly at a disjunction\n   built from that compound.\n\n## Boundary note\n\nThis chapter does **not** claim the lab demonstrates Rasiowa–Sikorski\nconstructing anything, or that Decision Reachability's conditionality is\nexercised here — both require either a genuinely infinite dense family\nor a site where the smoothness contract actually fails, and the\n7-condition spine has neither. What the lab *does* verify: the\ntruth-lemma pattern holds exactly where the paper says it must, and the\nundecided-root/decided-branch asymmetry that motivates the whole\napparatus is a real, computed fact, not a story. The substantive proofs\n— that the construction terminates for genuinely unbounded families, and\nwhat happens when the contract is violated — live in the paper's proof\nenvironments and, for the base cases, in the Lean kernel\n(`rasiowa_sikorski`, `truth_lemma`, `exists_generic_truth`); this chapter\nis not a substitute for either.\n",
+  "prerequisites": [
+    {
+      "id": "ch02",
+      "title": "Conditions and Refinement",
+      "browser_path": "/book/chapter/ch02"
+    },
+    {
+      "id": "ch03",
+      "title": "Sieves, Covers, and Two Topologies",
+      "browser_path": "/book/chapter/ch03"
+    },
+    {
+      "id": "ch04",
+      "title": "Forcing: When Does a Claim Hold?",
+      "browser_path": "/book/chapter/ch04"
+    }
+  ],
+  "dependents": [
+    {
+      "id": "appb",
+      "title": "Appendix B · The Mechanical Witnesses",
+      "browser_path": "/book/chapter/appb"
+    }
+  ],
+  "source_digest": "8046ced49edc6d12518fd5eb83ad2ab32d5edfa02eb684e7e8da3da5214b4cf0"
+}

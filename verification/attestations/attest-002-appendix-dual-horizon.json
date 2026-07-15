@@ -1,0 +1,169 @@
+{
+  "schema": "sketched.anchor-attestation.v1",
+  "id": "attest-002-appendix-dual-horizon",
+  "paper": "principia_atlas (appendix-dual-horizon) + forcing_correspondence",
+  "moves": [
+    {
+      "math_id": "axiom:appC_psc1",
+      "from": null,
+      "to": "5c16b246bb91"
+    },
+    {
+      "math_id": "axiom:appC_psc3",
+      "from": null,
+      "to": "b77a6039a52b"
+    },
+    {
+      "math_id": "axiom:appC_axiom_of_memory",
+      "from": null,
+      "to": "4467ae8219a3"
+    },
+    {
+      "math_id": "lemma:appC_orthogonal_token_separation",
+      "from": null,
+      "to": "4dc4f13c34b4"
+    },
+    {
+      "math_id": "lemma:appC_coarse_graining_tokens",
+      "from": null,
+      "to": "246d26e3ee43"
+    },
+    {
+      "math_id": "lemma:appC_sigma_additivity",
+      "from": null,
+      "to": "673de25b6803"
+    },
+    {
+      "math_id": "corollary:appC_emergence_of_time_arrow_final",
+      "from": null,
+      "to": "743b9a769e5f"
+    },
+    {
+      "math_id": "lemma:appC_geodesic_convergence",
+      "from": null,
+      "to": "b30ea237d9ef"
+    },
+    {
+      "math_id": "lemma:appC_matrix_representation_symbolic_operators",
+      "from": null,
+      "to": "b2aeebccc386"
+    },
+    {
+      "math_id": "lemma:appC_stability_phi_flow",
+      "from": null,
+      "to": "2500932e32a9"
+    },
+    {
+      "math_id": "theorem:appC_dual_horizon_signature",
+      "from": null,
+      "to": "aebf953f92a5"
+    },
+    {
+      "math_id": "definition:appC_bounded_reflexive_emergence",
+      "from": null,
+      "to": "fef0d953f164"
+    },
+    {
+      "math_id": "theorem:appC_dual_horizon_biconditional",
+      "from": null,
+      "to": "92440f06f718"
+    },
+    {
+      "math_id": "definition:appC_observer_token_space",
+      "from": null,
+      "to": "9edec48422bf"
+    },
+    {
+      "math_id": "definition:appC_observer_coherence_budget",
+      "from": null,
+      "to": "adaa752c80cb"
+    },
+    {
+      "math_id": "theorem:appC_orthogonal_additivity",
+      "from": null,
+      "to": "34b0d73bbc03"
+    },
+    {
+      "math_id": "definition:appC_reflective_state_space",
+      "from": null,
+      "to": "f6c6c3b4c776"
+    },
+    {
+      "math_id": "theorem:appC_fundamental_irreversibility_final",
+      "from": null,
+      "to": "6c5103e2f2ab"
+    },
+    {
+      "math_id": "definition:appC_lagrangian_potential",
+      "from": null,
+      "to": "3073d581eebb"
+    },
+    {
+      "math_id": "definition:appC_sustainable_growth_rate",
+      "from": null,
+      "to": "5e9634a1d553"
+    },
+    {
+      "math_id": "theorem:appC_phi_min_growth",
+      "from": null,
+      "to": "79ba649b1724"
+    },
+    {
+      "math_id": "definition:appC_complexity_growth_operator",
+      "from": null,
+      "to": "cefe4c985ee7"
+    },
+    {
+      "math_id": "definition:appC_complexity_entropy_tradeof",
+      "from": null,
+      "to": "c6cded3df017"
+    },
+    {
+      "math_id": "theorem:appC_phi_minimized_entropy_per_complexity",
+      "from": null,
+      "to": "8bcb0fa6c2a3"
+    },
+    {
+      "math_id": "definition:appC_phi_stable_region",
+      "from": null,
+      "to": "cd4b57fb55a2"
+    },
+    {
+      "math_id": "definition:appC_symbolic_operator_assumptions",
+      "from": null,
+      "to": "ab8fabe2a355"
+    },
+    {
+      "math_id": "theorem:appC_phi_eigenvalue_recursive_emergence",
+      "from": null,
+      "to": "2bb24982cbd7"
+    },
+    {
+      "math_id": "definition:appC_symbolic_curvature_function",
+      "from": null,
+      "to": "3cd5bc8c5d36"
+    },
+    {
+      "math_id": "theorem:appC_phi_minimal_curvature_parameter",
+      "from": null,
+      "to": "e79c48878ea1"
+    },
+    {
+      "math_id": "definition:appC_symbolic_flow_stability",
+      "from": null,
+      "to": "66078dd014c7"
+    },
+    {
+      "math_id": "theorem:appC_unified_recursive_fixed_point",
+      "from": null,
+      "to": "4396e91913bd"
+    }
+  ],
+  "artifacts_reviewed": [
+    "verification/lean/ForcingAnalysis/ForcingAnalysis/AppendixDH.lean"
+  ],
+  "note": "Lean PS sprint-era anchors for appendix-dual-horizon: 31 statement placements across 1 artifact(s). Shas were computed live from the principia atlas at transcription time by the lead session; accepting this receipt attests that the named artifacts faithfully transcribe/kernelize these statements per their coverage-map honesty notes (verification/*_lean_map.json) and module headers. To sign: set status to 'accepted', attested_by to 'human', supply attested_at, then run: python verification/tools/binding_audit.py --adopt attest-002-appendix-dual-horizon",
+  "status": "proposed",
+  "attested_by": null,
+  "attested_at": null
+}

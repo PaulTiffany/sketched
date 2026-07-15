@@ -1,0 +1,237 @@
+{
+  "version": 1,
+  "paper": "forcing_correspondence_v15.tex",
+  "note": "The operator correspondence map: every engineering operator in Sketched traces to a mathematical operator in the paper. 'realized' entries must point at code that exists (checked by tools/operator_audit.py); 'target' entries are design intent and must NOT be presented as shipped. Zero-order labels are human-supplied calibration data (Paul, 2026-07-02).",
+  "zero_order_principles": [
+    {
+      "label": "localhost",
+      "math_id": "lem:void",
+      "math_operator": "the void 1̂: unique shared depth-0 condition (lem:void, prop:zeroth)",
+      "engineering_operator": "dev server bound to 127.0.0.1; ZeroOrderAnchor origin check",
+      "code": { "file": "src/witness/witness.ts", "export": "isZeroOrderOrigin" }
+    },
+    {
+      "label": "browser-platform",
+      "math_id": "thm:factor",
+      "math_operator": "interface medium M through which all transfer factors",
+      "engineering_operator": "the browser as public medium: file ingestion, JSON artifacts, rendering",
+      "code": { "file": "src/witness/residue.ts", "export": "Mark" }
+    },
+    {
+      "label": "json-manifold",
+      "math_id": "thm:nonid",
+      "math_operator": "encoded residue E_A(T_A x): what actually crosses the medium",
+      "engineering_operator": "Mark as JSON-serializable residue schema",
+      "code": { "file": "src/witness/residue.ts", "export": "encodeResidue" }
+    },
+    {
+      "label": "eula-first-contract",
+      "math_id": "prop:zeroth",
+      "math_operator": "seating the human at the depth-0 origin (normative move; docs/12)",
+      "engineering_operator": "EULA acceptance recorded in ZeroOrderAnchor before any trace validates",
+      "code": { "file": "src/witness/witness.ts", "export": "anchor" }
+    }
+  ],
+  "operators": [
+    {
+      "math_id": "def:cond",
+      "math_operator": "condition p: finite partial epistemic state (claim complex K_t)",
+      "engineering_operator": "Stage state: the layer set + timeline at a tick",
+      "code": { "file": "src/core/stage.ts", "export": "Stage" },
+      "calibration_item": null,
+      "status": "realized"
+    },
+    {
+      "math_id": "def:refine",
+      "math_operator": "admissible refinement q ⊑ p retaining commitments",
+      "engineering_operator": "gatekeeper-accepted Proposal application",
+      "code": { "file": "src/agents/gatekeeper.ts", "export": "Gatekeeper" },
+      "calibration_item": 2,
+      "status": "realized"
+    },
+    {
+      "math_id": "def:wit",
+      "math_operator": "J_wit finite witness: refinement prefix with certificate, admissibility, provenance, human gate",
+      "engineering_operator": "WitnessTrace of WitnessedSteps bound from Proposal/ConsentDecision/ProposalResult",
+      "code": { "file": "src/witness/witness.ts", "export": "WitnessTrace" },
+      "calibration_item": 2,
+      "status": "realized"
+    },
+    {
+      "math_id": "def:wit",
+      "math_operator": "certificate carried by each witnessed refinement",
+      "engineering_operator": "ConsentDecision (required/granted/reason)",
+      "code": { "file": "src/core/consent.ts", "export": "ConsentDecision" },
+      "calibration_item": 2,
+      "status": "realized"
+    },
+    {
+      "math_id": "def:wit",
+      "math_operator": "human-gated decision (where required)",
+      "engineering_operator": "ManualConsentPolicy.grant: explicit per-proposal human approval",
+      "code": { "file": "src/core/consent.ts", "export": "ManualConsentPolicy" },
+      "calibration_item": 2,
+      "status": "realized"
+    },
+    {
+      "math_id": "thm:nonid",
+      "math_operator": "channel projector T_A (bounded projection; identity breaks here first)",
+      "engineering_operator": "explicit field whitelist applied before export",
+      "code": { "file": "src/witness/residue.ts", "export": "project" },
+      "calibration_item": 10,
+      "status": "realized"
+    },
+    {
+      "math_id": "thm:nonid",
+      "math_operator": "encode E_A: floor-stable residue onto the medium",
+      "engineering_operator": "encodeResidue: state → Mark (JSON), loss declared",
+      "code": { "file": "src/witness/residue.ts", "export": "encodeResidue" },
+      "calibration_item": 10,
+      "status": "realized"
+    },
+    {
+      "math_id": "thm:nonid",
+      "math_operator": "decode D_B: reconstruction inside the reader's surface, never identity",
+      "engineering_operator": "decodeResidue: Mark → Reconstruction (nominally branded type; not source state)",
+      "code": { "file": "src/witness/residue.ts", "export": "decodeResidue" },
+      "calibration_item": 10,
+      "status": "realized"
+    },
+    {
+      "math_id": "prop:chalked",
+      "math_operator": "Chalked correctness invariant: provenance, permission, residue type, revision authority; identity refused",
+      "engineering_operator": "validateMark verdicts",
+      "code": { "file": "src/witness/validate.ts", "export": "validateMark" },
+      "calibration_item": 10,
+      "status": "realized"
+    },
+    {
+      "math_id": "def:wit",
+      "math_operator": "J_wit trace validity conditions",
+      "engineering_operator": "validateTrace verdicts (anchor + per-step certificate/admissibility coherence)",
+      "code": { "file": "src/witness/validate.ts", "export": "validateTrace" },
+      "calibration_item": 2,
+      "status": "realized"
+    },
+    {
+      "math_id": "lem:void",
+      "math_operator": "witness / certificate ledger along the trace",
+      "engineering_operator": "append-only AuditLog",
+      "code": { "file": "src/core/provenance.ts", "export": "AuditLog" },
+      "calibration_item": 2,
+      "status": "realized"
+    },
+    {
+      "math_id": "prop:chalked",
+      "math_operator": "revision authority (the eraser)",
+      "engineering_operator": "shake as scoped revocation",
+      "code": { "file": "src/core/shake.ts", "export": "ShakeScope" },
+      "calibration_item": null,
+      "status": "realized"
+    },
+    {
+      "math_id": "asm:calibration",
+      "math_operator": "non-actuation boundary: witness and request only, no autonomous loop closure",
+      "engineering_operator": "agents propose, the surface disposes; no agent mutates core state",
+      "code": { "file": "src/agents/agentProtocol.ts", "export": "Proposal" },
+      "calibration_item": null,
+      "status": "realized"
+    },
+    {
+      "math_id": "lem:margin",
+      "math_operator": "path-form margin: anchor minus cumulative drift remains above the interval floor",
+      "engineering_operator": "Flow channel meters derived from anchor, cumulative event cost, and finite budget",
+      "code": { "file": "src/flow/engine.ts", "export": "channelMeters" },
+      "calibration_item": null,
+      "status": "realized"
+    },
+    {
+      "math_id": "def:refine",
+      "math_operator": "bounded admissible refinement within a channel-margin interval",
+      "engineering_operator": "FlowChannel: finite lease, angle, cumulative budget, and explicit closure",
+      "code": { "file": "src/flow/engine.ts", "export": "FlowChannel" },
+      "calibration_item": 8,
+      "status": "realized"
+    },
+    {
+      "math_id": "def:wit",
+      "math_operator": "finite witnessed refinement prefix",
+      "engineering_operator": "exported flow trace replay, invariant validation, and final-state digest",
+      "code": { "file": "src/flow/engine.ts", "export": "verifyTrace" },
+      "calibration_item": 2,
+      "status": "realized"
+    },
+    {
+      "math_id": "prop:chalked",
+      "math_operator": "revision authority follows dependent residue while preserving the authority-origin",
+      "engineering_operator": "human interrupt closes flow, rewinds its root, and removes its dependency closure",
+      "code": { "file": "src/flow/engine.ts", "export": "interrupt" },
+      "calibration_item": null,
+      "status": "realized"
+    },
+    {
+      "math_id": "def:stab",
+      "math_operator": "Stab(q, φ): atomic stabilization under admissible refinement",
+      "engineering_operator": "a contribution 'holds' when its stabilizers are witnessed and consented (interpretation; not shipped)",
+      "code": null,
+      "calibration_item": 1,
+      "status": "target"
+    },
+    {
+      "math_id": "def:clauses",
+      "math_operator": "∧ connective realization: certificate combination",
+      "engineering_operator": "precedence / conflict arbitration between overlapping proposals (docs/11)",
+      "code": null,
+      "calibration_item": 4,
+      "status": "target"
+    },
+    {
+      "math_id": "def:clauses",
+      "math_operator": "∨ connective realization: admissible-cover branching",
+      "engineering_operator": "branching proposals over an undecided region (docs/11; arbitration's dual)",
+      "code": null,
+      "calibration_item": 5,
+      "status": "target"
+    },
+    {
+      "math_id": "rem:torsion",
+      "math_operator": "torsion certificate: refusal stable under EVERY refinement (atomic case, discharged)",
+      "engineering_operator": "the human-layer guard inside every ConsentPolicy: 'consent cannot be granted' — permanent and structural, unlike a contingent denial awaiting consent",
+      "code": { "file": "src/core/consent.ts", "export": "ConsentPolicy" },
+      "calibration_item": 6,
+      "status": "realized"
+    },
+    {
+      "math_id": "lem:cauchy",
+      "math_operator": "observer completion (P_O, d_O): Cauchy-generic limit of the session",
+      "engineering_operator": "session persistence / timeline completion (Principia interface; outside Sketched's scope)",
+      "code": null,
+      "calibration_item": 9,
+      "status": "target"
+    },
+    {
+      "math_id": "def:req",
+      "math_operator": "admissible dense requirement D ∈ D_adm (obligation the observer must eventually meet)",
+      "engineering_operator": "standing obligation queue for the stage (not designed yet)",
+      "code": null,
+      "calibration_item": 3,
+      "status": "target"
+    },
+    {
+      "math_id": "def:refine",
+      "math_operator": "channel-margin subposet P_H^η: the admissible region + authority to move in it",
+      "engineering_operator": "Channel grant / angular access (docs/11); exit = return to zero-point",
+      "code": null,
+      "calibration_item": 8,
+      "status": "target"
+    },
+    {
+      "math_id": "asm:smooth",
+      "math_operator": "control forcing / forced integration at the conflict threshold",
+      "engineering_operator": "two-knob coordinated co-motion authorizing new content (docs/11)",
+      "code": null,
+      "calibration_item": 7,
+      "status": "target"
+    }
+  ]
+}

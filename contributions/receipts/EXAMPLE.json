@@ -1,0 +1,12 @@
+{
+  "schema": "sketched.contribution-receipt.v1",
+  "id": "replace-with-stable-id",
+  "boundary": "eula-content-b",
+  "actor": "OmegaClaw",
+  "content_sha256": "digest-from-contribution-audit-describe",
+  "constraints_sha256": "digest-from-contribution-audit-describe",
+  "status": "proposed",
+  "accepted_by": null,
+  "accepted_at": null,
+  "note": "The human changes status and acceptance fields after review."
+}

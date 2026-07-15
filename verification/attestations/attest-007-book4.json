@@ -1,0 +1,272 @@
+{
+  "schema": "sketched.anchor-attestation.v1",
+  "id": "attest-007-book4",
+  "paper": "principia_atlas (book4) + forcing_correspondence",
+  "moves": [
+    {
+      "math_id": "definition:bk4_test_time_integrative_expansion",
+      "from": null,
+      "to": "e13b7541e7c1"
+    },
+    {
+      "math_id": "proof:bk4_persistence_reflection_noncommutativity",
+      "from": null,
+      "to": "0c827b1a3bb7"
+    },
+    {
+      "math_id": "remark:bk4_invariant_limited_transfer",
+      "from": null,
+      "to": "21496455872e"
+    },
+    {
+      "math_id": "theorem:bk4_existence_of_symbolic_ident",
+      "from": null,
+      "to": "ea2e4e640743"
+    },
+    {
+      "math_id": "definition:bk4_recursive_identity_encod",
+      "from": null,
+      "to": "33dfd75746e3"
+    },
+    {
+      "math_id": "lemma:bk4_convergence_of_recursive_enco",
+      "from": null,
+      "to": "9a5f62f74619"
+    },
+    {
+      "math_id": "definition:bk4_identity_operators",
+      "from": null,
+      "to": "83b1bbb4ef7a"
+    },
+    {
+      "math_id": "theorem:bk4_operator_algebra_of_identit",
+      "from": null,
+      "to": "1b58a0d2727a"
+    },
+    {
+      "math_id": "definition:bk4_self_reference_operator",
+      "from": null,
+      "to": "c3267f56b23c"
+    },
+    {
+      "math_id": "theorem:bk4_fixed_points_of_self_refere",
+      "from": null,
+      "to": "29589441a8c3"
+    },
+    {
+      "math_id": "theorem:bk4_formation_differentiation_boundaries",
+      "from": null,
+      "to": "599d6f34aa70"
+    },
+    {
+      "math_id": "definition:bk4_symbolic_curvature",
+      "from": null,
+      "to": "20a22b6de404"
+    },
+    {
+      "math_id": "theorem:bk4_symbolic_curvature_properties",
+      "from": null,
+      "to": "a71de689fc8a"
+    },
+    {
+      "math_id": "definition:bk4_symbolic_transition_rate",
+      "from": null,
+      "to": "31b9bae108a1"
+    },
+    {
+      "math_id": "theorem:bk4_auto_encoding_and_identity",
+      "from": null,
+      "to": "a84d5919bf6f"
+    },
+    {
+      "math_id": "theorem:bk4_emergence_through_timescale_separation",
+      "from": null,
+      "to": "7677bb2091fe"
+    },
+    {
+      "math_id": "definition:bk4_symbolic_auto_encoder",
+      "from": null,
+      "to": "20879f110739"
+    },
+    {
+      "math_id": "definition:bk4_imaginary_symbolic_distance",
+      "from": null,
+      "to": "34888b5ef888"
+    },
+    {
+      "math_id": "proposition:bk4_imaginative_continuity_principle",
+      "from": null,
+      "to": "5780c79a798c"
+    },
+    {
+      "math_id": "definition:bk4_event_horizon_wheel",
+      "from": null,
+      "to": "e9ad4e76eea4"
+    },
+    {
+      "math_id": "proposition:bk4_wheel_refines_signature",
+      "from": null,
+      "to": "857c5fcaeb34"
+    },
+    {
+      "math_id": "proposition:bk4_spiral_transition",
+      "from": null,
+      "to": "da372e9bfcbf"
+    },
+    {
+      "math_id": "theorem:bk4_golden_event_horizon_spiral",
+      "from": null,
+      "to": "2d5c6b6a2c61"
+    },
+    {
+      "math_id": "axiom:bk4_refinement_contraction",
+      "from": null,
+      "to": "f78febe05e81"
+    },
+    {
+      "math_id": "proposition:bk4_ttpr_convergence",
+      "from": null,
+      "to": "f9e86812b04b"
+    },
+    {
+      "math_id": "theorem:bk4_drift_reflection_imbalance",
+      "from": null,
+      "to": "dd24f9c9c1af"
+    },
+    {
+      "math_id": "corollary:bk4_chromatic_transference_of_wheel",
+      "from": null,
+      "to": "928433472fb5"
+    },
+    {
+      "math_id": "lemma:bk4_fragmentation_cascade",
+      "from": null,
+      "to": "fc3f85a8099e"
+    },
+    {
+      "math_id": "definition:bk4_repair_process",
+      "from": null,
+      "to": "fcd28efccb0f"
+    },
+    {
+      "math_id": "theorem:bk4_reflective_reentry",
+      "from": null,
+      "to": "9009bdb64ea9"
+    },
+    {
+      "math_id": "theorem:bk4_conditions_for_self_healing",
+      "from": null,
+      "to": "349b05f4859b"
+    },
+    {
+      "math_id": "lemma:bk4_upper_bound_on_repair_capacit",
+      "from": null,
+      "to": "4c4e9b5141be"
+    },
+    {
+      "math_id": "theorem:bk4_freedom_criterion",
+      "from": null,
+      "to": "d0c7bf9558de"
+    },
+    {
+      "math_id": "definition:bk4_symbolic_flow_freedom",
+      "from": null,
+      "to": "7838656e2b3c"
+    },
+    {
+      "math_id": "proposition:bk4_autonomy_implies_freedom",
+      "from": null,
+      "to": "ba1ac5f893f3"
+    },
+    {
+      "math_id": "definition:bk4_symbolic_freedom_measure",
+      "from": null,
+      "to": "e92fe926f551"
+    },
+    {
+      "math_id": "theorem:bk4_recursive_constraint_libera",
+      "from": null,
+      "to": "f5988f97ad49"
+    },
+    {
+      "math_id": "theorem:bk4_freedom_life_connection",
+      "from": null,
+      "to": "6134b827e49c"
+    },
+    {
+      "math_id": "theorem:bk4_fuzzy_chain_rule",
+      "from": null,
+      "to": "e83c885ab1ac"
+    },
+    {
+      "math_id": "theorem:bk4_fuzzy_product_rule",
+      "from": null,
+      "to": "8a95a7d3f208"
+    },
+    {
+      "math_id": "theorem:bk4_fuzzy_quotient_rule",
+      "from": null,
+      "to": "a4b770183cf3"
+    },
+    {
+      "math_id": "definition:bk4_fuzzy_gradient",
+      "from": null,
+      "to": "a7e5547ac6f1"
+    },
+    {
+      "math_id": "lemma:bk4_gradient_stability",
+      "from": null,
+      "to": "6ec41d242b22"
+    },
+    {
+      "math_id": "definition:bk4_recursive_self_healing",
+      "from": null,
+      "to": "d29338e6766f"
+    },
+    {
+      "math_id": "definition:bk4_repair_capacity",
+      "from": null,
+      "to": "27e373dc4045"
+    },
+    {
+      "math_id": "definition:bk4_constraint_domain",
+      "from": null,
+      "to": "c126ee595035"
+    },
+    {
+      "math_id": "lemma:bk4_autonomy_freedom_relation",
+      "from": null,
+      "to": "37da826a2ce3"
+    },
+    {
+      "math_id": "theorem:bk4_fuzzy_sum_rule",
+      "from": null,
+      "to": "ceb55e5b813f"
+    },
+    {
+      "math_id": "theorem:bk4_fuzzy_power_rule",
+      "from": null,
+      "to": "3d8b2161d2b8"
+    },
+    {
+      "math_id": "theorem:bk4_existence_observer_valid_derivatives",
+      "from": null,
+      "to": "ab50f0dac149"
+    },
+    {
+      "math_id": "proposition:bk4_fuzzy_deriv_algebra",
+      "from": null,
+      "to": "057714829b2d"
+    }
+  ],
+  "artifacts_reviewed": [
+    "verification/kernel/plomp_levelt_witness.py",
+    "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4A.lean",
+    "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4B.lean",
+    "verification/lean/ForcingKernel/ForcingKernel/Witness.lean"
+  ],
+  "note": "Lean PS sprint-era anchors for book4: 51 statement placements across 4 artifact(s). Shas were computed live from the principia atlas at transcription time by the lead session; accepting this receipt attests that the named artifacts faithfully transcribe/kernelize these statements per their coverage-map honesty notes (verification/*_lean_map.json) and module headers. To sign: set status to 'accepted', attested_by to 'human', supply attested_at, then run: python verification/tools/binding_audit.py --adopt attest-007-book4",
+  "status": "proposed",
+  "attested_by": null,
+  "attested_at": null
+}

@@ -1,0 +1,818 @@
+{
+ "schema": "sketched.scholium_a-lean-map.v1",
+ "source": "Principia Symbolica Scholium Symbolicum first half (cross-book meta-commentary)",
+ "boundary": "Mappings certify only the static/algebraic/finite kernel. Manifold, Hilbert-space, PDE, categorical, and asymptotic material is not certified; conditional and partial rows do not promote the full prose statement to a Lean theorem.",
+ "entries": [
+  {
+   "atlas_id": "definition:bk1_bounded_observer",
+   "coverage": "definition",
+   "lean": [
+    "ScholiumA.interpretable_of_factor_and_traceable"
+   ],
+   "note": "Modeled as the BoundedObserver structure (N, delta, eps) used downstream by Traceable/interpretable_of_factor_and_traceable; no standalone theorem, differentiation operators kept opaque (Nat -> Real -> Real) rather than manifold operators."
+  },
+  {
+   "atlas_id": "definition:bk1_bounded_symbolic_approximation",
+   "coverage": "conditional",
+   "lean": [
+    "ScholiumA.kernelBounded_le"
+   ],
+   "note": "Folded into one scalar kernel-bound structure/theorem shared with the three anchors below; convolution itself is not modeled, only the stated submultiplicativity inequality."
+  },
+  {
+   "atlas_id": "definition:bk1_kernel_based_bounded_symbolic_approximation",
+   "coverage": "conditional",
+   "lean": [
+    "ScholiumA.kernelBounded_le"
+   ],
+   "note": "Same KernelBoundedApprox structure as bk1_bounded_symbolic_approximation; the iff-form of the source definition is not modeled, only the derived bound."
+  },
+  {
+   "atlas_id": "proposition:bk1_boundedness_from_drift",
+   "coverage": "conditional",
+   "lean": [
+    "ScholiumA.kernelBounded_le"
+   ],
+   "note": "The sup-bound hypothesis is represented as a plain scalar bound (drift \u2264 \u03b4) rather than an actual supremum over a domain."
+  },
+  {
+   "atlas_id": "proposition:bk1_sufficient_condition_for_kernel_boundedness_from_uniform_drift_bound",
+   "coverage": "conditional",
+   "lean": [
+    "ScholiumA.kernelBounded_le"
+   ],
+   "note": "This anchor's own inline proof is exactly the \u2016K\u20161=1 submultiplicativity chain now proved by kernelBounded_le; kernel norm and convolution remain hypotheses, not derived objects."
+  },
+  {
+   "atlas_id": "definition:bk1_observer_relative_interpretability",
+   "coverage": "conditional",
+   "lean": [
+    "ScholiumA.ifValue_le_eps",
+    "ScholiumA.nu_le_ifValue",
+    "ScholiumA.interpretable_of_factor_and_traceable"
+   ],
+   "note": "(I1) distinguishability and (I2) boundedness are derived (not assumed) from a c*eps factorization; (I3) traceability is modeled concretely via a Finset.range witness over BoundedObserver.delta rather than manifold differentiation operators."
+  },
+  {
+   "atlas_id": "lemma:bk1_bounded_approximation_and_interpretability",
+   "coverage": "proved-kernel",
+   "lean": [
+    "ScholiumA.ifValue_le_eps",
+    "ScholiumA.nu_le_ifValue"
+   ],
+   "note": "The c_min \u2264 c \u2264 1 and c_min*eps \u2265 nu hypotheses genuinely force nu \u2264 c*eps \u2264 eps; this is a real inequality derivation, not a restatement."
+  },
+  {
+   "atlas_id": "proposition:bk1_stage_composite_operators_are_interpretable",
+   "coverage": "conditional",
+   "lean": [
+    "ScholiumA.interpretable_of_factor_and_traceable"
+   ],
+   "note": "Hypotheses (a) bounded energy approximation and (b) lower-bounded distinguishability are represented by the InterpretabilityFactor sandwich; traceability is supplied as an explicit extra hypothesis (the source's own hypotheses do not entail it either, since (a)/(b) alone give only I1/I2)."
+  },
+  {
+   "atlas_id": "definition:bk1_stage_composite_operator",
+   "coverage": "definition",
+   "lean": [
+    "ScholiumA.twoStep_bound"
+   ],
+   "note": "Modeled as the TwoStepBoundedApprox structure's stabilize \u2218 drift composite; no standalone theorem beyond twoStep_bound."
+  },
+  {
+   "atlas_id": "lemma:bk1_observer_bounded_emergence_constraint",
+   "coverage": "proved-kernel",
+   "lean": [
+    "ScholiumA.twoStep_bound",
+    "ScholiumA.chainedApprox_telescope",
+    "ScholiumA.ChainedApprox.cauchySeq",
+    "ScholiumA.ChainedApprox.exists_limit_with_tail_bound"
+   ],
+   "note": "Part (i)'s 2\u03b4 bound follows from the triangle inequality. Part (ii) includes finite telescoping and, from summable resolution decay, full Cauchy and complete-space convergence with a tail displacement bound."
+  },
+  {
+   "atlas_id": "axiom:bk1_summable_resolution_decay",
+   "coverage": "conditional",
+   "lean": [
+    "ScholiumA.ChainedApprox",
+    "ScholiumA.chainedApprox_telescope",
+    "ScholiumA.ChainedApprox.cauchySeq",
+    "ScholiumA.ChainedApprox.exists_limit_with_tail_bound"
+   ],
+   "note": "Summability is an explicit ChainedApprox field. It yields finite telescoping, a genuine Cauchy stage path, and under completeness an actual limit with tail-sum displacement bound."
+  },
+  {
+   "atlas_id": "definition:bk1_reflection_operator",
+   "coverage": "proved-kernel",
+   "lean": [
+    "ScholiumA.mirror_involution_ne_id_exists"
+   ],
+   "note": "Witnesses existence of a concrete inner-product-preserving involution on Real\u00d7Real satisfying R\u2260\u00b1Id, exactly the source's non-triviality clause for the mirror component; does not model the general tangent-bundle map or its relation to R_stab."
+  },
+  {
+   "atlas_id": "definition:bk1_pre_geometric_operators_and_stages",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumA.projection_idempotent_ne_id_exists"
+   ],
+   "note": "Only the stabilization operator's idempotence-but-not-identity clause is witnessed concretely; the colimit/ordinal-stage-tower content of this definition is not modeled."
+  },
+  {
+   "atlas_id": "definition:bk1_spinor_like_structure",
+   "coverage": "proved-kernel",
+   "lean": [
+    "ScholiumA.stepZMod4_four_returns",
+    "ScholiumA.stepZMod4_two_no_return"
+   ],
+   "note": "Witnesses the 'double rotation, not single rotation' periodicity clause concretely on ZMod 4 (n0=2, 2*n0=4); orientation-sensitivity and observer-bounded curvature coupling clauses are not modeled (require a manifold and a sign-changing structure)."
+  },
+  {
+   "atlas_id": "definition:bk1_symbolic_contradiction",
+   "coverage": "proved-kernel",
+   "lean": [
+    "ScholiumA.contradictionIntensity_eq",
+    "ScholiumA.contradictionIntensity_zero_of_lam_one"
+   ],
+   "note": "The stated 'oppositional dynamics' and 'contradiction intensity' formula are modeled as a real-number identity; the manifold/measure-theoretic overlap conditions (shared accessibility, positive-measure overlap) are not modeled."
+  },
+  {
+   "atlas_id": "lemma:bk1_contextual_nonseparability",
+   "coverage": "conditional",
+   "lean": [
+    "ScholiumA.separable_mixedDiff_zero",
+    "ScholiumA.nonseparable_of_mixedDiff_ne_zero"
+   ],
+   "note": "The mixed partial derivative D_xi D_chi U is replaced by an honest finite second-difference surrogate; this proves the intended contrapositive (nonzero difference implies non-separable) but is explicitly NOT a formalization of the derivative-based iff in the source."
+  },
+  {
+   "atlas_id": "definition:bk1_symbolic_coupling_basis",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumA.quadratic_not_linear"
+   ],
+   "note": "Covered only via the concrete countermodel instance C(x,y)=x*y, showing this particular quadratic coupling is not a linear coupling; the general basis-decomposition definition itself is not modeled."
+  },
+  {
+   "atlas_id": "definition:bk1_symbolic_coupling",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumA.quadratic_not_linear"
+   ],
+   "note": "Same countermodel as bk1_symbolic_coupling_basis; only the concrete linear-vs-quadratic distinction is witnessed, not the general definition over an arbitrary feature basis."
+  },
+  {
+   "atlas_id": "lemma:bk1_linear_context_independence",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumA.quadratic_not_linear"
+   ],
+   "note": "The countermodel gives one concrete instance of 'linear coupling cannot encode this quadratic coupling'; the lemma's general universal claim over all context-dependent meanings is not modeled."
+  },
+  {
+   "atlas_id": "theorem:bk1_minimal_quadratic_sufficiency",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumA.quadratic_not_linear"
+   ],
+   "note": "Same countermodel supplies the concrete case of 'linear systems are insufficient'; the reflexivity/context-sensitivity/adaptive-stability sufficiency claims themselves are narrative and not modeled."
+  },
+  {
+   "atlas_id": "theorem:bk1_reflexivity_quadratic",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumA.linear_double"
+   ],
+   "note": "Only the proof sketch's stated algebraic premise L(x+x)=2*L(x) is proved; the informal conclusion that this prevents self-reference/context-dependence is a narrative jump and is not modeled."
+  },
+  {
+   "atlas_id": "lemma:bk1_fixed_point_inheritance",
+   "coverage": "proved-kernel",
+   "lean": [
+    "ScholiumA.fixedPointInheritance"
+   ],
+   "note": "Proved in the generalized (linearity-free) form: only invertibility of f is used, matching the toolchain guidance to drop unused hypotheses; f\u2218g\u2218f\u207b\u00b9 fixes f(x) given g fixes x."
+  },
+  {
+   "atlas_id": "definition:bk1_proto_symbolic_space",
+   "coverage": "conditional",
+   "lean": [
+    "ScholiumC.colimit_universal_property",
+    "ScholiumC.DirectedStageSystem.directed_colimit_universal_property"
+   ],
+   "note": "The proto-symbolic carrier is now the quotient of the coproduct of a concrete Nat-directed stage tower by eventual compatibility; genuinely ordinal indexing and the source category catS remain abstracted."
+  },
+  {
+   "atlas_id": "lemma:bk1_universality_of_proto_symbolic_space",
+   "coverage": "conditional",
+   "lean": [
+    "ScholiumC.colimit_universal_property",
+    "ScholiumC.DirectedStageSystem.directed_colimit_universal_property"
+   ],
+   "note": "Existence and uniqueness of the mediating morphism is proved both for a general quotient and for cocones over an explicit Nat-directed diagram with lawful transition maps; ordinal indexing and catS remain abstracted."
+  },
+  {
+   "atlas_id": "definition:bk1_directed_system_of_emergence",
+   "coverage": "proved-kernel",
+   "lean": [
+    "ScholiumC.DirectedStageSystem.injection_transition",
+    "ScholiumC.DirectedStageSystem.directed_colimit_universal_property"
+   ],
+   "note": "A Nat-directed system explicitly records stage carriers, transition maps, and their identity/composition laws; transition images are identified in the colimit and every compatible cocone has a unique mediator."
+  },
+  {
+   "atlas_id": "proposition:bk1_observer_relative_bounded_approximation",
+   "coverage": "conditional",
+   "lean": [
+    "ScholiumC.exists_bounded_approx"
+   ],
+   "note": "Existence holds given K kills the zero vector and eps is pointwise nonnegative; Phi = id witnesses it. Honesty gap: this is exactly the trivial case the source's 'non-trivial' qualifier excludes."
+  },
+  {
+   "atlas_id": "definition:bk1_effective_horizon_signature",
+   "coverage": "proved-kernel",
+   "lean": [
+    "ScholiumC.effectiveSignature_full",
+    "ScholiumC.effectiveSignature_empty"
+   ],
+   "note": "Modeled on a single generative/dissipative flux pair (G, C) rather than existential quantification over multiple horizon components; the integral definitions of G_O, C_O themselves are not modeled, only the resulting sign predicate."
+  },
+  {
+   "atlas_id": "theorem:bk1_dual_horizon_necessity_theorem",
+   "coverage": "conditional",
+   "lean": [
+    "ScholiumC.dualHorizonBinding_both_pos"
+   ],
+   "note": "Only the converse/binding, coupled-case direction is modeled (product of fluxes above threshold forces both signs present); the necessity direction and the general (non-binding) case are not modeled."
+  },
+  {
+   "atlas_id": "definition:bk1_bounded_reflexive_emergence",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumC.dualHorizonBinding_both_pos"
+   ],
+   "note": "Only the 'binding special case' clause (Delta Phi_O = G_O(H_G) C_O(H_D)) is modeled as a scalar product-threshold fact; the general observer-resolved free-energy criterion is not."
+  },
+  {
+   "atlas_id": "lemma:bk1_horizon_characterization",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumC.dualHorizonBinding_both_pos"
+   ],
+   "note": "Only clause 2's stabilization-flux conclusion (C_O(H_D) > 0) is captured, via the shared binding-product fact; clause 1's divergence condition nabla.D > 0 and clause 3's containment-domain definition are not modeled (require manifold divergence)."
+  },
+  {
+   "atlas_id": "corollary:bk1_horizon_duality_principle",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumC.dualHorizonBinding_both_pos"
+   ],
+   "note": "The 'opposing horizon principles both present' conclusion is captured by the same binding-product fact; the elimination-argument narrative and 'no simpler configuration' claim are not modeled."
+  },
+  {
+   "atlas_id": "theorem:bk1_constitutive_bootstrap",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumC.idempotent_image_eq_fixedPoints"
+   ],
+   "note": "Only the proof's internal fixed-point sublemma (stabilized image of R_stab lies in, in fact equals, Fix(R_stab)) is modeled; the maximal self-reflective substructure and the (N, delta^n, epsilon) observer-extraction triple are not."
+  },
+  {
+   "atlas_id": "definition:bk1_symbolic_manifold",
+   "coverage": "conditional",
+   "lean": [
+    "ScholiumC.consistent_unique"
+   ],
+   "note": "Re-read via the FracturedAtlas license: existence of 'the' metric is Atlas.consistent_of_glued (given Glued + PairCovers); this file adds the uniqueness half. The manifold's smooth structure and dimension n >= 2 are not modeled."
+  },
+  {
+   "atlas_id": "theorem:bk1_quadratic_structure_necessity",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumC.crossTerm_ne_zero_exists"
+   ],
+   "note": "crossTerm is a discrete finite-difference surrogate for the mixed second derivative D_xi D_chi U(0,0), not the derivative itself; the local-coordinate Taylor expansion and the O(||.||^3) remainder are not modeled."
+  },
+  {
+   "atlas_id": "corollary:bk1_linear_insufficiency",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumC.crossTerm_separable_eq_zero"
+   ],
+   "note": "Only the algebraic fact that additively separable updates have zero cross-difference is modeled; the narrative conclusion 'linear systems reduce to superposed independent modes' is not itself a formal claim here."
+  },
+  {
+   "atlas_id": "definition:bk1_symbolic_coherence_velocity",
+   "coverage": "proved-kernel",
+   "lean": [
+    "ScholiumC.le_coherenceVelocity"
+   ],
+   "note": "Modeled directly as sSup of a set of reals; the coherence-field space M_coh and the local gradient construction nabla C on the symbolic manifold are not modeled, only the resulting supremum's upper-bound property."
+  },
+  {
+   "atlas_id": "definition:bk1_newtonian_category_error",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumC.exists_inaccessible_of_not_surjective"
+   ],
+   "note": "Only the access-function clause (alpha(O) properly contained in O, read as non-surjectivity) is modeled, yielding an inaccessible state; the manifold-smoothness/drift-non-constructibility conclusion is not."
+  },
+  {
+   "atlas_id": "axiom:bk1_symbolic_smoothness",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumD.DifferentiationThreshold.eventually_below_threshold"
+   ],
+   "note": "Convergent-Limit and Epistemic-Emergence clauses only, as a real-sequence threshold law; observable differentiation, chart compatibility, and the structural limit M itself are not modeled."
+  },
+  {
+   "atlas_id": "definition:bk1_emergence_operator",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumD.emergenceOperator_exists"
+   ],
+   "note": "existence of a complexity-minimizing element of a nonempty finite candidate set of expanded membranes; the membrane-expansion poset and complexity functional itself are not modeled."
+  },
+  {
+   "atlas_id": "lemma:bk1_coherence_of_proto_drift_fields",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumD.CommutatorErrorBound.err_tendsto_zero"
+   ],
+   "note": "the commutator-error-to-zero step of the proof, as a squeeze theorem for a nonnegative sequence dominated by a vanishing bound; the chart representations and transition maps are not modeled."
+  },
+  {
+   "atlas_id": "lemma:bk1_existence_of_metric",
+   "coverage": "conditional",
+   "lean": [
+    "ScholiumD.combinedForm_pos_of_nondegenerate",
+    "ScholiumD.combinedForm_nonneg",
+    "ScholiumD.existence_of_metric_from_gluing"
+   ],
+   "note": "positive-definiteness of the combined R/D form kept as a self-contained normed-space fact (no manifold); chart-gluing to a single global metric re-read over FracturedAtlas with Glued C as a named hypothesis."
+  },
+  {
+   "atlas_id": "definition:bk1_symbolic_hamiltonian",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumD.SymbolicHamiltonianFirstTerm.pos"
+   ],
+   "note": "only the regularized first term kappa/(||D||_g + eps); the trace/linearization second term is not modeled since its sign is unconstrained by the source."
+  },
+  {
+   "atlas_id": "lemma:bk1_well_posedness_of_symbolic_hamiltonian",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumD.SymbolicHamiltonianFirstTerm.pos"
+   ],
+   "note": "well-posedness of the first term's denominator only (never zero given eps>0); smoothness on M is not modeled."
+  },
+  {
+   "atlas_id": "theorem:bk1_h_theorem_for_symbolic_evolution",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumD.FreeEnergyDescent.antitone",
+    "ScholiumD.FreeEnergyDescent.le_initial",
+    "ScholiumD.FreeEnergyDescent.const_of_eq"
+   ],
+   "note": "discrete telescoping/rigidity skeleton (dF/ds <= 0 with equality-only-at-equilibrium, as a step sequence); the Fokker-Planck evolution and integration-by-parts derivation producing the monotonicity are not modeled."
+  },
+  {
+   "atlas_id": "definition:bk1_symbolic_phase_transitions",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumD.exists_critical_coupling"
+   ],
+   "note": "existence of a critical crossing value via IVT for a continuous straddling coupling function; non-analyticity of the partition function is not modeled."
+  },
+  {
+   "atlas_id": "theorem:bk1_realization_of_symbolic_phase_transitions",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumD.exists_critical_coupling"
+   ],
+   "note": "the existence-of-critical-beta_c content only, via IVT; the non-analyticity / curvature-analogy content is not modeled."
+  },
+  {
+   "atlas_id": "theorem:bk1_conditional_genericity_of_symbolic_phase_transitions",
+   "coverage": "conditional",
+   "lean": [
+    "ScholiumD.exists_critical_coupling"
+   ],
+   "note": "hypothesis (H2) (coupling-range straddle) is exactly the IVT hypothesis; (H1) effective dimensionality and (H3) transversality are not modeled, and monotonicity of lambda is dropped as unneeded rather than modeled."
+  },
+  {
+   "atlas_id": "definition:bk1_certified_type_preserving_symbolic_transport",
+   "coverage": "definition",
+   "lean": [
+    "ScholiumD.TransportLoss.exact_supportsDependency"
+   ],
+   "note": "only the four-level loss taxonomy (field ell) is modeled as an explicit finite type; the transported-occurrence map T, signature sigma, and structural role rho are not modeled."
+  },
+  {
+   "atlas_id": "proposition:bk1_certified_transport_prevents_equivocation",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumD.TransportLoss.exact_supportsDependency",
+    "ScholiumD.TransportLoss.quotient_supportsDependency",
+    "ScholiumD.TransportLoss.projective_supportsDependency",
+    "ScholiumD.TransportLoss.interpretive_not_supportsDependency"
+   ],
+   "note": "the licensing rule only (which loss levels may support a theorem dependency); the equivocation-detection claim about a downstream argument's symbol usage is not modeled."
+  },
+  {
+   "atlas_id": "proposition:bk1_nonvacuity_of_certified_transport",
+   "coverage": "proved-kernel",
+   "lean": [
+    "ScholiumD.TransportLoss.nonempty",
+    "ScholiumD.TransportLoss.exact_ne_projective"
+   ],
+   "note": "nonemptiness plus an explicit distinct exact/projective witness, as a finite countermodel over the 4-element TransportLoss type."
+  },
+  {
+   "atlas_id": "axiom:bk1_semantic_non_integrability",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Atlas.path_dependent_iff_noncommuting",
+    "Atlas.semantic_non_integrability_witness"
+   ],
+   "note": "The equivalently clause proved as an iff with a Boolean witness; the manifold framing is interpretation."
+  },
+  {
+   "atlas_id": "definition:bk1_local_semantic_independence",
+   "coverage": "definition",
+   "lean": [
+    "Atlas.path_dependent_iff_noncommuting"
+   ],
+   "note": "Independence = commuting contextual updates."
+  },
+  {
+   "atlas_id": "lemma:bk1_curvature_semantic_holonomy",
+   "coverage": "conditional",
+   "lean": [
+    "Atlas.holonomy_eps_squared",
+    "Atlas.holonomy_zero_iff_commute"
+   ],
+   "note": "Exact eps-squared route residue in the linear-transport model; parallel transport on genuine manifolds stays open."
+  },
+  {
+   "atlas_id": "definition:bk1_symbolic_riemann_tensor",
+   "coverage": "partial",
+   "lean": [
+    "Atlas.holonomy_eps_squared",
+    "Atlas.curvature_witness"
+   ],
+   "note": "Discrete curvature as the commutator loop defect with a concrete nonzero witness; the Riemannian tensor stays open."
+  },
+  {
+   "atlas_id": "corollary:bk1_non_euclidean_necessity",
+   "coverage": "conditional",
+   "lean": [
+    "Atlas.non_euclidean_necessity"
+   ],
+   "note": "Noncommuting transports force nonzero curvature at every scale; consumed premise is exactly the non-integrability axiom."
+  },
+  {
+   "atlas_id": "corollary:bk1_necessity_of_non_euclidean_symbolic_space",
+   "coverage": "conditional",
+   "lean": [
+    "Atlas.non_euclidean_necessity"
+   ],
+   "note": "Duplicate anchor of the necessity corollary; same kernel."
+  },
+  {
+   "atlas_id": "axiom:bk1_local_charitability",
+   "coverage": "conditional",
+   "lean": [
+    "Atlas.manifold_emergence"
+   ],
+   "note": "Chartability enters as the ResolutionTower structure; homeomorphism content open."
+  },
+  {
+   "atlas_id": "axiom:bk1_smooth_convergence",
+   "coverage": "conditional",
+   "lean": [
+    "Atlas.tower_glues"
+   ],
+   "note": "Pointwise convergence + vanishing defect; C-infinity topology open."
+  },
+  {
+   "atlas_id": "axiom:bk1_topological_regularity",
+   "coverage": "partial",
+   "lean": [
+    "Atlas.manifold_emergence"
+   ],
+   "note": "Pair-covering stand-in; Hausdorff/paracompactness unmodeled, named."
+  },
+  {
+   "atlas_id": "theorem:bk1_manifold_emergence",
+   "coverage": "conditional",
+   "lean": [
+    "Atlas.manifold_emergence",
+    "Atlas.tower_glues",
+    "Atlas.fracture_stops_emergence"
+   ],
+   "note": "Existence + uniqueness of the emergent geometry from vanishing defects, with the persisting-defect converse; smoothness-as-C-infinity open."
+  },
+  {
+   "atlas_id": "definition:bk1_symbolic_flow",
+   "coverage": "definition",
+   "lean": [
+    "ScholiumDyn.flow_semigroup"
+   ],
+   "note": "The discrete flow with the semigroup law; the ODE flow stays open."
+  },
+  {
+   "atlas_id": "lemma:bk1_existence_and_uniqueness_of_flow",
+   "coverage": "conditional",
+   "lean": [
+    "ScholiumDyn.flow_unique"
+   ],
+   "note": "Discrete existence-and-uniqueness by induction; the smooth fundamental theorem stays open."
+  },
+  {
+   "atlas_id": "definition:bk1_resolution_cost",
+   "coverage": "proved-kernel",
+   "lean": [
+    "ScholiumDyn.resCost_triangle",
+    "ScholiumDyn.resCost_symm",
+    "ScholiumDyn.resCost_self"
+   ],
+   "note": "The path-infimum is a pseudometric: every law proved of the infimum."
+  },
+  {
+   "atlas_id": "definition:bk1_symbolic_distance",
+   "coverage": "definition",
+   "lean": [
+    "ScholiumDyn.resCost_symm"
+   ],
+   "note": "Symbolic distance as the path-infimum; Riemannian geodesics open."
+  },
+  {
+   "atlas_id": "lemma:bk1_completeness_of_symbolic_distance",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumDyn.floor_complete"
+   ],
+   "note": "Floor completeness (Cauchy sequences eventually constant); Hopf-Rinow open."
+  },
+  {
+   "atlas_id": "definition:bk1_symbolic_action_functional",
+   "coverage": "definition",
+   "lean": [
+    "ScholiumDyn.action_nonneg"
+   ],
+   "note": "Discrete Onsager-Machlup action."
+  },
+  {
+   "atlas_id": "theorem:bk1_princple_of_least_action",
+   "coverage": "conditional",
+   "lean": [
+    "ScholiumDyn.least_action_iff_evolution"
+   ],
+   "note": "Exact discrete form: dynamics = zero-action paths = the global minimum; MSR open."
+  },
+  {
+   "atlas_id": "definition:bk1_reflexive_update_map",
+   "coverage": "definition",
+   "lean": [
+    "ScholiumDyn.linear_has_fixed_point"
+   ],
+   "note": "Definition row; self-representation clause interpretive."
+  },
+  {
+   "atlas_id": "proposition:bk1_limitation_linear_reflexive_maps",
+   "coverage": "proved-kernel",
+   "lean": [
+    "ScholiumDyn.linear_has_fixed_point",
+    "ScholiumDyn.linear_fixed_points_closed",
+    "ScholiumDyn.affine_escapes_fixed_points"
+   ],
+   "note": "Linear updates cannot clear or bend their fixed locus; an affine update can have none."
+  },
+  {
+   "atlas_id": "definition:bk1_paradox_triggered_emergence",
+   "coverage": "conditional",
+   "lean": [
+    "ScholiumDyn.paradox_unresolvable_within",
+    "ScholiumDyn.extension_resolves"
+   ],
+   "note": "Both clauses: unresolvable within, resolvable in the extension - constructive."
+  },
+  {
+   "atlas_id": "lemma:bk1_paradoxical_symmetry_breaking",
+   "coverage": "proved-kernel",
+   "lean": [
+    "ScholiumDyn.resolution_breaks_symmetry"
+   ],
+   "note": "Resolution and swap-invariance are incompatible: the symmetry must break."
+  },
+  {
+   "atlas_id": "lemma:bk1_contradiction_resolution_principle",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumDyn.extension_resolves"
+   ],
+   "note": "Minimal-extension existence kernel; intensity budgets open."
+  },
+  {
+   "atlas_id": "definition:bk1_shared_boundary_paradox",
+   "coverage": "definition",
+   "lean": [
+    "ForcingKernel: SquareDefect.sharedBoundary / FrameExpansion (Witness.lean)"
+   ],
+   "note": "Already formalized in the witness kernel: the co-detected obstruction as bridge datum, sha-bound there."
+  },
+  {
+   "atlas_id": "theorem:bk1_shared_paradox_bridge_datum",
+   "coverage": "conditional",
+   "lean": [
+    "ForcingKernel: ttie_boundary_agreement (Spine.lean)"
+   ],
+   "note": "The deployed expansion theorem: one shared certificate, no observer identification - proved in the kernel packet."
+  },
+  {
+   "atlas_id": "lemma:bk1_horizon_crossing_conservation",
+   "coverage": "proved-kernel",
+   "lean": [
+    "ScholiumHzn.crossing_conservation"
+   ],
+   "note": "Finite exact conservation; manifold integrals open."
+  },
+  {
+   "atlas_id": "definition:bk1_horizon_crossing_operation",
+   "coverage": "definition",
+   "lean": [
+    "ScholiumHzn.crossing_conservation"
+   ],
+   "note": "Crossing as stochastic transport into the complement."
+  },
+  {
+   "atlas_id": "theorem:bk1_emergence_of_drift_field",
+   "coverage": "conditional",
+   "lean": [
+    "ScholiumHzn.drift_field_unique"
+   ],
+   "note": "Uniqueness of the stabilized limit; existence = the convergence hypothesis; smoothness/colimit open."
+  },
+  {
+   "atlas_id": "definition:bk1_proto_drift_field",
+   "coverage": "definition",
+   "lean": [
+    "ScholiumHzn.drift_field_unique"
+   ],
+   "note": "Stage fields as converging tower data."
+  },
+  {
+   "atlas_id": "axiom:bk1_dual_horizon_postulate",
+   "coverage": "conditional",
+   "lean": [
+    "AxiomataPrima.two_channel_sustained",
+    "AxiomataPrima.no_drift_no_novelty",
+    "AxiomataPrima.pure_drift_dissolves"
+   ],
+   "note": "Cognition at the intersection: both channels jointly sustain, each alone fails; curvature signs interpretive."
+  },
+  {
+   "atlas_id": "theorem:bk1_fundamental_relation_fokker_plank_equation",
+   "coverage": "partial",
+   "lean": [
+    "Book2.evolve_conserves",
+    "Book2H.h_theorem"
+   ],
+   "note": "Discrete skeleton with conservation and the H-theorem; the manifold PDE open."
+  },
+  {
+   "atlas_id": "definition:bk1_symbolic_probabilty_density",
+   "coverage": "definition",
+   "lean": [
+    "Book2.gibbs_isDensity"
+   ],
+   "note": "Finite density form."
+  },
+  {
+   "atlas_id": "definition:bk1_symbolic_entropy",
+   "coverage": "definition",
+   "lean": [
+    "Book2.entropy_nonneg"
+   ],
+   "note": "Finite entropy form."
+  },
+  {
+   "atlas_id": "theorem:bk1_symbolic_emergence_and_curvature",
+   "coverage": "conditional",
+   "lean": [
+    "Atlas.path_dependent_iff_noncommuting",
+    "Atlas.non_euclidean_necessity"
+   ],
+   "note": "The iff at transport level: route-dependent meaning iff nonzero commutator; Riemannian form open."
+  },
+  {
+   "atlas_id": "definition:bk1_self_regulating_mapping_function_srmf",
+   "coverage": "definition",
+   "lean": [
+    "SRMF.turn_closes_iff"
+   ],
+   "note": "The SRMF revolution structure with the closure dichotomy; the full operator pipeline interpretive."
+  },
+  {
+   "atlas_id": "definition:bk1_srmf_energy_functional",
+   "coverage": "definition",
+   "lean": [
+    "SRMF.closure_iff_no_work"
+   ],
+   "note": "The Godel-safe cycle potential as the energy functional kernel; the appB form is separately bound."
+  },
+  {
+   "atlas_id": "proposition:bk1_bridge_to_geometry",
+   "coverage": "proved-kernel",
+   "lean": [
+    "ScholiumBridge.coupling_is_metric"
+   ],
+   "note": "Symmetric coupling = symmetric bilinear form; the manifold metric stays open."
+  },
+  {
+   "atlas_id": "corollary:bk1_dimensional_bounds_emergence",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumBridge.nonzero_curvature_has_active_mode"
+   ],
+   "note": "Nonzero curvature has an active mode (complexity >= 1); the exact rank bound stays open."
+  },
+  {
+   "atlas_id": "proposition:bk1_curvature_semantic_entanglement",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Atlas.holonomy_zero_iff_commute"
+   ],
+   "note": "Curvature vanishes iff meanings are locally independent - exactly the flatness-iff-commuting theorem."
+  },
+  {
+   "atlas_id": "corollary:bk1_curvature_projection_residue",
+   "coverage": "conditional",
+   "lean": [
+    "Atlas.non_euclidean_necessity"
+   ],
+   "note": "Nonzero curvature forces a frame-artifact residue - the non-Euclidean necessity kernel."
+  },
+  {
+   "atlas_id": "theorem:bk1_sructurual_correspondence",
+   "coverage": "conditional",
+   "lean": [
+    "Book2.gibbs_minimizes",
+    "Book2H.h_theorem"
+   ],
+   "note": "The (M,g,D,R) -> (rho,S,H,F,beta) dictionary: the Book2 discrete-thermodynamics kernels; the full analogy stays interpretive."
+  },
+  {
+   "atlas_id": "axiom:bk1_pre_geometric_nature",
+   "coverage": "conditional",
+   "lean": [
+    "AxiomataPrima.two_channel_sustained",
+    "Atlas.manifold_emergence"
+   ],
+   "note": "Drift/reflection as pre-geometric operators (Existence-is-not/drift-as-origin) whose smooth limit is the AtlasTower emergence kernel."
+  },
+  {
+   "atlas_id": "proposition:bk1_the_operators_lambda_and_lambda",
+   "coverage": "conditional",
+   "lean": [
+    "AxiomataPrima.no_drift_no_novelty",
+    "AxiomataPrima.pure_drift_dissolves"
+   ],
+   "note": "D_lambda, R_lambda as bounded symbolic approximations: their single-channel failure modes are certified; the bounded-approximation predicate stays interpretive."
+  },
+  {
+   "atlas_id": "axiom:bk1_observable_gradation_of_pre_geometric_operations",
+   "coverage": "conditional",
+   "lean": [
+    "Atlas.tower_glues"
+   ],
+   "note": "Observable continuous variation of D_lambda/R_lambda in the stage parameter: the tower-convergence kernel; the observer-continuity predicate stays interpretive."
+  },
+  {
+   "atlas_id": "theorem:bk1_dual_horizon_unification_principle",
+   "coverage": "conditional",
+   "lean": [
+    "Atlas.holonomy_eps_squared",
+    "AxiomataPrima.two_channel_sustained"
+   ],
+   "note": "Emergence = horizon-crossing reflexivity: nonzero commutator curvature and the two-channel sustain; the full field recasting stays interpretive."
+  },
+  {
+   "atlas_id": "axiom:bk1_symbolic_primacy",
+   "coverage": "conditional",
+   "lean": [
+    "Atlas.non_euclidean_necessity"
+   ],
+   "note": "Physical law and symbolic emergence as projections of one reflexive manifold: the curvature-necessity kernel grounds the shared structure; the primacy claim stays interpretive."
+  },
+  {
+   "atlas_id": "theorem:bk1_unified_field_classification",
+   "coverage": "conditional",
+   "lean": [
+    "SRMF.turn_closes_iff",
+    "SRMF.closure_iff_no_work"
+   ],
+   "note": "All emergent fields as SRMF instances under boundary conditions: the SRMF/Godel-safe-cycle kernel; the classification-by-symmetry stays interpretive."
+  }
+ ]
+}

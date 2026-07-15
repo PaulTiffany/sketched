@@ -1,0 +1,798 @@
+{
+ "schema": "sketched.book5-lean-map.v1",
+ "source": "Principia Symbolica Book 5",
+ "boundary": "Mappings certify only the stated formal kernel. Conditional and partial rows do not promote the full prose statement to a Lean theorem.",
+ "entries": [
+  {
+   "atlas_id": "definition:bk5_symbolic_free_energy_und",
+   "coverage": "definition",
+   "lean": [
+    "Book5.viable_iff_positive_free_energy"
+   ],
+   "note": "Free energy and viability definitions."
+  },
+  {
+   "atlas_id": "theorem:bk5_symbolic_entropy_production",
+   "coverage": "conditional",
+   "lean": [
+    "Book5.entropy_rate_nonnegative",
+    "Book5.entropy_rate_eq_zero_iff_fixed"
+   ],
+   "note": "Requires the named second-law comparison and fixed-point calibration."
+  },
+  {
+   "atlas_id": "axiom:bk5_energy_conservation",
+   "coverage": "conditional",
+   "lean": [
+    "Book5.energy_rate_eq_neg_entropic_rate"
+   ],
+   "note": "The closed balance law is structure data, not a global Lean axiom."
+  },
+  {
+   "atlas_id": "axiom:bk5_positive_free_energy",
+   "coverage": "conditional",
+   "lean": [
+    "Book5.persists_iff_positive_throughout"
+   ],
+   "note": "Persistence remains an explicit bridge law."
+  },
+  {
+   "atlas_id": "theorem:bk5_covenant_stability_theorem",
+   "coverage": "conditional",
+   "lean": [
+    "Book5.covenant_stable_iff_threshold"
+   ],
+   "note": "Proves the quotient threshold form only for positive minimum coupling."
+  },
+  {
+   "atlas_id": "definition:bk5_balanced_two_step_memory_closure",
+   "coverage": "proved-kernel",
+   "lean": [
+    "closureMatrix_eigen_gold",
+    "balanced_memory_tendsto_gold"
+   ],
+   "note": "Matrix and asymptotic ratio."
+  },
+  {
+   "atlas_id": "lemma:bk5_balanced_observer_normalization",
+   "coverage": "conditional",
+   "lean": [
+    "Book5.balanced_observer_weights_unique"
+   ],
+   "note": "Normalization and equal calibration uniquely select unit weights."
+  },
+  {
+   "atlas_id": "theorem:bk5_golden_ratio_spectral_invariant",
+   "coverage": "proved-kernel",
+   "lean": [
+    "closureMatrix_eigen_gold",
+    "gold_unique_positive_root"
+   ],
+   "note": "Arithmetic spectral kernel; commutator interpretation is not certified."
+  },
+  {
+   "atlas_id": "definition:bk5_symbolic_regime_detection",
+   "coverage": "proved-kernel",
+   "lean": [
+    "balanced_memory_tendsto_gold"
+   ],
+   "note": "Balanced Fibonacci memory ratio prediction."
+  },
+  {
+   "atlas_id": "theorem:bk5_sqrt2_maximal_fracture",
+   "coverage": "proved-kernel",
+   "lean": [
+    "sqrt2_first_fracture",
+    "diag_fracture_ratio"
+   ],
+   "note": "Integer two-support lower bound and elementary diagonal ratio."
+  },
+  {
+   "atlas_id": "theorem:bk5_lp_norm_fracture_hierarchy",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5.lpCostOn_le_axisCostOn",
+    "Book5.axisCostOn_le_card_rpow_mul_lpCostOn",
+    "Book5.sharp_norm_bound_iff_equal_magnitudes",
+    "Book5.infinity_ratio_bounds",
+    "Book5.infinity_sharp_iff_equal_magnitudes",
+    "Book5.diagonal_l1_l2_ratio"
+   ],
+   "note": "Complete finite-support kernel: lower and cardinality upper bounds, finite p>1 and Linfinity equality characterizations, and the elementary diagonal values."
+  },
+  {
+   "atlas_id": "proposition:bk5_complementary_constants",
+   "coverage": "proved-kernel",
+   "lean": [
+    "constants_complementary"
+   ],
+   "note": "Algebraic separation of phi and sqrt(2)."
+  },
+  {
+   "atlas_id": "theorem:bk5_fundamental_dichotomy",
+   "coverage": "partial",
+   "lean": [
+    "constants_complementary"
+   ],
+   "note": "Arithmetic separation kernel only; the resonance-vs-fracture mechanism reading stays authored prose."
+  },
+  {
+   "atlas_id": "theorem:bk5_symbolic_norm_spectrum",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5.euclidean_balanced_product_spectrum",
+    "Book5.elementary_spectrum_values",
+    "Book5.balancedSpectrum_memory",
+    "Book5.norm_and_memory_coordinates_independent"
+   ],
+   "note": "The norm and memory spectra are explicit independent product coordinates; sqrt(2) and phi coexist without identification."
+  },
+  {
+   "atlas_id": "proposition:bk5_complete_symbolic_regime_classification",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5.elementary_spectrum_values",
+    "Book5.norm_and_memory_coordinates_independent",
+    "Book5.changing_norm_preserves_balanced_memory"
+   ],
+   "note": "Transition-level diagnostic classification with independently varying norm and memory axes; not an essential identity of a manifold or agent."
+  },
+  {
+   "atlas_id": "theorem:bk5_grand_unified_symbolic_geometric",
+   "coverage": "partial",
+   "lean": [
+    "Book5.same_memory_does_not_fix_norm",
+    "Book5.same_norm_does_not_fix_memory",
+    "closureMatrix_eigen_gold",
+    "Book5.ObserverSpectralDecomposition.spectral_decomposition_kernel"
+   ],
+   "note": "Typed product coordinates and their independence, not a universal manifold semantics."
+  },
+  {
+   "atlas_id": "definition:bk5_two_way_street_tensor",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5.reciprocityRate_characteristic",
+    "Book5.reciprocityMatrix_eigen"
+   ],
+   "note": "Weighted companion matrix and positive eigenpair."
+  },
+  {
+   "atlas_id": "theorem:bk5_golden_rule_reciprocity",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5.reciprocityRate_one",
+    "Book5.reciprocityRate_subgolden",
+    "Book5.reciprocityRate_supergolden"
+   ],
+   "note": "Spectral rate regimes only; ethical interpretation remains authored prose."
+  },
+  {
+   "atlas_id": "definition:bk5_symbolic_covenant",
+   "coverage": "definition",
+   "lean": [
+    "Book5.dual_dual",
+    "Book5.dual_couplingStrength"
+   ],
+   "note": "Covenant tuple as data with sign-carrying stability; the MAD dual is an involution that flips stability but not coupling strength."
+  },
+  {
+   "atlas_id": "definition:bk5_viability_domain",
+   "coverage": "definition",
+   "lean": [
+    "Book5.viable_iff_positive_free_energy"
+   ],
+   "note": "The viability domain is definitionally the positive-free-energy region."
+  },
+  {
+   "atlas_id": "definition:bk5_mutually_assured_progress",
+   "coverage": "definition",
+   "lean": [
+    "Book5.map_eventually_viable"
+   ],
+   "note": "MAP as positive-limit condition on the joint surplus sequence; membrane semantics not certified."
+  },
+  {
+   "atlas_id": "theorem:bk5_map_equilibrium",
+   "coverage": "conditional",
+   "lean": [
+    "Book5.map_eventually_viable",
+    "Book5.map_joint_eventually_viable"
+   ],
+   "note": "Convergence kernel only: positive limit forces joint indefinite viability; the coupling-threshold hypothesis enters via the contraction instance."
+  },
+  {
+   "atlas_id": "axiom:bk5_reflective_equilibrium_stability_flux",
+   "coverage": "conditional",
+   "lean": [
+    "Book5.contraction_map"
+   ],
+   "note": "Scalar instance: contractive coupled ratio with positive carrying level yields MAP."
+  },
+  {
+   "atlas_id": "proposition:bk5_map_mad_dichotomy",
+   "coverage": "conditional",
+   "lean": [
+    "Book5.covenant_map_viable",
+    "Book5.covenant_mad_collapse",
+    "Book5.dual_surplus_reflect",
+    "Book5.viable_collapsed_exclusive"
+   ],
+   "note": "Linear exchange model: the sign of stability decides viability vs collapse, and MAD is the exact polarity reflection of MAP."
+  },
+  {
+   "atlas_id": "definition:bk5_map_nash_point",
+   "coverage": "partial",
+   "lean": [
+    "Book5.cooperation_nash",
+    "Book5.defection_nash",
+    "Book5.cooperation_dominates"
+   ],
+   "note": "Assurance-game witness: cooperation and the trap are both Nash, cooperation payoff-dominant; general existence not proved."
+  },
+  {
+   "atlas_id": "theorem:bk5_map_mad_critical_temperature",
+   "coverage": "partial",
+   "lean": [
+    "Book5.spectral_iff_thermal",
+    "Book5.lambdaCrit_mono"
+   ],
+   "note": "Threshold-conversion kernel only; the phase-transition and fixed-point reading is not certified."
+  },
+  {
+   "atlas_id": "proposition:bk5_symbolic_integrability_classes",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5.elementary_spectrum_values",
+    "Book5.support_collapse_forgets_distribution",
+    "Book5.symbolicTorsion_one",
+    "Book5.symbolicTorsion_two_two"
+   ],
+   "note": "Typed transition diagnostics certify axis integrability, Euclidean fracture, and support collapse, including a concrete loss-of-distribution witness."
+  },
+  {
+   "atlas_id": "theorem:bk5_fundamental_norm_fracture",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5.fundamental_norm_fracture_kernel",
+    "Book5.sharp_norm_bound_iff_equal_magnitudes",
+    "Book5.infinity_sharp_iff_equal_magnitudes",
+    "Book5.diagonalDecoherence_pos"
+   ],
+   "note": "Finite-support typed kernel assembling all norm regimes, equality cases, support collapse, diagonal decoherence, and the distinct memory resonance channel."
+  },
+  {
+   "atlas_id": "theorem:bk5_symbolic_torsion_phase_diagram",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5.equalMagnitude_ratio",
+    "Book5.symbolicTorsion_eq_equalMagnitude_ratio_sub_one",
+    "Book5.symbolicTorsion_one",
+    "Book5.symbolicTorsion_two_two",
+    "Book5.symbolicTorsion_mono_exponent",
+    "Book5.symbolicTorsionInfinity_eq_ratio_sub_one",
+    "Book5.symbolicTorsionInfinity_tendsto_atTop"
+   ],
+   "note": "Exact finite-positive-p and Linfinity formulas, special values, monotonicity in positive finite p, and divergence of Linfinity torsion along unbounded support."
+  },
+  {
+   "atlas_id": "proposition:bk5_fractal_dimension_connection",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5.effectiveSupportDimension_eq",
+    "Book5.effectiveSupportDimension_one",
+    "Book5.effectiveSupportDimension_two",
+    "Book5.effectiveSupportDimensionInfinity_eq_two",
+    "Book5.effectiveSupportDimensionInfinity_log_ratio"
+   ],
+   "note": "The logarithmic diagnostic is 2-1/p for finite p on support at least two, with the support-one convention and p=1,2,infinity values certified."
+  },
+  {
+   "atlas_id": "lemma:bk5_shortest_path_representability",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5.shortestGeometric_le_shortestSymbolic",
+    "Book5.symbolicDecoherence_pos_iff",
+    "Book5.symbolicDecoherence_eq_zero_iff_has_symbolic_geodesic",
+    "Book5.diagonal_symbolic_longer"
+   ],
+   "note": "Finite admissible-path kernel with symbolic candidates explicitly included in geometric candidates; proves the exact minimum and representability criteria."
+  },
+  {
+   "atlas_id": "corollary:bk5_symbolic_decoherence_theory",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5.symbolicDecoherence_nonneg",
+    "Book5.symbolicDecoherence_eq_zero_iff",
+    "Book5.symbolicDecoherence_eq_zero_iff_has_symbolic_geodesic",
+    "Book5.diagonalDecoherence_formula",
+    "Book5.diagonalDecoherence_pos"
+   ],
+   "note": "For finite path families, decoherence is the nonnegative excess symbolic minimum, vanishing exactly when a symbolic geodesic exists; the diagonal gap is exact."
+  },
+  {
+   "atlas_id": "lemma:bk5_phi_critical_resonant_norm",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5.balanced_memory_resonance_unique",
+    "Book5.balancedSpectrum_memory",
+    "Book5.euclidean_balanced_product_spectrum"
+   ],
+   "note": "Phi is the unique positive balanced-recursion root in the memory coordinate and is proved distinct from the Euclidean norm ratio."
+  },
+  {
+   "atlas_id": "corollary:bk5_phi_centrality_principle",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5.balanced_memory_converges_to_spectrum_memory",
+    "Book5.balanced_memory_resonance_unique",
+    "Book5.euclidean_balanced_product_spectrum"
+   ],
+   "note": "Balanced memory ratios converge to the unique phi coordinate, while sqrt(2) remains a distinct metric-fracture coordinate."
+  },
+  {
+   "atlas_id": "theorem:bk5_symbolic_manifold_spectral_decomposition",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5.ObserverSpectralDecomposition.sum_components",
+    "Book5.ObserverSpectralDecomposition.coordinate_representation_unique",
+    "Book5.ObserverSpectralDecomposition.component_is_invariant",
+    "Book5.ObserverSpectralDecomposition.spectral_decomposition_kernel"
+   ],
+   "note": "Given the stated observer-resolved linear equivalence and diagonal evolution law, four-channel reconstruction, uniqueness, and invariance are proved. Existence of such a decomposition is not asserted universally."
+  },
+  {
+   "atlas_id": "theorem:bk5_symbolic_coherence_conservation",
+   "coverage": "conditional",
+   "lean": [
+    "Book5.stabilized_energy_rate_eq_external",
+    "Book5.closed_stabilized_energy_rate_zero",
+    "Book5.stabilized_conservation_iff_closed",
+    "Book5.balance_alone_does_not_force_conservation"
+   ],
+   "note": "Drift/reflection stabilization cancels only its budget channel. Zero energy derivative additionally requires external closure; a compiled countermodel refutes conservation from balance alone."
+  },
+  {
+   "atlas_id": "axiom:bk5_metabolic_persistence",
+   "coverage": "conditional",
+   "lean": [
+    "Book5.metabolic_necessity"
+   ],
+   "note": "Represented as explicit MetabolicPersistenceLaw data, not a Lean axiom or a definitional implication."
+  },
+  {
+   "atlas_id": "proposition:bk5_symbolic_life_criterion",
+   "coverage": "conditional",
+   "lean": [
+    "Book5.symbolic_life_criterion",
+    "Book5.agreement_on_positive_persistence_does_not_supply_life_law"
+   ],
+   "note": "Positive free-energy persistence characterizes life only under a supplied LifeLaw; agreement alone does not manufacture that bridge."
+  },
+  {
+   "atlas_id": "corollary:bk5_metabolic_necessity",
+   "coverage": "conditional",
+   "lean": [
+    "Book5.positive_persistence_has_metabolism"
+   ],
+   "note": "The corollary composes LifeLaw and MetabolicPersistenceLaw explicitly."
+  },
+  {
+   "atlas_id": "definition:bk5_reflective_coupling_tens",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Residue.resilience_gt_one_iff",
+    "Book5Residue.coupling_stability_gt_one_iff"
+   ],
+   "note": "\u2016R_AB\u2016 is consumed only as a free scalar parameter inside the resilience/coupling threshold laws; the tensor/operator-norm structure itself is not modeled."
+  },
+  {
+   "atlas_id": "axiom:bk5_mutual_metabolit_viability",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Residue.viability_union_mono_chain"
+   ],
+   "note": "models the step-wise nondecreasing-union law as a hypothesis field and proves it chains over arbitrary m\u2264n; does not derive the law from MAP membership itself."
+  },
+  {
+   "atlas_id": "axiom:bk5_covenant_transitivity",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Residue.covenant_transitivity_propagates"
+   ],
+   "note": "proves resilience-floor propagation through the derived covenant given the stated nonneg-loss hypothesis, rather than deriving \u0394_trans\u22650 itself."
+  },
+  {
+   "atlas_id": "definition:bk5_covenant_resilience_index",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5Residue.resilience_gt_one_iff"
+   ],
+   "note": "the resilience>1 threshold is exactly the stated iff-form, given the denominator positive."
+  },
+  {
+   "atlas_id": "lemma:bk5_multi_membrane_map_extension",
+   "coverage": "partial",
+   "lean": [
+    "Book5Residue.min_resilience_implies_all_edges_resilient"
+   ],
+   "note": "captures the combinatorial min-threshold-propagation step (min \u03c1>1 \u27f9 every edge \u03c1>1); does not derive the asymptotic liminf F_s>0 conclusion, which needs an actual dynamical recursion not supplied by the anchor."
+  },
+  {
+   "atlas_id": "corollary:bk5_map_evolutionary_advantag",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Residue.weighted_strict_dominance",
+    "Book5Residue.ess_invasion_threshold"
+   ],
+   "note": "the selective-advantage shape is captured by finite weighted dominance and the invasion threshold; the replicator-dynamics time-derivative itself is not modeled."
+  },
+  {
+   "atlas_id": "definition:bk5_reflective_drift_coupling_tensor",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Residue.coupling_stability_gt_one_iff"
+   ],
+   "note": "the tensor's scalar spectral-radius reading feeds coupling_stability_gt_one_iff as the free parameter normR; the operator itself is not constructed."
+  },
+  {
+   "atlas_id": "definition:bk5_spectral_radius_of_coupl",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Residue.coupling_stability_gt_one_iff"
+   ],
+   "note": "same scalar parameter as above; the max-|eigenvalue| definition of the spectral radius is not itself computed."
+  },
+  {
+   "atlas_id": "proposition:bk5_viability_domain_preservation",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Residue.viability_union_mono_chain"
+   ],
+   "note": "the long-horizon chaining content is proved; the probability-1 limit statement is not (no probability space is modeled)."
+  },
+  {
+   "atlas_id": "theorem:bk5_reflective_stability_criterion",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5Residue.reflective_stability_iff"
+   ],
+   "note": "min(a,b) reading as conjunction is exactly lt_min_iff, applied to the criterion's two per-membrane ratios."
+  },
+  {
+   "atlas_id": "definition:bk5_reflective_coupling_stab",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5Residue.coupling_stability_gt_one_iff",
+    "Book5Residue.bifurcation_eq_one_iff"
+   ],
+   "note": "\u039b_AB is defined exactly as couplingStability and its threshold/boundary behavior is proved."
+  },
+  {
+   "atlas_id": "definition:bk5_symbolic_bifurcation_man",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5Residue.bifurcation_eq_one_iff"
+   ],
+   "note": "the \u039b_AB=1 boundary is exactly the stated iff-form."
+  },
+  {
+   "atlas_id": "lemma:bk5_symbolic_divergence_bounds",
+   "coverage": "partial",
+   "lean": [
+    "Book5Residue.map_mad_bounds_eventually_incompatible"
+   ],
+   "note": "proves the MAP log-bound and MAD linear-bound are eventually mutually exclusive (given the MAD rate exceeds the MAP rate); does not cover the decoupling \u221an case or derive the bounds from an actual KL-divergence trajectory."
+  },
+  {
+   "atlas_id": "proposition:bk5_multi_agent_map_mad_classification",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5Residue.covenant_adjacency_trichotomy",
+    "Book5Residue.covenant_adjacency_exclusive"
+   ],
+   "note": "the \u00b11/0 adjacency-matrix case split is an exhaustive, pairwise-exclusive trichotomy on (\u039b,\u03a9), proved directly."
+  },
+  {
+   "atlas_id": "definition:bk5_symbolic_strategy",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Residue.weighted_strict_dominance",
+    "Book5Residue.ess_invasion_threshold"
+   ],
+   "note": "strategies are consumed abstractly as an index type / real payoff values inside the dominance and invasion lemmas, not as the (reflect,transfer,coop-coefficient) tuple itself."
+  },
+  {
+   "atlas_id": "definition:bk5_strategy_space",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Residue.weighted_strict_dominance"
+   ],
+   "note": "\u03a3_MAP is read as the positive-weight support set in the finite weighted-dominance lemma."
+  },
+  {
+   "atlas_id": "definition:bk5_symbolic_fitness",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Residue.weighted_strict_dominance",
+    "Book5Residue.ess_invasion_threshold"
+   ],
+   "note": "\u03a6 is modeled abstractly as real-valued payoff functions a,b,c,d / w; the expectation-over-population definition itself is not constructed from F_s."
+  },
+  {
+   "atlas_id": "definition:bk5_symbolic_ess",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5Residue.ess_invasion_threshold"
+   ],
+   "note": "constructs an explicit \u03b50>0 witnessing the existential in the ESS definition, for the two-point mixture case."
+  },
+  {
+   "atlas_id": "lemma:bk5_map_fitness_advantage",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5Residue.weighted_strict_dominance"
+   ],
+   "note": "instantiates directly: pointwise strict dominance on positive-weight population members gives strict weighted-average dominance."
+  },
+  {
+   "atlas_id": "lemma:bk5_covenant_non_invasibility",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Residue.weighted_strict_dominance"
+   ],
+   "note": "same finite-dominance mechanism; the specific (1-\u03b5)\u03b4+\u03b5\u03b4 mixture reading is captured by ess_invasion_threshold instead, not jointly here."
+  },
+  {
+   "atlas_id": "proposition:bk5_symbolic_ess_via_map_observability_variant",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Residue.ess_invasion_threshold",
+    "Book5Residue.viability_union_mono_chain"
+   ],
+   "note": "stability and non-invasibility conditions are covered by ess_invasion_threshold; viability expansion is covered qualitatively by viability_union_mono_chain; the three are not composed into one theorem."
+  },
+  {
+   "atlas_id": "lemma:bk5_map_population_stability",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Residue.min_resilience_implies_all_edges_resilient"
+   ],
+   "note": "min-threshold-propagation mechanism reused; the margin \u03b4>0 above 1 is not separately modeled (min>1+\u03b4>1 trivially satisfies the >1 hypothesis)."
+  },
+  {
+   "atlas_id": "theorem:bk5_map_as_strong_ess",
+   "coverage": "partial",
+   "lean": [
+    "Book5Residue.ess_invasion_threshold"
+   ],
+   "note": "proves existence of a local \u03b50-neighbourhood of invasion resistance; the anchor's strong-ESS claim is stability for ALL \u03b5\u2208(0,1), which this does not establish."
+  },
+  {
+   "atlas_id": "definition:bk5_symbolic_invasion_barrier",
+   "coverage": "partial",
+   "lean": [
+    "Book5Residue.ess_invasion_threshold"
+   ],
+   "note": "ess_invasion_threshold's \u03b50 is a witness lower bound for the sup defining \u03b2; the supremum itself is not constructed."
+  },
+  {
+   "atlas_id": "lemma:bk5_map_invasion_barrier_strength",
+   "coverage": "partial",
+   "lean": [
+    "Book5Residue.ess_invasion_threshold"
+   ],
+   "note": "same qualitative threshold-existence shape; the specific bound \u03b2\u22651-\u2016d0\u2016/\u2016d\u2016 is not matched or derived."
+  },
+  {
+   "atlas_id": "definition:bk5_process_free_energy",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Residue.MetabolicBudget.complexity_le",
+    "Book5Residue.MetabolicBudget.complexity_le"
+   ],
+   "note": "F_proc's admissibility role is mirrored by the MetabolicBudget structure's cost law; the E_cost/E_eff/C_hint decomposition itself is not modeled."
+  },
+  {
+   "atlas_id": "proposition:bk5_fixed_metabolic_capacity",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5Residue.energy_depletes_in_finite_time"
+   ],
+   "note": "a strictly positive cost overrun above the sustainable maximum drives the accumulated deficit negative in finite time (Archimedean argument), matching the anchor's finite-time exit claim."
+  },
+  {
+   "atlas_id": "definition:bk5_metabolic_capacity_mc_",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Residue.MetabolicBudget.complexity_le",
+    "Book5Residue.energy_depletes_in_finite_time"
+   ],
+   "note": "MC is treated as an opaque nonnegative real parameter; its two alternative characterizations (time-average free energy vs max sustainable drift norm) are not modeled or shown equivalent."
+  },
+  {
+   "atlas_id": "axiom:bk5_metabolically_bounded_reflection",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Residue.max_recursive_depth_bound"
+   ],
+   "note": "the bound B=f(MC) with f nondecreasing is not modeled as a function; instead the geometric-growth consequence for recursion depth is proved directly from a budget hypothesis c0\u00b7k^n\u2264B."
+  },
+  {
+   "atlas_id": "corollary:bk5__metabolically_bounded_reflection_corollary",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5Residue.max_recursive_depth_bound"
+   ],
+   "note": "n \u2264 logb k (B/c0) is proved directly via Real.log monotonicity from the geometric-cost hypothesis."
+  },
+  {
+   "atlas_id": "definition:bk5__operator_viability_set_v",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Residue.MetabolicBudget.complexity_le"
+   ],
+   "note": "the {F_proc<\u03b8_proc} viability-set reading is mirrored by the admissible-complexity bound; the operator space Op(M) itself is not constructed."
+  },
+  {
+   "atlas_id": "definition:bk5_complexity_stability_maintenance",
+   "coverage": "definition",
+   "lean": [
+    "Book5Residue.MetabolicBudget.complexity_le"
+   ],
+   "note": "C, S, E_maint are represented as the structure's C, S, and the derived product form, packaged with the nonnegativity/positivity side-conditions as named fields (no axioms)."
+  },
+  {
+   "atlas_id": "theorem:bk5_complexity_stability_tradeoff",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5Residue.MetabolicBudget.complexity_le"
+   ],
+   "note": "C\u00b7S\u2264\u03b1\u00b7MC rearranges directly to C\u2264\u03b1\u00b7MC/S given S>0."
+  },
+  {
+   "atlas_id": "corollary:bk5_complexity_stability_tradeoff",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5Residue.admissible_complexity_mono"
+   ],
+   "note": "the admissible-complexity bound \u03b1\u00b7MC/S is proved monotone nondecreasing in MC, for fixed \u03b1\u22650,S>0."
+  },
+  {
+   "atlas_id": "corollary:bk5_symbolic_eigenlife",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Residue.closureMatrix_disc_pos"
+   ],
+   "note": "confirms the balanced closure matrix sits on the real-spectrum side of the discriminant trichotomy (consistent with \u03c6 being its real dominant eigenvalue, per Book5.closureMatrix_eigen_gold/gold_unique_positive_root); the subcritical/supercritical renormalization narrative is not modeled."
+  },
+  {
+   "atlas_id": "definition:bk5_map_mad_mas_band",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Residue.quadratic_real_root_pos",
+    "Book5Residue.quadratic_real_root_neg",
+    "Book5Residue.quadratic_no_real_root_of_disc_neg"
+   ],
+   "note": "the discriminant-based real/complex spectral split underlying MAD vs MAP/MAS is proved generically; the specific MAP-vs-MAS distinction (which real eigendirection is dominant) is not captured."
+  },
+  {
+   "atlas_id": "theorem:bk5_map_mad_mas_trichotomy",
+   "coverage": "partial",
+   "lean": [
+    "Book5Residue.quadratic_real_root_pos",
+    "Book5Residue.quadratic_no_real_root_of_disc_neg",
+    "Book5Residue.closureMatrix_disc_pos"
+   ],
+   "note": "proves the MAD (complex, disc<0) vs non-MAD (real, disc\u22650) split and exhibits the closure matrix concretely on the real/MAP side; does not separate MAP from MAS within the real branch."
+  },
+  {
+   "atlas_id": "theorem:bk5_golden_ratio_curvature_scalar",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Residue.balanced_memory_tendsto_gold_scaled"
+   ],
+   "note": "only the constant-rescaled-Fibonacci case of the ratio limit is proved; the anchor's general two-term holonomy/curvature recurrence (arbitrary balanced-closure initial data) is not derived."
+  },
+  {
+   "atlas_id": "proposition:bk5_golden_ratio_thermodynamic_optimum",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5Residue.golden_ratio_thermodynamic_min",
+    "Book5Residue.golden_ratio_thermodynamic_optimum_iff"
+   ],
+   "note": "F_bal is bounded below by F0 and attains F0 exactly at r=\u03c6, for r,\u03b1>0."
+  },
+  {
+   "atlas_id": "definition:bk5_diagonal_transition",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Residue.compression_ratio_R2"
+   ],
+   "note": "the irrational-scaling content of a diagonal transition is captured via the reused \u221a2 compression ratio (and Book5.sqrt2_first_fracture); the decomposability characterization itself is not formalized."
+  },
+  {
+   "atlas_id": "definition:bk5_symbolic_integrability_class",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Residue.l1_ge_l2"
+   ],
+   "note": "only the p=1 vs p=2 norm-domination case is proved concretely; the general \u2113p class I_p for arbitrary p is not constructed."
+  },
+  {
+   "atlas_id": "definition:bk5_symbolic_curvature_control",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5Residue.curvature_control_p2_nonneg",
+    "Book5Residue.l1_ge_l2"
+   ],
+   "note": "\u03ba_2(v)=\u2016v\u20161/\u2016v\u20162-1 \u2265 0 is proved for all finite real vectors."
+  },
+  {
+   "atlas_id": "definition:bk5_symbolic_compression_experiment",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5Residue.compression_ratio_R1",
+    "Book5Residue.compression_ratio_R2",
+    "Book5Residue.l1_eq_card_mul_c"
+   ],
+   "note": "all three predicted ratios R1=1, R2=\u221a2, R\u221e=support-size are proved (R\u221e via the equal-magnitude \u21131 formula)."
+  },
+  {
+   "atlas_id": "definition:bk5_symbolic_curvature_operator_spectrum",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Residue.curvature_control_p2_nonneg"
+   ],
+   "note": "only the scalar factor \u03ba_2(v) is proved nonnegative; the operator v \u21a6 \u03ba_p(v)\u00b7v and its spectrum are not constructed."
+  },
+  {
+   "atlas_id": "proposition:bk5_operator_evolution",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Op.operator_stationary_iff_critical"
+   ],
+   "note": "Stationary iff critical point of F_proc for the descent step; the minimizer/critical gap stays open."
+  },
+  {
+   "atlas_id": "theorem:bk5_operator_convergence",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Op.contraction_flow_converges"
+   ],
+   "note": "SRMF convergence to a fixed point (contraction-Banach); the Wasserstein O(1/t) rate stays open."
+  },
+  {
+   "atlas_id": "lemma:bk5_recursive_flow_convergence",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Op.contraction_flow_unique_fixed_point"
+   ],
+   "note": "The recursive reflective flow converges to a unique stable fixed point."
+  },
+  {
+   "atlas_id": "proposition:bk5_operators_evolve",
+   "coverage": "conditional",
+   "lean": [
+    "Book5Op.contraction_flow_unique_fixed_point"
+   ],
+   "note": "Operators evolve to and rest at the unique viable fixed point."
+  },
+  {
+   "atlas_id": "proposition:bk5_metabolic_capacity_non_decreasing",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5Op.metabolic_capacity_monotone"
+   ],
+   "note": "Metabolic capacity non-decreasing in energy reserves."
+  },
+  {
+   "atlas_id": "corollary:bk5_spectral_radius_optimality",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book5Op.viability_antitone_in_spectral_radius"
+   ],
+   "note": "Viability antitone in spectral radius: minimizing rho maximizes viability."
+  }
+ ]
+}

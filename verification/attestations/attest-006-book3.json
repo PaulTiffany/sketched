@@ -1,0 +1,124 @@
+{
+  "schema": "sketched.anchor-attestation.v1",
+  "id": "attest-006-book3",
+  "paper": "principia_atlas (book3) + forcing_correspondence",
+  "moves": [
+    {
+      "math_id": "definition:bk3_symbolic_membrane",
+      "from": null,
+      "to": "44a3a2a7be9c"
+    },
+    {
+      "math_id": "definition:bk3_membrane_thermodynamics",
+      "from": null,
+      "to": "b20c27c9e66a"
+    },
+    {
+      "math_id": "theorem:bk3_membrane_stability_criteria",
+      "from": null,
+      "to": "f869ea7eeaaa"
+    },
+    {
+      "math_id": "definition:bk3_coupling_map",
+      "from": null,
+      "to": "c397e0cbd01d"
+    },
+    {
+      "math_id": "definition:bk3_induced_coupling_energy",
+      "from": null,
+      "to": "8e5b5b491d40"
+    },
+    {
+      "math_id": "theorem:bk3_couplinginduced_drift_modification",
+      "from": null,
+      "to": "6734619ba48b"
+    },
+    {
+      "math_id": "definition:bk3_symbolic_symbiosis",
+      "from": null,
+      "to": "2e5ad5005440"
+    },
+    {
+      "math_id": "lemma:bk3_symbiotic_stability_conditions",
+      "from": null,
+      "to": "6cd91bae7493"
+    },
+    {
+      "math_id": "definition:bk3_reflexive_encoding",
+      "from": null,
+      "to": "e1c7804b07a1"
+    },
+    {
+      "math_id": "theorem:bk3_cyclic_reflexive_encodings",
+      "from": null,
+      "to": "174c71fe9da8"
+    },
+    {
+      "math_id": "definition:bk3_conceptual_bridge",
+      "from": null,
+      "to": "a719ab358b1e"
+    },
+    {
+      "math_id": "lemma:bk3_reflexive_encodings_generate_conceptual_bridges",
+      "from": null,
+      "to": "2b959f719e9e"
+    },
+    {
+      "math_id": "definition:bk3_symbiotic_curvature",
+      "from": null,
+      "to": "b46df02af5ed"
+    },
+    {
+      "math_id": "theorem:bk3_properties_of_symbiotic_curvature",
+      "from": null,
+      "to": "58405671b66f"
+    },
+    {
+      "math_id": "theorem:bk3_symbiotic_curvature_and_resilience",
+      "from": null,
+      "to": "65b132d3d62d"
+    },
+    {
+      "math_id": "theorem:bk3_evolution_of_symbolic_knowledge",
+      "from": null,
+      "to": "8173d614b26d"
+    },
+    {
+      "math_id": "corollary:bk3_integrated_knowledge_structure",
+      "from": null,
+      "to": "ed997a1c1f9d"
+    },
+    {
+      "math_id": "theorem:bk3_conditions_sustained_symbolic_growth",
+      "from": null,
+      "to": "58e10553c26f"
+    },
+    {
+      "math_id": "definition:bk3_symbolic_metabolic_rate",
+      "from": null,
+      "to": "eaa4d432e1a5"
+    },
+    {
+      "math_id": "definition:bk3_symbolic_homeostasis",
+      "from": null,
+      "to": "2c23740e7956"
+    },
+    {
+      "math_id": "theorem:bk3_homeostatic_reflexes",
+      "from": null,
+      "to": "8163eec95670"
+    },
+    {
+      "math_id": "theorem:bk3_criteria_persistent_symbolic_life",
+      "from": null,
+      "to": "83079d8b6b47"
+    }
+  ],
+  "artifacts_reviewed": [
+    "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3.lean"
+  ],
+  "note": "Lean PS sprint-era anchors for book3: 22 statement placements across 1 artifact(s). Shas were computed live from the principia atlas at transcription time by the lead session; accepting this receipt attests that the named artifacts faithfully transcribe/kernelize these statements per their coverage-map honesty notes (verification/*_lean_map.json) and module headers. To sign: set status to 'accepted', attested_by to 'human', supply attested_at, then run: python verification/tools/binding_audit.py --adopt attest-006-book3",
+  "status": "proposed",
+  "attested_by": null,
+  "attested_at": null
+}

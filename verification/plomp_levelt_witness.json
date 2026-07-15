@@ -1,0 +1,89 @@
+{
+  "schema": "sketched.plomp-levelt-witness.v1",
+  "kernel": {
+    "A": 3.5,
+    "B": 5.75,
+    "d_star": 0.24,
+    "s1": 0.0207,
+    "s2": 18.96
+  },
+  "curve_shape": {
+    "peak_separation_hz": 25.8,
+    "tail_over_peak": 0.000695548140446961
+  },
+  "metric_transposition": {
+    "defects": [
+      {
+        "transposition": 0.5,
+        "dissonance": 0.06369112728396147,
+        "relative_defect": 5.116270446485193
+      },
+      {
+        "transposition": 1.0,
+        "dissonance": 0.01041339290687555,
+        "relative_defect": 0.0
+      },
+      {
+        "transposition": 2.0,
+        "dissonance": 0.0006200746018614979,
+        "relative_defect": 0.9404541240874444
+      },
+      {
+        "transposition": 4.0,
+        "dissonance": 1.9977524517089205e-05,
+        "relative_defect": 0.9980815547155723
+      }
+    ],
+    "max_relative_defect": 5.116270446485193
+  },
+  "ordinal_invariance": {
+    "register_hz": [
+      220.0,
+      880.0
+    ],
+    "preserved": false,
+    "expected_global_failure": true,
+    "ranking": [
+      "octave",
+      "P5",
+      "P4",
+      "tritone",
+      "M3",
+      "m3",
+      "M2",
+      "m2"
+    ]
+  },
+  "harmonic_minima": {
+    "P5 3/2": {
+      "target": 1.5,
+      "nearest_minimum": 1.5,
+      "error": 0.0
+    },
+    "P4 4/3": {
+      "target": 1.3333333333333333,
+      "nearest_minimum": 1.3335,
+      "error": 0.0001666666666666483
+    },
+    "M3 5/4": {
+      "target": 1.25,
+      "nearest_minimum": 1.25,
+      "error": 0.0
+    },
+    "M6 5/3": {
+      "target": 1.6666666666666667,
+      "nearest_minimum": 1.6664999999999999,
+      "error": 0.00016666666666687036
+    },
+    "octave 2/1": {
+      "target": 2.0,
+      "nearest_minimum": 1.9999999999999998,
+      "error": 2.220446049250313e-16
+    }
+  },
+  "stretched_negative_control": {
+    "stretch": 2.2,
+    "fifth_error": 0.033500000000000085
+  },
+  "verdict": "pass"
+}

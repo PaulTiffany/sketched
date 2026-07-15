@@ -1,0 +1,565 @@
+{
+  "schema": "sketched.pedagogy.surface.v1",
+  "source_digest": "8046ced49edc6d12518fd5eb83ad2ab32d5edfa02eb684e7e8da3da5214b4cf0",
+  "title": "The Surface of This Book",
+  "note": "The book's own epistemic geography, in the sense of the Hypothesis Surface: no bare claims (every statement carries an atlas fiber), anti-masking (a chapter may hedge, never claim above the ledger), typed certificates (torsion is permanent, contingent is evidence-revisable). Everything on this page is computed from the chapters and the checked sources at build time; nothing is judged.",
+  "invariants": [
+    {
+      "name": "No bare claims",
+      "surface_form": "every claim carries an epistemic fiber",
+      "book_form": "every mathematical statement cites an atlas anchor; uncited or unregistered anchors fail the audit",
+      "enforced_by": "ANCHOR_MISSING / ANCHOR_UNREGISTERED / ATLAS_ID_UNKNOWN"
+    },
+    {
+      "name": "Anti-masking",
+      "surface_form": "expressed confidence may not exceed substantiated confidence",
+      "book_form": "a status tag may not claim more than the paper's ledger backs; hedging down is legal, masking up fails the build",
+      "enforced_by": "STATUS_MISMATCH"
+    },
+    {
+      "name": "Certificate classification",
+      "surface_form": "every impossibility is typed: torsion or contingent",
+      "book_form": "statuses are typed, and the split is taught: torsion is structural (the non-identity theorem), open items are contingent (the calibration queue, evidence-revisable)",
+      "enforced_by": "STATUS_TAG_UNKNOWN + the ledger vocabulary"
+    }
+  ],
+  "masking": {
+    "tagged_mentions": 39,
+    "masked": 0,
+    "mu": 0.0,
+    "note": "masking rate mu = masked tagged mentions / all tagged mentions, computed from chapter text against the atlas at packet-build time. The audit fails any build where mu > 0."
+  },
+  "geography": {
+    "note": "ground: proved or constitutive (P, D). frontier: measured and revisable (C, S, M). open: owed (O, and untyped assumptions). Research is the dynamics of the frontier.",
+    "ground": [
+      {
+        "id": "def:clauses",
+        "title": "Propositional clauses and deciding sets",
+        "type": "definition",
+        "ledger": null,
+        "ledger_gloss": null,
+        "proof": "stated no proof",
+        "taught_in": [
+          "ch04",
+          "appb"
+        ],
+        "witnessed_by": [
+          "lab04_forcing.py",
+          "python verification/kernel/model_checker.py"
+        ]
+      },
+      {
+        "id": "def:closure",
+        "title": "Admissible deciding closure",
+        "type": "definition",
+        "ledger": null,
+        "ledger_gloss": null,
+        "proof": "stated no proof",
+        "taught_in": [
+          "ch05"
+        ],
+        "witnessed_by": [
+          "lab05_generics.py"
+        ]
+      },
+      {
+        "id": "def:cond",
+        "title": "Conditions",
+        "type": "definition",
+        "ledger": null,
+        "ledger_gloss": null,
+        "proof": "stated no proof",
+        "taught_in": [
+          "ch01",
+          "ch02"
+        ],
+        "witnessed_by": [
+          "vitest run src/witness",
+          "lab02_conditions.py"
+        ]
+      },
+      {
+        "id": "def:force",
+        "title": "Forcing relations",
+        "type": "definition",
+        "ledger": null,
+        "ledger_gloss": null,
+        "proof": "stated no proof",
+        "taught_in": [
+          "ch04",
+          "appb"
+        ],
+        "witnessed_by": [
+          "lab04_forcing.py",
+          "python verification/kernel/model_checker.py"
+        ]
+      },
+      {
+        "id": "def:refine",
+        "title": "Refinement order and channel-margin subposet",
+        "type": "definition",
+        "ledger": null,
+        "ledger_gloss": null,
+        "proof": "stated no proof",
+        "taught_in": [
+          "ch02",
+          "ch06"
+        ],
+        "witnessed_by": [
+          "lab02_conditions.py",
+          "lab06_margin.py"
+        ]
+      },
+      {
+        "id": "def:req",
+        "title": "Sieves and dense requirements",
+        "type": "definition",
+        "ledger": null,
+        "ledger_gloss": null,
+        "proof": "stated no proof",
+        "taught_in": [
+          "ch03"
+        ],
+        "witnessed_by": [
+          "lab03_topologies.py"
+        ]
+      },
+      {
+        "id": "def:site",
+        "title": "Generated admissible site",
+        "type": "definition",
+        "ledger": "D",
+        "ledger_gloss": "definitional",
+        "proof": "stated no proof",
+        "taught_in": [
+          "ch03"
+        ],
+        "witnessed_by": [
+          "lab03_topologies.py"
+        ]
+      },
+      {
+        "id": "def:stab",
+        "title": "Stability, atomic",
+        "type": "definition",
+        "ledger": null,
+        "ledger_gloss": null,
+        "proof": "stated no proof",
+        "taught_in": [
+          "ch04"
+        ],
+        "witnessed_by": [
+          "lab04_forcing.py"
+        ]
+      },
+      {
+        "id": "def:transfer",
+        "title": "Transfer",
+        "type": "definition",
+        "ledger": "D",
+        "ledger_gloss": "definitional",
+        "proof": "stated no proof",
+        "taught_in": [
+          "ch07"
+        ],
+        "witnessed_by": [
+          "vitest run src/witness -t residues across the medium"
+        ]
+      },
+      {
+        "id": "lem:atomic",
+        "title": "Atomic Truth Lemma",
+        "type": "lemma",
+        "ledger": "P",
+        "ledger_gloss": "proved",
+        "proof": "proved",
+        "taught_in": [
+          "ch05",
+          "appb"
+        ],
+        "witnessed_by": [
+          "lab05_generics.py",
+          "python verification/kernel/model_checker.py"
+        ]
+      },
+      {
+        "id": "lem:bdd",
+        "title": "Boundedness yields countability for Rasiowa--Sikorski",
+        "type": "lemma",
+        "ledger": "P",
+        "ledger_gloss": "proved",
+        "proof": "proved",
+        "taught_in": [
+          "ch05",
+          "appb"
+        ],
+        "witnessed_by": [
+          "lab05_generics.py",
+          "python verification/kernel/model_checker.py"
+        ]
+      },
+      {
+        "id": "lem:bivalence",
+        "title": "Genericity decides every formula",
+        "type": "lemma",
+        "ledger": "P",
+        "ledger_gloss": "proved",
+        "proof": "proved",
+        "taught_in": [
+          "ch05"
+        ],
+        "witnessed_by": [
+          "lab05_generics.py"
+        ]
+      },
+      {
+        "id": "lem:cauchy",
+        "title": "Cauchy--Forcing Completion",
+        "type": "lemma",
+        "ledger": "P",
+        "ledger_gloss": "proved",
+        "proof": "proved",
+        "taught_in": [
+          "ch06",
+          "appb"
+        ],
+        "witnessed_by": [
+          "lab06_margin.py",
+          "python verification/kernel/model_checker.py"
+        ]
+      },
+      {
+        "id": "lem:dec",
+        "title": "Deciding sets are order-dense",
+        "type": "lemma",
+        "ledger": "P",
+        "ledger_gloss": "proved",
+        "proof": "proved",
+        "taught_in": [
+          "ch04",
+          "ch05",
+          "appb"
+        ],
+        "witnessed_by": [
+          "lab04_forcing.py",
+          "lab05_generics.py",
+          "python verification/kernel/model_checker.py"
+        ]
+      },
+      {
+        "id": "lem:margin",
+        "title": "Channel-Margin, path form",
+        "type": "lemma",
+        "ledger": "P",
+        "ledger_gloss": "proved",
+        "proof": "proved",
+        "taught_in": [
+          "ch06",
+          "appb"
+        ],
+        "witnessed_by": [
+          "lab06_margin.py",
+          "python verification/kernel/model_checker.py"
+        ]
+      },
+      {
+        "id": "lem:ordmet",
+        "title": "Order--Metric Compatibility, atomic",
+        "type": "lemma",
+        "ledger": "P",
+        "ledger_gloss": "proved",
+        "proof": "proved",
+        "taught_in": [
+          "appb"
+        ],
+        "witnessed_by": [
+          "python verification/kernel/model_checker.py"
+        ]
+      },
+      {
+        "id": "lem:pers",
+        "title": "Persistence and consistency",
+        "type": "lemma",
+        "ledger": "P",
+        "ledger_gloss": "proved",
+        "proof": "proved",
+        "taught_in": [
+          "ch04",
+          "appb"
+        ],
+        "witnessed_by": [
+          "lab04_forcing.py",
+          "python verification/kernel/model_checker.py"
+        ]
+      },
+      {
+        "id": "lem:reach",
+        "title": "Decision Reachability, conditional",
+        "type": "lemma",
+        "ledger": "P",
+        "ledger_gloss": "proved",
+        "proof": "proved",
+        "taught_in": [
+          "ch04",
+          "ch05",
+          "ch08",
+          "appb"
+        ],
+        "witnessed_by": [
+          "lab04_forcing.py",
+          "lab05_generics.py",
+          "lab08_contract.py",
+          "python verification/kernel/model_checker.py"
+        ]
+      },
+      {
+        "id": "lem:sitebound",
+        "title": "Site bound",
+        "type": "lemma",
+        "ledger": "P",
+        "ledger_gloss": "proved",
+        "proof": "proved",
+        "taught_in": [
+          "ch03",
+          "ch04",
+          "appb"
+        ],
+        "witnessed_by": [
+          "lab03_topologies.py",
+          "lab04_forcing.py",
+          "python verification/kernel/model_checker.py"
+        ]
+      },
+      {
+        "id": "lem:void",
+        "title": "The void is the unique shared point",
+        "type": "lemma",
+        "ledger": "P",
+        "ledger_gloss": "proved",
+        "proof": "proved",
+        "taught_in": [
+          "ch01",
+          "ch07"
+        ],
+        "witnessed_by": [
+          "vitest run src/witness",
+          "vitest run src/witness -t residues across the medium"
+        ]
+      },
+      {
+        "id": "prop:chi",
+        "title": "Exportability identity, under orthogonality",
+        "type": "proposition",
+        "ledger": "P",
+        "ledger_gloss": "proved",
+        "proof": "proved",
+        "taught_in": [
+          "ch07",
+          "appb"
+        ],
+        "witnessed_by": [
+          "vitest run src/witness -t residues across the medium",
+          "python verification/kernel/model_checker.py"
+        ]
+      },
+      {
+        "id": "prop:zeroth",
+        "title": "The shared point is forced to zeroth order",
+        "type": "proposition",
+        "ledger": "P",
+        "ledger_gloss": "proved",
+        "proof": "proved",
+        "taught_in": [
+          "ch01"
+        ],
+        "witnessed_by": [
+          "vitest run src/witness"
+        ]
+      },
+      {
+        "id": "thm:factor",
+        "title": "Factoring, architectural",
+        "type": "theorem",
+        "ledger": "D",
+        "ledger_gloss": "definitional",
+        "proof": "proved",
+        "taught_in": [
+          "ch01",
+          "ch07"
+        ],
+        "witnessed_by": [
+          "vitest run src/witness",
+          "vitest run src/witness -t residues across the medium"
+        ]
+      },
+      {
+        "id": "thm:nonid",
+        "title": "Non-identity of transport, with equality condition",
+        "type": "theorem",
+        "ledger": "P",
+        "ledger_gloss": "proved",
+        "proof": "proved",
+        "taught_in": [
+          "ch07",
+          "ch08",
+          "appb"
+        ],
+        "witnessed_by": [
+          "vitest run src/witness -t residues across the medium",
+          "lab08_contract.py",
+          "python verification/kernel/model_checker.py"
+        ]
+      },
+      {
+        "id": "thm:prop",
+        "title": "Propositional Truth Lemma, conditional on calibration",
+        "type": "theorem",
+        "ledger": "P",
+        "ledger_gloss": "proved",
+        "proof": "proved",
+        "taught_in": [
+          "ch05",
+          "appb"
+        ],
+        "witnessed_by": [
+          "lab05_generics.py",
+          "python verification/kernel/model_checker.py"
+        ]
+      },
+      {
+        "id": "rem:torsion",
+        "title": "Certificate typing is forcing-theoretic---atomic case only",
+        "type": "remark",
+        "ledger": "P",
+        "ledger_gloss": "proved",
+        "proof": "n/a",
+        "taught_in": [
+          "ch04",
+          "ch05"
+        ],
+        "witnessed_by": [
+          "lab04_forcing.py",
+          "lab05_generics.py"
+        ]
+      }
+    ],
+    "frontier": [
+      {
+        "id": "asm:smooth",
+        "title": "Smoothness contract",
+        "type": "assumption",
+        "ledger": "C",
+        "ledger_gloss": "contract",
+        "proof": "stated no proof",
+        "taught_in": [
+          "ch02",
+          "ch05",
+          "ch06",
+          "appb"
+        ],
+        "witnessed_by": [
+          "lab02_conditions.py",
+          "lab05_generics.py",
+          "lab06_margin.py",
+          "python verification/kernel/model_checker.py"
+        ]
+      },
+      {
+        "id": "prop:chalked",
+        "title": "Chalked correctness invariant",
+        "type": "proposition",
+        "ledger": "S",
+        "ledger_gloss": "conformance",
+        "proof": "stated no proof",
+        "taught_in": [
+          "ch07"
+        ],
+        "witnessed_by": [
+          "vitest run src/witness -t residues across the medium"
+        ]
+      }
+    ],
+    "open": [
+      {
+        "id": "asm:calibration",
+        "title": "Calibration queue",
+        "type": "assumption",
+        "ledger": null,
+        "ledger_gloss": null,
+        "proof": "stated no proof",
+        "taught_in": [
+          "ch03",
+          "ch04",
+          "ch05",
+          "ch08",
+          "appb"
+        ],
+        "witnessed_by": [
+          "lab03_topologies.py",
+          "lab04_forcing.py",
+          "lab05_generics.py",
+          "lab08_contract.py",
+          "python verification/kernel/model_checker.py"
+        ]
+      }
+    ]
+  },
+  "voids": {
+    "note": "A void is not an error; it is the shape of what the system does not yet know, with the evidence type that would resolve it. These are the calibration queue's target operators and the atlas nodes the book leaves to the paper.",
+    "calibration_targets": [
+      {
+        "math_id": "def:stab",
+        "calibration_item": 1,
+        "math_operator": "Stab(q, φ): atomic stabilization under admissible refinement",
+        "would_need": "a contribution 'holds' when its stabilizers are witnessed and consented (interpretation; not shipped)"
+      },
+      {
+        "math_id": "def:clauses",
+        "calibration_item": 4,
+        "math_operator": "∧ connective realization: certificate combination",
+        "would_need": "precedence / conflict arbitration between overlapping proposals (docs/11)"
+      },
+      {
+        "math_id": "def:clauses",
+        "calibration_item": 5,
+        "math_operator": "∨ connective realization: admissible-cover branching",
+        "would_need": "branching proposals over an undecided region (docs/11; arbitration's dual)"
+      },
+      {
+        "math_id": "lem:cauchy",
+        "calibration_item": 9,
+        "math_operator": "observer completion (P_O, d_O): Cauchy-generic limit of the session",
+        "would_need": "session persistence / timeline completion (Principia interface; outside Sketched's scope)"
+      },
+      {
+        "math_id": "def:req",
+        "calibration_item": 3,
+        "math_operator": "admissible dense requirement D ∈ D_adm (obligation the observer must eventually meet)",
+        "would_need": "standing obligation queue for the stage (not designed yet)"
+      },
+      {
+        "math_id": "def:refine",
+        "calibration_item": 8,
+        "math_operator": "channel-margin subposet P_H^η: the admissible region + authority to move in it",
+        "would_need": "Channel grant / angular access (docs/11); exit = return to zero-point"
+      },
+      {
+        "math_id": "asm:smooth",
+        "calibration_item": 7,
+        "math_operator": "control forcing / forced integration at the conflict threshold",
+        "would_need": "two-knob coordinated co-motion authorizing new content (docs/11)"
+      }
+    ],
+    "untaught_nodes": 29,
+    "untaught_by_type": {
+      "conjecture": 2,
+      "definition": 3,
+      "lemma": 2,
+      "proposition": 3,
+      "remark": 17,
+      "theorem_target": 2
+    }
+  },
+  "browser_path": "/book/surface",
+  "json_path": "/book/surface.json"
+}

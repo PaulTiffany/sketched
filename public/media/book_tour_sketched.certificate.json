@@ -1,0 +1,76 @@
+{
+  "schema": "principia-episode/3",
+  "content_hash": "6473715e3f4fc1b3b79e8868f655f573c0f6a6f4524a1f93b3581f8502c33dc1",
+  "title": "Forcing at the Surface: A Guided Tour",
+  "slug": "book_tour_sketched",
+  "source": "C:/src/principia/bib/principia_atlas.json + C:/src/principia/build/main.pdf",
+  "atlas_sha256": "ba0192febb8b90bf81a3d2cf680a54b9e6ca5b0895487db403ca5b5959e68646",
+  "pdf_sha256": "b9fd4e1a5c4246989b1d506480e6e7df783d6eb3c7c8d107a316e55274d2d12a",
+  "voices": {
+    "ellie": "en-US-JennyNeural",
+    "matt": "en-US-AndrewNeural",
+    "source": "en-US-AndrewNeural",
+    "plain": "en-US-JennyNeural",
+    "interpretation": "en-US-JennyNeural",
+    "limit": "en-US-AndrewNeural"
+  },
+  "segments": [
+    {
+      "sid": "S01",
+      "role": "ellie",
+      "chapter": "S01"
+    },
+    {
+      "sid": "S02",
+      "role": "matt",
+      "chapter": "S02"
+    },
+    {
+      "sid": "S03",
+      "role": "ellie",
+      "chapter": "S03"
+    },
+    {
+      "sid": "S04",
+      "role": "matt",
+      "chapter": "S04"
+    },
+    {
+      "sid": "S05",
+      "role": "matt",
+      "chapter": "S05"
+    },
+    {
+      "sid": "S06",
+      "role": "ellie",
+      "chapter": "S06"
+    },
+    {
+      "sid": "S07",
+      "role": "ellie",
+      "chapter": "S07"
+    },
+    {
+      "sid": "S08",
+      "role": "limit",
+      "chapter": "S08"
+    },
+    {
+      "sid": "S09",
+      "role": "ellie",
+      "chapter": "S09"
+    }
+  ],
+  "sidecars": {
+    "subtitles": "book_tour_sketched.srt",
+    "chapters": "chapters.txt",
+    "contact_sheet": "contact_sheet.jpg"
+  },
+  "output": {
+    "path": "book_tour_sketched.mp4",
+    "sha256": "062eb92dca9cc1655f56a9f82914677b043f93bb361fd23fcbf9b7d0a7dbdf2c",
+    "bytes": 29344420
+  },
+  "compiled_at_utc": "2026-07-10T03:45:01.937160+00:00",
+  "note": "SOURCE segments are atlas/PDF grounded. PLAIN LANGUAGE, INTERPRETATION, and LIMIT segments are marked heuristic layers."
+}

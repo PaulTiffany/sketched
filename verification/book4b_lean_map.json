@@ -1,0 +1,288 @@
+{
+ "schema": "sketched.book4b-lean-map.v1",
+ "source": "Principia Symbolica Book 4 second half (Ising covenant, imaginary traversal, integrative expansion, SRMF)",
+ "boundary": "Mappings certify only the static/algebraic/finite kernel. Manifold, Hilbert-space, PDE, categorical, and asymptotic material is not certified; conditional and partial rows do not promote the full prose statement to a Lean theorem.",
+ "entries": [
+  {
+   "atlas_id": "lemma:bk4_fragmentation_cascade",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book4B.cascadeProb_nonneg",
+    "Book4B.cascadeProb_lt_one",
+    "Book4B.cascadeProb_strictMono"
+   ],
+   "note": "The propagation-probability formula 1-exp(-beta*kappa) is kept exactly, with the manifold-valued curvature integral kappa erased to an arbitrary nonnegative real; probability in [0,1) and strict monotonicity in kappa are proved."
+  },
+  {
+   "atlas_id": "definition:bk4_repair_process",
+   "coverage": "definition",
+   "lean": [
+    "Book4B.repairSufficiency_decrease_accum",
+    "Book4B.repairSufficiency_terminates"
+   ],
+   "note": "Modeled as a discrete fragmentation-measure sequence decreasing by a fixed positive amount each step, with telescoping and termination consequences (same finite kernel shape as Book8's MetabolicSufficiency, applied to fragmentation instead of free energy)."
+  },
+  {
+   "atlas_id": "theorem:bk4_reflective_reentry",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book4B.recovery_threshold_exceeds_crit"
+   ],
+   "note": "Only the threshold-transitivity content of the iff is modeled (recovery threshold above critical, overlap meeting it, forces overlap above critical); the existence of a time-evolved reflection operator achieving the overlap is not modeled."
+  },
+  {
+   "atlas_id": "definition:bk4_recursive_self_healing",
+   "coverage": "definition",
+   "lean": [
+    "Book4B.repairSufficiency_decrease_accum",
+    "Book4B.repairSufficiency_terminates"
+   ],
+   "note": "Recursive self-healing is a repair process, so it obeys the same RepairSufficiency law; the specific self-reference/persistence operator composition S_n . P_dt . S_m is not modeled, only the monotone-decrease consequence any such process must satisfy."
+  },
+  {
+   "atlas_id": "theorem:bk4_conditions_for_self_healing",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book4B.coreCoherence_exceeds_crit"
+   ],
+   "note": "Only condition 2's threshold-transitivity shape is modeled (core error below critical error forces core coherence past 1-critical); condition 1 (identity resolution R_n > chi for n >= n_0) is a bare existential over an unmodeled resolution sequence and is not covered."
+  },
+  {
+   "atlas_id": "definition:bk4_repair_capacity",
+   "coverage": "definition",
+   "lean": [
+    "Book4B.repairCapacity_lt_one"
+   ],
+   "note": "Kept as a structure field bounded by the repair-capacity ceiling rather than derived from the sup over repair processes; no topology on the space of repair processes is modeled."
+  },
+  {
+   "atlas_id": "lemma:bk4_upper_bound_on_repair_capacit",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book4B.repairCapacityBound_nonneg",
+    "Book4B.repairCapacityBound_lt_one",
+    "Book4B.repairCapacityBound_strictMono",
+    "Book4B.repairCapacity_lt_one"
+   ],
+   "note": "The bound expression 1 - 1/(n_max+1) is proved to lie in [0,1) and to strictly increase with recursive depth capacity, plus the consequence that any capacity bounded by it is itself below 1."
+  },
+  {
+   "atlas_id": "definition:bk4_constraint_domain",
+   "coverage": "definition",
+   "lean": [
+    "Book4B.constraintDomain_strict_growth",
+    "Book4B.constraintLimit",
+    "Book4B.mem_constraintLimit_iff",
+    "Book4B.constraintDomain_subset_limit",
+    "Book4B.constraintLimit_least",
+    "Book4B.constraintDirectedSystem",
+    "Book4B.constraintDirectedSystem_universal"
+   ],
+   "note": "Domains U(n) are abstract sets. Their recursive limit is constructed as the union of finite stages and proved to satisfy membership, stage-inclusion, and least-upper-domain laws; The Scholium directed-system laws and unique colimit mediator are instantiated by monotone domain inclusions. Metric d_g / reflection-operator membership conditions remain outside the model."
+  },
+  {
+   "atlas_id": "theorem:bk4_recursive_constraint_libera",
+   "coverage": "conditional",
+   "lean": [
+    "Book4B.constraintDomain_strict_growth",
+    "Book4B.constraintLimit",
+    "Book4B.mem_constraintLimit_iff",
+    "Book4B.constraintDomain_subset_limit",
+    "Book4B.constraintLimit_least",
+    "Book4B.constraintLimit_tail_eq",
+    "Book4B.constraintLimit_strict_growth",
+    "Book4B.orbitConstraintDomain",
+    "Book4B.orbitConstraintDomain_mono",
+    "Book4B.orbitConstraintLimit_eq_range",
+    "Book4B.TransfiniteConstraintIteration",
+    "Book4B.TransfiniteConstraintIteration.leastFixedPoint",
+    "Book4B.transfiniteConstraint_leastFixedPoint_fixed",
+    "Book4B.transfiniteConstraint_leastFixedPoint_le",
+    "Book4B.transfiniteConstraint_stage_le_fixed",
+    "Book4B.TransfiniteConstraintIteration.StabilizesAt",
+    "Book4B.transfiniteConstraint_stabilized_fixed",
+    "Book4B.transfiniteConstraint_stabilized_eq_lfp",
+    "Book4B.transfiniteIterate_exists_fixed_of_card_lt",
+    "Book4B.transfiniteIterate_le_fixed",
+    "Book4B.transfiniteIterate_fixed_stage_eq_lfp",
+    "Book4B.transfiniteIterate_eventually_constant_of_fixed",
+    "Book4B.transfiniteIterate_eventually_constant_of_card_lt"
+   ],
+   "note": "The honest order-theoretic limit U_infinity is constructed as the union of all finite domains. It is tail-invariant for monotone sequences, is the least upper domain, and strictly extends U_0 when any stage grows. For Scholium-generated dynamics it is proved exactly equal to the full flow-orbit range. Constraint maps are now modeled abstractly as arbitrary monotone endomorphisms of the complete lattice of domains, with ordinal successor application and union at genuine limit ordinals. Knaster-Tarski supplies the least fixed point unconditionally; ordinal limit induction now derives the standard invariant that every bottom-started stage lies below every fixed domain. Consequently eventual ordinal stabilization alone proves convergence exactly to the least fixed point. The cardinal theorem now gives full eventual convergence for the standard transfinite iterator whenever its well-ordered index type is larger than the constraint-domain lattice and the map is inflationary: it attains the least fixed point and every later stage is identical."
+  },
+  {
+   "atlas_id": "definition:bk4_symbolic_freedom_measure",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book4B.freedomMeasure_nonneg",
+    "Book4B.freedomMeasure_le_one"
+   ],
+   "note": "The ratio (H(U_infinity)-H(U_0))/H(U_infinity) is proved to lie in [0,1] given entropy nonnegativity and monotonicity; the entropy functional H and the limiting domain U_infinity themselves are not modeled, only the algebraic consequence of the stated formula."
+  },
+  {
+   "atlas_id": "definition:bk4_symbolic_flow_freedom",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book4B.symbolicFreedom_of_flowFreedom",
+    "Book4B.id_has_no_escape"
+   ],
+   "note": "The two-clause predicate (reflection-fixed image; escape from U_0) is modeled directly, plus an explicit countermodel (the identity flow) showing the escape clause is a genuine non-vacuous requirement."
+  },
+  {
+   "atlas_id": "theorem:bk4_freedom_criterion",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book4B.symbolicFreedom_of_flowFreedom"
+   ],
+   "note": "Symbolic freedom is defined exactly as the existential closure of flow freedom, so the criterion is definitional once flow freedom is modeled; only the forward (witness-exhibits-freedom) direction has independent content, and is the theorem proved."
+  },
+  {
+   "atlas_id": "lemma:bk4_autonomy_freedom_relation",
+   "coverage": "conditional",
+   "lean": [
+    "Book4B.autonomy_implies_freedom"
+   ],
+   "note": "Only the forward direction is proved (a decision/goal composite exhibiting flow freedom witnesses symbolic freedom). The converse -- freedom forces existence of such g, e -- is not modeled, since it would need an unstated surjectivity assumption on the decision and goal-transformation maps."
+  },
+  {
+   "atlas_id": "proposition:bk4_autonomy_implies_freedom",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book4B.autonomy_implies_freedom"
+   ],
+   "note": "Direct existential transfer: exhibiting the decision/goal composite D(.,g) . G(.,e) satisfying flow freedom is exactly exhibiting a free flow."
+  },
+  {
+   "atlas_id": "theorem:bk4_freedom_life_connection",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book4B.freedomLife_succ_lt",
+    "Book4B.freedomLife_strictMono",
+    "Book4B.freedomLife_increase_accum"
+   ],
+   "note": "The continuous derivative condition dF_free/dt > 0 is modeled by its discrete analogue (fixed positive per-step increase), yielding strict monotonicity and a telescoping lower bound; the bounded-fragmentation clause is retained as a structure field but not used in a theorem beyond being recorded."
+  },
+  {
+   "atlas_id": "theorem:bk4_fuzzy_chain_rule",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book4B.boundedErrorTerm_mono_linear",
+    "Book4D.ObserverDerivativeAt.comp",
+    "Book4D.ObserverDerivativeAt.comp_correction_eq_zero",
+    "Book4D.ObserverDerivativeAt.abs_comp_correction_le",
+    "Book4D.ObserverDerivativeAt.comp_controlled"
+   ],
+   "note": "Exact scalar chain rule with a derived observer correction, including the outer-correction times inner-correction cross term. Manifold and cross-field realizations remain open."
+  },
+  {
+   "atlas_id": "theorem:bk4_fuzzy_sum_rule",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book4B.boundedErrorTerm_mono_linear",
+    "Book4D.ObserverDerivativeAt.add",
+    "Book4D.ObserverDerivativeAt.add_correction_eq_zero",
+    "Book4D.ObserverDerivativeAt.abs_add_correction_le",
+    "Book4D.ObserverDerivativeAt.add_controlled"
+   ],
+   "note": "Exact scalar sum rule: certified observer corrections add. Manifold and cross-field realizations remain open."
+  },
+  {
+   "atlas_id": "theorem:bk4_fuzzy_product_rule",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book4B.boundedErrorTerm_mono_quadratic",
+    "Book4D.ObserverDerivativeAt.mul",
+    "Book4D.ObserverDerivativeAt.mul_correction_eq_zero",
+    "Book4D.ObserverDerivativeAt.mul_controlled"
+   ],
+   "note": "Exact scalar product rule with the correction propagated from certified derivatives. Symbolic torsion and cross-field realizations remain open."
+  },
+  {
+   "atlas_id": "theorem:bk4_fuzzy_quotient_rule",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book4B.boundedErrorTerm_mono_quadratic",
+    "Book4B.quotientFloor_ge_eps_sq",
+    "Book4D.ObserverDerivativeAt.div",
+    "Book4D.ObserverDerivativeAt.div_correction_eq_zero",
+    "Book4D.ObserverDerivativeAt.div_controlled"
+   ],
+   "note": "Exact scalar quotient rule under the necessary nonzero-denominator hypothesis, with its observer correction derived algebraically. Cross-field realizations remain open."
+  },
+  {
+   "atlas_id": "theorem:bk4_fuzzy_power_rule",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book4B.boundedErrorTerm_mono_quadratic",
+    "Book4D.ObserverDerivativeAt.pow",
+    "Book4D.ObserverDerivativeAt.pow_correction_eq_zero",
+    "Book4D.ObserverDerivativeAt.pow_controlled"
+   ],
+   "note": "Exact natural-power rule with the observer correction propagated through the certified derivative. Recursive-curvature and cross-field realizations remain open."
+  },
+  {
+   "atlas_id": "theorem:bk4_existence_observer_valid_derivatives",
+   "coverage": "conditional",
+   "lean": [
+    "Book4B.boundedErrorTerm_mono_linear"
+   ],
+   "note": "Only the shared linear error-scaling schema underlying the three stated consequence bounds (linearity error, Leibniz error, chain error) is modeled; the three preconditions on ratios of higher-order symbolic differences are not."
+  },
+  {
+   "atlas_id": "proposition:bk4_fuzzy_deriv_algebra",
+   "coverage": "conditional",
+   "lean": [
+    "Book4B.boundedErrorTerm_mono_linear",
+    "Book4B.boundedErrorTerm_mono_quadratic",
+    "Book4D.ObserverDerivativeAt.correctionControlled_mono",
+    "Book4D.ObserverDerivativeAt.ofClassical_controlled",
+    "Book4D.ObserverDerivativeAt.add_controlled",
+    "Book4D.ObserverDerivativeAt.mul_controlled",
+    "Book4D.ObserverDerivativeAt.comp_controlled",
+    "Book4D.ObserverDerivativeAt.pow_controlled",
+    "Book4D.ObserverDerivativeAt.div_controlled",
+    "Book4D.ObserverDerivativeAt.PerturbationRequest.admissible_applied_le_budget",
+    "Book4D.ObserverDerivativeAt.PerturbationRequest.cosmicRay_rejected",
+    "Book4D.ObserverDerivativeAt.PerturbationRequest.zero_budget_inert",
+    "Book4D.ObserverDerivativeAt.RationalPerturbationCertificate.gate_eq_true_iff",
+    "Book4D.ObserverDerivativeAt.RationalPerturbationCertificate.real_sound",
+    "Book4D.FuzzyOperator.forwardThen_map",
+    "Book4D.FuzzyOperator.forwardThen_assoc_map",
+    "Book4D.FuzzyOperator.Reversible.backward_after_forward",
+    "Book4D.FuzzyOperator.Reversible.forward_after_backward",
+    "Book4D.FuzzyOperator.Reversible.forwardThen"
+   ],
+   "note": "The algebra now has an operational correction-control predicate with budget weakening, classical zero-correction admission, and derived budget transport through sum, product, chain, power, and quotient. The source's unrestricted inequality between arbitrary observers and its non-quantitative observer-constant clause remain open."
+  },
+  {
+   "atlas_id": "definition:bk4_fuzzy_gradient",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book4B.fuzzyGradient_bound_antitone"
+   ],
+   "note": "Only the partial-derivative bound M_f/epsilon_O is modeled, proved strictly antitone in the resolution threshold for fixed positive M_f; the vector-valued vector field, dimensional cross-coupling error term, and its own bound are not modeled."
+  },
+  {
+   "atlas_id": "lemma:bk4_gradient_stability",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book4B.gradientStability_same_resolution"
+   ],
+   "note": "The stated Lipschitz-plus-quadratic bound is kept as a structure field; proved that when two observers share a resolution threshold the bound collapses to the quadratic correction term alone."
+  },
+  {
+   "atlas_id": "theorem:bk4_multiplication_to_curvature",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book4D.crossErrorTransport_noncommute",
+    "Book4D.contextual_crossError_induces_curvature",
+    "Book4D.crossTerm_zero_iff_additively_separable",
+    "Book4D.nonseparable_iff_exists_crossError",
+    "Book4D.contextualStructuralGrowth_induces_curvature",
+    "Atlas.non_euclidean_necessity",
+    "Atlas.holonomy_eps_squared"
+   ],
+   "note": "Discrete positive bridge: any nonzero scalar contextual cross-difference is embedded as an explicit upper elementary 2x2 transport; paired with the lower elementary context transport it cannot commute, so the exact epsilon-squared holonomy theorem gives route disagreement at every nonzero scale. It also proves that contextual nonseparability is equivalent to existence of a nonzero cross-error, yielding a complete typed nonseparability-to-curvature bridge. The source's bare dimension inequality still needs a theorem connecting it to nonseparability."
+  }
+ ]
+}

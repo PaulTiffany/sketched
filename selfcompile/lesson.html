@@ -1,0 +1,316 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ellie &amp; Matt &mdash; goal-general</title>
+<style>
+:root{--slate:#0d0f0e;--chalk:#f4f1e8;--dust:#9aa2ad;--rule:#2a2f2c;}
+*{box-sizing:border-box}
+body{margin:0;background:
+  radial-gradient(120% 90% at 50% -10%,#16181c 0%,var(--slate) 60%,#070908 100%);
+  color:var(--chalk);font-family:Georgia,serif;line-height:1.55;padding:3rem 1.2rem 5rem}
+.wrap{max-width:780px;margin:0 auto}
+h1{font-weight:400;letter-spacing:.02em;margin:0 0 .1rem;font-size:1.7rem}
+h2{font-weight:400;color:#d9b25f;font-size:1.05rem;letter-spacing:.04em;
+  margin:2rem 0 .6rem;text-transform:uppercase}
+.sub{color:var(--dust);font-style:italic;margin:0 0 1rem}
+.rule{height:1px;background:linear-gradient(90deg,transparent,#d9b25f88,transparent);margin:1.4rem 0}
+.goal{border:1px solid var(--rule);border-radius:10px;padding:.9rem 1.05rem;margin:.8rem 0;
+  background:rgba(255,255,255,.015)}
+.goal .id{font-family:ui-monospace,Consolas,monospace;color:#d9b25f;font-size:12px}
+.goal .obj{margin:.25rem 0 .5rem;font-size:1.02rem}
+.kv{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--dust);margin:.15rem 0}
+.chip{font-family:ui-monospace,Consolas,monospace;font-size:10.5px;border-radius:4px;
+  padding:2px 7px;color:#dfd7c4;background:#ffffff0d;border:1px solid #ffffff1a;margin-right:.3rem}
+table{border-collapse:collapse;width:100%;margin:.5rem 0;font-family:ui-monospace,Consolas,monospace;font-size:12px}
+td,th{text-align:left;padding:.28rem .5rem;border-bottom:1px solid var(--rule);color:var(--dust)}
+th{color:#cfcabb;font-weight:400}
+td.realized{color:#93c94a}td.target{color:#e0a24c}
+tr.pick td{color:var(--chalk)}
+.note{color:#e0a24c;font-style:italic;font-size:.95rem;margin:.4rem 0}
+.seg{border:1px solid var(--rule);border-radius:10px;padding:1rem 1.15rem;margin:1rem 0;
+  background:rgba(255,255,255,.015)}
+.head{display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem}
+.who{font-size:1.05rem;letter-spacing:.03em}
+.act{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--dust)}
+.pass{margin-left:auto;font-family:ui-monospace,monospace;font-size:11px;color:#0c1a0c;
+  background:#93c94a;border-radius:4px;padding:1px 7px}
+.flow{margin-left:auto;font-family:ui-monospace,monospace;font-size:11px;color:#3a2f10;
+  background:#d9b25f;border-radius:4px;padding:1px 7px}
+.speech{margin:.2rem 0 .6rem;font-size:1.08rem}
+.boundary{color:#d9b25f;font-style:italic;font-size:.92rem;margin:.2rem 0 .5rem;
+  border-left:2px solid #d9b25f55;padding-left:.6rem}
+.meta{display:flex;flex-wrap:wrap;gap:.35rem}
+.ev{font-family:ui-monospace,Consolas,monospace;font-size:10.5px;border-radius:4px;padding:2px 7px;
+  color:#cfe0f6;background:#6fb2ef22;border:1px solid #6fb2ef33}
+.lk{font-family:ui-monospace,Consolas,monospace;font-size:10.5px;border-radius:4px;padding:2px 7px;
+  color:#dfd7c4;background:#ffffff0d;border:1px solid #ffffff1a}
+.foot{margin-top:1rem;font-family:ui-monospace,Consolas,monospace;font-size:12px;color:var(--dust)}
+.foot b{color:#93c94a;font-weight:400}
+details{margin-top:1rem}summary{cursor:pointer;color:var(--dust);font-size:12px;font-family:ui-monospace,monospace}
+pre{overflow-x:auto;background:#0000004d;border:1px solid var(--rule);border-radius:8px;
+  padding:1rem;font-size:11.5px;color:#cdd3cb}
+</style></head><body><div class="wrap">
+<h1>Ellie &amp; Matt &mdash; one engine, any goal</h1>
+<p class="sub">Swap the goal (a witnessed pre-prompt). The void map re-scores relative
+to the observer it serves. A lesson compiles only where a grounded instrument exists.</p>
+<h2>Control &mdash; the goals and their frontiers</h2>
+<div class="goal"><div class="id">goal: onramp &middot; mode=teach</div><div class="obj">Bring a newcomer in at the door of the book.</div><div class="kv">observer holds: <span class="chip">(empty)</span></div><div class="kv">priors: beta=3.0 &middot; emphasis=none &middot; budget=12m</div><table><tr><th></th><th>ready topic</th><th>IG</th><th>share</th><th>instrument</th></tr><tr class="pick"><td>&#9733;</td><td>ch01</td><td>5.0</td><td>1.0</td><td class="realized">realized</td></tr></table><p class="kv">next: <b style="color:#93c94a">ch01</b> &rarr; instrument <b style="color:#93c94a">realized</b> &rarr; compiled below.</p></div>
+<div class="goal"><div class="id">goal: medium-deep &middot; mode=teach</div><div class="obj">For a reader who has the room-at-zero and refinement, go to the medium.</div><div class="kv">observer holds: <span class="chip">ch01</span><span class="chip">ch02</span></div><div class="kv">priors: beta=8.0 &middot; emphasis={'ch07': 5.0} &middot; budget=12m</div><table><tr><th></th><th>ready topic</th><th>IG</th><th>share</th><th>instrument</th></tr><tr class="pick"><td>&#9733;</td><td>ch07</td><td>10.0</td><td>0.999</td><td class="realized">realized</td></tr><tr class=""><td></td><td>ch03</td><td>4.0</td><td>0.001</td><td class="realized">realized</td></tr><tr class=""><td></td><td>ch06</td><td>3.0</td><td>0.0</td><td class="realized">realized</td></tr></table><p class="kv">next: <b style="color:#93c94a">ch07</b> &rarr; instrument <b style="color:#93c94a">realized</b> &rarr; compiled below.</p></div>
+<div class="goal"><div class="id">goal: prove-gap &middot; mode=prove</div><div class="obj">Discharge an unproved claim in the next chapter.</div><div class="kv">observer holds: <span class="chip">ch01</span><span class="chip">ch02</span><span class="chip">ch03</span><span class="chip">ch04</span><span class="chip">ch05</span><span class="chip">ch06</span></div><div class="kv">priors: beta=3.0 &middot; emphasis=none &middot; budget=12m</div><table><tr><th></th><th>ready topic</th><th>IG</th><th>share</th><th>instrument</th></tr><tr class="pick"><td>&#9733;</td><td>ch07</td><td>2.0</td><td>0.889</td><td class="target">target</td></tr><tr class=""><td></td><td>appb</td><td>1.0</td><td>0.111</td><td class="target">target</td></tr></table><p class="note">next: ch07 &mdash; no grounded instrument yet (target). Ellie returns a gap here, not a fabricated lesson. This is exactly where an instrument is needed.</p></div>
+<div class="goal"><div class="id">goal: fabricpc-bridge &middot; mode=bridge</div><div class="obj">Attach FabricPC as a sourced predictive-coding substrate for pedagogy and future experiments.</div><div class="kv">observer holds: <span class="chip">ch01</span><span class="chip">ch02</span><span class="chip">ch07</span></div><div class="kv">priors: beta=3.0 &middot; emphasis=none &middot; budget=12m</div><table><tr><th></th><th>ready topic</th><th>IG</th><th>share</th><th>instrument</th></tr><tr class="pick"><td>&#9733;</td><td>fabricpc-predictive-coding</td><td>1.0</td><td>1.0</td><td class="realized">realized</td></tr></table><p class="kv">next: <b style="color:#93c94a">fabricpc-predictive-coding</b> &rarr; instrument <b style="color:#93c94a">realized</b> &rarr; compiled below.</p></div>
+<div class="goal"><div class="id">goal: leanps-slice &middot; mode=teach</div><div class="obj">Teach the Lean PS vertical slice: the shared commuting interface, the proved physics instance, the conditional reflection with its countermodel, and why the domains are not identified.</div><div class="kv">observer holds: <span class="chip">ch01</span><span class="chip">ch02</span></div><div class="kv">priors: beta=3.0 &middot; emphasis=none &middot; budget=12m</div><table><tr><th></th><th>ready topic</th><th>IG</th><th>share</th><th>instrument</th></tr><tr class="pick"><td>&#9733;</td><td>lorentz-equivariance</td><td>1.0</td><td>1.0</td><td class="realized">realized</td></tr></table><p class="kv">next: <b style="color:#93c94a">lorentz-equivariance</b> &rarr; instrument <b style="color:#93c94a">realized</b> &rarr; compiled below.</p></div>
+<div class="goal"><div class="id">goal: book5-lean &middot; mode=teach</div><div class="obj">Teach Book Five from the generated Lean coverage while preserving conditional laws, partial coverage, and authored interpretation.</div><div class="kv">observer holds: <span class="chip">ch01</span><span class="chip">ch02</span></div><div class="kv">priors: beta=3.0 &middot; emphasis=none &middot; budget=12m</div><table><tr><th></th><th>ready topic</th><th>IG</th><th>share</th><th>instrument</th></tr><tr class="pick"><td>&#9733;</td><td>book5-lean</td><td>1.0</td><td>1.0</td><td class="realized">realized</td></tr></table><p class="kv">next: <b style="color:#93c94a">book5-lean</b> &rarr; instrument <b style="color:#93c94a">realized</b> &rarr; compiled below.</p></div>
+<div class="rule"></div>
+<h2>Lesson &mdash; onramp &rarr; ch01</h2><div class="seg"><div class="head"><span class="who" style="color:#d9b25f">Ellie</span><span class="act">open_with_problem</span><span class="flow">flow</span></div><p class="speech">The next useful move is The Room at Zero. I will keep the route tied to the book registry and the atlas anchors, not to a loose summary.</p><div class="meta"><span class="lk">def:cond</span><span class="lk">lem:void</span><span class="lk">prop:zeroth</span></div></div>
+<div class="seg"><div class="head"><span class="who" style="color:#6fb2ef">Matt</span><span class="act">cite_atlas</span><span class="pass">PASS</span></div><p class="speech">I grounded The Room at Zero against its atlas anchors. The evidence tags name the exact ledger or kernel source for the load-bearing claims.</p><div class="meta"><span class="ev">atlas def:cond (Core definitions (instantiated)); ledger D</span><span class="ev">atlas lem:void (Inter-observer forcing: the shared zeroth-order zero); ledger P</span><span class="ev">atlas prop:zeroth (Inter-observer forcing: the shared zeroth-order zero); ledger P</span><span class="lk">def:cond</span><span class="lk">lem:void</span><span class="lk">prop:zeroth</span></div></div>
+<div class="seg"><div class="head"><span class="who" style="color:#d9b25f">Ellie</span><span class="act">recap</span><span class="flow">flow</span></div><p class="speech">So The Room at Zero is the next compiled lesson because the observer is ready for it and Matt can attach it to the verified book evidence.</p><div class="meta"><span class="lk">def:cond</span><span class="lk">lem:void</span><span class="lk">prop:zeroth</span></div></div><div class="foot"><p>judge &mdash; objective covered: <b>True</b> &middot; Matt masking &mu;=0: <b>True</b> &middot; ~0.53 min &middot; overall <b>PASS</b></p><p>self-compiles from one program to: podcast &middot; textbook &middot; slides &middot; video</p></div><details><summary>semantic program (the nodes)</summary><pre>[
+  {
+    "speaker": "Ellie",
+    "act": "open_with_problem",
+    "speech": "The next useful move is The Room at Zero. I will keep the route tied to the book registry and the atlas anchors, not to a loose summary.",
+    "evidence": [],
+    "links": [
+      "def:cond",
+      "lem:void",
+      "prop:zeroth"
+    ]
+  },
+  {
+    "speaker": "Matt",
+    "act": "cite_atlas",
+    "evidence": [
+      "atlas def:cond (Core definitions (instantiated)); ledger D",
+      "atlas lem:void (Inter-observer forcing: the shared zeroth-order zero); ledger P",
+      "atlas prop:zeroth (Inter-observer forcing: the shared zeroth-order zero); ledger P"
+    ],
+    "speech": "I grounded The Room at Zero against its atlas anchors. The evidence tags name the exact ledger or kernel source for the load-bearing claims.",
+    "boundary": "",
+    "links": [
+      "def:cond",
+      "lem:void",
+      "prop:zeroth"
+    ]
+  },
+  {
+    "speaker": "Ellie",
+    "act": "recap",
+    "speech": "So The Room at Zero is the next compiled lesson because the observer is ready for it and Matt can attach it to the verified book evidence.",
+    "evidence": [],
+    "links": [
+      "def:cond",
+      "lem:void",
+      "prop:zeroth"
+    ]
+  }
+]</pre></details>
+<h2>Lesson &mdash; medium-deep &rarr; ch07</h2><div class="seg"><div class="head"><span class="who" style="color:#d9b25f">Ellie</span><span class="act">open_with_problem</span><span class="flow">flow</span></div><p class="speech">The next useful move is Residues Across the Medium. I will keep the route tied to the book registry and the atlas anchors, not to a loose summary.</p><div class="meta"><span class="lk">thm:nonid</span><span class="lk">prop:chi</span><span class="lk">lem:void</span></div></div>
+<div class="seg"><div class="head"><span class="who" style="color:#6fb2ef">Matt</span><span class="act">cite_atlas</span><span class="pass">PASS</span></div><p class="speech">I grounded Residues Across the Medium against its atlas anchors. The evidence tags name the exact ledger or kernel source for the load-bearing claims.</p><div class="meta"><span class="ev">atlas thm:nonid (Interface layer: medium, protocol, and the non-identity theorem); Lean Transport.lean: transport_identity_iff_residue; axioms [propext, Classical.choice, Quot.sound]; sorry=False</span><span class="ev">atlas prop:chi (Interpretive appendix: boundary projection and exportability); Lean Transport.lean: exportability_identity; axioms [propext, Classical.choice, Quot.sound]; sorry=False</span><span class="ev">atlas lem:void (Inter-observer forcing: the shared zeroth-order zero); ledger P</span><span class="lk">thm:nonid</span><span class="lk">prop:chi</span><span class="lk">lem:void</span></div></div>
+<div class="seg"><div class="head"><span class="who" style="color:#d9b25f">Ellie</span><span class="act">recap</span><span class="flow">flow</span></div><p class="speech">So Residues Across the Medium is the next compiled lesson because the observer is ready for it and Matt can attach it to the verified book evidence.</p><div class="meta"><span class="lk">thm:nonid</span><span class="lk">prop:chi</span><span class="lk">lem:void</span></div></div><div class="foot"><p>judge &mdash; objective covered: <b>True</b> &middot; Matt masking &mu;=0: <b>True</b> &middot; ~0.53 min &middot; overall <b>PASS</b></p><p>self-compiles from one program to: podcast &middot; textbook &middot; slides &middot; video</p></div><details><summary>semantic program (the nodes)</summary><pre>[
+  {
+    "speaker": "Ellie",
+    "act": "open_with_problem",
+    "speech": "The next useful move is Residues Across the Medium. I will keep the route tied to the book registry and the atlas anchors, not to a loose summary.",
+    "evidence": [],
+    "links": [
+      "thm:nonid",
+      "prop:chi",
+      "lem:void"
+    ]
+  },
+  {
+    "speaker": "Matt",
+    "act": "cite_atlas",
+    "evidence": [
+      "atlas thm:nonid (Interface layer: medium, protocol, and the non-identity theorem); Lean Transport.lean: transport_identity_iff_residue; axioms [propext, Classical.choice, Quot.sound]; sorry=False",
+      "atlas prop:chi (Interpretive appendix: boundary projection and exportability); Lean Transport.lean: exportability_identity; axioms [propext, Classical.choice, Quot.sound]; sorry=False",
+      "atlas lem:void (Inter-observer forcing: the shared zeroth-order zero); ledger P"
+    ],
+    "speech": "I grounded Residues Across the Medium against its atlas anchors. The evidence tags name the exact ledger or kernel source for the load-bearing claims.",
+    "boundary": "",
+    "links": [
+      "thm:nonid",
+      "prop:chi",
+      "lem:void"
+    ]
+  },
+  {
+    "speaker": "Ellie",
+    "act": "recap",
+    "speech": "So Residues Across the Medium is the next compiled lesson because the observer is ready for it and Matt can attach it to the verified book evidence.",
+    "evidence": [],
+    "links": [
+      "thm:nonid",
+      "prop:chi",
+      "lem:void"
+    ]
+  }
+]</pre></details>
+<h2>Lesson &mdash; fabricpc-bridge &rarr; fabricpc-predictive-coding</h2><div class="seg"><div class="head"><span class="who" style="color:#d9b25f">Ellie</span><span class="act">open_with_problem</span><span class="flow">flow</span></div><p class="speech">We need a concrete predictive-coding substrate for the pedagogy chain while separating the verified local run from the still-open guard correspondence. FabricPC is now installed and witnessed at that boundary.</p><div class="meta"><span class="lk">https://github.com/trueagi-io/FabricPC/blob/main/README.md</span><span class="lk">https://x.com/ASI_Alliance/article/2063692767574872247</span></div></div>
+<div class="seg"><div class="head"><span class="who" style="color:#6fb2ef">Matt</span><span class="act">fabricpc_profile</span><span class="pass">PASS</span></div><p class="speech">FabricPC supplies a graph-defined predictive-coding substrate: nodes carry state and computation, edges carry connections, and updates carry inference and learning. Its useful bridge for us is controlled predictive-coding versus backpropagation comparison on the same topology.</p><p class="boundary">boundary: FabricPC 0.3.1 at commit b6f64adf9314 is installed locally on TFRT_CPU_0; 269 upstream tests and the CPU MNIST demo passed (98.13% accuracy). This certifies installation and execution, not correspondence between the external update implementation and FabricPCGuard.lean; that measured bridge remains the open integration step.</p><div class="meta"><span class="ev">FabricPC README: project summary; https://github.com/trueagi-io/FabricPC/blob/main/README.md</span><span class="ev">FabricPC README: internal abstractions; https://github.com/trueagi-io/FabricPC/blob/main/README.md</span><span class="ev">FabricPC README: What It Does; https://github.com/trueagi-io/FabricPC/blob/main/README.md</span><span class="ev">FabricPC README: PC_backprop_compare; https://github.com/trueagi-io/FabricPC/blob/main/README.md</span><span class="ev">verification/fabricpc_install_receipt.json; https://github.com/trueagi-io/FabricPC/blob/main/README.md</span><span class="lk">https://github.com/trueagi-io/FabricPC/blob/main/README.md</span><span class="lk">https://x.com/ASI_Alliance/article/2063692767574872247</span></div></div>
+<div class="seg"><div class="head"><span class="who" style="color:#d9b25f">Ellie</span><span class="act">recap</span><span class="flow">flow</span></div><p class="speech">So FabricPC enters as an instrument-design chain: use it to teach predictive coding as local error settling on a witnessed graph, then use the recorded local run while keeping implementation-to-guard correspondence explicit.</p><div class="meta"><span class="lk">https://github.com/trueagi-io/FabricPC/blob/main/README.md</span><span class="lk">https://x.com/ASI_Alliance/article/2063692767574872247</span></div></div><div class="foot"><p>judge &mdash; objective covered: <b>True</b> &middot; Matt masking &mu;=0: <b>True</b> &middot; ~0.65 min &middot; overall <b>PASS</b></p><p>self-compiles from one program to: podcast &middot; textbook &middot; slides &middot; video</p></div><details><summary>semantic program (the nodes)</summary><pre>[
+  {
+    "speaker": "Ellie",
+    "act": "open_with_problem",
+    "speech": "We need a concrete predictive-coding substrate for the pedagogy chain while separating the verified local run from the still-open guard correspondence. FabricPC is now installed and witnessed at that boundary.",
+    "evidence": [],
+    "links": [
+      "https://github.com/trueagi-io/FabricPC/blob/main/README.md",
+      "https://x.com/ASI_Alliance/article/2063692767574872247"
+    ]
+  },
+  {
+    "speaker": "Matt",
+    "act": "fabricpc_profile",
+    "evidence": [
+      "FabricPC README: project summary; https://github.com/trueagi-io/FabricPC/blob/main/README.md",
+      "FabricPC README: internal abstractions; https://github.com/trueagi-io/FabricPC/blob/main/README.md",
+      "FabricPC README: What It Does; https://github.com/trueagi-io/FabricPC/blob/main/README.md",
+      "FabricPC README: PC_backprop_compare; https://github.com/trueagi-io/FabricPC/blob/main/README.md",
+      "verification/fabricpc_install_receipt.json; https://github.com/trueagi-io/FabricPC/blob/main/README.md"
+    ],
+    "speech": "FabricPC supplies a graph-defined predictive-coding substrate: nodes carry state and computation, edges carry connections, and updates carry inference and learning. Its useful bridge for us is controlled predictive-coding versus backpropagation comparison on the same topology.",
+    "boundary": "FabricPC 0.3.1 at commit b6f64adf9314 is installed locally on TFRT_CPU_0; 269 upstream tests and the CPU MNIST demo passed (98.13% accuracy). This certifies installation and execution, not correspondence between the external update implementation and FabricPCGuard.lean; that measured bridge remains the open integration step.",
+    "links": [
+      "https://github.com/trueagi-io/FabricPC/blob/main/README.md",
+      "https://x.com/ASI_Alliance/article/2063692767574872247"
+    ]
+  },
+  {
+    "speaker": "Ellie",
+    "act": "recap",
+    "speech": "So FabricPC enters as an instrument-design chain: use it to teach predictive coding as local error settling on a witnessed graph, then use the recorded local run while keeping implementation-to-guard correspondence explicit.",
+    "evidence": [],
+    "links": [
+      "https://github.com/trueagi-io/FabricPC/blob/main/README.md",
+      "https://x.com/ASI_Alliance/article/2063692767574872247"
+    ]
+  }
+]</pre></details>
+<h2>Lesson &mdash; leanps-slice &rarr; lorentz-equivariance</h2><div class="seg"><div class="head"><span class="who" style="color:#d9b25f">Ellie</span><span class="act">open_with_problem</span><span class="flow">flow</span></div><p class="speech">Two very different rooms, one door. The Lorentz force in special relativity and forcing over a site both walk through the same commuting interface. Matt, hold each side to its own ground.</p><div class="meta"><span class="lk">lem:pers</span></div></div>
+<div class="seg"><div class="head"><span class="who" style="color:#6fb2ef">Matt</span><span class="act">lean_check</span><span class="pass">PASS</span></div><p class="speech">The physics side is proved in the kernel. Transform the field tensor and the four-velocity, then compute the four-force, and you get exactly the transformed force. The Lorentz condition is the entire commutation certificate, and the proof rests on the standard axioms with no sorry.</p><div class="meta"><span class="ev">Lean Lorentz.lean: lorentzForce_covariant; axioms [propext, Classical.choice, Quot.sound]; sorry=False</span><span class="lk">lem:pers</span></div></div>
+<div class="seg"><div class="head"><span class="who" style="color:#6fb2ef">Matt</span><span class="act">lorentz_witness_report</span><span class="pass">PASS</span></div><p class="speech">Reflection is the honest asymmetry. The zero frame map makes the square commute with residual exactly 0.0 while its Lorentz defect is 1.0, so agreement of the square alone certifies nothing; reflection is proved only under nondegeneracy. And off the group the numeric residual grows first-order in the violation, slope 1.000 across the sweep.</p><div class="meta"><span class="ev">Lean Lorentz.lean: zero_map_equivariant_not_lorentz; axioms [propext, Classical.choice, Quot.sound]; sorry=False</span><span class="ev">verification/lorentz_witness.json countermodel_echo (Lean: zero_map_equivariant_not_lorentz)</span><span class="ev">verification/lorentz_witness.json negative_control sweep</span><span class="lk">lem:pers</span></div></div>
+<div class="seg"><div class="head"><span class="who" style="color:#6fb2ef">Matt</span><span class="act">evaluate_support</span><span class="pass">PASS</span></div><p class="speech">One schema, two semantics. The forcing side commutes relationally under refinement and still consumes the persistence postulate; the physics side commutes on the nose for the group action. A shared interface is not an identity of domains.</p><p class="boundary">boundary: A shared commuting interface, not an identity of relativity with forcing.</p><div class="meta"><span class="ev">verification/leanps_ledger.json (description; LPS-P2 vs LPS-P3)</span><span class="lk">lem:pers</span></div></div>
+<div class="seg"><div class="head"><span class="who" style="color:#d9b25f">Ellie</span><span class="act">recap</span><span class="flow">flow</span></div><p class="speech">So the same interface is instantiated twice and earns a different strength on each side: exact equivariance under the group in relativity, one-sided preservation under refinement in forcing. Every hedge in between is a typed row in the Lean PS ledger.</p><div class="meta"><span class="lk">lem:pers</span></div></div><div class="foot"><p>judge &mdash; objective covered: <b>True</b> &middot; Matt masking &mu;=0: <b>True</b> &middot; ~1.39 min &middot; overall <b>PASS</b></p><p>self-compiles from one program to: podcast &middot; textbook &middot; slides &middot; video</p></div><details><summary>semantic program (the nodes)</summary><pre>[
+  {
+    "speaker": "Ellie",
+    "act": "open_with_problem",
+    "speech": "Two very different rooms, one door. The Lorentz force in special relativity and forcing over a site both walk through the same commuting interface. Matt, hold each side to its own ground.",
+    "evidence": [],
+    "links": [
+      "lem:pers"
+    ]
+  },
+  {
+    "speaker": "Matt",
+    "act": "lean_check",
+    "evidence": [
+      "Lean Lorentz.lean: lorentzForce_covariant; axioms [propext, Classical.choice, Quot.sound]; sorry=False"
+    ],
+    "speech": "The physics side is proved in the kernel. Transform the field tensor and the four-velocity, then compute the four-force, and you get exactly the transformed force. The Lorentz condition is the entire commutation certificate, and the proof rests on the standard axioms with no sorry.",
+    "boundary": "",
+    "links": [
+      "lem:pers"
+    ]
+  },
+  {
+    "speaker": "Matt",
+    "act": "lorentz_witness_report",
+    "evidence": [
+      "Lean Lorentz.lean: zero_map_equivariant_not_lorentz; axioms [propext, Classical.choice, Quot.sound]; sorry=False",
+      "verification/lorentz_witness.json countermodel_echo (Lean: zero_map_equivariant_not_lorentz)",
+      "verification/lorentz_witness.json negative_control sweep"
+    ],
+    "speech": "Reflection is the honest asymmetry. The zero frame map makes the square commute with residual exactly 0.0 while its Lorentz defect is 1.0, so agreement of the square alone certifies nothing; reflection is proved only under nondegeneracy. And off the group the numeric residual grows first-order in the violation, slope 1.000 across the sweep.",
+    "boundary": "",
+    "links": [
+      "lem:pers"
+    ]
+  },
+  {
+    "speaker": "Matt",
+    "act": "evaluate_support",
+    "evidence": [
+      "verification/leanps_ledger.json (description; LPS-P2 vs LPS-P3)"
+    ],
+    "speech": "One schema, two semantics. The forcing side commutes relationally under refinement and still consumes the persistence postulate; the physics side commutes on the nose for the group action. A shared interface is not an identity of domains.",
+    "boundary": "A shared commuting interface, not an identity of relativity with forcing.",
+    "links": [
+      "lem:pers"
+    ]
+  },
+  {
+    "speaker": "Ellie",
+    "act": "recap",
+    "speech": "So the same interface is instantiated twice and earns a different strength on each side: exact equivariance under the group in relativity, one-sided preservation under refinement in forcing. Every hedge in between is a typed row in the Lean PS ledger.",
+    "evidence": [],
+    "links": [
+      "lem:pers"
+    ]
+  }
+]</pre></details>
+<h2>Lesson &mdash; book5-lean &rarr; book5-lean</h2><div class="seg"><div class="head"><span class="who" style="color:#d9b25f">Ellie</span><span class="act">open_with_problem</span><span class="flow">flow</span></div><p class="speech">Book Five asks what persists: energy, memory, relation, and representability. We will separate the theorem from the metaphor before recombining them as pedagogy.</p><div class="meta"><span class="lk">theorem:bk5_golden_ratio_spectral_invariant</span></div></div>
+<div class="seg"><div class="head"><span class="who" style="color:#6fb2ef">Matt</span><span class="act">lean_check</span><span class="pass">PASS</span></div><p class="speech">The recursive-memory kernel is proved. The balanced companion matrix has the golden eigendirection, and balanced weighted reciprocity lands on the same rate. The ethical reading is not smuggled into the eigenvalue theorem.</p><p class="boundary">boundary: Mappings certify only the stated formal kernel. Conditional and partial rows do not promote the full prose statement to a Lean theorem.</p><div class="meta"><span class="ev">Lean Book5.lean: closureMatrix_eigen_gold; axioms [propext, Classical.choice, Quot.sound]; sorry=False</span><span class="ev">Lean Book5Reciprocity.lean: Book5.reciprocityRate_one; axioms [propext, Classical.choice, Quot.sound]; sorry=False</span><span class="lk">theorem:bk5_golden_ratio_spectral_invariant</span><span class="lk">theorem:bk5_golden_rule_reciprocity</span></div></div>
+<div class="seg"><div class="head"><span class="who" style="color:#6fb2ef">Matt</span><span class="act">lean_check</span><span class="pass">PASS</span></div><p class="speech">The geometric channel is separate. The elementary diagonal earns its square-root fracture ratio, while countermodels show that a memory regime does not determine a norm regime and a norm regime does not determine memory.</p><div class="meta"><span class="ev">Lean Book5Spectrum.lean: Book5.diagonal_l1_l2_ratio; axioms [propext, Classical.choice, Quot.sound]; sorry=False</span><span class="ev">Lean Book5Spectrum.lean: Book5.same_memory_does_not_fix_norm; axioms [propext, Classical.choice, Quot.sound]; sorry=False</span><span class="lk">theorem:bk5_sqrt2_maximal_fracture</span><span class="lk">theorem:bk5_symbolic_norm_spectrum</span></div></div>
+<div class="seg"><div class="head"><span class="who" style="color:#6fb2ef">Matt</span><span class="act">book5_coverage_report</span><span class="pass">PASS</span></div><p class="speech">Thermodynamic conclusions are conditional. Entropy monotonicity follows from a named production-versus-removal law; persistence needs its own bridge. The coverage packet keeps the remaining Book Five claim surface open instead of upgrading paper prose to kernel fact.</p><p class="boundary">boundary: Mappings certify only the stated formal kernel. Conditional and partial rows do not promote the full prose statement to a Lean theorem.</p><div class="meta"><span class="ev">Lean Book5Thermodynamics.lean: Book5.entropy_rate_nonnegative; axioms [propext, Classical.choice, Quot.sound]; sorry=False</span><span class="ev">public/book/lean-book5.json</span><span class="lk">theorem:bk5_symbolic_entropy_production</span><span class="lk">axiom:bk5_positive_free_energy</span></div></div>
+<div class="seg"><div class="head"><span class="who" style="color:#d9b25f">Ellie</span><span class="act">recap</span><span class="flow">flow</span></div><p class="speech">So the compiled lesson has three layers: exact constants and spectra, conditional system laws, and authored interpretations. The poems can hold the whole without being reduced to proof terms.</p><div class="meta"><span class="lk">theorem:bk5_grand_unified_symbolic_geometric</span></div></div><div class="foot"><p>judge &mdash; objective covered: <b>True</b> &middot; Matt masking &mu;=0: <b>True</b> &middot; ~1.03 min &middot; overall <b>PASS</b></p><p>self-compiles from one program to: podcast &middot; textbook &middot; slides &middot; video</p></div><details><summary>semantic program (the nodes)</summary><pre>[
+  {
+    "speaker": "Ellie",
+    "act": "open_with_problem",
+    "speech": "Book Five asks what persists: energy, memory, relation, and representability. We will separate the theorem from the metaphor before recombining them as pedagogy.",
+    "evidence": [],
+    "links": [
+      "theorem:bk5_golden_ratio_spectral_invariant"
+    ]
+  },
+  {
+    "speaker": "Matt",
+    "act": "lean_check",
+    "evidence": [
+      "Lean Book5.lean: closureMatrix_eigen_gold; axioms [propext, Classical.choice, Quot.sound]; sorry=False",
+      "Lean Book5Reciprocity.lean: Book5.reciprocityRate_one; axioms [propext, Classical.choice, Quot.sound]; sorry=False"
+    ],
+    "speech": "The recursive-memory kernel is proved. The balanced companion matrix has the golden eigendirection, and balanced weighted reciprocity lands on the same rate. The ethical reading is not smuggled into the eigenvalue theorem.",
+    "boundary": "Mappings certify only the stated formal kernel. Conditional and partial rows do not promote the full prose statement to a Lean theorem.",
+    "links": [
+      "theorem:bk5_golden_ratio_spectral_invariant",
+      "theorem:bk5_golden_rule_reciprocity"
+    ]
+  },
+  {
+    "speaker": "Matt",
+    "act": "lean_check",
+    "evidence": [
+      "Lean Book5Spectrum.lean: Book5.diagonal_l1_l2_ratio; axioms [propext, Classical.choice, Quot.sound]; sorry=False",
+      "Lean Book5Spectrum.lean: Book5.same_memory_does_not_fix_norm; axioms [propext, Classical.choice, Quot.sound]; sorry=False"
+    ],
+    "speech": "The geometric channel is separate. The elementary diagonal earns its square-root fracture ratio, while countermodels show that a memory regime does not determine a norm regime and a norm regime does not determine memory.",
+    "boundary": "",
+    "links": [
+      "theorem:bk5_sqrt2_maximal_fracture",
+      "theorem:bk5_symbolic_norm_spectrum"
+    ]
+  },
+  {
+    "speaker": "Matt",
+    "act": "book5_coverage_report",
+    "evidence": [
+      "Lean Book5Thermodynamics.lean: Book5.entropy_rate_nonnegative; axioms [propext, Classical.choice, Quot.sound]; sorry=False",
+      "public/book/lean-book5.json"
+    ],
+    "speech": "Thermodynamic conclusions are conditional. Entropy monotonicity follows from a named production-versus-removal law; persistence needs its own bridge. The coverage packet keeps the remaining Book Five claim surface open instead of upgrading paper prose to kernel fact.",
+    "boundary": "Mappings certify only the stated formal kernel. Conditional and partial rows do not promote the full prose statement to a Lean theorem.",
+    "links": [
+      "theorem:bk5_symbolic_entropy_production",
+      "axiom:bk5_positive_free_energy"
+    ]
+  },
+  {
+    "speaker": "Ellie",
+    "act": "recap",
+    "speech": "So the compiled lesson has three layers: exact constants and spectra, conditional system laws, and authored interpretations. The poems can hold the whole without being reduced to proof terms.",
+    "evidence": [],
+    "links": [
+      "theorem:bk5_grand_unified_symbolic_geometric"
+    ]
+  }
+]</pre></details>
+</div></body></html>

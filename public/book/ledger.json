@@ -1,0 +1,497 @@
+{
+  "schema": "sketched.pedagogy.ledger.v1",
+  "source_digest": "8046ced49edc6d12518fd5eb83ad2ab32d5edfa02eb684e7e8da3da5214b4cf0",
+  "title": "Appendix A · The Ledger at a Glance",
+  "note": "One row per atlas node the book teaches. Generated from the paper's atlas and the chapter registry; identical to book/appendix_a_the_ledger.md and re-checked every build.",
+  "status_gloss": {
+    "P": "proved",
+    "D": "definitional",
+    "S": "conformance",
+    "M": "postulate",
+    "C": "contract",
+    "O": "open"
+  },
+  "rows": [
+    {
+      "id": "def:clauses",
+      "title": "Propositional clauses and deciding sets",
+      "type": "definition",
+      "ledger": null,
+      "ledger_gloss": null,
+      "proof": "stated no proof",
+      "taught_in": [
+        "ch04",
+        "appb"
+      ],
+      "witnessed_by": [
+        "lab04_forcing.py",
+        "python verification/kernel/model_checker.py"
+      ]
+    },
+    {
+      "id": "def:closure",
+      "title": "Admissible deciding closure",
+      "type": "definition",
+      "ledger": null,
+      "ledger_gloss": null,
+      "proof": "stated no proof",
+      "taught_in": [
+        "ch05"
+      ],
+      "witnessed_by": [
+        "lab05_generics.py"
+      ]
+    },
+    {
+      "id": "def:cond",
+      "title": "Conditions",
+      "type": "definition",
+      "ledger": null,
+      "ledger_gloss": null,
+      "proof": "stated no proof",
+      "taught_in": [
+        "ch01",
+        "ch02"
+      ],
+      "witnessed_by": [
+        "vitest run src/witness",
+        "lab02_conditions.py"
+      ]
+    },
+    {
+      "id": "def:force",
+      "title": "Forcing relations",
+      "type": "definition",
+      "ledger": null,
+      "ledger_gloss": null,
+      "proof": "stated no proof",
+      "taught_in": [
+        "ch04",
+        "appb"
+      ],
+      "witnessed_by": [
+        "lab04_forcing.py",
+        "python verification/kernel/model_checker.py"
+      ]
+    },
+    {
+      "id": "def:refine",
+      "title": "Refinement order and channel-margin subposet",
+      "type": "definition",
+      "ledger": null,
+      "ledger_gloss": null,
+      "proof": "stated no proof",
+      "taught_in": [
+        "ch02",
+        "ch06"
+      ],
+      "witnessed_by": [
+        "lab02_conditions.py",
+        "lab06_margin.py"
+      ]
+    },
+    {
+      "id": "def:req",
+      "title": "Sieves and dense requirements",
+      "type": "definition",
+      "ledger": null,
+      "ledger_gloss": null,
+      "proof": "stated no proof",
+      "taught_in": [
+        "ch03"
+      ],
+      "witnessed_by": [
+        "lab03_topologies.py"
+      ]
+    },
+    {
+      "id": "def:site",
+      "title": "Generated admissible site",
+      "type": "definition",
+      "ledger": "D",
+      "ledger_gloss": "definitional",
+      "proof": "stated no proof",
+      "taught_in": [
+        "ch03"
+      ],
+      "witnessed_by": [
+        "lab03_topologies.py"
+      ]
+    },
+    {
+      "id": "def:stab",
+      "title": "Stability, atomic",
+      "type": "definition",
+      "ledger": null,
+      "ledger_gloss": null,
+      "proof": "stated no proof",
+      "taught_in": [
+        "ch04"
+      ],
+      "witnessed_by": [
+        "lab04_forcing.py"
+      ]
+    },
+    {
+      "id": "def:transfer",
+      "title": "Transfer",
+      "type": "definition",
+      "ledger": "D",
+      "ledger_gloss": "definitional",
+      "proof": "stated no proof",
+      "taught_in": [
+        "ch07"
+      ],
+      "witnessed_by": [
+        "vitest run src/witness -t residues across the medium"
+      ]
+    },
+    {
+      "id": "asm:calibration",
+      "title": "Calibration queue",
+      "type": "assumption",
+      "ledger": null,
+      "ledger_gloss": null,
+      "proof": "stated no proof",
+      "taught_in": [
+        "ch03",
+        "ch04",
+        "ch05",
+        "ch08",
+        "appb"
+      ],
+      "witnessed_by": [
+        "lab03_topologies.py",
+        "lab04_forcing.py",
+        "lab05_generics.py",
+        "lab08_contract.py",
+        "python verification/kernel/model_checker.py"
+      ]
+    },
+    {
+      "id": "asm:smooth",
+      "title": "Smoothness contract",
+      "type": "assumption",
+      "ledger": "C",
+      "ledger_gloss": "contract",
+      "proof": "stated no proof",
+      "taught_in": [
+        "ch02",
+        "ch05",
+        "ch06",
+        "appb"
+      ],
+      "witnessed_by": [
+        "lab02_conditions.py",
+        "lab05_generics.py",
+        "lab06_margin.py",
+        "python verification/kernel/model_checker.py"
+      ]
+    },
+    {
+      "id": "lem:atomic",
+      "title": "Atomic Truth Lemma",
+      "type": "lemma",
+      "ledger": "P",
+      "ledger_gloss": "proved",
+      "proof": "proved",
+      "taught_in": [
+        "ch05",
+        "appb"
+      ],
+      "witnessed_by": [
+        "lab05_generics.py",
+        "python verification/kernel/model_checker.py"
+      ]
+    },
+    {
+      "id": "lem:bdd",
+      "title": "Boundedness yields countability for Rasiowa--Sikorski",
+      "type": "lemma",
+      "ledger": "P",
+      "ledger_gloss": "proved",
+      "proof": "proved",
+      "taught_in": [
+        "ch05",
+        "appb"
+      ],
+      "witnessed_by": [
+        "lab05_generics.py",
+        "python verification/kernel/model_checker.py"
+      ]
+    },
+    {
+      "id": "lem:bivalence",
+      "title": "Genericity decides every formula",
+      "type": "lemma",
+      "ledger": "P",
+      "ledger_gloss": "proved",
+      "proof": "proved",
+      "taught_in": [
+        "ch05"
+      ],
+      "witnessed_by": [
+        "lab05_generics.py"
+      ]
+    },
+    {
+      "id": "lem:cauchy",
+      "title": "Cauchy--Forcing Completion",
+      "type": "lemma",
+      "ledger": "P",
+      "ledger_gloss": "proved",
+      "proof": "proved",
+      "taught_in": [
+        "ch06",
+        "appb"
+      ],
+      "witnessed_by": [
+        "lab06_margin.py",
+        "python verification/kernel/model_checker.py"
+      ]
+    },
+    {
+      "id": "lem:dec",
+      "title": "Deciding sets are order-dense",
+      "type": "lemma",
+      "ledger": "P",
+      "ledger_gloss": "proved",
+      "proof": "proved",
+      "taught_in": [
+        "ch04",
+        "ch05",
+        "appb"
+      ],
+      "witnessed_by": [
+        "lab04_forcing.py",
+        "lab05_generics.py",
+        "python verification/kernel/model_checker.py"
+      ]
+    },
+    {
+      "id": "lem:margin",
+      "title": "Channel-Margin, path form",
+      "type": "lemma",
+      "ledger": "P",
+      "ledger_gloss": "proved",
+      "proof": "proved",
+      "taught_in": [
+        "ch06",
+        "appb"
+      ],
+      "witnessed_by": [
+        "lab06_margin.py",
+        "python verification/kernel/model_checker.py"
+      ]
+    },
+    {
+      "id": "lem:ordmet",
+      "title": "Order--Metric Compatibility, atomic",
+      "type": "lemma",
+      "ledger": "P",
+      "ledger_gloss": "proved",
+      "proof": "proved",
+      "taught_in": [
+        "appb"
+      ],
+      "witnessed_by": [
+        "python verification/kernel/model_checker.py"
+      ]
+    },
+    {
+      "id": "lem:pers",
+      "title": "Persistence and consistency",
+      "type": "lemma",
+      "ledger": "P",
+      "ledger_gloss": "proved",
+      "proof": "proved",
+      "taught_in": [
+        "ch04",
+        "appb"
+      ],
+      "witnessed_by": [
+        "lab04_forcing.py",
+        "python verification/kernel/model_checker.py"
+      ]
+    },
+    {
+      "id": "lem:reach",
+      "title": "Decision Reachability, conditional",
+      "type": "lemma",
+      "ledger": "P",
+      "ledger_gloss": "proved",
+      "proof": "proved",
+      "taught_in": [
+        "ch04",
+        "ch05",
+        "ch08",
+        "appb"
+      ],
+      "witnessed_by": [
+        "lab04_forcing.py",
+        "lab05_generics.py",
+        "lab08_contract.py",
+        "python verification/kernel/model_checker.py"
+      ]
+    },
+    {
+      "id": "lem:sitebound",
+      "title": "Site bound",
+      "type": "lemma",
+      "ledger": "P",
+      "ledger_gloss": "proved",
+      "proof": "proved",
+      "taught_in": [
+        "ch03",
+        "ch04",
+        "appb"
+      ],
+      "witnessed_by": [
+        "lab03_topologies.py",
+        "lab04_forcing.py",
+        "python verification/kernel/model_checker.py"
+      ]
+    },
+    {
+      "id": "lem:void",
+      "title": "The void is the unique shared point",
+      "type": "lemma",
+      "ledger": "P",
+      "ledger_gloss": "proved",
+      "proof": "proved",
+      "taught_in": [
+        "ch01",
+        "ch07"
+      ],
+      "witnessed_by": [
+        "vitest run src/witness",
+        "vitest run src/witness -t residues across the medium"
+      ]
+    },
+    {
+      "id": "prop:chalked",
+      "title": "Chalked correctness invariant",
+      "type": "proposition",
+      "ledger": "S",
+      "ledger_gloss": "conformance",
+      "proof": "stated no proof",
+      "taught_in": [
+        "ch07"
+      ],
+      "witnessed_by": [
+        "vitest run src/witness -t residues across the medium"
+      ]
+    },
+    {
+      "id": "prop:chi",
+      "title": "Exportability identity, under orthogonality",
+      "type": "proposition",
+      "ledger": "P",
+      "ledger_gloss": "proved",
+      "proof": "proved",
+      "taught_in": [
+        "ch07",
+        "appb"
+      ],
+      "witnessed_by": [
+        "vitest run src/witness -t residues across the medium",
+        "python verification/kernel/model_checker.py"
+      ]
+    },
+    {
+      "id": "prop:zeroth",
+      "title": "The shared point is forced to zeroth order",
+      "type": "proposition",
+      "ledger": "P",
+      "ledger_gloss": "proved",
+      "proof": "proved",
+      "taught_in": [
+        "ch01"
+      ],
+      "witnessed_by": [
+        "vitest run src/witness"
+      ]
+    },
+    {
+      "id": "thm:factor",
+      "title": "Factoring, architectural",
+      "type": "theorem",
+      "ledger": "D",
+      "ledger_gloss": "definitional",
+      "proof": "proved",
+      "taught_in": [
+        "ch01",
+        "ch07"
+      ],
+      "witnessed_by": [
+        "vitest run src/witness",
+        "vitest run src/witness -t residues across the medium"
+      ]
+    },
+    {
+      "id": "thm:nonid",
+      "title": "Non-identity of transport, with equality condition",
+      "type": "theorem",
+      "ledger": "P",
+      "ledger_gloss": "proved",
+      "proof": "proved",
+      "taught_in": [
+        "ch07",
+        "ch08",
+        "appb"
+      ],
+      "witnessed_by": [
+        "vitest run src/witness -t residues across the medium",
+        "lab08_contract.py",
+        "python verification/kernel/model_checker.py"
+      ]
+    },
+    {
+      "id": "thm:prop",
+      "title": "Propositional Truth Lemma, conditional on calibration",
+      "type": "theorem",
+      "ledger": "P",
+      "ledger_gloss": "proved",
+      "proof": "proved",
+      "taught_in": [
+        "ch05",
+        "appb"
+      ],
+      "witnessed_by": [
+        "lab05_generics.py",
+        "python verification/kernel/model_checker.py"
+      ]
+    },
+    {
+      "id": "rem:torsion",
+      "title": "Certificate typing is forcing-theoretic---atomic case only",
+      "type": "remark",
+      "ledger": "P",
+      "ledger_gloss": "proved",
+      "proof": "n/a",
+      "taught_in": [
+        "ch04",
+        "ch05"
+      ],
+      "witnessed_by": [
+        "lab04_forcing.py",
+        "lab05_generics.py"
+      ]
+    }
+  ],
+  "footprint": {
+    "taught": 29,
+    "total": 58,
+    "untaught": 29,
+    "untaught_by_type": {
+      "conjecture": 2,
+      "definition": 3,
+      "lemma": 2,
+      "proposition": 3,
+      "remark": 17,
+      "theorem_target": 2
+    }
+  },
+  "browser_path": "/book/ledger",
+  "json_path": "/book/ledger.json"
+}

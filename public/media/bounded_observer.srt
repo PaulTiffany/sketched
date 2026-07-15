@@ -1,0 +1,19 @@
+1
+00:00:00,000 --> 00:00:04,920
+From Book 4 of Principia Symbolica: Bounded Observer, a definition.
+
+2
+00:00:05,670 --> 00:00:08,334
+Here it is, as written in the manuscript.
+
+3
+00:00:12,620 --> 00:00:15,764
+Here is its mathematical core, made explicit.
+
+4
+00:00:20,270 --> 00:00:25,862
+It rests on a handful of prior objects, and 21 later results build on it in turn.
+
+5
+00:00:28,220 --> 00:00:33,236
+Read it: paultiffany dot github dot io, slash Principia Symbolica.

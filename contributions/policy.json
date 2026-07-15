@@ -1,0 +1,18 @@
+{
+  "schema": "sketched.contribution-policy.v1",
+  "boundaries": [
+    {
+      "id": "eula-content-b",
+      "file": "EULA.md",
+      "region": {
+        "begin": "<!-- BEGIN performative-slot -->",
+        "end": "<!-- END performative-slot -->"
+      },
+      "owner": "OmegaClaw",
+      "human_acceptor": "human",
+      "constraints": ["docs/14_EULA_MATH_BRIEF.md"],
+      "reserved_sha256": "b25e5deb34fe2ccd1abb55bf7b85ae623e0d4b6d66c469588116e5894b8f7073",
+      "receipt_required_when_changed": true
+    }
+  ]
+}

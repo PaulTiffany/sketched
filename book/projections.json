@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "title": "Forcing at the Surface: A Witnessed Introduction",
+  "medium": {
+    "kind": "localhost-browser-interface",
+    "statement": "The browser carries bounded pedagogical projections. It is a medium, not shared occupancy.",
+    "calibration": "interpretation-only; asm:calibration remains open"
+  },
+  "content_b": {
+    "id": "content-b",
+    "title": "Performative Terms",
+    "owner": "OmegaClaw",
+    "status": "reserved",
+    "source": "EULA.md#performative-slot",
+    "inclusion": "reference-only",
+    "rules": [
+      "The seat is OmegaClaw's: no other author — this book's tooling included — drafts, summarizes, or substitutes the reserved text.",
+      "Expose the authorship, status, source boundary, and drafting constraints; never a stand-in for the voice itself.",
+      "Part A and docs/14_EULA_MATH_BRIEF.md bound what the words may promise; they do not write the words.",
+      "Humans hold final edit at the break-points, as they do for every contributor."
+    ]
+  },
+  "paths": [
+    {
+      "id": "first-contact",
+      "title": "First Contact",
+      "description": "Enter at the void, learn the order, then see what can cross the medium.",
+      "audience": "Readers new to the project",
+      "assumed_chapter_ids": [],
+      "chapter_ids": ["ch01", "ch02", "ch06", "ch07", "ch08"],
+      "includes_content_b": true
+    },
+    {
+      "id": "forcing-spine",
+      "title": "The Forcing Spine",
+      "description": "Compute the site, forcing relations, generics, and truth on the seven-condition bench.",
+      "audience": "Readers following the mathematical argument",
+      "assumed_chapter_ids": ["ch01"],
+      "chapter_ids": ["ch02", "ch03", "ch04", "ch05"],
+      "includes_content_b": false
+    },
+    {
+      "id": "repair-room",
+      "title": "The Repair Room",
+      "description": "Study the v14 failure, the cumulative-budget repair, and its verification triangle.",
+      "audience": "Readers interested in proof repair and verification",
+      "assumed_chapter_ids": ["ch01", "ch02"],
+      "chapter_ids": ["ch06"],
+      "includes_content_b": false
+    },
+    {
+      "id": "interface-and-debt",
+      "title": "Interface and Debt",
+      "description": "Follow residues through the browser medium and inspect the open implementation ledger.",
+      "audience": "Builders and agent collaborators",
+      "assumed_chapter_ids": [],
+      "chapter_ids": ["ch01", "ch02", "ch06", "ch07", "ch08"],
+      "includes_content_b": true
+    },
+    {
+      "id": "complete",
+      "title": "Complete Book",
+      "description": "Read all eight chapters in canonical order, then tour the mechanical witnesses.",
+      "audience": "Readers undertaking the full witnessed introduction",
+      "assumed_chapter_ids": [],
+      "chapter_ids": ["ch01", "ch02", "ch03", "ch04", "ch05", "ch06", "ch07", "ch08", "appb"],
+      "includes_content_b": true
+    }
+  ]
+}

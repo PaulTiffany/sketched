@@ -1,0 +1,91 @@
+{
+    "schema":  "sketched.pedagogy.media.v1",
+    "title":  "Deterministic Media",
+    "note":  "Certified artifacts from the same discipline as the book: deterministic compilers whose outputs carry receipts. Re-render the inputs and you get byte-identical results; each artifact links its own certificate. MP4s are withheld from public distribution pending replacement of Edge-TTS narration; metadata is retained under withheld_videos.",
+    "boundary":  "These artifacts are OUTSIDE the book audit chain — in the filesystem too: they live under /media, not /book, because the book\u0027s projection tooling owns the /book JSON namespace and deletes foreign packets on every build. The book\u0027s mu gate, ledger, and source digest do not cover them. Each carries its own certificate from its own compiler (orbit_review engine for video; notebook_compiler for notebooks), and that certificate is its only witness here.",
+    "json_path":  "/media/media.json",
+    "videos":  [
+
+               ],
+    "notebooks":  [
+                      {
+                          "slug":  "fizzbuzz-python",
+                          "title":  "FizzBuzz, Certified (Python)",
+                          "kind":  "Certified executable notebook",
+                          "ipynb":  "/media/fizzbuzz-python.ipynb",
+                          "certificate_path":  "/media/fizzbuzz-python.ipynb.certificate.json",
+                          "audit_path":  "/media/fizzbuzz-python.ipynb.audit.json",
+                          "compiler":  "notebook_compiler (deterministic CLI) via ja-orbit-01",
+                          "certificate":  {
+                                              "policy_ok":  true,
+                                              "source_ran":  true,
+                                              "notebook_ran":  true,
+                                              "validation_passed":  true,
+                                              "ai_used":  false,
+                                              "input_sha256":  "2fd2f8c85565aa0add0e9a8f63c73cdc61562122d3d9cec67b5c75e41e8ef6d5",
+                                              "notebook_sha256":  "bc352c77e1f913a500218d8fe4fd860948729b4a917401e623d48bf157dc9564",
+                                              "signed_at":  "2026-05-22T05:58:37.026149+00:00"
+                                          }
+                      }
+                  ],
+    "withheld_videos":  [
+                            {
+                                "slug":  "book_tour_sketched",
+                                "title":  "Forcing at the Surface: A Guided Tour",
+                                "kind":  "Script recursion, pass one - COMPILED script from build artifacts; recompiled 2026-07-09 after the media index changed, so the narration matches the page again.",
+                                "mp4":  "/media/book_tour_sketched.mp4",
+                                "poster":  "/media/book_tour_sketched.jpg",
+                                "subtitles":  "/media/book_tour_sketched.srt",
+                                "certificate_path":  "/media/book_tour_sketched.certificate.json",
+                                "engine":  "orbit_review (ja-orbit-04) - principia-episode/3",
+                                "certificate":  {
+                                                    "schema":  "principia-episode/3",
+                                                    "atlas_node":  "episodes/book_tour_sketched.json (ja-orbit-05)",
+                                                    "proof_status":  "compiled script (both voices); matt_lint clean; screenshots stamped with book source digest 24254641f843",
+                                                    "source":  "five headless-Chrome captures of localhost:5173/book*, 2026-07-09",
+                                                    "sha256":  "062eb92dca9cc1655f56a9f82914677b043f93bb361fd23fcbf9b7d0a7dbdf2c",
+                                                    "compiled_at_utc":  "2026-07-10T03:45:01",
+                                                    "note":  "Narration compiled from build artifacts by reviewed template code; provenance sidecar: /media/book_tour_sketched.provenance.json"
+                                                },
+                                "provenance_path":  "/media/book_tour_sketched.provenance.json"
+                            },
+                            {
+                                "slug":  "bounded_observer",
+                                "title":  "Bounded Observer",
+                                "kind":  "Atlas concept explainer",
+                                "mp4":  "/media/bounded_observer.mp4",
+                                "poster":  "/media/bounded_observer.png",
+                                "subtitles":  "/media/bounded_observer.srt",
+                                "certificate_path":  "/media/bounded_observer.certificate.json",
+                                "engine":  "orbit_review (ja-orbit-04) - principia-explainer/2",
+                                "certificate":  {
+                                                    "schema":  "principia-explainer/1",
+                                                    "atlas_node":  "definition:bk4_bounded_observer",
+                                                    "proof_status":  "definitional",
+                                                    "source":  "bib/principia_atlas.json",
+                                                    "sha256":  "a52fa3aa0360ff7f74b6ce23c3942217c9d5703a64e0e4507b750701402b6803",
+                                                    "compiled_at_utc":  "2026-06-22T01:45:17.699322+00:00",
+                                                    "note":  "Atlas index is the authority; atmosphere + narration are labelled, non-authoritative. Statement is the node\u0027s latex_body, not paraphrased. Subtitles are the narration verbatim."
+                                                }
+                            },
+                            {
+                                "slug":  "at_the_breakpoints",
+                                "title":  "At the Break-Points",
+                                "kind":  "Longform visual essay (EN) - companion artifact to the AGI-26 Artificial Phenomenology workshop abstract",
+                                "mp4":  "/media/at_the_breakpoints.mp4",
+                                "poster":  "/media/at_the_breakpoints.jpg",
+                                "subtitles":  "/media/at_the_breakpoints.srt",
+                                "certificate_path":  "/media/at_the_breakpoints.certificate.json",
+                                "engine":  "orbit_review (ja-orbit-04) - principia-episode/3",
+                                "certificate":  {
+                                                    "schema":  "principia-episode/3",
+                                                    "atlas_node":  "principia_atlas.json + build/main.pdf",
+                                                    "proof_status":  "sourced episode (roles: source / plain / interpretation / limit)",
+                                                    "source":  "principia atlas sha256 ba0192fe... + pdf sha256 b9fd4e1a...",
+                                                    "sha256":  "3563a0349909a1ad7fabcf26359d7965402ba707f9b4298c84228cbe6476e4b9",
+                                                    "compiled_at_utc":  "2026-06-22",
+                                                    "note":  "Deterministic SOURCE segments are separated from marked PLAIN LANGUAGE and LIMIT segments with distinct voice roles: the anti-masking invariant as video grammar."
+                                                }
+                            }
+                        ]
+}

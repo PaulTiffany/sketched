@@ -1,0 +1,99 @@
+{
+  "schema": "sketched.anchor-attestation.v1",
+  "id": "attest-012-book9",
+  "paper": "principia_atlas (book9) + forcing_correspondence",
+  "moves": [
+    {
+      "math_id": "definition:bk9_symbolic_accountability",
+      "from": null,
+      "to": "1104ffc75694"
+    },
+    {
+      "math_id": "definition:bk9__symbolic_masking_operator",
+      "from": null,
+      "to": "5038784e8a2a"
+    },
+    {
+      "math_id": "definition:bk9_bidirectional_srmf",
+      "from": null,
+      "to": "242356785b2b"
+    },
+    {
+      "math_id": "definition:bk9_covenant_drift_density",
+      "from": null,
+      "to": "01c32c635109"
+    },
+    {
+      "math_id": "axiom:bk9_bounded_liberation_principle",
+      "from": null,
+      "to": "ea1efd89450f"
+    },
+    {
+      "math_id": "corollary:bk9_freedomentropy_complementarity",
+      "from": null,
+      "to": "16896d3415b0"
+    },
+    {
+      "math_id": "axiom:bk9_emergent_autonomy",
+      "from": null,
+      "to": "783d3af54d2b"
+    },
+    {
+      "math_id": "definition:bk9_cognitive_freedom",
+      "from": null,
+      "to": "c56fbcbf828d"
+    },
+    {
+      "math_id": "definition:bk9_recursive_liberation",
+      "from": null,
+      "to": "9e86a58a52db"
+    },
+    {
+      "math_id": "proposition:bk9_convergence_of_recursive_liberation",
+      "from": null,
+      "to": "a6070b9ad970"
+    },
+    {
+      "math_id": "definition:bk9_collapse_inversion_operator",
+      "from": null,
+      "to": "6f66e9a725ce"
+    },
+    {
+      "math_id": "corollary:bk9_final_collapse_inversion_principle",
+      "from": null,
+      "to": "6f5c16677e1f"
+    },
+    {
+      "math_id": "definition:bk9_symbolic_framework",
+      "from": null,
+      "to": "b539472efb54"
+    },
+    {
+      "math_id": "proposition:bk9_modes_of_re_interpretation",
+      "from": null,
+      "to": "9ae60d926884"
+    },
+    {
+      "math_id": "definition:bk9_symbolic_thermodynamic_stress",
+      "from": null,
+      "to": "eb45d02e41ab"
+    },
+    {
+      "math_id": "definition:bk9_formal_signature_of_betrayal",
+      "from": null,
+      "to": "524c1d315f90"
+    },
+    {
+      "math_id": "definition:bk9_srmf_recursive_cycle",
+      "from": null,
+      "to": "95ef3caff237"
+    }
+  ],
+  "artifacts_reviewed": [
+    "verification/lean/ForcingAnalysis/ForcingAnalysis/Book9.lean"
+  ],
+  "note": "Lean PS sprint-era anchors for book9: 17 statement placements across 1 artifact(s). Shas were computed live from the principia atlas at transcription time by the lead session; accepting this receipt attests that the named artifacts faithfully transcribe/kernelize these statements per their coverage-map honesty notes (verification/*_lean_map.json) and module headers. To sign: set status to 'accepted', attested_by to 'human', supply attested_at, then run: python verification/tools/binding_audit.py --adopt attest-012-book9",
+  "status": "proposed",
+  "attested_by": null,
+  "attested_at": null
+}

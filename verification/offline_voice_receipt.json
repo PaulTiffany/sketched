@@ -1,0 +1,62 @@
+{
+  "schema": "sketched.offline-narration.v1",
+  "engine": {
+    "name": "Piper",
+    "version": "1.4.2",
+    "source": "https://github.com/OHF-Voice/piper1-gpl",
+    "license": "GPL-3.0",
+    "note": "The engine is a build tool and is not redistributed; generated WAV files are project artifacts."
+  },
+  "voices": {
+    "Matt": {
+      "model": "en_GB-cori-medium.onnx",
+      "sha256": "1899f98e5fb8310154f3c2973f4b8a929ba7245e722b3d3a85680b833d95f10d",
+      "language": "en_GB",
+      "dataset_license": "public domain",
+      "model_repository_license": "MIT",
+      "model_card": "https://huggingface.co/rhasspy/piper-voices/blob/v1.0.0/en/en_GB/cori/medium/MODEL_CARD",
+      "length_scale": 1.08
+    },
+    "Ellie": {
+      "model": "en_US-kristin-medium.onnx",
+      "sha256": "5849957f929cbf720c258f8458692d6103fff2f0e3d3b19c8259474bb06a18d4",
+      "language": "en_US",
+      "dataset_license": "public domain",
+      "model_repository_license": "MIT",
+      "model_card": "https://huggingface.co/rhasspy/piper-voices/blob/main/en/en_US/kristin/medium/MODEL_CARD",
+      "length_scale": 0.98
+    }
+  },
+  "lessons": [
+    {
+      "goal": "onramp",
+      "file": "selfcompile/voices/rendered/onramp.wav",
+      "sha256": "93fb8e484a78de1052b4cd37d53cf6933f996273ee8940078d7e8ea7571d28f0",
+      "segments": 3
+    },
+    {
+      "goal": "medium-deep",
+      "file": "selfcompile/voices/rendered/medium-deep.wav",
+      "sha256": "e7b1752c3d92fad11782e1155a63d7a727c246d9e0c4a959a420f4885b22aa22",
+      "segments": 3
+    },
+    {
+      "goal": "fabricpc-bridge",
+      "file": "selfcompile/voices/rendered/fabricpc-bridge.wav",
+      "sha256": "9e773288f0e0e080f98a1851bc1ed317f255013fb96aaa7e676232a3faed72e2",
+      "segments": 3
+    },
+    {
+      "goal": "leanps-slice",
+      "file": "selfcompile/voices/rendered/leanps-slice.wav",
+      "sha256": "c54a72fb71a6d25c4a0a97ca9487a876a75925ef5e79ee4ef5da696b0f9876d1",
+      "segments": 5
+    },
+    {
+      "goal": "book5-lean",
+      "file": "selfcompile/voices/rendered/book5-lean.wav",
+      "sha256": "3f116ed55bb32697dfcfe1547200c0844bdf9ebb9cfeb81e8e4cabe651fc8ce7",
+      "segments": 5
+    }
+  ]
+}

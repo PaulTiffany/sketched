@@ -1,0 +1,5 @@
+name = "ForcingKernel"
+defaultTargets = ["ForcingKernel"]
+
+[[lean_lib]]
+name = "ForcingKernel"

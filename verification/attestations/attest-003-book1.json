@@ -1,0 +1,34 @@
+{
+  "schema": "sketched.anchor-attestation.v1",
+  "id": "attest-003-book1",
+  "paper": "principia_atlas (book1) + forcing_correspondence",
+  "moves": [
+    {
+      "math_id": "definition:bk1_certified_type_preserving_symbolic_transport",
+      "from": null,
+      "to": "08ce6a1fa0ff"
+    },
+    {
+      "math_id": "proposition:bk1_nonvacuity_of_certified_transport",
+      "from": null,
+      "to": "c6d603187897"
+    },
+    {
+      "math_id": "definition:bk1_shared_boundary_paradox",
+      "from": null,
+      "to": "54071442b740"
+    },
+    {
+      "math_id": "theorem:bk1_shared_paradox_bridge_datum",
+      "from": null,
+      "to": "3b4d89724ec2"
+    }
+  ],
+  "artifacts_reviewed": [
+    "verification/lean/ForcingKernel/ForcingKernel/Witness.lean"
+  ],
+  "note": "Lean PS sprint-era anchors for book1: 4 statement placements across 1 artifact(s). Shas were computed live from the principia atlas at transcription time by the lead session; accepting this receipt attests that the named artifacts faithfully transcribe/kernelize these statements per their coverage-map honesty notes (verification/*_lean_map.json) and module headers. To sign: set status to 'accepted', attested_by to 'human', supply attested_at, then run: python verification/tools/binding_audit.py --adopt attest-003-book1",
+  "status": "proposed",
+  "attested_by": null,
+  "attested_at": null
+}

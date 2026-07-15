@@ -1,0 +1,261 @@
+{
+  "schema_version": 2,
+  "note": "Chapter registry for the Sketched book. book_audit.py verifies: drafted chapters exist and contain their atlas ids; atlas ids resolve; tagged mentions match the ledger claim; code anchors export; Python labs, declared lab commands, and solution scripts exit 0; the generated appendix and browser packets are current; statuses come from {drafted, outline}.",
+  "chapters": [
+    {
+      "id": "ch01",
+      "file": "book/ch01_the_room_at_zero.md",
+      "title": "The Room at Zero",
+      "status": "drafted",
+      "prerequisite_ids": [],
+      "atlas_refs": [
+        "def:cond",
+        "lem:void",
+        "prop:zeroth",
+        "thm:factor"
+      ],
+      "code_refs": [
+        {
+          "file": "src/witness/witness.ts",
+          "export": "isZeroOrderOrigin"
+        },
+        {
+          "file": "src/witness/witness.ts",
+          "export": "anchor"
+        },
+        {
+          "file": "src/witness/validate.ts",
+          "export": "validateTrace"
+        }
+      ],
+      "lab": null,
+      "lab_command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "src/witness"
+      ],
+      "solutions_note": {
+        "file": "src/witness/witness.test.ts",
+        "contains": "rejects an anchor without the first contract",
+        "note": "exercise 1's answer key already runs every lab invocation: eulaAccepted=false at a zero-order origin"
+      }
+    },
+    {
+      "id": "ch02",
+      "file": "book/ch02_conditions_and_refinement.md",
+      "title": "Conditions and Refinement",
+      "status": "drafted",
+      "prerequisite_ids": [
+        "ch01"
+      ],
+      "atlas_refs": [
+        "def:cond",
+        "def:refine",
+        "asm:smooth"
+      ],
+      "code_refs": [],
+      "lab": "book/labs/lab02_conditions.py",
+      "solutions": [
+        "book/labs/solutions/sol02.py"
+      ]
+    },
+    {
+      "id": "ch03",
+      "file": "book/ch03_sieves_covers_topologies.md",
+      "title": "Sieves, Covers, and Two Topologies",
+      "status": "drafted",
+      "prerequisite_ids": [
+        "ch02"
+      ],
+      "atlas_refs": [
+        "def:req",
+        "def:site",
+        "lem:sitebound",
+        "asm:calibration"
+      ],
+      "code_refs": [],
+      "lab": "book/labs/lab03_topologies.py",
+      "solutions": [
+        "book/labs/solutions/sol03.py"
+      ]
+    },
+    {
+      "id": "ch04",
+      "file": "book/ch04_forcing.md",
+      "title": "Forcing: When Does a Claim Hold?",
+      "status": "drafted",
+      "prerequisite_ids": [
+        "ch01",
+        "ch02",
+        "ch03"
+      ],
+      "atlas_refs": [
+        "lem:sitebound",
+        "def:stab",
+        "def:force",
+        "def:clauses",
+        "lem:pers",
+        "lem:dec",
+        "lem:reach",
+        "rem:torsion",
+        "asm:calibration"
+      ],
+      "code_refs": [],
+      "lab": "book/labs/lab04_forcing.py",
+      "solutions": [
+        "book/labs/solutions/sol04.py"
+      ]
+    },
+    {
+      "id": "ch05",
+      "file": "book/ch05_generics_and_truth.md",
+      "title": "Generics and Truth",
+      "status": "drafted",
+      "prerequisite_ids": [
+        "ch02",
+        "ch03",
+        "ch04"
+      ],
+      "atlas_refs": [
+        "rem:torsion",
+        "asm:smooth",
+        "def:closure",
+        "lem:dec",
+        "lem:bdd",
+        "lem:reach",
+        "lem:bivalence",
+        "lem:atomic",
+        "thm:prop",
+        "asm:calibration"
+      ],
+      "code_refs": [],
+      "lab": "book/labs/lab05_generics.py",
+      "solutions": [
+        "book/labs/solutions/sol05.py"
+      ]
+    },
+    {
+      "id": "ch06",
+      "file": "book/ch06_the_margin.md",
+      "title": "The Margin: Anatomy of a Repair",
+      "status": "drafted",
+      "prerequisite_ids": [
+        "ch02"
+      ],
+      "atlas_refs": [
+        "asm:smooth",
+        "def:refine",
+        "lem:margin",
+        "lem:cauchy"
+      ],
+      "code_refs": [],
+      "lab": "book/labs/lab06_margin.py",
+      "solutions": [
+        "book/labs/solutions/sol06.py"
+      ]
+    },
+    {
+      "id": "ch07",
+      "file": "book/ch07_residues_across_the_medium.md",
+      "title": "Residues Across the Medium",
+      "status": "drafted",
+      "prerequisite_ids": [
+        "ch01",
+        "ch02"
+      ],
+      "atlas_refs": [
+        "lem:void",
+        "def:transfer",
+        "thm:factor",
+        "thm:nonid",
+        "prop:chi",
+        "prop:chalked"
+      ],
+      "code_refs": [
+        {
+          "file": "src/witness/residue.ts",
+          "export": "encodeResidue"
+        },
+        {
+          "file": "src/witness/residue.ts",
+          "export": "decodeResidue"
+        }
+      ],
+      "lab": null,
+      "lab_command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "src/witness",
+        "-t",
+        "residues across the medium"
+      ],
+      "solutions_note": {
+        "file": "src/witness/witness.test.ts",
+        "contains": "a mark claiming ceiling-state is refused (identity refusal)",
+        "note": "exercise 1's answer key already runs every lab invocation: a payload key that claims identity fires the same reason string"
+      }
+    },
+    {
+      "id": "ch08",
+      "file": "book/ch08_the_contract_and_the_debt.md",
+      "title": "The Contract and the Debt",
+      "status": "drafted",
+      "prerequisite_ids": [
+        "ch01",
+        "ch06",
+        "ch07"
+      ],
+      "atlas_refs": [
+        "asm:calibration",
+        "lem:reach",
+        "thm:nonid"
+      ],
+      "code_refs": [],
+      "lab": "book/labs/lab08_contract.py",
+      "solutions": [
+        "book/labs/solutions/sol08.py"
+      ]
+    },
+    {
+      "id": "appb",
+      "file": "book/appendix_b_the_mechanical_witnesses.md",
+      "title": "Appendix B · The Mechanical Witnesses",
+      "status": "drafted",
+      "prerequisite_ids": [
+        "ch03",
+        "ch04",
+        "ch05",
+        "ch06"
+      ],
+      "atlas_refs": [
+        "asm:calibration",
+        "asm:smooth",
+        "def:clauses",
+        "def:force",
+        "lem:atomic",
+        "lem:bdd",
+        "lem:cauchy",
+        "lem:dec",
+        "lem:margin",
+        "lem:ordmet",
+        "lem:pers",
+        "lem:reach",
+        "lem:sitebound",
+        "prop:chi",
+        "thm:nonid",
+        "thm:prop"
+      ],
+      "code_refs": [],
+      "lab": null,
+      "lab_command": [
+        "python",
+        "verification/kernel/model_checker.py"
+      ],
+      "solutions": [
+        "book/labs/solutions/solappb.py"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "sketched.anchor-attestation.v1",
+  "id": "attest-000-genesis",
+  "paper": "forcing_correspondence_v15.tex",
+  "moves": [
+    { "math_id": "def:wit", "from": null, "to": "1f70d018fc18" },
+    { "math_id": "lem:bdd", "from": null, "to": "962f1acbb53b" },
+    { "math_id": "lem:cauchy", "from": null, "to": "a34a13c8b574" },
+    { "math_id": "lem:dec", "from": null, "to": "f868533eafc0" },
+    { "math_id": "lem:margin", "from": null, "to": "2badf87468ba" },
+    { "math_id": "lem:ordmet", "from": null, "to": "a1a99fb86b03" },
+    { "math_id": "lem:pers", "from": null, "to": "99c507d2a575" },
+    { "math_id": "lem:sitebound", "from": null, "to": "eedfa1f5220d" },
+    { "math_id": "prop:chalked", "from": null, "to": "61ca001054ab" },
+    { "math_id": "prop:chi", "from": null, "to": "fecf9ecfcee2" },
+    { "math_id": "thm:factor", "from": null, "to": "b355720d8fe3" },
+    { "math_id": "thm:nonid", "from": null, "to": "7707d4f50575" },
+    { "math_id": "thm:prop", "from": null, "to": "e12c86e11d07" }
+  ],
+  "artifacts_reviewed": [
+    "verification/lean/ForcingKernel/ForcingKernel/Site.lean",
+    "verification/lean/ForcingKernel/ForcingKernel/Forcing.lean",
+    "verification/lean/ForcingKernel/ForcingKernel/Generic.lean",
+    "verification/lean/ForcingKernel/ForcingKernel/Margin.lean",
+    "verification/lean/ForcingAnalysis/ForcingAnalysis/Descent.lean",
+    "verification/lean/ForcingAnalysis/ForcingAnalysis/Transport.lean",
+    "verification/kernel/model_checker.py",
+    "verification/kernel/numeric_margin.py",
+    "verification/kernel/sweep.py",
+    "src/witness/witness.ts",
+    "src/witness/validate.ts",
+    "src/witness/residue.ts"
+  ],
+  "note": "Genesis: the 25 bootstrap anchors of 2026-07-05 (21 original + 4 for kernel/sweep.py, same statement hashes), machine-stamped on the strength of the 2026-07-02 transcription audit (FINDINGS.md) and the CLEAN suite. The machine detected; only you can attest. Accepting this receipt is the founding judgment act of the anchor protocol: set status to 'accepted', attested_by to 'human', supply attested_at yourself, then run: python verification/tools/binding_audit.py --adopt attest-000-genesis",
+  "status": "proposed",
+  "attested_by": null,
+  "attested_at": null
+}

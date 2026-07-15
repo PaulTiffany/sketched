@@ -1,0 +1,165 @@
+{
+  "schema": "sketched.anchor-attestation.v1",
+  "id": "attest-009-book6",
+  "paper": "principia_atlas (book6) + forcing_correspondence",
+  "moves": [
+    {
+      "math_id": "definition:bk6_mutation_threshold",
+      "from": null,
+      "to": "f683f66775e7"
+    },
+    {
+      "math_id": "theorem:bk6_symbolic_bifurcation_classification",
+      "from": null,
+      "to": "22d1febbf825"
+    },
+    {
+      "math_id": "proposition:bk6_bifurcation_threshold",
+      "from": null,
+      "to": "8f5017b27da1"
+    },
+    {
+      "math_id": "proposition:bk6_structural_divergence_condition",
+      "from": null,
+      "to": "76eaa2341f99"
+    },
+    {
+      "math_id": "proposition:bk6_reflective_mutation_inhibition",
+      "from": null,
+      "to": "ba330a5e73b4"
+    },
+    {
+      "math_id": "axiom:bk6_reflective_regulation_of_mutation",
+      "from": null,
+      "to": "c43fbe4c0bc0"
+    },
+    {
+      "math_id": "corollary:bk6_mutation_memory",
+      "from": null,
+      "to": "dade7632a896"
+    },
+    {
+      "math_id": "proposition:bk6_entropic_dissolution",
+      "from": null,
+      "to": "f49c7e555088"
+    },
+    {
+      "math_id": "definition:bk6_symbolic_regulatory_cycle",
+      "from": null,
+      "to": "27684a56f27b"
+    },
+    {
+      "math_id": "definition:bk6_symbolic_configuration_spaces",
+      "from": null,
+      "to": "29561d709e73"
+    },
+    {
+      "math_id": "definition:bk6_identity_carrier_kernel",
+      "from": null,
+      "to": "6c543d293301"
+    },
+    {
+      "math_id": "definition:bk6_symbolic_temperature",
+      "from": null,
+      "to": "07073236b14c"
+    },
+    {
+      "math_id": "definition:bk6_symbolic_free_energy_functional",
+      "from": null,
+      "to": "40faca1a4659"
+    },
+    {
+      "math_id": "definition:bk6_transformation_operator_complete",
+      "from": null,
+      "to": "e53703301546"
+    },
+    {
+      "math_id": "definition:bk6_bifurcation_operator_complete",
+      "from": null,
+      "to": "254a2f29b3ea"
+    },
+    {
+      "math_id": "definition:bk6_stability_functional_complete",
+      "from": null,
+      "to": "f0a352350362"
+    },
+    {
+      "math_id": "axiom:bk6_symbolic_time_irreversibility_complete",
+      "from": null,
+      "to": "7c3b1e0d1f6c"
+    },
+    {
+      "math_id": "proposition:bk6_mutation_bifurcation_duality",
+      "from": null,
+      "to": "21056d14c3c5"
+    },
+    {
+      "math_id": "definition:bk6_symbolic_mutation",
+      "from": null,
+      "to": "5a4f1f630609"
+    },
+    {
+      "math_id": "definition:bk6_symbolic_bifurcation",
+      "from": null,
+      "to": "d31745493aa6"
+    },
+    {
+      "math_id": "definition:bk6_regulatory_basin",
+      "from": null,
+      "to": "56ed12ca67f3"
+    },
+    {
+      "math_id": "definition:bk6_confidence_field_operator",
+      "from": null,
+      "to": "8596d823f518"
+    },
+    {
+      "math_id": "axiom:bk6_reflective_coherence_complete",
+      "from": null,
+      "to": "94df1b353d36"
+    },
+    {
+      "math_id": "definition:bk6_mutation_rate",
+      "from": null,
+      "to": "f20e02a4b445"
+    },
+    {
+      "math_id": "proposition:bk6_mutation_equilibrium",
+      "from": null,
+      "to": "6ddf60b334f1"
+    },
+    {
+      "math_id": "proposition:bk6_drift_reflection_correspondence",
+      "from": null,
+      "to": "b577a24ab9b1"
+    },
+    {
+      "math_id": "axiom:bk6_equilibrium_of_mutability",
+      "from": null,
+      "to": "17a38aae9a7c"
+    },
+    {
+      "math_id": "definition:bk6_reflection_operator_complete",
+      "from": null,
+      "to": "8a654f491236"
+    },
+    {
+      "math_id": "definition:bk6_regulatory_basin_operator",
+      "from": null,
+      "to": "ce08ee6b8f34"
+    },
+    {
+      "math_id": "axiom:bk6_map_equilibrium_invariance_complete",
+      "from": null,
+      "to": "443a6ae07493"
+    }
+  ],
+  "artifacts_reviewed": [
+    "verification/lean/ForcingAnalysis/ForcingAnalysis/Asymptotics.lean",
+    "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6.lean"
+  ],
+  "note": "Lean PS sprint-era anchors for book6: 30 statement placements across 2 artifact(s). Shas were computed live from the principia atlas at transcription time by the lead session; accepting this receipt attests that the named artifacts faithfully transcribe/kernelize these statements per their coverage-map honesty notes (verification/*_lean_map.json) and module headers. To sign: set status to 'accepted', attested_by to 'human', supply attested_at, then run: python verification/tools/binding_audit.py --adopt attest-009-book6",
+  "status": "proposed",
+  "attested_by": null,
+  "attested_at": null
+}

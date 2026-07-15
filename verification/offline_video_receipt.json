@@ -1,0 +1,78 @@
+{
+  "schema": "sketched.offline-video.v1",
+  "compiler": "selfcompile/voices/video.py",
+  "narration_manifest_sha256": "52d9489301d4693b1569c019be3da47df85d2d760651adb19e9b346b63474c08",
+  "distribution_target": "Vimeo-compatible MP4",
+  "videos": [
+    {
+      "goal": "onramp",
+      "title": "Onramp",
+      "mp4": "selfcompile/voices/videos/onramp.mp4",
+      "mp4_sha256": "d3dc9518c4553a06e2acaa136d144efff853e0df98fbce285a7250a64ecde25c",
+      "subtitles": "selfcompile/voices/videos/onramp.srt",
+      "subtitles_sha256": "2b74eb95534cdfef1af5b2bf80c6bfb82329a232a6d1a48c92a5bfc180ebaa1c",
+      "poster": "selfcompile/voices/videos/onramp.jpg",
+      "poster_sha256": "465c0855eac22d4d5c1c9f4bc605a25a23039024391680984e19a64d8df45f26",
+      "duration_seconds": 25.162,
+      "video": "H.264 1280x720 30fps yuv420p CRF 20",
+      "audio": "AAC 192 kbps from pinned offline Piper WAV",
+      "captions": "embedded mov_text plus sidecar SRT"
+    },
+    {
+      "goal": "medium-deep",
+      "title": "Medium Deep",
+      "mp4": "selfcompile/voices/videos/medium-deep.mp4",
+      "mp4_sha256": "55524624ba4a5ea459753be883c3c372d6a339fbfbc05b7ac5791e36c3a37e32",
+      "subtitles": "selfcompile/voices/videos/medium-deep.srt",
+      "subtitles_sha256": "8ce7d7866e2e69181938da5afc88861b3518c5dc8409b809ceae36a766b1a4b3",
+      "poster": "selfcompile/voices/videos/medium-deep.jpg",
+      "poster_sha256": "3f6c225ca7e1ff3376fb0d2d248929f44bff3c0a50f9329667101f1dd46eaa77",
+      "duration_seconds": 27.727,
+      "video": "H.264 1280x720 30fps yuv420p CRF 20",
+      "audio": "AAC 192 kbps from pinned offline Piper WAV",
+      "captions": "embedded mov_text plus sidecar SRT"
+    },
+    {
+      "goal": "fabricpc-bridge",
+      "title": "Fabricpc Bridge",
+      "mp4": "selfcompile/voices/videos/fabricpc-bridge.mp4",
+      "mp4_sha256": "68b6b3ae6421a78a23e7448721fe936200cd22f4c62657850cbc540c66932e9d",
+      "subtitles": "selfcompile/voices/videos/fabricpc-bridge.srt",
+      "subtitles_sha256": "4fdbd46d775625355bf3288a05513c544373b800dabcd0c6a60ef70b0e8fb6f5",
+      "poster": "selfcompile/voices/videos/fabricpc-bridge.jpg",
+      "poster_sha256": "2366d208dfa45d94f5cafef39b3c495fff40d0366133c2089ba200f649481eb7",
+      "duration_seconds": 43.401,
+      "video": "H.264 1280x720 30fps yuv420p CRF 20",
+      "audio": "AAC 192 kbps from pinned offline Piper WAV",
+      "captions": "embedded mov_text plus sidecar SRT"
+    },
+    {
+      "goal": "leanps-slice",
+      "title": "Leanps Slice",
+      "mp4": "selfcompile/voices/videos/leanps-slice.mp4",
+      "mp4_sha256": "bdd8c561a5ce321e1d3e12fe4d780a8f86e2a32fe75db13f90025cd2c3b29031",
+      "subtitles": "selfcompile/voices/videos/leanps-slice.srt",
+      "subtitles_sha256": "cf28dc595f8d4704f66848fd92bd96ca8eff3cf3d2ed492db0503f48a52af0d1",
+      "poster": "selfcompile/voices/videos/leanps-slice.jpg",
+      "poster_sha256": "ccdcb5b356b1c1100bcd438b49ab1653c0cfa6a9dccb9620be4055929c48c195",
+      "duration_seconds": 86.831,
+      "video": "H.264 1280x720 30fps yuv420p CRF 20",
+      "audio": "AAC 192 kbps from pinned offline Piper WAV",
+      "captions": "embedded mov_text plus sidecar SRT"
+    },
+    {
+      "goal": "book5-lean",
+      "title": "Book5 Lean",
+      "mp4": "selfcompile/voices/videos/book5-lean.mp4",
+      "mp4_sha256": "3ff2d11211460598a1b97e50a77be38c432802799db117acc022ead7287a464e",
+      "subtitles": "selfcompile/voices/videos/book5-lean.srt",
+      "subtitles_sha256": "1f1d99b0f8d3891f214e336e9d9250851cdbf65688cf66303c71a2363bf05adc",
+      "poster": "selfcompile/voices/videos/book5-lean.jpg",
+      "poster_sha256": "15bb2426b2f87cf525e06f47db4ee4c70ad2af6d3e3a95bea5a3831859173ef6",
+      "duration_seconds": 68.894,
+      "video": "H.264 1280x720 30fps yuv420p CRF 20",
+      "audio": "AAC 192 kbps from pinned offline Piper WAV",
+      "captions": "embedded mov_text plus sidecar SRT"
+    }
+  ]
+}

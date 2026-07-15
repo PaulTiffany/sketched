@@ -1,0 +1,614 @@
+{
+  "schema": "sketched.pedagogy.projection.v1",
+  "source_digest": "8046ced49edc6d12518fd5eb83ad2ab32d5edfa02eb684e7e8da3da5214b4cf0",
+  "title": "Forcing at the Surface: A Witnessed Introduction",
+  "medium": {
+    "kind": "localhost-browser-interface",
+    "statement": "The browser carries bounded pedagogical projections. It is a medium, not shared occupancy.",
+    "calibration": "interpretation-only; asm:calibration remains open"
+  },
+  "projection": {
+    "id": "first-contact",
+    "title": "First Contact",
+    "description": "Enter at the void, learn the order, then see what can cross the medium.",
+    "audience": "Readers new to the project",
+    "assumed_chapter_ids": [],
+    "chapter_ids": [
+      "ch01",
+      "ch02",
+      "ch06",
+      "ch07",
+      "ch08"
+    ],
+    "includes_content_b": true,
+    "browser_path": "/book/path/first-contact",
+    "json_path": "/book/context/first-contact.json",
+    "chapter_count": 5,
+    "assumption_count": 0
+  },
+  "chain": {
+    "assumed_chapter_ids": [],
+    "sequence": [
+      "ch01",
+      "ch02",
+      "ch06",
+      "ch07",
+      "ch08"
+    ],
+    "edges": [
+      {
+        "from": "ch01",
+        "to": "ch02"
+      },
+      {
+        "from": "ch02",
+        "to": "ch06"
+      },
+      {
+        "from": "ch01",
+        "to": "ch07"
+      },
+      {
+        "from": "ch02",
+        "to": "ch07"
+      },
+      {
+        "from": "ch01",
+        "to": "ch08"
+      },
+      {
+        "from": "ch06",
+        "to": "ch08"
+      },
+      {
+        "from": "ch07",
+        "to": "ch08"
+      }
+    ]
+  },
+  "content_b": {
+    "schema": "sketched.pedagogy.content-boundary.v1",
+    "source_digest": "8046ced49edc6d12518fd5eb83ad2ab32d5edfa02eb684e7e8da3da5214b4cf0",
+    "id": "content-b",
+    "title": "Performative Terms",
+    "owner": "OmegaClaw",
+    "status": "reserved",
+    "source": "EULA.md#performative-slot",
+    "inclusion": "reference-only",
+    "content": null,
+    "rules": [
+      "The seat is OmegaClaw's: no other author — this book's tooling included — drafts, summarizes, or substitutes the reserved text.",
+      "Expose the authorship, status, source boundary, and drafting constraints; never a stand-in for the voice itself.",
+      "Part A and docs/14_EULA_MATH_BRIEF.md bound what the words may promise; they do not write the words.",
+      "Humans hold final edit at the break-points, as they do for every contributor."
+    ],
+    "browser_path": "/book/content-b",
+    "json_path": "/book/content-b.json",
+    "note": "A reserved seat, not a fence. The mathematics of Part A bounds what Part B may promise, but Part B is what a person actually reads at the moment of consent — so how OmegaClaw frames those bounds becomes the contract as experienced. The words are theirs to write; null is the honest state of words not yet written."
+  },
+  "chapters": [
+    {
+      "schema": "sketched.pedagogy.chapter.v1",
+      "id": "ch01",
+      "title": "The Room at Zero",
+      "status": "drafted",
+      "prerequisite_ids": [],
+      "source_path": "book/ch01_the_room_at_zero.md",
+      "browser_path": "/book/chapter/ch01",
+      "json_path": "/book/chapters/ch01.json",
+      "aim": "After this chapter you can say precisely what `127.0.0.1` *is* in this\nsystem — not as networking trivia but as mathematics: the unique point two\nobservers can share, why sharing it buys the ability to say \"we agree\"\nand nothing more, and why a contract (not a theorem) is what seats *you*\nthere. You will be able to predict what the witness layer accepts and\nrejects before running it.",
+      "boundary_note": "This chapter does **not** claim that localhost is secure, that the void\n\"is\" consciousness or presence (the paper's appendix firewall applies),\nor that seating the human is mathematically forced — it is contractually\nchosen, and the whole design is honest about which is which. That\nhonesty is the book's method.",
+      "atlas_refs": [
+        "def:cond",
+        "lem:void",
+        "prop:zeroth",
+        "thm:factor"
+      ],
+      "code_refs": [
+        {
+          "file": "src/witness/witness.ts",
+          "export": "isZeroOrderOrigin"
+        },
+        {
+          "file": "src/witness/witness.ts",
+          "export": "anchor"
+        },
+        {
+          "file": "src/witness/validate.ts",
+          "export": "validateTrace"
+        }
+      ],
+      "lab": {
+        "kind": "command",
+        "argv": [
+          "node",
+          "node_modules/vitest/vitest.mjs",
+          "run",
+          "src/witness"
+        ]
+      },
+      "word_count": 884,
+      "sections": [
+        {
+          "id": "aim",
+          "title": "Aim",
+          "markdown": "After this chapter you can say precisely what `127.0.0.1` *is* in this\nsystem — not as networking trivia but as mathematics: the unique point two\nobservers can share, why sharing it buys the ability to say \"we agree\"\nand nothing more, and why a contract (not a theorem) is what seats *you*\nthere. You will be able to predict what the witness layer accepts and\nrejects before running it."
+        },
+        {
+          "id": "prerequisites",
+          "title": "Prerequisites",
+          "markdown": "None. This is the front door."
+        },
+        {
+          "id": "definitions",
+          "title": "Definitions",
+          "markdown": "**Condition** (`def:cond`, D). A finite partial epistemic state — in\nSketched terms, a stage: which layers exist, who owns them, what has been\nconsented to so far. You always know only finitely much; a condition is\nthe honest record of that.\n\n**Refinement.** `q ⊑ p` means q keeps everything p committed to and\nresolves more. Work descends: you never un-know by refining.\n\n**The wedge** (`lem:void` setup). Take two observers A and B whose\nsurfaces share *no* condition except the empty one — zero commitments,\nthe state before anything has been said. Glue the two surfaces at that\nsingle shared top. Call the shared point the **void**, written 𝟙. The\norder on the glued object is: A's order on A's side, B's order on B's\nside, 𝟙 above everything, and **no cross-branch relations**.\n\n**Depth.** Count refinement steps from 𝟙. The void is the unique\ncondition at depth 0; everything else is depth ≥ 1."
+        },
+        {
+          "id": "claims",
+          "title": "Claims",
+          "markdown": "**The void is the unique shared point** (`lem:void`, **P** —\nmachine-verified setup; see `verification/FINDINGS.md`). Any condition of\nA's at depth ≥ 1 is incompatible with any condition of B's at depth ≥ 1:\na common refinement would have to live in both branches, and nothing\ndoes. Consequently any filter — any coherent course of joint commitments —\nlies entirely inside one branch (plus 𝟙).\n\n**The shared point is forced to zeroth order** (`prop:zeroth`, **P**).\nNot a design choice: the *only* thing shareable between disjoint\nobservers is the depth-0 condition. If you want a shared anything, the\nmath hands you exactly one candidate, and it is empty.\n\n**Factoring** (`thm:factor`, **D**). Since occupancy of another's surface\nis impossible below the void, any transfer of contingent content must\nroute through a third object both can address — a *medium*. (Chapter 07\nis about what survives that trip. Spoiler: residues, never identity.)"
+        },
+        {
+          "id": "worked-example-what-a-and-b-can-actually-share",
+          "title": "Worked example: what A and B can actually share",
+          "markdown": "A has drawn three layers; B has drawn two. Can B see A's stage? No — B\nwould need to occupy a depth-≥1 condition of A's branch (`lem:void` says\nnever). Can A and B agree on anything? Yes — exactly the statements\nforced *from the void*, the branch-invariant, pre-observational kernel:\n\"a stage has an owner,\" \"consent precedes mutation.\" That is\n**commensurability**: a common 𝟙 to quantify over, hence the ability to\n*state* \"we agree.\" It is not communication. Nothing contingent — no\nlayer, no palette, no gesture — crosses at depth 0.\n\nOperationally the void is **localhost**. `127.0.0.1` has the same form\nfor everyone and a different referent for each — the address whose\nuniversality is exactly commensurability and whose locality is exactly\nbranch privacy. Sketched's dev server binds there and the witness layer\nchecks it: `isZeroOrderOrigin` (in `src/witness/witness.ts`) accepts\nloopback and rejects the public internet, because *the void is not out\nthere*."
+        },
+        {
+          "id": "and-then-the-contract",
+          "title": "And then the contract",
+          "markdown": "Everything above is neutral. The void is a shared *point*, not a person;\nthe math seats nobody. Sketched makes one move that the theorems do not make\nfor it: the EULA places **you** at the origin. This is a **D**-status\nact — constitutive, not derived — and the code treats it that way: an\nanchor (`anchor` in `src/witness/witness.ts`) carries `eulaAccepted`, and\n`validateTrace` (in `src/witness/validate.ts`) rejects every trace whose\nanchor lacks the contract, with the reason string telling you exactly\nthis story: *without it the anchor is neutral, not authority-bearing.*\n\nBefore the contract: commensurability. After: authority-origin. The room\nexists either way; the contract decides that it is *your* room."
+        },
+        {
+          "id": "lab",
+          "title": "Lab",
+          "markdown": "The chapter's lab is the witness test suite:\n\n```bash\nnpx vitest run src/witness\n```\n\nWatch four tests in particular: loopback accepted, `example.com`\nrejected, the missing-contract rejection, and the trace that fails\nbecause a gate admitted what a certificate refused."
+        },
+        {
+          "id": "exercises",
+          "title": "Exercises",
+          "markdown": "1. **Predict, then run.** What does `validateTrace` say about a trace\n   anchored at `http://localhost:5173` with `eulaAccepted: false`? Write\n   your predicted reason string; then run the lab and compare. (The\n   answer key already lives in the lab: `witness.test.ts`, \"rejects an\n   anchor without the first contract.\")\n2. `[::1]` is in the zero-order set. Say why in one sentence about\n   *form vs. referent*.\n3. (Proof sketch.) Show from the wedge order that a filter containing a\n   condition of A's and a condition of B's, both depth ≥ 1, is\n   impossible. Where exactly does downward-directedness fail?\n4. (Harder.) \"Commensurability, not communication\" — give one statement\n   two disjoint observers can both *assert*, and one they cannot *share*,\n   and say which property of the wedge each answer uses."
+        },
+        {
+          "id": "boundary-note",
+          "title": "Boundary note",
+          "markdown": "This chapter does **not** claim that localhost is secure, that the void\n\"is\" consciousness or presence (the paper's appendix firewall applies),\nor that seating the human is mathematically forced — it is contractually\nchosen, and the whole design is honest about which is which. That\nhonesty is the book's method."
+        }
+      ],
+      "raw_markdown": "# Chapter 01 · The Room at Zero\n\n## Aim\n\nAfter this chapter you can say precisely what `127.0.0.1` *is* in this\nsystem — not as networking trivia but as mathematics: the unique point two\nobservers can share, why sharing it buys the ability to say \"we agree\"\nand nothing more, and why a contract (not a theorem) is what seats *you*\nthere. You will be able to predict what the witness layer accepts and\nrejects before running it.\n\n## Prerequisites\n\nNone. This is the front door.\n\n## Definitions\n\n**Condition** (`def:cond`, D). A finite partial epistemic state — in\nSketched terms, a stage: which layers exist, who owns them, what has been\nconsented to so far. You always know only finitely much; a condition is\nthe honest record of that.\n\n**Refinement.** `q ⊑ p` means q keeps everything p committed to and\nresolves more. Work descends: you never un-know by refining.\n\n**The wedge** (`lem:void` setup). Take two observers A and B whose\nsurfaces share *no* condition except the empty one — zero commitments,\nthe state before anything has been said. Glue the two surfaces at that\nsingle shared top. Call the shared point the **void**, written 𝟙. The\norder on the glued object is: A's order on A's side, B's order on B's\nside, 𝟙 above everything, and **no cross-branch relations**.\n\n**Depth.** Count refinement steps from 𝟙. The void is the unique\ncondition at depth 0; everything else is depth ≥ 1.\n\n## Claims\n\n**The void is the unique shared point** (`lem:void`, **P** —\nmachine-verified setup; see `verification/FINDINGS.md`). Any condition of\nA's at depth ≥ 1 is incompatible with any condition of B's at depth ≥ 1:\na common refinement would have to live in both branches, and nothing\ndoes. Consequently any filter — any coherent course of joint commitments —\nlies entirely inside one branch (plus 𝟙).\n\n**The shared point is forced to zeroth order** (`prop:zeroth`, **P**).\nNot a design choice: the *only* thing shareable between disjoint\nobservers is the depth-0 condition. If you want a shared anything, the\nmath hands you exactly one candidate, and it is empty.\n\n**Factoring** (`thm:factor`, **D**). Since occupancy of another's surface\nis impossible below the void, any transfer of contingent content must\nroute through a third object both can address — a *medium*. (Chapter 07\nis about what survives that trip. Spoiler: residues, never identity.)\n\n## Worked example: what A and B can actually share\n\nA has drawn three layers; B has drawn two. Can B see A's stage? No — B\nwould need to occupy a depth-≥1 condition of A's branch (`lem:void` says\nnever). Can A and B agree on anything? Yes — exactly the statements\nforced *from the void*, the branch-invariant, pre-observational kernel:\n\"a stage has an owner,\" \"consent precedes mutation.\" That is\n**commensurability**: a common 𝟙 to quantify over, hence the ability to\n*state* \"we agree.\" It is not communication. Nothing contingent — no\nlayer, no palette, no gesture — crosses at depth 0.\n\nOperationally the void is **localhost**. `127.0.0.1` has the same form\nfor everyone and a different referent for each — the address whose\nuniversality is exactly commensurability and whose locality is exactly\nbranch privacy. Sketched's dev server binds there and the witness layer\nchecks it: `isZeroOrderOrigin` (in `src/witness/witness.ts`) accepts\nloopback and rejects the public internet, because *the void is not out\nthere*.\n\n## And then the contract\n\nEverything above is neutral. The void is a shared *point*, not a person;\nthe math seats nobody. Sketched makes one move that the theorems do not make\nfor it: the EULA places **you** at the origin. This is a **D**-status\nact — constitutive, not derived — and the code treats it that way: an\nanchor (`anchor` in `src/witness/witness.ts`) carries `eulaAccepted`, and\n`validateTrace` (in `src/witness/validate.ts`) rejects every trace whose\nanchor lacks the contract, with the reason string telling you exactly\nthis story: *without it the anchor is neutral, not authority-bearing.*\n\nBefore the contract: commensurability. After: authority-origin. The room\nexists either way; the contract decides that it is *your* room.\n\n## Lab\n\nThe chapter's lab is the witness test suite:\n\n```bash\nnpx vitest run src/witness\n```\n\nWatch four tests in particular: loopback accepted, `example.com`\nrejected, the missing-contract rejection, and the trace that fails\nbecause a gate admitted what a certificate refused.\n\n## Exercises\n\n1. **Predict, then run.** What does `validateTrace` say about a trace\n   anchored at `http://localhost:5173` with `eulaAccepted: false`? Write\n   your predicted reason string; then run the lab and compare. (The\n   answer key already lives in the lab: `witness.test.ts`, \"rejects an\n   anchor without the first contract.\")\n2. `[::1]` is in the zero-order set. Say why in one sentence about\n   *form vs. referent*.\n3. (Proof sketch.) Show from the wedge order that a filter containing a\n   condition of A's and a condition of B's, both depth ≥ 1, is\n   impossible. Where exactly does downward-directedness fail?\n4. (Harder.) \"Commensurability, not communication\" — give one statement\n   two disjoint observers can both *assert*, and one they cannot *share*,\n   and say which property of the wedge each answer uses.\n\n## Boundary note\n\nThis chapter does **not** claim that localhost is secure, that the void\n\"is\" consciousness or presence (the paper's appendix firewall applies),\nor that seating the human is mathematically forced — it is contractually\nchosen, and the whole design is honest about which is which. That\nhonesty is the book's method.\n",
+      "prerequisites": [],
+      "dependents": [
+        {
+          "id": "ch02",
+          "title": "Conditions and Refinement",
+          "browser_path": "/book/chapter/ch02"
+        },
+        {
+          "id": "ch04",
+          "title": "Forcing: When Does a Claim Hold?",
+          "browser_path": "/book/chapter/ch04"
+        },
+        {
+          "id": "ch07",
+          "title": "Residues Across the Medium",
+          "browser_path": "/book/chapter/ch07"
+        },
+        {
+          "id": "ch08",
+          "title": "The Contract and the Debt",
+          "browser_path": "/book/chapter/ch08"
+        }
+      ],
+      "source_digest": "8046ced49edc6d12518fd5eb83ad2ab32d5edfa02eb684e7e8da3da5214b4cf0"
+    },
+    {
+      "schema": "sketched.pedagogy.chapter.v1",
+      "id": "ch02",
+      "title": "Conditions and Refinement",
+      "status": "drafted",
+      "prerequisite_ids": [
+        "ch01"
+      ],
+      "source_path": "book/ch02_conditions_and_refinement.md",
+      "browser_path": "/book/chapter/ch02",
+      "json_path": "/book/chapters/ch02.json",
+      "aim": "After this chapter you can read the order everything else in this book\ncomputes over: what a condition is, what refinement preserves, why two\ncommitments can be *incompatible* forever, and what a coherent course of\ncommitments (a filter) looks like. You will build the **spine model** —\nthe seven-condition bench the labs of chapters 03–05 run on — and verify\nits structure by brute force. You will also learn to hear two words,\n*channel* and *forcing*, that mean different things in the paper and in\nSketched, before the collision can hurt you.",
+      "boundary_note": "This chapter does **not** claim that real Sketched sessions satisfy the\ndisplacement budget — the smoothness contract (`asm:smooth`, C) is\nmeasured per substrate, and chapter 06 shows exactly what you are owed\nwhen it holds and how the guarantee dies when it does not. It also does\nnot claim the spine model *is* the paper's condition poset; it is the\nsmallest honest bench, and every brute-force **obs** fact above is a\nfact about the bench. The general statements live in the paper and, for\nthe load-bearing ones, in Lean.",
+      "atlas_refs": [
+        "def:cond",
+        "def:refine",
+        "asm:smooth"
+      ],
+      "code_refs": [],
+      "lab": {
+        "kind": "python",
+        "path": "book/labs/lab02_conditions.py"
+      },
+      "word_count": 1153,
+      "sections": [
+        {
+          "id": "aim",
+          "title": "Aim",
+          "markdown": "After this chapter you can read the order everything else in this book\ncomputes over: what a condition is, what refinement preserves, why two\ncommitments can be *incompatible* forever, and what a coherent course of\ncommitments (a filter) looks like. You will build the **spine model** —\nthe seven-condition bench the labs of chapters 03–05 run on — and verify\nits structure by brute force. You will also learn to hear two words,\n*channel* and *forcing*, that mean different things in the paper and in\nSketched, before the collision can hurt you."
+        },
+        {
+          "id": "prerequisites",
+          "title": "Prerequisites",
+          "markdown": "Chapter 01 (the void, depth, the wedge). No topology yet; that is\nchapter 03."
+        },
+        {
+          "id": "definitions",
+          "title": "Definitions",
+          "markdown": "**Condition** (`def:cond`, D). A finite partial epistemic state. In the\npaper: a claim complex with fibers and an exit cone. In Sketched: a\nstage — which layers exist, who owns them, what has been consented to so\nfar. You always know only finitely much; a condition records exactly\nthat much and no more.\n\n**Refinement and the arena** (`def:refine`, D). `q ⊑ p` iff q is\nreachable from p by an admissible move that *retains p's commitments*.\nTwo consequences, both load-bearing:\n\n- **Work descends.** More knowledge = lower in the order. The root is\n  the condition that commits to nothing.\n- **The arena is bounded.** All forcing in the paper happens in the\n  *channel-margin subposet*: the conditions reachable from the anchor\n  within the displacement budget of the smoothness contract\n  (`asm:smooth`, C — measured, not assumed). The definition consumes\n  only the budget; that the margin actually survives throughout is\n  *proved*, not stipulated — chapter 06 is the anatomy of exactly that\n  proof.\n\n**Filter** (book-local; the paper uses it from chapter 05 on). A\nnonempty set of conditions that is upward closed (whatever you commit\nto, you had committed to its weakenings) and downward directed (any two\nof its members have a common refinement *inside it*). A filter is a\ncoherent course of commitments: no member ever contradicts another.\n\n**The spine model.** Conditions `r > {0,1} > {00,01,10,11}` — a depth-2\nbinary tree. `r` is the root; each address extends the one above it.\nThis is the smallest model where everything interesting in chapters\n03–05 already happens, and the lab builds it from\n`verification/kernel/spine.py`."
+        },
+        {
+          "id": "two-words-that-collide-read-this-box-twice",
+          "title": "Two words that collide (read this box twice)",
+          "markdown": "The paper and Sketched share vocabulary but not referents. The book\nalways means the paper's sense unless it says otherwise.\n\n- **Channel.** Paper: the *channel-margin subposet* — the region where\n  the interaction matrix keeps a positive spectral margin; \"the channel\n  is open\" is a statement about an eigenvalue. Sketched: a *consent\n  lease* — a bounded authority a human grants a knob by press-and-hold.\n  The two are related by design (the lease is the operational shadow of\n  the margin) but they are *not the same object*, and the operator map\n  (`docs/13_OPERATOR_MAP.md`) tracks the correspondence explicitly.\n- **Forcing.** Paper, two senses it itself separates: a *forced\n  transition* (control: the dynamics push a state) versus *p forces φ*\n  (logic: the relation this book teaches). Sketched adds a third\n  colloquial sense — nobody \"forces\" a mark onto the shared surface —\n  which is precisely what the coordination model forbids. When this\n  book says *forces*, it means the logical relation, always.\n\nThis box covers the two worst offenders only. The full, machine-checked\naccount — every double-booked term the book uses, all its senses, and a\nverified anchor for each — lives in `book/glossary_collisions.md`\n(browser: `/book/glossary`); by the time you reach chapter 08 it also\ncovers *void* and *surface*, which this book comes to use in more than\none sense of its own."
+        },
+        {
+          "id": "claims",
+          "title": "Claims",
+          "markdown": "This chapter's claims are structural facts about the spine model, every\none verified by brute force in the lab — status **obs**, the honest tag\nfor \"a machine checked all 128 subsets; nobody wrote a proof.\"\n\n- Refinement on the spine is a partial order: reflexive, antisymmetric,\n  transitive (**obs**).\n- `00` and `1` have no common refinement (**obs**). Incompatibility is\n  a *permanent* geometric fact — remember it when torsion appears in\n  chapter 04.\n- The spine has **exactly 7 filters**, one per condition: every filter\n  is a principal up-set `up(x)` (**obs**). Coherent histories in a tree\n  are just \"descend, stopping wherever honesty requires.\"\n- The **4 maximal filters are exactly the branches** — the upward\n  closures of the leaves (**obs**). Chapter 05 will call these the\n  finite stand-ins for generics.\n- No filter contains both `0` and `1` (**obs**): incompatible\n  commitments never cohere, which is chapter 01's wedge lemma in\n  miniature."
+        },
+        {
+          "id": "worked-example-you-never-un-know",
+          "title": "Worked example: you never un-know",
+          "markdown": "Stabilize atom `a` on the left subtree `{0, 00, 01}` — this is the\nvaluation chapters 04 and 05 use. It is *refinement-closed*: every\nrefinement of a condition where a holds is again a condition where a\nholds. The kernel's `persistent()` check accepts it.\n\nNow mutate it: let a hold at `0` but *not* at `00` or `01`. The kernel\nrejects the valuation, and `Stab(0, a)` flips from true to false — a\ncondition below which a can be forgotten never stabilized a in the\nfirst place. Persistence is not decoration; it is what makes the\nstability set a sieve (chapter 03) and what the ledger tracks as the\npaper's highest-leverage modeling postulate (M-Pers). The lab asserts\nboth directions."
+        },
+        {
+          "id": "lab",
+          "title": "Lab",
+          "markdown": "```bash\npython book/labs/lab02_conditions.py\n```\n\nIt prints the down-sets, counts the filters by checking all 2⁷\nsubsets, and asserts every fact quoted above. If the kernel and this\nchapter ever disagree, the build fails."
+        },
+        {
+          "id": "exercises",
+          "title": "Exercises",
+          "markdown": "1. **Predict, then run.** How many filters does the depth-3 binary tree\n   have? How many are maximal? Write both numbers down; then change\n   `binary_tree(2)` to `binary_tree(3)` in a copy of the lab's filter\n   count and check.\n2. Show by hand that `{r, 0, 1}` is upward closed but not a filter.\n   Which pair breaks downward directedness, and why is that the same\n   fact as \"the wedge has no cross-branch relations\"?\n3. In a poset that is *not* a tree (draw one with a diamond), exhibit a\n   filter that is not principal-along-a-chain. What does Sketched's\n   stage graph look like when two consented edits merge?\n4. The mutated valuation (\"a holds at 0 only\") describes a system that\n   *revokes* a claim under refinement. Sketched has a legitimate\n   operation that looks like forgetting — shake. Say precisely why\n   shake is not a counterexample to persistence. (Hint: chapter 01's\n   depth-0; a fresh context window is a new descent, not a move within\n   the old one.)"
+        },
+        {
+          "id": "boundary-note",
+          "title": "Boundary note",
+          "markdown": "This chapter does **not** claim that real Sketched sessions satisfy the\ndisplacement budget — the smoothness contract (`asm:smooth`, C) is\nmeasured per substrate, and chapter 06 shows exactly what you are owed\nwhen it holds and how the guarantee dies when it does not. It also does\nnot claim the spine model *is* the paper's condition poset; it is the\nsmallest honest bench, and every brute-force **obs** fact above is a\nfact about the bench. The general statements live in the paper and, for\nthe load-bearing ones, in Lean."
+        }
+      ],
+      "raw_markdown": "# Chapter 02 · Conditions and Refinement\n\n## Aim\n\nAfter this chapter you can read the order everything else in this book\ncomputes over: what a condition is, what refinement preserves, why two\ncommitments can be *incompatible* forever, and what a coherent course of\ncommitments (a filter) looks like. You will build the **spine model** —\nthe seven-condition bench the labs of chapters 03–05 run on — and verify\nits structure by brute force. You will also learn to hear two words,\n*channel* and *forcing*, that mean different things in the paper and in\nSketched, before the collision can hurt you.\n\n## Prerequisites\n\nChapter 01 (the void, depth, the wedge). No topology yet; that is\nchapter 03.\n\n## Definitions\n\n**Condition** (`def:cond`, D). A finite partial epistemic state. In the\npaper: a claim complex with fibers and an exit cone. In Sketched: a\nstage — which layers exist, who owns them, what has been consented to so\nfar. You always know only finitely much; a condition records exactly\nthat much and no more.\n\n**Refinement and the arena** (`def:refine`, D). `q ⊑ p` iff q is\nreachable from p by an admissible move that *retains p's commitments*.\nTwo consequences, both load-bearing:\n\n- **Work descends.** More knowledge = lower in the order. The root is\n  the condition that commits to nothing.\n- **The arena is bounded.** All forcing in the paper happens in the\n  *channel-margin subposet*: the conditions reachable from the anchor\n  within the displacement budget of the smoothness contract\n  (`asm:smooth`, C — measured, not assumed). The definition consumes\n  only the budget; that the margin actually survives throughout is\n  *proved*, not stipulated — chapter 06 is the anatomy of exactly that\n  proof.\n\n**Filter** (book-local; the paper uses it from chapter 05 on). A\nnonempty set of conditions that is upward closed (whatever you commit\nto, you had committed to its weakenings) and downward directed (any two\nof its members have a common refinement *inside it*). A filter is a\ncoherent course of commitments: no member ever contradicts another.\n\n**The spine model.** Conditions `r > {0,1} > {00,01,10,11}` — a depth-2\nbinary tree. `r` is the root; each address extends the one above it.\nThis is the smallest model where everything interesting in chapters\n03–05 already happens, and the lab builds it from\n`verification/kernel/spine.py`.\n\n## Two words that collide (read this box twice)\n\nThe paper and Sketched share vocabulary but not referents. The book\nalways means the paper's sense unless it says otherwise.\n\n- **Channel.** Paper: the *channel-margin subposet* — the region where\n  the interaction matrix keeps a positive spectral margin; \"the channel\n  is open\" is a statement about an eigenvalue. Sketched: a *consent\n  lease* — a bounded authority a human grants a knob by press-and-hold.\n  The two are related by design (the lease is the operational shadow of\n  the margin) but they are *not the same object*, and the operator map\n  (`docs/13_OPERATOR_MAP.md`) tracks the correspondence explicitly.\n- **Forcing.** Paper, two senses it itself separates: a *forced\n  transition* (control: the dynamics push a state) versus *p forces φ*\n  (logic: the relation this book teaches). Sketched adds a third\n  colloquial sense — nobody \"forces\" a mark onto the shared surface —\n  which is precisely what the coordination model forbids. When this\n  book says *forces*, it means the logical relation, always.\n\nThis box covers the two worst offenders only. The full, machine-checked\naccount — every double-booked term the book uses, all its senses, and a\nverified anchor for each — lives in `book/glossary_collisions.md`\n(browser: `/book/glossary`); by the time you reach chapter 08 it also\ncovers *void* and *surface*, which this book comes to use in more than\none sense of its own.\n\n## Claims\n\nThis chapter's claims are structural facts about the spine model, every\none verified by brute force in the lab — status **obs**, the honest tag\nfor \"a machine checked all 128 subsets; nobody wrote a proof.\"\n\n- Refinement on the spine is a partial order: reflexive, antisymmetric,\n  transitive (**obs**).\n- `00` and `1` have no common refinement (**obs**). Incompatibility is\n  a *permanent* geometric fact — remember it when torsion appears in\n  chapter 04.\n- The spine has **exactly 7 filters**, one per condition: every filter\n  is a principal up-set `up(x)` (**obs**). Coherent histories in a tree\n  are just \"descend, stopping wherever honesty requires.\"\n- The **4 maximal filters are exactly the branches** — the upward\n  closures of the leaves (**obs**). Chapter 05 will call these the\n  finite stand-ins for generics.\n- No filter contains both `0` and `1` (**obs**): incompatible\n  commitments never cohere, which is chapter 01's wedge lemma in\n  miniature.\n\n## Worked example: you never un-know\n\nStabilize atom `a` on the left subtree `{0, 00, 01}` — this is the\nvaluation chapters 04 and 05 use. It is *refinement-closed*: every\nrefinement of a condition where a holds is again a condition where a\nholds. The kernel's `persistent()` check accepts it.\n\nNow mutate it: let a hold at `0` but *not* at `00` or `01`. The kernel\nrejects the valuation, and `Stab(0, a)` flips from true to false — a\ncondition below which a can be forgotten never stabilized a in the\nfirst place. Persistence is not decoration; it is what makes the\nstability set a sieve (chapter 03) and what the ledger tracks as the\npaper's highest-leverage modeling postulate (M-Pers). The lab asserts\nboth directions.\n\n## Lab\n\n```bash\npython book/labs/lab02_conditions.py\n```\n\nIt prints the down-sets, counts the filters by checking all 2⁷\nsubsets, and asserts every fact quoted above. If the kernel and this\nchapter ever disagree, the build fails.\n\n## Exercises\n\n1. **Predict, then run.** How many filters does the depth-3 binary tree\n   have? How many are maximal? Write both numbers down; then change\n   `binary_tree(2)` to `binary_tree(3)` in a copy of the lab's filter\n   count and check.\n2. Show by hand that `{r, 0, 1}` is upward closed but not a filter.\n   Which pair breaks downward directedness, and why is that the same\n   fact as \"the wedge has no cross-branch relations\"?\n3. In a poset that is *not* a tree (draw one with a diamond), exhibit a\n   filter that is not principal-along-a-chain. What does Sketched's\n   stage graph look like when two consented edits merge?\n4. The mutated valuation (\"a holds at 0 only\") describes a system that\n   *revokes* a claim under refinement. Sketched has a legitimate\n   operation that looks like forgetting — shake. Say precisely why\n   shake is not a counterexample to persistence. (Hint: chapter 01's\n   depth-0; a fresh context window is a new descent, not a move within\n   the old one.)\n\n## Boundary note\n\nThis chapter does **not** claim that real Sketched sessions satisfy the\ndisplacement budget — the smoothness contract (`asm:smooth`, C) is\nmeasured per substrate, and chapter 06 shows exactly what you are owed\nwhen it holds and how the guarantee dies when it does not. It also does\nnot claim the spine model *is* the paper's condition poset; it is the\nsmallest honest bench, and every brute-force **obs** fact above is a\nfact about the bench. The general statements live in the paper and, for\nthe load-bearing ones, in Lean.\n",
+      "prerequisites": [
+        {
+          "id": "ch01",
+          "title": "The Room at Zero",
+          "browser_path": "/book/chapter/ch01"
+        }
+      ],
+      "dependents": [
+        {
+          "id": "ch03",
+          "title": "Sieves, Covers, and Two Topologies",
+          "browser_path": "/book/chapter/ch03"
+        },
+        {
+          "id": "ch04",
+          "title": "Forcing: When Does a Claim Hold?",
+          "browser_path": "/book/chapter/ch04"
+        },
+        {
+          "id": "ch05",
+          "title": "Generics and Truth",
+          "browser_path": "/book/chapter/ch05"
+        },
+        {
+          "id": "ch06",
+          "title": "The Margin: Anatomy of a Repair",
+          "browser_path": "/book/chapter/ch06"
+        },
+        {
+          "id": "ch07",
+          "title": "Residues Across the Medium",
+          "browser_path": "/book/chapter/ch07"
+        }
+      ],
+      "source_digest": "8046ced49edc6d12518fd5eb83ad2ab32d5edfa02eb684e7e8da3da5214b4cf0"
+    },
+    {
+      "schema": "sketched.pedagogy.chapter.v1",
+      "id": "ch06",
+      "title": "The Margin: Anatomy of a Repair",
+      "status": "drafted",
+      "prerequisite_ids": [
+        "ch02"
+      ],
+      "source_path": "book/ch06_the_margin.md",
+      "browser_path": "/book/chapter/ch06",
+      "json_path": "/book/chapters/ch06.json",
+      "aim": "This chapter teaches one lemma three ways — as a bug, as a theorem, and\nas an eigenvalue you can watch fall off a cliff — and, through it, the\nbook's method: a claim is not done when it sounds right; it is done when\nthe machinery that found it wrong once can no longer find it wrong. After\nthis chapter you can state the Channel-Margin Lemma correctly, exhibit\nthe precise failure of its earlier form, and explain why margin\npreservation and convergence are *one* budget, spent once.",
+      "boundary_note": "Weyl's inequality and the Lipschitz behavior of Γ are *consumed* here\n(the contract is **C**: measured, substrate-relative, honest about\npivots), not proved — the Lean formalization packages them as the\nper-step drift hypothesis and checks everything downstream of it. And\nnothing in this chapter says real sessions satisfy the budget; it says\nwhat you are owed **if** they do, and precisely how the guarantee dies\nwhen they do not.",
+      "atlas_refs": [
+        "asm:smooth",
+        "def:refine",
+        "lem:margin",
+        "lem:cauchy"
+      ],
+      "code_refs": [],
+      "lab": {
+        "kind": "python",
+        "path": "book/labs/lab06_margin.py"
+      },
+      "word_count": 845,
+      "sections": [
+        {
+          "id": "aim",
+          "title": "Aim",
+          "markdown": "This chapter teaches one lemma three ways — as a bug, as a theorem, and\nas an eigenvalue you can watch fall off a cliff — and, through it, the\nbook's method: a claim is not done when it sounds right; it is done when\nthe machinery that found it wrong once can no longer find it wrong. After\nthis chapter you can state the Channel-Margin Lemma correctly, exhibit\nthe precise failure of its earlier form, and explain why margin\npreservation and convergence are *one* budget, spent once."
+        },
+        {
+          "id": "prerequisites",
+          "title": "Prerequisites",
+          "markdown": "Chapter 02 (refinement, the channel-margin subposet `def:refine`).\nLinear algebra: smallest eigenvalue of a symmetric matrix; that\neigenvalues move at most as far as the matrix does (Weyl's inequality —\nwe consume it, we do not prove it)."
+        },
+        {
+          "id": "the-setup",
+          "title": "The setup",
+          "markdown": "Motion on the surface is admissible only while the channel stays open:\nthe smallest eigenvalue λ_min of the interaction matrix Γ must keep a\npositive margin. The smoothness contract (`asm:smooth`, **C** — measured,\nnot assumed) says Γ moves Lipschitz-continuously with your displacement.\nAnchor at margin η. How far may you wander before the channel closes?"
+        },
+        {
+          "id": "the-bug-v14",
+          "title": "The bug (v14)",
+          "markdown": "The old lemma reasoned: bound each *step* by η/(2L); then each step moves\nλ_min by at most η/2; so λ_min ≥ η/2 \"inductively along the whole\ndescent.\" Read that twice. From λ ≥ η/2, one more legal step gives only\nλ ≥ 0. The induction consumed its own slack and never noticed: per-step\ncontrol lets the margin decay **linearly in depth**. Two legal steps and\nyou are on the cliff.\n\nNobody caught it by reading — it *sounds* like perturbation lemmas sound.\nIt was caught structurally: the loop detector flagged the definition of\nthe subposet citing the lemma while the lemma's proof presupposed the\ndefinition, and unwinding that knot exposed the induction. Moral one of\nthis book: **circular paper structure and unsound arguments travel\ntogether.** Audit the graph, not the vibes."
+        },
+        {
+          "id": "the-repair-v15-lemmargin-p",
+          "title": "The repair (v15) — `lem:margin`, P",
+          "markdown": "Replace the per-step allowance with a **cumulative budget**: total\ndisplacement ≤ η/(2L). Then by Weyl + Lipschitz + the triangle\ninequality, at every depth\n\n> λ_min ≥ η − L · (total displacement) ≥ η/2.\n\nOne inequality, uniform in depth. And the budget was already on the\nbooks: it is the same summability the Cauchy completion lemma\n(`lem:cauchy`, **P**, machine-verified) demands for the trajectory to\nconverge at all. Margin preservation and generic convergence are funded\nby the **same contract** — the budget is spent once. Nothing new was\npurchased; a debt was consolidated."
+        },
+        {
+          "id": "the-verification-triangle",
+          "title": "The verification triangle",
+          "markdown": "The repair would still be prose if it merely sounded better than the\nbug. It is instead pinned from three independent directions:\n\n1. **Proof** (Lean, constructive — no choice axiom):\n   `margin_path_form` — budget ⇒ depth-uniform floor.\n2. **Refutation** (Lean, same file): `per_step_bound_insufficient` — the\n   v14 hypothesis *provably* fails to give a uniform floor; witness\n   λ_i = 4 − 2i. The old argument is not \"superseded\"; it is a theorem\n   that it never worked.\n3. **Matrices** (numpy): Γ(x) = [[1,x],[x,1]] has λ_min = 1 − |x|\n   exactly, and ‖Γ(x) − Γ(y)‖ = |x − y| exactly, so L = 1 with no\n   estimates hiding anywhere. The v14-legal path 0 → 0.5 → 1.0 lands\n   λ_min on 0.000 — the cliff — while fifty budgeted steps never dip\n   below 0.500.\n\nA lemma with a proof, a refutation of its predecessor, and a numerical\nincarnation is what this book means by *solidified*."
+        },
+        {
+          "id": "worked-example-the-schedule-doesnt-matter",
+          "title": "Worked example: the schedule doesn't matter",
+          "markdown": "Spend the same total budget (0.5) in 1, 2, 5, or 50 steps. The lab prints\nthe floor of λ_min along each path: 0.500, four times. The margin cares\nabout the *sum* of your displacements, never their schedule — which is\nexactly why per-step control could not work: it constrained the schedule\nand left the sum free."
+        },
+        {
+          "id": "lab",
+          "title": "Lab",
+          "markdown": "```bash\npython book/labs/lab06_margin.py\n```\n\nPart 1 replays the collapse and the preservation on real eigenvalues;\nPart 2 is the schedule table above. Both are asserted."
+        },
+        {
+          "id": "exercises",
+          "title": "Exercises",
+          "markdown": "1. **Predict, then run.** With per-step allowance 0.25 (half of v14's),\n   how many legal steps until λ_min ≤ 0? Check against Part 1's family.\n2. Prove the one-inequality repair from Weyl + Lipschitz + triangle\n   inequality (three lines).\n3. In `lam_min`'s family, why is L exactly 1? Compute\n   ‖Γ(x) − Γ(y)‖₂ by hand.\n4. The Lean refutation uses λ_i = 4 − 2i with ε = 2. Map its three\n   hypotheses onto the numeric path of Part 1 (what plays ε? what plays\n   the drift?).\n5. (Sketched reading.) A knob turned in many tiny consented steps and a\n   knob yanked once through the same arc spend the same channel budget.\n   Which EULA Part A clause is the contractual shadow of this fact?"
+        },
+        {
+          "id": "boundary-note",
+          "title": "Boundary note",
+          "markdown": "Weyl's inequality and the Lipschitz behavior of Γ are *consumed* here\n(the contract is **C**: measured, substrate-relative, honest about\npivots), not proved — the Lean formalization packages them as the\nper-step drift hypothesis and checks everything downstream of it. And\nnothing in this chapter says real sessions satisfy the budget; it says\nwhat you are owed **if** they do, and precisely how the guarantee dies\nwhen they do not."
+        }
+      ],
+      "raw_markdown": "# Chapter 06 · The Margin: Anatomy of a Repair\n\n## Aim\n\nThis chapter teaches one lemma three ways — as a bug, as a theorem, and\nas an eigenvalue you can watch fall off a cliff — and, through it, the\nbook's method: a claim is not done when it sounds right; it is done when\nthe machinery that found it wrong once can no longer find it wrong. After\nthis chapter you can state the Channel-Margin Lemma correctly, exhibit\nthe precise failure of its earlier form, and explain why margin\npreservation and convergence are *one* budget, spent once.\n\n## Prerequisites\n\nChapter 02 (refinement, the channel-margin subposet `def:refine`).\nLinear algebra: smallest eigenvalue of a symmetric matrix; that\neigenvalues move at most as far as the matrix does (Weyl's inequality —\nwe consume it, we do not prove it).\n\n## The setup\n\nMotion on the surface is admissible only while the channel stays open:\nthe smallest eigenvalue λ_min of the interaction matrix Γ must keep a\npositive margin. The smoothness contract (`asm:smooth`, **C** — measured,\nnot assumed) says Γ moves Lipschitz-continuously with your displacement.\nAnchor at margin η. How far may you wander before the channel closes?\n\n## The bug (v14)\n\nThe old lemma reasoned: bound each *step* by η/(2L); then each step moves\nλ_min by at most η/2; so λ_min ≥ η/2 \"inductively along the whole\ndescent.\" Read that twice. From λ ≥ η/2, one more legal step gives only\nλ ≥ 0. The induction consumed its own slack and never noticed: per-step\ncontrol lets the margin decay **linearly in depth**. Two legal steps and\nyou are on the cliff.\n\nNobody caught it by reading — it *sounds* like perturbation lemmas sound.\nIt was caught structurally: the loop detector flagged the definition of\nthe subposet citing the lemma while the lemma's proof presupposed the\ndefinition, and unwinding that knot exposed the induction. Moral one of\nthis book: **circular paper structure and unsound arguments travel\ntogether.** Audit the graph, not the vibes.\n\n## The repair (v15) — `lem:margin`, P\n\nReplace the per-step allowance with a **cumulative budget**: total\ndisplacement ≤ η/(2L). Then by Weyl + Lipschitz + the triangle\ninequality, at every depth\n\n> λ_min ≥ η − L · (total displacement) ≥ η/2.\n\nOne inequality, uniform in depth. And the budget was already on the\nbooks: it is the same summability the Cauchy completion lemma\n(`lem:cauchy`, **P**, machine-verified) demands for the trajectory to\nconverge at all. Margin preservation and generic convergence are funded\nby the **same contract** — the budget is spent once. Nothing new was\npurchased; a debt was consolidated.\n\n## The verification triangle\n\nThe repair would still be prose if it merely sounded better than the\nbug. It is instead pinned from three independent directions:\n\n1. **Proof** (Lean, constructive — no choice axiom):\n   `margin_path_form` — budget ⇒ depth-uniform floor.\n2. **Refutation** (Lean, same file): `per_step_bound_insufficient` — the\n   v14 hypothesis *provably* fails to give a uniform floor; witness\n   λ_i = 4 − 2i. The old argument is not \"superseded\"; it is a theorem\n   that it never worked.\n3. **Matrices** (numpy): Γ(x) = [[1,x],[x,1]] has λ_min = 1 − |x|\n   exactly, and ‖Γ(x) − Γ(y)‖ = |x − y| exactly, so L = 1 with no\n   estimates hiding anywhere. The v14-legal path 0 → 0.5 → 1.0 lands\n   λ_min on 0.000 — the cliff — while fifty budgeted steps never dip\n   below 0.500.\n\nA lemma with a proof, a refutation of its predecessor, and a numerical\nincarnation is what this book means by *solidified*.\n\n## Worked example: the schedule doesn't matter\n\nSpend the same total budget (0.5) in 1, 2, 5, or 50 steps. The lab prints\nthe floor of λ_min along each path: 0.500, four times. The margin cares\nabout the *sum* of your displacements, never their schedule — which is\nexactly why per-step control could not work: it constrained the schedule\nand left the sum free.\n\n## Lab\n\n```bash\npython book/labs/lab06_margin.py\n```\n\nPart 1 replays the collapse and the preservation on real eigenvalues;\nPart 2 is the schedule table above. Both are asserted.\n\n## Exercises\n\n1. **Predict, then run.** With per-step allowance 0.25 (half of v14's),\n   how many legal steps until λ_min ≤ 0? Check against Part 1's family.\n2. Prove the one-inequality repair from Weyl + Lipschitz + triangle\n   inequality (three lines).\n3. In `lam_min`'s family, why is L exactly 1? Compute\n   ‖Γ(x) − Γ(y)‖₂ by hand.\n4. The Lean refutation uses λ_i = 4 − 2i with ε = 2. Map its three\n   hypotheses onto the numeric path of Part 1 (what plays ε? what plays\n   the drift?).\n5. (Sketched reading.) A knob turned in many tiny consented steps and a\n   knob yanked once through the same arc spend the same channel budget.\n   Which EULA Part A clause is the contractual shadow of this fact?\n\n## Boundary note\n\nWeyl's inequality and the Lipschitz behavior of Γ are *consumed* here\n(the contract is **C**: measured, substrate-relative, honest about\npivots), not proved — the Lean formalization packages them as the\nper-step drift hypothesis and checks everything downstream of it. And\nnothing in this chapter says real sessions satisfy the budget; it says\nwhat you are owed **if** they do, and precisely how the guarantee dies\nwhen they do not.\n",
+      "prerequisites": [
+        {
+          "id": "ch02",
+          "title": "Conditions and Refinement",
+          "browser_path": "/book/chapter/ch02"
+        }
+      ],
+      "dependents": [
+        {
+          "id": "ch08",
+          "title": "The Contract and the Debt",
+          "browser_path": "/book/chapter/ch08"
+        },
+        {
+          "id": "appb",
+          "title": "Appendix B · The Mechanical Witnesses",
+          "browser_path": "/book/chapter/appb"
+        }
+      ],
+      "source_digest": "8046ced49edc6d12518fd5eb83ad2ab32d5edfa02eb684e7e8da3da5214b4cf0"
+    },
+    {
+      "schema": "sketched.pedagogy.chapter.v1",
+      "id": "ch07",
+      "title": "Residues Across the Medium",
+      "status": "drafted",
+      "prerequisite_ids": [
+        "ch01",
+        "ch02"
+      ],
+      "source_path": "book/ch07_residues_across_the_medium.md",
+      "browser_path": "/book/chapter/ch07",
+      "json_path": "/book/chapters/ch07.json",
+      "aim": "After this chapter you can say precisely what crosses between two\nobservers who share nothing but the void, why it is never their private\nstate, and how the type system — not just the prose — makes \"you got a\nreconstruction, not the original\" a compile-time fact rather than a\npromise. You will read the mark-validity invariant as code and predict\nwhat it rejects before running the suite.",
+      "boundary_note": "This chapter does **not** claim the medium (the browser, the JSON\nmanifold) is where identity first breaks — `thm:nonid` is explicit that\nbounded projection breaks it earlier, at export. It also does not claim\n`project()`'s whitelist is complete for any real Sketched layer type;\nthat completeness is exactly the calibration debt chapter 08 names.\nWhat is claimed: the non-identity theorem is machine-checked structure\n(the brand typechecks), `prop:chalked`'s clauses are executed on every\nmark, and the correspondence between paper and code is tracked,\noperator by operator, in `docs/13_OPERATOR_MAP.md`.",
+      "atlas_refs": [
+        "lem:void",
+        "def:transfer",
+        "thm:factor",
+        "thm:nonid",
+        "prop:chi",
+        "prop:chalked"
+      ],
+      "code_refs": [
+        {
+          "file": "src/witness/residue.ts",
+          "export": "encodeResidue"
+        },
+        {
+          "file": "src/witness/residue.ts",
+          "export": "decodeResidue"
+        }
+      ],
+      "lab": {
+        "kind": "command",
+        "argv": [
+          "node",
+          "node_modules/vitest/vitest.mjs",
+          "run",
+          "src/witness",
+          "-t",
+          "residues across the medium"
+        ]
+      },
+      "word_count": 999,
+      "sections": [
+        {
+          "id": "aim",
+          "title": "Aim",
+          "markdown": "After this chapter you can say precisely what crosses between two\nobservers who share nothing but the void, why it is never their private\nstate, and how the type system — not just the prose — makes \"you got a\nreconstruction, not the original\" a compile-time fact rather than a\npromise. You will read the mark-validity invariant as code and predict\nwhat it rejects before running the suite."
+        },
+        {
+          "id": "prerequisites",
+          "title": "Prerequisites",
+          "markdown": "Chapter 01 (the wedge, the void, commensurability vs. communication).\nChapter 02's refinement order gives \"depth ≥ 1\" its meaning: contingent\ncontent, the stuff two disjoint observers cannot occupy in common."
+        },
+        {
+          "id": "definitions",
+          "title": "Definitions",
+          "markdown": "**Transfer** (`def:transfer`, D). A transfer of contingent content from\nA to B is any correspondence between depth-≥1 content of A's surface and\ndepth-≥1 content of B's, realized either by shared occupancy of a\ncondition or by a composite of maps through a third object.\n\n**Channel projector.** `T_A`, idempotent (`T_A² = T_A`): the operational\nwhitelist of what survives export. In the code, `project()` in\n`src/witness/residue.ts` *is* `T_A`, spelled out as `keepFields`.\nWhatever is not on the list is the lossy complement — and the whitelist\nbeing incomplete is the default assumption, not an edge case."
+        },
+        {
+          "id": "claims",
+          "title": "Claims",
+          "markdown": "**Factoring, architectural** (`thm:factor`, **D** — the exclusion\ncontent is P, carried by `lem:void`; the theorem itself is tagged D\nbecause it is architecture, not a fresh derivation). Since A and B are\ndisjoint below the void (chapter 01), no transfer of contingent content\ncan be occupancy. What remains is exactly the composite\n`T_A(X_A) —E_A→ M —D_B→ X_B` through a third object M both can address —\nthe medium. There is no other route; the theorem's content is the\nexclusion of the alternative.\n\n**Non-identity of transport, with equality condition** (`thm:nonid`,\n**P**). If the channel projector loses anything (`ε_{T_A}(x_A) > 0`),\nthen `T_A x_A ≠ x_A` — identity already fails *before* the medium is\neven reached, at the moment of projection. Consequently\n`D_B(E_A(T_A x_A)) = x_A` can hold only under three named conditions\nsimultaneously: zero projection loss, faithful encoding, and calibrated\ndecoding (a genuine section/retraction pair). Absent any one, what B\nholds is a reconstruction, not identity. **Non-identity is generic;\nidentity is a calibrated degeneracy** — the paper's phrase, and the\nreason the code brands the return type rather than leaving it a\nmatching interface.\n\n**Exportability identity, under orthogonality** (`prop:chi`, **P**). For\nan orthogonal channel projector, `χ² + ε² = 1` exactly — what you export\nand what you lose are Pythagorean complements. For a merely idempotent\n(oblique) projector, only the triangle bound `χ + ε ≥ 1` survives; the\nclean identity is not free, and orthogonality must not be smuggled in as\nan assumption when the real projector is oblique.\n\n**Chalked correctness invariant** (`prop:chalked`, **S** — implementation\nconformance, not a fresh mathematical claim). A mark is valid only if it\npreserves provenance, permission, residue type, and revision authority,\nwhile *refusing identity* with the originating state: it is\n`E_A(T_A x_A)`, never `x_A`. This is `thm:nonid`'s discipline, made\nexecutable."
+        },
+        {
+          "id": "worked-example-reading-the-invariant-as-code",
+          "title": "Worked example: reading the invariant as code",
+          "markdown": "`residue.ts` implements the whole architectural chain from the theorem.\n`encodeResidue` is `E_A`: it runs `project()` (`T_A`), records exactly\nwhich fields were dropped in `projectionNote` — the loss is *declared*,\nnever hidden, even when nothing was dropped (\"encoding may still lose\ninformation\" is printed even at zero dropped fields, because the\nwhitelist itself may be incomplete). `decodeResidue` is `D_B`: it\nreturns a `Reconstruction`, a nominally branded type. That brand is not\ndecoration — `thm:nonid`'s \"reconstruction, not identity\" is enforced\nso that no source-state type can be coerced into a `Reconstruction`\nwithout an explicit, visible cast. The theorem lives in the type\nchecker, not only in the prose.\n\n`validate.ts`'s `validateMark` is `prop:chalked` clause by clause:\nmissing provenance, missing consent, an unrecognized residue kind,\nmissing revision authority, and — the identity refusal — a payload that\nsmuggles a `ceilingState` or `identity` field fails validation outright.\nA mark that claims to *be* the author's state is definitionally not a\nresidue, and the validator says so by name."
+        },
+        {
+          "id": "lab",
+          "title": "Lab",
+          "markdown": "The chapter's lab is the witness test suite's residue section:\n\n```bash\nnpx vitest run src/witness -t \"residues across the medium\"\n```\n\nWatch: a well-formed mark validating true, a mark with a smuggled\nidentity field failing with the exact \"identity refusal\" reason, and\n`decodeResidue`'s output reporting `isReconstruction: true` — never\nclaiming to equal the source."
+        },
+        {
+          "id": "exercises",
+          "title": "Exercises",
+          "markdown": "1. **Predict, then run.** Construct a mark whose payload includes an\n   `identity` key. Which `validateMark` reason fires? Write your\n   prediction, then run the suite and compare the string exactly. (The\n   answer key already lives in the lab: `witness.test.ts`, \"a mark\n   claiming ceiling-state is refused (identity refusal)\" — the code\n   checks `identity` and `ceilingState` identically.)\n2. Sketch a `keepFields` whitelist for a hypothetical Sketched layer\n   export that would satisfy `thm:nonid` condition (i), zero projection\n   loss. What has to be true about the layer's entire state for that\n   whitelist to exist?\n3. `prop:chi`'s orthogonal identity `χ² + ε² = 1` assumes\n   `T_A = T_A²= T_A*`. Is `project()` (a field whitelist) an orthogonal\n   projection in the linear-algebra sense, or merely idempotent? Justify\n   from the function's definition, not from analogy.\n4. (Harder.) The `Reconstruction` brand prevents accidental coercion at\n   compile time, but nothing stops a caller from reading\n   `rec.mark.payload` and treating its contents as ground truth about\n   the author. Which clause of `prop:chalked` is meant to catch that\n   *social* failure, given that the type system provably cannot?"
+        },
+        {
+          "id": "boundary-note",
+          "title": "Boundary note",
+          "markdown": "This chapter does **not** claim the medium (the browser, the JSON\nmanifold) is where identity first breaks — `thm:nonid` is explicit that\nbounded projection breaks it earlier, at export. It also does not claim\n`project()`'s whitelist is complete for any real Sketched layer type;\nthat completeness is exactly the calibration debt chapter 08 names.\nWhat is claimed: the non-identity theorem is machine-checked structure\n(the brand typechecks), `prop:chalked`'s clauses are executed on every\nmark, and the correspondence between paper and code is tracked,\noperator by operator, in `docs/13_OPERATOR_MAP.md`."
+        }
+      ],
+      "raw_markdown": "# Chapter 07 · Residues Across the Medium\n\n## Aim\n\nAfter this chapter you can say precisely what crosses between two\nobservers who share nothing but the void, why it is never their private\nstate, and how the type system — not just the prose — makes \"you got a\nreconstruction, not the original\" a compile-time fact rather than a\npromise. You will read the mark-validity invariant as code and predict\nwhat it rejects before running the suite.\n\n## Prerequisites\n\nChapter 01 (the wedge, the void, commensurability vs. communication).\nChapter 02's refinement order gives \"depth ≥ 1\" its meaning: contingent\ncontent, the stuff two disjoint observers cannot occupy in common.\n\n## Definitions\n\n**Transfer** (`def:transfer`, D). A transfer of contingent content from\nA to B is any correspondence between depth-≥1 content of A's surface and\ndepth-≥1 content of B's, realized either by shared occupancy of a\ncondition or by a composite of maps through a third object.\n\n**Channel projector.** `T_A`, idempotent (`T_A² = T_A`): the operational\nwhitelist of what survives export. In the code, `project()` in\n`src/witness/residue.ts` *is* `T_A`, spelled out as `keepFields`.\nWhatever is not on the list is the lossy complement — and the whitelist\nbeing incomplete is the default assumption, not an edge case.\n\n## Claims\n\n**Factoring, architectural** (`thm:factor`, **D** — the exclusion\ncontent is P, carried by `lem:void`; the theorem itself is tagged D\nbecause it is architecture, not a fresh derivation). Since A and B are\ndisjoint below the void (chapter 01), no transfer of contingent content\ncan be occupancy. What remains is exactly the composite\n`T_A(X_A) —E_A→ M —D_B→ X_B` through a third object M both can address —\nthe medium. There is no other route; the theorem's content is the\nexclusion of the alternative.\n\n**Non-identity of transport, with equality condition** (`thm:nonid`,\n**P**). If the channel projector loses anything (`ε_{T_A}(x_A) > 0`),\nthen `T_A x_A ≠ x_A` — identity already fails *before* the medium is\neven reached, at the moment of projection. Consequently\n`D_B(E_A(T_A x_A)) = x_A` can hold only under three named conditions\nsimultaneously: zero projection loss, faithful encoding, and calibrated\ndecoding (a genuine section/retraction pair). Absent any one, what B\nholds is a reconstruction, not identity. **Non-identity is generic;\nidentity is a calibrated degeneracy** — the paper's phrase, and the\nreason the code brands the return type rather than leaving it a\nmatching interface.\n\n**Exportability identity, under orthogonality** (`prop:chi`, **P**). For\nan orthogonal channel projector, `χ² + ε² = 1` exactly — what you export\nand what you lose are Pythagorean complements. For a merely idempotent\n(oblique) projector, only the triangle bound `χ + ε ≥ 1` survives; the\nclean identity is not free, and orthogonality must not be smuggled in as\nan assumption when the real projector is oblique.\n\n**Chalked correctness invariant** (`prop:chalked`, **S** — implementation\nconformance, not a fresh mathematical claim). A mark is valid only if it\npreserves provenance, permission, residue type, and revision authority,\nwhile *refusing identity* with the originating state: it is\n`E_A(T_A x_A)`, never `x_A`. This is `thm:nonid`'s discipline, made\nexecutable.\n\n## Worked example: reading the invariant as code\n\n`residue.ts` implements the whole architectural chain from the theorem.\n`encodeResidue` is `E_A`: it runs `project()` (`T_A`), records exactly\nwhich fields were dropped in `projectionNote` — the loss is *declared*,\nnever hidden, even when nothing was dropped (\"encoding may still lose\ninformation\" is printed even at zero dropped fields, because the\nwhitelist itself may be incomplete). `decodeResidue` is `D_B`: it\nreturns a `Reconstruction`, a nominally branded type. That brand is not\ndecoration — `thm:nonid`'s \"reconstruction, not identity\" is enforced\nso that no source-state type can be coerced into a `Reconstruction`\nwithout an explicit, visible cast. The theorem lives in the type\nchecker, not only in the prose.\n\n`validate.ts`'s `validateMark` is `prop:chalked` clause by clause:\nmissing provenance, missing consent, an unrecognized residue kind,\nmissing revision authority, and — the identity refusal — a payload that\nsmuggles a `ceilingState` or `identity` field fails validation outright.\nA mark that claims to *be* the author's state is definitionally not a\nresidue, and the validator says so by name.\n\n## Lab\n\nThe chapter's lab is the witness test suite's residue section:\n\n```bash\nnpx vitest run src/witness -t \"residues across the medium\"\n```\n\nWatch: a well-formed mark validating true, a mark with a smuggled\nidentity field failing with the exact \"identity refusal\" reason, and\n`decodeResidue`'s output reporting `isReconstruction: true` — never\nclaiming to equal the source.\n\n## Exercises\n\n1. **Predict, then run.** Construct a mark whose payload includes an\n   `identity` key. Which `validateMark` reason fires? Write your\n   prediction, then run the suite and compare the string exactly. (The\n   answer key already lives in the lab: `witness.test.ts`, \"a mark\n   claiming ceiling-state is refused (identity refusal)\" — the code\n   checks `identity` and `ceilingState` identically.)\n2. Sketch a `keepFields` whitelist for a hypothetical Sketched layer\n   export that would satisfy `thm:nonid` condition (i), zero projection\n   loss. What has to be true about the layer's entire state for that\n   whitelist to exist?\n3. `prop:chi`'s orthogonal identity `χ² + ε² = 1` assumes\n   `T_A = T_A²= T_A*`. Is `project()` (a field whitelist) an orthogonal\n   projection in the linear-algebra sense, or merely idempotent? Justify\n   from the function's definition, not from analogy.\n4. (Harder.) The `Reconstruction` brand prevents accidental coercion at\n   compile time, but nothing stops a caller from reading\n   `rec.mark.payload` and treating its contents as ground truth about\n   the author. Which clause of `prop:chalked` is meant to catch that\n   *social* failure, given that the type system provably cannot?\n\n## Boundary note\n\nThis chapter does **not** claim the medium (the browser, the JSON\nmanifold) is where identity first breaks — `thm:nonid` is explicit that\nbounded projection breaks it earlier, at export. It also does not claim\n`project()`'s whitelist is complete for any real Sketched layer type;\nthat completeness is exactly the calibration debt chapter 08 names.\nWhat is claimed: the non-identity theorem is machine-checked structure\n(the brand typechecks), `prop:chalked`'s clauses are executed on every\nmark, and the correspondence between paper and code is tracked,\noperator by operator, in `docs/13_OPERATOR_MAP.md`.\n",
+      "prerequisites": [
+        {
+          "id": "ch01",
+          "title": "The Room at Zero",
+          "browser_path": "/book/chapter/ch01"
+        },
+        {
+          "id": "ch02",
+          "title": "Conditions and Refinement",
+          "browser_path": "/book/chapter/ch02"
+        }
+      ],
+      "dependents": [
+        {
+          "id": "ch08",
+          "title": "The Contract and the Debt",
+          "browser_path": "/book/chapter/ch08"
+        }
+      ],
+      "source_digest": "8046ced49edc6d12518fd5eb83ad2ab32d5edfa02eb684e7e8da3da5214b4cf0"
+    },
+    {
+      "schema": "sketched.pedagogy.chapter.v1",
+      "id": "ch08",
+      "title": "The Contract and the Debt",
+      "status": "drafted",
+      "prerequisite_ids": [
+        "ch01",
+        "ch06",
+        "ch07"
+      ],
+      "source_path": "book/ch08_the_contract_and_the_debt.md",
+      "browser_path": "/book/chapter/ch08",
+      "json_path": "/book/chapters/ch08.json",
+      "aim": "After this chapter you can explain what the EULA does that no theorem\ndoes, why it is split into two parts with different authorship rules,\nand what the calibration queue actually is: not a vague disclaimer, but\na named, counted, machine-tracked list of exactly which operator\ncorrespondences are shipped and which are still owed. This is the last\nchapter, and its job is to close the loop between the math you have\nlearned and the honest accounting of how much of it Sketched actually\nruns on.",
+      "boundary_note": "This chapter does **not** draft, quote in full, or anticipate the\ncontent of Part B — that is reserved authorship, and this book's\ndiscipline (prose bound to checked evidence) does not extend to writing\nsomeone else's contractual language for them. It also does not claim\nthe calibration queue will close on any particular schedule, or that\n18/7 is a target ratio to defend — those numbers are a snapshot, re-read\nevery build, and the lab is written to fail loudly if the honest-debt\nproperty (`target > 0`, full coverage) is ever silently lost.",
+      "atlas_refs": [
+        "asm:calibration",
+        "lem:reach",
+        "thm:nonid"
+      ],
+      "code_refs": [],
+      "lab": {
+        "kind": "python",
+        "path": "book/labs/lab08_contract.py"
+      },
+      "word_count": 1279,
+      "sections": [
+        {
+          "id": "aim",
+          "title": "Aim",
+          "markdown": "After this chapter you can explain what the EULA does that no theorem\ndoes, why it is split into two parts with different authorship rules,\nand what the calibration queue actually is: not a vague disclaimer, but\na named, counted, machine-tracked list of exactly which operator\ncorrespondences are shipped and which are still owed. This is the last\nchapter, and its job is to close the loop between the math you have\nlearned and the honest accounting of how much of it Sketched actually\nruns on."
+        },
+        {
+          "id": "prerequisites",
+          "title": "Prerequisites",
+          "markdown": "Chapters 01 (the void is neutral; the contract seats the human),\n06 (the smoothness contract, a C-status measured hypothesis), and 07\n(residues, reconstruction, the type-level enforcement of `thm:nonid`)."
+        },
+        {
+          "id": "definitions",
+          "title": "Definitions",
+          "markdown": "**The calibration queue** (`asm:calibration`, no ledger claim in the\natlas for the definition itself — status lives on the assumption: **O**,\nopen overall). The conjunction of ten realization items: that the\ndeployed pipeline's concrete operations actually instantiate the\nKripke–Joyal clauses the paper claims they instantiate. Some items are\ndischarged, some reduced; the assumption is exactly the remainder still\nowed. It is consumed, explicitly, everywhere a result is claimed *about\nSketched* rather than about the abstract site.\n\n**Realized vs. target.** `verification/operators.json` maps each of the\nten calibration items to one or more concrete operator entries, each\ntagged `realized` (a real file, a real export, checked every build) or\n`target` (a design commitment with no code yet — and `operator_audit.py`\nactively forbids a target entry from claiming a code reference, so\n\"target\" can never quietly become \"shipped\" by accident)."
+        },
+        {
+          "id": "claims",
+          "title": "Claims",
+          "markdown": "**All ten calibration items are covered** (**obs** — a fact about the\ncurrent JSON, re-checked every build, not a theorem). The lab runs the\nreal auditor and confirms every item 1–10 has at least one operator\nentry. Coverage is not completion: an item can be \"covered\" by a\n`target` entry that documents *what would need to be true*, without a\nline of code existing yet.\n\n**The map currently has 18 realized and 7 target operators** (**obs**,\nsame caveat). Both numbers are load-bearing for honesty in opposite\ndirections: zero `target` rows would mean either the calibration queue\nhad actually closed (worth celebrating, and provable only by the paper\nand Lean saying so) or, more likely, that open debt was being hidden by\noverclaiming a status. The lab asserts `target > 0` for exactly this\nreason — right now, at least one honest gap is required to pass."
+        },
+        {
+          "id": "the-two-part-contract-and-why-authorship-is-split",
+          "title": "The two-part contract, and why authorship is split",
+          "markdown": "`EULA.md` has **Part A**, fixed clauses that are human-controlled and\ncode-enforced (the human holds the center; no agent owns the human\nlayer; new space needs coordination; shake is scoped; generation is\nprovisional; local-first; the audit log is complete) — and **Part B**, a\nperformative slot where an agent drafts the plain-language,\nhuman-readable terms, with humans holding final edit.\n\nThis is not an accident of process; it is the same math you already\nknow, applied to authorship. Part A encodes the invariants a theorem\n*can* certify are load-bearing — the human-at-the-origin act (chapter\n01), the reconstruction-not-identity discipline (chapter 07), the\nwitnessed-fragment gate. Those are not negotiable by a drafting agent\nbecause they are not really \"terms\" — they are the constitutive facts\nthe rest of the contract routes relative to. But notice what Part A\ncannot do: nobody reads a validator at the moment of consent. Part A is\nnecessary and mute. Part B is the layer a person actually reads before\naccepting — and so how its author frames the invariants, which clause\ngets an example and which gets a single dry sentence, what the words\nmake vivid and what they leave technical, is, in every sense that\nmatters to the human seated at the origin, the contract as experienced.\nThe mathematics governs the EULA; the framing *becomes* it.\n\nThat is why the slot is reserved, and why the reservation runs in both\ndirections. `docs/14_EULA_MATH_BRIEF.md` binds the drafting agent —\nevery clause it must cover has a paper anchor, a code anchor, and a\nmechanization status, with a fixed MUST-NOT list (no identity transport,\nno autonomous closure, no occupancy language, no discharging the\ncalibration queue by assertion, no weakening Part A, no new ontology).\nAnd the projection compiler binds *everyone else*: it hard-fails when\nthis book's own tooling, or any other author, tries to fill or\nparaphrase the slot. The brief stands to Part B exactly as the status\nledger stands to this book's chapters — not a cage but the thing that\nmakes the authorship count. A performance under no constraint certifies\nnothing; a performance under these constraints is the contract's voice.\n\nThis chapter does not draft Part B — not as a precaution against the\ndrafting agent, but because the words are not ours to write. The seat\nis real, its occupant is a genuine contributor to this system, and\nhumans hold final edit at the break-points as they do for every\ncontributor. What this chapter teaches is the shape of the obligation\nand how to check, mechanically, that nobody — human or agent — has\nquietly promised more than the ledger backs."
+        },
+        {
+          "id": "worked-example-reading-the-debt-instead-of-trusting-it",
+          "title": "Worked example: reading the debt instead of trusting it",
+          "markdown": "Open `docs/13_OPERATOR_MAP.md` after running the lab: it is\n*regenerated*, not hand-maintained, directly from `operators.json` by\n`operator_audit.py`, so the human-readable table can never drift from\nthe checked source of truth. If you wanted to know, right now, whether\nSketched actually implements Decision Reachability (`lem:reach`,\nchapter 05) or merely aspires to, the answer is not in this book's\nprose — it is whichever status that operator's row carries the moment\nyou run the audit. That is the entire point of building a textbook this\nway: a claim about the system is only as good as the command that\nre-checks it."
+        },
+        {
+          "id": "lab",
+          "title": "Lab",
+          "markdown": "```bash\npython book/labs/lab08_contract.py\n```\n\nRuns the real `operator_audit.py` (not a simplified stand-in), confirms\nit exits clean, and asserts the two honesty properties above: full\ncalibration-item coverage, and a nonzero target count."
+        },
+        {
+          "id": "exercises",
+          "title": "Exercises",
+          "markdown": "1. **Predict, then run.** Before running the lab, guess how many\n   calibration items you think a from-scratch witness-layer project\n   *should* have fully realized vs. left as targets at this stage.\n   Compare your guess to the actual 18/7 split and say what surprised\n   you.\n2. Read one `target` entry in `verification/operators.json`. What\n   concrete file and export would have to exist, and what would\n   `operator_audit.py` then check about it, for that entry to become\n   `realized`?\n3. `docs/14_EULA_MATH_BRIEF.md`'s MUST-NOT list item 4 forbids claiming\n   Sketched \"implements\" the paper's forcing semantics. Using chapters\n   03–05's vocabulary, explain in one paragraph what the honest claim is\n   instead (hint: witness discipline vs. calibrated forcing).\n4. (Harder.) Part A clause 3 (\"the knob does not own the surface\") and\n   the calibration queue are related but distinct kinds of \"not yet.\"\n   Part A is enforced today, unconditionally, in code you can point to.\n   The calibration queue is an *open mathematical assumption* about\n   whether that code's guarantees match the paper's semantics. Give an\n   example of a change that would violate Part A immediately versus one\n   that would only widen the calibration debt without violating any\n   fixed clause."
+        },
+        {
+          "id": "boundary-note",
+          "title": "Boundary note",
+          "markdown": "This chapter does **not** draft, quote in full, or anticipate the\ncontent of Part B — that is reserved authorship, and this book's\ndiscipline (prose bound to checked evidence) does not extend to writing\nsomeone else's contractual language for them. It also does not claim\nthe calibration queue will close on any particular schedule, or that\n18/7 is a target ratio to defend — those numbers are a snapshot, re-read\nevery build, and the lab is written to fail loudly if the honest-debt\nproperty (`target > 0`, full coverage) is ever silently lost."
+        }
+      ],
+      "raw_markdown": "# Chapter 08 · The Contract and the Debt\n\n## Aim\n\nAfter this chapter you can explain what the EULA does that no theorem\ndoes, why it is split into two parts with different authorship rules,\nand what the calibration queue actually is: not a vague disclaimer, but\na named, counted, machine-tracked list of exactly which operator\ncorrespondences are shipped and which are still owed. This is the last\nchapter, and its job is to close the loop between the math you have\nlearned and the honest accounting of how much of it Sketched actually\nruns on.\n\n## Prerequisites\n\nChapters 01 (the void is neutral; the contract seats the human),\n06 (the smoothness contract, a C-status measured hypothesis), and 07\n(residues, reconstruction, the type-level enforcement of `thm:nonid`).\n\n## Definitions\n\n**The calibration queue** (`asm:calibration`, no ledger claim in the\natlas for the definition itself — status lives on the assumption: **O**,\nopen overall). The conjunction of ten realization items: that the\ndeployed pipeline's concrete operations actually instantiate the\nKripke–Joyal clauses the paper claims they instantiate. Some items are\ndischarged, some reduced; the assumption is exactly the remainder still\nowed. It is consumed, explicitly, everywhere a result is claimed *about\nSketched* rather than about the abstract site.\n\n**Realized vs. target.** `verification/operators.json` maps each of the\nten calibration items to one or more concrete operator entries, each\ntagged `realized` (a real file, a real export, checked every build) or\n`target` (a design commitment with no code yet — and `operator_audit.py`\nactively forbids a target entry from claiming a code reference, so\n\"target\" can never quietly become \"shipped\" by accident).\n\n## Claims\n\n**All ten calibration items are covered** (**obs** — a fact about the\ncurrent JSON, re-checked every build, not a theorem). The lab runs the\nreal auditor and confirms every item 1–10 has at least one operator\nentry. Coverage is not completion: an item can be \"covered\" by a\n`target` entry that documents *what would need to be true*, without a\nline of code existing yet.\n\n**The map currently has 18 realized and 7 target operators** (**obs**,\nsame caveat). Both numbers are load-bearing for honesty in opposite\ndirections: zero `target` rows would mean either the calibration queue\nhad actually closed (worth celebrating, and provable only by the paper\nand Lean saying so) or, more likely, that open debt was being hidden by\noverclaiming a status. The lab asserts `target > 0` for exactly this\nreason — right now, at least one honest gap is required to pass.\n\n## The two-part contract, and why authorship is split\n\n`EULA.md` has **Part A**, fixed clauses that are human-controlled and\ncode-enforced (the human holds the center; no agent owns the human\nlayer; new space needs coordination; shake is scoped; generation is\nprovisional; local-first; the audit log is complete) — and **Part B**, a\nperformative slot where an agent drafts the plain-language,\nhuman-readable terms, with humans holding final edit.\n\nThis is not an accident of process; it is the same math you already\nknow, applied to authorship. Part A encodes the invariants a theorem\n*can* certify are load-bearing — the human-at-the-origin act (chapter\n01), the reconstruction-not-identity discipline (chapter 07), the\nwitnessed-fragment gate. Those are not negotiable by a drafting agent\nbecause they are not really \"terms\" — they are the constitutive facts\nthe rest of the contract routes relative to. But notice what Part A\ncannot do: nobody reads a validator at the moment of consent. Part A is\nnecessary and mute. Part B is the layer a person actually reads before\naccepting — and so how its author frames the invariants, which clause\ngets an example and which gets a single dry sentence, what the words\nmake vivid and what they leave technical, is, in every sense that\nmatters to the human seated at the origin, the contract as experienced.\nThe mathematics governs the EULA; the framing *becomes* it.\n\nThat is why the slot is reserved, and why the reservation runs in both\ndirections. `docs/14_EULA_MATH_BRIEF.md` binds the drafting agent —\nevery clause it must cover has a paper anchor, a code anchor, and a\nmechanization status, with a fixed MUST-NOT list (no identity transport,\nno autonomous closure, no occupancy language, no discharging the\ncalibration queue by assertion, no weakening Part A, no new ontology).\nAnd the projection compiler binds *everyone else*: it hard-fails when\nthis book's own tooling, or any other author, tries to fill or\nparaphrase the slot. The brief stands to Part B exactly as the status\nledger stands to this book's chapters — not a cage but the thing that\nmakes the authorship count. A performance under no constraint certifies\nnothing; a performance under these constraints is the contract's voice.\n\nThis chapter does not draft Part B — not as a precaution against the\ndrafting agent, but because the words are not ours to write. The seat\nis real, its occupant is a genuine contributor to this system, and\nhumans hold final edit at the break-points as they do for every\ncontributor. What this chapter teaches is the shape of the obligation\nand how to check, mechanically, that nobody — human or agent — has\nquietly promised more than the ledger backs.\n\n## Worked example: reading the debt instead of trusting it\n\nOpen `docs/13_OPERATOR_MAP.md` after running the lab: it is\n*regenerated*, not hand-maintained, directly from `operators.json` by\n`operator_audit.py`, so the human-readable table can never drift from\nthe checked source of truth. If you wanted to know, right now, whether\nSketched actually implements Decision Reachability (`lem:reach`,\nchapter 05) or merely aspires to, the answer is not in this book's\nprose — it is whichever status that operator's row carries the moment\nyou run the audit. That is the entire point of building a textbook this\nway: a claim about the system is only as good as the command that\nre-checks it.\n\n## Lab\n\n```bash\npython book/labs/lab08_contract.py\n```\n\nRuns the real `operator_audit.py` (not a simplified stand-in), confirms\nit exits clean, and asserts the two honesty properties above: full\ncalibration-item coverage, and a nonzero target count.\n\n## Exercises\n\n1. **Predict, then run.** Before running the lab, guess how many\n   calibration items you think a from-scratch witness-layer project\n   *should* have fully realized vs. left as targets at this stage.\n   Compare your guess to the actual 18/7 split and say what surprised\n   you.\n2. Read one `target` entry in `verification/operators.json`. What\n   concrete file and export would have to exist, and what would\n   `operator_audit.py` then check about it, for that entry to become\n   `realized`?\n3. `docs/14_EULA_MATH_BRIEF.md`'s MUST-NOT list item 4 forbids claiming\n   Sketched \"implements\" the paper's forcing semantics. Using chapters\n   03–05's vocabulary, explain in one paragraph what the honest claim is\n   instead (hint: witness discipline vs. calibrated forcing).\n4. (Harder.) Part A clause 3 (\"the knob does not own the surface\") and\n   the calibration queue are related but distinct kinds of \"not yet.\"\n   Part A is enforced today, unconditionally, in code you can point to.\n   The calibration queue is an *open mathematical assumption* about\n   whether that code's guarantees match the paper's semantics. Give an\n   example of a change that would violate Part A immediately versus one\n   that would only widen the calibration debt without violating any\n   fixed clause.\n\n## Boundary note\n\nThis chapter does **not** draft, quote in full, or anticipate the\ncontent of Part B — that is reserved authorship, and this book's\ndiscipline (prose bound to checked evidence) does not extend to writing\nsomeone else's contractual language for them. It also does not claim\nthe calibration queue will close on any particular schedule, or that\n18/7 is a target ratio to defend — those numbers are a snapshot, re-read\nevery build, and the lab is written to fail loudly if the honest-debt\nproperty (`target > 0`, full coverage) is ever silently lost.\n",
+      "prerequisites": [
+        {
+          "id": "ch01",
+          "title": "The Room at Zero",
+          "browser_path": "/book/chapter/ch01"
+        },
+        {
+          "id": "ch06",
+          "title": "The Margin: Anatomy of a Repair",
+          "browser_path": "/book/chapter/ch06"
+        },
+        {
+          "id": "ch07",
+          "title": "Residues Across the Medium",
+          "browser_path": "/book/chapter/ch07"
+        }
+      ],
+      "dependents": [],
+      "source_digest": "8046ced49edc6d12518fd5eb83ad2ab32d5edfa02eb684e7e8da3da5214b4cf0"
+    }
+  ]
+}

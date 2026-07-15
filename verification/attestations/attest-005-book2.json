@@ -1,0 +1,80 @@
+{
+  "schema": "sketched.anchor-attestation.v1",
+  "id": "attest-005-book2",
+  "paper": "principia_atlas (book2) + forcing_correspondence",
+  "moves": [
+    {
+      "math_id": "definition:bk2_symbolic_partition_funct",
+      "from": null,
+      "to": "9c8d378b43a9"
+    },
+    {
+      "math_id": "theorem:bk2_equilibrium_distribution",
+      "from": null,
+      "to": "196b51c48f95"
+    },
+    {
+      "math_id": "theorem:bk2_h_theorem_for_symbolic_evol",
+      "from": null,
+      "to": "36b6b1eb0bf0"
+    },
+    {
+      "math_id": "definition:bk2_symbolic_entropy",
+      "from": null,
+      "to": "4e5aa120a64b"
+    },
+    {
+      "math_id": "definition:bk2_symbolic_free_energy",
+      "from": null,
+      "to": "08c50a28f559"
+    },
+    {
+      "math_id": "lemma:bk2_finiteness_of_symbolic_entropy",
+      "from": null,
+      "to": "7f0f81226a85"
+    },
+    {
+      "math_id": "lemma:bk2_conservation_of_probability",
+      "from": null,
+      "to": "9e9793171de2"
+    },
+    {
+      "math_id": "axiom:bk2_symbolic_fokker_planck_equation",
+      "from": null,
+      "to": "688b7f134653"
+    },
+    {
+      "math_id": "axiom:bk2_gradient_structure_drift",
+      "from": null,
+      "to": "ab5d04bc921b"
+    },
+    {
+      "math_id": "theorem:bk2_classification_symb_phase_transitions",
+      "from": null,
+      "to": "f04112f09764"
+    },
+    {
+      "math_id": "definition:bk2_symbolic_phase_transitio",
+      "from": null,
+      "to": "3ffc37c01901"
+    },
+    {
+      "math_id": "definition:bk2_symbolic_energy",
+      "from": null,
+      "to": "c7c4c1d3d0d5"
+    },
+    {
+      "math_id": "lemma:bk2_wellposedness_symb_prob_space",
+      "from": null,
+      "to": "d0729a4e0c6b"
+    }
+  ],
+  "artifacts_reviewed": [
+    "verification/lean/ForcingAnalysis/ForcingAnalysis/Book2.lean",
+    "verification/lean/ForcingAnalysis/ForcingAnalysis/Book2H.lean"
+  ],
+  "note": "Lean PS sprint-era anchors for book2: 13 statement placements across 2 artifact(s). Shas were computed live from the principia atlas at transcription time by the lead session; accepting this receipt attests that the named artifacts faithfully transcribe/kernelize these statements per their coverage-map honesty notes (verification/*_lean_map.json) and module headers. To sign: set status to 'accepted', attested_by to 'human', supply attested_at, then run: python verification/tools/binding_audit.py --adopt attest-005-book2",
+  "status": "proposed",
+  "attested_by": null,
+  "attested_at": null
+}

@@ -1,0 +1,214 @@
+{
+  "schema": "sketched.operational-epistemology.v1",
+  "document": "docs/25_OPERATIONAL_EPISTEMOLOGY.md",
+  "note": "Machine-checked status boundary for the Surface-derived epistemic invariants. enforced-slice means the cited subsystem is tested but the general ResearchRun integration remains open.",
+  "invariants": [
+    {
+      "id": "E1",
+      "title": "Human objective authority",
+      "status": "enforced-slice",
+      "description": "Human-owned state cannot be agent-mutated; general research-objective authority remains to be assembled.",
+      "references": [
+        {
+          "file": "src/core/stage.ts",
+          "contains": "export function actorMayMutate"
+        }
+      ],
+      "tests": [
+        {
+          "file": "src/core/stage.test.ts",
+          "contains": "agent cannot mutate the human/video layer directly"
+        }
+      ],
+      "closure": "Bind the objective and every material scope expansion to a human authority event in ResearchRun."
+    },
+    {
+      "id": "E2",
+      "title": "Source isolation and explicit ingress",
+      "status": "target",
+      "description": "Private tool state crosses into the shared record only through a bounded artifact interface.",
+      "references": [
+        {
+          "file": "docs/11_CONTROL_SURFACE.md",
+          "contains": "Source view (private, sovereign)"
+        }
+      ],
+      "tests": [],
+      "closure": "Implement source manifests, content digests, access/license boundaries, and host-only artifact ingress."
+    },
+    {
+      "id": "E3",
+      "title": "Provisional generation",
+      "status": "enforced-slice",
+      "description": "Generated layers carry ownership and provenance and remain shakeable.",
+      "references": [
+        {
+          "file": "src/core/layer.ts",
+          "contains": "shakeable"
+        },
+        {
+          "file": "src/core/stage.ts",
+          "contains": "provenance:"
+        }
+      ],
+      "tests": [
+        {
+          "file": "src/core/stage.test.ts",
+          "contains": "generated layers carry ownership and provenance"
+        }
+      ],
+      "closure": "Generalize provisional/retractable status from scene layers to hypotheses, reports, and research artifacts."
+    },
+    {
+      "id": "E4",
+      "title": "Bounded autonomous intervals",
+      "status": "enforced-slice",
+      "description": "The flow channel enforces angle, lifetime, cumulative budget, and closure before violation.",
+      "references": [
+        {
+          "file": "src/flow/engine.ts",
+          "contains": "export interface FlowChannel"
+        }
+      ],
+      "tests": [
+        {
+          "file": "src/flow/engine.test.ts",
+          "contains": "closes before a frame can exceed the interval budget"
+        },
+        {
+          "file": "src/flow/engine.test.ts",
+          "contains": "out-of-angle probe as a refusal"
+        }
+      ],
+      "closure": "Extend channel scope to research sources, tools, persistence, network, perturbation, and publication boundaries."
+    },
+    {
+      "id": "E5",
+      "title": "Scheduler neutrality",
+      "status": "enforced",
+      "description": "STEP and FLOW schedule the same event transition and yield identical traces.",
+      "references": [
+        {
+          "file": "src/flow/engine.ts",
+          "contains": "export function advanceOne"
+        }
+      ],
+      "tests": [
+        {
+          "file": "src/flow/engine.test.ts",
+          "contains": "gives STEP and FLOW scheduling identical traces"
+        }
+      ],
+      "closure": null
+    },
+    {
+      "id": "E6",
+      "title": "Complete provenance and replay",
+      "status": "enforced-slice",
+      "description": "Stage mutations are audited and flow traces export, digest, replay, and reject forgery.",
+      "references": [
+        {
+          "file": "src/flow/engine.ts",
+          "contains": "export function verifyTrace"
+        },
+        {
+          "file": "src/core/stage.ts",
+          "contains": "readonly audit = new AuditLog"
+        }
+      ],
+      "tests": [
+        {
+          "file": "src/flow/engine.test.ts",
+          "contains": "detects a forged accepted mutation against the human layer"
+        },
+        {
+          "file": "src/core/stage.test.ts",
+          "contains": "records an audit event for an accepted mutation"
+        }
+      ],
+      "closure": "Unify cross-tool inputs, versions, seeds, costs, artifacts, and verdicts in one canonical research trace."
+    },
+    {
+      "id": "E7",
+      "title": "Typed epistemic status",
+      "status": "enforced-slice",
+      "description": "Lean and source ledgers validate distinct proof, model, condition, and obligation statuses.",
+      "references": [
+        {
+          "file": "verification/tools/leanps_audit.py",
+          "contains": "LPS_BAD_STATUS"
+        },
+        {
+          "file": "verification/tools/source_obligations.py",
+          "contains": "LEAN_STATUSES"
+        }
+      ],
+      "tests": [],
+      "closure": "Define a shared claim-status vocabulary spanning sources, hypotheses, observations, runtime results, theorems, interpretations, acceptance, and debt."
+    },
+    {
+      "id": "E8",
+      "title": "Challenge before promotion",
+      "status": "enforced-slice",
+      "description": "Tracked witnesses retain negative controls and countermodels, but challenge coverage is not yet universal.",
+      "references": [
+        {
+          "file": "verification/kernel/fabricpc_witness.py",
+          "contains": "dark-room negative control"
+        },
+        {
+          "file": "verification/kernel/lorentz_witness.py",
+          "contains": "negative control"
+        }
+      ],
+      "tests": [],
+      "closure": "Require every positive ResearchRun result to name executed challenges or emit explicit challenge debt."
+    },
+    {
+      "id": "E9",
+      "title": "Dependency-aware revocation",
+      "status": "enforced-slice",
+      "description": "Flow interruption closes the channel, preserves the human signal, and cascades through dependents.",
+      "references": [
+        {
+          "file": "src/flow/engine.ts",
+          "contains": "removedDependents"
+        }
+      ],
+      "tests": [
+        {
+          "file": "src/flow/engine.test.ts",
+          "contains": "cascades through dependents"
+        }
+      ],
+      "closure": "Apply invalidation, downgrade, or recheck semantics to the general source and claim dependency graph."
+    },
+    {
+      "id": "E10",
+      "title": "No autonomous closure or actuation",
+      "status": "enforced-slice",
+      "description": "Gatekeeper and witness boundaries prevent direct authority over protected state; general external actuation remains outside the runtime.",
+      "references": [
+        {
+          "file": "src/agents/gatekeeper.ts",
+          "contains": "export class Gatekeeper"
+        },
+        {
+          "file": "docs/12_FORCING_CORRESPONDENCE.md",
+          "contains": "no autonomous loop closure"
+        }
+      ],
+      "tests": [
+        {
+          "file": "src/agents/gatekeeper.test.ts",
+          "contains": "rejects a proposal that targets the human layer"
+        },
+        {
+          "file": "src/witness/witness.test.ts",
+          "contains": "rejects a step the gate admitted against a refused certificate"
+        }
+      ],
+      "closure": "Represent promotion, scope expansion, publication, deployment, messaging, spending, and external mutation as separate human-authorized events."
+    }
+  ]
+}

@@ -1,0 +1,249 @@
+{
+ "schema": "sketched.book3-lean-map.v1",
+ "source": "Principia Symbolica Book 3",
+ "boundary": "Mappings certify only the static/algebraic/finite-discrete kernel. The Riemannian membrane geometry, PDE dynamics, and Helmholtz material are not certified; conditional and partial rows do not promote the full prose statement to a Lean theorem.",
+ "entries": [
+  {
+   "atlas_id": "definition:bk3_symbolic_membrane",
+   "coverage": "partial",
+   "lean": [
+    "Book3.Membrane",
+    "Book3.membrane_complement_permeability_mem"
+   ],
+   "note": "Drift-deviation bound, permeability in [0,1], and nonnegative stability captured as structure fields over Real; the submanifold (connected, compact closure, smooth boundary) is not modeled."
+  },
+  {
+   "atlas_id": "definition:bk3_membrane_thermodynamics",
+   "coverage": "partial",
+   "lean": [
+    "Book3.MembraneThermo",
+    "Book3.membraneFreeEnergy",
+    "Book3.MembraneViable",
+    "Book3.membrane_viable_iff"
+   ],
+   "note": "Energy/entropy/temperature/free-energy algebra captured (mirrors the Book5 thermodynamic snapshot pattern); the manifold integrals defining E_i, S_i, T_i are not modeled."
+  },
+  {
+   "atlas_id": "theorem:bk3_membrane_stability_criteria",
+   "coverage": "conditional",
+   "lean": [
+    "Book3.StabilityConditions",
+    "Book3.MembraneStable",
+    "Book3.membrane_stable_of_conditions",
+    "Book3.membrane_stable_permeability_lt_one"
+   ],
+   "note": "The three named conditions are kept as explicit hypothesis fields (free-energy local-min and no-unstable-fixed-point are opaque Prop witnesses); stability is proved as their conjunction, not asserted to hold generally."
+  },
+  {
+   "atlas_id": "definition:bk3_coupling_map",
+   "coverage": "partial",
+   "lean": [
+    "Book3.CouplingMap"
+   ],
+   "note": "Symmetry and boundedness clauses modeled as structure fields on Phi : Real -> Real -> Real; the sensitivity clause (nonvanishing gradients on a dense open subset) requires manifold differential structure and is not modeled."
+  },
+  {
+   "atlas_id": "definition:bk3_induced_coupling_energy",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book3.couplingEnergy",
+    "Book3.couplingEnergy_nonneg"
+   ],
+   "note": "H_ij = lambda*(phi-target)^2 and its nonnegativity for lambda>=0, fully proved."
+  },
+  {
+   "atlas_id": "theorem:bk3_couplinginduced_drift_modification",
+   "coverage": "conditional",
+   "lean": [
+    "Book3.CoupledDrift",
+    "Book3.coupledDrift",
+    "Book3.coupled_drift_deviation_bound"
+   ],
+   "note": "Scalar model: the correction integral is replaced by a single bounded real; the theorem proved is the triangle-inequality consequence |D_coupled - D| <= eta*bound, given the bound as a hypothesis rather than derived from an actual integral."
+  },
+  {
+   "atlas_id": "definition:bk3_symbolic_symbiosis",
+   "coverage": "conditional",
+   "lean": [
+    "Book3.SymbiosisConditions",
+    "Book3.InSymbiosis",
+    "Book3.in_symbiosis_of_conditions",
+    "Book3.symbiosis_drift_perturbation_ne_zero"
+   ],
+   "note": "All three named clauses (mutual stability enhancement, information transfer positivity, drift compensation) kept as explicit hypothesis fields; a genuine corollary (perturbation must be nonzero under compensation) is derived."
+  },
+  {
+   "atlas_id": "lemma:bk3_symbiotic_stability_conditions",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book3.SymbioticThreshold",
+    "Book3.symbiotic_threshold_clears_i",
+    "Book3.symbiotic_threshold_clears_j"
+   ],
+   "note": "The max-of-two-bounds threshold algebra is fully proved: lambda above the max clears each side of the enhancement inequality delta^2 < 4*eta*infoGrad*lambda."
+  },
+  {
+   "atlas_id": "definition:bk3_reflexive_encoding",
+   "coverage": "partial",
+   "lean": [
+    "Book3.ReflexiveEncoding",
+    "Book3.reflexive_encoding_information_strictly_preserved"
+   ],
+   "note": "Bounded round-trip distortion and the information-preservation inequality (conditionalEntropy < totalEntropy - kappa) are modeled; the approximate-equality 'stability preservation up to scaling' clause is not formalized."
+  },
+  {
+   "atlas_id": "theorem:bk3_cyclic_reflexive_encodings",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book3.cyclic_distortion_bound"
+   ],
+   "note": "Telescoping triangle-inequality bound on a chain of n composed maps in a PseudoMetricSpace, proved by induction. Directly instantiates the cyclic case since the theorem is agnostic to whether the chain closes into a loop."
+  },
+  {
+   "atlas_id": "definition:bk3_conceptual_bridge",
+   "coverage": "partial",
+   "lean": [
+    "Book3.BoundedRoundTrip"
+   ],
+   "note": "Only the approximate-invertibility clause (bounded round-trip distortion both ways) is modeled; structure preservation and semantic consistency are descriptive clauses with no standalone formal target here."
+  },
+  {
+   "atlas_id": "lemma:bk3_reflexive_encodings_generate_conceptual_bridges",
+   "coverage": "conditional",
+   "lean": [
+    "Book3.reflexive_pair_generates_bridge"
+   ],
+   "note": "Shows that reflexive-encoding-style round-trip bounds are literally sufficient data to construct a BoundedRoundTrip; existence-style construction rather than a deep theorem."
+  },
+  {
+   "atlas_id": "definition:bk3_symbiotic_curvature",
+   "coverage": "definition",
+   "lean": [
+    "Book3.symbioticCurvature"
+   ],
+   "note": "Finite-n average formula faithfully transcribed from the continuous definition, with mutual information replaced by a finite Fin n -> Fin n -> Real matrix."
+  },
+  {
+   "atlas_id": "theorem:bk3_properties_of_symbiotic_curvature",
+   "coverage": "conditional",
+   "lean": [
+    "Book3.symbioticCurvature_pos",
+    "Book3.symbioticCurvature_gt_one",
+    "Book3.symbioticCurvature_mono_info",
+    "Book3.weighted_avg_le_max"
+   ],
+   "note": "Positivity and symbiotic-enhancement (>1) are proved in full for the finite-n formula. Monotonicity is proved as a non-strict comparison across two info matrices. Subadditivity is only covered at the level of its abstract mediant/convex-combination core (weighted_avg_le_max); the full derivation from summing over two disjoint index sets is not carried out."
+  },
+  {
+   "atlas_id": "definition:bk3_perturbation_response_function",
+   "coverage": "definition",
+   "lean": [
+    "Book3.perturbationResponse"
+   ],
+   "note": "Plain ratio definition, no theorem content attached directly."
+  },
+  {
+   "atlas_id": "theorem:bk3_symbiotic_curvature_and_resilience",
+   "coverage": "conditional",
+   "lean": [
+    "Book3.resilience_bound_antitone"
+   ],
+   "note": "Honest static kernel: the bound C/kappa_symb is antitone in kappa_symb for fixed C>0. The limiting behaviour of R(delta,t) as t->infinity is not modeled."
+  },
+  {
+   "atlas_id": "theorem:bk3_evolution_of_symbolic_knowledge",
+   "coverage": "conditional",
+   "lean": [
+    "Book3.KnowledgeRateLaw",
+    "Book3.integration_rate_eq"
+   ],
+   "note": "The rate equation dK/dr = I'-D'+R is kept as a structure field (a modeling commitment, not derived); one algebraic rearrangement is proved."
+  },
+  {
+   "atlas_id": "corollary:bk3_integrated_knowledge_structure",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book3.knowledge_structure_telescopes"
+   ],
+   "note": "Discrete telescoping-sum analogue of the continuous FTC-style corollary, proved by induction on Nat."
+  },
+  {
+   "atlas_id": "theorem:bk3_conditions_sustained_symbolic_growth",
+   "coverage": "conditional",
+   "lean": [
+    "Book3.sustained_growth_window"
+   ],
+   "note": "Discrete window version: positive net increment sum over a length-T window implies K strictly increases across that window, built on the telescoping lemma."
+  },
+  {
+   "atlas_id": "definition:bk3_compressed_relational_structure",
+   "coverage": "definition",
+   "lean": [
+    "Book3.CompressionOperator"
+   ],
+   "note": "Type scaffold only (Set X -> Sigma); no theorem content."
+  },
+  {
+   "atlas_id": "definition:bk3_symbolic_network",
+   "coverage": "definition",
+   "lean": [
+    "Book3.SymbolicNetwork"
+   ],
+   "note": "Finite nodes/edges/global-stability scaffold; no theorem content."
+  },
+  {
+   "atlas_id": "definition:bk3_symbolic_metabolic_rate",
+   "coverage": "partial",
+   "lean": [
+    "Book3.metabolicRate",
+    "Book3.metabolicRate_nonneg"
+   ],
+   "note": "Finite double-sum analogue of the continuous double integral over paired membranes; only nonnegativity of the analogue is proved."
+  },
+  {
+   "atlas_id": "definition:bk3_symbolic_homeostasis",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book3.Homeostatic",
+    "Book3.homeostatic_band_nonempty"
+   ],
+   "note": "Operating-band definition and the trivial-but-real consequence that a homeostatic state forces rmin<=rmax."
+  },
+  {
+   "atlas_id": "theorem:bk3_homeostatic_reflexes",
+   "coverage": "conditional",
+   "lean": [
+    "Book3.LipschitzMetabolicResponse",
+    "Book3.metabolic_response_deviation_bound"
+   ],
+   "note": "The derivative bound |dR/dDelta|<=C is modeled as a Lipschitz condition on the response function (a modeling commitment); a genuine two-sided deviation-from-baseline bound is derived from it."
+  },
+  {
+   "atlas_id": "theorem:bk3_criteria_persistent_symbolic_life",
+   "coverage": "conditional",
+   "lean": [
+    "Book3.PersistentLife",
+    "Book3.persistentLife_kappa_pos",
+    "Book3.persistentLife_rmin_le_rmax"
+   ],
+   "note": "Capstone structure assembling the three named criteria (homeostatic metabolic rate, positive growth increment, curvature bounded away from zero) as fields, with two projection consequences proved."
+  },
+  {
+   "atlas_id": "definition:bk3_conceptual_bridge_sequence",
+   "coverage": "definition",
+   "lean": [
+    "Book7B.ConceptualBridgeLoop"
+   ],
+   "note": "Four composable bridge maps M->Sigma1->Sigma2->N->M."
+  },
+  {
+   "atlas_id": "theorem:bk3_closure_conceptual_bridge_sequence",
+   "coverage": "conditional",
+   "lean": [
+    "Book7B.conceptualBridgeLoop_toSigma1_injective",
+    "Book7B.conceptualBridgeLoop_toM_surjective"
+   ],
+   "note": "Given the loop literally closes (composite = identity on M, the honest reading of 'can form a closed loop feeding back into the originals'), the first map is injective and the return map is surjective."
+  }
+ ]
+}

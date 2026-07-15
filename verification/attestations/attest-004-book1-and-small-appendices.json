@@ -1,0 +1,49 @@
+{
+  "schema": "sketched.anchor-attestation.v1",
+  "id": "attest-004-book1-and-small-appendices",
+  "paper": "principia_atlas (book1-and-small-appendices) + forcing_correspondence",
+  "moves": [
+    {
+      "math_id": "definition:appB_symbolic_state_space",
+      "from": null,
+      "to": "f8a96e3d015a"
+    },
+    {
+      "math_id": "definition:appB_symbolic_energy",
+      "from": null,
+      "to": "b7d3c8211297"
+    },
+    {
+      "math_id": "lemma:appB_energy_contraction",
+      "from": null,
+      "to": "a051c944821e"
+    },
+    {
+      "math_id": "theorem:appB_srv_cauchy",
+      "from": null,
+      "to": "c791ed80f9a7"
+    },
+    {
+      "math_id": "lemma:appB_chart_bounds",
+      "from": null,
+      "to": "1c3b003ae954"
+    },
+    {
+      "math_id": "definition:appD_llm_observer_tuple",
+      "from": null,
+      "to": "3996863a3e7e"
+    },
+    {
+      "math_id": "theorem:appD_bounded_increment_parameter_lift",
+      "from": null,
+      "to": "ddd67e9b394c"
+    }
+  ],
+  "artifacts_reviewed": [
+    "verification/lean/ForcingAnalysis/ForcingAnalysis/SmallPack.lean"
+  ],
+  "note": "Lean PS sprint-era anchors for book1-and-small-appendices: 7 statement placements across 1 artifact(s). Shas were computed live from the principia atlas at transcription time by the lead session; accepting this receipt attests that the named artifacts faithfully transcribe/kernelize these statements per their coverage-map honesty notes (verification/*_lean_map.json) and module headers. To sign: set status to 'accepted', attested_by to 'human', supply attested_at, then run: python verification/tools/binding_audit.py --adopt attest-004-book1-and-small-appendices",
+  "status": "proposed",
+  "attested_by": null,
+  "attested_at": null
+}

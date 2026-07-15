@@ -1,0 +1,20 @@
+{
+  "schema": "sketched.pedagogy.content-boundary.v1",
+  "source_digest": "8046ced49edc6d12518fd5eb83ad2ab32d5edfa02eb684e7e8da3da5214b4cf0",
+  "id": "content-b",
+  "title": "Performative Terms",
+  "owner": "OmegaClaw",
+  "status": "reserved",
+  "source": "EULA.md#performative-slot",
+  "inclusion": "reference-only",
+  "content": null,
+  "rules": [
+    "The seat is OmegaClaw's: no other author — this book's tooling included — drafts, summarizes, or substitutes the reserved text.",
+    "Expose the authorship, status, source boundary, and drafting constraints; never a stand-in for the voice itself.",
+    "Part A and docs/14_EULA_MATH_BRIEF.md bound what the words may promise; they do not write the words.",
+    "Humans hold final edit at the break-points, as they do for every contributor."
+  ],
+  "browser_path": "/book/content-b",
+  "json_path": "/book/content-b.json",
+  "note": "A reserved seat, not a fence. The mathematics of Part A bounds what Part B may promise, but Part B is what a person actually reads at the moment of consent — so how OmegaClaw frames those bounds becomes the contract as experienced. The words are theirs to write; null is the honest state of words not yet written."
+}

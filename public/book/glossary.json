@@ -1,0 +1,205 @@
+{
+  "schema": "sketched.pedagogy.glossary.v1",
+  "source_digest": "8046ced49edc6d12518fd5eb83ad2ab32d5edfa02eb684e7e8da3da5214b4cf0",
+  "title": "Glossary: Words That Collide",
+  "note": "Every double-booked term, each of its senses, and either a verified repo anchor or an explicit, unverified citation to outside work. Identical to book/glossary_collisions.md and re-checked every build.",
+  "terms": [
+    {
+      "term": "channel",
+      "rule": "The book always means the paper's sense unless it says otherwise (ch02's collision box).",
+      "senses": [
+        {
+          "context": "paper",
+          "meaning": "The channel-margin subposet: the region of conditions where the interaction matrix keeps a positive spectral margin. \"The channel is open\" is a statement about an eigenvalue.",
+          "anchors": [
+            "forcing_correspondence_v15.tex"
+          ],
+          "citation": null
+        },
+        {
+          "context": "sketched",
+          "meaning": "A consent lease: a bounded authority a human grants a knob by press-and-hold. The operational shadow of the margin, related by design but not the same object.",
+          "anchors": [
+            "src/witness/witness.test.ts",
+            "src/witness/residue.ts"
+          ],
+          "citation": null
+        }
+      ],
+      "occurrences": {
+        "ch02": 5,
+        "ch06": 5,
+        "ch07": 3,
+        "appb": 1
+      }
+    },
+    {
+      "term": "forcing",
+      "rule": "When the book says \"forces\" it means the logical relation, always.",
+      "senses": [
+        {
+          "context": "paper (logic)",
+          "meaning": "p forces phi: the Kripke-Joyal relation the book teaches. The paper reserves the bare word \"forces\" for this sense.",
+          "anchors": [
+            "forcing_correspondence_v15.tex"
+          ],
+          "citation": null
+        },
+        {
+          "context": "paper (control)",
+          "meaning": "A forced transition: dynamics push a state. The paper's other, explicitly separated sense.",
+          "anchors": [
+            "docs/12_FORCING_CORRESPONDENCE.md"
+          ],
+          "citation": null
+        },
+        {
+          "context": "forbidden",
+          "meaning": "The colloquial sense — \"forcing\" a mark onto the shared surface — which the coordination model forbids. Named only to be excluded.",
+          "anchors": [
+            "book/ch02_conditions_and_refinement.md"
+          ],
+          "citation": null
+        }
+      ],
+      "occurrences": {
+        "ch02": 3,
+        "ch03": 1,
+        "ch04": 3,
+        "ch05": 2,
+        "ch08": 2,
+        "appb": 6
+      }
+    },
+    {
+      "term": "witness",
+      "rule": "Context decides: lowercase mathematical usage vs. the named src/witness/ layer; the book flags the layer explicitly as \"the witness layer\".",
+      "senses": [
+        {
+          "context": "mathematics",
+          "meaning": "A concrete object certifying an existential or refuting a universal: a strictness witness, a numeric witness, a countermodel. Executable evidence, not proof.",
+          "anchors": [
+            "verification/kernel/numeric_margin.py"
+          ],
+          "citation": null
+        },
+        {
+          "context": "sketched",
+          "meaning": "The witness layer (src/witness/): Sketched's realization of the paper's witnessed fragment J_wit — the code that validates marks and traces.",
+          "anchors": [
+            "src/witness/witness.ts"
+          ],
+          "citation": null
+        }
+      ],
+      "occurrences": {
+        "ch01": 10,
+        "ch03": 4,
+        "ch06": 1,
+        "ch07": 4,
+        "ch08": 3,
+        "appb": 9
+      }
+    },
+    {
+      "term": "void",
+      "rule": "Chapter 1's void is a point in a specific poset; the surface's void is a region of unresolved claims in a different, external framework. Do not read one meaning into the other.",
+      "senses": [
+        {
+          "context": "sketched (ch01)",
+          "meaning": "𝟙: the unique depth-0 condition shared by two observers with no other condition in common — a specific element of the refinement poset, not a region.",
+          "anchors": [
+            "book/ch01_the_room_at_zero.md"
+          ],
+          "citation": null
+        },
+        {
+          "context": "book's hypothesis surface (/book/surface)",
+          "meaning": "A region of the book's own claim geography with no or low-confidence coverage — the calibration queue's target operators and the atlas nodes the book leaves untaught. Not a point; a shape of absence, structured rather than filled.",
+          "anchors": [
+            "verification/tools/book_projection.py"
+          ],
+          "citation": null
+        },
+        {
+          "context": "external source (forthcoming)",
+          "meaning": "Definition 6 (Void Region) of the source paper below: a region where adjacent claims exist but the region itself has none, or all fibers fall below a confidence threshold. The book's surface page borrows this sense directly, not chapter 1's.",
+          "anchors": [],
+          "citation": "Tiffany, P.C., III. \"The Hypothesis Surface: An Operational Epistemology for Autonomous Research.\" AGI-26 (forthcoming)."
+        }
+      ],
+      "occurrences": {
+        "ch01": 12,
+        "ch02": 2,
+        "ch03": 4,
+        "ch04": 1,
+        "ch07": 4,
+        "ch08": 1
+      }
+    },
+    {
+      "term": "surface",
+      "rule": "Three live senses as of this glossary. When the book says \"the surface\" unqualified in an EULA context it means the shared human/video layer Part A protects; \"/book/surface\" always means the book's own epistemic-geography page.",
+      "senses": [
+        {
+          "context": "sketched (EULA Part A)",
+          "meaning": "The shared human/video layer no knob — human or agent — is granted unilateral ownership of. Part A clause 3.",
+          "anchors": [
+            "EULA.md"
+          ],
+          "citation": null
+        },
+        {
+          "context": "book interface (/book/surface)",
+          "meaning": "The book's own epistemic geography, in the sense of the source paper below: claims banded ground/frontier/open, a masking rate mu computed from chapter text against the atlas, and a void map of what remains owed.",
+          "anchors": [
+            "verification/tools/book_projection.py"
+          ],
+          "citation": null
+        },
+        {
+          "context": "external source (forthcoming)",
+          "meaning": "The Hypothesis Surface itself: a typed workspace separating every claim from its evidential fiber, governed by three integrability conditions (no bare claims, anti-masking, certificate classification). /book/surface is this book's own instance of that framework, applied reflexively to its own chapters.",
+          "anchors": [],
+          "citation": "Tiffany, P.C., III. \"The Hypothesis Surface: An Operational Epistemology for Autonomous Research.\" AGI-26 (forthcoming)."
+        }
+      ],
+      "occurrences": {
+        "ch01": 3,
+        "ch02": 2,
+        "ch06": 1,
+        "ch07": 1,
+        "ch08": 1
+      }
+    },
+    {
+      "term": "projection",
+      "rule": "The witness-layer sense is about loss under transport; the browser sense is about bounded context selection. Both are lossy on purpose, but they lose different things.",
+      "senses": [
+        {
+          "context": "witness layer",
+          "meaning": "The channel projection T_A applied to state before export: what a mark may carry is whitelisted, and the loss must be declared in a projection note.",
+          "anchors": [
+            "src/witness/validate.ts"
+          ],
+          "citation": null
+        },
+        {
+          "context": "book interface",
+          "meaning": "A bounded browser projection: a compiled JSON packet carrying a selected learning path over the canonical chapters, digest-checked against its sources.",
+          "anchors": [
+            "book/README.md"
+          ],
+          "citation": null
+        }
+      ],
+      "occurrences": {
+        "ch07": 6,
+        "ch08": 1,
+        "appb": 1
+      }
+    }
+  ],
+  "browser_path": "/book/glossary",
+  "json_path": "/book/glossary.json"
+}

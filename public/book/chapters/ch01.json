@@ -1,0 +1,114 @@
+{
+  "schema": "sketched.pedagogy.chapter.v1",
+  "id": "ch01",
+  "title": "The Room at Zero",
+  "status": "drafted",
+  "prerequisite_ids": [],
+  "source_path": "book/ch01_the_room_at_zero.md",
+  "browser_path": "/book/chapter/ch01",
+  "json_path": "/book/chapters/ch01.json",
+  "aim": "After this chapter you can say precisely what `127.0.0.1` *is* in this\nsystem — not as networking trivia but as mathematics: the unique point two\nobservers can share, why sharing it buys the ability to say \"we agree\"\nand nothing more, and why a contract (not a theorem) is what seats *you*\nthere. You will be able to predict what the witness layer accepts and\nrejects before running it.",
+  "boundary_note": "This chapter does **not** claim that localhost is secure, that the void\n\"is\" consciousness or presence (the paper's appendix firewall applies),\nor that seating the human is mathematically forced — it is contractually\nchosen, and the whole design is honest about which is which. That\nhonesty is the book's method.",
+  "atlas_refs": [
+    "def:cond",
+    "lem:void",
+    "prop:zeroth",
+    "thm:factor"
+  ],
+  "code_refs": [
+    {
+      "file": "src/witness/witness.ts",
+      "export": "isZeroOrderOrigin"
+    },
+    {
+      "file": "src/witness/witness.ts",
+      "export": "anchor"
+    },
+    {
+      "file": "src/witness/validate.ts",
+      "export": "validateTrace"
+    }
+  ],
+  "lab": {
+    "kind": "command",
+    "argv": [
+      "node",
+      "node_modules/vitest/vitest.mjs",
+      "run",
+      "src/witness"
+    ]
+  },
+  "word_count": 884,
+  "sections": [
+    {
+      "id": "aim",
+      "title": "Aim",
+      "markdown": "After this chapter you can say precisely what `127.0.0.1` *is* in this\nsystem — not as networking trivia but as mathematics: the unique point two\nobservers can share, why sharing it buys the ability to say \"we agree\"\nand nothing more, and why a contract (not a theorem) is what seats *you*\nthere. You will be able to predict what the witness layer accepts and\nrejects before running it."
+    },
+    {
+      "id": "prerequisites",
+      "title": "Prerequisites",
+      "markdown": "None. This is the front door."
+    },
+    {
+      "id": "definitions",
+      "title": "Definitions",
+      "markdown": "**Condition** (`def:cond`, D). A finite partial epistemic state — in\nSketched terms, a stage: which layers exist, who owns them, what has been\nconsented to so far. You always know only finitely much; a condition is\nthe honest record of that.\n\n**Refinement.** `q ⊑ p` means q keeps everything p committed to and\nresolves more. Work descends: you never un-know by refining.\n\n**The wedge** (`lem:void` setup). Take two observers A and B whose\nsurfaces share *no* condition except the empty one — zero commitments,\nthe state before anything has been said. Glue the two surfaces at that\nsingle shared top. Call the shared point the **void**, written 𝟙. The\norder on the glued object is: A's order on A's side, B's order on B's\nside, 𝟙 above everything, and **no cross-branch relations**.\n\n**Depth.** Count refinement steps from 𝟙. The void is the unique\ncondition at depth 0; everything else is depth ≥ 1."
+    },
+    {
+      "id": "claims",
+      "title": "Claims",
+      "markdown": "**The void is the unique shared point** (`lem:void`, **P** —\nmachine-verified setup; see `verification/FINDINGS.md`). Any condition of\nA's at depth ≥ 1 is incompatible with any condition of B's at depth ≥ 1:\na common refinement would have to live in both branches, and nothing\ndoes. Consequently any filter — any coherent course of joint commitments —\nlies entirely inside one branch (plus 𝟙).\n\n**The shared point is forced to zeroth order** (`prop:zeroth`, **P**).\nNot a design choice: the *only* thing shareable between disjoint\nobservers is the depth-0 condition. If you want a shared anything, the\nmath hands you exactly one candidate, and it is empty.\n\n**Factoring** (`thm:factor`, **D**). Since occupancy of another's surface\nis impossible below the void, any transfer of contingent content must\nroute through a third object both can address — a *medium*. (Chapter 07\nis about what survives that trip. Spoiler: residues, never identity.)"
+    },
+    {
+      "id": "worked-example-what-a-and-b-can-actually-share",
+      "title": "Worked example: what A and B can actually share",
+      "markdown": "A has drawn three layers; B has drawn two. Can B see A's stage? No — B\nwould need to occupy a depth-≥1 condition of A's branch (`lem:void` says\nnever). Can A and B agree on anything? Yes — exactly the statements\nforced *from the void*, the branch-invariant, pre-observational kernel:\n\"a stage has an owner,\" \"consent precedes mutation.\" That is\n**commensurability**: a common 𝟙 to quantify over, hence the ability to\n*state* \"we agree.\" It is not communication. Nothing contingent — no\nlayer, no palette, no gesture — crosses at depth 0.\n\nOperationally the void is **localhost**. `127.0.0.1` has the same form\nfor everyone and a different referent for each — the address whose\nuniversality is exactly commensurability and whose locality is exactly\nbranch privacy. Sketched's dev server binds there and the witness layer\nchecks it: `isZeroOrderOrigin` (in `src/witness/witness.ts`) accepts\nloopback and rejects the public internet, because *the void is not out\nthere*."
+    },
+    {
+      "id": "and-then-the-contract",
+      "title": "And then the contract",
+      "markdown": "Everything above is neutral. The void is a shared *point*, not a person;\nthe math seats nobody. Sketched makes one move that the theorems do not make\nfor it: the EULA places **you** at the origin. This is a **D**-status\nact — constitutive, not derived — and the code treats it that way: an\nanchor (`anchor` in `src/witness/witness.ts`) carries `eulaAccepted`, and\n`validateTrace` (in `src/witness/validate.ts`) rejects every trace whose\nanchor lacks the contract, with the reason string telling you exactly\nthis story: *without it the anchor is neutral, not authority-bearing.*\n\nBefore the contract: commensurability. After: authority-origin. The room\nexists either way; the contract decides that it is *your* room."
+    },
+    {
+      "id": "lab",
+      "title": "Lab",
+      "markdown": "The chapter's lab is the witness test suite:\n\n```bash\nnpx vitest run src/witness\n```\n\nWatch four tests in particular: loopback accepted, `example.com`\nrejected, the missing-contract rejection, and the trace that fails\nbecause a gate admitted what a certificate refused."
+    },
+    {
+      "id": "exercises",
+      "title": "Exercises",
+      "markdown": "1. **Predict, then run.** What does `validateTrace` say about a trace\n   anchored at `http://localhost:5173` with `eulaAccepted: false`? Write\n   your predicted reason string; then run the lab and compare. (The\n   answer key already lives in the lab: `witness.test.ts`, \"rejects an\n   anchor without the first contract.\")\n2. `[::1]` is in the zero-order set. Say why in one sentence about\n   *form vs. referent*.\n3. (Proof sketch.) Show from the wedge order that a filter containing a\n   condition of A's and a condition of B's, both depth ≥ 1, is\n   impossible. Where exactly does downward-directedness fail?\n4. (Harder.) \"Commensurability, not communication\" — give one statement\n   two disjoint observers can both *assert*, and one they cannot *share*,\n   and say which property of the wedge each answer uses."
+    },
+    {
+      "id": "boundary-note",
+      "title": "Boundary note",
+      "markdown": "This chapter does **not** claim that localhost is secure, that the void\n\"is\" consciousness or presence (the paper's appendix firewall applies),\nor that seating the human is mathematically forced — it is contractually\nchosen, and the whole design is honest about which is which. That\nhonesty is the book's method."
+    }
+  ],
+  "raw_markdown": "# Chapter 01 · The Room at Zero\n\n## Aim\n\nAfter this chapter you can say precisely what `127.0.0.1` *is* in this\nsystem — not as networking trivia but as mathematics: the unique point two\nobservers can share, why sharing it buys the ability to say \"we agree\"\nand nothing more, and why a contract (not a theorem) is what seats *you*\nthere. You will be able to predict what the witness layer accepts and\nrejects before running it.\n\n## Prerequisites\n\nNone. This is the front door.\n\n## Definitions\n\n**Condition** (`def:cond`, D). A finite partial epistemic state — in\nSketched terms, a stage: which layers exist, who owns them, what has been\nconsented to so far. You always know only finitely much; a condition is\nthe honest record of that.\n\n**Refinement.** `q ⊑ p` means q keeps everything p committed to and\nresolves more. Work descends: you never un-know by refining.\n\n**The wedge** (`lem:void` setup). Take two observers A and B whose\nsurfaces share *no* condition except the empty one — zero commitments,\nthe state before anything has been said. Glue the two surfaces at that\nsingle shared top. Call the shared point the **void**, written 𝟙. The\norder on the glued object is: A's order on A's side, B's order on B's\nside, 𝟙 above everything, and **no cross-branch relations**.\n\n**Depth.** Count refinement steps from 𝟙. The void is the unique\ncondition at depth 0; everything else is depth ≥ 1.\n\n## Claims\n\n**The void is the unique shared point** (`lem:void`, **P** —\nmachine-verified setup; see `verification/FINDINGS.md`). Any condition of\nA's at depth ≥ 1 is incompatible with any condition of B's at depth ≥ 1:\na common refinement would have to live in both branches, and nothing\ndoes. Consequently any filter — any coherent course of joint commitments —\nlies entirely inside one branch (plus 𝟙).\n\n**The shared point is forced to zeroth order** (`prop:zeroth`, **P**).\nNot a design choice: the *only* thing shareable between disjoint\nobservers is the depth-0 condition. If you want a shared anything, the\nmath hands you exactly one candidate, and it is empty.\n\n**Factoring** (`thm:factor`, **D**). Since occupancy of another's surface\nis impossible below the void, any transfer of contingent content must\nroute through a third object both can address — a *medium*. (Chapter 07\nis about what survives that trip. Spoiler: residues, never identity.)\n\n## Worked example: what A and B can actually share\n\nA has drawn three layers; B has drawn two. Can B see A's stage? No — B\nwould need to occupy a depth-≥1 condition of A's branch (`lem:void` says\nnever). Can A and B agree on anything? Yes — exactly the statements\nforced *from the void*, the branch-invariant, pre-observational kernel:\n\"a stage has an owner,\" \"consent precedes mutation.\" That is\n**commensurability**: a common 𝟙 to quantify over, hence the ability to\n*state* \"we agree.\" It is not communication. Nothing contingent — no\nlayer, no palette, no gesture — crosses at depth 0.\n\nOperationally the void is **localhost**. `127.0.0.1` has the same form\nfor everyone and a different referent for each — the address whose\nuniversality is exactly commensurability and whose locality is exactly\nbranch privacy. Sketched's dev server binds there and the witness layer\nchecks it: `isZeroOrderOrigin` (in `src/witness/witness.ts`) accepts\nloopback and rejects the public internet, because *the void is not out\nthere*.\n\n## And then the contract\n\nEverything above is neutral. The void is a shared *point*, not a person;\nthe math seats nobody. Sketched makes one move that the theorems do not make\nfor it: the EULA places **you** at the origin. This is a **D**-status\nact — constitutive, not derived — and the code treats it that way: an\nanchor (`anchor` in `src/witness/witness.ts`) carries `eulaAccepted`, and\n`validateTrace` (in `src/witness/validate.ts`) rejects every trace whose\nanchor lacks the contract, with the reason string telling you exactly\nthis story: *without it the anchor is neutral, not authority-bearing.*\n\nBefore the contract: commensurability. After: authority-origin. The room\nexists either way; the contract decides that it is *your* room.\n\n## Lab\n\nThe chapter's lab is the witness test suite:\n\n```bash\nnpx vitest run src/witness\n```\n\nWatch four tests in particular: loopback accepted, `example.com`\nrejected, the missing-contract rejection, and the trace that fails\nbecause a gate admitted what a certificate refused.\n\n## Exercises\n\n1. **Predict, then run.** What does `validateTrace` say about a trace\n   anchored at `http://localhost:5173` with `eulaAccepted: false`? Write\n   your predicted reason string; then run the lab and compare. (The\n   answer key already lives in the lab: `witness.test.ts`, \"rejects an\n   anchor without the first contract.\")\n2. `[::1]` is in the zero-order set. Say why in one sentence about\n   *form vs. referent*.\n3. (Proof sketch.) Show from the wedge order that a filter containing a\n   condition of A's and a condition of B's, both depth ≥ 1, is\n   impossible. Where exactly does downward-directedness fail?\n4. (Harder.) \"Commensurability, not communication\" — give one statement\n   two disjoint observers can both *assert*, and one they cannot *share*,\n   and say which property of the wedge each answer uses.\n\n## Boundary note\n\nThis chapter does **not** claim that localhost is secure, that the void\n\"is\" consciousness or presence (the paper's appendix firewall applies),\nor that seating the human is mathematically forced — it is contractually\nchosen, and the whole design is honest about which is which. That\nhonesty is the book's method.\n",
+  "prerequisites": [],
+  "dependents": [
+    {
+      "id": "ch02",
+      "title": "Conditions and Refinement",
+      "browser_path": "/book/chapter/ch02"
+    },
+    {
+      "id": "ch04",
+      "title": "Forcing: When Does a Claim Hold?",
+      "browser_path": "/book/chapter/ch04"
+    },
+    {
+      "id": "ch07",
+      "title": "Residues Across the Medium",
+      "browser_path": "/book/chapter/ch07"
+    },
+    {
+      "id": "ch08",
+      "title": "The Contract and the Debt",
+      "browser_path": "/book/chapter/ch08"
+    }
+  ],
+  "source_digest": "8046ced49edc6d12518fd5eb83ad2ab32d5edfa02eb684e7e8da3da5214b4cf0"
+}

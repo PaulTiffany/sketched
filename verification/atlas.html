@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Forcing Correspondence — dependency atlas</title>
+<style>
+ body { font-family: system-ui, sans-serif; margin: 12px; }
+ .nid { font: 12px monospace; }
+ .nmeta { font: 10px monospace; fill: #444; }
+ .sec { font: bold 11px sans-serif; fill: #333; }
+ .edge { fill: none; stroke: #9993; stroke-width: 1.4; pointer-events: none; }
+ .edge.hi { stroke: #d32f2f; stroke-width: 2.2; }
+ .node { cursor: pointer; }
+ .node.dim { opacity: 0.25; }
+ .remark { display: none; }
+ body.show-remarks .remark { display: inline; }
+ .lg { color: #fff; padding: 2px 8px; border-radius: 4px; font: 11px monospace; }
+ .bar { margin-bottom: 8px; }
+</style></head><body>
+<div class="bar">
+ <strong>forcing_correspondence_v16.tex</strong> — theorem dependency atlas
+ &nbsp; <span class="lg" style="background:#2e7d32">P</span> <span class="lg" style="background:#1565c0">D</span> <span class="lg" style="background:#00838f">S</span> <span class="lg" style="background:#ef6c00">M</span> <span class="lg" style="background:#6a1b9a">C</span> <span class="lg" style="background:#c62828">O</span> &nbsp;
+ <label><input type="checkbox" id="rt"> show remarks</label>
+ &nbsp; <em>solid = \ref edge, dashed = symbol edge; red border = no proof
+ environment; hover a node to highlight its neighborhood</em>
+</div>
+<svg width="2700" height="1000" id="g">
+<text x="30" y="44" class="sec">Core definitions (instantiated</text>
+<text x="270" y="44" class="sec">The generated admissible site:</text>
+<text x="510" y="44" class="sec">Formal schema</text>
+<text x="750" y="44" class="sec">Calibration as a finite theore</text>
+<text x="990" y="44" class="sec">Theorem target, with proofs of</text>
+<text x="1230" y="44" class="sec">Propositional soundness: the c</text>
+<text x="1470" y="44" class="sec">Inter-observer forcing: the sh</text>
+<text x="1710" y="44" class="sec">Interface layer: medium, proto</text>
+<text x="1950" y="44" class="sec">Interpretive appendix: boundar</text>
+<text x="2190" y="44" class="sec">Deparameterization and the jud</text>
+<text x="2430" y="44" class="sec">Chalked as the canonical witne</text>
+<path class="edge from-def:refine to-asm:smooth" d="M 30 213.0 C 130.0 213.0, 130.0 153.0, 230 153.0"/>
+<path class="edge from-def:req to-def:refine" d="M 30 273.0 C 130.0 273.0, 130.0 213.0, 230 213.0" stroke-dasharray="5 4"/>
+<path class="edge from-def:site to-def:req" d="M 270 93.0 C 250.0 93.0, 250.0 273.0, 230 273.0"/>
+<path class="edge from-def:site to-def:refine" d="M 270 93.0 C 250.0 93.0, 250.0 213.0, 230 213.0" stroke-dasharray="5 4"/>
+<path class="edge from-lem:sitebound to-def:req" d="M 270 153.0 C 250.0 153.0, 250.0 273.0, 230 273.0"/>
+<path class="edge from-lem:sitebound to-def:refine" d="M 270 153.0 C 250.0 153.0, 250.0 213.0, 230 213.0" stroke-dasharray="5 4"/>
+<path class="edge from-lem:sitebound to-def:site" d="M 270 153.0 C 370.0 153.0, 370.0 93.0, 470 93.0" stroke-dasharray="5 4"/>
+<path class="edge from-def:force to-def:stab" d="M 270 213.0 C 250.0 213.0, 250.0 333.0, 230 333.0"/>
+<path class="edge from-def:force to-lem:sitebound" d="M 270 213.0 C 370.0 213.0, 370.0 153.0, 470 153.0"/>
+<path class="edge from-def:force to-def:cond" d="M 270 213.0 C 250.0 213.0, 250.0 93.0, 230 93.0" stroke-dasharray="5 4"/>
+<path class="edge from-def:force to-def:refine" d="M 270 213.0 C 250.0 213.0, 250.0 213.0, 230 213.0" stroke-dasharray="5 4"/>
+<path class="edge from-def:force to-def:site" d="M 270 213.0 C 370.0 213.0, 370.0 93.0, 470 93.0" stroke-dasharray="5 4"/>
+<path class="edge from-def:wit to-def:req" d="M 270 333.0 C 250.0 333.0, 250.0 273.0, 230 273.0" stroke-dasharray="5 4"/>
+<path class="edge from-def:wit to-def:site" d="M 270 333.0 C 370.0 333.0, 370.0 93.0, 470 93.0" stroke-dasharray="5 4"/>
+<path class="edge from-def:clauses to-def:force" d="M 510 153.0 C 490.0 153.0, 490.0 213.0, 470 213.0"/>
+<path class="edge from-def:clauses to-def:refine" d="M 510 153.0 C 370.0 153.0, 370.0 213.0, 230 213.0" stroke-dasharray="5 4"/>
+<path class="edge from-def:clauses to-def:site" d="M 510 153.0 C 490.0 153.0, 490.0 93.0, 470 93.0" stroke-dasharray="5 4"/>
+<path class="edge from-lem:pers to-def:stab" d="M 510 213.0 C 370.0 213.0, 370.0 333.0, 230 333.0"/>
+<path class="edge from-lem:pers to-def:force" d="M 510 213.0 C 490.0 213.0, 490.0 213.0, 470 213.0" stroke-dasharray="5 4"/>
+<path class="edge from-lem:dec to-def:clauses" d="M 510 273.0 C 610.0 273.0, 610.0 153.0, 710 153.0" stroke-dasharray="5 4"/>
+<path class="edge from-lem:dec to-def:force" d="M 510 273.0 C 490.0 273.0, 490.0 213.0, 470 213.0" stroke-dasharray="5 4"/>
+<path class="edge from-theo:untitled to-asm:smooth" d="M 990 93.0 C 610.0 93.0, 610.0 153.0, 230 153.0"/>
+<path class="edge from-theo:untitled to-lem:atomic" d="M 990 93.0 C 1090.0 93.0, 1090.0 873.0, 1190 873.0"/>
+<path class="edge from-theo:untitled to-lem:cauchy" d="M 990 93.0 C 1090.0 93.0, 1090.0 693.0, 1190 693.0"/>
+<path class="edge from-theo:untitled to-lem:margin" d="M 990 93.0 C 1090.0 93.0, 1090.0 153.0, 1190 153.0"/>
+<path class="edge from-theo:untitled to-lem:ordmet" d="M 990 93.0 C 1090.0 93.0, 1090.0 753.0, 1190 753.0"/>
+<path class="edge from-theo:untitled to-lem:reach" d="M 990 93.0 C 1090.0 93.0, 1090.0 513.0, 1190 513.0"/>
+<path class="edge from-theo:untitled to-thm:prop" d="M 990 93.0 C 1210.0 93.0, 1210.0 153.0, 1430 153.0"/>
+<path class="edge from-theo:untitled to-def:cond" d="M 990 93.0 C 610.0 93.0, 610.0 93.0, 230 93.0" stroke-dasharray="5 4"/>
+<path class="edge from-theo:untitled to-def:force" d="M 990 93.0 C 730.0 93.0, 730.0 213.0, 470 213.0" stroke-dasharray="5 4"/>
+<path class="edge from-theo:untitled to-def:site" d="M 990 93.0 C 730.0 93.0, 730.0 93.0, 470 93.0" stroke-dasharray="5 4"/>
+<path class="edge from-lem:margin to-asm:smooth" d="M 990 153.0 C 610.0 153.0, 610.0 153.0, 230 153.0"/>
+<path class="edge from-lem:margin to-def:refine" d="M 990 153.0 C 610.0 153.0, 610.0 213.0, 230 213.0"/>
+<path class="edge from-lem:nonatom to-lem:pers" d="M 990 333.0 C 850.0 333.0, 850.0 213.0, 710 213.0"/>
+<path class="edge from-lem:nonatom to-def:force" d="M 990 333.0 C 730.0 333.0, 730.0 213.0, 470 213.0" stroke-dasharray="5 4"/>
+<path class="edge from-lem:bdd to-def:req" d="M 990 453.0 C 610.0 453.0, 610.0 273.0, 230 273.0"/>
+<path class="edge from-lem:bdd to-lem:sitebound" d="M 990 453.0 C 730.0 453.0, 730.0 153.0, 470 153.0"/>
+<path class="edge from-lem:bdd to-def:site" d="M 990 453.0 C 730.0 453.0, 730.0 93.0, 470 93.0" stroke-dasharray="5 4"/>
+<path class="edge from-lem:reach to-asm:smooth" d="M 990 513.0 C 610.0 513.0, 610.0 153.0, 230 153.0"/>
+<path class="edge from-lem:reach to-def:req" d="M 990 513.0 C 610.0 513.0, 610.0 273.0, 230 273.0"/>
+<path class="edge from-lem:reach to-def:site" d="M 990 513.0 C 730.0 513.0, 730.0 93.0, 470 93.0"/>
+<path class="edge from-lem:reach to-lem:dec" d="M 990 513.0 C 850.0 513.0, 850.0 273.0, 710 273.0"/>
+<path class="edge from-lem:reach to-lem:pers" d="M 990 513.0 C 850.0 513.0, 850.0 213.0, 710 213.0"/>
+<path class="edge from-lem:reach to-def:clauses" d="M 990 513.0 C 850.0 513.0, 850.0 153.0, 710 153.0" stroke-dasharray="5 4"/>
+<path class="edge from-lem:reach to-def:force" d="M 990 513.0 C 730.0 513.0, 730.0 213.0, 470 213.0" stroke-dasharray="5 4"/>
+<path class="edge from-lem:reach to-def:refine" d="M 990 513.0 C 610.0 513.0, 610.0 213.0, 230 213.0" stroke-dasharray="5 4"/>
+<path class="edge from-def:closure to-def:clauses" d="M 990 633.0 C 850.0 633.0, 850.0 153.0, 710 153.0"/>
+<path class="edge from-def:closure to-def:stab" d="M 990 633.0 C 610.0 633.0, 610.0 333.0, 230 333.0"/>
+<path class="edge from-def:closure to-lem:bdd" d="M 990 633.0 C 1090.0 633.0, 1090.0 453.0, 1190 453.0"/>
+<path class="edge from-def:closure to-lem:reach" d="M 990 633.0 C 1090.0 633.0, 1090.0 513.0, 1190 513.0"/>
+<path class="edge from-def:closure to-def:site" d="M 990 633.0 C 730.0 633.0, 730.0 93.0, 470 93.0" stroke-dasharray="5 4"/>
+<path class="edge from-lem:ordmet to-def:stab" d="M 990 753.0 C 610.0 753.0, 610.0 333.0, 230 333.0"/>
+<path class="edge from-lem:ordmet to-lem:cauchy" d="M 990 753.0 C 1090.0 753.0, 1090.0 693.0, 1190 693.0"/>
+<path class="edge from-lem:atomic to-def:closure" d="M 990 873.0 C 1090.0 873.0, 1090.0 633.0, 1190 633.0"/>
+<path class="edge from-lem:atomic to-def:force" d="M 990 873.0 C 730.0 873.0, 730.0 213.0, 470 213.0"/>
+<path class="edge from-lem:atomic to-def:site" d="M 990 873.0 C 730.0 873.0, 730.0 93.0, 470 93.0" stroke-dasharray="5 4"/>
+<path class="edge from-lem:atomic to-def:stab" d="M 990 873.0 C 610.0 873.0, 610.0 333.0, 230 333.0" stroke-dasharray="5 4"/>
+<path class="edge from-lem:bivalence to-def:closure" d="M 1230 93.0 C 1210.0 93.0, 1210.0 633.0, 1190 633.0"/>
+<path class="edge from-lem:bivalence to-lem:bdd" d="M 1230 93.0 C 1210.0 93.0, 1210.0 453.0, 1190 453.0"/>
+<path class="edge from-lem:bivalence to-lem:reach" d="M 1230 93.0 C 1210.0 93.0, 1210.0 513.0, 1190 513.0"/>
+<path class="edge from-lem:bivalence to-def:clauses" d="M 1230 93.0 C 970.0 93.0, 970.0 153.0, 710 153.0" stroke-dasharray="5 4"/>
+<path class="edge from-lem:bivalence to-def:force" d="M 1230 93.0 C 850.0 93.0, 850.0 213.0, 470 213.0" stroke-dasharray="5 4"/>
+<path class="edge from-lem:bivalence to-def:site" d="M 1230 93.0 C 850.0 93.0, 850.0 93.0, 470 93.0" stroke-dasharray="5 4"/>
+<path class="edge from-thm:prop to-asm:calibration" d="M 1230 153.0 C 1090.0 153.0, 1090.0 93.0, 950 93.0"/>
+<path class="edge from-thm:prop to-lem:atomic" d="M 1230 153.0 C 1210.0 153.0, 1210.0 873.0, 1190 873.0"/>
+<path class="edge from-thm:prop to-lem:bivalence" d="M 1230 153.0 C 1330.0 153.0, 1330.0 93.0, 1430 93.0"/>
+<path class="edge from-thm:prop to-lem:pers" d="M 1230 153.0 C 970.0 153.0, 970.0 213.0, 710 213.0"/>
+<path class="edge from-thm:prop to-lem:sitebound" d="M 1230 153.0 C 850.0 153.0, 850.0 153.0, 470 153.0"/>
+<path class="edge from-thm:prop to-def:closure" d="M 1230 153.0 C 1210.0 153.0, 1210.0 633.0, 1190 633.0" stroke-dasharray="5 4"/>
+<path class="edge from-thm:prop to-def:force" d="M 1230 153.0 C 850.0 153.0, 850.0 213.0, 470 213.0" stroke-dasharray="5 4"/>
+<path class="edge from-thm:prop to-def:site" d="M 1230 153.0 C 850.0 153.0, 850.0 93.0, 470 93.0" stroke-dasharray="5 4"/>
+<path class="edge from-prop:zeroth to-lem:void" d="M 1470 153.0 C 1570.0 153.0, 1570.0 93.0, 1670 93.0"/>
+<path class="edge from-thm:factor to-def:transfer" d="M 1710 153.0 C 1810.0 153.0, 1810.0 93.0, 1910 93.0"/>
+<path class="edge from-thm:factor to-lem:void" d="M 1710 153.0 C 1690.0 153.0, 1690.0 93.0, 1670 93.0"/>
+<path class="edge from-prop:zombie to-lem:nonatom" d="M 1710 333.0 C 1450.0 333.0, 1450.0 333.0, 1190 333.0"/>
+<path class="edge from-prop:zombie to-prop:chi" d="M 1710 333.0 C 1930.0 333.0, 1930.0 93.0, 2150 93.0"/>
+<path class="edge from-prop:zombie to-thm:nonid" d="M 1710 333.0 C 1810.0 333.0, 1810.0 213.0, 1910 213.0"/>
+<path class="edge from-prop:skeleton to-lem:cauchy" d="M 1950 153.0 C 1570.0 153.0, 1570.0 693.0, 1190 693.0"/>
+<path class="edge from-conj:exportability-correlates-with-regime to-prop:chi" d="M 1950 213.0 C 2050.0 213.0, 2050.0 93.0, 2150 93.0"/>
+<path class="edge from-prop:dich to-lem:bw" d="M 2190 153.0 C 2290.0 153.0, 2290.0 93.0, 2390 93.0"/>
+<path class="edge from-theo:structural-irreducibility to-lem:void" d="M 2190 213.0 C 1930.0 213.0, 1930.0 93.0, 1670 93.0"/>
+<path class="edge from-conj:residue-contract-break to-asm:smooth" d="M 2190 333.0 C 1210.0 333.0, 1210.0 153.0, 230 153.0"/>
+<path class="edge from-prop:chalked to-thm:nonid" d="M 2430 93.0 C 2170.0 93.0, 2170.0 213.0, 1910 213.0"/>
+<g class="node" data-id="def:cond"><title>Conditions
+[def] status=· lines 90-93</title><rect x="30" y="70" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="30" y="70" width="6" height="46" rx="2" fill="#616161"/><text x="42" y="88" class="nid">def:cond</text><text x="42" y="104" class="nmeta">[def] ·</text></g>
+<g class="node" data-id="asm:smooth"><title>Smoothness contract
+[asm] status=C lines 95-103
+consumes: C-smooth-ii</title><rect x="30" y="130" width="200" height="46" rx="6" fill="#6a1b9a" fill-opacity="0.14" stroke="#000"/><rect x="30" y="130" width="6" height="46" rx="2" fill="#6a1b9a"/><text x="42" y="148" class="nid">asm:smooth</text><text x="42" y="164" class="nmeta">[asm] C — C-smooth-ii</text></g>
+<g class="node" data-id="def:refine"><title>Refinement order and channel-margin subposet
+[def] status=· lines 105-111
+consumes: C-smooth-ii</title><rect x="30" y="190" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="30" y="190" width="6" height="46" rx="2" fill="#616161"/><text x="42" y="208" class="nid">def:refine</text><text x="42" y="224" class="nmeta">[def] · — C-smooth-ii</text></g>
+<g class="node" data-id="def:req"><title>Sieves and dense requirements
+[def] status=· lines 113-122</title><rect x="30" y="250" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="30" y="250" width="6" height="46" rx="2" fill="#616161"/><text x="42" y="268" class="nid">def:req</text><text x="42" y="284" class="nmeta">[def] ·</text></g>
+<g class="node" data-id="def:stab"><title>Stability, atomic
+[def] status=· lines 124-138
+consumes: M-Pers</title><rect x="30" y="310" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="30" y="310" width="6" height="46" rx="2" fill="#616161"/><text x="42" y="328" class="nid">def:stab</text><text x="42" y="344" class="nmeta">[def] · — M-Pers</text></g>
+<g class="node" data-id="defi:preservation-set"><title>Preservation set
+[def] status=· lines 140-143</title><rect x="30" y="370" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="30" y="370" width="6" height="46" rx="2" fill="#616161"/><text x="42" y="388" class="nid">defi:preservation-set</text><text x="42" y="404" class="nmeta">[def] ·</text></g>
+<g class="node" data-id="def:site"><title>Generated admissible site
+[def] status=D lines 152-160</title><rect x="270" y="70" width="200" height="46" rx="6" fill="#1565c0" fill-opacity="0.14" stroke="#000"/><rect x="270" y="70" width="6" height="46" rx="2" fill="#1565c0"/><text x="282" y="88" class="nid">def:site</text><text x="282" y="104" class="nmeta">[def] D</text></g>
+<g class="node" data-id="lem:sitebound"><title>Site bound
+[lem] status=P lines 163-167</title><rect x="270" y="130" width="200" height="46" rx="6" fill="#2e7d32" fill-opacity="0.14" stroke="#000"/><rect x="270" y="130" width="6" height="46" rx="2" fill="#2e7d32"/><text x="282" y="148" class="nid">lem:sitebound</text><text x="282" y="164" class="nmeta">[lem] P</text></g>
+<g class="node" data-id="def:force"><title>Forcing relations
+[def] status=· lines 179-195</title><rect x="270" y="190" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="270" y="190" width="6" height="46" rx="2" fill="#616161"/><text x="282" y="208" class="nid">def:force</text><text x="282" y="224" class="nmeta">[def] ·</text></g>
+<g class="node remark" data-id="rema:the-site-is-the"><title>The site is the closure of obligation under refinement
+[rem] status=· lines 197-205</title><rect x="270" y="250" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="270" y="250" width="6" height="46" rx="2" fill="#616161"/><text x="282" y="268" class="nid">rema:the-site-is-the</text><text x="282" y="284" class="nmeta">[rem] ·</text></g>
+<g class="node" data-id="def:wit"><title>Witnessed fragment
+[def] status=D lines 207-218</title><rect x="270" y="310" width="200" height="46" rx="6" fill="#1565c0" fill-opacity="0.14" stroke="#000"/><rect x="270" y="310" width="6" height="46" rx="2" fill="#1565c0"/><text x="282" y="328" class="nid">def:wit</text><text x="282" y="344" class="nmeta">[def] D</text></g>
+<g class="node remark" data-id="rema:self-other-global"><title>Self / other / global
+[rem] status=· lines 220-229</title><rect x="270" y="370" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="270" y="370" width="6" height="46" rx="2" fill="#616161"/><text x="282" y="388" class="nid">rema:self-other-global</text><text x="282" y="404" class="nmeta">[rem] ·</text></g>
+<g class="node remark" data-id="rema:rigorous-home"><title>Rigorous home
+[rem] status=· lines 271-281</title><rect x="510" y="70" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="510" y="70" width="6" height="46" rx="2" fill="#616161"/><text x="522" y="88" class="nid">rema:rigorous-home</text><text x="522" y="104" class="nmeta">[rem] ·</text></g>
+<g class="node" data-id="def:clauses"><title>Propositional clauses and deciding sets
+[def] status=· lines 283-296</title><rect x="510" y="130" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="510" y="130" width="6" height="46" rx="2" fill="#616161"/><text x="522" y="148" class="nid">def:clauses</text><text x="522" y="164" class="nmeta">[def] ·</text></g>
+<g class="node" data-id="lem:pers"><title>Persistence and consistency
+[lem] status=P lines 298-301
+consumes: M-Pers</title><rect x="510" y="190" width="200" height="46" rx="6" fill="#2e7d32" fill-opacity="0.14" stroke="#000"/><rect x="510" y="190" width="6" height="46" rx="2" fill="#2e7d32"/><text x="522" y="208" class="nid">lem:pers</text><text x="522" y="224" class="nmeta">[lem] P — M-Pers</text></g>
+<g class="node" data-id="lem:dec"><title>Deciding sets are order-dense
+[lem] status=P lines 314-317</title><rect x="510" y="250" width="200" height="46" rx="6" fill="#2e7d32" fill-opacity="0.14" stroke="#000"/><rect x="510" y="250" width="6" height="46" rx="2" fill="#2e7d32"/><text x="522" y="268" class="nid">lem:dec</text><text x="522" y="284" class="nmeta">[lem] P</text></g>
+<g class="node remark" data-id="rema:untitled"><title>rema:untitled
+[rem] status=· lines 324-329</title><rect x="510" y="310" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="510" y="310" width="6" height="46" rx="2" fill="#616161"/><text x="522" y="328" class="nid">rema:untitled</text><text x="522" y="344" class="nmeta">[rem] ·</text></g>
+<g class="node" data-id="asm:calibration"><title>Calibration queue
+[asm] status=· lines 366-372
+consumes: C-calibration-queue</title><rect x="750" y="70" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="750" y="70" width="6" height="46" rx="2" fill="#616161"/><text x="762" y="88" class="nid">asm:calibration</text><text x="762" y="104" class="nmeta">[asm] · — C-calibration-queue</text></g>
+<g class="node" data-id="theo:untitled"><title>theo:untitled
+[target] status=· lines 376-389
+consumes: C-calibration-queue C-smooth-ii M-Bound</title><rect x="990" y="70" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="990" y="70" width="6" height="46" rx="2" fill="#616161"/><text x="1002" y="88" class="nid">theo:untitled</text><text x="1002" y="104" class="nmeta">[target] · — C-calibration-queue C-smooth-ii M-Bound</text></g>
+<g class="node" data-id="lem:margin"><title>Channel-Margin, path form
+[lem] status=P lines 405-414
+consumes: C-smooth-ii</title><rect x="990" y="130" width="200" height="46" rx="6" fill="#2e7d32" fill-opacity="0.14" stroke="#000"/><rect x="990" y="130" width="6" height="46" rx="2" fill="#2e7d32"/><text x="1002" y="148" class="nid">lem:margin</text><text x="1002" y="164" class="nmeta">[lem] P — C-smooth-ii</text></g>
+<g class="node remark" data-id="rema:why-the-budget-not"><title>Why the budget, not a step bound
+[rem] status=· lines 423-434
+consumes: C-smooth-ii</title><rect x="990" y="190" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="990" y="190" width="6" height="46" rx="2" fill="#616161"/><text x="1002" y="208" class="nid">rema:why-the-budget-not</text><text x="1002" y="224" class="nmeta">[rem] · — C-smooth-ii</text></g>
+<g class="node remark" data-id="rema:the-smoothness-hypothesis-is"><title>The smoothness hypothesis is substrate-relative and measurable
+[rem] status=· lines 436-445
+consumes: C-smooth-ii</title><rect x="990" y="250" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="990" y="250" width="6" height="46" rx="2" fill="#616161"/><text x="1002" y="268" class="nid">rema:the-smoothness-hypothesis-is</text><text x="1002" y="284" class="nmeta">[rem] · — C-smooth-ii</text></g>
+<g class="node" data-id="lem:nonatom"><title>Non-atomicity is undecidedness
+[lem] status=P lines 447-456
+consumes: M-Cvx</title><rect x="990" y="310" width="200" height="46" rx="6" fill="#2e7d32" fill-opacity="0.14" stroke="#000"/><rect x="990" y="310" width="6" height="46" rx="2" fill="#2e7d32"/><text x="1002" y="328" class="nid">lem:nonatom</text><text x="1002" y="344" class="nmeta">[lem] P — M-Cvx</text></g>
+<g class="node remark" data-id="rema:where-the-generic-adds"><title>Where the generic adds information
+[rem] status=· lines 472-482</title><rect x="990" y="370" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="990" y="370" width="6" height="46" rx="2" fill="#616161"/><text x="1002" y="388" class="nid">rema:where-the-generic-adds</text><text x="1002" y="404" class="nmeta">[rem] ·</text></g>
+<g class="node" data-id="lem:bdd"><title>Boundedness yields countability for Rasiowa--Sikorski
+[lem] status=P lines 484-487
+consumes: M-Bound</title><rect x="990" y="430" width="200" height="46" rx="6" fill="#2e7d32" fill-opacity="0.14" stroke="#000"/><rect x="990" y="430" width="6" height="46" rx="2" fill="#2e7d32"/><text x="1002" y="448" class="nid">lem:bdd</text><text x="1002" y="464" class="nmeta">[lem] P — M-Bound</text></g>
+<g class="node" data-id="lem:reach"><title>Decision Reachability, conditional
+[lem] status=P lines 498-505
+consumes: C-smooth-ii</title><rect x="990" y="490" width="200" height="46" rx="6" fill="#2e7d32" fill-opacity="0.14" stroke="#000"/><rect x="990" y="490" width="6" height="46" rx="2" fill="#2e7d32"/><text x="1002" y="508" class="nid">lem:reach</text><text x="1002" y="524" class="nmeta">[lem] P — C-smooth-ii</text></g>
+<g class="node remark" data-id="rema:why-this-is-not"><title>Why this is not free
+[rem] status=· lines 519-526
+consumes: C-calibration-queue C-smooth-ii</title><rect x="990" y="550" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="990" y="550" width="6" height="46" rx="2" fill="#616161"/><text x="1002" y="568" class="nid">rema:why-this-is-not</text><text x="1002" y="584" class="nmeta">[rem] · — C-calibration-queue C-smooth-ii</text></g>
+<g class="node" data-id="def:closure"><title>Admissible deciding closure
+[def] status=· lines 528-535</title><rect x="990" y="610" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="990" y="610" width="6" height="46" rx="2" fill="#616161"/><text x="1002" y="628" class="nid">def:closure</text><text x="1002" y="644" class="nmeta">[def] ·</text></g>
+<g class="node" data-id="lem:cauchy"><title>Cauchy--Forcing Completion
+[lem] status=P lines 537-544</title><rect x="990" y="670" width="200" height="46" rx="6" fill="#2e7d32" fill-opacity="0.14" stroke="#000"/><rect x="990" y="670" width="6" height="46" rx="2" fill="#2e7d32"/><text x="1002" y="688" class="nid">lem:cauchy</text><text x="1002" y="704" class="nmeta">[lem] P</text></g>
+<g class="node" data-id="lem:ordmet"><title>Order--Metric Compatibility, atomic
+[lem] status=P lines 553-561
+consumes: M-Cl M-Pers</title><rect x="990" y="730" width="200" height="46" rx="6" fill="#2e7d32" fill-opacity="0.14" stroke="#000"/><rect x="990" y="730" width="6" height="46" rx="2" fill="#2e7d32"/><text x="1002" y="748" class="nid">lem:ordmet</text><text x="1002" y="764" class="nmeta">[lem] P — M-Cl M-Pers</text></g>
+<g class="node remark" data-id="rema:convergence-is-coextensive-with"><title>Convergence is coextensive with the smooth regime
+[rem] status=· lines 570-581
+consumes: C-smooth-ii M-Cl</title><rect x="990" y="790" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="990" y="790" width="6" height="46" rx="2" fill="#616161"/><text x="1002" y="808" class="nid">rema:convergence-is-coextensive-with</text><text x="1002" y="824" class="nmeta">[rem] · — C-smooth-ii M-Cl</text></g>
+<g class="node" data-id="lem:atomic"><title>Atomic Truth Lemma
+[lem] status=P lines 583-588
+consumes: M-Pers</title><rect x="990" y="850" width="200" height="46" rx="6" fill="#2e7d32" fill-opacity="0.14" stroke="#000"/><rect x="990" y="850" width="6" height="46" rx="2" fill="#2e7d32"/><text x="1002" y="868" class="nid">lem:atomic</text><text x="1002" y="884" class="nmeta">[lem] P — M-Pers</text></g>
+<g class="node remark" data-id="rem:torsion"><title>Certificate typing is forcing-theoretic---atomic case only
+[rem] status=P lines 600-615</title><rect x="990" y="910" width="200" height="46" rx="6" fill="#2e7d32" fill-opacity="0.14" stroke="#000"/><rect x="990" y="910" width="6" height="46" rx="2" fill="#2e7d32"/><text x="1002" y="928" class="nid">rem:torsion</text><text x="1002" y="944" class="nmeta">[rem] P</text></g>
+<g class="node" data-id="lem:bivalence"><title>Genericity decides every formula
+[lem] status=P lines 625-629</title><rect x="1230" y="70" width="200" height="46" rx="6" fill="#2e7d32" fill-opacity="0.14" stroke="#000"/><rect x="1230" y="70" width="6" height="46" rx="2" fill="#2e7d32"/><text x="1242" y="88" class="nid">lem:bivalence</text><text x="1242" y="104" class="nmeta">[lem] P</text></g>
+<g class="node" data-id="thm:prop"><title>Propositional Truth Lemma, conditional on calibration
+[thm] status=P lines 638-646
+consumes: C-calibration-queue</title><rect x="1230" y="130" width="200" height="46" rx="6" fill="#2e7d32" fill-opacity="0.14" stroke="#000"/><rect x="1230" y="130" width="6" height="46" rx="2" fill="#2e7d32"/><text x="1242" y="148" class="nid">thm:prop</text><text x="1242" y="164" class="nmeta">[thm] P — C-calibration-queue</text></g>
+<g class="node remark" data-id="rema:intuitionistic-relation-classical-extension"><title>Intuitionistic relation, classical extension
+[rem] status=· lines 669-675</title><rect x="1230" y="190" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="1230" y="190" width="6" height="46" rx="2" fill="#616161"/><text x="1242" y="208" class="nid">rema:intuitionistic-relation-classical-extension</text><text x="1242" y="224" class="nmeta">[rem] ·</text></g>
+<g class="node" data-id="lem:void"><title>The void is the unique shared point
+[lem] status=P lines 692-696</title><rect x="1470" y="70" width="200" height="46" rx="6" fill="#2e7d32" fill-opacity="0.14" stroke="#000"/><rect x="1470" y="70" width="6" height="46" rx="2" fill="#2e7d32"/><text x="1482" y="88" class="nid">lem:void</text><text x="1482" y="104" class="nmeta">[lem] P</text></g>
+<g class="node" data-id="prop:zeroth"><title>The shared point is forced to zeroth order
+[prop] status=P lines 710-714</title><rect x="1470" y="130" width="200" height="46" rx="6" fill="#2e7d32" fill-opacity="0.14" stroke="#000"/><rect x="1470" y="130" width="6" height="46" rx="2" fill="#2e7d32"/><text x="1482" y="148" class="nid">prop:zeroth</text><text x="1482" y="164" class="nmeta">[prop] P</text></g>
+<g class="node remark" data-id="rema:forced-from-the-void"><title>Forced from the void
+[rem] status=· lines 725-732</title><rect x="1470" y="190" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="1470" y="190" width="6" height="46" rx="2" fill="#616161"/><text x="1482" y="208" class="nid">rema:forced-from-the-void</text><text x="1482" y="224" class="nmeta">[rem] ·</text></g>
+<g class="node" data-id="def:transfer"><title>Transfer
+[def] status=D lines 752-756</title><rect x="1710" y="70" width="200" height="46" rx="6" fill="#1565c0" fill-opacity="0.14" stroke="#000"/><rect x="1710" y="70" width="6" height="46" rx="2" fill="#1565c0"/><text x="1722" y="88" class="nid">def:transfer</text><text x="1722" y="104" class="nmeta">[def] D</text></g>
+<g class="node" data-id="thm:factor"><title>Factoring, architectural
+[thm] status=D lines 758-766</title><rect x="1710" y="130" width="200" height="46" rx="6" fill="#1565c0" fill-opacity="0.14" stroke="#000"/><rect x="1710" y="130" width="6" height="46" rx="2" fill="#1565c0"/><text x="1722" y="148" class="nid">thm:factor</text><text x="1722" y="164" class="nmeta">[thm] D</text></g>
+<g class="node" data-id="thm:nonid"><title>Non-identity of transport, with equality condition
+[thm] status=P lines 774-789</title><rect x="1710" y="190" width="200" height="46" rx="6" fill="#2e7d32" fill-opacity="0.14" stroke="#000"/><rect x="1710" y="190" width="6" height="46" rx="2" fill="#2e7d32"/><text x="1722" y="208" class="nid">thm:nonid</text><text x="1722" y="224" class="nmeta">[thm] P</text></g>
+<g class="node remark" data-id="rema:untitled-b"><title>rema:untitled-b
+[rem] status=· lines 799-805</title><rect x="1710" y="250" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="1710" y="250" width="6" height="46" rx="2" fill="#616161"/><text x="1722" y="268" class="nid">rema:untitled-b</text><text x="1722" y="284" class="nmeta">[rem] ·</text></g>
+<g class="node" data-id="prop:zombie"><title>Observer closure is zero projection residue
+[prop] status=P lines 807-817</title><rect x="1710" y="310" width="200" height="46" rx="6" fill="#2e7d32" fill-opacity="0.14" stroke="#000"/><rect x="1710" y="310" width="6" height="46" rx="2" fill="#2e7d32"/><text x="1722" y="328" class="nid">prop:zombie</text><text x="1722" y="344" class="nmeta">[prop] P</text></g>
+<g class="node remark" data-id="rema:loopback-as-icon-not"><title>Loopback as icon, not transport
+[rem] status=· lines 824-829</title><rect x="1710" y="370" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="1710" y="370" width="6" height="46" rx="2" fill="#616161"/><text x="1722" y="388" class="nid">rema:loopback-as-icon-not</text><text x="1722" y="404" class="nmeta">[rem] ·</text></g>
+<g class="node" data-id="prop:chi"><title>Exportability identity, under orthogonality
+[prop] status=P lines 843-852</title><rect x="1950" y="70" width="200" height="46" rx="6" fill="#2e7d32" fill-opacity="0.14" stroke="#000"/><rect x="1950" y="70" width="6" height="46" rx="2" fill="#2e7d32"/><text x="1962" y="88" class="nid">prop:chi</text><text x="1962" y="104" class="nmeta">[prop] P</text></g>
+<g class="node" data-id="prop:skeleton"><title>Non-determination of the ceiling-state
+[prop] status=P lines 863-869</title><rect x="1950" y="130" width="200" height="46" rx="6" fill="#2e7d32" fill-opacity="0.14" stroke="#000"/><rect x="1950" y="130" width="6" height="46" rx="2" fill="#2e7d32"/><text x="1962" y="148" class="nid">prop:skeleton</text><text x="1962" y="164" class="nmeta">[prop] P</text></g>
+<g class="node" data-id="conj:exportability-correlates-with-regime"><title>Exportability correlates with regime
+[conj] status=· lines 878-882</title><rect x="1950" y="190" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="1950" y="190" width="6" height="46" rx="2" fill="#616161"/><text x="1962" y="208" class="nid">conj:exportability-correlates-with-regime</text><text x="1962" y="224" class="nmeta">[conj] ·</text></g>
+<g class="node remark" data-id="rema:what-remains-around-the"><title>What remains around the skeleton
+[rem] status=· lines 884-893</title><rect x="1950" y="250" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="1950" y="250" width="6" height="46" rx="2" fill="#616161"/><text x="1962" y="268" class="nid">rema:what-remains-around-the</text><text x="1962" y="284" class="nmeta">[rem] ·</text></g>
+<g class="node remark" data-id="rema:weak-born-analogy-only"><title>Weak Born analogy only, firewalled
+[rem] status=· lines 895-902</title><rect x="1950" y="310" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="1950" y="310" width="6" height="46" rx="2" fill="#616161"/><text x="1962" y="328" class="nid">rema:weak-born-analogy-only</text><text x="1962" y="344" class="nmeta">[rem] ·</text></g>
+<g class="node" data-id="def:rio"><title>Representation-independence obstruction
+[def] status=D lines 904-909</title><rect x="1950" y="370" width="200" height="46" rx="6" fill="#1565c0" fill-opacity="0.14" stroke="#000"/><rect x="1950" y="370" width="6" height="46" rx="2" fill="#1565c0"/><text x="1962" y="388" class="nid">def:rio</text><text x="1962" y="404" class="nmeta">[def] D</text></g>
+<g class="node remark" data-id="rema:one-obstruction-five-axes"><title>One obstruction, five axes
+[rem] status=· lines 911-936</title><rect x="1950" y="430" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="1950" y="430" width="6" height="46" rx="2" fill="#616161"/><text x="1962" y="448" class="nid">rema:one-obstruction-five-axes</text><text x="1962" y="464" class="nmeta">[rem] ·</text></g>
+<g class="node" data-id="lem:bw"><title>Deparameterization closure
+[lem] status=P lines 950-955</title><rect x="2190" y="70" width="200" height="46" rx="6" fill="#2e7d32" fill-opacity="0.14" stroke="#000"/><rect x="2190" y="70" width="6" height="46" rx="2" fill="#2e7d32"/><text x="2202" y="88" class="nid">lem:bw</text><text x="2202" y="104" class="nmeta">[lem] P</text></g>
+<g class="node" data-id="prop:dich"><title>Residue dichotomy
+[prop] status=P lines 964-968</title><rect x="2190" y="130" width="200" height="46" rx="6" fill="#2e7d32" fill-opacity="0.14" stroke="#000"/><rect x="2190" y="130" width="6" height="46" rx="2" fill="#2e7d32"/><text x="2202" y="148" class="nid">prop:dich</text><text x="2202" y="164" class="nmeta">[prop] P</text></g>
+<g class="node" data-id="theo:structural-irreducibility"><title>Structural irreducibility
+[target] status=· lines 987-994
+consumes: M-Bridge</title><rect x="2190" y="190" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="2190" y="190" width="6" height="46" rx="2" fill="#616161"/><text x="2202" y="208" class="nid">theo:structural-irreducibility</text><text x="2202" y="224" class="nmeta">[target] · — M-Bridge</text></g>
+<g class="node remark" data-id="rema:one-floor-three-charts"><title>One floor, three charts
+[rem] status=· lines 996-1006</title><rect x="2190" y="250" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="2190" y="250" width="6" height="46" rx="2" fill="#616161"/><text x="2202" y="268" class="nid">rema:one-floor-three-charts</text><text x="2202" y="284" class="nmeta">[rem] ·</text></g>
+<g class="node" data-id="conj:residue-contract-break"><title>Residue $=$ contract break
+[conj] status=· lines 1008-1014
+consumes: C-smooth-ii</title><rect x="2190" y="310" width="200" height="46" rx="6" fill="#616161" fill-opacity="0.14" stroke="#000"/><rect x="2190" y="310" width="6" height="46" rx="2" fill="#616161"/><text x="2202" y="328" class="nid">conj:residue-contract-break</text><text x="2202" y="344" class="nmeta">[conj] · — C-smooth-ii</text></g>
+<g class="node" data-id="prop:chalked"><title>Chalked correctness invariant
+[prop] status=S lines 1064-1069</title><rect x="2430" y="70" width="200" height="46" rx="6" fill="#00838f" fill-opacity="0.14" stroke="#c62828"/><rect x="2430" y="70" width="6" height="46" rx="2" fill="#00838f"/><text x="2442" y="88" class="nid">prop:chalked</text><text x="2442" y="104" class="nmeta">[prop] S</text></g>
+</svg>
+<script>
+ document.getElementById('rt').addEventListener('change', e =>
+   document.body.classList.toggle('show-remarks', e.target.checked));
+ const nodes = document.querySelectorAll('.node');
+ nodes.forEach(n => {
+   n.addEventListener('mouseenter', () => {
+     const id = n.dataset.id;
+     const touched = new Set([id]);
+     document.querySelectorAll('.edge').forEach(e => {
+       const cls = e.getAttribute('class');
+       if (cls.includes('from-' + id + ' ') || cls.endsWith('to-' + id)) {
+         e.classList.add('hi');
+         cls.split(' ').forEach(c => {
+           if (c.startsWith('from-')) touched.add(c.slice(5));
+           if (c.startsWith('to-')) touched.add(c.slice(3));
+         });
+       }
+     });
+     nodes.forEach(m => {
+       if (!touched.has(m.dataset.id)) m.classList.add('dim');
+     });
+   });
+   n.addEventListener('mouseleave', () => {
+     document.querySelectorAll('.edge.hi').forEach(e => e.classList.remove('hi'));
+     nodes.forEach(m => m.classList.remove('dim'));
+   });
+ });
+</script>
+</body></html>

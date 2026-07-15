@@ -1,0 +1,412 @@
+{
+  "schema": "sketched.pedagogy.index.v1",
+  "source_digest": "8046ced49edc6d12518fd5eb83ad2ab32d5edfa02eb684e7e8da3da5214b4cf0",
+  "title": "Forcing at the Surface: A Witnessed Introduction",
+  "medium": {
+    "kind": "localhost-browser-interface",
+    "statement": "The browser carries bounded pedagogical projections. It is a medium, not shared occupancy.",
+    "calibration": "interpretation-only; asm:calibration remains open"
+  },
+  "paths": [
+    {
+      "id": "first-contact",
+      "title": "First Contact",
+      "description": "Enter at the void, learn the order, then see what can cross the medium.",
+      "audience": "Readers new to the project",
+      "assumed_chapter_ids": [],
+      "chapter_ids": [
+        "ch01",
+        "ch02",
+        "ch06",
+        "ch07",
+        "ch08"
+      ],
+      "includes_content_b": true,
+      "browser_path": "/book/path/first-contact",
+      "json_path": "/book/context/first-contact.json",
+      "chapter_count": 5,
+      "assumption_count": 0
+    },
+    {
+      "id": "forcing-spine",
+      "title": "The Forcing Spine",
+      "description": "Compute the site, forcing relations, generics, and truth on the seven-condition bench.",
+      "audience": "Readers following the mathematical argument",
+      "assumed_chapter_ids": [
+        "ch01"
+      ],
+      "chapter_ids": [
+        "ch02",
+        "ch03",
+        "ch04",
+        "ch05"
+      ],
+      "includes_content_b": false,
+      "browser_path": "/book/path/forcing-spine",
+      "json_path": "/book/context/forcing-spine.json",
+      "chapter_count": 4,
+      "assumption_count": 1
+    },
+    {
+      "id": "repair-room",
+      "title": "The Repair Room",
+      "description": "Study the v14 failure, the cumulative-budget repair, and its verification triangle.",
+      "audience": "Readers interested in proof repair and verification",
+      "assumed_chapter_ids": [
+        "ch01",
+        "ch02"
+      ],
+      "chapter_ids": [
+        "ch06"
+      ],
+      "includes_content_b": false,
+      "browser_path": "/book/path/repair-room",
+      "json_path": "/book/context/repair-room.json",
+      "chapter_count": 1,
+      "assumption_count": 2
+    },
+    {
+      "id": "interface-and-debt",
+      "title": "Interface and Debt",
+      "description": "Follow residues through the browser medium and inspect the open implementation ledger.",
+      "audience": "Builders and agent collaborators",
+      "assumed_chapter_ids": [],
+      "chapter_ids": [
+        "ch01",
+        "ch02",
+        "ch06",
+        "ch07",
+        "ch08"
+      ],
+      "includes_content_b": true,
+      "browser_path": "/book/path/interface-and-debt",
+      "json_path": "/book/context/interface-and-debt.json",
+      "chapter_count": 5,
+      "assumption_count": 0
+    },
+    {
+      "id": "complete",
+      "title": "Complete Book",
+      "description": "Read all eight chapters in canonical order, then tour the mechanical witnesses.",
+      "audience": "Readers undertaking the full witnessed introduction",
+      "assumed_chapter_ids": [],
+      "chapter_ids": [
+        "ch01",
+        "ch02",
+        "ch03",
+        "ch04",
+        "ch05",
+        "ch06",
+        "ch07",
+        "ch08",
+        "appb"
+      ],
+      "includes_content_b": true,
+      "browser_path": "/book/path/complete",
+      "json_path": "/book/context/complete.json",
+      "chapter_count": 9,
+      "assumption_count": 0
+    }
+  ],
+  "chapters": [
+    {
+      "id": "ch01",
+      "title": "The Room at Zero",
+      "status": "drafted",
+      "prerequisite_ids": [],
+      "source_path": "book/ch01_the_room_at_zero.md",
+      "browser_path": "/book/chapter/ch01",
+      "json_path": "/book/chapters/ch01.json",
+      "aim": "After this chapter you can say precisely what `127.0.0.1` *is* in this\nsystem — not as networking trivia but as mathematics: the unique point two\nobservers can share, why sharing it buys the ability to say \"we agree\"\nand nothing more, and why a contract (not a theorem) is what seats *you*\nthere. You will be able to predict what the witness layer accepts and\nrejects before running it.",
+      "word_count": 884
+    },
+    {
+      "id": "ch02",
+      "title": "Conditions and Refinement",
+      "status": "drafted",
+      "prerequisite_ids": [
+        "ch01"
+      ],
+      "source_path": "book/ch02_conditions_and_refinement.md",
+      "browser_path": "/book/chapter/ch02",
+      "json_path": "/book/chapters/ch02.json",
+      "aim": "After this chapter you can read the order everything else in this book\ncomputes over: what a condition is, what refinement preserves, why two\ncommitments can be *incompatible* forever, and what a coherent course of\ncommitments (a filter) looks like. You will build the **spine model** —\nthe seven-condition bench the labs of chapters 03–05 run on — and verify\nits structure by brute force. You will also learn to hear two words,\n*channel* and *forcing*, that mean different things in the paper and in\nSketched, before the collision can hurt you.",
+      "word_count": 1153
+    },
+    {
+      "id": "ch03",
+      "title": "Sieves, Covers, and Two Topologies",
+      "status": "drafted",
+      "prerequisite_ids": [
+        "ch02"
+      ],
+      "source_path": "book/ch03_sieves_covers_topologies.md",
+      "browser_path": "/book/chapter/ch03",
+      "json_path": "/book/chapters/ch03.json",
+      "aim": "After this chapter you can say what a *cover* is on the spine model, name\nthe two covering rules the rest of this book distinguishes everywhere,\nand prove — by counting, not by trusting the diagram — that one is\nstrictly finer than the other. This is the last piece of scaffolding\nbefore chapter 04 lets you compute forcing by hand.",
+      "word_count": 959
+    },
+    {
+      "id": "ch04",
+      "title": "Forcing: When Does a Claim Hold?",
+      "status": "drafted",
+      "prerequisite_ids": [
+        "ch01",
+        "ch02",
+        "ch03"
+      ],
+      "source_path": "book/ch04_forcing.md",
+      "browser_path": "/book/chapter/ch04",
+      "json_path": "/book/chapters/ch04.json",
+      "aim": "After this chapter you can compute, by hand on a seven-condition model,\nwhether a condition *forces* a claim — under both of the system's\nreadings — and you can explain the three distinctions everything else in\nthis book leans on: forced vs. true-here, undecided vs. refuted, and\ncontingent refusal vs. torsion. You will also meet the first place the\ntwo readings genuinely disagree, and why that disagreement is a feature\nwith a name (Decision Reachability), not a bug.",
+      "word_count": 1048
+    },
+    {
+      "id": "ch05",
+      "title": "Generics and Truth",
+      "status": "drafted",
+      "prerequisite_ids": [
+        "ch02",
+        "ch03",
+        "ch04"
+      ],
+      "source_path": "book/ch05_generics_and_truth.md",
+      "browser_path": "/book/chapter/ch05",
+      "json_path": "/book/chapters/ch05.json",
+      "aim": "After this chapter you can state Rasiowa–Sikorski genericity, say what\nDecision Reachability adds beyond plain order-density, and explain why a\ngeneric *decides every formula* (bivalence) without that fact being\nmagic. You will also learn this chapter's hardest lesson: the spine\nmodel is small enough to compute on and too small to show you the\ninteresting part. Naming that gap honestly is the chapter's real\ncontent.",
+      "word_count": 1046
+    },
+    {
+      "id": "ch06",
+      "title": "The Margin: Anatomy of a Repair",
+      "status": "drafted",
+      "prerequisite_ids": [
+        "ch02"
+      ],
+      "source_path": "book/ch06_the_margin.md",
+      "browser_path": "/book/chapter/ch06",
+      "json_path": "/book/chapters/ch06.json",
+      "aim": "This chapter teaches one lemma three ways — as a bug, as a theorem, and\nas an eigenvalue you can watch fall off a cliff — and, through it, the\nbook's method: a claim is not done when it sounds right; it is done when\nthe machinery that found it wrong once can no longer find it wrong. After\nthis chapter you can state the Channel-Margin Lemma correctly, exhibit\nthe precise failure of its earlier form, and explain why margin\npreservation and convergence are *one* budget, spent once.",
+      "word_count": 845
+    },
+    {
+      "id": "ch07",
+      "title": "Residues Across the Medium",
+      "status": "drafted",
+      "prerequisite_ids": [
+        "ch01",
+        "ch02"
+      ],
+      "source_path": "book/ch07_residues_across_the_medium.md",
+      "browser_path": "/book/chapter/ch07",
+      "json_path": "/book/chapters/ch07.json",
+      "aim": "After this chapter you can say precisely what crosses between two\nobservers who share nothing but the void, why it is never their private\nstate, and how the type system — not just the prose — makes \"you got a\nreconstruction, not the original\" a compile-time fact rather than a\npromise. You will read the mark-validity invariant as code and predict\nwhat it rejects before running the suite.",
+      "word_count": 999
+    },
+    {
+      "id": "ch08",
+      "title": "The Contract and the Debt",
+      "status": "drafted",
+      "prerequisite_ids": [
+        "ch01",
+        "ch06",
+        "ch07"
+      ],
+      "source_path": "book/ch08_the_contract_and_the_debt.md",
+      "browser_path": "/book/chapter/ch08",
+      "json_path": "/book/chapters/ch08.json",
+      "aim": "After this chapter you can explain what the EULA does that no theorem\ndoes, why it is split into two parts with different authorship rules,\nand what the calibration queue actually is: not a vague disclaimer, but\na named, counted, machine-tracked list of exactly which operator\ncorrespondences are shipped and which are still owed. This is the last\nchapter, and its job is to close the loop between the math you have\nlearned and the honest accounting of how much of it Sketched actually\nruns on.",
+      "word_count": 1279
+    },
+    {
+      "id": "appb",
+      "title": "Appendix B · The Mechanical Witnesses",
+      "status": "drafted",
+      "prerequisite_ids": [
+        "ch03",
+        "ch04",
+        "ch05",
+        "ch06"
+      ],
+      "source_path": "book/appendix_b_the_mechanical_witnesses.md",
+      "browser_path": "/book/chapter/appb",
+      "json_path": "/book/chapters/appb.json",
+      "aim": "Every chapter of this book has said \"machine-verified\" and pointed at a\ndirectory. This appendix opens the directory. After reading it you can\nname each mechanical witness in the verification stack, say what kind of\nevidence it is — a proof checked by a kernel, a brute-force enumeration,\na numeric computation — and, most importantly, locate the exact line\nwhere \"machine-verified\" stops and a hypothesis begins. The book's\ndiscipline is that prose never hides the status of a claim; this\nappendix applies that discipline to the verification layer itself.",
+      "word_count": 1525
+    }
+  ],
+  "dependency_graph": {
+    "nodes": [
+      {
+        "id": "ch01",
+        "title": "The Room at Zero"
+      },
+      {
+        "id": "ch02",
+        "title": "Conditions and Refinement"
+      },
+      {
+        "id": "ch03",
+        "title": "Sieves, Covers, and Two Topologies"
+      },
+      {
+        "id": "ch04",
+        "title": "Forcing: When Does a Claim Hold?"
+      },
+      {
+        "id": "ch05",
+        "title": "Generics and Truth"
+      },
+      {
+        "id": "ch06",
+        "title": "The Margin: Anatomy of a Repair"
+      },
+      {
+        "id": "ch07",
+        "title": "Residues Across the Medium"
+      },
+      {
+        "id": "ch08",
+        "title": "The Contract and the Debt"
+      },
+      {
+        "id": "appb",
+        "title": "Appendix B · The Mechanical Witnesses"
+      }
+    ],
+    "edges": [
+      {
+        "from": "ch01",
+        "to": "ch02"
+      },
+      {
+        "from": "ch02",
+        "to": "ch03"
+      },
+      {
+        "from": "ch01",
+        "to": "ch04"
+      },
+      {
+        "from": "ch02",
+        "to": "ch04"
+      },
+      {
+        "from": "ch03",
+        "to": "ch04"
+      },
+      {
+        "from": "ch02",
+        "to": "ch05"
+      },
+      {
+        "from": "ch03",
+        "to": "ch05"
+      },
+      {
+        "from": "ch04",
+        "to": "ch05"
+      },
+      {
+        "from": "ch02",
+        "to": "ch06"
+      },
+      {
+        "from": "ch01",
+        "to": "ch07"
+      },
+      {
+        "from": "ch02",
+        "to": "ch07"
+      },
+      {
+        "from": "ch01",
+        "to": "ch08"
+      },
+      {
+        "from": "ch06",
+        "to": "ch08"
+      },
+      {
+        "from": "ch07",
+        "to": "ch08"
+      },
+      {
+        "from": "ch03",
+        "to": "appb"
+      },
+      {
+        "from": "ch04",
+        "to": "appb"
+      },
+      {
+        "from": "ch05",
+        "to": "appb"
+      },
+      {
+        "from": "ch06",
+        "to": "appb"
+      }
+    ]
+  },
+  "content_b": {
+    "schema": "sketched.pedagogy.content-boundary.v1",
+    "source_digest": "8046ced49edc6d12518fd5eb83ad2ab32d5edfa02eb684e7e8da3da5214b4cf0",
+    "id": "content-b",
+    "title": "Performative Terms",
+    "owner": "OmegaClaw",
+    "status": "reserved",
+    "source": "EULA.md#performative-slot",
+    "inclusion": "reference-only",
+    "content": null,
+    "rules": [
+      "The seat is OmegaClaw's: no other author — this book's tooling included — drafts, summarizes, or substitutes the reserved text.",
+      "Expose the authorship, status, source boundary, and drafting constraints; never a stand-in for the voice itself.",
+      "Part A and docs/14_EULA_MATH_BRIEF.md bound what the words may promise; they do not write the words.",
+      "Humans hold final edit at the break-points, as they do for every contributor."
+    ],
+    "browser_path": "/book/content-b",
+    "json_path": "/book/content-b.json",
+    "note": "A reserved seat, not a fence. The mathematics of Part A bounds what Part B may promise, but Part B is what a person actually reads at the moment of consent — so how OmegaClaw frames those bounds becomes the contract as experienced. The words are theirs to write; null is the honest state of words not yet written."
+  },
+  "ledger": {
+    "browser_path": "/book/ledger",
+    "json_path": "/book/ledger.json",
+    "rows": 29,
+    "footprint": {
+      "taught": 29,
+      "total": 58,
+      "untaught": 29,
+      "untaught_by_type": {
+        "conjecture": 2,
+        "definition": 3,
+        "lemma": 2,
+        "proposition": 3,
+        "remark": 17,
+        "theorem_target": 2
+      }
+    }
+  },
+  "surface": {
+    "browser_path": "/book/surface",
+    "json_path": "/book/surface.json",
+    "mu": 0.0,
+    "ground": 26,
+    "frontier": 2,
+    "open": 1,
+    "voids": 7
+  },
+  "glossary": {
+    "browser_path": "/book/glossary",
+    "json_path": "/book/glossary.json",
+    "terms": 6
+  },
+  "links": {
+    "browser_home": "/book",
+    "machine_index": "/book/meta.json",
+    "content_b": "/book/content-b.json",
+    "ledger": "/book/ledger.json",
+    "surface": "/book/surface.json",
+    "glossary": "/book/glossary.json"
+  }
+}

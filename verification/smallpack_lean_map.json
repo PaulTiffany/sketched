@@ -1,0 +1,119 @@
+{
+ "schema": "sketched.smallpack-lean-map.v1",
+ "source": "Principia Symbolica Book 1 + reflexive-validation and framing appendices",
+ "boundary": "Static/finite kernels only.",
+ "entries": [
+  {
+   "atlas_id": "definition:appB_symbolic_state_space",
+   "coverage": "partial",
+   "lean": [
+    "SmallPack.resolutionLevel_mono"
+   ],
+   "note": "Only the monotone-nesting content of the level sets P_lambda is modeled, via the InLevel threshold predicate. The underlying space S, End(S), and the operator norm are not modeled."
+  },
+  {
+   "atlas_id": "definition:appB_symbolic_energy",
+   "coverage": "conditional",
+   "lean": [
+    "SmallPack.symbolicEnergy_nonneg"
+   ],
+   "note": "Models the algebraic form H + (1/2)*drift^2 + (epsO/2)*refl^2 directly on reals and proves nonnegativity conditional on H >= 0, epsO >= 0. The kappa-norm and symbolic-manifold structure underlying drift/refl are erased to bare reals."
+  },
+  {
+   "atlas_id": "lemma:appB_energy_contraction",
+   "coverage": "conditional",
+   "lean": [
+    "SmallPack.symbolicEnergyContraction_accum"
+   ],
+   "note": "The per-step contraction law is kept as a structure field on an abstract energy : Nat -> Real sequence; its telescoped/accumulated form over n steps is proved by induction, mirroring Book8's metabolic-sufficiency pattern. H_symb and the underlying SRV dynamics are not modeled."
+  },
+  {
+   "atlas_id": "theorem:appB_srv_cauchy",
+   "coverage": "partial",
+   "lean": [
+    "SmallPack.symbolicEnergyContraction_sum_bounded",
+    "SmallPack.symbolicEnergyContraction_term_bounded"
+   ],
+   "note": "Does not construct the observer metric d_O or prove literal Cauchy-ness of the trajectory. Instead proves the quantitative content the Cauchy claim depends on: given a lower bound on energy, the cumulative and individual squared-drift terms stay uniformly bounded across all steps. This is a genuinely weaker, honest substitute, not a full proof of the stated theorem."
+  },
+  {
+   "atlas_id": "lemma:appB_chart_bounds",
+   "coverage": "conditional",
+   "lean": [
+    "SmallPack.chartBound_mono",
+    "SmallPack.chartBound_nonneg"
+   ],
+   "note": "Models only the scalar bound expression C_chart * sqrt(lambda) and proves it is nonnegative and monotone nondecreasing in lambda. The operator-norm sup over the actual charts D chi_lambda is not modeled."
+  },
+  {
+   "atlas_id": "definition:appD_llm_observer_tuple",
+   "coverage": "definition",
+   "lean": [
+    "SmallPack.BoundedObserverTuple"
+   ],
+   "note": "Structure recording the triple shape (context depth Nctx, an Nctx-indexed family of state transformations, resolution threshold epsilon); no additional law is asserted beyond the shape itself, matching the source's own caveat that this alone does not establish diachronic observerhood."
+  },
+  {
+   "atlas_id": "theorem:appD_bounded_increment_parameter_lift",
+   "coverage": "partial",
+   "lean": [
+    "SmallPack.inf_mono_of_subset",
+    "SmallPack.inf_strict_decrease"
+   ],
+   "note": "Erases the manifold/linear-algebra content (the residual map, its derivative J_x, tangent spaces, the curvature correction) and keeps only its abstract order-theoretic core: enlarging a feasible real-valued constraint set can only lower sInf, and strictly lowers it exactly when the enlarged set contains a witness below the old infimum -- the honest kernel of 'a new parameter relieves the obstruction precisely when it contributes a non-redundant direction.'"
+  },
+  {
+   "atlas_id": "axiom:bk1_axiomata_prima",
+   "coverage": "conditional",
+   "lean": [
+    "AxiomataPrima.no_manifest_only_existence",
+    "AxiomataPrima.two_channel_sustained",
+    "AxiomataPrima.just_is_observationally_nothing",
+    "AxiomataPrima.everything_forces_stasis",
+    "AxiomataPrima.negotiation_not_null",
+    "AxiomataPrima.no_return_past_work"
+   ],
+   "note": "Proof by negation over the minimal frame: just-is and everything both collapse observationally into nothing; nothing dies by exhibition of the negotiation (non-null, selecting, positive-floor); uniqueness signed by the descent arrow (no return past work). Conditional on the minimal frame; the metaphysical scope of the three-word axiom is not exhausted."
+  },
+  {
+   "atlas_id": "definition:appB_symbolic_chart",
+   "coverage": "conditional",
+   "lean": [
+    "Book9B.atlas_consistent_of_glued_and_covers"
+   ],
+   "note": "re-read over FracturedAtlas's ChartComplex rather than constructed from an encode/matrix pair; the specific R^{d_lambda} coordinatization is not modeled, only chart-consistency."
+  },
+  {
+   "atlas_id": "theorem:appB_metric_completion",
+   "coverage": "conditional",
+   "lean": [
+    "Book9B.atlas_consistent_of_glued_and_covers"
+   ],
+   "note": "\"the metric completion exists\" is re-read as \"a single global metric consistent with every chart exists\" via single_geometry_iff_glued, given PairCovers and Glued; separability is not modeled."
+  },
+  {
+   "atlas_id": "theorem:appB_smooth_atlas",
+   "coverage": "conditional",
+   "lean": [
+    "Book9B.atlas_consistent_of_glued_and_covers"
+   ],
+   "note": "only chart-compatibility (existence of a consistent global metric) is modeled; the smooth-manifold structure itself is not."
+  },
+  {
+   "atlas_id": "theorem:appB_smoothness_emergence",
+   "coverage": "conditional",
+   "lean": [
+    "Book9B.no_global_metric_without_gluing"
+   ],
+   "note": "the converse/obstruction direction: charts that are not glued admit no consistent global metric. Smoothness, second-countability, and paracompactness are not modeled."
+  },
+  {
+   "atlas_id": "corollary:appB_resolution_of_smoothness",
+   "coverage": "conditional",
+   "lean": [
+    "Book9B.no_global_metric_without_gluing"
+   ],
+   "note": "\"smooth structure arises... under bounded observer resolution\" is re-read as its failure mode: resolution that is not consistent across charts (not Glued) yields no single global metric."
+  }
+ ]
+}

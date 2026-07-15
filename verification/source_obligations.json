@@ -1,0 +1,114 @@
+{
+  "schema": "sketched.ps-source-obligations.v1",
+  "description": "Machine-readable source-level debts exposed while formalizing Principia Symbolica. Mapping or receipt coverage never closes an obligation: Lean evidence, LaTeX repair, and downstream discharge are tracked independently.",
+  "obligations": [
+    {
+      "id": "PS-SRC-001",
+      "source_anchor": "theorem:bk1_symbolic_emergence_theorem_thermodynamics",
+      "source_file": "scholium_symbolicum.tex",
+      "source_line": 2144,
+      "source_layer": "scholium",
+      "repair_owner": "book4",
+      "downstream_consumers": ["book7"],
+      "failure_mode": "counterexample",
+      "summary": "Novelty, reflective identity, and an abstract dimension increase do not entail nonzero symbolic curvature or quadratic geometry.",
+      "required_latex_repair": "Use the proved Book 4 typed bridge by replacing structural growth with contextual nonseparability, or prove that the source's strict dimension increase entails nonseparability. Then amend the Scholium theorem to cite that bridge and let Book 7 consume its curvature certificate.",
+      "lean_evidence": [
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumD.lean",
+          "declaration": "ScholiumD.emergence_premises_do_not_force_curvature",
+          "kind": "countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4D.lean",
+          "declaration": "Book4D.contextual_crossError_induces_curvature",
+          "kind": "positive_bridge_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4D.lean",
+          "declaration": "Book4D.contextualStructuralGrowth_induces_curvature",
+          "kind": "typed_full_bridge"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7B.lean",
+          "declaration": "Book7B.contextualCurvature_with_stableIdentity",
+          "kind": "downstream_consumer"
+        }
+      ],
+      "lean_status": "typed_bridge_proved",
+      "latex_status": "unresolved",
+      "downstream_status": "partially_discharged"
+    },
+    {
+      "id": "PS-SRC-002",
+      "source_anchor": "lemma:bk1_symbolic_quantum_incompatibility",
+      "source_file": "scholium_symbolicum.tex",
+      "source_line": 2110,
+      "source_layer": "scholium",
+      "repair_owner": "scholium",
+      "downstream_consumers": ["book4", "book7"],
+      "failure_mode": "missing_premise",
+      "summary": "Unitary linear evolution and tensor structure alone do not prove that joint preservation requires, and simultaneously forbids, a Hamiltonian-level meta-update.",
+      "required_latex_repair": "State the meta-update requirement and the quantum prohibition as explicit hypotheses, or replace them with a concrete Hilbert-space no-go theorem whose assumptions entail both clauses.",
+      "lean_evidence": [
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumD.lean",
+          "declaration": "ScholiumD.symbolic_quantum_incompatibility_kernel",
+          "kind": "conditional_kernel"
+        }
+      ],
+      "lean_status": "conditional_kernel_proved",
+      "latex_status": "unresolved",
+      "downstream_status": "blocked"
+    },
+    {
+      "id": "PS-SRC-003",
+      "source_anchor": "proposition:bk1_newtonian_incompleteness",
+      "source_file": "scholium_symbolicum.tex",
+      "source_line": 2079,
+      "source_layer": "scholium",
+      "repair_owner": "scholium",
+      "downstream_consumers": ["book4", "book7"],
+      "failure_mode": "ill_typed",
+      "summary": "Newtonian smoothness alone does not imply the advertised impossibility of reflexive update, and the accessibility expression alpha(rho(s,D(s))) subset O lacks a typed codomain/subset contract.",
+      "required_latex_repair": "Define the types and codomains of alpha, O, D, and rho and add a premise connecting Newtonian covariance to failure of reflexive update; alternatively replace the proposition with the proved covariance-boundary statement that accelerated frames require an explicit fictitious-force correction.",
+      "lean_evidence": [
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumD.lean",
+          "declaration": "ScholiumD.newtonian_incompleteness_kernel",
+          "kind": "replacement_kernel"
+        }
+      ],
+      "lean_status": "positive_kernel_proved",
+      "latex_status": "unresolved",
+      "downstream_status": "blocked"
+    },
+    {
+      "id": "PS-SRC-004",
+      "source_anchor": "lemma:bk7_budgetlimited_minimizer",
+      "source_file": "book7.tex",
+      "source_line": 1581,
+      "source_layer": "book7",
+      "repair_owner": "book7",
+      "downstream_consumers": ["book9"],
+      "failure_mode": "counterexample",
+      "summary": "The displayed free-energy objective does not depend on the candidate regulator, so any feasible set with two elements has tied minimizers and uniqueness fails.",
+      "required_latex_repair": "Make the minimized objective depend on the candidate regulator and add a strict-convexity, strict-separation, or no-ties hypothesis. For the finite kernel, injectivity of the cost on the feasible set is sufficient for uniqueness.",
+      "lean_evidence": [
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7B.lean",
+          "declaration": "Book7B.budgetLimitedObjective_not_unique",
+          "kind": "countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7B.lean",
+          "declaration": "Book7B.budgetLimited_uniqueMinimizer_of_injectiveCost",
+          "kind": "conditional_repair_kernel"
+        }
+      ],
+      "lean_status": "conditional_kernel_proved",
+      "latex_status": "unresolved",
+      "downstream_status": "blocked"
+    }
+  ]
+}

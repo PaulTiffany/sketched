@@ -1,0 +1,2659 @@
+{
+ "schema": "sketched.leanps-ledger.v1",
+ "description": "Research ledger for Lean PS: the shared commuting/equivariance schema and its two instances (Kripke-Joyal forcing persistence; Lorentz-force covariance). Statuses follow the forcing paper's discipline: P proved relative to stated hypotheses, D definitional architecture, S specification/conformance contract, M modeling postulate, C measurable conjecture, O open. Direct deps/consumes are stored here; the transitive M/C/O debt closure is computed mechanically by tools/leanps_audit.py, which also regenerates docs/18_LEAN_PS_LEDGER.md. The two instances are NOT identified: the forcing instance is relational, partial, Prop-valued preservation; the physics instance is total, group-indexed, on-the-nose equality. Same interface, different semantics.",
+ "external": {
+  "lem:pers": {
+   "status": "P",
+   "where": "forcing_correspondence atlas (Lean: Forces/forces_consistent)"
+  },
+  "M-Pers": {
+   "status": "M",
+   "where": "forcing paper status ledger; Lean: Persistent typeclass; probed by kernel/sweep.py E7"
+  }
+ },
+ "entries": [
+  {
+   "id": "LPS-D1",
+   "statement": "Definitions Commutes (transport (fieldOp x) = frontierOp (transport x)), RelationallyCommutes (fieldStep x x' -> frontierStep (transport x) (transport x')), Equivariant (f (actA g x) = actB g (f x)): the common commuting-interface schema.",
+   "domain": "schema",
+   "status": "D",
+   "hypotheses": [],
+   "formal_source": "verification/lean/ForcingKernel/ForcingKernel/Schema.lean",
+   "declares": [
+    "Commutes",
+    "RelationallyCommutes",
+    "Equivariant"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": null,
+   "evidence": "lake build (ForcingKernel); definitions only",
+   "next": "bind to a labeled paper statement once one exists (see LPS-O2)"
+  },
+  {
+   "id": "LPS-P1",
+   "statement": "Equivariance is exactly a commuting square per symmetry (equivariant_iff_commutes); a strict commuting square degrades to relational commutation over operation graphs (Commutes.relationallyCommutes).",
+   "domain": "schema",
+   "status": "P",
+   "hypotheses": [],
+   "formal_source": "verification/lean/ForcingKernel/ForcingKernel/Schema.lean",
+   "declares": [
+    "equivariant_iff_commutes",
+    "Commutes.relationallyCommutes"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-D1"
+   ],
+   "consumes": [],
+   "falsifier": null,
+   "evidence": "lake build; axiom audit: depends on no axioms",
+   "next": null
+  },
+  {
+   "id": "LPS-P2",
+   "statement": "Forcing persistence in schema form (forces_relationallyCommutes): the forcing predicate of any formula relationally commutes, with field steps = admissible refinement moves and frontier steps = implication. Re-exposes lem:pers (first half); proves nothing new.",
+   "domain": "forcing",
+   "status": "P",
+   "hypotheses": [
+    "[Persistent V] (M-Pers)",
+    "J a Grothendieck topology on the refinement preorder"
+   ],
+   "formal_source": "verification/lean/ForcingKernel/ForcingKernel/Schema.lean",
+   "declares": [
+    "forces_relationallyCommutes"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-D1",
+    "lem:pers"
+   ],
+   "consumes": [
+    "M-Pers"
+   ],
+   "falsifier": "kernel/sweep.py: dropping M-Pers breaks sieve well-formedness (E7 / FINDINGS 0c)",
+   "evidence": "lake build; binding to lem:pers statement_sha in bindings.json",
+   "next": "inherits the program debt: derive M-Pers from the actual transition rules instead of postulating it"
+  },
+  {
+   "id": "LPS-M1",
+   "statement": "Representation postulate: Mink = Fin 4 -> R with eta = diag(1,-1,-1,-1); F a covariant antisymmetric matrix; u a four-velocity; lorentzForce q F u = q (eta F) u MEANS the physical four-force K^mu = q F^{mu nu} u_nu (c = 1). The Lean theorems are about these representations; that they denote the physics is a modeling postulate, not a theorem.",
+   "domain": "physics",
+   "status": "M",
+   "hypotheses": [],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Lorentz.lean",
+   "declares": [
+    "minkEta",
+    "IsLorentz",
+    "IsFieldTensor",
+    "actF",
+    "lorentzForce"
+   ],
+   "implementation_source": "verification/kernel/lorentz_witness.py",
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "lorentz_witness.py invariant checks (u.eta u, F_uv F^uv); a wrong representation would break classical invariants",
+   "evidence": "witness positive control: invariant drift at machine scale",
+   "next": "add the small-velocity limit check (K -> q(E + v x B)) to the witness as a second representation falsifier"
+  },
+  {
+   "id": "LPS-P3",
+   "statement": "Lorentz-force covariance/equivariance: for Lorentz Lam, K(Lam.F, Lam u) = Lam K(F,u) pointwise (lorentzForce_covariant), packaged as ForcingKernel.Equivariant for the Lorentz-group action (lorentzForce_equivariant). The Lorentz condition is the commutation certificate.",
+   "domain": "physics",
+   "status": "P",
+   "hypotheses": [
+    "IsLorentz Lam (Lam^T eta Lam = eta)"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Lorentz.lean",
+   "declares": [
+    "lorentzForce_covariant",
+    "lorentzForce_equivariant"
+   ],
+   "implementation_source": "verification/kernel/lorentz_witness.py",
+   "depends_on": [
+    "LPS-D1"
+   ],
+   "consumes": [
+    "LPS-M1"
+   ],
+   "falsifier": "lorentz_witness.py negative control: off-group perturbation produces first-order residual",
+   "evidence": "lake build + axiom audit; witness positive control at machine scale (lorentz_witness.json)",
+   "next": "prove invariant preservation (trace((eta F)^2)) in Lean; currently numeric-only"
+  },
+  {
+   "id": "LPS-P4",
+   "statement": "Conditional reflection: a frame map with IsUnit Lam.det whose four-force square commutes for ALL fields F and velocities u satisfies the Lorentz condition. Proof probes with the NON-antisymmetric test field F = eta.",
+   "domain": "physics",
+   "status": "P",
+   "hypotheses": [
+    "IsUnit Lam.det (nondegeneracy)",
+    "equivariance quantified over all F, including non-field-tensors"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Lorentz.lean",
+   "declares": [
+    "lorentzForce_reflects"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-D1"
+   ],
+   "consumes": [
+    "LPS-M1"
+   ],
+   "falsifier": "LPS-P5: the zero map witnesses that dropping nondegeneracy makes the statement false",
+   "evidence": "lake build + axiom audit; now a corollary of LPS-O1's theorem (restriction of the hypothesis)",
+   "next": null
+  },
+  {
+   "id": "LPS-P5",
+   "statement": "Countermodel: the zero frame map makes the square commute for every q, F, u and is not Lorentz — the nondegeneracy hypothesis of LPS-P4 is not removable. Preservation/reflection asymmetry is real in the physics instance too.",
+   "domain": "physics",
+   "status": "P",
+   "hypotheses": [],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Lorentz.lean",
+   "declares": [
+    "zero_map_equivariant_not_lorentz"
+   ],
+   "implementation_source": "verification/kernel/lorentz_witness.py",
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": null,
+   "evidence": "lake build; witness countermodel echo (residual exactly 0, defect 1)",
+   "next": null
+  },
+  {
+   "id": "LPS-P6",
+   "statement": "The covariant action actF preserves antisymmetry for EVERY frame map Lam (Lorentz or not): the physical field-tensor subspace is respected off the group, so negative controls fail structurally rather than by leaving the representation.",
+   "domain": "physics",
+   "status": "P",
+   "hypotheses": [
+    "IsFieldTensor F"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Lorentz.lean",
+   "declares": [
+    "actF_antisymm"
+   ],
+   "implementation_source": "verification/kernel/lorentz_witness.py",
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "witness representation check (|F' + F'^T| at machine scale under perturbed transport)",
+   "evidence": "lake build; witness representation check",
+   "next": null
+  },
+  {
+   "id": "LPS-S1",
+   "statement": "Conformance contract: lorentz_witness.py implements the SAME conventions as Lorentz.lean — signature (+,-,-,-), covariant F, inverse-free actF = (eta Lam eta) F (eta Lam^T eta), force = q (eta F) u. Divergent verdicts between the witness and the Lean statements indicate a transcription defect, not physics.",
+   "domain": "conformance",
+   "status": "S",
+   "hypotheses": [],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Lorentz.lean",
+   "declares": [],
+   "implementation_source": "verification/kernel/lorentz_witness.py",
+   "depends_on": [
+    "LPS-M1"
+   ],
+   "consumes": [],
+   "falsifier": "any witness check disagreeing with the corresponding Lean theorem while both builds are green",
+   "evidence": "hand cross-read of the two artifacts; witness pass",
+   "next": "mechanize the convention cross-check (extract both formulas and compare) instead of hand-reading"
+  },
+  {
+   "id": "LPS-C1",
+   "statement": "Structural-failure law: off the Lorentz group along a fixed non-Lorentz direction P, the commutation residual grows first-order in delta (log-log slope ~ 1) above the floating-point floor. Measured, not proved.",
+   "domain": "physics",
+   "status": "C",
+   "hypotheses": [
+    "fixed perturbation direction P; delta in [1e-9, 1e-3]"
+   ],
+   "formal_source": null,
+   "declares": [],
+   "implementation_source": "verification/kernel/lorentz_witness.py",
+   "depends_on": [
+    "LPS-P3"
+   ],
+   "consumes": [],
+   "falsifier": "the sweep itself: slope outside 1 +/- 0.15 or residual not separated from the floor fails the run",
+   "evidence": "lorentz_witness.json: slope 1.000 over six decades",
+   "next": "promote to P: the residual is linear in the defect (eta Lam^T eta Lam - 1) by inspection of actF_core; formalize as a derivative/Lipschitz bound"
+  },
+  {
+   "id": "LPS-O1",
+   "statement": "CLOSED 2026-07-11 (was O): equivariance quantified over ANTISYMMETRIC F only (physical field tensors), plus nondegeneracy, reflects the Lorentz condition. Hypothesis rearranged to F(M-1)=0 for antisymmetric F with M = eta Lam^T eta Lam; probes E_ij - E_ji kill every row of M-1. Dimension >= 2 consumed exactly once (exists_ne j); LPS-P7 shows it is not removable. Conformal check: cLam (c^2 != 1) is invertible and non-Lorentz, so this theorem itself excludes scalar ambiguity (numeric conformal control confirms).",
+   "domain": "physics",
+   "status": "P",
+   "hypotheses": [
+    "IsUnit Lam.det (nondegeneracy)",
+    "index type has >= 2 elements (Nontrivial (Fin 4))",
+    "equivariance over all ANTISYMMETRIC F and all u"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Lorentz.lean",
+   "declares": [
+    "lorentzForce_reflects_antisym"
+   ],
+   "implementation_source": "verification/kernel/lorentz_witness.py",
+   "depends_on": [
+    "LPS-P4",
+    "LPS-P5",
+    "LPS-P7"
+   ],
+   "consumes": [
+    "LPS-M1"
+   ],
+   "falsifier": "LPS-P5 (zero map: nondegeneracy necessary); LPS-P7 (dim 1: dimension necessary); witness conformal control (c=1.5 residual ~1)",
+   "evidence": "lake build + axiom audit (propext/choice/Quot.sound); lorentz_witness.json conformal_control",
+   "next": null,
+   "history": "opened 2026-07-11 as O; closed same day by lorentzForce_reflects_antisym"
+  },
+  {
+   "id": "LPS-P7",
+   "statement": "Degenerate countercase (dimension one): with a single index every antisymmetric tensor vanishes, so antisym-equivariance is vacuous; the doubling map is invertible, commutes over all antisymmetric F, and is not metric-preserving. The dimensional hypothesis of LPS-O1 is genuinely consumed.",
+   "domain": "physics",
+   "status": "P",
+   "hypotheses": [],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Lorentz.lean",
+   "declares": [
+    "antisym_reflection_fails_dim1"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": null,
+   "evidence": "lake build + axiom audit",
+   "next": null
+  },
+  {
+   "id": "LPS-D2",
+   "statement": "Observer-refinement witness kernel (Principia-anchored): WitnessSystem (observer-relative certificates W o p a + restriction along refinement), CertifiedTransport (map + loss class ell in {exact, quotient, projective, interpretive} + naturality law), PreTransport (no law), AdmissibleClass, FrameExpansion (two lifts + boundary-agreement bridge law), TransportLoss and SquareDefect (failure semantics: invalidRestriction, typeMismatch, roleMismatch, projectiveLoss, nonNatural, sharedBoundary). Refinement persistence and observer invariance are kept as TWO INDEPENDENT AXES; sharedBoundary is interpreted as a bridge datum only, never observer identity; no quantum-collapse reading is claimed.",
+   "domain": "witness",
+   "status": "D",
+   "hypotheses": [],
+   "formal_source": "verification/lean/ForcingKernel/ForcingKernel/Witness.lean",
+   "declares": [
+    "WitnessSystem",
+    "CertifiedTransport",
+    "PreTransport",
+    "AdmissibleClass",
+    "FrameExpansion",
+    "TransportLoss",
+    "SquareDefect"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": null,
+   "evidence": "lake build (ForcingKernel, mathlib-free); dual-source bindings to 8 Principia atlas nodes",
+   "next": "add restriction/transport composition (functoriality) laws when a theorem needs them (part of LPS-O3)"
+  },
+  {
+   "id": "LPS-P8",
+   "statement": "Local M-Pers DERIVED from witness restriction: Stable o p a and q refines p imply Stable o q a (stable_persist), and every witness-backed stability assignment is a Persistent instance, so Kripke-Joyal forcing applies with M-Pers discharged rather than consumed. The postulate relocates to the existence of a witness system for the deployed apparatus (that residue is LPS-O3).",
+   "domain": "witness",
+   "status": "P",
+   "hypotheses": [
+    "a WitnessSystem exists for the stability assignment (the relocated, named form of M-Pers)"
+   ],
+   "formal_source": "verification/lean/ForcingKernel/ForcingKernel/Witness.lean",
+   "declares": [
+    "WitnessSystem.stable_persist",
+    "WitnessSystem.persistent"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-D2",
+    "lem:pers"
+   ],
+   "consumes": [],
+   "falsifier": "LPS-P10: agreement without witness structure is not persistent, so the hypothesis is not vacuous",
+   "evidence": "lake build; axiom audit: depends on no axioms",
+   "next": "construct the witness system for the actual Surface transition rules so the deployed Stab is witness-backed (LPS-O3)"
+  },
+  {
+   "id": "LPS-P9",
+   "statement": "Cross-observer material persistence and the preservation/reflection separation: stability transports forward along any certified transport (stable_preserved); across an admissible class it also descends refinement (material_persistence, the bk8 materiality reading — class-relative, not all-observers); reflection holds given a certified transport back (reflects_of_inverse); and the projective example preserves WITHOUT reflecting (preserves_not_reflects), so the separation is strict. Nonvacuity of the transport class is mirrored: idTransport (exact) + ProjectiveExample.proj (projective).",
+   "domain": "witness",
+   "status": "P",
+   "hypotheses": [
+    "CertifiedTransport along the admissibility relation (naturality law included)"
+   ],
+   "formal_source": "verification/lean/ForcingKernel/ForcingKernel/Witness.lean",
+   "declares": [
+    "CertifiedTransport.stable_preserved",
+    "AdmissibleClass.material_persistence",
+    "CertifiedTransport.reflects_of_inverse",
+    "ProjectiveExample.preserves_not_reflects",
+    "WitnessSystem.idTransport"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-D2"
+   ],
+   "consumes": [],
+   "falsifier": "ProjectiveExample: reflection fails where preservation holds",
+   "evidence": "lake build; axiom audit: depends on no axioms",
+   "next": "jointly-conservative (family) reflection; approximate/epsilon version per axiom:bk9_preconditions_for_reciprocal_cognition"
+  },
+  {
+   "id": "LPS-P10",
+   "statement": "Countermodels (regression): (1) agreement_not_persistent — a stability assignment on which ALL observers agree at ALL conditions, including the coarse anchor, yet stability fails below it: cross-observer agreement at a condition does not imply M-Pers; (2) no_witness_realization — no witness system realizes that pattern, so witness restriction is strictly more than agreement; (3) NaturalityGap.naturality_defect — a stability-preserving pre-transport whose observer-refinement square does not commute: the naturality law of CertifiedTransport is not free (echoes proof:bk4_persistence_reflection_noncommutativity).",
+   "domain": "witness",
+   "status": "P",
+   "hypotheses": [],
+   "formal_source": "verification/lean/ForcingKernel/ForcingKernel/Witness.lean",
+   "declares": [
+    "agreement_not_persistent",
+    "no_witness_realization",
+    "NaturalityGap.naturality_defect"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-D2"
+   ],
+   "consumes": [],
+   "falsifier": null,
+   "evidence": "lake build; axiom audit: depends on no axioms",
+   "next": null
+  },
+  {
+   "id": "LPS-O3",
+   "statement": "Observer-Refinement Naturality and Material Persistence (open). Closure conditions: (a) M-Pers derived from witness restriction rather than assumed - DISCHARGED abstractly by LPS-P8, REMAINING: construct the witness system for the deployed Surface transition rules (what is a claim commitment; which fiber parts may change; can confidence fall; certified-persistent vs currently-true); (b) cross-observer materiality proved from certified natural transport - DISCHARGED (LPS-P9); (c) reflection precisely separated from preservation - DISCHARGED (LPS-P9); (d) non-natural agreement countermodel retained as regression - DISCHARGED (LPS-P10). Also remaining: restriction/transport functoriality laws; the TTIE boundary-agreement expansion THEOREM (a sharedBoundary defect resolved by a FrameExpansion while the bridge law holds); connection of restrict to axiom:bk4_refinement_contraction and theorem:bk4_topological_persistence_under_refinement (features above observer resolution persist); epsilon-approximate transport per axiom:bk9_preconditions_for_reciprocal_cognition. Interpretive boundary: whether the naturality defect models the quantum/collapsed distinction remains an interpretive candidate, not a claim, until the above are formal and calibrated.",
+   "domain": "witness",
+   "status": "O",
+   "hypotheses": [],
+   "formal_source": "verification/lean/ForcingKernel/ForcingKernel/Witness.lean",
+   "declares": [],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P10",
+    "LPS-P51",
+    "LPS-P8",
+    "LPS-P9",
+    "M-Pers"
+   ],
+   "consumes": [],
+   "falsifier": "a Surface transition rule violating witness restriction (confidence-lowering refinement) would force weakening to an approximate witness system",
+   "evidence": "kernel skeleton machine-checked axiom-free; Principia anchors bound; the named closure action DISCHARGED by LPS-P51 (Spine.lean): deployed-Stab witness construction over the spine model with M-Pers derived and the valuation verified, plus restriction functoriality and the TTIE boundary-agreement expansion theorem (one-certificate frame, quotient loss earned)",
+   "next": "remaining: the full Surface transition-rule typing (claim commitments, which fiber parts may change, confidence dynamics, certified-persistent vs currently-true); connection of restrict to axiom:bk4_refinement_contraction / theorem:bk4_topological_persistence_under_refinement; epsilon-approximate transport per axiom:bk9_preconditions_for_reciprocal_cognition"
+  },
+  {
+   "id": "LPS-O2",
+   "statement": "Open (paper-side): forcing_correspondence_v16 asserts 'both instantiate a common forcing-over-a-site schema' in abstract prose with no labeled definition, so Schema.lean cannot be bound to a statement hash. The hedge is constituted here instead of smoothed.",
+   "domain": "schema",
+   "status": "O",
+   "hypotheses": [],
+   "formal_source": "verification/lean/ForcingKernel/ForcingKernel/Schema.lean",
+   "declares": [],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-D1"
+   ],
+   "consumes": [],
+   "falsifier": null,
+   "evidence": "atlas.json has no node matching the schema claim (checked 2026-07-11)",
+   "next": "closure condition: v17 labels the schema (definition + commutation statement); then add a bindings.json entry pinning Schema.lean to that node's statement_sha"
+  },
+  {
+   "id": "LPS-P11",
+   "statement": "Newton/Galilean instance of the common commuting schema: Galilean boosts preserve acceleration; Newton's force map is equivariant under continuous linear frame maps; uniformly accelerated frames have an explicit nonzero acceleration defect.",
+   "domain": "physics",
+   "status": "P",
+   "hypotheses": [
+    "twice differentiable trajectory at the stated point",
+    "nonzero frame acceleration for strict defect"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Newton.lean",
+   "declares": [
+    "galilean_boost_accel",
+    "newtonForce_equivariant",
+    "accelerated_frame_defect",
+    "accelerated_frame_defect_ne"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-D1"
+   ],
+   "consumes": [],
+   "falsifier": "accelerated_frame_defect_ne: the square fails outside the Galilean group by exactly 2w",
+   "evidence": "lake build (ForcingAnalysis); axiom audit in ForcingAnalysis.lean",
+   "next": "relate the Lorentz and Newton instances through the controlled contraction recorded as LPS-O4"
+  },
+  {
+   "id": "LPS-P12",
+   "statement": "Book 5 arithmetic/spectral kernel: the balanced two-step closure has golden-ratio eigenvector and unique positive characteristic root; Fibonacci ratios converge to phi; two-coordinate integer transitions have Euclidean length at least sqrt(2); the elementary diagonal ratio is sqrt(2); phi and sqrt(2) obey distinct equations. Symbolic-manifold and observer-normalization readings are explicitly not certified here.",
+   "domain": "book5",
+   "status": "P",
+   "hypotheses": [
+    "only the arithmetic, matrix, lattice, and limit content of the cited Book 5 statements"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5.lean",
+   "declares": [
+    "closureMatrix_eigen_gold",
+    "gold_unique_positive_root",
+    "balanced_memory_tendsto_gold",
+    "sqrt2_first_fracture",
+    "diag_fracture_ratio",
+    "constants_complementary"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": null,
+   "evidence": "lake build (ForcingAnalysis); axiom audit in ForcingAnalysis.lean",
+   "next": "formalize further Book 5 norm-fracture claims only where their hypotheses can be stated without importing the symbolic interpretation as fact"
+  },
+  {
+   "id": "LPS-D3",
+   "statement": "Plural-process architecture: strategic and operational are activity domains; SRMF/OODA/OIOA/seasonal/operational cycles are optional bounded ProcessUse records; ProcessCorrespondence is scoped and lossy; strategic and operational artifacts meet only through an explicit interface; adjudication, observer scope, transport loss, reversibility, authorization, and failure semantics are independent jurisdiction fields.",
+   "domain": "process",
+   "status": "D",
+   "hypotheses": [],
+   "formal_source": "verification/lean/ForcingKernel/ForcingKernel/Process.lean",
+   "declares": [
+    "Domain",
+    "ProcessSchema",
+    "ProcessKind",
+    "ProcessUse",
+    "ProcessCorrespondence",
+    "OperationalNext",
+    "StrategicArtifact",
+    "OperationalArtifact",
+    "ArtifactInterface",
+    "SeasonClassifier",
+    "AdjudicationMode",
+    "ValidationRequirement",
+    "HumanAuthority",
+    "Jurisdiction",
+    "ClaimProperty"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-D2"
+   ],
+   "consumes": [],
+   "falsifier": null,
+   "evidence": "lake build (ForcingKernel, mathlib-free); definitions only",
+   "next": "instantiate typed artifacts for deployed Surface transitions without merging vertical witness refinement with horizontal observer transport"
+  },
+  {
+   "id": "LPS-P13",
+   "statement": "Negative distinctions are inhabited, not merely omitted: seasons may overlap or be absent; deterministic-only validation excludes human adjudication; and any two distinct claim properties admit a valuation separating them. Therefore none of the listed verification/meaning/truth/authority/success/continuation/agreement/persistence implications is derivable without an explicit bridge.",
+   "domain": "process",
+   "status": "P",
+   "hypotheses": [],
+   "formal_source": "verification/lean/ForcingKernel/ForcingKernel/Process.lean",
+   "declares": [
+    "seasons_may_overlap",
+    "no_season_may_apply",
+    "deterministicOnly_excludes_human",
+    "properties_independent"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-D3",
+    "LPS-P10"
+   ],
+   "consumes": [],
+   "falsifier": "properties_independent constructs a separating valuation for every pair of distinct claim properties",
+   "evidence": "lake build; axiom audit: all four theorems depend on no axioms",
+   "next": null
+  },
+  {
+   "id": "LPS-O4",
+   "statement": "Open physics bridge: derive the Newton/Galilean instance as a controlled small-velocity or c-to-infinity contraction of the Lorentz instance. The shared Equivariant interface alone does not prove this limiting relation.",
+   "domain": "physics",
+   "status": "P",
+   "hypotheses": [],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Contraction3.lean",
+   "declares": [
+    "force_law_acceleration"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P11",
+    "LPS-P19",
+    "LPS-P3",
+    "LPS-P41"
+   ],
+   "consumes": [],
+   "falsifier": "a proposed contraction whose residual does not converge uniformly on its declared bounded regime",
+   "evidence": "force_law_acceleration: dp/dt = F forces a = F/(m*gamma^3); with RelativisticForceLaw.a_rel_tendsto the chain Lorentz force -> gamma^3 acceleration -> Newtonian F/m as c -> infinity is derived end to end; no sorry",
+   "next": null,
+   "history": "opened as the Lorentz->Newton contraction; kinematic half closed as LPS-P19 (boost entries -> Galilean boost, metric degeneration); residual tiers as LPS-P41 (momentum residual with uniform bounded-regime bound, gamma-cubed law consumed); closed 2026-07-12 by LPS-P42 deriving the gamma-cubed law from dp/dt = F via the HasDerivAt chain - the full force-level contraction now stands end to end"
+  },
+  {
+   "id": "LPS-S2",
+   "statement": "Plomp-Levelt carrier conformance witness: the calibrated roughness curve has the expected shape and harmonic complex-tone minima near simple ratios, while metric transposition and global ordinal ranking both fail across the tested register. Stretched partials move the minima, so carrier-relative transference is scoped rather than universal.",
+   "domain": "psychoacoustics",
+   "status": "S",
+   "hypotheses": [
+    "Sethares parameterization of the Plomp-Levelt roughness curve",
+    "declared frequency register, partial count, amplitudes, and tolerances"
+   ],
+   "formal_source": null,
+   "declares": [],
+   "implementation_source": "verification/kernel/plomp_levelt_witness.py",
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "global metric and ordinal transposition failures plus the inharmonic stretch negative control are retained in the passing witness",
+   "evidence": "deterministic stage in verification/run_all.py; emits verification/plomp_levelt_witness.json",
+   "next": "only claim ordinal transport inside a separately calibrated register/timbre competence region"
+  },
+  {
+   "id": "LPS-P14",
+   "statement": "Conditional Book 5 thermodynamics: positive free energy defines viability; closed energy-entropy balance yields the rate identity; a named production/removal comparison yields nonnegative entropy rate; fixed-point and persistence equivalences require explicit calibration laws; positive coupling makes the covenant stability quotient threshold equivalent to its division-free form.",
+   "domain": "book5",
+   "status": "P",
+   "hypotheses": [
+    "ClosedEnergyEntropyBalance.balance",
+    "EntropyBalance.secondLaw",
+    "ReflectiveEquilibrium.fixed_iff_zero_rate",
+    "PositiveEnergyPersistence.law",
+    "positive minimum coupling where division is used"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5Thermodynamics.lean",
+   "declares": [
+    "viable_iff_positive_free_energy",
+    "energy_rate_eq_neg_entropic_rate",
+    "entropy_rate_nonnegative",
+    "entropy_rate_eq_zero_iff_fixed",
+    "persists_iff_positive_throughout",
+    "covenant_stable_iff_threshold"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "removing the named law fields leaves no theorem from positivity alone to persistence or fixedness",
+   "evidence": "lake build ForcingAnalysis; generated selfcompile/lean_receipt.json; no sorry",
+   "next": "instantiate these law structures only for calibrated deployed systems"
+  },
+  {
+   "id": "LPS-P15",
+   "statement": "Weighted Book 5 reciprocity: lambda_w solves lambda^2=lambda+w and is an eigenvalue of the Two-Way Street matrix; balanced weight one gives phi; weights between zero and one are sub-golden and weights above one are super-golden; observer normalization plus equal memory calibration uniquely selects unit weights.",
+   "domain": "book5",
+   "status": "P",
+   "hypotheses": [
+    "nonnegative reciprocity weight; strict positivity for strict regime comparisons"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5Reciprocity.lean",
+   "declares": [
+    "reciprocityRate_characteristic",
+    "reciprocityMatrix_eigen",
+    "reciprocityRate_one",
+    "reciprocityRate_subgolden",
+    "reciprocityRate_supergolden",
+    "balanced_observer_weights_unique"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P12"
+   ],
+   "consumes": [],
+   "falsifier": "w not equal to one produces a different metallic-rate regime; ethical interpretation is not in the theorem",
+   "evidence": "lake build ForcingAnalysis; generated selfcompile/lean_receipt.json; no sorry",
+   "next": null
+  },
+  {
+   "id": "LPS-P16",
+   "statement": "Book 5 elementary norm spectrum and independence: nonzero equal-coordinate plane diagonals have l1/l2 ratio sqrt(2) and l1/linfinity ratio two; explicit product-spectrum countermodels show memory regime does not determine norm regime and norm regime does not determine memory.",
+   "domain": "book5",
+   "status": "P",
+   "hypotheses": [
+    "nonzero diagonal amplitude",
+    "two-coordinate special case"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5Spectrum.lean",
+   "declares": [
+    "diagonal_l1_l2_ratio",
+    "diagonal_l1_linf_ratio",
+    "same_memory_does_not_fix_norm",
+    "same_norm_does_not_fix_memory"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P12"
+   ],
+   "consumes": [],
+   "falsifier": "the two countermodels prohibit collapsing the norm and memory axes",
+   "evidence": "lake build ForcingAnalysis; generated selfcompile/lean_receipt.json; no sorry",
+   "next": "prove the full finite-dimensional lp fracture hierarchy; current coverage is intentionally partial"
+  },
+  {
+   "id": "LPS-S3",
+   "statement": "Receipt-driven Book 5 pedagogy interface: generated Lean receipt maps exact declarations to Principia anchors; browser projection exposes mapped and open claim surfaces; Matt consumes grounded claims, Ellie composes a semantic lesson, and the verifier gates status/numeric overreach. Text, slides, audio, and video are downstream renderings and do not strengthen proof status.",
+   "domain": "pedagogy",
+   "status": "S",
+   "hypotheses": [
+    "current Principia atlas available for coverage generation",
+    "Lean receipt regenerated from a successful root build"
+   ],
+   "formal_source": null,
+   "declares": [],
+   "implementation_source": "verification/tools/book5_lean_coverage.py",
+   "depends_on": [
+    "LPS-P12",
+    "LPS-P14",
+    "LPS-P15",
+    "LPS-P16"
+   ],
+   "consumes": [],
+   "falsifier": "coverage validator fails on a missing receipt theorem, missing atlas anchor, stale browser packet, stale paper macro, or Lean sorry report",
+   "evidence": "selfcompile/run.py PASS with tamper FLAG; /book/lean packet; docs/19; receipt-bound Lean PS PDF",
+   "next": "attach certified audio/video renderers to the Book 5 semantic node; no MP4 is claimed by this row"
+  },
+  {
+   "id": "LPS-P17",
+   "statement": "Mutually Assured Progress kernel: MAP as a positive-limit condition forces eventual indefinite joint viability (MAP Equilibrium convergence kernel); a contractive coupled ratio with positive carrying level yields MAP (Reflective Equilibrium Stability, scalar instance); in the linear exchange model the sign of covenant stability decides eventual viability versus collapse and the MAD trajectory is the exact polarity reflection of the MAP one, with the two verdicts exclusive; mutual reflection and the defection trap are both Nash points of the assurance game with cooperation strictly payoff-dominant; the spectral stability criterion is equivalent to exceeding the explicit critical symbolic temperature, monotonically.",
+   "domain": "book5",
+   "status": "P",
+   "hypotheses": [
+    "positive carrying level and contractive ratio for the MAP instance",
+    "positive coupling gain and sign-definite stability for the dichotomy",
+    "positive coherence density and drift norm for the thermal conversion"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5MAP.lean",
+   "declares": [
+    "map_eventually_viable",
+    "map_joint_eventually_viable",
+    "viable_collapsed_exclusive",
+    "contraction_map",
+    "dual_dual",
+    "dual_couplingStrength",
+    "dual_surplus_reflect",
+    "covenant_map_viable",
+    "covenant_mad_collapse",
+    "cooperation_nash",
+    "defection_nash",
+    "cooperation_dominates",
+    "spectral_iff_thermal",
+    "lambdaCrit_mono"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P12",
+    "LPS-P14"
+   ],
+   "consumes": [],
+   "falsifier": "a covenant with positive stability whose linear surplus collapses, or a contractive positive-level relaxation that fails MAP; the membrane/metabolic semantics is not in the theorems and cannot falsify them",
+   "evidence": "lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": "replace the scalar coupling stand-in with the true tensor spectral radius (matrix rho over the coupled reflective-drift tensor) and prove the contraction instance there"
+  },
+  {
+   "id": "LPS-O5",
+   "statement": "Full Principia-in-Lean program, poetry included: extend the Book 5 coverage discipline (map + sha-pinned dual-source bindings + receipt) book by book until every claim-bearing Principia anchor is mapped as proved-kernel, conditional, partial, or named-open. The operator poetry (operatio/integratio/temperatio/executio) enters as CARRIER structure - named inductives for the operator chains whose composition laws are Lean-checkable - never as truth claims; its external coherence witness is the Come/NARS lowering enactment (C:/src/Come, dark, local-only), where the cross-seed compositions were derived by the substrate with decomposable NAL confidences.",
+   "domain": "program",
+   "status": "O",
+   "hypotheses": [],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5MAP.lean",
+   "declares": [],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P12",
+    "LPS-P17",
+    "LPS-P44"
+   ],
+   "consumes": [],
+   "falsifier": "a Principia book whose claim surface resists the four-class decomposition - i.e. contains claims that are neither formalizable, conditionalizable, partializable, nor honestly namable as open",
+   "evidence": "Book 5 now at 26 mapped anchors; poetry witness: Come quartet runs, 20 derivations mean conf 0.692, priorities ~1/9 on the joint viability hypotheses, zero anomalous truth values; poetry carriers DESIGNED AND PROVED (LPS-P44, Poetry.lean): the poems enter as crisp zero-parameter carrier structure with orientation-preserving composition, cross-seed bridge and negative-space theorems by kernel evaluation, and the temperatio-Book2.gibbs identification machine-checked",
+   "next": "pick the next book by claim-surface size (Book 2 symbolic thermodynamics is the natural neighbor); design the poetry carrier inductives"
+  },
+  {
+   "id": "LPS-O6",
+   "statement": "FabricPC integration: promote the predictive-coding bridge from external-source grounding to a verified interface with the Lean layer. Closure conditions: (1) a typed contract between FabricPC state/update dynamics and a Lean-specified structure (the natural target is Book5Thermodynamics' free-energy/viability structures - predictive coding IS free-energy descent, so the contract is that FabricPC's update decreases a quantity the Lean layer names); (2) claims currently grounded without a local run get either a local reproduction or pinned artifact receipts; (3) a measured witness comparing FabricPC trajectories against one formalized prediction on a declared regime; (4) the Matt fabricpc_profile op upgraded from external-source bridge to dual-source binding.",
+   "domain": "program",
+   "status": "O",
+   "hypotheses": [],
+   "formal_source": "selfcompile/fabricpc.py",
+   "declares": [],
+   "implementation_source": "selfcompile/matt.py",
+   "depends_on": [
+    "LPS-O5",
+    "LPS-P14",
+    "LPS-P43",
+    "LPS-P49",
+    "LPS-S4"
+   ],
+   "consumes": [],
+   "falsifier": "FabricPC dynamics violating the Lean-specified contract on its declared regime; or the bridge's external claims failing local reproduction",
+   "evidence": "conditions status: (1) CLOSED - typed contract proved (LPS-P43) and hardened to the triple-guarded step (LPS-P49); (3) CLOSED against the local reference dynamics - measured witness LPS-S4 (fabricpc_witness.py, run_all stage), all guards holding with the dark-room control exhibited; (4) CLOSED - fabricpc_profile upgraded to dual grounding: measured claims sourced to BOTH the Lean receipt (guard theorems verified present) and the deterministic witness, gated by the selfcompile verifier; (2) PARTIAL - contract-level claims now locally reproduced; the external README claims remain URL-pinned, not content-hashed",
+   "next": "the remaining sliver: install/run the external FabricPC codebase and measure ITS trajectories against the three guards on a declared regime (condition 2 full closure: content-hashed receipts or local reproduction of the external claims)"
+  },
+  {
+   "id": "LPS-P18",
+   "statement": "Book 2 finite Gibbs kernel: the Gibbs state is a genuine density and the UNIQUE minimizer of the symbolic free energy (variational principle, via a finite Gibbs inequality proved from log x <= x-1); equilibrium free energy is -1/beta log Z; entropy is bounded 0 <= S <= log n; row-stochastic evolution conserves probability and density-hood; detailed balance forces stationarity (the finite shadow of the gradient condition) while the 3-cycle is stationary but irreversible (the solenoidal component, exhibited); the free energy is differentiable at every beta > 0 on a finite alphabet, so symbolic phase transitions require an infinite system; and the Gibbs mean energy is -d/dbeta log Z.",
+   "domain": "book2",
+   "status": "P",
+   "hypotheses": [
+    "finite nonempty symbolic alphabet (NeZero n)",
+    "positive beta for the variational principle; nonzero beta for the equilibrium value",
+    "the stochastic-kernel evolution law and detailed balance are named structures, not derived from the PDE"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book2.lean",
+   "declares": [
+    "gibbs_isDensity",
+    "gibbs_inequality",
+    "entropy_nonneg",
+    "entropy_le_log_card",
+    "freeEnergy_gibbs",
+    "gibbs_minimizes",
+    "gibbs_unique_minimizer",
+    "evolve_conserves",
+    "detailedBalance_stationary",
+    "cycle_stationary_not_reversible",
+    "no_finite_phase_transition",
+    "energy_eq_neg_deriv_log_partition"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "a density beating the Gibbs state on free energy, or a detailed-balance kernel whose balancing distribution moves, or a finite alphabet with non-analytic free energy",
+   "evidence": "lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": "the discrete H-theorem (LPS-O7); the continuum layer stays open in the coverage map"
+  },
+  {
+   "id": "LPS-P19",
+   "statement": "Lorentz -> Galilei kinematic contraction in 1+1 dimensions: the c-parameterized boost satisfies the dimensionful Lorentz condition trans(L) eta_c L = eta_c on its regime v^2 < c^2 (so the contracted object is genuinely Lorentz); gamma -> 1 and every boost entry tends to the Galilean boost [[1,0],[-v,1]] as c -> infinity at fixed v; and the c-normalized metric degenerates to diag(1,0) in the same limit - mechanically confirming why the Newton instance's equivariance group carries no metric.",
+   "domain": "physics",
+   "status": "P",
+   "hypotheses": [
+    "0 < c and v^2 < c^2 for the Lorentz condition; limits are along atTop at fixed v"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Contraction.lean",
+   "declares": [
+    "boost_isLorentz",
+    "gamma_tendsto_one",
+    "boost_tendsto_galilean",
+    "scaled_metric_eq",
+    "metric_degenerates"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P3",
+    "LPS-P11"
+   ],
+   "consumes": [],
+   "falsifier": "a boost entry whose c-limit differs from the Galilean entry, or the Lorentz condition failing on the declared regime",
+   "evidence": "lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": null
+  },
+  {
+   "id": "LPS-O7",
+   "statement": "Discrete H-theorem: the symbolic free energy decreases under one step of any detailed-balance stochastic kernel (F(evolve P rho) <= F(rho)) - the dynamical half of theorem:bk2_h_theorem_for_symbolic_evol whose endpoint half is closed in LPS-P18. The standard route is the data-processing inequality for relative entropy over finite Markov kernels.",
+   "domain": "book2",
+   "status": "P",
+   "hypotheses": [],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book2H.lean",
+   "declares": [
+    "dataProcessing_kl",
+    "h_theorem"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P18"
+   ],
+   "consumes": [],
+   "falsifier": "a detailed-balance kernel and density whose one-step evolution strictly increases free energy",
+   "evidence": "lake build ForcingAnalysis: h_theorem proves freeEnergy(evolve P rho) <= freeEnergy(rho) for every density under DetailedBalance P (gibbs beta H), beta>0; no sorry; standard axioms",
+   "next": null,
+   "history": "opened as the dynamical half of theorem:bk2_h_theorem_for_symbolic_evol; closed same week by API Sonnet worker via the log-sum route (private helpers logTangent -> logSum_term_le -> logSum -> dataProcessing_kl), lead-verified"
+  },
+  {
+   "id": "LPS-P20",
+   "statement": "Book 5 finite-support Lp fracture hierarchy: for every real p >= 1, the finite-support Lp cost is at most the L1 axis cost, while the L1 cost is at most card(s)^(1-1/p) times the Lp cost. The earlier diagonal witnesses supply exact sqrt(2) and infinity ratios.",
+   "domain": "book5",
+   "status": "P",
+   "hypotheses": [
+    "finite coordinate set",
+    "real exponent p >= 1",
+    "axis and Lp costs are the explicit finite-support definitions in Book5Norm.lean"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5Norm.lean",
+   "declares": [
+    "lpPowerOn_nonneg",
+    "axisCostOn_nonneg",
+    "lpPowerOn_le_axisCostOn_rpow",
+    "axisCostOn_rpow_le_card_mul_lpPowerOn",
+    "lpCostOn_le_axisCostOn",
+    "axisCostOn_le_card_rpow_mul_lpCostOn"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P8"
+   ],
+   "consumes": [],
+   "falsifier": "a finite real vector and p >= 1 violating either side of the cardinality-controlled Lp/L1 hierarchy",
+   "evidence": "lake compilation and root axiom print registration; no sorry",
+   "next": "prove the general p=infinity endpoint and characterize equality in the Holder bound iff nonzero magnitudes agree"
+  },
+  {
+   "id": "LPS-P21",
+   "statement": "Book 5 equal-magnitude phase kernel: an n-coordinate nonzero equal-magnitude vector has exact L1/Lp ratio n^(1-1/p); symbolic torsion is that ratio minus one, vanishes at p=1, equals sqrt(2)-1 for the elementary Euclidean diagonal, and is monotone in positive p. For n >= 2 the logarithmic effective support dimension is exactly 2-1/p, with values 1 at p=1 and 3/2 at p=2.",
+   "domain": "book5",
+   "status": "P",
+   "hypotheses": [
+    "finite support represented by Fin n",
+    "positive finite real p",
+    "nonzero coordinate magnitude and positive support for the ratio",
+    "support size at least two for logarithmic effective dimension"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5NormPhase.lean",
+   "declares": [
+    "axisCostOn_equalMagnitude",
+    "lpPowerOn_equalMagnitude",
+    "lpCostOn_equalMagnitude",
+    "equalMagnitude_ratio",
+    "symbolicTorsion_eq_equalMagnitude_ratio_sub_one",
+    "symbolicTorsion_one",
+    "symbolicTorsion_two_two",
+    "symbolicTorsion_mono_exponent",
+    "effectiveSupportDimension_eq",
+    "effectiveSupportDimension_one",
+    "effectiveSupportDimension_two"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P20"
+   ],
+   "consumes": [],
+   "falsifier": "a finite equal-magnitude vector violating the cardinality ratio, torsion monotonicity, or logarithmic dimension formula",
+   "evidence": "lake build ForcingAnalysis; root axiom prints; no sorry",
+   "next": "formalize the general p=infinity endpoint and the converse equality characterization for Holder sharpness"
+  },
+  {
+   "id": "LPS-P22",
+   "statement": "Book 5 finite-support Linfinity endpoint: on a named nonempty support, supremum cost is bounded by L1 axis cost, which is bounded by support cardinality times the supremum. Every nonzero equal-magnitude vector attains ratio n; infinity torsion is n-1 and tends to infinity with unbounded support; the infinity effective support dimension is two for support size at least two.",
+   "domain": "book5",
+   "status": "P",
+   "hypotheses": [
+    "named nonempty finite support",
+    "positive supremum cost for division-form ratio bounds",
+    "nonzero common magnitude for equality witness",
+    "support size at least two for logarithmic dimension"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5NormInfinity.lean",
+   "declares": [
+    "supportCostOn_nonneg",
+    "supportCostOn_le_axisCostOn",
+    "axisCostOn_le_card_mul_supportCostOn",
+    "supportCostOn_equalMagnitude",
+    "equalMagnitude_infinity_ratio",
+    "symbolicTorsionInfinity_eq_ratio_sub_one",
+    "effectiveSupportDimensionInfinity_eq_two",
+    "effectiveSupportDimensionInfinity_log_ratio",
+    "infinity_ratio_bounds",
+    "symbolicTorsionInfinity_tendsto_atTop"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P21"
+   ],
+   "consumes": [],
+   "falsifier": "a nonempty finite vector violating the L1/Linfinity cardinality bounds, or infinity torsion failing to diverge with support size",
+   "evidence": "lake build ForcingAnalysis; root axiom prints; no sorry",
+   "next": "prove the converse equality characterization: sharpness implies all nonzero support magnitudes agree"
+  },
+  {
+   "id": "LPS-P23",
+   "statement": "Book 5 Linfinity equality characterization: the sharp upper equality L1 = card(s) * Linfinity holds exactly when every coordinate on the named support has magnitude equal to the support supremum.",
+   "domain": "book5",
+   "status": "P",
+   "hypotheses": [
+    "named nonempty finite support",
+    "real-valued coordinates"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5NormInfinity.lean",
+   "declares": [
+    "infinity_sharp_iff_equal_magnitudes"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P22"
+   ],
+   "consumes": [],
+   "falsifier": "a sharp finite-support L1/Linfinity vector with a supported magnitude below the supremum, or an equal-magnitude support failing sharpness",
+   "evidence": "compiled finite-sum equality proof; root axiom print; no sorry",
+   "next": "finite Holder equality converse for 1 < p < infinity"
+  },
+  {
+   "id": "LPS-P24",
+   "statement": "Book 5 finite-p equality characterization: for every finite nonempty support and real p > 1, equality in L1 <= card(s)^(1-1/p) Lp holds if and only if every supported coordinate has the same magnitude. The proof normalizes the powered bound and applies strict Jensen equality for x mapped to x^p on the nonnegative reals.",
+   "domain": "book5",
+   "status": "P",
+   "hypotheses": [
+    "finite nonempty support",
+    "real exponent p > 1",
+    "real-valued coordinates"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5NormEquality.lean",
+   "declares": [
+    "powered_sharp_implies_equal_magnitudes",
+    "equal_magnitudes_imply_powered_sharp",
+    "powered_sharp_iff_equal_magnitudes",
+    "sharp_norm_bound_implies_equal_magnitudes",
+    "sharp_norm_bound_iff_equal_magnitudes"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P20",
+    "LPS-P23"
+   ],
+   "consumes": [],
+   "falsifier": "a finite p>1 vector attaining the cardinality norm bound with unequal supported magnitudes, or an equal-magnitude support failing to attain it",
+   "evidence": "strict Jensen equality proof compiled in mathlib; root axiom prints; no sorry",
+   "next": null
+  },
+  {
+   "id": "LPS-P25",
+   "statement": "Book 5 finite-path representability and symbolic decoherence: symbolic candidates are an explicit subset of geometric candidates, so their minimum cost is no lower; the excess is nonnegative, positive exactly under a strict minimum gap, and zero exactly when a symbolic candidate attains the geometric minimum. For the positive integer diagonal, the gap is n(2-sqrt(2))>0.",
+   "domain": "book5",
+   "status": "P",
+   "hypotheses": [
+    "finite nonempty geometric and symbolic candidate sets",
+    "symbolic candidates included in geometric candidates",
+    "shared real-valued path cost",
+    "positive integer n for strict diagonal gap"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5Decoherence.lean",
+   "declares": [
+    "shortestGeometric_le_shortestSymbolic",
+    "symbolicDecoherence_nonneg",
+    "symbolicDecoherence_eq_zero_iff",
+    "symbolicDecoherence_pos_iff",
+    "symbolicDecoherence_eq_zero_iff_has_symbolic_geodesic",
+    "diagonalDecoherence_formula",
+    "diagonalDecoherence_pos",
+    "diagonal_symbolic_longer"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P24"
+   ],
+   "consumes": [],
+   "falsifier": "a symbolic subset with a lower minimum than its geometric superset, or a positive diagonal with nonpositive representability gap",
+   "evidence": "finite infimum and exact sqrt(2) arithmetic proofs compiled; root axiom prints; no sorry",
+   "next": "extend from finite candidate families to compact path spaces only if a later book theorem requires it"
+  },
+  {
+   "id": "LPS-P26",
+   "statement": "Book 5 product spectrum: norm-fracture and recursive-memory resonance are independent transition diagnostics. The norm channel has elementary ratios 1, sqrt(2), and support size; support collapse loses coordinate distribution; the balanced memory channel has unique positive resonance phi and Fibonacci ratios converge to it. Phi and sqrt(2) coexist as distinct coordinates and mechanisms.",
+   "domain": "book5",
+   "status": "P",
+   "hypotheses": [
+    "finite-support norm kernel from LPS-P20 through LPS-P24",
+    "balanced two-step memory characteristic equation",
+    "transition diagnostics are local classifications, not agent identities"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5ProductSpectrum.lean",
+   "declares": [
+    "normDiagnosticRatio_axis",
+    "normDiagnosticRatio_euclidean",
+    "normDiagnosticRatio_support",
+    "balancedSpectrum_memory",
+    "balancedSpectrum_norm",
+    "balanced_memory_resonance_unique",
+    "changing_norm_preserves_balanced_memory",
+    "norm_and_memory_coordinates_independent",
+    "support_collapse_forgets_distribution",
+    "elementary_spectrum_values",
+    "euclidean_balanced_product_spectrum",
+    "balanced_memory_converges_to_spectrum_memory",
+    "fundamental_norm_fracture_kernel"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P24",
+    "LPS-P25",
+    "LPS-P9"
+   ],
+   "consumes": [],
+   "falsifier": "identification of the norm and memory coordinates, a nonunique positive balanced-memory root, or support cost retaining all coordinate distribution",
+   "evidence": "product-coordinate witnesses, convergence theorem, and aggregate kernel compile with no sorry",
+   "next": "formalize the direct-sum spectral-decomposition theorem under its stated invariant-component hypothesis"
+  },
+  {
+   "id": "LPS-P27",
+   "statement": "Book 5 observer spectral decomposition: given an explicit observer-resolved linear equivalence into axis, Euclidean, support, and memory channels, together with a diagonal evolution law, every transition reconstructs as the sum of its four components, its coordinate representation is unique, and each channel component is invariant under evolution.",
+   "domain": "book5",
+   "status": "P",
+   "hypotheses": [
+    "real module transition space",
+    "observer supplies a linear equivalence to four channel coordinates",
+    "evolution is diagonal in those coordinates"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5SpectralDecomposition.lean",
+   "declares": [
+    "ObserverSpectralDecomposition.coordinates_component_same",
+    "ObserverSpectralDecomposition.coordinates_component_other",
+    "ObserverSpectralDecomposition.sum_components",
+    "ObserverSpectralDecomposition.coordinate_representation_unique",
+    "ObserverSpectralDecomposition.evolution_component",
+    "ObserverSpectralDecomposition.component_is_invariant",
+    "ObserverSpectralDecomposition.spectral_decomposition_kernel"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P26"
+   ],
+   "consumes": [],
+   "falsifier": "a supplied linear equivalence whose component sum fails to reconstruct, admits two coordinate functions, or violates its declared diagonal evolution law",
+   "evidence": "linear-equivalence reconstruction and injectivity proofs compile with no sorry",
+   "next": "return to the early Book 5 coherence/metabolic axioms and separate definitional laws from dynamical assumptions"
+  },
+  {
+   "id": "LPS-P28",
+   "statement": "Book 5 coherence and life interfaces: drift/reflection stabilization cancels only its contribution to an energy budget; conservation additionally requires external closure. Positive free-energy persistence, life classification, and metabolic regulation are independent predicates connected only by named LifeLaw and MetabolicPersistenceLaw bridges.",
+   "domain": "book5",
+   "status": "P",
+   "hypotheses": [
+    "explicit energy budget identity",
+    "external closure for conservation",
+    "LifeLaw for the life criterion",
+    "MetabolicPersistenceLaw for metabolic necessity"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5Life.lean",
+   "declares": [
+    "stabilized_energy_rate_eq_external",
+    "closed_stabilized_energy_rate_zero",
+    "stabilized_conservation_iff_closed",
+    "balance_alone_does_not_force_conservation",
+    "symbolic_life_criterion",
+    "metabolic_necessity",
+    "positive_persistence_has_metabolism",
+    "agreement_on_positive_persistence_does_not_supply_life_law"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P27",
+    "LPS-P9"
+   ],
+   "consumes": [],
+   "falsifier": "a stabilized budget whose energy rate differs from its external rate, or derivation of life/metabolism without the named bridge laws",
+   "evidence": "compiled budget theorems plus a concrete nonconservation countermodel; root axiom prints; no sorry",
+   "next": "formalize adaptation separately as a trajectory-response law without deriving it from life classification"
+  },
+  {
+   "id": "LPS-P29",
+   "statement": "Book 3 static/finite kernel (Sonnet worker draft, lead-verified): membrane skeleton with permeability in [0,1] and drift bounds; coupling-induced drift deviation bounded by eta times the correction bound; symbiosis conditions as named hypotheses with the compensation corollary (perturbation nonzero); the symbiotic threshold lambda > max(...) clears delta^2 < 4 eta I lambda on both sides; telescoped cyclic reflexive-encoding distortion dist(p0,pn) <= sum eps_i by induction on a pseudometric space; bounded round trips assemble into conceptual bridges; finite symbiotic curvature is positive, exceeds one under stability enhancement, and is monotone in mutual information, with the weighted-average-le-max core of subadditivity; resilience bound C/kappa antitone; discrete knowledge-structure telescoping and the positive-window sustained-growth theorem; finite metabolic-rate nonnegativity; Lipschitz homeostatic response two-sided deviation bound; PersistentLife bundle with projection theorems.",
+   "domain": "book3",
+   "status": "P",
+   "hypotheses": [
+    "manifold/PDE/Helmholtz content of Book 3 is NOT formalized; static and finite-discrete kernels only",
+    "modeling laws (rate equations, stability conditions, Lipschitz response) are structure fields"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3.lean",
+   "declares": [
+    "membrane_stable_permeability_lt_one",
+    "coupled_drift_deviation_bound",
+    "symbiosis_drift_perturbation_ne_zero",
+    "symbiotic_threshold_clears_i",
+    "cyclic_distortion_bound",
+    "reflexive_pair_generates_bridge",
+    "symbioticCurvature_pos",
+    "symbioticCurvature_gt_one",
+    "symbioticCurvature_mono_info",
+    "weighted_avg_le_max",
+    "resilience_bound_antitone",
+    "knowledge_structure_telescopes",
+    "sustained_growth_window",
+    "metabolicRate_nonneg",
+    "metabolic_response_deviation_bound",
+    "persistentLife_kappa_pos"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "a cycle of encodings whose accumulated distortion exceeds the sum of bounds, or a stability-enhanced system with curvature <= 1, or a positive-increment window without growth",
+   "evidence": "Sonnet worker (scoped atlas slice, zero corpus reads) drafted; lead rebuilt from clean tree, reviewed, wired; lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": "the 14 open Book 3 anchors (manifold/PDE/Helmholtz, existence narratives, semantic correspondence) stay on the open claim surface"
+  },
+  {
+   "id": "LPS-P30",
+   "statement": "Book 8 static/finite kernel (Sonnet worker draft, lead-verified): materiality as universal quantification over admissible observers, with a Fin 2 countermodel showing visibility to one observer does not entail cross-observer materiality; meaning preserved at frame-transform fixed points with the Bool-swap no-fixed-point witness; a genuine pointwise inverse of drift cannot be stasis on a domain with two points; the no-free-projection threshold algebra (loss bounded below by (1/2)(1-stability)F, positive loss under imperfect stability, perfect translation forces maximal stability, embedding distortion nonnegative); frame residual vanishes iff the transported projections agree; symbolic Reidemeister Types I/II/III as collapse-within-threshold, four-fold drift cancellation from exact one-sided inverses, and EXACT composition associativity (stronger than the text's observer-bounded qualifier, noted as an honesty gap); metabolic sufficiency forces termination within a computable step count; cycle-time viability ratio below one; free-will expected-loss monotonicity; debugging net-gain inequality; reflective selection as argmax existence over nonempty finite hypothesis sets.",
+   "domain": "book8",
+   "status": "P",
+   "hypotheses": [
+    "manifold/Hilbert-space/ODE content of Book 8 is NOT formalized; static and finite kernels only",
+    "modeling laws (loss bounds, viability timing, expected-loss formula) are structure fields"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book8.lean",
+   "declares": [
+    "bool_swap_no_fixed_points",
+    "collapse_within_threshold",
+    "cycleViability_ratio_lt_one",
+    "debuggingFavored_net_gain",
+    "drift_cancellation",
+    "frameResidual_eq_zero_iff",
+    "freeWillLoss_le",
+    "freeWillLoss_nonneg",
+    "inverse_of_drift_not_stasis",
+    "loss_positive_of_imperfect_stability",
+    "material_specialize",
+    "meaning_preserved_at_fixed_point",
+    "metabolicSufficiency_decrease_accum",
+    "metabolicSufficiency_terminates",
+    "not_material_visible_example",
+    "perfect_translation_forces_maximal_stability",
+    "reflectiveSelection_exists",
+    "reflective_permutation_assoc",
+    "universal_embedding_epsilon_nonneg",
+    "visible_to_observer_zero"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "an invariant visible to one observer that is thereby material, or a zero-distortion embedding with stability below one, or a metabolic-sufficient sequence that survives past F(0)/deltaF steps",
+   "evidence": "Sonnet worker (scoped atlas slice, zero corpus reads) drafted; lead rebuilt, reviewed, wired; lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": "the 31 open Book 8 anchors (SR-triplet ODEs, RG fixed point, entanglement cluster, rank/dimension criteria, narrative loops) stay on the open claim surface"
+  },
+  {
+   "id": "LPS-P31",
+   "statement": "Book 6 static/discrete kernel (Sonnet worker draft, lead-verified; worker omitted the bindings block - lead derived it from the coverage rows): signed mutation-threshold equivalence |dF|>tau iff dF>tau or dF<-tau; bifurcation rank-change trichotomy (creation/annihilation/stationary) and threshold dichotomy, each with exhaustiveness and pairwise exclusivity as theorems; structural divergence strict arithmetic; reflective inhibition in the limit (within every positive tolerance of the identity forces exact identity, genuine MetricSpace theorem); entropy non-increase extends to all finite reflection iterates by induction; mutation-memory accumulator monotone and nonnegative; entropic dissolution as unboundedness of fixed-positive-increment sequences (discrete dual of Book 8's termination bound); regulatory-cycle free-energy telescoping; configuration dimension floor(lambda)+d0 monotone; identity-carrier locality forces Psi(x,y) <= Psi(x,x); temperature positivity iff dS/dE positivity; free energy strictly antitone in entropy at positive temperature; transformation-operator composition and bracketing invariance; branching-offset positivity; time irreversibility as non-injective maps admit no left inverse; mutation-bifurcation duality as checked transitivity of bridge equivalences (the manifold-level equivalences stay hypotheses); regulatory-basin argmax existence; confidence field exp(-beta H) strictly positive.",
+   "domain": "book6",
+   "status": "P",
+   "hypotheses": [
+    "manifold/curvature/PDE/Hilbert-space/asymptotic content of Book 6 is NOT formalized; static and discrete kernels only",
+    "modeling laws (threshold laws, per-step entropy/energy bounds, bridge equivalences) are structure fields or explicit hypotheses"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6.lean",
+   "declares": [
+    "bifurcation_classification_exclusive",
+    "bifurcation_classification_exhaustive",
+    "bifurcation_offset_pos",
+    "bifurcation_threshold_dichotomy",
+    "bifurcation_threshold_exclusive",
+    "confidence_sigma_pos",
+    "configDim_ge",
+    "configDim_mono",
+    "divergenceLaw_energy_rate_pos",
+    "entropyGrowth_accum",
+    "entropyGrowth_unbounded",
+    "entropyRegulation_iterate_le",
+    "freeEnergy_antitone_in_entropy",
+    "identityCarrier_le_self",
+    "mutationBifurcationBridge_iff",
+    "mutationMemory_monotone",
+    "mutationMemory_nonneg",
+    "mutationTriggered_iff_signed",
+    "no_retraction_of_not_injective",
+    "reflective_inhibition_limit",
+    "regulatoryBasin_power_argmax_exists",
+    "regulatoryCycle_energy_bound",
+    "temperature_pos_iff",
+    "transformationFamily_bracketing_agrees",
+    "transformationFamily_triple"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "a rank change that is neither positive, negative, nor zero; a map within every tolerance of the identity yet unequal to it; a fixed-increment sequence bounded above; a non-injective map with a retraction",
+   "evidence": "Sonnet worker (scoped atlas slice, zero corpus reads) drafted; lead rebuilt, reviewed, derived bindings, wired; lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": "the 54 open Book 6 anchors (differential geometry, Hilbert-space state functions, PDEs, asymptotic limits, taxonomy) stay on the open claim surface"
+  },
+  {
+   "id": "LPS-P32",
+   "statement": "Book 7 scalar/sequence kernel (Sonnet worker draft, lead-verified): power/uncertainty involution recovery with the Bool-swap odd/even witness; the controlled-refinement deadband cluster as genuine sequence theorems over the exact per-step law e_(n+1)=e_n+w_(n+1)-k*dz_tau(e_n) - contraction toward the band, invariance of the ultimate-bound region tau+W/k once entered, strict residual decrease (hence confidence ascent) outside it, geometric gap decay in the undisturbed case, and BOTH halves of the self-correction criterion (success under k>=kmin>0 and W<=Wmax; two explicit unbounded countermodel families as gain vanishes or disturbance diverges); Caristi descent as pay-for-displacement telescoping (total displacement bounded by the free-energy drop - the third member of the discrete-energy trio with Book 8's termination bound and Book 6's dissolution); orbit-limit idempotence derived from structural hypotheses; product-space contraction with Lipschitz constant max(kA,kB) and one-step contraction toward a posited fixed point (stopping short of Banach's theorem); exponent uniqueness from strict antitonicity; a finite R^2 instance of the l1/l2 comparison and strict midpoint convexity of x^2 as the honest p=2 cross-section.",
+   "domain": "book7",
+   "status": "P",
+   "hypotheses": [
+    "Banach/Hilbert space theory, measure theory, infinite-limit claims, and the Gleason/Born cluster are NOT formalized",
+    "recurrence laws, descent laws, and fixed-point existence are structure fields or explicit hypotheses",
+    "theorem:bk7_pisu skipped: depends on a channel-floors assumption referenced but absent from the sliced packet"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7.lean",
+   "declares": [
+    "caristiDescent_sum_le_energy_drop",
+    "caristiDescent_total_displacement_bound",
+    "contraction_step",
+    "deadband_confidence_ascent",
+    "deadband_contraction",
+    "deadband_geometric_decay",
+    "deadband_region_invariant",
+    "deadband_strict_decrease",
+    "dualityRecovers",
+    "dz_contraction_bound",
+    "dz_zero_of_le",
+    "exponent_uniqueness",
+    "geometric_gap_decay",
+    "involutive_pair_witness",
+    "l1_l2_comparison",
+    "orbitLimit_idempotent",
+    "product_contraction",
+    "selfCorrection_fails_as_disturbance_grows",
+    "selfCorrection_fails_as_gain_vanishes",
+    "selfCorrection_succeeds",
+    "square_strictly_convex_midpoint"
+   ],
+   "implementation_source": "verification/kernel/interface_model.py",
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "an in-band error that leaves the ultimate-bound region under the stated law; a self-correcting controller in the vanishing-gain family; a descent orbit whose total displacement exceeds its free-energy budget",
+   "evidence": "Sonnet worker (scoped atlas slice, zero corpus reads) drafted; lead rebuilt, reviewed, wired; lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry; first book with numeric (interface_model) AND Lean coverage on the same anchor family",
+   "next": "the 49 open Book 7 anchors (Banach fixed point, W2 convergence, Gleason/Born, narrative cluster) stay on the open claim surface"
+  },
+  {
+   "id": "LPS-P33",
+   "statement": "Book 4 first half (modal transference, chromatic wheel, perception covenants) static/finite kernel (API Sonnet fleet worker draft, lead-verified): 30 theorems over 24 anchors; 57 anchors left honestly open (manifold/Hilbert/PDE/categorical/asymptotic/narrative families). Full per-anchor honesty notes live in verification/book4a_lean_map.json and the module header of Book4A.lean.",
+   "domain": "book4a",
+   "status": "P",
+   "hypotheses": [
+    "continuum/categorical content is NOT formalized; static and finite-discrete kernels only",
+    "modeling laws are structure fields or explicit hypotheses"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4A.lean",
+   "declares": [
+    "adjacent_rotate",
+    "autoEncoderPattern_pos",
+    "autoEncoder_finite_sum_le",
+    "boundary_forms_dichotomy",
+    "complexSymbolicDistance_im",
+    "complexSymbolicDistance_re",
+    "complexSymbolicDistance_re_le_abs",
+    "contractionRefinement_iterate",
+    "goldenRatio_sq",
+    "goldenSpiral_recurrence",
+    "imbalanced_drift_exceeds_reflect",
+    "kappa_nonneg",
+    "kappa_observer_dependent",
+    "kappa_reflexive_vanishing",
+    "kappa_scale",
+    "operator_noncommutativity_witness",
+    "opposite_add",
+    "opposite_involutive",
+    "quadrant_exhaustive",
+    "quadrants_disjoint",
+    "recursive_encoding_partial_sum_le_total",
+    "selfReferenceIterate_succ",
+    "selfReference_fixed_point",
+    "spiralMagnitude_recurrence",
+    "spiralPhase_recurrence",
+    "stability_lower_bound",
+    "swapPerm_breaks_adjacency",
+    "timescaleSeparation_micro_lt_observation",
+    "transitionRate_pos",
+    "uncanny_recognition_countermodel"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "any of the declared kernels failing on its stated hypotheses; see per-anchor notes",
+   "evidence": "API Sonnet worker (scoped atlas slice, zero corpus reads) drafted; lead rebuilt, validated proposal mechanically, wired; lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": "57 open anchors stay on the open claim surface"
+  },
+  {
+   "id": "LPS-P34",
+   "statement": "Book 4 second half (Ising covenant, imaginary traversal, integrative expansion, SRMF) static/finite kernel (API Sonnet fleet worker draft, lead-verified): 25 theorems over 24 anchors; 54 anchors left honestly open (manifold/Hilbert/PDE/categorical/asymptotic/narrative families). Full per-anchor honesty notes live in verification/book4b_lean_map.json and the module header of Book4B.lean.",
+   "domain": "book4b",
+   "status": "P",
+   "hypotheses": [
+    "continuum/categorical content is NOT formalized; static and finite-discrete kernels only",
+    "modeling laws are structure fields or explicit hypotheses"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4B.lean",
+   "declares": [
+    "autonomy_implies_freedom",
+    "boundedErrorTerm_mono_linear",
+    "boundedErrorTerm_mono_quadratic",
+    "cascadeProb_lt_one",
+    "cascadeProb_nonneg",
+    "cascadeProb_strictMono",
+    "constraintDomain_strict_growth",
+    "coreCoherence_exceeds_crit",
+    "freedomLife_increase_accum",
+    "freedomLife_strictMono",
+    "freedomLife_succ_lt",
+    "freedomMeasure_le_one",
+    "freedomMeasure_nonneg",
+    "fuzzyGradient_bound_antitone",
+    "gradientStability_same_resolution",
+    "id_has_no_escape",
+    "quotientFloor_ge_eps_sq",
+    "recovery_threshold_exceeds_crit",
+    "repairCapacityBound_lt_one",
+    "repairCapacityBound_nonneg",
+    "repairCapacityBound_strictMono",
+    "repairCapacity_lt_one",
+    "repairSufficiency_decrease_accum",
+    "repairSufficiency_terminates",
+    "symbolicFreedom_of_flowFreedom"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "any of the declared kernels failing on its stated hypotheses; see per-anchor notes",
+   "evidence": "API Sonnet worker (scoped atlas slice, zero corpus reads) drafted; lead rebuilt, validated proposal mechanically, wired; lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": "54 open anchors stay on the open claim surface"
+  },
+  {
+   "id": "LPS-P35",
+   "statement": "Book 9 (accountability, recursive freedom, bidirectional SRMF) static/finite kernel (API Sonnet fleet worker draft, lead-verified): 19 theorems over 17 anchors; 49 anchors left honestly open (manifold/Hilbert/PDE/categorical/asymptotic/narrative families). Full per-anchor honesty notes live in verification/book9_lean_map.json and the module header of Book9.lean.",
+   "domain": "book9",
+   "status": "P",
+   "hypotheses": [
+    "continuum/categorical content is NOT formalized; static and finite-discrete kernels only",
+    "modeling laws are structure fields or explicit hypotheses"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book9.lean",
+   "declares": [
+    "accountability_gap_lt_epsCrit",
+    "accountability_gap_lt_epsMask",
+    "bidirectionalSRMF_bwd_injective",
+    "bidirectionalSRMF_fwd_bwd_fwd",
+    "bidirectionalSRMF_fwd_injective",
+    "covenantDensity_regime_exclusive",
+    "covenantDensity_regime_exhaustive",
+    "emergentAutonomy_min_exists",
+    "finalCollapseInversion",
+    "freedomEntropyLaw_strict_max",
+    "freedomGrowing_not_global_min",
+    "liberationDescent_Lambda_antitone",
+    "liberationDescent_telescoped",
+    "masking_not_accountable",
+    "recursiveUpdate_eq_orbit",
+    "reinterpretation_dichotomy_exclusive",
+    "reinterpretation_dichotomy_exhaustive",
+    "symbolicFramework_iterate",
+    "thermodynamicStress_nonneg"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "any of the declared kernels failing on its stated hypotheses; see per-anchor notes",
+   "evidence": "API Sonnet worker (scoped atlas slice, zero corpus reads) drafted; lead rebuilt, validated proposal mechanically, wired; lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": "49 open anchors stay on the open claim surface"
+  },
+  {
+   "id": "LPS-P36",
+   "statement": "Appendix Dual Horizon (frame space, bounded discernibility, orthogonal additivity) static/finite kernel (API Sonnet fleet worker draft, lead-verified): 29 theorems over 31 anchors; 26 anchors left honestly open (manifold/Hilbert/PDE/categorical/asymptotic/narrative families). Full per-anchor honesty notes live in verification/appendix_dual_horizon_lean_map.json and the module header of AppendixDH.lean.",
+   "domain": "appdh",
+   "status": "P",
+   "hypotheses": [
+    "continuum/categorical content is NOT formalized; static and finite-discrete kernels only",
+    "modeling laws are structure fields or explicit hypotheses"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/AppendixDH.lean",
+   "declares": [
+    "Gop_phi_eigen",
+    "Gop_step",
+    "V_eq_zero_iff",
+    "V_nonneg",
+    "dualHorizon_necessity",
+    "dualHorizon_necessity_pos",
+    "dualHorizon_sufficiency",
+    "dualHorizon_tight_biconditional",
+    "dual_horizon_signature",
+    "fixed_point_iff_phi",
+    "geodesic_convergence",
+    "kappa_min_at_phi",
+    "memoryAct_hist_changes",
+    "memoryAct_irreversible",
+    "memoryAct_no_return",
+    "memoryAct_order_iterate",
+    "mu_biUnion_eq_sum",
+    "mu_conservation",
+    "mu_le_one",
+    "orthogonal_additivity",
+    "orthogonal_token_separation",
+    "phi_fixed_point",
+    "phi_gt_one",
+    "phi_pos",
+    "phi_sq",
+    "stability_phi_flow",
+    "sustainable_ge_phi",
+    "sustainable_phi",
+    "tokensOfSet_eq_biUnion"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "any of the declared kernels failing on its stated hypotheses; see per-anchor notes",
+   "evidence": "API Sonnet worker (scoped atlas slice, zero corpus reads) drafted; lead rebuilt, validated proposal mechanically, wired; lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": "26 open anchors stay on the open claim surface"
+  },
+  {
+   "id": "LPS-P37",
+   "statement": "Scholium Symbolicum first half (cross-book meta-commentary) static/finite kernel (API Sonnet fleet worker draft, lead-verified): 17 theorems over 22 anchors; 45 anchors left honestly open (manifold/Hilbert/PDE/categorical/asymptotic/narrative families). Full per-anchor honesty notes live in verification/scholium_a_lean_map.json and the module header of ScholiumA.lean.",
+   "domain": "scholiuma",
+   "status": "P",
+   "hypotheses": [
+    "continuum/categorical content is NOT formalized; static and finite-discrete kernels only",
+    "modeling laws are structure fields or explicit hypotheses"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumA.lean",
+   "declares": [
+    "chainedApprox_telescope",
+    "contradictionIntensity_eq",
+    "contradictionIntensity_zero_of_lam_one",
+    "fixedPointInheritance",
+    "ifValue_le_eps",
+    "interpretable_of_factor_and_traceable",
+    "kernelBounded_le",
+    "linear_double",
+    "mirror_involution_ne_id_exists",
+    "nonseparable_of_mixedDiff_ne_zero",
+    "nu_le_ifValue",
+    "projection_idempotent_ne_id_exists",
+    "quadratic_not_linear",
+    "separable_mixedDiff_zero",
+    "stepZMod4_four_returns",
+    "stepZMod4_two_no_return",
+    "twoStep_bound"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "any of the declared kernels failing on its stated hypotheses; see per-anchor notes",
+   "evidence": "API Sonnet worker (scoped atlas slice, zero corpus reads) drafted; lead rebuilt, validated proposal mechanically, wired; lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": "45 open anchors stay on the open claim surface"
+  },
+  {
+   "id": "LPS-P38",
+   "statement": "Scholium second half static kernel: including the minimal linear PS-model - the source's own 2x2-matrix witness formalized on RxR with all three nonvacuity claims proved by concrete computation (collapse is not identity, drift and stabilization do not commute, the connection has nonzero curvature). 57 anchors honestly open.",
+   "domain": "scholium",
+   "status": "P",
+   "hypotheses": [
+    "modeling laws are structure fields or explicit hypotheses; continuum/categorical content is NOT formalized"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumB.lean",
+   "declares": [
+    "gibbsProb_antitone",
+    "gibbsProb_pos",
+    "gibbsProb_sum_eq_one",
+    "gibbsWeight_pos",
+    "gibbsZ_pos",
+    "idempotent_fixLocus_nonempty",
+    "idempotent_fixes_image",
+    "minimalPS_collapse_ne_id",
+    "minimalPS_connection_curvature_nonzero",
+    "minimalPS_drift_reflection_noncommute",
+    "no_irony_of_real_only",
+    "no_irony_of_shallow_or_flat",
+    "reflexiveIterate_add",
+    "reflexiveIterate_eq_iterate"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "any declared kernel failing on its stated hypotheses; see per-anchor notes",
+   "evidence": "API Sonnet worker (scoped packet, zero corpus reads) drafted; lead rebuilt, validated, wired; lake build ForcingAnalysis; regenerated lean_receipt.json; no sorry",
+   "next": null
+  },
+  {
+   "id": "LPS-P39",
+   "statement": "Book 1 + small appendices static kernel: bounded-observer and validation-procedure structures with consequence theorems; sInf monotonicity kernel of the parameter-lift theorem. 8 anchors honestly open.",
+   "domain": "smallpack",
+   "status": "P",
+   "hypotheses": [
+    "modeling laws are structure fields or explicit hypotheses; continuum/categorical content is NOT formalized"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/SmallPack.lean",
+   "declares": [
+    "chartBound_mono",
+    "chartBound_nonneg",
+    "inf_mono_of_subset",
+    "inf_strict_decrease",
+    "resolutionLevel_mono",
+    "symbolicEnergyContraction_accum",
+    "symbolicEnergyContraction_sum_bounded",
+    "symbolicEnergyContraction_term_bounded",
+    "symbolicEnergy_nonneg"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "any declared kernel failing on its stated hypotheses; see per-anchor notes",
+   "evidence": "API Sonnet worker (scoped packet, zero corpus reads) drafted; lead rebuilt, validated, wired; lake build ForcingAnalysis; regenerated lean_receipt.json; no sorry",
+   "next": null
+  },
+  {
+   "id": "LPS-P40",
+   "statement": "Asymptotics pass over Books 6/7 limit anchors (the family earlier workers skipped under a no-limits discipline): genuine Filter.Tendsto theorems - contraction iterates converge to the fixed point with geometric rate, geometric and quadratic error bounds tend to zero, mutation equilibrium is eventually positive, mutability equilibrium transfers limits, antitone bounded processes converge to their infimum, the asymptotic exponent field is eventually near one. Rate/contraction laws are structure fields; the Tendsto conclusion is the theorem.",
+   "domain": "asymptotics",
+   "status": "P",
+   "hypotheses": [
+    "modeling laws are structure fields or explicit hypotheses; continuum/categorical content is NOT formalized"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Asymptotics.lean",
+   "declares": [
+    "eta_tendsto_of_mu_tendsto",
+    "eventually_mem_ball_of_tendsto",
+    "eventually_near_one",
+    "eventually_pos",
+    "iterate_dist_le",
+    "tendsto_fixedPt",
+    "tendsto_iInf",
+    "tendsto_zero",
+    "tendsto_zero",
+    "windowAverage_mem_unitInterval"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "any declared kernel failing on its stated hypotheses; see per-anchor notes",
+   "evidence": "API Sonnet worker (scoped packet, zero corpus reads) drafted; lead rebuilt, validated, wired; lake build ForcingAnalysis; regenerated lean_receipt.json; no sorry",
+   "next": null
+  },
+  {
+   "id": "LPS-P41",
+   "statement": "Force-level contraction tiers (LPS-O4 progress): the momentum residual m*gamma(u,c)*u - m*u tends to zero at fixed u; gamma is monotone in |u| on its regime, giving a UNIFORM residual bound |m|*vmax*(gamma(vmax,c)-1) on the declared bounded-velocity regime |u|<=vmax<c, and that bound tends to zero; taking the relativistic gamma-cubed longitudinal force law as a named structure field (NOT derived), the coordinate acceleration equals F/m exactly at u=0 and tends to F/m as c->infinity at fixed u.",
+   "domain": "physics",
+   "status": "P",
+   "hypotheses": [
+    "0<c, u^2<c^2 regimes explicit; the gamma-cubed law is CONSUMED as a structure field - its ODE derivation from dp/dt=F remains the open step"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Contraction2.lean",
+   "declares": [
+    "a_rel_tendsto",
+    "a_rel_zero",
+    "gamma_ge_one",
+    "gamma_mono",
+    "gamma_sub_one_tendsto_zero",
+    "momentum_residual_tendsto_zero",
+    "momentum_residual_uniform_bound"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P19"
+   ],
+   "consumes": [],
+   "falsifier": "a bounded-velocity regime where the uniform residual bound fails, or a_rel(0,c) differing from F/m",
+   "evidence": "API Sonnet worker (scoped packet, zero corpus reads) drafted; lead rebuilt, validated, wired; lake build ForcingAnalysis; regenerated lean_receipt.json; no sorry",
+   "next": null
+  },
+  {
+   "id": "LPS-P42",
+   "statement": "The gamma-cubed longitudinal force law, DERIVED (lead session, manual): d/du [gamma(u,c)*u] = gamma(u,c)^3 on the regime u^2 < c^2 by the chain rule through the raw inverse-square-root form of gamma (no rapidity normalization - the un-normalized representation is what makes the collapse gamma + gamma^3 u^2/c^2 = gamma^3 three lines of algebra); along any differentiable in-regime trajectory the relativistic momentum has derivative m*gamma^3*u-dot; and dp/dt = F forces a = F/(m*gamma^3) exactly - the law Contraction2 consumed as a structure field is now a theorem.",
+   "domain": "physics",
+   "status": "P",
+   "hypotheses": [
+    "0 < c, u(t)^2 < c^2 at the point of differentiation; 1+1 dimensions, coordinate quantities"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Contraction3.lean",
+   "declares": [
+    "hasDerivAt_gammaMul",
+    "momentum_hasDerivAt",
+    "force_law_acceleration"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P19",
+    "LPS-P41"
+   ],
+   "consumes": [],
+   "falsifier": "a differentiable in-regime trajectory obeying dp/dt = F whose acceleration differs from F/(m*gamma^3)",
+   "evidence": "lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": null
+  },
+  {
+   "id": "LPS-P43",
+   "statement": "The FabricPC contract (LPS-O6 closure condition 1), proved on the finite Gibbs kernel: the predictive-coding relaxation step (1-eps)*rho + eps*gibbs preserves density-hood; relative entropy against the target contracts by the factor (1-eps) via a two-term log-sum inequality proved from log x <= x-1 alone; and therefore one relaxation step toward the Gibbs state never increases the symbolic free energy, for every rate in [0,1], every density, every beta > 0. Together with the LPS-O7 H-theorem the Lean layer certifies free-energy descent for both canonical predictive-coding update families: stochastic (detailed-balance) and deterministic (mixing).",
+   "domain": "fabricpc",
+   "status": "P",
+   "hypotheses": [
+    "finite alphabet; the contract is the Lean-side specification - that the external FabricPC codebase satisfies it is exactly what conditions 2-4 of LPS-O6 will test"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/FabricPC.lean",
+   "declares": [
+    "relaxStep_isDensity",
+    "two_term_logsum",
+    "relax_kl_le",
+    "relax_freeEnergy_le"
+   ],
+   "implementation_source": "selfcompile/fabricpc.py",
+   "depends_on": [
+    "LPS-P18",
+    "LPS-O7"
+   ],
+   "consumes": [],
+   "falsifier": "a density and rate in [0,1] whose relaxation toward Gibbs strictly increases free energy",
+   "evidence": "lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": "LPS-O6 conditions 2-4: local reproduction, measured witness comparing FabricPC trajectories against this contract, Matt-op upgrade to dual-source"
+  },
+  {
+   "id": "LPS-P44",
+   "statement": "The operator-poetry carrier (LPS-O5, poetry included; lead session, manual): the four poems (operatio, integratio, temperatio, executio) as carrier structure - concept vocabulary and implication edges transcribed verbatim from the Come lowering, composition as fuel-bounded reachability, orientation never quotiented (forward Reaches, transpose, and common-source abduction kept as three distinct relations - the \"spinor proofing\" / zero-parameter fuzzy calculus design). Carrier theorems by kernel evaluation: the cross-seed bridge emergence-to-wave exists in operatio union executio and in neither alone (the composition the live ONA run derived only in the combined batch); the positive fragment never reaches any explicitly negated conclusion (negative space respected); drift-to-freedom is not a forward path but IS a common-source abduction through the empty universe - the hypothesis typed exactly as the substrate proposed it; converse traversal differs from forward; NAL deduction/abduction truth-function arithmetic carried as bare reals; and the one genuine cross-link: temperatio rho_beta IS Book2.gibbs, with its beta-to-zero uniform boundary machine-checked.",
+   "domain": "poetry",
+   "status": "P",
+   "hypotheses": [
+    "carrier structure only - the poems semantic content is never asserted; the external witness is the Come/ONA enactment (dark local traces)",
+    "definitional bindings (S := R(drift) etc.) are not edges, matching the lowering; Reaches is fuel-8 reachability, stated in the definition",
+    "the beta-to-infinity freezing line (delta_argmin) is a concentration limit and remains open"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Poetry.lean",
+   "declares": [
+    "operatio_opening",
+    "bridge_needs_both",
+    "quartet_arc",
+    "tempered_freedom",
+    "negations_respected",
+    "no_return",
+    "drift_freedom_not_forward",
+    "drift_freedom_commonSource",
+    "converse_resonance_operator",
+    "deduction_conf",
+    "abduction_conf",
+    "gibbs_zero_uniform"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P18",
+    "LPS-O5"
+   ],
+   "consumes": [],
+   "falsifier": "a seed-alone derivation of the cross-seed bridge, or a positive-fragment path to a negated conclusion, or the poem gibbs differing from Book2.gibbs at beta = 0",
+   "evidence": "lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry; built clean first attempt",
+   "next": null
+  },
+  {
+   "id": "LPS-P45",
+   "statement": "Wicked-geometry finite kernel (lead session, manual; source read verbatim read-only from C:/Users/paulc/projects/wicked-geometry): the manifold-track entry point that formalizes the FRACTURE as first-class data. Resolution truncation as a named map with its what-it-forgets theorem (fracture pairs force distortion >= the flattened inner separation on the identity transition); the atlas-fracture inf-clause finitized (inner separation exceeding outer diameter by delta forces distortion >= delta on EVERY transition map); the curvature blow-up K/eps^2 with explicit epsilon-management; the Stackelberg parentage paradox as a three-vertex carrier (follower in the leader ancestry closure; deleting the leader own generative edge is exactly the adversarial misclassification); the repaired dual-horizon objective strictly separating outer-indistinguishable states; and the grace-flow P3/P4 kernels (gradualness telescoping, geometric decay to zero under positive coupling, explicit coupling-zero stall countermodel).",
+   "domain": "wicked-geometry",
+   "status": "P",
+   "hypotheses": [
+    "finite/scalar kernels only: the Riemannian Ricci flow, embedding-curvature estimator (V-Baum, empirical), categorical reconciliation, and P1/P2/P5/P6 protocols are not certified",
+    "grace-flow laws are structure fields; identity preservation carried as a named commitment"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/WickedGeometry.lean",
+   "declares": [
+    "id_transition_distortion",
+    "no_low_distortion_transition",
+    "stress_blowup",
+    "parentage_path",
+    "denial_breaks_ancestry",
+    "misclassification",
+    "repair_changes_optimum",
+    "grace_gradual",
+    "grace_geometric",
+    "grace_tendsto_zero",
+    "zero_coupling_stalls"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P44"
+   ],
+   "consumes": [],
+   "falsifier": "a low-distortion transition at a pair separated beyond the outer diameter, or a generative model where the corrective is adversarial with the parentage edge intact, or a coupling-zero flow the laws force to converge",
+   "evidence": "lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": "the fractured-atlas structure proper: finite chart complexes with transition-defect witnesses, classical manifolds as the defect-zero case; then the bk2/bk3/bk6/bk8 manifold anchors re-read against it"
+  },
+  {
+   "id": "LPS-P46",
+   "statement": "The temperature trichotomy completed (lead session, manual; per the Book II genesis intent: temperature = the drift/reflection negotiation knob, thermodynamics derived not imported): beta = 0 gives the uniform state (Poetry.gibbs_zero_uniform), finite beta gives the unique variational balance of coherence against dispersion (gibbs_minimizes), and beta to infinity FREEZES - every strictly suboptimal state loses all Gibbs mass (gibbs_freezes, via the raw Boltzmann-ratio bound gibbs_le_exp with the partition function bounded below by one term - no large-deviations normalization) and a unique minimizer absorbs all mass (gibbs_concentrates). Closes temperatio opening line beta->inf => rho = delta_argmin H and gives its negation (frozen yields no novelty) analytic content. Descent stays DERIVED under stated dynamics, never axiomatized (h_theorem + the solenoidal countermodel) - the Friston contrast, exactly as the mature draft states it.",
+   "domain": "book2",
+   "status": "P",
+   "hypotheses": [
+    "finite alphabet; strict suboptimality/unique minimizer hypotheses explicit; limits along atTop in beta"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book2Temperature.lean",
+   "declares": [
+    "gibbs_le_exp",
+    "gibbs_freezes",
+    "gibbs_concentrates"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P18",
+    "LPS-P44"
+   ],
+   "consumes": [],
+   "falsifier": "a strictly suboptimal state retaining positive mass in the beta limit, or a unique minimizer absorbing less than everything",
+   "evidence": "lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": null
+  },
+  {
+   "id": "LPS-P47",
+   "statement": "The fuzzy lift of the operator-poetry carrier (lead session, manual; LPS-P44 next discharged): edge weights in QQ with max-product path composition (the NAL deduction t-norm), kernel-computable throughout. The design theorem zero_parameterization proves the poems ARE the zero-parameter limit: at weight 1 fuzzy reach equals crisp reachability for every concept pair (576 pairs, by kernel evaluation). Substrate correspondence computed rather than transcribed: the cross-seed bridge at confidence 9/10 evaluates to exactly 81/100 (the ONA deduction conf) and the four-step arc to exactly 6561/10000 (the 0.6561 in the June 12 drummer-boy trace); drift-to-freedom stays 0 forward - the abduction-only status survives the lift.",
+   "domain": "poetry",
+   "status": "P",
+   "hypotheses": [
+    "max-product semantics with fuel 8; priorities and revision remain substrate-internal dark-trace content"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/PoetryFuzzy.lean",
+   "declares": [
+    "zero_parameterization",
+    "fuzzy_bridge",
+    "fuzzy_full_arc",
+    "fuzzy_drift_forward"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P44"
+   ],
+   "consumes": [],
+   "falsifier": "a weight-1 fuzzy value disagreeing with crisp reachability at any pair, or the bridge computing to anything but 81/100",
+   "evidence": "lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": null
+  },
+  {
+   "id": "LPS-P48",
+   "statement": "Godel-safe circularity as structure (lead session, manual; per Paul: imagination points between SRMF steps are opportunities for drift injection by observer interaction with time, and Godel-safety is a mantra for predictive-coding best practice, not predictive code): an SRMF revolution with injected drifts closes into a circle iff the drift cancels (turn_closes_iff); otherwise it is a HELIX - n revolutions displace by exactly n times the net drift, never return, and escape every bound (the loop failure-to-close is where time comes from, matching Book 6 irreversibility and the Book II genesis intent). The general law on any state space: a step doing strict work on any potential cannot close (strict_work_breaks_closure), and a descent cycle with strict off-equilibrium steps closes exactly where no work is done (closure_iff_no_work) - the H-theorem equality-iff clause as a law of self-reference. The file proves the dichotomy; it does NOT self-certify - that is the mantra, kept. HEDGED at Paul's explicit request (rare, hence load-bearing): the helix is real but must not be idolized - helix_unbounded is Book 6 entropic dissolution read with opposite valence, and worshipping unbounded ascent is the Moloch trap. Constituted as moloch_hedge (a Godel-safe cycle on a floored potential cannot do fixed-rate work forever - perpetual ascent needs an infinite budget; third reading of the discrete-energy family, as prohibition) and with_and_was (approach without arrival: never AT the limit at any finite stage, yet tending to it - claiming arrival at a finite stage is the foregrounded-referent failure).",
+   "domain": "srmf",
+   "status": "P",
+   "hypotheses": [
+    "the circle part of a revolution is the identity by construction; injections are data; no claim about this file or any system proving its own consistency",
+    "the helix is FOR approaching the equilibrium circle, not a telos; non-closure is not idolized"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/SRMFHelix.lean",
+   "declares": [
+    "closure_iff_no_work",
+    "helix_never_returns",
+    "helix_unbounded",
+    "moloch_hedge",
+    "strict_work_breaks_closure",
+    "turn_closes_iff",
+    "turns_formula",
+    "with_and_was"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-O7",
+    "LPS-P31"
+   ],
+   "consumes": [],
+   "falsifier": "a nonzero-drift revolution returning to its start, or a strictly-improving step that closes",
+   "evidence": "lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": "instantiate the helix over the finite Gibbs kernel: SRMF revolution whose step is relaxStep, closure iff at gibbs (via gibbs_unique_minimizer)"
+  },
+  {
+   "id": "LPS-P49",
+   "statement": "The SRMF-Helix guard for predictive coding (lead session, manual; Paul 2026-07-13: predictive coding treated like medical research simulation, the simulation channel IS imagination, guarded to itself x3 as an instrument of Godel safety). The guarded step mixes delta of the uniform state (imagination) into every prediction update. GUARD 1 (freeze): every alternative retains mass >= delta/n; the frozen point mass is unreachable; the floor is BETA-INDEPENDENT while the unguarded Gibbs target concentrates (gibbs_concentrates) - imagination outlives freezing at every temperature, dissolving the proven dark-room inefficiency of pure prediction-error minimization. GUARD 2 (Moloch): divergence to the target contracts by (1-eps-delta) plus the bounded named imagination cost delta*KL(uniform||target) (via a three-term log-sum built from the two-term one, raw form); any covering budget is invariant, and whole trajectories stay bounded by max(initial, imagination cost) forever - no divergence, no Moloch. GUARD 3 (Godel): the guarded step rests at the pure-prediction optimum iff that optimum is already uniform - whenever prediction has content, arrival is structurally forbidden: with_and_was as design, the guard constrains the loop and does not certify it.",
+   "domain": "fabricpc",
+   "status": "P",
+   "hypotheses": [
+    "finite alphabet; genuine mixing 0 < eps, 0 < delta, eps + delta < 1 for the KL guards; delta > 0 and n >= 2 for unreachability",
+    "this is the Lean-side contract layer: that external FabricPC implements guardedStep and respects the guards is LPS-O6 conditions 2-4"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/FabricPCGuard.lean",
+   "declares": [
+    "kl_nonneg",
+    "guardedStep_isDensity",
+    "novelty_floor",
+    "guarded_ne_pointMass",
+    "guarded_floor_all_temperatures",
+    "three_term_logsum",
+    "guarded_kl_le",
+    "moloch_guard",
+    "guarded_sequence_bounded",
+    "guarded_arrival_iff_uniform"
+   ],
+   "implementation_source": "selfcompile/fabricpc.py",
+   "depends_on": [
+    "LPS-P43",
+    "LPS-P46",
+    "LPS-P48"
+   ],
+   "consumes": [],
+   "falsifier": "a guarded trajectory exceeding its budget, or a guarded output equal to a point mass, or the guarded step resting at a non-uniform target",
+   "evidence": "lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": "LPS-O6 conditions 2-4 now test against guardedStep (not bare relaxStep): reproduce, measure trajectories against the three guards on a declared regime, upgrade the Matt op"
+  },
+  {
+   "id": "LPS-P50",
+   "statement": "The Weyl step of lem:margin, discharged (lead session, manual) - the forcing paper's oldest analytic debt, named in ForcingKernel/Margin.lean's header as \"cited, not re-proved; formalizing Weyl itself needs mathlib's spectral theory.\" Proved WITHOUT spectral theory, per the non-normalized rule: the margin is the raw Rayleigh infimum over unit vectors (a set infimum, no eigenvalue machinery), and Weyl's perturbation inequality |margin(A+E)-margin(A)| <= entryBudget(E) is proved directly from coordinate bounds (|x_i| <= 1 on the unit sphere) with the explicit computable budget Sigma|E_ij|. margin_step_drift then EARNS the per-step hypothesis Margin.lean consumes, and weyl_margin_path closes lem:margin end to end over R: anchor 2-eps + cumulative budget eps keeps the margin >= eps at every depth - the exact claim the numeric witness (kernel/numeric_margin.py, \"budgeted path holding eta/2\") instantiates.",
+   "domain": "forcing-paper",
+   "status": "P",
+   "hypotheses": [
+    "the lambda_min identification for symmetric A (Courant-Fischer) is noted, not proved, not consumed",
+    "entryBudget dominates the operator norm, so the budget hypothesis is coarser than the paper's - direction-preserving"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/WeylMargin.lean",
+   "declares": [
+    "rayleigh_abs_le",
+    "margin_perturb_lower",
+    "margin_perturb_upper",
+    "margin_perturb",
+    "margin_step_drift",
+    "weyl_margin_path"
+   ],
+   "implementation_source": "verification/kernel/numeric_margin.py",
+   "depends_on": [
+    "LPS-P1"
+   ],
+   "consumes": [],
+   "falsifier": "a matrix perturbation moving the Rayleigh margin by more than its entry budget, or a budgeted path whose margin dips below eps",
+   "evidence": "lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry; built clean first attempt",
+   "next": null
+  },
+  {
+   "id": "LPS-P51",
+   "statement": "The deployed-Stab witness construction over the spine model (lead session, manual; LPS-O3's named closure action discharged). Certificates are generator anchors - proof-relevant data: an anchor condition, the refinement to it, and the generation fact (atom a anchored at node 0, atom b at each leaf); restriction transports the anchor. From that structure M-Pers for the deployed Stab is DERIVED - the model checker's `assert M.persistent()` becomes a theorem - and the derived Stab is verified to be EXACTLY the checker's valuation (stableA_a_iff: V(a)={0,00,01}; stableA_b_iff: V(b)=leaves; negative space checked). E2 is promoted from a finite enumeration PASS to spine_forces_persist: all formulas, every topology (J_nn, J_adm, and any other) in one statement, with M-Pers earned. Also discharged from LPS-O3's remaining list: restriction FUNCTORIALITY (restrict_functorial, restrict_refl - the coherence laws the Witness.lean design note deferred) and the TTIE BOUNDARY-AGREEMENT EXPANSION THEOREM: observers A and B lift into an expansion frame whose certificate type provably holds at most one certificate per site (plus_certificate_unique), jointly witnessed facts receive one shared certificate (ttie_boundary_agreement) with loss = quotient earned and the bridge law holding definitionally, and no identification of A with B is made.",
+   "domain": "witness",
+   "status": "P",
+   "hypotheses": [
+    "the spine model is the deployed apparatus: depth-2 binary tree, atoms a/b, the checker's valuation",
+    "mathlib-free core Lean; certificates are data, stability is their propositional truncation"
+   ],
+   "formal_source": "verification/lean/ForcingKernel/ForcingKernel/Spine.lean",
+   "declares": [
+    "restrict_functorial",
+    "restrict_refl",
+    "stableA_a_iff",
+    "stableA_b_iff",
+    "stableA_a_fails_right",
+    "spine_forces_persist",
+    "spine_stab_forces_atom",
+    "plus_certificate_unique",
+    "ttie_boundary_agreement",
+    "shared_boundary_resolved_at_leaf"
+   ],
+   "implementation_source": "verification/kernel/model_checker.py",
+   "depends_on": [
+    "LPS-P8",
+    "LPS-P9",
+    "LPS-O3"
+   ],
+   "consumes": [],
+   "falsifier": "the derived Stab differing from the checker's valuation at any condition, or a formula/topology pair where spine forcing fails to persist, or two distinct expansion-frame certificates at one site",
+   "evidence": "lake build ForcingKernel (mathlib-free, standard axioms); replayed under ForcingAnalysis; suite CLEAN",
+   "next": null
+  },
+  {
+   "id": "LPS-S4",
+   "statement": "FabricPC guard witness (LPS-O6 condition 3): the triple-guarded contract measured on a declared regime (n=6, eps=0.3, delta=0.1, beta in {0.5,2,8,32}, 200 steps, seeded). All seven checks pass: G1 novelty floor held at every temperature with the dark-room negative control showing the UNGUARDED update collapsing minimum mass to ~6.6e-27 against the guarded floor 1.67e-2 (25 orders of magnitude - the failure the guard exists to prevent, exhibited); G2 the Moloch budget invariant and per-step KL contraction at machine scale; G3 convergence to the guarded fixed point whose offset from the pure-prediction target matches delta/(eps+delta)*||u-sigma||_1 to 1e-16 - approach without arrival, measured. Trajectories are the LOCAL REFERENCE implementation of the contract dynamics; the external FabricPC codebase is not run (its correspondence to the contract is the remaining sliver).",
+   "domain": "fabricpc",
+   "status": "S",
+   "hypotheses": [
+    "declared regime only; seeded deterministic run; reference dynamics, not the external codebase"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/FabricPCGuard.lean",
+   "declares": [],
+   "implementation_source": "verification/kernel/fabricpc_witness.py",
+   "depends_on": [
+    "LPS-P49"
+   ],
+   "consumes": [],
+   "falsifier": "any guard check failing on the declared regime, or the offset formula diverging from measurement",
+   "evidence": "run_all stage green: verification/fabricpc_witness.json verdict pass, seven checks",
+   "next": null
+  },
+  {
+   "id": "LPS-P52",
+   "statement": "The Apparent-Origin observer-quotient mechanism and the floor-conditionality of the Moloch hedge (lead session, manual; source read verbatim read-only from C:/src/observer_cosmology - the AOC canonical proof spine's quotient q_eps(u) = max(u, eps), slogan \"boundary of reconstruction, not beginning of being\"; the source repo's forbidden-simplifications guardrails respected: NO cosmology claim is made). Proved: the quotient manufactures an apparent origin (floor by construction, sub-band depth compressed to one origin, above-band faithful, arbitrarily deep states all sitting AT the origin); the composer theorem with the double-bass witness (a tested subclass floor only upper-bounds the full-class floor, strictly - an instrumentable band is not a universal one); the safety assumption NAMED (finite modes bound sub-band energy by n*eps^2) and its failure without finiteness (first-order-invisible configurations with energy beyond every bound); the concert effect (coherent sub-band components aggregate above any in-band threshold - second-order observables witness what single modes cannot) with its honest limit (destructive cancellation hides from the aggregate too - coherence is a hypothesis, not a free lunch); and the teeth turned inward: false_bottom_voids_hedge exhibits a Godel-safe cycle on an unfloored potential doing fixed-rate work forever - the Moloch hedge's floor hypothesis is the entire guarantee, and assuming an apparent bottom is real where it is not voids the safety theorem. EXTENDED with the interpretability ceiling, made literal: first-order (linear) probes admit hiding (destructive_hiding), the second-order energy observable is FAITHFUL FOR EXISTENCE (second_order_detects_existence: zero aggregate energy iff nothing there - quadratic aggregates cannot be cancelled) yet FORGETS IDENTITY (second_order_forgets_identity: distinct configurations, identical energy). Interpretability of a black box can know THAT sub-band computation exists, never WHAT it is, from aggregates alone - existence without semantics; the probe order hierarchy is real and its ceiling is order-relative.",
+   "domain": "apparent-origin",
+   "status": "P",
+   "hypotheses": [
+    "no cosmology claim: the mechanism is proved, not the world; per the source repo, second-order boundary behavior is where empirical contact must come",
+    "concert-effect detection consumes a coherence hypothesis; incoherent depth hides from both orders"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/ApparentOrigin.lean",
+   "declares": [
+    "above_band_faithful",
+    "apparent_origin_floor",
+    "class_floor_not_universal",
+    "concert_effect",
+    "destructive_hiding",
+    "false_bottom_energy",
+    "false_bottom_voids_hedge",
+    "second_order_detects_existence",
+    "second_order_forgets_identity",
+    "sub_band_compressed",
+    "sub_band_energy_bounded_of_finite",
+    "tested_floor_ge",
+    "unbounded_depth_acquires_origin"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P48"
+   ],
+   "consumes": [],
+   "falsifier": "a finite-mode sub-band configuration exceeding the n*eps^2 bound, or a floored Godel-safe cycle doing fixed-rate work forever, or a coherent sub-band ensemble whose aggregate stays below threshold",
+   "evidence": "lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry; built clean first attempt",
+   "next": "the AOC repo's own K-parameter program stays in its home repo; candidate here: connect the quotient to WickedGeometry.truncate (two named reconstruction maps, one forgets-theorem each)"
+  },
+  {
+   "id": "LPS-P53",
+   "statement": "White holes require Self-Reflexive Validation (lead session, manual; the third movement of the interpretability suite). Model: in-band emission decomposes as observed = external + selfInj, the observer receiving only the sum; selfInj is the drift-injection channel SRV names as a recorded quantity (assumption:appB_srv_dissipativity; the energy functional of definition:appB_symbolic_energy carries ||drift_t||^2 explicitly). Proved: the genuine white-hole world and the self-artifact world produce IDENTICAL signals, so every verdict computed from the signal - into any type, hence every statistic of every order - agrees on both (all_orders_confounded): unlike black holes, where second order recovers existence, NO order recovers provenance. NECESSITY: no signal-only Prop-valued verdict is correct on all scenes (no_signal_only_confirmation - nonexistence, constructively). SUFFICIENCY: against the reflexive record the verdict is one comparison, selfInj < observed iff genuine (srv_confirms, srv_verdict_exists). Failure modes constructive: self-blindness declares its own drift a discovery (the Stackelberg parentage deletion valence-flipped - the Wizard calls his own output adversarial, the self-blind astronomer calls his own output a discovery), and an underestimated record manufactures a false white hole of exactly the unrecorded amount (full_record_required - partial reflexivity is not reflexivity). Popperian reading: falsification tests outward; white-hole confirmation must refute \"I generated this myself,\" executable only against the observer own record. Interpretability ladder completed: order 1 sees the band, order 2 sees existence below it, no order sees which side of yourself a novelty came from.",
+   "domain": "apparent-origin",
+   "status": "P",
+   "hypotheses": [
+    "no cosmology claim (AOC guardrails); the validation mechanism is proved, not the astrophysics",
+    "the emission decomposition is the modeling frame; nonnegativity of both channels explicit"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/WhiteHole.lean",
+   "declares": [
+    "observed_indistinguishable",
+    "all_orders_confounded",
+    "no_signal_only_confirmation",
+    "srv_confirms",
+    "srv_verdict_exists",
+    "self_blind_false_discovery",
+    "full_record_required"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P52",
+    "LPS-P45"
+   ],
+   "consumes": [],
+   "falsifier": "a signal-only verdict correct on both the o=1 worlds, or an SRV comparison wrong on any scene, or a complete self-record still yielding a false discovery",
+   "evidence": "lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry; built clean first attempt",
+   "next": "candidate: the trajectory version over the SRV loop proper (cumulative drift ledger, per-step subtraction) and the guardedStep instance (delta-ledger as declared self-injection)"
+  },
+  {
+   "id": "LPS-P54",
+   "statement": "Axiomata Prima, operational kernel (lead session, manual; the axiom verbatim: \"Existence is not.\" - axiom:bk1_axiomata_prima, Drift as Origin; the anchor the smallpack worker honestly skipped as no-math-content, now given its kernel as the CONVERSE of the white-hole suite). FACE 1, not a predicate: any term already witnesses its type - no predicate on individuals carries existence information; the question lives at the judgment level (the dual horizon). FACE 2, not a declaration (the fascia existence-contract / anti-zombie discipline: representation of code is not code): the control passes, the ablation with IDENTICAL declaration fails, no manifest-only verdict is correct on all scenes (same proof shape as no_signal_only_confirmation), and the tree-consulting verdict is correct on every scene - the import is the witness, required and sufficient. FACE 3, not a state (the fascia experiment's falsifiable reading): the no-drift ablation fails (point orbit, no novum), the no-reflection ablation fails (pure drift escapes every bound - SRMF.helix_unbounded reused), and with both channels the guarded trajectory is SUSTAINED - above the novelty floor at every step, within budget forever: the emergence band as a theorem. What exists is a maintained negotiation, not a state; drift is origin because without it there is nothing to sustain. PART II, THE PROOF BY NEGATION (at Paul's correction: proving the axiom means eliminating the rivals). Candidate space: existence just IS / is NOTHING / is EVERYTHING / IS NOT (the negotiation). Eliminated: (i) dies into (ii) - the constant process and the null process emit IDENTICAL increment signals, so every bounded observer of change agrees on them (just_is_observationally_nothing, the white-hole confound turned on statics); (iii) dies into (i) - under conservation, no-decay forces stasis (everything_forces_stasis), so everything-ism collapses to static-ism collapses to nothing-ism; (ii) dies by EXHIBITION - the negotiation is constructed not-nothing (positive mass floor everywhere, negotiation_not_nothing), with nonzero increment (negotiation_not_null via negotiation_moves at any discriminating target, gibbs_ne_uniform) and genuine selection (selection_exists: some state strictly loses - negative space, against (iii) twice). UNIQUENESS WITH THE ARROW: all three rivals are increment-null, the negotiation is the unique non-null candidate, and its motion is ordered - past any strict-work step the trajectory can never return (no_return_past_work, from descent alone): the arrow of time as the strict order a working process imposes on its own states. The Born-collapse reading of selection stays interpretive (LPS-O3 boundary); the certified arrow is the descent order. What survives elimination is the axiom.",
+   "domain": "book1",
+   "status": "P",
+   "hypotheses": [
+    "the metaphysical scope of a three-word axiom is not exhausted; the operational tri-face kernel is what is certified",
+    "face 3 consumes the guarded-process machinery (LPS-P49) and the helix kernel (LPS-P48)"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/AxiomataPrima.lean",
+   "declares": [
+    "ablation_fails",
+    "control_passes",
+    "everything_forces_stasis",
+    "gibbs_ne_uniform",
+    "import_is_witness",
+    "just_is_observationally_nothing",
+    "mention_settles_existence",
+    "negotiation_moves",
+    "negotiation_not_nothing",
+    "negotiation_not_null",
+    "no_drift_no_novelty",
+    "no_manifest_only_existence",
+    "no_return_past_work",
+    "pure_drift_dissolves",
+    "selection_exists",
+    "tree_verdict_exists",
+    "two_channel_sustained"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P53",
+    "LPS-P52",
+    "LPS-P49",
+    "LPS-P48"
+   ],
+   "consumes": [],
+   "falsifier": "a manifest-only verdict correct on both contract scenes, or a driftless process with a non-point orbit, or a guarded two-channel trajectory leaving the floor or the budget",
+   "evidence": "lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry; external empirical partner (read-only): C:/src/fascia experiments/ps_ablation/axiom_bk1_axiomata_prima_exp_01.md - the ablation experiment whose control structure (no-reflection fails, no-drift fails, both-on sustains) this file certifies, plus the fascia existence-contract tests (implementations must import; nothing must fail)",
+   "next": "the safety-enactment face is carried jointly with false_bottom_voids_hedge and moloch_hedge: declared floors are not floors - candidate doc note in 23_MEDIA_NOT_ORACLE"
+  },
+  {
+   "id": "LPS-P55",
+   "statement": "The fractured atlas (lead session, manual; the manifold-track keystone unblocking the ~158 manifold-family anchors). Design per the non-normalized rule at geometric scale: the carrier is BARE (pre-geometric, per axiom:bk1_pre_geometric_nature enacted in the type); charts are local pseudometrics (ofCoords pulls them back from coordinate maps); the transition defect is pointwise metric disagreement on overlaps, measured directly with no inverted transition maps; GLUEDNESS is a Prop, not a type requirement - assumption:appB_chart_compatibility becomes a predicate the theory consumes. Proved: the atlas has its own geometry (defect is a pseudometric on charts - fracture is distance in chart-space); THE KEYSTONE single_geometry_iff_glued - a single global metric consistent with every chart exists iff the atlas is glued (given pair-covering), so \"the symbolic manifold (M,g)\" is the quotient gluedness licenses, with fracture_obstructs as its forgets-theorem (one positive defect anywhere and no global geometry exists); fracture_persists (adding charts never heals - the composer theorem in the atlas register); glued_singleton (fracture is intrinsically multi-observer - invisible from inside one chart, which is why a bounded observer mistakes its chart for the world); and the dual-horizon instance - the inner (identity) and outer (resolution-quotient q_eps, unifying AOC quotient and wicked truncate) charts fracture at every sub-band pair by exactly the inner separation, hence NO single geometry reconciles the dual horizon: g_in and g_out are not two views of one geometry; below the floor there is no one geometry to view.",
+   "domain": "atlas",
+   "status": "P",
+   "hypotheses": [
+    "named next layers, deliberately not forced into the keystone: curvature as loop defect (discrete holonomy) and the appB resolution tower (P_lambda as graded complex, emergent smoothness as defects vanishing up the grading)",
+    "pair-covering is the assembly hypothesis for the classical direction"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/FracturedAtlas.lean",
+   "declares": [
+    "defect_self",
+    "defect_symm",
+    "defect_triangle",
+    "glued_of_consistent",
+    "fracture_obstructs",
+    "consistent_of_glued",
+    "single_geometry_iff_glued",
+    "fracture_persists",
+    "glued_singleton",
+    "dual_horizon_fractured",
+    "no_single_geometry_for_dual_horizon"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P45",
+    "LPS-P52"
+   ],
+   "consumes": [],
+   "falsifier": "a fractured pair-covering atlas admitting a consistent global metric, or a glued pair-covering atlas refusing one, or a single-chart fracture witness",
+   "evidence": "lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": "re-slice the manifold-family anchors against ChartComplex (workers); curvature-as-loop-defect; the P_lambda tower with emergent smoothness; connect Wicked.truncate and AOC.quotient as ofCoords instances formally"
+  },
+  {
+   "id": "LPS-P56",
+   "statement": "Aliveness as observer-relative label + the consent boundary against artificial life (lead session, manual; reframed at Paul's direction away from biology to the emergence math: \"alive is a label an observer gives a manifold with a critical density of proto-life factors; materially alive needs cross-observer consistency\"). Three prior kernels meet: AOC critical density (aliveness is a threshold collapse, monotone in factor count, off below the critical count), the Witness kernel (single-observer aliveness is perspectival - aliveness_is_observer_relative; material aliveness = cross-observer agreement, with agreement_is_not_material the independence countermodel, exactly the witness kernel agreement-vs-persistence discipline in the aliveness register, bound to definition:bk8_material_projection), and Axiomata Prima (the existence contract: the consent boundary is WITNESSED - a deliberately stubbed capability, declared with no body in the tree, fails the contract; \"no artificial life instantiated here\" is a theorem about the stub - the formal form of the purposely-stubbed recursive-self-improvement function in the PS implementation, fascia). No biological claim; the origin-of-life theorem is NOT claimed. Deeper reading: creating material artificial life would require manufacturing cross-observer agreement, which the whole program's discipline (machine cannot sign; attestation human; stutter stays) refuses - the consent boundary is the same invariant as the receipts.",
+   "domain": "selfhood",
+   "status": "P",
+   "hypotheses": [
+    "no origin-of-life claim; aliveness is an observer label, materiality is cross-observer agreement",
+    "the consent boundary is Paul's: artificial life is refused, witnessed by the stub existence-contract failure"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/OrganismalSelfhood.lean",
+   "declares": [
+    "aliveness_is_threshold",
+    "critical_density_collapse",
+    "subcritical_not_collapsed",
+    "aliveness_is_observer_relative",
+    "material_implies_each",
+    "agreement_is_not_material",
+    "stub_does_not_exist",
+    "refusal_is_witnessed"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P52",
+    "LPS-P54",
+    "LPS-P8"
+   ],
+   "consumes": [],
+   "falsifier": "an observer-independent aliveness verdict, or one-observer aliveness forcing material aliveness, or a stub satisfying the existence contract",
+   "evidence": "lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": null
+  },
+  {
+   "id": "LPS-P57",
+   "statement": "Book 4 remainder A (perception covenants, observer-induced metrics) static/finite kernel (round-3 API Sonnet fleet worker, lead-verified; v4 prompt with the FracturedAtlas chart-complex license, the Tendsto license, and the discrete-skeleton recipe): 19 theorems over 18 anchors; 39 anchors left honestly open with per-anchor reasons. Per-anchor honesty notes live in the per-book coverage maps and the module header of Book4C.lean.",
+   "domain": "r3/book4a",
+   "status": "P",
+   "hypotheses": [
+    "continuum/Hilbert/PDE-on-manifold content stays open; chart-complex restatements carry Glued as a named hypothesis where the source consumes compatibility",
+    "modeling laws are structure fields or explicit hypotheses"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4C.lean",
+   "declares": [
+    "coherenceCone_mono",
+    "convexCombination_mem_Icc",
+    "fragMeasure_eq_zero_iff",
+    "fragMeasure_mem_Icc",
+    "identityResolution_gt_one_iff",
+    "identityResolution_threshold_persists",
+    "lipschitzPath_uniform",
+    "neighborhoodCompleteness",
+    "reflexiveOperator_tendsto_self",
+    "reintegrable_of_smaller_gap",
+    "srmfActionNorm_bound",
+    "symbolicIdentityCarrier_component_le_one",
+    "symbolicWork_path_dependent_example",
+    "symbolicWork_path_independent_of_constant",
+    "ttcs_sample_average_ge",
+    "ttcs_sample_average_le",
+    "ttieExpansionBound_le_cs",
+    "ttieMetric_exists_of_glued",
+    "ttieMetric_presupposition_fails_on_dual_horizon"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "any declared kernel failing on its stated hypotheses; see per-anchor notes",
+   "evidence": "round-3 fleet (scoped atlas slice, zero corpus reads, DAG-width import discipline) drafted; lead rebuilt all eight from clean tree, validated proposals mechanically, wired serially; lake build ForcingAnalysis; regenerated lean_receipt.json; no sorry",
+   "next": "39 open anchors stay on the open claim surface"
+  },
+  {
+   "id": "LPS-P58",
+   "statement": "Book 4 remainder B (SRMF cycles, chart-convergence over ChartComplex) static/finite kernel (round-3 API Sonnet fleet worker, lead-verified; v4 prompt with the FracturedAtlas chart-complex license, the Tendsto license, and the discrete-skeleton recipe): 15 theorems over 30 anchors; 27 anchors left honestly open with per-anchor reasons. Per-anchor honesty notes live in the per-book coverage maps and the module header of Book4D.lean.",
+   "domain": "r3/book4b",
+   "status": "P",
+   "hypotheses": [
+    "continuum/Hilbert/PDE-on-manifold content stays open; chart-complex restatements carry Glued as a named hypothesis where the source consumes compatibility",
+    "modeling laws are structure fields or explicit hypotheses"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4D.lean",
+   "declares": [
+    "chart_geometry_exists_iff_glued",
+    "chart_glued_yields_single_geometry",
+    "const_odifferentiableAt",
+    "dual_horizon_no_single_smoothness",
+    "fuzzySubstitutionBound_compose",
+    "fuzzySubstitutionBound_eps_pos",
+    "identity_odifferentiableAt",
+    "jacobianChain_idealized_forces_zero_tensor",
+    "observerMetric_self_eq_zero_iff",
+    "observerMetric_self_nonneg",
+    "observerMetric_symm",
+    "observer_correction_zero_iff_classical",
+    "odifferentiableAt_iff_ratio_form",
+    "odifferentiableAt_mono_eps",
+    "symbolicDrift_geometric_contraction_tendsto_zero"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "any declared kernel failing on its stated hypotheses; see per-anchor notes",
+   "evidence": "round-3 fleet (scoped atlas slice, zero corpus reads, DAG-width import discipline) drafted; lead rebuilt all eight from clean tree, validated proposals mechanically, wired serially; lake build ForcingAnalysis; regenerated lean_receipt.json; no sorry",
+   "next": "27 open anchors stay on the open claim surface"
+  },
+  {
+   "id": "LPS-P59",
+   "statement": "Scholium remainder A static/finite kernel (round-3 API Sonnet fleet worker, lead-verified; v4 prompt with the FracturedAtlas chart-complex license, the Tendsto license, and the discrete-skeleton recipe): 11 theorems over 15 anchors; 36 anchors left honestly open with per-anchor reasons. Per-anchor honesty notes live in the per-book coverage maps and the module header of ScholiumC.lean.",
+   "domain": "r3/scholiuma",
+   "status": "P",
+   "hypotheses": [
+    "continuum/Hilbert/PDE-on-manifold content stays open; chart-complex restatements carry Glued as a named hypothesis where the source consumes compatibility",
+    "modeling laws are structure fields or explicit hypotheses"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumC.lean",
+   "declares": [
+    "colimit_universal_property",
+    "consistent_unique",
+    "crossTerm_ne_zero_exists",
+    "crossTerm_separable_eq_zero",
+    "dualHorizonBinding_both_pos",
+    "effectiveSignature_empty",
+    "effectiveSignature_full",
+    "exists_bounded_approx",
+    "exists_inaccessible_of_not_surjective",
+    "idempotent_image_eq_fixedPoints",
+    "le_coherenceVelocity"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "any declared kernel failing on its stated hypotheses; see per-anchor notes",
+   "evidence": "round-3 fleet (scoped atlas slice, zero corpus reads, DAG-width import discipline) drafted; lead rebuilt all eight from clean tree, validated proposals mechanically, wired serially; lake build ForcingAnalysis; regenerated lean_receipt.json; no sorry",
+   "next": "36 open anchors stay on the open claim surface"
+  },
+  {
+   "id": "LPS-P60",
+   "statement": "Scholium remainder B static/finite kernel (round-3 API Sonnet fleet worker, lead-verified; v4 prompt with the FracturedAtlas chart-complex license, the Tendsto license, and the discrete-skeleton recipe): 17 theorems over 13 anchors; 38 anchors left honestly open with per-anchor reasons. Per-anchor honesty notes live in the per-book coverage maps and the module header of ScholiumD.lean.",
+   "domain": "r3/scholiumb",
+   "status": "P",
+   "hypotheses": [
+    "continuum/Hilbert/PDE-on-manifold content stays open; chart-complex restatements carry Glued as a named hypothesis where the source consumes compatibility",
+    "modeling laws are structure fields or explicit hypotheses"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumD.lean",
+   "declares": [
+    "antitone",
+    "combinedForm_nonneg",
+    "combinedForm_pos_of_nondegenerate",
+    "const_of_eq",
+    "emergenceOperator_exists",
+    "err_tendsto_zero",
+    "eventually_below_threshold",
+    "exact_ne_projective",
+    "exact_supportsDependency",
+    "existence_of_metric_from_gluing",
+    "exists_critical_coupling",
+    "interpretive_not_supportsDependency",
+    "le_initial",
+    "nonempty",
+    "pos",
+    "projective_supportsDependency",
+    "quotient_supportsDependency"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "any declared kernel failing on its stated hypotheses; see per-anchor notes",
+   "evidence": "round-3 fleet (scoped atlas slice, zero corpus reads, DAG-width import discipline) drafted; lead rebuilt all eight from clean tree, validated proposals mechanically, wired serially; lake build ForcingAnalysis; regenerated lean_receipt.json; no sorry",
+   "next": "38 open anchors stay on the open claim surface"
+  },
+  {
+   "id": "LPS-P61",
+   "statement": "Book 5 residue (covenant dynamics, viability geometry) static/finite kernel (round-3 API Sonnet fleet worker, lead-verified; v4 prompt with the FracturedAtlas chart-complex license, the Tendsto license, and the discrete-skeleton recipe): 29 theorems over 44 anchors; 32 anchors left honestly open with per-anchor reasons. Per-anchor honesty notes live in the per-book coverage maps and the module header of Book5Residue.lean.",
+   "domain": "r3/book5",
+   "status": "P",
+   "hypotheses": [
+    "continuum/Hilbert/PDE-on-manifold content stays open; chart-complex restatements carry Glued as a named hypothesis where the source consumes compatibility",
+    "modeling laws are structure fields or explicit hypotheses"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5Residue.lean",
+   "declares": [
+    "admissible_complexity_mono",
+    "balanced_memory_tendsto_gold_scaled",
+    "bifurcation_eq_one_iff",
+    "closureMatrix_disc_pos",
+    "complexity_le",
+    "compression_ratio_R1",
+    "compression_ratio_R2",
+    "coupling_stability_gt_one_iff",
+    "covenant_adjacency_exclusive",
+    "covenant_adjacency_trichotomy",
+    "covenant_transitivity_propagates",
+    "curvature_control_p2_nonneg",
+    "energy_depletes_in_finite_time",
+    "ess_invasion_threshold",
+    "golden_ratio_thermodynamic_min",
+    "golden_ratio_thermodynamic_optimum_iff",
+    "l1_eq_card_mul_c",
+    "l1_ge_l2",
+    "map_mad_bounds_eventually_incompatible",
+    "max_recursive_depth_bound",
+    "min_resilience_implies_all_edges_resilient",
+    "quadratic_no_real_root_of_disc_neg",
+    "quadratic_real_root_neg",
+    "quadratic_real_root_pos",
+    "reflective_stability_iff",
+    "resilience_gt_one_iff",
+    "sum_sq_le_sq_sum",
+    "viability_union_mono_chain",
+    "weighted_strict_dominance"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "any declared kernel failing on its stated hypotheses; see per-anchor notes",
+   "evidence": "round-3 fleet (scoped atlas slice, zero corpus reads, DAG-width import discipline) drafted; lead rebuilt all eight from clean tree, validated proposals mechanically, wired serially; lake build ForcingAnalysis; regenerated lean_receipt.json; no sorry",
+   "next": "32 open anchors stay on the open claim surface"
+  },
+  {
+   "id": "LPS-P62",
+   "statement": "Book 9 + small-appendix remainders static/finite kernel (round-3 API Sonnet fleet worker, lead-verified; v4 prompt with the FracturedAtlas chart-complex license, the Tendsto license, and the discrete-skeleton recipe): 18 theorems over 24 anchors; 32 anchors left honestly open with per-anchor reasons. Per-anchor honesty notes live in the per-book coverage maps and the module header of Book9B.lean.",
+   "domain": "r3/book9",
+   "status": "P",
+   "hypotheses": [
+    "continuum/Hilbert/PDE-on-manifold content stays open; chart-complex restatements carry Glued as a named hypothesis where the source consumes compatibility",
+    "modeling laws are structure fields or explicit hypotheses"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book9B.lean",
+   "declares": [
+    "atlas_consistent_of_glued_and_covers",
+    "contraction_fixedPoint_unique",
+    "covenant_breach_forces_collapse_without_grace",
+    "covenant_viability_decrease_accum",
+    "curvature_cannot_vanish_under_structural_bound",
+    "dominant_share_tendsto_one",
+    "empathy_distortion_triangle",
+    "fidelityIndex_degrades_beyond_threshold",
+    "fidelityIndex_mono",
+    "frameSelection_exists",
+    "grace_upsilon_pos",
+    "injectionSucceeds_mono",
+    "lyapunov_step_le",
+    "lyapunov_strict_decrease_of_nonzero_grad",
+    "metaAlignment_converges",
+    "no_global_metric_without_gluing",
+    "reciprocity_curvature_bounds",
+    "sharedManifold_unique"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "any declared kernel failing on its stated hypotheses; see per-anchor notes",
+   "evidence": "round-3 fleet (scoped atlas slice, zero corpus reads, DAG-width import discipline) drafted; lead rebuilt all eight from clean tree, validated proposals mechanically, wired serially; lake build ForcingAnalysis; regenerated lean_receipt.json; no sorry",
+   "next": "32 open anchors stay on the open claim surface"
+  },
+  {
+   "id": "LPS-P63",
+   "statement": "Books 6+8 remainders (discrete skeletons) static/finite kernel (round-3 API Sonnet fleet worker, lead-verified; v4 prompt with the FracturedAtlas chart-complex license, the Tendsto license, and the discrete-skeleton recipe): 18 theorems over 19 anchors; 64 anchors left honestly open with per-anchor reasons. Per-anchor honesty notes live in the per-book coverage maps and the module header of Book68B.lean.",
+   "domain": "r3/book68",
+   "status": "P",
+   "hypotheses": [
+    "continuum/Hilbert/PDE-on-manifold content stays open; chart-complex restatements carry Glued as a named hypothesis where the source consumes compatibility",
+    "modeling laws are structure fields or explicit hypotheses"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book68B.lean",
+   "declares": [
+    "bifurcation_piece_le_total",
+    "capacity_isUB",
+    "commutator_eq_zero_iff_commute",
+    "commutator_witness_ne_zero",
+    "composedEvolution_isDensity",
+    "debugCompose_injective",
+    "evolve_comp",
+    "exists_argmin",
+    "isStochastic_mul",
+    "mutuallyAssuredProgress_accum",
+    "mutuallyAssuredProgress_unbounded",
+    "powerScaling_compose",
+    "power_nonneg",
+    "recombinationCoherence_driftAlign_ne_zero",
+    "recombinationCoherence_zero_preserved",
+    "sequentialJump_not_continuousAt",
+    "totalConfidence_le_one",
+    "totalConfidence_nonneg"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "any declared kernel failing on its stated hypotheses; see per-anchor notes",
+   "evidence": "round-3 fleet (scoped atlas slice, zero corpus reads, DAG-width import discipline) drafted; lead rebuilt all eight from clean tree, validated proposals mechanically, wired serially; lake build ForcingAnalysis; regenerated lean_receipt.json; no sorry",
+   "next": "64 open anchors stay on the open claim surface"
+  },
+  {
+   "id": "LPS-P64",
+   "statement": "Book 7 + dual-horizon + books 2-3 remainders static/finite kernel (round-3 API Sonnet fleet worker, lead-verified; v4 prompt with the FracturedAtlas chart-complex license, the Tendsto license, and the discrete-skeleton recipe): 26 theorems over 36 anchors; 61 anchors left honestly open with per-anchor reasons. Per-anchor honesty notes live in the per-book coverage maps and the module header of Book7B.lean.",
+   "domain": "r3/book7dh",
+   "status": "P",
+   "hypotheses": [
+    "continuum/Hilbert/PDE-on-manifold content stays open; chart-complex restatements carry Glued as a named hypothesis where the source consumes compatibility",
+    "modeling laws are structure fields or explicit hypotheses"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7B.lean",
+   "declares": [
+    "coherenceWindow_iff",
+    "complexity_card_le",
+    "conceptualBridgeLoop_toM_surjective",
+    "conceptualBridgeLoop_toSigma1_injective",
+    "contractiveReflection_fixedPoint_dist_eq_zero",
+    "contractiveReflection_iterate_bound",
+    "contractiveReflection_tendsto_star",
+    "decencyPotential_mono",
+    "fibMatrix_pow_succ",
+    "frameTempQuotient_mono",
+    "freeEnergy_bounded_below",
+    "hamiltonian_denom_pos",
+    "horizonExpansion_delta_pos",
+    "perturbedContraction_bound",
+    "posPart_sub_negPart",
+    "quasiLipschitz_comp",
+    "reciprocityDomain_eq_preimage_of_eq_eps",
+    "reciprocityDomain_isOpen",
+    "reciprocityDomain_nonempty_of_fixed_point",
+    "reciprocity_contains_fixed_point",
+    "resonanceProbabilityLaw_mono_of_decency",
+    "resonance_information_preservation",
+    "shiftedFib_ratio_tendsto_goldenRatio",
+    "srmfRegulation_exists",
+    "symbolicEffort_eq_two_iff",
+    "symbolicEffort_ge_two"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "any declared kernel failing on its stated hypotheses; see per-anchor notes",
+   "evidence": "round-3 fleet (scoped atlas slice, zero corpus reads, DAG-width import discipline) drafted; lead rebuilt all eight from clean tree, validated proposals mechanically, wired serially; lake build ForcingAnalysis; regenerated lean_receipt.json; no sorry",
+   "next": "61 open anchors stay on the open claim surface"
+  },
+  {
+   "id": "LPS-P65",
+   "statement": "The scholium geometry unlocked (lead session, manual; both named next layers of the FracturedAtlas program delivered). HOLONOMY LAYER (AtlasHolonomy.lean): semantic non-integrability equivalently-clause proved as an iff (path-dependence IS the nonvanishing commutator) with a Boolean witness; the curvature-as-holonomy lemma EXACT in the linear model - the two routes around the eps-square differ by precisely eps^2(BA-AB), no O(eps^3) remainder; flatness iff commuting; non-Euclidean necessity as the kernel corollary (noncommuting transports force route disagreement at every nonzero scale) with a concrete nilpotent curvature witness. (Tower layer: LPS-P66.)",
+   "domain": "atlas",
+   "status": "P",
+   "hypotheses": [
+    "linear-transport model for holonomy (Christoffel/vector-field forms stay open); pair-covering as the topological-regularity stand-in (point-set topology unmodeled, named); smoothness-as-C-infinity stays open"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/AtlasHolonomy.lean",
+   "declares": [
+    "path_dependent_iff_noncommuting",
+    "semantic_non_integrability_witness",
+    "holonomy_eps_squared",
+    "holonomy_zero_iff_commute",
+    "non_euclidean_necessity",
+    "curvature_witness"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P55"
+   ],
+   "consumes": [],
+   "falsifier": "commuting transports whose routes disagree, or a route residue differing from eps^2 times the commutator, or a vanishing-defect tower with a non-glued limit, or a persisting-defect tower admitting a global geometry",
+   "evidence": "lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": "the remaining scholium surface: Fokker-Planck/action-functional/information-geometry cluster (PDE wall), the cosmological functor cluster, and the narrative remainder"
+  },
+  {
+   "id": "LPS-P66",
+   "statement": "The resolution tower (AtlasTower.lean; the second named next layer, split from LPS-P65 for one-file provenance): the ResolutionTower structure converts the scholium axiom trio into named fields (chartability = the tower itself; smooth convergence = pointwise chart convergence + vanishing cross-chart defect; regularity stand-in = pair-covering); all four pseudometric laws PASS TO THE LIMIT by limit arguments (nonneg/self/symm/triangle each proved, not assumed); tower_glues - gluedness of the limit EMERGES from defect decay via the squeeze, never postulated; manifold_emergence - existence AND uniqueness of the single global geometry (theorem:bk1_manifold_emergence, kernel form); fracture_stops_emergence - a persisting defect yields a fractured limit and no geometry ever emerges: emergence is earned by defect decay, not by taking limits.",
+   "domain": "atlas",
+   "status": "P",
+   "hypotheses": [
+    "pair-covering as the topological-regularity stand-in (Hausdorff/second-countable/paracompact/connected unmodeled, named); smoothness-as-C-infinity stays open"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/AtlasTower.lean",
+   "declares": [
+    "limit_nonneg",
+    "limit_self",
+    "limit_symm",
+    "limit_triangle",
+    "tower_glues",
+    "manifold_emergence",
+    "fracture_stops_emergence"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P55",
+    "LPS-P65"
+   ],
+   "consumes": [],
+   "falsifier": "a vanishing-defect tower with a non-glued limit, or a persisting-defect tower admitting a global geometry, or a pseudometric law failing in the limit",
+   "evidence": "lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": null
+  },
+  {
+   "id": "LPS-P67",
+   "statement": "Scholium dynamics kernels (lead session, manual): the discrete flow with genuine existence-and-uniqueness (any sequence satisfying the recurrence IS the orbit) and the semigroup law; the resolution cost as a path-infimum PROVED to be a pseudometric (symmetry by path reversal, triangle by concatenation with the nested-inf argument); floor completeness (positive separation floor forces Cauchy sequences eventually constant - the finite Hopf-Rinow stand-in); the discrete Onsager-Machlup least-action principle EXACT (the action vanishes precisely on evolution trajectories - the dynamics are the least-action paths, and zero is the global minimum); the limitation of linear reflexive maps (linear updates always fix the origin, their fixed sets are linear, pipelines cannot escape, while an affine update has no fixed point); and paradox-triggered emergence (unresolvable within the frame + resolvable in the one-observable extension, constructive) with paradoxical symmetry breaking (any resolving observable must break the swap symmetry) - plus map rows connecting the shared-boundary-paradox pair to their existing witness-kernel formalizations.",
+   "domain": "scholium",
+   "status": "P",
+   "hypotheses": [
+    "discrete kernels only: ODE flows, Riemannian geodesics, Hopf-Rinow, and the MSR path integral stay open",
+    "the self-representation clause of reflexive maps is interpretive"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumDynamics.lean",
+   "declares": [
+    "action_nonneg",
+    "affine_escapes_fixed_points",
+    "extension_resolves",
+    "floor_complete",
+    "flow_semigroup",
+    "flow_unique",
+    "least_action_iff_evolution",
+    "linear_fixed_points_closed",
+    "linear_has_fixed_point",
+    "linear_pipeline_fixes_zero",
+    "paradox_unresolvable_within",
+    "pcost_append",
+    "pcost_nonneg",
+    "pcost_reverse",
+    "resCost_le_step",
+    "resCost_nonneg",
+    "resCost_self",
+    "resCost_symm",
+    "resCost_triangle",
+    "resolution_breaks_symmetry"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P65",
+    "LPS-P66"
+   ],
+   "consumes": [],
+   "falsifier": "a second sequence satisfying the flow recurrence, or a path-infimum violating the triangle inequality, or a zero-action non-evolution trajectory, or a linear update with empty fixed set",
+   "evidence": "lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": "scholium remainder now: the Fokker-Planck/information-geometry/Wasserstein cluster (PDE wall), the cosmological functor cluster, category definitions, and prose"
+  },
+  {
+   "id": "LPS-P68",
+   "statement": "Scholium horizon cluster (lead session, manual): horizon-crossing conservation finite and EXACT (full-exit rows transport source mass without loss - an identity, not an approximation); drift-field emergence as a uniqueness theorem (pointwise-converging proto-drift stage fields determine their stabilized limit uniquely); and the cross-reference pass connecting the scholium duplicates to their existing kernels - the dual-horizon postulate to two_channel_sustained (cognition at the intersection: both channels jointly sustain, each alone fails), the bk1 Fokker-Planck/density/entropy trio to the Book2 discrete skeletons, emergence-iff-curvature to the transport-level iff, and the SRMF definitions to the helix/Godel-safe-cycle structures.",
+   "domain": "scholium",
+   "status": "P",
+   "hypotheses": [
+    "manifold integrals, PDE forms, smoothness, ordinal colimits, and curvature signs stay open/interpretive per row notes"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumHorizon.lean",
+   "declares": [
+    "crossing_conservation",
+    "drift_field_unique"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P67",
+    "LPS-P54",
+    "LPS-P18"
+   ],
+   "consumes": [],
+   "falsifier": "a full-exit crossing losing mass, or two distinct stabilized limits of one converging tower",
+   "evidence": "lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": "scholium remainder is now the genuine walls: information geometry/Wasserstein, the cosmological functor cluster, category definitions, quantum-incompatibility pair, and prose"
+  },
+  {
+   "id": "LPS-P69",
+   "statement": "Book 8 freedom and boundedness kernels, plus a cross-reference pass (lead session, manual): the Freedom Emergence Criterion and Freedom via Meta-Metabolic Control are proved to be ONE kernel - a linear map achieves full rank onto its codomain exactly when it is surjective (freedom_emergence_iff_surjective), and the meta-metabolic version is that same theorem applied to the domain-restricted operator (meta_metabolic_freedom_iff_surjective) - with the failure side witnessed concretely (freedom_can_fail: a rank-deficient coordinate projection on R^2 is not surjective). The SR-triplet boundedness proposition gets a discrete absorbing-ball analogue: a step map satisfying an affine contraction estimate |step x| <= kappa|x| + B with kappa < 1 keeps every orbit inside a FIXED ball forever (contraction_orbit_bounded), the honest discrete shadow of Lipschitz-plus-bounded-forcing boundedness, built over the already-certified ScholiumDyn.flowOrbit. Cross-reference pass: Recursive Self-Tuning of O_debug bound to flowOrbit/flow_unique (the self-application recursion IS a discrete-flow orbit, already proved unique); the Symbolic Projection/Interface/Transfer/Mutation-Projection cluster bound to the existing Witness.lean CertifiedTransport kernel (structure-preserving re-encoding with a named loss class is exactly that pattern).",
+   "domain": "book8",
+   "status": "P",
+   "hypotheses": [
+    "the viability-domain/action-manifold identification for the freedom criterion is interpretation",
+    "the continuous R^3 SR-triplet ODE system stays open; the contraction estimate is the modeling step standing in for Lipschitz-plus-bounded-forcing",
+    "the cross-referenced rows bind to kernels already certified elsewhere (ScholiumDynamics, ForcingKernel/Witness) rather than new proofs"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book8Freedom.lean",
+   "declares": [
+    "freedom_emergence_iff_surjective",
+    "meta_metabolic_freedom_iff_surjective",
+    "freedom_can_fail",
+    "contraction_orbit_bounded"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P67",
+    "LPS-P8"
+   ],
+   "consumes": [],
+   "falsifier": "a full-rank linear map that is not surjective, or a contraction-bounded orbit escaping its absorbing ball, or a non-surjective coordProj witness",
+   "evidence": "lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": "the remaining book8 surface: the SR-RG/curvature-manifold cluster (SR-triplet convergence, renormalization group, critical projection points), the Hilbert-space entanglement/decoherence cluster, temperature-of-freedom/entropy-shift definitional-only anchors, and the metabolic-cognitive-scaffold narrative cluster - all genuinely open per the PDE/Hilbert/prose walls"
+  },
+  {
+   "id": "LPS-P70",
+   "statement": "Born-rule coherence kernel and the discrete conservation kernel (lead session, manual). BORN (BornCoherence.lean): the coherence functional taken as the Born form C(a,psi)=||<a,psi>||^2 satisfies every covariance/calibration axiom as a THEOREM - PS-C6 calibration (self-question answered with coherence 1), PS-C4 ray invariance (phase-independence), PS-C2 unitary covariance (= the unitary-invariance lemma), the Cauchy-Schwarz bound coh <= 1, the qubit Born value computed concretely on C^2 as the squared amplitude, and the mixed-state affinity under classical mixtures. This cracks the forward direction (Born => axioms) of the previously-counsel-permanent-open Gleason cluster; the reverse (axioms => Born in d>=3, Gleason uniqueness) stays open, as does PS-C5 (needs Bessel). (Conservation kernel split to LPS-P71.)",
+   "domain": "appendixC",
+   "status": "P",
+   "hypotheses": [
+    "Gleason-type uniqueness (axioms force the Born form in d>=3) and PS-C5 stay open; only the forward direction Born => axioms is certified",
+    "continuum charge/action integrals stay open; the discrete conservation mechanism is certified"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/BornCoherence.lean",
+   "declares": [
+    "psc6_calibration",
+    "psc4_ray_invariance",
+    "psc2_unitary_covariance",
+    "coh_le_one",
+    "qubit_born",
+    "mixed_affine",
+    "cohMix_nonneg",
+    "coh_nonneg"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P67"
+   ],
+   "consumes": [],
+   "falsifier": "a Born form violating a covariance axiom, or a qubit coherence differing from the squared amplitude, or a step-invariant charge non-constant along an orbit",
+   "evidence": "lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": "the genuine remaining walls: Wasserstein/Fokker-Planck PDE (bk2/scholium), the RG fixed-point/critical-projection cluster (bk8), narrative clusters (bk9 masking/betrayal/ethics), and Gleason uniqueness (counsel-permanent)"
+  },
+  {
+   "id": "LPS-P71",
+   "statement": "The discrete conservation kernel (Conservation.lean; split from LPS-P70 for one-file provenance): a step-invariant charge is constant along its orbit (conserved_along_orbit), with the exact characterization orbit-constant iff step-invariant, additive and scalar composition of conservation laws, and the closed-orbit MAP-invariant form - with the honest note that conservation is STRONGER than the closure the source assumes. Instantiates book6 symbolic-charge/total-action/MAP-invariant conservation and the book9 framework/functional identity (the local generator determines the global orbit; a bijection with ScholiumDyn.flow_unique - one referent under two aspects).",
+   "domain": "book6/book9",
+   "status": "P",
+   "hypotheses": [
+    "continuum charge/action integrals stay open; the discrete conservation mechanism is certified"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Conservation.lean",
+   "declares": [
+    "conserved_along_orbit",
+    "conserved_closed_orbit",
+    "orbit_constant_iff_step_invariant",
+    "IsConserved.add",
+    "IsConserved.smul",
+    "generator_determines_orbit"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P67"
+   ],
+   "consumes": [],
+   "falsifier": "a step-invariant charge non-constant along an orbit, or orbit-constancy without step-invariance",
+   "evidence": "lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
+   "next": null
+  },
+  {
+   "id": "LPS-P72",
+   "statement": "Scholium geometry-bridge kernels and cross-reference layer (lead session, manual). NEW (ScholiumBridge.lean): coupling_is_metric - a symmetric coupling matrix IS a symmetric bilinear form, making the alpha_ij = g_ij identification precise (bridge to geometry); nonzero_curvature_has_active_mode - genuine curvature has an active mode, so emergence complexity is bounded below by 1 (the finite-support form of the rank bound). CROSS-REFERENCE (map rows, no new proofs - scholium restatements already certified): curvature-semantic-entanglement is EXACTLY Atlas.holonomy_zero_iff_commute; curvature-projection-residue is non_euclidean_necessity; structural-correspondence binds the Book2 thermo kernels; pre-geometric-nature/observable-gradation/the-operators bind AxiomataPrima and AtlasTower; dual-horizon-unification, symbolic-primacy, unified-field-classification bind the holonomy/two-channel/SRMF kernels. Eleven scholium anchors closed, most as honest conditionals with the geometry-continuum content named open.",
+   "domain": "scholium",
+   "status": "P",
+   "hypotheses": [
+    "manifold metric, exact rank bound, and the interpretive unification/primacy claims stay open per row notes"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumBridge.lean",
+   "declares": [
+    "coupling_is_metric",
+    "nonzero_curvature_has_active_mode"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P65",
+    "LPS-P66",
+    "LPS-P54"
+   ],
+   "consumes": [],
+   "falsifier": "a symmetric matrix that is not a symmetric bilinear form, or nonzero curvature with no active mode",
+   "next": null
+  },
+  {
+   "id": "LPS-P73",
+   "statement": "Operator-evolution and convergence kernels (lead session, manual; Book5Operators.lean): operator_stationary_iff_critical - the SRMF gradient-descent operator step rests exactly at a critical point of the process free energy (stationary iff F prime = 0); contraction_flow_unique_fixed_point + contraction_flow_converges - a contraction on a complete space has a unique fixed point every orbit approaches (the recursive-flow and RG fixed-point convergence, Banach-style); metabolic_capacity_monotone - capacity non-decreasing in energy reserves; viability_antitone_in_spectral_radius - minimizing the coupling spectral radius maximizes viability (spectral-radius optimality). Instantiates book5 operator-evolution/convergence/recursive-flow/metabolic-capacity/spectral-optimality and book8 RG-fixed-point.",
+   "domain": "book5/book8",
+   "status": "P",
+   "hypotheses": [
+    "contraction constant is the modeling hypothesis for convergence; the Wasserstein O(1/t) rate, operator-space structure, and diffeomorphism congruence stay open",
+    "the minimizer/critical-point gap under non-convexity is the honest remainder of the stationary-iff clause"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5Operators.lean",
+   "declares": [
+    "operator_stationary_iff_critical",
+    "contraction_flow_unique_fixed_point",
+    "contraction_flow_converges",
+    "metabolic_capacity_monotone",
+    "viability_antitone_in_spectral_radius"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "a descent step resting off a critical point, or a contraction with two fixed points, or an orbit not approaching the fixed point",
+   "next": null
+  },
+  {
+   "id": "LPS-P74",
+   "statement": "Book 4 refinement kernels (lead session, manual; Book4Refinement.lean): ttpr_fixed_point - a contraction refinement has a unique fixed point (TTPR symbolic stability clause 1); ttpr_iterates_in_envelope + ttpr_fixed_point_in_envelope - a preserved closed envelope traps every iterate and hence the fixed point (interpretability preservation, clauses 2-3); coherence_neighborhood_nonempty - the coherence neighborhood contains its coherent centre (bounded accessibility realized); ttdc_iff_jump - a collapse is a TTDC iff the resolution jump reaches the threshold; collapse_limit_unique - the collapsed observable O = lim R_n(I) is unique; curvature_inherits_continuity - curvature as the drift-reflection product inherits their continuity; coupled_drift_additive - the coupled drift reduces to base drift iff the response vanishes. Seven book4 anchors, three proved-kernel and four conditional with the manifold/recursion-depth content named open.",
+   "domain": "book4",
+   "status": "P",
+   "hypotheses": [
+    "contraction constant is the modeling hypothesis for TTPR stability; the differentiable-manifold constraint space, recursion-depth dynamics, and differentiability clause stay open"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Refinement.lean",
+   "declares": [
+    "ttpr_fixed_point",
+    "ttpr_iterates_in_envelope",
+    "ttpr_fixed_point_in_envelope",
+    "coherence_neighborhood_nonempty",
+    "ttdc_iff_jump",
+    "collapse_limit_unique",
+    "curvature_inherits_continuity",
+    "coupled_drift_additive"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "a contraction refinement with two fixed points, an iterate leaving a preserved envelope, or a coherent centre outside its own coherence neighborhood",
+   "next": null
+  },
+  {
+   "id": "LPS-P75",
+   "statement": "Thermo/resilience kernels + cross-reference layer (lead session, manual; ThermoResilience.lean). NEW: global_beta_between - the global inverse temperature is the density-weighted mean of local inverse temperatures, bounded by the local extremes (genuine convex combination); masking_has_positive_cost - masked output diverging from internal state has strictly positive cost, the anti-masking invariant in cost form; moral_agency_requires_freedom - moral agency entails cognitive freedom (necessity); flattening_reduces_curvature - decoherence as a symbolic flattening reduces curvature, keeps it nonnegative, equality iff flat. CROSS-REFERENCE (map rows): bk2 emergence-structure to the H-theorem; bk8 entanglement/frame-invariance/resonant-cognition to the holonomy and certified-transport kernels; bk9 self-referential-capacity to the discrete self-application flow.",
+   "domain": "book2/book9/book8",
+   "status": "P",
+   "hypotheses": [
+    "manifold measure form, specific masking free-energy functional, and Hilbert decoherence operator stay open per row notes"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/ThermoResilience.lean",
+   "declares": [
+    "global_beta_between",
+    "masking_has_positive_cost",
+    "moral_agency_requires_freedom",
+    "flattening_reduces_curvature"
+   ],
+   "implementation_source": null,
+   "depends_on": [
+    "LPS-P18"
+   ],
+   "consumes": [],
+   "falsifier": "a weighted mean outside the local range, a costless mask, or a flattening that increases curvature",
+   "next": null
+  },
+  {
+   "id": "LPS-P76",
+   "statement": "Book 4 fuzzy-geometry kernels (lead session, manual; Book4Fuzzy.lean): substituted_drift_continuous - the pushforward drift u o D o u-inv is continuous by composition (observer-relative smoothness inherited); drift_reflection_continuous + substituted_drift_reflection_continuous - the drift-reflection operation and its pushforward stay continuous (compatibility with drift-reflective operations); local_kernel_vanishes_offdiagonal - an observer kernel supported in B x B vanishes outside it (observer locality, operational); self_authorship_fixed_point - the constraint-refinement sequence converges to a unique fixed-point constraint map (self-authorship, contraction form). Five book4 anchors; the differentiable-manifold and group-action forms stay open.",
+   "domain": "book4",
+   "status": "P",
+   "hypotheses": [
+    "continuity models observer-differentiability; the differentiable-manifold and group-action structures stay open"
+   ],
+   "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Fuzzy.lean",
+   "declares": [
+    "substituted_drift_continuous",
+    "drift_reflection_continuous",
+    "substituted_drift_reflection_continuous",
+    "local_kernel_vanishes_offdiagonal",
+    "self_authorship_fixed_point"
+   ],
+   "implementation_source": null,
+   "depends_on": [],
+   "consumes": [],
+   "falsifier": "a discontinuous composition of continuous operators, a local kernel nonzero off B x B, or a contraction constraint map with two fixed points",
+   "next": null
+  }
+ ]
+}

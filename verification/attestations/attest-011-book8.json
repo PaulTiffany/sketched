@@ -1,0 +1,145 @@
+{
+  "schema": "sketched.anchor-attestation.v1",
+  "id": "attest-011-book8",
+  "paper": "principia_atlas (book8) + forcing_correspondence",
+  "moves": [
+    {
+      "math_id": "definition:bk8_observer_relative_artifact",
+      "from": null,
+      "to": "d17f7938499c"
+    },
+    {
+      "math_id": "definition:bk8_material_projection",
+      "from": null,
+      "to": "913c251c0167"
+    },
+    {
+      "math_id": "definition:bk8_transform_group",
+      "from": null,
+      "to": "4ccbefc4f306"
+    },
+    {
+      "math_id": "axiom:bk8_binding_curvature_limit",
+      "from": null,
+      "to": "3f029c157be3"
+    },
+    {
+      "math_id": "corollary:bk8_projective_drift",
+      "from": null,
+      "to": "e1accc316f57"
+    },
+    {
+      "math_id": "definition:bk8_identitystability",
+      "from": null,
+      "to": "934472cd731a"
+    },
+    {
+      "math_id": "definition:bk8_translation_loss",
+      "from": null,
+      "to": "f956671210c5"
+    },
+    {
+      "math_id": "theorem:bk8_no_free_projection",
+      "from": null,
+      "to": "9d162f672e11"
+    },
+    {
+      "math_id": "corollary:bk8_translation_limit",
+      "from": null,
+      "to": "a6bef0393457"
+    },
+    {
+      "math_id": "corollary:bk8_bound_on_universal_embedding",
+      "from": null,
+      "to": "86ab3579d792"
+    },
+    {
+      "math_id": "corollary:bk8_universality_condition",
+      "from": null,
+      "to": "f4417786185a"
+    },
+    {
+      "math_id": "theorem:bk8_holographic_surface_entropy",
+      "from": null,
+      "to": "c8af249959ff"
+    },
+    {
+      "math_id": "axiom:bk8_symbolic_reidemeister_algebra",
+      "from": null,
+      "to": "b3062ea9ab5d"
+    },
+    {
+      "math_id": "proposition:bk8_membrane_identity_collapse",
+      "from": null,
+      "to": "59309039918b"
+    },
+    {
+      "math_id": "proposition:bk8_observer_frame_invariance",
+      "from": null,
+      "to": "7debdad3ad3c"
+    },
+    {
+      "math_id": "proposition:bk8_membrane_operator_symmetry",
+      "from": null,
+      "to": "55086ddc6d28"
+    },
+    {
+      "math_id": "definition:bk8_symbolic_adjacency",
+      "from": null,
+      "to": "f7db46e23821"
+    },
+    {
+      "math_id": "axiom:bk8_mutation_phase_shift",
+      "from": null,
+      "to": "f9241cf98e27"
+    },
+    {
+      "math_id": "theorem:bk8_biological_phase_transition",
+      "from": null,
+      "to": "69e2fcf3f3f8"
+    },
+    {
+      "math_id": "theorem:bk8_threshold_of_metabolic_autonomy",
+      "from": null,
+      "to": "814c736786ec"
+    },
+    {
+      "math_id": "theorem:bk8_thermodynamic_necessity_of_symbolic_metabolism",
+      "from": null,
+      "to": "377ddb9375c8"
+    },
+    {
+      "math_id": "definition:bk8_metabolic_programming_cycle",
+      "from": null,
+      "to": "6281a3d0d6d8"
+    },
+    {
+      "math_id": "definition:bk8_recursive_symbolic_metaboloic_cycle",
+      "from": null,
+      "to": "44ab2dd8c7aa"
+    },
+    {
+      "math_id": "corollary:bk8_symbolic_free_will",
+      "from": null,
+      "to": "30e0ba94f7f6"
+    },
+    {
+      "math_id": "theorem:bk8_observer_projection_tensor",
+      "from": null,
+      "to": "7572d7efdafb"
+    },
+    {
+      "math_id": "definition:bk8_reflective_selection_operator",
+      "from": null,
+      "to": "5511cc1dd15f"
+    }
+  ],
+  "artifacts_reviewed": [
+    "verification/lean/ForcingAnalysis/ForcingAnalysis/Book8.lean",
+    "verification/lean/ForcingKernel/ForcingKernel/Witness.lean"
+  ],
+  "note": "Lean PS sprint-era anchors for book8: 26 statement placements across 2 artifact(s). Shas were computed live from the principia atlas at transcription time by the lead session; accepting this receipt attests that the named artifacts faithfully transcribe/kernelize these statements per their coverage-map honesty notes (verification/*_lean_map.json) and module headers. To sign: set status to 'accepted', attested_by to 'human', supply attested_at, then run: python verification/tools/binding_audit.py --adopt attest-011-book8",
+  "status": "proposed",
+  "attested_by": null,
+  "attested_at": null
+}

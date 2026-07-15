@@ -1,0 +1,62 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+dist-ssr/
+*.local
+
+# editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+
+# logs
+*.log
+npm-debug.log*
+
+# secrets — never commit keys or credentials
+.env
+.env.*
+*.pem
+*.key
+
+# captured media — never commit recorded personal video/audio by default
+captures/
+recordings/
+
+# TeX build artifacts
+*.aux
+*.out
+*.toc
+tsconfig.tsbuildinfo
+
+# Lean build artifacts
+verification/lean/ForcingKernel/.lake/
+verification/lean/ForcingAnalysis/.lake/
+
+# Python caches / packet staging
+__pycache__/
+packets/_stage/
+.venv/
+
+# External runtime checkout (pinned in verification/fabricpc_install_receipt.json)
+fabric/FabricPC/
+# Local agent and review workspaces
+.claude/
+.review/
+
+# Reproducible archives and superseded rendered papers
+book.zip
+packets/*.zip
+forcing_correspondence_v14.pdf
+forcing_correspondence_v15.pdf
+
+# Narration used Edge online TTS; redistribution grant not established
+public/media/*.mp4
+# Reproducible offline narration toolchain and generated audio
+.venv-voice/
+selfcompile/voices/models/
+selfcompile/voices/rendered/
+selfcompile/voices/videos/

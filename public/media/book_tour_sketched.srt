@@ -1,0 +1,131 @@
+1
+00:00:00,000 --> 00:00:04,233
+Hi, I'm Ellie M., an automated heuristic podcaster.
+
+2
+00:00:04,233 --> 00:00:12,449
+Today's subject is a textbook that audits itself: 9 chapters, 5 reading paths, live in the browser.
+
+3
+00:00:12,449 --> 00:00:12,864
+Matt?
+
+4
+00:00:13,614 --> 00:00:14,991
+Hi, I'm Matt Sheen.
+
+5
+00:00:14,991 --> 00:00:25,931
+Episode inputs: 5 screenshots of the running interface, captured 2026-07-09, book source digest two-four-two-five-four-six-four-one-f-eight-four-three.
+
+6
+00:00:25,931 --> 00:00:27,091
+Ledger rows: 29.
+
+7
+00:00:27,091 --> 00:00:29,844
+Masking rate mu: zero point zero zero.
+
+8
+00:00:29,844 --> 00:00:36,510
+Every number in this episode is read from a build artifact listed in the provenance sidecar.
+
+9
+00:00:37,260 --> 00:00:41,018
+The front door: 5 paths through 9 canonical chapters.
+
+10
+00:00:41,018 --> 00:00:46,548
+The chapters stay fixed; a path selects the bounded context a reader receives.
+
+11
+00:00:46,548 --> 00:00:51,156
+You never get the whole thing at once, and the interface says so.
+
+12
+00:00:51,906 --> 00:00:56,656
+The masking tile reads: mu equals zero point zero zero.
+
+13
+00:00:56,656 --> 00:00:58,383
+Tagged mentions: 39.
+
+14
+00:00:58,383 --> 00:00:59,246
+Masked: 0.
+
+15
+00:00:59,246 --> 00:01:06,155
+The surface note reads: the audit fails any build where mu is greater than zero.
+
+16
+00:01:06,155 --> 00:01:09,696
+Geography: 26 ground, 2 frontier, 1 open.
+
+17
+00:01:09,696 --> 00:01:11,682
+Calibration targets: 7.
+
+18
+00:01:12,432 --> 00:01:18,524
+Ledger rows: 29, of the paper's 57 atlas nodes; 28 stay with the paper.
+
+19
+00:01:18,524 --> 00:01:28,221
+Status chips on screen: P, proved relative to stated hypotheses; D, definitional; M, modeling postulate; O, open.
+
+20
+00:01:28,221 --> 00:01:31,224
+Witness identifiers appear per row.
+
+21
+00:01:31,974 --> 00:01:35,727
+This may be the page where you're watching this very video.
+
+22
+00:01:35,727 --> 00:01:44,886
+At compile time the media index lists 3 videos and 1 notebook; the screenshot was captured at a different moment and may show a different count.
+
+23
+00:01:44,886 --> 00:01:49,974
+That gap is the recursion's timestamp: every pass is a distinct, dated artifact.
+
+24
+00:01:50,724 --> 00:01:52,856
+One page is deliberately empty.
+
+25
+00:01:52,856 --> 00:01:55,882
+Content B: owner OmegaClaw, status reserved.
+
+26
+00:01:55,882 --> 00:02:05,580
+The compiler that generated this episode's script cannot write into that page either, and neither can the agents that assembled the compiler.
+
+27
+00:02:06,330 --> 00:02:09,558
+This tour demonstrates the interface and its receipts.
+
+28
+00:02:09,558 --> 00:02:13,802
+It does not certify the mathematics beyond what each ledger tag states.
+
+29
+00:02:13,802 --> 00:02:18,703
+Media artifacts are outside the book audit chain and carry their own certificates.
+
+30
+00:02:18,703 --> 00:02:25,218
+This narration was compiled from build artifacts by reviewed template code; the screenshots are the evidence.
+
+31
+00:02:25,968 --> 00:02:30,819
+That's the surface: 29 rows taught, 1 still open and owed.
+
+32
+00:02:30,819 --> 00:02:35,252
+Next episodes unpack the rows, one receipt at a time.
+
+33
+00:02:35,252 --> 00:02:37,176
+Come into bounded form.

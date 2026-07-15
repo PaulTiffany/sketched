@@ -1,0 +1,239 @@
+/* Draw mode — the presented face of Sketched. Phone-first, chalk on slate. */
+:root {
+  --slate: #20242b;
+  --frame: #6b4a2f;
+  --chalk: #f4f1e8;
+  --signal: #ff8a5c;
+  --amber: #ffc46b;
+}
+.draw-app {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--frame);
+  color: var(--chalk);
+  font: 15px/1.5 Georgia, "Times New Roman", serif;
+  overflow: hidden;
+}
+.draw-bar,
+.draw-foot {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.7rem;
+  background: var(--slate);
+  flex-wrap: wrap;
+}
+.draw-bar {
+  border-bottom: 2px solid #000;
+}
+.draw-foot {
+  border-top: 1px solid #000;
+  font: 11px ui-monospace, Consolas, monospace;
+  color: #9aa3ae;
+}
+.draw-brand strong {
+  font-size: 1rem;
+}
+.draw-brand small {
+  display: block;
+  font: 700 9px ui-monospace, Consolas, monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--signal);
+}
+.draw-spacer {
+  flex: 1;
+}
+.draw-app button,
+.draw-app a.ghost {
+  font: 700 11.5px ui-monospace, Consolas, monospace;
+  letter-spacing: 0.04em;
+  background: transparent;
+  color: var(--chalk);
+  border: 1px solid var(--chalk);
+  border-radius: 4px;
+  padding: 0.42em 0.62em;
+  cursor: pointer;
+  text-decoration: none;
+}
+.draw-app button.amber {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+.draw-app button.on {
+  border-color: var(--signal);
+  color: var(--signal);
+}
+.draw-app button.ghost,
+.draw-app a.ghost {
+  border-color: #4a505c;
+  color: #9aa3ae;
+}
+.draw-app button:disabled {
+  opacity: 0.45;
+}
+.draw-stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  background: var(--slate);
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.55);
+}
+.draw-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.draw-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: crosshair;
+}
+.note-strip {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.55rem 0.6rem;
+  overflow-x: auto;
+  background: rgba(18, 20, 25, 0.85);
+  border-top: 1px dashed var(--amber);
+}
+.note {
+  flex: 0 0 auto;
+  max-width: 240px;
+  background: #2b2416;
+  border: 1px solid var(--amber);
+  color: var(--amber);
+  border-radius: 6px;
+  padding: 0.5rem 0.6rem;
+  font: 12.5px/1.45 ui-monospace, Consolas, monospace;
+  white-space: pre-wrap;
+}
+.note small {
+  display: block;
+  color: #b08a4f;
+  margin-top: 0.3rem;
+  font-size: 10px;
+}
+.audit-drawer {
+  position: absolute;
+  right: 0;
+  bottom: 2.4rem;
+  top: 3rem;
+  width: min(92vw, 440px);
+  background: rgba(16, 18, 22, 0.97);
+  border-left: 1px solid #000;
+  padding: 0.9rem 1rem;
+  overflow: auto;
+  z-index: 8;
+}
+.audit-drawer h3 {
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+}
+.audit-note {
+  font: 11px/1.5 ui-monospace, Consolas, monospace;
+  color: #9aa3ae;
+  margin-bottom: 0.6rem;
+}
+.audit-drawer ol {
+  list-style: none;
+}
+.ev {
+  font: 11px/1.45 ui-monospace, Consolas, monospace;
+  color: #c8cdd6;
+  padding: 0.28rem 0;
+  border-bottom: 1px solid #23262d;
+  overflow-wrap: anywhere;
+}
+.ev code {
+  color: var(--amber);
+}
+.ev em {
+  color: var(--signal);
+  font-style: normal;
+}
+.ev-consent-denied code,
+.ev-proposal-rejected code {
+  color: #ff6b6b;
+}
+.seat-scrim {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 12, 16, 0.78);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 12;
+  padding: 1rem;
+}
+.seat-card {
+  max-width: 440px;
+  width: 100%;
+  max-height: 92vh;
+  overflow: auto;
+  background: var(--slate);
+  color: var(--chalk);
+  border: 2px solid var(--chalk);
+  border-radius: 8px;
+  padding: 1.15rem 1.2rem;
+}
+.seat-card .eyebrow {
+  font: 700 10px ui-monospace, Consolas, monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--signal);
+}
+.seat-card h2 {
+  font-size: 1.12rem;
+  margin: 0.4rem 0 0.55rem;
+}
+.seat-card ul {
+  margin: 0.55rem 0 0.85rem 1.1rem;
+}
+.seat-card li {
+  margin: 0.28rem 0;
+  font-size: 0.9rem;
+}
+.seat-providers {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.seat-providers button {
+  flex: 1;
+}
+.seat-providers button.sel {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+.seat-card input {
+  width: 100%;
+  padding: 0.55em;
+  margin: 0.35rem 0;
+  border-radius: 4px;
+  border: 1px solid var(--chalk);
+  background: #14161b;
+  color: var(--chalk);
+  font: 13px ui-monospace, Consolas, monospace;
+}
+.seat-card .fine {
+  font-size: 0.78rem;
+  color: #9aa3ae;
+  margin: 0.3rem 0 0.6rem;
+}
+.seat-card button.wide {
+  width: 100%;
+  padding: 0.7em;
+  margin-top: 0.3rem;
+}

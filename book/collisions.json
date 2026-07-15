@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "note": "Hand-authored senses for double-booked terms. book_glossary.py verifies every evidence anchor still exists and still contains its quoted phrase, then generates book/glossary_collisions.md; the audit fails on drift. A sense may cite external work instead of an evidence anchor (field \"citation\"); citations are never mechanically verified, and the generator marks them as such, so the honesty discipline is never overstated.",
+  "terms": [
+    {
+      "term": "channel",
+      "rule": "The book always means the paper's sense unless it says otherwise (ch02's collision box).",
+      "senses": [
+        {
+          "context": "paper",
+          "meaning": "The channel-margin subposet: the region of conditions where the interaction matrix keeps a positive spectral margin. \"The channel is open\" is a statement about an eigenvalue.",
+          "evidence": [
+            { "file": "forcing_correspondence_v15.tex", "contains": "channel-margin subposet" }
+          ]
+        },
+        {
+          "context": "sketched",
+          "meaning": "A consent lease: a bounded authority a human grants a knob by press-and-hold. The operational shadow of the margin, related by design but not the same object.",
+          "evidence": [
+            { "file": "src/witness/witness.test.ts", "contains": "within channel" },
+            { "file": "src/witness/residue.ts", "contains": "channel projector T_A" }
+          ]
+        }
+      ]
+    },
+    {
+      "term": "forcing",
+      "rule": "When the book says \"forces\" it means the logical relation, always.",
+      "senses": [
+        {
+          "context": "paper (logic)",
+          "meaning": "p forces phi: the Kripke-Joyal relation the book teaches. The paper reserves the bare word \"forces\" for this sense.",
+          "evidence": [
+            { "file": "forcing_correspondence_v15.tex", "contains": "reserve ``forces'' for the second" }
+          ]
+        },
+        {
+          "context": "paper (control)",
+          "meaning": "A forced transition: dynamics push a state. The paper's other, explicitly separated sense.",
+          "evidence": [
+            { "file": "docs/12_FORCING_CORRESPONDENCE.md", "contains": "Control forcing" }
+          ]
+        },
+        {
+          "context": "forbidden",
+          "meaning": "The colloquial sense — \"forcing\" a mark onto the shared surface — which the coordination model forbids. Named only to be excluded.",
+          "evidence": [
+            { "file": "book/ch02_conditions_and_refinement.md", "contains": "nobody \"forces\" a mark" }
+          ]
+        }
+      ]
+    },
+    {
+      "term": "witness",
+      "rule": "Context decides: lowercase mathematical usage vs. the named src/witness/ layer; the book flags the layer explicitly as \"the witness layer\".",
+      "senses": [
+        {
+          "context": "mathematics",
+          "meaning": "A concrete object certifying an existential or refuting a universal: a strictness witness, a numeric witness, a countermodel. Executable evidence, not proof.",
+          "evidence": [
+            { "file": "verification/kernel/numeric_margin.py", "contains": "Numeric witness" }
+          ]
+        },
+        {
+          "context": "sketched",
+          "meaning": "The witness layer (src/witness/): Sketched's realization of the paper's witnessed fragment J_wit — the code that validates marks and traces.",
+          "evidence": [
+            { "file": "src/witness/witness.ts", "contains": "The executable witness discipline" }
+          ]
+        }
+      ]
+    },
+    {
+      "term": "void",
+      "rule": "Chapter 1's void is a point in a specific poset; the surface's void is a region of unresolved claims in a different, external framework. Do not read one meaning into the other.",
+      "senses": [
+        {
+          "context": "sketched (ch01)",
+          "meaning": "𝟙: the unique depth-0 condition shared by two observers with no other condition in common — a specific element of the refinement poset, not a region.",
+          "evidence": [
+            { "file": "book/ch01_the_room_at_zero.md", "contains": "Call the shared point the **void**, written" }
+          ]
+        },
+        {
+          "context": "book's hypothesis surface (/book/surface)",
+          "meaning": "A region of the book's own claim geography with no or low-confidence coverage — the calibration queue's target operators and the atlas nodes the book leaves untaught. Not a point; a shape of absence, structured rather than filled.",
+          "evidence": [
+            { "file": "verification/tools/book_projection.py", "contains": "A void is not an error; it is the shape of what the system" }
+          ]
+        },
+        {
+          "context": "external source (forthcoming)",
+          "meaning": "Definition 6 (Void Region) of the source paper below: a region where adjacent claims exist but the region itself has none, or all fibers fall below a confidence threshold. The book's surface page borrows this sense directly, not chapter 1's.",
+          "citation": "Tiffany, P.C., III. \"The Hypothesis Surface: An Operational Epistemology for Autonomous Research.\" AGI-26 (forthcoming)."
+        }
+      ]
+    },
+    {
+      "term": "surface",
+      "rule": "Three live senses as of this glossary. When the book says \"the surface\" unqualified in an EULA context it means the shared human/video layer Part A protects; \"/book/surface\" always means the book's own epistemic-geography page.",
+      "senses": [
+        {
+          "context": "sketched (EULA Part A)",
+          "meaning": "The shared human/video layer no knob — human or agent — is granted unilateral ownership of. Part A clause 3.",
+          "evidence": [
+            { "file": "EULA.md", "contains": "The knob does not own the surface" }
+          ]
+        },
+        {
+          "context": "book interface (/book/surface)",
+          "meaning": "The book's own epistemic geography, in the sense of the source paper below: claims banded ground/frontier/open, a masking rate mu computed from chapter text against the atlas, and a void map of what remains owed.",
+          "evidence": [
+            { "file": "verification/tools/book_projection.py", "contains": "The Surface of This Book" }
+          ]
+        },
+        {
+          "context": "external source (forthcoming)",
+          "meaning": "The Hypothesis Surface itself: a typed workspace separating every claim from its evidential fiber, governed by three integrability conditions (no bare claims, anti-masking, certificate classification). /book/surface is this book's own instance of that framework, applied reflexively to its own chapters.",
+          "citation": "Tiffany, P.C., III. \"The Hypothesis Surface: An Operational Epistemology for Autonomous Research.\" AGI-26 (forthcoming)."
+        }
+      ]
+    },
+    {
+      "term": "projection",
+      "rule": "The witness-layer sense is about loss under transport; the browser sense is about bounded context selection. Both are lossy on purpose, but they lose different things.",
+      "senses": [
+        {
+          "context": "witness layer",
+          "meaning": "The channel projection T_A applied to state before export: what a mark may carry is whitelisted, and the loss must be declared in a projection note.",
+          "evidence": [
+            { "file": "src/witness/validate.ts", "contains": "projection note missing" }
+          ]
+        },
+        {
+          "context": "book interface",
+          "meaning": "A bounded browser projection: a compiled JSON packet carrying a selected learning path over the canonical chapters, digest-checked against its sources.",
+          "evidence": [
+            { "file": "book/README.md", "contains": "Browser projections" }
+          ]
+        }
+      ]
+    }
+  ]
+}

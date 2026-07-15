@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "note": "Demonstration atlas for prioritize.py. Same shape as principia_atlas.json (id / depends_on / cited_by / taught): point prioritize at the real atlas and it works unchanged.",
+  "nodes": [
+    {"id": "void",              "title": "The void (room at zero)",     "depends_on": [],                              "cited_by": 40, "taught": true},
+    {"id": "conditions",        "title": "Conditions",                  "depends_on": ["void"],                        "cited_by": 22, "taught": true},
+    {"id": "refinement",        "title": "Refinement order",            "depends_on": ["conditions"],                  "cited_by": 18, "taught": true},
+    {"id": "channel_margin",    "title": "The channel margin",          "depends_on": ["refinement"],                  "cited_by": 12, "taught": true},
+    {"id": "forcing_relation",  "title": "The forcing relation",        "depends_on": ["conditions", "refinement"],    "cited_by": 15, "taught": false},
+    {"id": "feasibility_cliff", "title": "The feasibility cliff",       "depends_on": ["channel_margin"],              "cited_by": 9,  "taught": false},
+    {"id": "generic_completion","title": "Generic completion",          "depends_on": ["forcing_relation", "channel_margin"], "cited_by": 7, "taught": false},
+    {"id": "observer_closure",  "title": "Observer closure",            "depends_on": ["refinement"],                  "cited_by": 11, "taught": false, "lean": "observer_closed_iff_zero_defect"}
+  ]
+}

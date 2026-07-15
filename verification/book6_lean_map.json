@@ -1,0 +1,447 @@
+{
+ "schema": "sketched.book6-lean-map.v1",
+ "source": "Principia Symbolica Book 6",
+ "boundary": "Mappings certify only the static/algebraic/discrete kernel. Manifold, curvature-tensor, PDE, Hilbert-space, and asymptotic-limit material is not certified; conditional and partial rows do not promote the full prose statement to a Lean theorem.",
+ "entries": [
+  {
+   "atlas_id": "definition:bk6_mutation_threshold",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book6.MutationThresholdLaw",
+    "Book6.MutationTriggered",
+    "Book6.mutationTriggered_iff_signed"
+   ],
+   "note": "The stated defining iff (|\u0394F|>\u03c4 triggers mutation) is proved exactly in signed form; the manifold-level free-energy functional F[M,\u03c1] it is derived from is not modeled, only the resulting scalar threshold law."
+  },
+  {
+   "atlas_id": "theorem:bk6_symbolic_bifurcation_classification",
+   "coverage": "partial",
+   "lean": [
+    "Book6.BifurcationRankChange",
+    "Book6.IsCreation",
+    "Book6.IsAnnihilation",
+    "Book6.IsStationary",
+    "Book6.bifurcation_classification_exhaustive",
+    "Book6.bifurcation_classification_exclusive"
+   ],
+   "note": "Formalizes only the signed rank-change classification (creation/annihilation/stationary, exhaustive and pairwise exclusive); the Hessian operator-norm discontinuity that the source proof derives this classification from is not modeled."
+  },
+  {
+   "atlas_id": "proposition:bk6_bifurcation_threshold",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book6.NoBifurcation",
+    "Book6.Bifurcates",
+    "Book6.bifurcation_threshold_dichotomy",
+    "Book6.bifurcation_threshold_exclusive"
+   ],
+   "note": "The tension-vs-threshold case split (tau(x)<tauC vs tauC<=tau(x)) is proved exhaustive and mutually exclusive; the vector cross-product definition of tension(x)=||D(x)xR(D(x))|| itself is not modeled."
+  },
+  {
+   "atlas_id": "proposition:bk6_structural_divergence_condition",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book6.DivergenceLaw",
+    "Book6.divergenceLaw_energy_rate_pos"
+   ],
+   "note": "Proves the source proof's own arithmetic chain epsilon0*w < Sc*w and 0<epsilon0*w from the stated strict hypotheses; the divergence integral dF/dt=int(Sc)(div D)rho itself is not modeled, only its algebraic consequence once treated as scalars."
+  },
+  {
+   "atlas_id": "proposition:bk6_reflective_mutation_inhibition",
+   "coverage": "conditional",
+   "lean": [
+    "Book6.reflective_inhibition_limit"
+   ],
+   "note": "Proves the honest limiting content (uniform-in-delta inhibition forces exact identity at a point) rather than the stated exponential-convergence ODE d/dt||R(x)-x||=-alpha||R(x)-x||+O(...), which is not modeled."
+  },
+  {
+   "atlas_id": "axiom:bk6_reflective_regulation_of_mutation",
+   "coverage": "conditional",
+   "lean": [
+    "Book6.EntropyRegulation",
+    "Book6.entropyRegulation_iterate_le"
+   ],
+   "note": "Given the single-step entropy-non-increase law as a structure field, proves it extends to any finite number of iterations by induction; the damping-coefficient formula eta(t)=-dS/dt is not modeled."
+  },
+  {
+   "atlas_id": "corollary:bk6_mutation_memory",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book6.MutationMemory",
+    "Book6.mutationMemory_monotone",
+    "Book6.mutationMemory_nonneg"
+   ],
+   "note": "Proves monotonicity and nonnegativity of a discrete step-accumulator with nonnegative increments; the underlying curvature-discontinuity path integral M(t)=int||Delta kappa|| is replaced by its discrete telescoping analogue."
+  },
+  {
+   "atlas_id": "proposition:bk6_entropic_dissolution",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book6.EntropyGrowth",
+    "Book6.entropyGrowth_accum",
+    "Book6.entropyGrowth_unbounded"
+   ],
+   "note": "Proves the discrete dual of a termination bound: a sequence increasing by a fixed positive amount every step is unbounded above, the honest finite/discrete kernel of the source's lim_{t->infty} S[rho(t)]=infty claim."
+  },
+  {
+   "atlas_id": "definition:bk6_symbolic_regulatory_cycle",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book6.RegulatoryCycleBound",
+    "Book6.regulatoryCycle_energy_bound"
+   ],
+   "note": "Proves the per-step bound |F(n+1)-F(n)|<eps telescopes to an n-step bound n*eps via the triangle inequality and induction; the drift/reflection/transformation triple Phi that produces each step is not modeled."
+  },
+  {
+   "atlas_id": "definition:bk6_symbolic_configuration_spaces",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book6.configDim",
+    "Book6.configDim_mono",
+    "Book6.configDim_ge"
+   ],
+   "note": "Proves monotonicity and a lower bound for the stated dimension formula floor(lambda)+d0; the submanifold nesting P_lambda subset P_lambda' and the induced Riemannian structure are not modeled."
+  },
+  {
+   "atlas_id": "definition:bk6_identity_carrier_kernel",
+   "coverage": "conditional",
+   "lean": [
+    "Book6.IdentityCarrierKernel",
+    "Book6.identityCarrier_le_self"
+   ],
+   "note": "Given the locality/exponential-decay bound as a structure field, proves the genuine consequence Psi(x,y)<=Psi(x,x); the normalization and symmetry clauses (which need a volume measure) are not modeled."
+  },
+  {
+   "atlas_id": "definition:bk6_symbolic_temperature",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book6.temperature_pos_iff"
+   ],
+   "note": "Proves the real-inverse sign-preservation fact underlying the stated positivity constraint T_s(p)>0; the partial derivative dS/dE itself is treated as an opaque scalar, not derived from the entropy/energy functionals."
+  },
+  {
+   "atlas_id": "definition:bk6_symbolic_free_energy_functional",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book6.freeEnergyOf",
+    "Book6.freeEnergy_antitone_in_entropy"
+   ],
+   "note": "Proves strict antitonicity of F=E-T*S in S at fixed E and positive T; E, T, S are treated as opaque reals, not derived from the underlying integral functionals of Defs. bk6_symbolic_energy_functional/bk6_symbolic_entropy_functional."
+  },
+  {
+   "atlas_id": "definition:bk6_transformation_operator_complete",
+   "coverage": "conditional",
+   "lean": [
+    "Book6.TransformationFamily",
+    "Book6.transformationFamily_triple",
+    "Book6.transformationFamily_bracketing_agrees"
+   ],
+   "note": "Given the two-argument group-composition law T_a(T_b x)=T_{a op b}(x) as a structure field, proves genuine three-fold composition and bracketing-invariance consequences; complexity conservation and the stability-preservation clause are not modeled."
+  },
+  {
+   "atlas_id": "definition:bk6_bifurcation_operator_complete",
+   "coverage": "conditional",
+   "lean": [
+    "Book6.bifurcation_offset_pos"
+   ],
+   "note": "Proves positivity of the scalar quantity under the branching offset's square root, given the sub-threshold hypothesis Upsilon<gammaMin; the square root, projection Pi, and unstable eigenmode v_unstable are not modeled."
+  },
+  {
+   "atlas_id": "definition:bk6_stability_functional_complete",
+   "coverage": "conditional",
+   "lean": [
+    "Book6.bifurcation_offset_pos"
+   ],
+   "note": "Only the threshold gammaMin from this definition is used, as a scalar parameter in the bifurcation-offset positivity theorem; the integral pairing Upsilon_i(p1,p2) itself is not modeled."
+  },
+  {
+   "atlas_id": "axiom:bk6_symbolic_time_irreversibility_complete",
+   "coverage": "conditional",
+   "lean": [
+    "Book6.no_retraction_of_not_injective"
+   ],
+   "note": "Proves the fully general fact that a non-injective map admits no left inverse; injectivity-failure of the drift operator D_lambda is the hypothesis under which this is proved, not asserted unconditionally about D_lambda itself."
+  },
+  {
+   "atlas_id": "proposition:bk6_mutation_bifurcation_duality",
+   "coverage": "conditional",
+   "lean": [
+    "Book6.MutationBifurcationBridge",
+    "Book6.mutationBifurcationBridge_iff"
+   ],
+   "note": "Certifies only the logical shape of the source proof (transitivity of two chained bridge equivalences among mutation/tension/bifurcation conditions); the two bridge equivalences themselves are kept as hypotheses/fields since each depends on unformalized manifold-level structure (operator norms, the Jacobian determinant)."
+  },
+  {
+   "atlas_id": "definition:bk6_symbolic_mutation",
+   "coverage": "conditional",
+   "lean": [
+    "Book6.MutationBifurcationBridge"
+   ],
+   "note": "Its mutation-trigger condition (||D\u2218R-R\u2218D||>gamma) supplies the intended MutationCond slot of the bridge structure; the condition itself is an opaque Prop field, not derived from a modeled commutator norm."
+  },
+  {
+   "atlas_id": "definition:bk6_symbolic_bifurcation",
+   "coverage": "conditional",
+   "lean": [
+    "Book6.MutationBifurcationBridge"
+   ],
+   "note": "Its determinant condition (det(J(t*))=0) supplies the intended BifurcationCond slot of the bridge structure; the condition itself is an opaque Prop field, not derived from a modeled Jacobian."
+  },
+  {
+   "atlas_id": "definition:bk6_regulatory_basin",
+   "coverage": "partial",
+   "lean": [
+    "Book6.regulatoryBasin_power_argmax_exists"
+   ],
+   "note": "Only the power-concentration clause (existence of a maximizer) is modeled, via finite argmax existence; the confidence-coherence and gradient-flow-convergence clauses of the same definition are not."
+  },
+  {
+   "atlas_id": "definition:bk6_confidence_field_operator",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book6.confidence_sigma_pos"
+   ],
+   "note": "Proves the confidence value exp(-beta*Hconf) is always strictly positive; the confidence Hamiltonian H_conf and the threshold case-split producing p' are not modeled."
+  },
+  {
+   "atlas_id": "axiom:bk6_reflective_coherence_complete",
+   "coverage": "definition",
+   "lean": [
+    "Book6.ReflectiveEquilibriumSet"
+   ],
+   "note": "Kept as the definitional unfolding of the reflective-equilibrium set E_R it defines (dist(R p, p) < delta_R), exactly as stated; no further theorem is forced on top of this definitional biconditional."
+  },
+  {
+   "atlas_id": "definition:bk6_mutation_rate",
+   "coverage": "definition",
+   "lean": [
+    "Asymptotics.windowAverage",
+    "Asymptotics.windowAverage_mem_unitInterval"
+   ],
+   "note": "Discretizes the source's continuous-time limit (Delta t -> 0) as a growing window (n -> infinity) Cesaro-type average of a bifurcation indicator sequence. The bifurcation-event-counting integral N_b(t1,t2) itself is not modeled; only a postulated {0,1}-valued indicator sequence and its running average are, plus the one genuine consequence that the average always lies in [0,1]."
+  },
+  {
+   "atlas_id": "proposition:bk6_mutation_equilibrium",
+   "coverage": "conditional",
+   "lean": [
+    "Asymptotics.MutationEquilibrium",
+    "Asymptotics.MutationEquilibrium.eventually_pos"
+   ],
+   "note": "The convergence Tendsto rate atTop (nhds limit) with limit > 0 is kept as the structure's hypothesis (not derived); eventual strict positivity of the rate is the genuine derived consequence. The entropy-balance clause (sigma_prod = sigma_diss) and its commutation-based proof are geometric/operator claims with no scalar-sequence content and are not modeled."
+  },
+  {
+   "atlas_id": "proposition:bk6_drift_reflection_correspondence",
+   "coverage": "conditional",
+   "lean": [
+    "Asymptotics.QuadraticErrorBound",
+    "Asymptotics.QuadraticErrorBound.tendsto_zero"
+   ],
+   "note": "Models D = (1/2)(R - R^{-1}) + O(||R-Id||^2) as a scalar residual bounded by C*(eps_n)^2 for a control sequence eps_n = ||R_n - Id|| -> 0; proves the residual tends to 0. The drift/reflection commutation proof (DR = RD) and the near-identity expansion deriving the bound are not modeled -- the O(...) bound is taken as a hypothesis, only its limiting behavior is proved."
+  },
+  {
+   "atlas_id": "axiom:bk6_equilibrium_of_mutability",
+   "coverage": "conditional",
+   "lean": [
+    "Asymptotics.MutabilityEquilibrium",
+    "Asymptotics.MutabilityEquilibrium.eta_tendsto_of_mu_tendsto"
+   ],
+   "note": "lim (mu - eta) = 0 is kept as the structure's hypothesis; the derived consequence is that if mu additionally converges to L (as in MutationEquilibrium), eta converges to the same L."
+  },
+  {
+   "atlas_id": "definition:bk6_reflection_operator_complete",
+   "coverage": "partial",
+   "lean": [
+    "Asymptotics.Contraction",
+    "Asymptotics.Contraction.tendsto_fixedPt",
+    "Asymptotics.AntitoneBoundedProcess",
+    "Asymptotics.AntitoneBoundedProcess.tendsto_iInf"
+   ],
+   "note": "Of the three defining clauses: 'attracting fixed points' (lim R^n(p) = p*) is exactly a Contraction instance; 'entropy reduction' (monotone decrease along iterates) is exactly an AntitoneBoundedProcess instance, hence converges to its infimum. The 'near-involution' clause (||R\u2218R - Id|| <= eps_lambda) is a single numeric bound with no further scalar consequence in the source and is not separately formalized."
+  },
+  {
+   "atlas_id": "definition:bk6_regulatory_basin_operator",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Asymptotics.eventually_mem_ball_of_tendsto"
+   ],
+   "note": "The clause 'lim_{t->infinity} Phi_t(q) in B_eps(p)' is exactly the statement that a sequence converging to p is eventually inside every epsilon-ball of p. The Upsilon_i stability-coupling condition defining membership in the basin is not modeled; only the limit clause is."
+  },
+  {
+   "atlas_id": "axiom:bk6_map_equilibrium_invariance_complete",
+   "coverage": "conditional",
+   "lean": [
+    "Asymptotics.GeometricErrorBound",
+    "Asymptotics.GeometricErrorBound.tendsto_zero"
+   ],
+   "note": "F_lambda[(...)^n(p)] = F_lambda[p] + O(e^{-eta n}) is modeled as a residual bounded by C*rate^n with rate kept abstractly in [0,1) (rather than reconstructed as Real.exp(-eta)); proves the residual tends to 0, i.e. the functional value converges to F_lambda[p]."
+  },
+  {
+   "atlas_id": "definition:bk6_symbolic_recombination",
+   "coverage": "conditional",
+   "lean": [
+    "Book68B.recombinationCoherence_zero_preserved",
+    "Book68B.recombinationCoherence_driftAlign_ne_zero"
+   ],
+   "note": "Coherence preservation modeled as a Lipschitz-type structure (RecombinationCoherence); its epsilon-to-0 limit consequence and drift alignment's nonvanishing consequence are proved. The manifold curvature kappa_P/kappa_Q themselves are not modeled -- only the abstract real-valued distances between them."
+  },
+  {
+   "atlas_id": "axiom:bk6_symbolic_mutation_as_curvature_transition",
+   "coverage": "conditional",
+   "lean": [
+    "Book68B.sequentialJump_not_continuousAt"
+   ],
+   "note": "kappa is treated as an ordinary real function of symbolic time (its manifold/tensor structure is not modeled); a witnessed one-sided sequential-limit mismatch (SequentialJump) is shown to refute continuity -- the honest real-analytic content of Delta kappa(t) != 0."
+  },
+  {
+   "atlas_id": "axiom:bk6_bifurcation_as_emergence_operator",
+   "coverage": "partial",
+   "lean": [
+    "Book68B.bifurcation_piece_le_total"
+   ],
+   "note": "Only the density-conservation clause (sum_i rho(x_i) = rho(x)) is formalized, as a finite-sum bound; the entropy-gradient clause (nabla_B S >= 0) is not modeled (no entropy functional over B(x) is defined here)."
+  },
+  {
+   "atlas_id": "corollary:bk6_reflective_capacity_theorem",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book68B.capacity_isUB"
+   ],
+   "note": "C_R = sup{...} formalized directly as sSup over a nonempty bounded-above set of ratios; capacity_isUB is the standard least-upper-bound property. The eta(t)/mu(t) functions themselves are abstracted to an opaque set of real ratios."
+  },
+  {
+   "atlas_id": "definition:bk6_mutation_operator",
+   "coverage": "partial",
+   "lean": [
+    "Book68B.evolve_comp",
+    "Book68B.isStochastic_mul"
+   ],
+   "note": "The composition M_t = R_t o B_t o D_t is not modeled with three named operators; instead its discrete shadow (composing two canonical row-stochastic evolution steps into one, via matrix multiplication) is proved."
+  },
+  {
+   "atlas_id": "definition:bk6_symbolic_confidence_field",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book68B.totalConfidence_nonneg",
+    "Book68B.totalConfidence_le_one"
+   ],
+   "note": "Smoothness (C in C^infty(M)) is not modeled (finite Fin n alphabet instead); normalization (0 <= C(x) <= 1) and density coupling (integral C rho <= 1) are proved exactly, built on Book2.IsDensity."
+  },
+  {
+   "atlas_id": "definition:bk6_symbolic_power",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book68B.power_nonneg"
+   ],
+   "note": "The geodesic ball volume and gradient norm are abstracted to opaque nonnegative reals (SymbolicPowerData); the product formula's nonnegativity is proved."
+  },
+  {
+   "atlas_id": "lemma:bk6_power_scaling",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book68B.powerScaling_compose"
+   ],
+   "note": "The homogeneity law itself is a hypothesis (PowerScaling); the genuinely new content proved is that it composes multiplicatively under two successive rescalings, via Real.mul_rpow."
+  },
+  {
+   "atlas_id": "definition:bk6_mutation_operator_complete",
+   "coverage": "partial",
+   "lean": [
+    "Book68B.composedEvolution_isDensity",
+    "Book68B.evolve_comp"
+   ],
+   "note": "Same discrete analogue as bk6_mutation_operator: composing canonical operators (here specialized to row-stochastic evolution) and showing the composite conserves density, rather than modeling R_{lambda+1}, B_lambda, D_lambda as three distinct named maps."
+  },
+  {
+   "atlas_id": "axiom:bk6_non_commutativity_evolution_reflection",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book68B.commutator_eq_zero_iff_commute",
+    "Book68B.commutator_witness_ne_zero"
+   ],
+   "note": "The commutator [D,R] is modeled pointwise on any AddCommGroup (vector fields are not modeled); the iff with literal pointwise commuting is exact, and a genuinely nonzero witness is exhibited on ZMod 4."
+  },
+  {
+   "atlas_id": "axiom:bk6_symbolic_mass_conservation_complete",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book68B.composedEvolution_isDensity"
+   ],
+   "note": "\"For any canonical operator O\" is specialized to composites of row-stochastic evolution kernels (Book2's discrete Fokker-Planck skeleton); mass conservation for such composites is proved exactly."
+  },
+  {
+   "atlas_id": "theorem:bk6_symbolic_diffusion_governs_evolution",
+   "coverage": "partial",
+   "lean": [
+    "Book68B.evolve_comp",
+    "Book68B.isStochastic_mul",
+    "Book68B.composedEvolution_isDensity"
+   ],
+   "note": "The manifold Fokker-Planck PDE (with Laplace-Beltrami diffusion term) is NOT certified; the discrete skeleton -- multi-step evolution under composed row-stochastic kernels conserves density -- is, per Book2's existing certified Gibbs-kernel apparatus."
+  },
+  {
+   "atlas_id": "theorem:bk6_complete_operator_closure",
+   "coverage": "partial",
+   "lean": [
+    "Book68B.isStochastic_mul"
+   ],
+   "note": "Specialized to the row-stochastic-matrix instance of the canonical operator set: closure under composition is proved EXACTLY (no error term E), strictly stronger than the source's closure-up-to-epsilon claim -- an honesty gap noted rather than hidden."
+  },
+  {
+   "atlas_id": "lemma:bk6_conservation_of_symbolic_information",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book6.symbolicInformation",
+    "Book6.symbolicInformation_relabel_invariant"
+   ],
+   "note": "Proves finite relative-information (KL) invariance under any bijective relabeling of a finite state space. This is the exact discrete change-of-variables kernel of the source proof; the manifold diffeomorphism, Riemannian volume form, and Jacobian transformation law remain outside the certified boundary."
+  },
+  {
+   "atlas_id": "axiom:bk6_power_conservation",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book6.totalPairPower",
+    "Book6.ClosedPowerEvolution",
+    "Book6.closedPower_exchange_sum_zero",
+    "Book6.closedPower_total_conserved",
+    "Book6.totalPairPower_eq_metabolicRate",
+    "Book6.closedPower_homeostatic_step",
+    "Book6.closedPower_homeostatic_all"
+   ],
+   "note": "Models a finite closed system as pairwise power evolving through antisymmetric internal exchange. The exchange double sum is proved zero, hence total pairwise power is conserved at every step. On Fin n this total is definitionally Book 3 metabolicRate, so the proof now establishes the explicit Book 3 -> Book 6 layer: an initial Book 3 Homeostatic band persists through every finite closed-power stage. The manifold geodesic integral defining each power-kernel entry remains outside the certified boundary."
+  },
+  {
+   "atlas_id": "theorem:bk6_confidence_power_bound",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book6.confidencePower_gaussian_bound"
+   ],
+   "note": "Derives the stated confidence-weighted Gaussian bound from the manuscript's Gaussian-locality hypothesis, nonnegative peak amplitude, positive correlation length, and the confidence codomain 0 <= sigma <= 1. The geodesic distance is modeled by an arbitrary pseudometric space."
+  },
+  {
+   "atlas_id": "proposition:bk6_symbolic_charge_conservation",
+   "coverage": "conditional",
+   "lean": [
+    "Conservation.conserved_along_orbit"
+   ],
+   "note": "Discrete conservation kernel: a step-invariant charge is constant along the orbit; the continuum charge integral stays open."
+  },
+  {
+   "atlas_id": "proposition:bk6_total_symbolic_action_conservation",
+   "coverage": "conditional",
+   "lean": [
+    "Conservation.conserved_along_orbit"
+   ],
+   "note": "Total symbolic action as a conserved charge; the action integral stays open."
+  },
+  {
+   "atlas_id": "proposition:bk6_map_invariant",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Conservation.conserved_closed_orbit",
+    "Conservation.IsConserved.add",
+    "Conservation.IsConserved.smul"
+   ],
+   "note": "The MAP invariant F + alpha*Upsilon + beta*sigma is conserved along regulatory orbits, with additive/scalar composition; stronger than the closed-orbit form the source assumes."
+  }
+ ]
+}

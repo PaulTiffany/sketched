@@ -1,0 +1,35 @@
+{
+  "schema": "principia-explainer/1",
+  "content_hash": "14b92c3008e5ce9107040459c207eabd",
+  "adapter_version": "principia-explainer/2",
+  "node": "definition:bk4_bounded_observer",
+  "name": "Bounded Observer",
+  "book": "book4",
+  "type": "definition",
+  "proof_status": "definitional",
+  "depends_on": [
+    "definition:bk1_bounded_observer",
+    "definition:bk4_proto_symbolic_space"
+  ],
+  "cited_by_count": 21,
+  "segments": [
+    "CH",
+    "DEF",
+    "MATH",
+    "GRAPH",
+    "END"
+  ],
+  "source": "bib/principia_atlas.json",
+  "output": {
+    "path": "bounded_observer.mp4",
+    "sha256": "a52fa3aa0360ff7f74b6ce23c3942217c9d5703a64e0e4507b750701402b6803",
+    "bytes": 3459619
+  },
+  "sidecars": {
+    "subtitles": "bounded_observer.srt",
+    "chapters": "chapters.txt",
+    "thumbnail": "thumbnail.png"
+  },
+  "compiled_at_utc": "2026-06-22T01:45:17.699322+00:00",
+  "note": "Atlas index is the authority; atmosphere + narration are labelled, non-authoritative. Statement is the node's latex_body, not paraphrased. Subtitles are the narration verbatim."
+}

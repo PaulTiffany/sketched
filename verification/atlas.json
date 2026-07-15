@@ -1,0 +1,1890 @@
+{
+  "source": "forcing_correspondence_v16.tex",
+  "nodes": [
+    {
+      "id": "def:cond",
+      "type": "definition",
+      "title": "Conditions",
+      "statement_sha": "85da9f34d1be",
+      "section": "Core definitions (instantiated)",
+      "source_span": [
+        90,
+        93
+      ],
+      "proof_span": null,
+      "proof_status": "stated_no_proof",
+      "hard_dependencies": [],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "asm:smooth",
+      "type": "assumption",
+      "title": "Smoothness contract",
+      "statement_sha": "d3e5ec4a3ee7",
+      "section": "Core definitions (instantiated)",
+      "source_span": [
+        95,
+        103
+      ],
+      "proof_span": null,
+      "proof_status": "stated_no_proof",
+      "hard_dependencies": [],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [
+        "C-smooth-ii"
+      ],
+      "external_refs": [
+        "cacophony"
+      ],
+      "status_ledger_claim": "C",
+      "risk_notes": []
+    },
+    {
+      "id": "def:refine",
+      "type": "definition",
+      "title": "Refinement order and channel-margin subposet",
+      "statement_sha": "b3826d6e2c7c",
+      "section": "Core definitions (instantiated)",
+      "source_span": [
+        105,
+        111
+      ],
+      "proof_span": null,
+      "proof_status": "stated_no_proof",
+      "hard_dependencies": [
+        "asm:smooth"
+      ],
+      "statement_dependencies": [
+        "asm:smooth"
+      ],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [
+        "C-smooth-ii"
+      ],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "def:req",
+      "type": "definition",
+      "title": "Sieves and dense requirements",
+      "statement_sha": "36710a911536",
+      "section": "Core definitions (instantiated)",
+      "source_span": [
+        113,
+        122
+      ],
+      "proof_span": null,
+      "proof_status": "stated_no_proof",
+      "hard_dependencies": [],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [
+        "def:refine"
+      ],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "def:stab",
+      "type": "definition",
+      "title": "Stability, atomic",
+      "statement_sha": "6115ff4f3a57",
+      "section": "Core definitions (instantiated)",
+      "source_span": [
+        124,
+        138
+      ],
+      "proof_span": null,
+      "proof_status": "stated_no_proof",
+      "hard_dependencies": [],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [
+        "M-Pers"
+      ],
+      "external_refs": [
+        "HS:Eq1"
+      ],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "defi:preservation-set",
+      "type": "definition",
+      "title": "Preservation set",
+      "statement_sha": "8772968f3bf9",
+      "section": "Core definitions (instantiated)",
+      "source_span": [
+        140,
+        143
+      ],
+      "proof_span": null,
+      "proof_status": "stated_no_proof",
+      "hard_dependencies": [],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "def:site",
+      "type": "definition",
+      "title": "Generated admissible site",
+      "statement_sha": "b7719ade5ca2",
+      "section": "The generated admissible site: raw, generated, witnessed",
+      "source_span": [
+        152,
+        160
+      ],
+      "proof_span": null,
+      "proof_status": "stated_no_proof",
+      "hard_dependencies": [
+        "def:req"
+      ],
+      "statement_dependencies": [
+        "def:req"
+      ],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [
+        "def:refine",
+        "def:req"
+      ],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": "D",
+      "risk_notes": []
+    },
+    {
+      "id": "lem:sitebound",
+      "type": "lemma",
+      "title": "Site bound",
+      "statement_sha": "eedfa1f5220d",
+      "section": "The generated admissible site: raw, generated, witnessed",
+      "source_span": [
+        163,
+        167
+      ],
+      "proof_span": [
+        169,
+        177
+      ],
+      "proof_status": "proved",
+      "hard_dependencies": [
+        "def:req"
+      ],
+      "statement_dependencies": [],
+      "proof_dependencies": [
+        "def:req"
+      ],
+      "soft_dependencies": [],
+      "symbol_dependencies": [
+        "def:refine",
+        "def:site"
+      ],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": "P",
+      "risk_notes": []
+    },
+    {
+      "id": "def:force",
+      "type": "definition",
+      "title": "Forcing relations",
+      "statement_sha": "9dd62ff4e639",
+      "section": "The generated admissible site: raw, generated, witnessed",
+      "source_span": [
+        179,
+        195
+      ],
+      "proof_span": null,
+      "proof_status": "stated_no_proof",
+      "hard_dependencies": [
+        "def:stab",
+        "lem:sitebound"
+      ],
+      "statement_dependencies": [
+        "def:stab",
+        "lem:sitebound"
+      ],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [
+        "def:cond",
+        "def:refine",
+        "def:site",
+        "def:stab"
+      ],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "rema:the-site-is-the",
+      "type": "remark",
+      "title": "The site is the closure of obligation under refinement",
+      "statement_sha": "becf8b2167ad",
+      "section": "The generated admissible site: raw, generated, witnessed",
+      "source_span": [
+        197,
+        205
+      ],
+      "proof_span": null,
+      "proof_status": "n/a",
+      "hard_dependencies": [],
+      "statement_dependencies": [
+        "lem:reach"
+      ],
+      "proof_dependencies": [],
+      "soft_dependencies": [
+        "lem:reach"
+      ],
+      "symbol_dependencies": [
+        "def:force",
+        "def:refine",
+        "def:req",
+        "def:site"
+      ],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "def:wit",
+      "type": "definition",
+      "title": "Witnessed fragment",
+      "statement_sha": "1f70d018fc18",
+      "section": "The generated admissible site: raw, generated, witnessed",
+      "source_span": [
+        207,
+        218
+      ],
+      "proof_span": null,
+      "proof_status": "stated_no_proof",
+      "hard_dependencies": [],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [
+        "def:req",
+        "def:site"
+      ],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": "D",
+      "risk_notes": []
+    },
+    {
+      "id": "rema:self-other-global",
+      "type": "remark",
+      "title": "Self / other / global",
+      "statement_sha": "cd29d8980014",
+      "section": "The generated admissible site: raw, generated, witnessed",
+      "source_span": [
+        220,
+        229
+      ],
+      "proof_span": null,
+      "proof_status": "n/a",
+      "hard_dependencies": [],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [
+        "def:site",
+        "def:wit"
+      ],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "rema:rigorous-home",
+      "type": "remark",
+      "title": "Rigorous home",
+      "statement_sha": "95362c2ff2b9",
+      "section": "Formal schema",
+      "source_span": [
+        271,
+        281
+      ],
+      "proof_span": null,
+      "proof_status": "n/a",
+      "hard_dependencies": [],
+      "statement_dependencies": [
+        "lem:sitebound"
+      ],
+      "proof_dependencies": [],
+      "soft_dependencies": [
+        "lem:sitebound"
+      ],
+      "symbol_dependencies": [
+        "def:refine",
+        "def:site"
+      ],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "def:clauses",
+      "type": "definition",
+      "title": "Propositional clauses and deciding sets",
+      "statement_sha": "20fd8a9d47d9",
+      "section": "Formal schema",
+      "source_span": [
+        283,
+        296
+      ],
+      "proof_span": null,
+      "proof_status": "stated_no_proof",
+      "hard_dependencies": [
+        "def:force"
+      ],
+      "statement_dependencies": [
+        "def:force"
+      ],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [
+        "def:force",
+        "def:refine",
+        "def:site"
+      ],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "lem:pers",
+      "type": "lemma",
+      "title": "Persistence and consistency",
+      "statement_sha": "99c507d2a575",
+      "section": "Formal schema",
+      "source_span": [
+        298,
+        301
+      ],
+      "proof_span": [
+        302,
+        312
+      ],
+      "proof_status": "proved",
+      "hard_dependencies": [
+        "def:stab"
+      ],
+      "statement_dependencies": [],
+      "proof_dependencies": [
+        "def:stab"
+      ],
+      "soft_dependencies": [],
+      "symbol_dependencies": [
+        "def:force",
+        "def:stab"
+      ],
+      "dangling_refs": [],
+      "assumptions_consumed": [
+        "M-Pers"
+      ],
+      "external_refs": [],
+      "status_ledger_claim": "P",
+      "risk_notes": []
+    },
+    {
+      "id": "lem:dec",
+      "type": "lemma",
+      "title": "Deciding sets are order-dense",
+      "statement_sha": "f868533eafc0",
+      "section": "Formal schema",
+      "source_span": [
+        314,
+        317
+      ],
+      "proof_span": [
+        318,
+        322
+      ],
+      "proof_status": "proved",
+      "hard_dependencies": [],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [
+        "def:clauses",
+        "def:force"
+      ],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": "P",
+      "risk_notes": []
+    },
+    {
+      "id": "rema:untitled",
+      "type": "remark",
+      "title": "",
+      "statement_sha": "0aca2fe54471",
+      "section": "Formal schema",
+      "source_span": [
+        324,
+        329
+      ],
+      "proof_span": null,
+      "proof_status": "n/a",
+      "hard_dependencies": [],
+      "statement_dependencies": [
+        "lem:pers"
+      ],
+      "proof_dependencies": [],
+      "soft_dependencies": [
+        "lem:pers"
+      ],
+      "symbol_dependencies": [
+        "def:clauses",
+        "def:site"
+      ],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "asm:calibration",
+      "type": "assumption",
+      "title": "Calibration queue",
+      "statement_sha": "2bf5416c5168",
+      "section": "Calibration as a finite theorem queue",
+      "source_span": [
+        366,
+        372
+      ],
+      "proof_span": null,
+      "proof_status": "stated_no_proof",
+      "hard_dependencies": [],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [
+        "C-calibration-queue"
+      ],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "theo:untitled",
+      "type": "theorem_target",
+      "title": "",
+      "statement_sha": "5e9636ca5714",
+      "section": "Theorem target, with proofs of the joints",
+      "source_span": [
+        376,
+        389
+      ],
+      "proof_span": null,
+      "proof_status": "target",
+      "hard_dependencies": [
+        "asm:smooth",
+        "lem:atomic",
+        "lem:cauchy",
+        "lem:margin",
+        "lem:ordmet",
+        "lem:reach",
+        "thm:prop"
+      ],
+      "statement_dependencies": [
+        "asm:smooth",
+        "lem:atomic",
+        "lem:cauchy",
+        "lem:margin",
+        "lem:ordmet",
+        "lem:reach",
+        "thm:prop"
+      ],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [
+        "def:cond",
+        "def:force",
+        "def:site"
+      ],
+      "dangling_refs": [],
+      "assumptions_consumed": [
+        "C-calibration-queue",
+        "C-smooth-ii",
+        "M-Bound"
+      ],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "lem:margin",
+      "type": "lemma",
+      "title": "Channel-Margin, path form",
+      "statement_sha": "2badf87468ba",
+      "section": "Theorem target, with proofs of the joints",
+      "source_span": [
+        405,
+        414
+      ],
+      "proof_span": [
+        416,
+        421
+      ],
+      "proof_status": "proved",
+      "hard_dependencies": [
+        "asm:smooth",
+        "def:refine"
+      ],
+      "statement_dependencies": [
+        "asm:smooth",
+        "def:refine"
+      ],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [
+        "def:refine"
+      ],
+      "dangling_refs": [],
+      "assumptions_consumed": [
+        "C-smooth-ii"
+      ],
+      "external_refs": [],
+      "status_ledger_claim": "P",
+      "risk_notes": []
+    },
+    {
+      "id": "rema:why-the-budget-not",
+      "type": "remark",
+      "title": "Why the budget, not a step bound",
+      "statement_sha": "9aee158d8650",
+      "section": "Theorem target, with proofs of the joints",
+      "source_span": [
+        423,
+        434
+      ],
+      "proof_span": null,
+      "proof_status": "n/a",
+      "hard_dependencies": [],
+      "statement_dependencies": [
+        "asm:smooth",
+        "lem:cauchy"
+      ],
+      "proof_dependencies": [],
+      "soft_dependencies": [
+        "asm:smooth",
+        "lem:cauchy"
+      ],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [
+        "C-smooth-ii"
+      ],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "rema:the-smoothness-hypothesis-is",
+      "type": "remark",
+      "title": "The smoothness hypothesis is substrate-relative and measurable",
+      "statement_sha": "f407147a04b2",
+      "section": "Theorem target, with proofs of the joints",
+      "source_span": [
+        436,
+        445
+      ],
+      "proof_span": null,
+      "proof_status": "n/a",
+      "hard_dependencies": [],
+      "statement_dependencies": [
+        "asm:smooth"
+      ],
+      "proof_dependencies": [],
+      "soft_dependencies": [
+        "asm:smooth"
+      ],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [
+        "C-smooth-ii"
+      ],
+      "external_refs": [
+        "cacophony",
+        "cacophony:M20"
+      ],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "lem:nonatom",
+      "type": "lemma",
+      "title": "Non-atomicity is undecidedness",
+      "statement_sha": "6f03ba2de533",
+      "section": "Theorem target, with proofs of the joints",
+      "source_span": [
+        447,
+        456
+      ],
+      "proof_span": [
+        458,
+        470
+      ],
+      "proof_status": "proved",
+      "hard_dependencies": [
+        "lem:pers"
+      ],
+      "statement_dependencies": [],
+      "proof_dependencies": [
+        "lem:pers"
+      ],
+      "soft_dependencies": [],
+      "symbol_dependencies": [
+        "def:force"
+      ],
+      "dangling_refs": [],
+      "assumptions_consumed": [
+        "M-Cvx"
+      ],
+      "external_refs": [],
+      "status_ledger_claim": "P",
+      "risk_notes": []
+    },
+    {
+      "id": "rema:where-the-generic-adds",
+      "type": "remark",
+      "title": "Where the generic adds information",
+      "statement_sha": "957c3c86535f",
+      "section": "Theorem target, with proofs of the joints",
+      "source_span": [
+        472,
+        482
+      ],
+      "proof_span": null,
+      "proof_status": "n/a",
+      "hard_dependencies": [],
+      "statement_dependencies": [
+        "lem:reach"
+      ],
+      "proof_dependencies": [],
+      "soft_dependencies": [
+        "lem:reach"
+      ],
+      "symbol_dependencies": [
+        "def:force"
+      ],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "lem:bdd",
+      "type": "lemma",
+      "title": "Boundedness yields countability for Rasiowa--Sikorski",
+      "statement_sha": "962f1acbb53b",
+      "section": "Theorem target, with proofs of the joints",
+      "source_span": [
+        484,
+        487
+      ],
+      "proof_span": [
+        489,
+        496
+      ],
+      "proof_status": "proved",
+      "hard_dependencies": [
+        "def:req",
+        "lem:sitebound"
+      ],
+      "statement_dependencies": [],
+      "proof_dependencies": [
+        "def:req",
+        "lem:sitebound"
+      ],
+      "soft_dependencies": [],
+      "symbol_dependencies": [
+        "def:site"
+      ],
+      "dangling_refs": [],
+      "assumptions_consumed": [
+        "M-Bound"
+      ],
+      "external_refs": [],
+      "status_ledger_claim": "P",
+      "risk_notes": []
+    },
+    {
+      "id": "lem:reach",
+      "type": "lemma",
+      "title": "Decision Reachability, conditional",
+      "statement_sha": "6552988e1746",
+      "section": "Theorem target, with proofs of the joints",
+      "source_span": [
+        498,
+        505
+      ],
+      "proof_span": [
+        507,
+        517
+      ],
+      "proof_status": "proved",
+      "hard_dependencies": [
+        "asm:smooth",
+        "def:req",
+        "def:site",
+        "lem:dec",
+        "lem:pers"
+      ],
+      "statement_dependencies": [
+        "asm:smooth"
+      ],
+      "proof_dependencies": [
+        "asm:smooth",
+        "def:req",
+        "def:site",
+        "lem:dec",
+        "lem:pers"
+      ],
+      "soft_dependencies": [],
+      "symbol_dependencies": [
+        "def:clauses",
+        "def:force",
+        "def:refine",
+        "def:site"
+      ],
+      "dangling_refs": [],
+      "assumptions_consumed": [
+        "C-smooth-ii"
+      ],
+      "external_refs": [],
+      "status_ledger_claim": "P",
+      "risk_notes": []
+    },
+    {
+      "id": "rema:why-this-is-not",
+      "type": "remark",
+      "title": "Why this is not free",
+      "statement_sha": "d62fbbdccad2",
+      "section": "Theorem target, with proofs of the joints",
+      "source_span": [
+        519,
+        526
+      ],
+      "proof_span": null,
+      "proof_status": "n/a",
+      "hard_dependencies": [],
+      "statement_dependencies": [
+        "asm:smooth",
+        "lem:bivalence",
+        "lem:dec"
+      ],
+      "proof_dependencies": [],
+      "soft_dependencies": [
+        "asm:smooth",
+        "lem:bivalence",
+        "lem:dec"
+      ],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [
+        "C-calibration-queue",
+        "C-smooth-ii"
+      ],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "def:closure",
+      "type": "definition",
+      "title": "Admissible deciding closure",
+      "statement_sha": "ee0c62480e81",
+      "section": "Theorem target, with proofs of the joints",
+      "source_span": [
+        528,
+        535
+      ],
+      "proof_span": null,
+      "proof_status": "stated_no_proof",
+      "hard_dependencies": [
+        "def:clauses",
+        "def:stab",
+        "lem:bdd",
+        "lem:reach"
+      ],
+      "statement_dependencies": [
+        "def:clauses",
+        "def:stab",
+        "lem:bdd",
+        "lem:reach"
+      ],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [
+        "def:clauses",
+        "def:site",
+        "def:stab"
+      ],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "lem:cauchy",
+      "type": "lemma",
+      "title": "Cauchy--Forcing Completion",
+      "statement_sha": "a34a13c8b574",
+      "section": "Theorem target, with proofs of the joints",
+      "source_span": [
+        537,
+        544
+      ],
+      "proof_span": [
+        546,
+        551
+      ],
+      "proof_status": "proved",
+      "hard_dependencies": [],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": "P",
+      "risk_notes": []
+    },
+    {
+      "id": "lem:ordmet",
+      "type": "lemma",
+      "title": "Order--Metric Compatibility, atomic",
+      "statement_sha": "a1a99fb86b03",
+      "section": "Theorem target, with proofs of the joints",
+      "source_span": [
+        553,
+        561
+      ],
+      "proof_span": [
+        563,
+        568
+      ],
+      "proof_status": "proved",
+      "hard_dependencies": [
+        "def:stab",
+        "lem:cauchy"
+      ],
+      "statement_dependencies": [
+        "def:stab",
+        "lem:cauchy"
+      ],
+      "proof_dependencies": [
+        "lem:cauchy"
+      ],
+      "soft_dependencies": [],
+      "symbol_dependencies": [
+        "def:stab"
+      ],
+      "dangling_refs": [],
+      "assumptions_consumed": [
+        "M-Cl",
+        "M-Pers"
+      ],
+      "external_refs": [],
+      "status_ledger_claim": "P",
+      "risk_notes": []
+    },
+    {
+      "id": "rema:convergence-is-coextensive-with",
+      "type": "remark",
+      "title": "Convergence is coextensive with the smooth regime",
+      "statement_sha": "830a0991c0cc",
+      "section": "Theorem target, with proofs of the joints",
+      "source_span": [
+        570,
+        581
+      ],
+      "proof_span": null,
+      "proof_status": "n/a",
+      "hard_dependencies": [],
+      "statement_dependencies": [
+        "asm:smooth",
+        "lem:ordmet"
+      ],
+      "proof_dependencies": [],
+      "soft_dependencies": [
+        "asm:smooth",
+        "lem:ordmet"
+      ],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [
+        "C-smooth-ii",
+        "M-Cl"
+      ],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "lem:atomic",
+      "type": "lemma",
+      "title": "Atomic Truth Lemma",
+      "statement_sha": "7c3937367e2f",
+      "section": "Theorem target, with proofs of the joints",
+      "source_span": [
+        583,
+        588
+      ],
+      "proof_span": [
+        590,
+        598
+      ],
+      "proof_status": "proved",
+      "hard_dependencies": [
+        "def:closure",
+        "def:force"
+      ],
+      "statement_dependencies": [],
+      "proof_dependencies": [
+        "def:closure",
+        "def:force"
+      ],
+      "soft_dependencies": [],
+      "symbol_dependencies": [
+        "def:closure",
+        "def:force",
+        "def:site",
+        "def:stab"
+      ],
+      "dangling_refs": [],
+      "assumptions_consumed": [
+        "M-Pers"
+      ],
+      "external_refs": [],
+      "status_ledger_claim": "P",
+      "risk_notes": []
+    },
+    {
+      "id": "rem:torsion",
+      "type": "remark",
+      "title": "Certificate typing is forcing-theoretic---atomic case only",
+      "statement_sha": "aa7b6503d6c4",
+      "section": "Theorem target, with proofs of the joints",
+      "source_span": [
+        600,
+        615
+      ],
+      "proof_span": null,
+      "proof_status": "n/a",
+      "hard_dependencies": [],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [
+        "def:force",
+        "def:stab"
+      ],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": "P",
+      "risk_notes": []
+    },
+    {
+      "id": "lem:bivalence",
+      "type": "lemma",
+      "title": "Genericity decides every formula",
+      "statement_sha": "ecb5633e6fb5",
+      "section": "Propositional soundness: the connective Truth Lemma",
+      "source_span": [
+        625,
+        629
+      ],
+      "proof_span": [
+        630,
+        636
+      ],
+      "proof_status": "proved",
+      "hard_dependencies": [
+        "def:closure",
+        "lem:bdd",
+        "lem:reach"
+      ],
+      "statement_dependencies": [
+        "lem:reach"
+      ],
+      "proof_dependencies": [
+        "def:closure",
+        "lem:bdd",
+        "lem:reach"
+      ],
+      "soft_dependencies": [],
+      "symbol_dependencies": [
+        "def:clauses",
+        "def:closure",
+        "def:force",
+        "def:site"
+      ],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": "P",
+      "risk_notes": []
+    },
+    {
+      "id": "thm:prop",
+      "type": "theorem",
+      "title": "Propositional Truth Lemma, conditional on calibration",
+      "statement_sha": "e12c86e11d07",
+      "section": "Propositional soundness: the connective Truth Lemma",
+      "source_span": [
+        638,
+        646
+      ],
+      "proof_span": [
+        647,
+        667
+      ],
+      "proof_status": "proved",
+      "hard_dependencies": [
+        "asm:calibration",
+        "lem:atomic",
+        "lem:bivalence",
+        "lem:pers",
+        "lem:sitebound"
+      ],
+      "statement_dependencies": [
+        "asm:calibration",
+        "lem:bivalence"
+      ],
+      "proof_dependencies": [
+        "lem:atomic",
+        "lem:bivalence",
+        "lem:pers",
+        "lem:sitebound"
+      ],
+      "soft_dependencies": [],
+      "symbol_dependencies": [
+        "def:closure",
+        "def:force",
+        "def:site"
+      ],
+      "dangling_refs": [],
+      "assumptions_consumed": [
+        "C-calibration-queue"
+      ],
+      "external_refs": [],
+      "status_ledger_claim": "P",
+      "risk_notes": []
+    },
+    {
+      "id": "rema:intuitionistic-relation-classical-extension",
+      "type": "remark",
+      "title": "Intuitionistic relation, classical extension",
+      "statement_sha": "ee048ebc5bbc",
+      "section": "Propositional soundness: the connective Truth Lemma",
+      "source_span": [
+        669,
+        675
+      ],
+      "proof_span": null,
+      "proof_status": "n/a",
+      "hard_dependencies": [],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "lem:void",
+      "type": "lemma",
+      "title": "The void is the unique shared point",
+      "statement_sha": "3ea6a7a3b92a",
+      "section": "Inter-observer forcing: the shared zeroth-order zero",
+      "source_span": [
+        692,
+        696
+      ],
+      "proof_span": [
+        698,
+        705
+      ],
+      "proof_status": "proved",
+      "hard_dependencies": [],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": "P",
+      "risk_notes": []
+    },
+    {
+      "id": "prop:zeroth",
+      "type": "proposition",
+      "title": "The shared point is forced to zeroth order",
+      "statement_sha": "7146a4edfacd",
+      "section": "Inter-observer forcing: the shared zeroth-order zero",
+      "source_span": [
+        710,
+        714
+      ],
+      "proof_span": [
+        716,
+        719
+      ],
+      "proof_status": "proved",
+      "hard_dependencies": [
+        "lem:void"
+      ],
+      "statement_dependencies": [],
+      "proof_dependencies": [
+        "lem:void"
+      ],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": "P",
+      "risk_notes": []
+    },
+    {
+      "id": "rema:forced-from-the-void",
+      "type": "remark",
+      "title": "Forced from the void",
+      "statement_sha": "d8d9afc2e846",
+      "section": "Inter-observer forcing: the shared zeroth-order zero",
+      "source_span": [
+        725,
+        732
+      ],
+      "proof_span": null,
+      "proof_status": "n/a",
+      "hard_dependencies": [],
+      "statement_dependencies": [
+        "def:force"
+      ],
+      "proof_dependencies": [],
+      "soft_dependencies": [
+        "def:force"
+      ],
+      "symbol_dependencies": [
+        "def:force",
+        "def:stab"
+      ],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "def:transfer",
+      "type": "definition",
+      "title": "Transfer",
+      "statement_sha": "5cad69a969f9",
+      "section": "Interface layer: medium, protocol, and the non-identity theorem",
+      "source_span": [
+        752,
+        756
+      ],
+      "proof_span": null,
+      "proof_status": "stated_no_proof",
+      "hard_dependencies": [],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": "D",
+      "risk_notes": []
+    },
+    {
+      "id": "thm:factor",
+      "type": "theorem",
+      "title": "Factoring, architectural",
+      "statement_sha": "b355720d8fe3",
+      "section": "Interface layer: medium, protocol, and the non-identity theorem",
+      "source_span": [
+        758,
+        766
+      ],
+      "proof_span": [
+        768,
+        772
+      ],
+      "proof_status": "proved",
+      "hard_dependencies": [
+        "def:transfer",
+        "lem:void"
+      ],
+      "statement_dependencies": [
+        "def:transfer",
+        "lem:void"
+      ],
+      "proof_dependencies": [
+        "def:transfer",
+        "lem:void"
+      ],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": "D",
+      "risk_notes": []
+    },
+    {
+      "id": "thm:nonid",
+      "type": "theorem",
+      "title": "Non-identity of transport, with equality condition",
+      "statement_sha": "7707d4f50575",
+      "section": "Interface layer: medium, protocol, and the non-identity theorem",
+      "source_span": [
+        774,
+        789
+      ],
+      "proof_span": [
+        791,
+        797
+      ],
+      "proof_status": "proved",
+      "hard_dependencies": [],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": "P",
+      "risk_notes": []
+    },
+    {
+      "id": "rema:untitled-b",
+      "type": "remark",
+      "title": "",
+      "statement_sha": "f9a18d32884e",
+      "section": "Interface layer: medium, protocol, and the non-identity theorem",
+      "source_span": [
+        799,
+        805
+      ],
+      "proof_span": null,
+      "proof_status": "n/a",
+      "hard_dependencies": [],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "prop:zombie",
+      "type": "proposition",
+      "title": "Observer closure is zero projection residue",
+      "statement_sha": "ebd346d00492",
+      "section": "Interface layer: medium, protocol, and the non-identity theorem",
+      "source_span": [
+        807,
+        817
+      ],
+      "proof_span": [
+        818,
+        822
+      ],
+      "proof_status": "proved",
+      "hard_dependencies": [
+        "lem:nonatom",
+        "prop:chi",
+        "rem:torsion",
+        "thm:nonid"
+      ],
+      "statement_dependencies": [
+        "lem:nonatom",
+        "prop:chi",
+        "rem:torsion",
+        "thm:nonid"
+      ],
+      "proof_dependencies": [
+        "prop:chi",
+        "rem:torsion",
+        "thm:nonid"
+      ],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": "P",
+      "risk_notes": []
+    },
+    {
+      "id": "rema:loopback-as-icon-not",
+      "type": "remark",
+      "title": "Loopback as icon, not transport",
+      "statement_sha": "44d501aeb300",
+      "section": "Interface layer: medium, protocol, and the non-identity theorem",
+      "source_span": [
+        824,
+        829
+      ],
+      "proof_span": null,
+      "proof_status": "n/a",
+      "hard_dependencies": [],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "prop:chi",
+      "type": "proposition",
+      "title": "Exportability identity, under orthogonality",
+      "statement_sha": "fecf9ecfcee2",
+      "section": "Interpretive appendix: boundary projection and exportability",
+      "source_span": [
+        843,
+        852
+      ],
+      "proof_span": [
+        854,
+        861
+      ],
+      "proof_status": "proved",
+      "hard_dependencies": [],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": "P",
+      "risk_notes": []
+    },
+    {
+      "id": "prop:skeleton",
+      "type": "proposition",
+      "title": "Non-determination of the ceiling-state",
+      "statement_sha": "6f18ef003bf7",
+      "section": "Interpretive appendix: boundary projection and exportability",
+      "source_span": [
+        863,
+        869
+      ],
+      "proof_span": [
+        871,
+        876
+      ],
+      "proof_status": "proved",
+      "hard_dependencies": [
+        "lem:cauchy"
+      ],
+      "statement_dependencies": [
+        "lem:cauchy"
+      ],
+      "proof_dependencies": [
+        "lem:cauchy"
+      ],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": "P",
+      "risk_notes": []
+    },
+    {
+      "id": "conj:exportability-correlates-with-regime",
+      "type": "conjecture",
+      "title": "Exportability correlates with regime",
+      "statement_sha": "ff67145f33f1",
+      "section": "Interpretive appendix: boundary projection and exportability",
+      "source_span": [
+        878,
+        882
+      ],
+      "proof_span": null,
+      "proof_status": "stated_no_proof",
+      "hard_dependencies": [
+        "prop:chi"
+      ],
+      "statement_dependencies": [
+        "prop:chi"
+      ],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "rema:what-remains-around-the",
+      "type": "remark",
+      "title": "What remains around the skeleton",
+      "statement_sha": "92e3d4ba4e3f",
+      "section": "Interpretive appendix: boundary projection and exportability",
+      "source_span": [
+        884,
+        893
+      ],
+      "proof_span": null,
+      "proof_status": "n/a",
+      "hard_dependencies": [],
+      "statement_dependencies": [
+        "prop:skeleton"
+      ],
+      "proof_dependencies": [],
+      "soft_dependencies": [
+        "prop:skeleton"
+      ],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "rema:weak-born-analogy-only",
+      "type": "remark",
+      "title": "Weak Born analogy only, firewalled",
+      "statement_sha": "5a300225d995",
+      "section": "Interpretive appendix: boundary projection and exportability",
+      "source_span": [
+        895,
+        902
+      ],
+      "proof_span": null,
+      "proof_status": "n/a",
+      "hard_dependencies": [],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "def:rio",
+      "type": "definition",
+      "title": "Representation-independence obstruction",
+      "statement_sha": "7ce9d92ecc34",
+      "section": "Interpretive appendix: boundary projection and exportability",
+      "source_span": [
+        904,
+        909
+      ],
+      "proof_span": null,
+      "proof_status": "stated_no_proof",
+      "hard_dependencies": [],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": "D",
+      "risk_notes": []
+    },
+    {
+      "id": "rema:one-obstruction-five-axes",
+      "type": "remark",
+      "title": "One obstruction, five axes",
+      "statement_sha": "1c90580f6faf",
+      "section": "Interpretive appendix: boundary projection and exportability",
+      "source_span": [
+        911,
+        936
+      ],
+      "proof_span": null,
+      "proof_status": "n/a",
+      "hard_dependencies": [],
+      "statement_dependencies": [
+        "def:rio",
+        "lem:void",
+        "prop:chi",
+        "prop:zombie"
+      ],
+      "proof_dependencies": [],
+      "soft_dependencies": [
+        "def:rio",
+        "lem:void",
+        "prop:chi",
+        "prop:zombie"
+      ],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "lem:bw",
+      "type": "lemma",
+      "title": "Deparameterization closure",
+      "statement_sha": "adb338acdf6c",
+      "section": "Deparameterization and the judgment residue",
+      "source_span": [
+        950,
+        955
+      ],
+      "proof_span": [
+        957,
+        962
+      ],
+      "proof_status": "proved",
+      "hard_dependencies": [],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": "P",
+      "risk_notes": []
+    },
+    {
+      "id": "prop:dich",
+      "type": "proposition",
+      "title": "Residue dichotomy",
+      "statement_sha": "d55923c452b5",
+      "section": "Deparameterization and the judgment residue",
+      "source_span": [
+        964,
+        968
+      ],
+      "proof_span": [
+        970,
+        975
+      ],
+      "proof_status": "proved",
+      "hard_dependencies": [
+        "lem:bw"
+      ],
+      "statement_dependencies": [],
+      "proof_dependencies": [
+        "lem:bw"
+      ],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": "P",
+      "risk_notes": []
+    },
+    {
+      "id": "theo:structural-irreducibility",
+      "type": "theorem_target",
+      "title": "Structural irreducibility",
+      "statement_sha": "785e22265411",
+      "section": "Deparameterization and the judgment residue",
+      "source_span": [
+        987,
+        994
+      ],
+      "proof_span": null,
+      "proof_status": "target",
+      "hard_dependencies": [
+        "lem:void"
+      ],
+      "statement_dependencies": [
+        "lem:void"
+      ],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [
+        "M-Bridge"
+      ],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "rema:one-floor-three-charts",
+      "type": "remark",
+      "title": "One floor, three charts",
+      "statement_sha": "1ee00c67ad9a",
+      "section": "Deparameterization and the judgment residue",
+      "source_span": [
+        996,
+        1006
+      ],
+      "proof_span": null,
+      "proof_status": "n/a",
+      "hard_dependencies": [],
+      "statement_dependencies": [],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "conj:residue-contract-break",
+      "type": "conjecture",
+      "title": "Residue $=$ contract break",
+      "statement_sha": "4ba1594c8e03",
+      "section": "Deparameterization and the judgment residue",
+      "source_span": [
+        1008,
+        1014
+      ],
+      "proof_span": null,
+      "proof_status": "stated_no_proof",
+      "hard_dependencies": [
+        "asm:smooth"
+      ],
+      "statement_dependencies": [
+        "asm:smooth"
+      ],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [
+        "C-smooth-ii"
+      ],
+      "external_refs": [],
+      "status_ledger_claim": null,
+      "risk_notes": []
+    },
+    {
+      "id": "prop:chalked",
+      "type": "proposition",
+      "title": "Chalked correctness invariant",
+      "statement_sha": "61ca001054ab",
+      "section": "Chalked as the canonical witnessed medium",
+      "source_span": [
+        1064,
+        1069
+      ],
+      "proof_span": null,
+      "proof_status": "stated_no_proof",
+      "hard_dependencies": [
+        "thm:nonid"
+      ],
+      "statement_dependencies": [
+        "thm:nonid"
+      ],
+      "proof_dependencies": [],
+      "soft_dependencies": [],
+      "symbol_dependencies": [],
+      "dangling_refs": [],
+      "assumptions_consumed": [],
+      "external_refs": [],
+      "status_ledger_claim": "S",
+      "risk_notes": []
+    }
+  ],
+  "assumption_first_occurrence": {
+    "M-Pers": {
+      "line": 129,
+      "host_env": "definition",
+      "host_id": "def:stab"
+    },
+    "M-Cvx": {
+      "line": 451,
+      "host_env": "lemma",
+      "host_id": "lem:nonatom"
+    },
+    "M-Cl": {
+      "line": 559,
+      "host_env": "lemma",
+      "host_id": "lem:ordmet"
+    },
+    "M-Bridge": {
+      "line": 979,
+      "host_env": "prose",
+      "host_id": null
+    },
+    "C-smooth-ii": {
+      "line": 95,
+      "host_env": "assumption",
+      "host_id": "asm:smooth"
+    },
+    "C-calibration-queue": {
+      "line": 366,
+      "host_env": "assumption",
+      "host_id": "asm:calibration"
+    },
+    "M-Bound": {
+      "line": 377,
+      "host_env": "theorem_target",
+      "host_id": "theo:untitled"
+    },
+    "O-quantifiers": {
+      "line": 250,
+      "host_env": "prose",
+      "host_id": null
+    }
+  },
+  "sections": [
+    {
+      "line": 75,
+      "title": "Two senses of ``forcing''"
+    },
+    {
+      "line": 88,
+      "title": "Core definitions (instantiated)"
+    },
+    {
+      "line": 145,
+      "title": "The generated admissible site: raw, generated, witnessed"
+    },
+    {
+      "line": 231,
+      "title": "Correspondence table"
+    },
+    {
+      "line": 264,
+      "title": "Formal schema"
+    },
+    {
+      "line": 331,
+      "title": "Calibration as a finite theorem queue"
+    },
+    {
+      "line": 374,
+      "title": "Theorem target, with proofs of the joints"
+    },
+    {
+      "line": 617,
+      "title": "Propositional soundness: the connective Truth Lemma"
+    },
+    {
+      "line": 677,
+      "title": "Inter-observer forcing: the shared zeroth-order zero"
+    },
+    {
+      "line": 734,
+      "title": "Interface layer: medium, protocol, and the non-identity theorem"
+    },
+    {
+      "line": 831,
+      "title": "Interpretive appendix: boundary projection and exportability"
+    },
+    {
+      "line": 938,
+      "title": "Deparameterization and the judgment residue"
+    },
+    {
+      "line": 1016,
+      "title": "Executable interpretation: PyLantern as witness layer"
+    },
+    {
+      "line": 1037,
+      "title": "Chalked as the canonical witnessed medium"
+    },
+    {
+      "line": 1075,
+      "title": "Non-actuation boundary"
+    },
+    {
+      "line": 1085,
+      "title": "Status ledger"
+    },
+    {
+      "line": 1164,
+      "title": "Boundary and caution"
+    },
+    {
+      "line": 1179,
+      "title": "Suggested paragraph for \\emph{The Hypothesis Surface"
+    },
+    {
+      "line": 1197,
+      "title": "Closing invariant"
+    },
+    {
+      "line": 1214,
+      "title": "Iconography, firewalls, and scope"
+    }
+  ]
+}

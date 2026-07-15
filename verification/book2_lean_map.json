@@ -1,0 +1,180 @@
+{
+ "schema": "sketched.book2-lean-map.v1",
+ "source": "Principia Symbolica Book 2",
+ "boundary": "Mappings certify only the finite Gibbs kernel. The Riemannian manifold, Fokker-Planck PDE, and Wasserstein apparatus are not certified; conditional and partial rows do not promote the full prose statement to a Lean theorem.",
+ "entries": [
+  {
+   "atlas_id": "definition:bk2_symbolic_probability_spa",
+   "coverage": "definition",
+   "lean": [
+    "Book2.gibbs_isDensity"
+   ],
+   "note": "Finite probability space as density structure; the Borel/volume apparatus is not certified."
+  },
+  {
+   "atlas_id": "lemma:bk2_wellposedness_symb_prob_space",
+   "coverage": "conditional",
+   "lean": [
+    "Book2.gibbs_isDensity"
+   ],
+   "note": "Finite kernel: the Gibbs state is a genuine density (positive, sums to one)."
+  },
+  {
+   "atlas_id": "definition:bk2_symbolic_entropy",
+   "coverage": "definition",
+   "lean": [
+    "Book2.entropy_nonneg"
+   ],
+   "note": "Finite entropy with the 0 log 0 = 0 convention."
+  },
+  {
+   "atlas_id": "lemma:bk2_finiteness_of_symbolic_entropy",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book2.entropy_nonneg",
+    "Book2.entropy_le_log_card"
+   ],
+   "note": "Two-sided quantitative bounds 0 <= S <= log n."
+  },
+  {
+   "atlas_id": "definition:bk2_symbolic_free_energy",
+   "coverage": "definition",
+   "lean": [
+    "Book2.freeEnergy_gibbs"
+   ],
+   "note": "Finite free-energy functional; its decrease along the flow is a named open item."
+  },
+  {
+   "atlas_id": "definition:bk2_symbolic_partition_funct",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book2.gibbs_isDensity",
+    "Book2.freeEnergy_gibbs"
+   ],
+   "note": "Finite partition function: positivity and the equilibrium value -1/beta log Z."
+  },
+  {
+   "atlas_id": "theorem:bk2_equilibrium_distribution",
+   "coverage": "conditional",
+   "lean": [
+    "Book2.detailedBalance_stationary",
+    "Book2.gibbs_minimizes",
+    "Book2.gibbs_unique_minimizer"
+   ],
+   "note": "Finite kernel: stationarity under detailed balance plus unique variational characterization; the PDE derivation is not certified."
+  },
+  {
+   "atlas_id": "theorem:bk2_h_theorem_for_symbolic_evol",
+   "coverage": "conditional",
+   "lean": [
+    "Book2.gibbs_minimizes",
+    "Book2.gibbs_unique_minimizer",
+    "Book2H.dataProcessing_kl",
+    "Book2H.h_theorem"
+   ],
+   "note": "Both halves now certified finitely: unique variational endpoint (Book2) and monotone decrease under any detailed-balance stochastic step via finite data-processing (Book2H); the continuum Fokker-Planck flow is not certified."
+  },
+  {
+   "atlas_id": "lemma:bk2_conservation_of_probability",
+   "coverage": "conditional",
+   "lean": [
+    "Book2.evolve_conserves"
+   ],
+   "note": "Finite Markov skeleton: row-stochastic evolution conserves total mass."
+  },
+  {
+   "atlas_id": "axiom:bk2_symbolic_fokker_planck_equation",
+   "coverage": "conditional",
+   "lean": [
+    "Book2.evolve_conserves"
+   ],
+   "note": "Finite skeleton only: evolution by a stochastic kernel; the manifold PDE is not certified."
+  },
+  {
+   "atlas_id": "axiom:bk2_gradient_structure_drift",
+   "coverage": "conditional",
+   "lean": [
+    "Book2.detailedBalance_stationary",
+    "Book2.cycle_stationary_not_reversible"
+   ],
+   "note": "Detailed balance is the finite shadow of the gradient condition; the 3-cycle exhibits the solenoidal component."
+  },
+  {
+   "atlas_id": "definition:bk2_symbolic_phase_transitio",
+   "coverage": "partial",
+   "lean": [
+    "Book2.no_finite_phase_transition"
+   ],
+   "note": "The definition's non-analyticity is proved impossible at finite alphabet."
+  },
+  {
+   "atlas_id": "theorem:bk2_classification_symb_phase_transitions",
+   "coverage": "partial",
+   "lean": [
+    "Book2.no_finite_phase_transition"
+   ],
+   "note": "Negative-space kernel: f differentiable at every beta > 0 finitely; the order classification is not certified."
+  },
+  {
+   "atlas_id": "definition:bk2_symbolic_energy",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book2.energy_eq_neg_deriv_log_partition"
+   ],
+   "note": "The bridge identity: Gibbs mean energy = -d/dbeta log Z."
+  },
+  {
+   "atlas_id": "definition:bk2_symbolic_temperature",
+   "coverage": "partial",
+   "lean": [
+    "Book2.energy_eq_neg_deriv_log_partition",
+    "Book2.gibbs_freezes",
+    "Book2.gibbs_concentrates"
+   ],
+   "note": "The derivative bridge plus the full trichotomy of the temperature knob: uniform at beta 0, variational balance at finite beta, freezing/concentration at beta to infinity; the dS/dE form itself is not formalized."
+  },
+  {
+   "atlas_id": "theorem:bk2_coherence_of_symbolic_therm",
+   "coverage": "partial",
+   "lean": [
+    "Book2.gibbs_minimizes",
+    "Book2.detailedBalance_stationary",
+    "Book2.no_finite_phase_transition"
+   ],
+   "note": "Its clause (2) proper-thermodynamic-behavior claims are the proved kernels above; clauses (1),(3),(4) are not certified."
+  },
+  {
+   "atlas_id": "definition:bk2_symbolic_hamiltonian",
+   "coverage": "partial",
+   "lean": [
+    "Book7B.hamiltonian_denom_pos"
+   ],
+   "note": "Only the regularized denominator's positivity is modeled; the drift-norm and parallel-transported reflection-linearization trace terms are not."
+  },
+  {
+   "atlas_id": "lemma:bk2_wellposedness_symb_hamiltonian",
+   "coverage": "partial",
+   "lean": [
+    "Book7B.hamiltonian_denom_pos"
+   ],
+   "note": "Only the real-analytic non-vanishing-denominator core of well-posedness is modeled; smoothness on the manifold M is not."
+  },
+  {
+   "atlas_id": "proposition:bk2_global_local_temp_relation",
+   "coverage": "proved-kernel",
+   "lean": [
+    "ThermoRes.global_beta_between"
+   ],
+   "note": "Global inverse temperature = density-weighted mean of local inverse temps, bounded by the extremes; the manifold integral stays open."
+  },
+  {
+   "atlas_id": "theorem:bk2_emergence_structure_symb_thermo",
+   "coverage": "conditional",
+   "lean": [
+    "Book2H.h_theorem",
+    "Book2.gibbs_minimizes"
+   ],
+   "note": "Drift/reflection/fluctuation yielding persistent emergent structure: the H-theorem descent kernel; the synthesis stays interpretive."
+  }
+ ]
+}

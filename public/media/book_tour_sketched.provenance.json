@@ -1,0 +1,14 @@
+{
+  "schema": "book-tour-provenance/1",
+  "compiled_by": "book_tour_compile.py",
+  "compiled_at_utc": "2026-07-09T20:35:50.493514+00:00",
+  "sources_sha256": {
+    "C:\\src\\sketched\\public\\book\\meta.json": "8f55bd6a6bfca8aad4e62a548601cae5acc5f8f3ac6aeabc2c379905c48de983",
+    "C:\\src\\sketched\\public\\book\\surface.json": "5abe223d4419acde1072950d3817d372fb23bd89895842f11de34794e35fad54",
+    "C:\\src\\sketched\\public\\book\\ledger.json": "6fa6daa2fe5a38eb91aac2d7af7c235ee57ee636d77acf7da5b21e81f754f552",
+    "C:\\src\\sketched\\public\\book\\content-b.json": "6f46d23cc67015c7f3a8a40bd4bd77eb54e4a2ce7b1003563d31d2a0c6ab7ef4",
+    "C:\\src\\sketched\\public\\media\\media.json": "d0643c3ebd1f88f45972dc025b10606be9697a8e2b8799d622da62a834852da2",
+    "C:\\src\\ja-orbit-05\\assets\\book_tour\\capture_manifest.json": "6c8db16d10cb8e30b9fb0a7a78647ffe1e7b2bcb8389be8e8e67bb23e6fee323"
+  },
+  "note": "Same sources in, same script out (compiled_at aside). No per-episode prose by any agent or human; templates are reviewed code in this file."
+}

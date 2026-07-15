@@ -1,0 +1,493 @@
+{
+  "schema": "sketched.pedagogy.projection.v1",
+  "source_digest": "8046ced49edc6d12518fd5eb83ad2ab32d5edfa02eb684e7e8da3da5214b4cf0",
+  "title": "Forcing at the Surface: A Witnessed Introduction",
+  "medium": {
+    "kind": "localhost-browser-interface",
+    "statement": "The browser carries bounded pedagogical projections. It is a medium, not shared occupancy.",
+    "calibration": "interpretation-only; asm:calibration remains open"
+  },
+  "projection": {
+    "id": "forcing-spine",
+    "title": "The Forcing Spine",
+    "description": "Compute the site, forcing relations, generics, and truth on the seven-condition bench.",
+    "audience": "Readers following the mathematical argument",
+    "assumed_chapter_ids": [
+      "ch01"
+    ],
+    "chapter_ids": [
+      "ch02",
+      "ch03",
+      "ch04",
+      "ch05"
+    ],
+    "includes_content_b": false,
+    "browser_path": "/book/path/forcing-spine",
+    "json_path": "/book/context/forcing-spine.json",
+    "chapter_count": 4,
+    "assumption_count": 1
+  },
+  "chain": {
+    "assumed_chapter_ids": [
+      "ch01"
+    ],
+    "sequence": [
+      "ch02",
+      "ch03",
+      "ch04",
+      "ch05"
+    ],
+    "edges": [
+      {
+        "from": "ch01",
+        "to": "ch02"
+      },
+      {
+        "from": "ch02",
+        "to": "ch03"
+      },
+      {
+        "from": "ch01",
+        "to": "ch04"
+      },
+      {
+        "from": "ch02",
+        "to": "ch04"
+      },
+      {
+        "from": "ch03",
+        "to": "ch04"
+      },
+      {
+        "from": "ch02",
+        "to": "ch05"
+      },
+      {
+        "from": "ch03",
+        "to": "ch05"
+      },
+      {
+        "from": "ch04",
+        "to": "ch05"
+      }
+    ]
+  },
+  "content_b": {
+    "id": "content-b",
+    "status": "reserved-not-included",
+    "owner": "OmegaClaw",
+    "browser_path": "/book/content-b"
+  },
+  "chapters": [
+    {
+      "schema": "sketched.pedagogy.chapter.v1",
+      "id": "ch02",
+      "title": "Conditions and Refinement",
+      "status": "drafted",
+      "prerequisite_ids": [
+        "ch01"
+      ],
+      "source_path": "book/ch02_conditions_and_refinement.md",
+      "browser_path": "/book/chapter/ch02",
+      "json_path": "/book/chapters/ch02.json",
+      "aim": "After this chapter you can read the order everything else in this book\ncomputes over: what a condition is, what refinement preserves, why two\ncommitments can be *incompatible* forever, and what a coherent course of\ncommitments (a filter) looks like. You will build the **spine model** —\nthe seven-condition bench the labs of chapters 03–05 run on — and verify\nits structure by brute force. You will also learn to hear two words,\n*channel* and *forcing*, that mean different things in the paper and in\nSketched, before the collision can hurt you.",
+      "boundary_note": "This chapter does **not** claim that real Sketched sessions satisfy the\ndisplacement budget — the smoothness contract (`asm:smooth`, C) is\nmeasured per substrate, and chapter 06 shows exactly what you are owed\nwhen it holds and how the guarantee dies when it does not. It also does\nnot claim the spine model *is* the paper's condition poset; it is the\nsmallest honest bench, and every brute-force **obs** fact above is a\nfact about the bench. The general statements live in the paper and, for\nthe load-bearing ones, in Lean.",
+      "atlas_refs": [
+        "def:cond",
+        "def:refine",
+        "asm:smooth"
+      ],
+      "code_refs": [],
+      "lab": {
+        "kind": "python",
+        "path": "book/labs/lab02_conditions.py"
+      },
+      "word_count": 1153,
+      "sections": [
+        {
+          "id": "aim",
+          "title": "Aim",
+          "markdown": "After this chapter you can read the order everything else in this book\ncomputes over: what a condition is, what refinement preserves, why two\ncommitments can be *incompatible* forever, and what a coherent course of\ncommitments (a filter) looks like. You will build the **spine model** —\nthe seven-condition bench the labs of chapters 03–05 run on — and verify\nits structure by brute force. You will also learn to hear two words,\n*channel* and *forcing*, that mean different things in the paper and in\nSketched, before the collision can hurt you."
+        },
+        {
+          "id": "prerequisites",
+          "title": "Prerequisites",
+          "markdown": "Chapter 01 (the void, depth, the wedge). No topology yet; that is\nchapter 03."
+        },
+        {
+          "id": "definitions",
+          "title": "Definitions",
+          "markdown": "**Condition** (`def:cond`, D). A finite partial epistemic state. In the\npaper: a claim complex with fibers and an exit cone. In Sketched: a\nstage — which layers exist, who owns them, what has been consented to so\nfar. You always know only finitely much; a condition records exactly\nthat much and no more.\n\n**Refinement and the arena** (`def:refine`, D). `q ⊑ p` iff q is\nreachable from p by an admissible move that *retains p's commitments*.\nTwo consequences, both load-bearing:\n\n- **Work descends.** More knowledge = lower in the order. The root is\n  the condition that commits to nothing.\n- **The arena is bounded.** All forcing in the paper happens in the\n  *channel-margin subposet*: the conditions reachable from the anchor\n  within the displacement budget of the smoothness contract\n  (`asm:smooth`, C — measured, not assumed). The definition consumes\n  only the budget; that the margin actually survives throughout is\n  *proved*, not stipulated — chapter 06 is the anatomy of exactly that\n  proof.\n\n**Filter** (book-local; the paper uses it from chapter 05 on). A\nnonempty set of conditions that is upward closed (whatever you commit\nto, you had committed to its weakenings) and downward directed (any two\nof its members have a common refinement *inside it*). A filter is a\ncoherent course of commitments: no member ever contradicts another.\n\n**The spine model.** Conditions `r > {0,1} > {00,01,10,11}` — a depth-2\nbinary tree. `r` is the root; each address extends the one above it.\nThis is the smallest model where everything interesting in chapters\n03–05 already happens, and the lab builds it from\n`verification/kernel/spine.py`."
+        },
+        {
+          "id": "two-words-that-collide-read-this-box-twice",
+          "title": "Two words that collide (read this box twice)",
+          "markdown": "The paper and Sketched share vocabulary but not referents. The book\nalways means the paper's sense unless it says otherwise.\n\n- **Channel.** Paper: the *channel-margin subposet* — the region where\n  the interaction matrix keeps a positive spectral margin; \"the channel\n  is open\" is a statement about an eigenvalue. Sketched: a *consent\n  lease* — a bounded authority a human grants a knob by press-and-hold.\n  The two are related by design (the lease is the operational shadow of\n  the margin) but they are *not the same object*, and the operator map\n  (`docs/13_OPERATOR_MAP.md`) tracks the correspondence explicitly.\n- **Forcing.** Paper, two senses it itself separates: a *forced\n  transition* (control: the dynamics push a state) versus *p forces φ*\n  (logic: the relation this book teaches). Sketched adds a third\n  colloquial sense — nobody \"forces\" a mark onto the shared surface —\n  which is precisely what the coordination model forbids. When this\n  book says *forces*, it means the logical relation, always.\n\nThis box covers the two worst offenders only. The full, machine-checked\naccount — every double-booked term the book uses, all its senses, and a\nverified anchor for each — lives in `book/glossary_collisions.md`\n(browser: `/book/glossary`); by the time you reach chapter 08 it also\ncovers *void* and *surface*, which this book comes to use in more than\none sense of its own."
+        },
+        {
+          "id": "claims",
+          "title": "Claims",
+          "markdown": "This chapter's claims are structural facts about the spine model, every\none verified by brute force in the lab — status **obs**, the honest tag\nfor \"a machine checked all 128 subsets; nobody wrote a proof.\"\n\n- Refinement on the spine is a partial order: reflexive, antisymmetric,\n  transitive (**obs**).\n- `00` and `1` have no common refinement (**obs**). Incompatibility is\n  a *permanent* geometric fact — remember it when torsion appears in\n  chapter 04.\n- The spine has **exactly 7 filters**, one per condition: every filter\n  is a principal up-set `up(x)` (**obs**). Coherent histories in a tree\n  are just \"descend, stopping wherever honesty requires.\"\n- The **4 maximal filters are exactly the branches** — the upward\n  closures of the leaves (**obs**). Chapter 05 will call these the\n  finite stand-ins for generics.\n- No filter contains both `0` and `1` (**obs**): incompatible\n  commitments never cohere, which is chapter 01's wedge lemma in\n  miniature."
+        },
+        {
+          "id": "worked-example-you-never-un-know",
+          "title": "Worked example: you never un-know",
+          "markdown": "Stabilize atom `a` on the left subtree `{0, 00, 01}` — this is the\nvaluation chapters 04 and 05 use. It is *refinement-closed*: every\nrefinement of a condition where a holds is again a condition where a\nholds. The kernel's `persistent()` check accepts it.\n\nNow mutate it: let a hold at `0` but *not* at `00` or `01`. The kernel\nrejects the valuation, and `Stab(0, a)` flips from true to false — a\ncondition below which a can be forgotten never stabilized a in the\nfirst place. Persistence is not decoration; it is what makes the\nstability set a sieve (chapter 03) and what the ledger tracks as the\npaper's highest-leverage modeling postulate (M-Pers). The lab asserts\nboth directions."
+        },
+        {
+          "id": "lab",
+          "title": "Lab",
+          "markdown": "```bash\npython book/labs/lab02_conditions.py\n```\n\nIt prints the down-sets, counts the filters by checking all 2⁷\nsubsets, and asserts every fact quoted above. If the kernel and this\nchapter ever disagree, the build fails."
+        },
+        {
+          "id": "exercises",
+          "title": "Exercises",
+          "markdown": "1. **Predict, then run.** How many filters does the depth-3 binary tree\n   have? How many are maximal? Write both numbers down; then change\n   `binary_tree(2)` to `binary_tree(3)` in a copy of the lab's filter\n   count and check.\n2. Show by hand that `{r, 0, 1}` is upward closed but not a filter.\n   Which pair breaks downward directedness, and why is that the same\n   fact as \"the wedge has no cross-branch relations\"?\n3. In a poset that is *not* a tree (draw one with a diamond), exhibit a\n   filter that is not principal-along-a-chain. What does Sketched's\n   stage graph look like when two consented edits merge?\n4. The mutated valuation (\"a holds at 0 only\") describes a system that\n   *revokes* a claim under refinement. Sketched has a legitimate\n   operation that looks like forgetting — shake. Say precisely why\n   shake is not a counterexample to persistence. (Hint: chapter 01's\n   depth-0; a fresh context window is a new descent, not a move within\n   the old one.)"
+        },
+        {
+          "id": "boundary-note",
+          "title": "Boundary note",
+          "markdown": "This chapter does **not** claim that real Sketched sessions satisfy the\ndisplacement budget — the smoothness contract (`asm:smooth`, C) is\nmeasured per substrate, and chapter 06 shows exactly what you are owed\nwhen it holds and how the guarantee dies when it does not. It also does\nnot claim the spine model *is* the paper's condition poset; it is the\nsmallest honest bench, and every brute-force **obs** fact above is a\nfact about the bench. The general statements live in the paper and, for\nthe load-bearing ones, in Lean."
+        }
+      ],
+      "raw_markdown": "# Chapter 02 · Conditions and Refinement\n\n## Aim\n\nAfter this chapter you can read the order everything else in this book\ncomputes over: what a condition is, what refinement preserves, why two\ncommitments can be *incompatible* forever, and what a coherent course of\ncommitments (a filter) looks like. You will build the **spine model** —\nthe seven-condition bench the labs of chapters 03–05 run on — and verify\nits structure by brute force. You will also learn to hear two words,\n*channel* and *forcing*, that mean different things in the paper and in\nSketched, before the collision can hurt you.\n\n## Prerequisites\n\nChapter 01 (the void, depth, the wedge). No topology yet; that is\nchapter 03.\n\n## Definitions\n\n**Condition** (`def:cond`, D). A finite partial epistemic state. In the\npaper: a claim complex with fibers and an exit cone. In Sketched: a\nstage — which layers exist, who owns them, what has been consented to so\nfar. You always know only finitely much; a condition records exactly\nthat much and no more.\n\n**Refinement and the arena** (`def:refine`, D). `q ⊑ p` iff q is\nreachable from p by an admissible move that *retains p's commitments*.\nTwo consequences, both load-bearing:\n\n- **Work descends.** More knowledge = lower in the order. The root is\n  the condition that commits to nothing.\n- **The arena is bounded.** All forcing in the paper happens in the\n  *channel-margin subposet*: the conditions reachable from the anchor\n  within the displacement budget of the smoothness contract\n  (`asm:smooth`, C — measured, not assumed). The definition consumes\n  only the budget; that the margin actually survives throughout is\n  *proved*, not stipulated — chapter 06 is the anatomy of exactly that\n  proof.\n\n**Filter** (book-local; the paper uses it from chapter 05 on). A\nnonempty set of conditions that is upward closed (whatever you commit\nto, you had committed to its weakenings) and downward directed (any two\nof its members have a common refinement *inside it*). A filter is a\ncoherent course of commitments: no member ever contradicts another.\n\n**The spine model.** Conditions `r > {0,1} > {00,01,10,11}` — a depth-2\nbinary tree. `r` is the root; each address extends the one above it.\nThis is the smallest model where everything interesting in chapters\n03–05 already happens, and the lab builds it from\n`verification/kernel/spine.py`.\n\n## Two words that collide (read this box twice)\n\nThe paper and Sketched share vocabulary but not referents. The book\nalways means the paper's sense unless it says otherwise.\n\n- **Channel.** Paper: the *channel-margin subposet* — the region where\n  the interaction matrix keeps a positive spectral margin; \"the channel\n  is open\" is a statement about an eigenvalue. Sketched: a *consent\n  lease* — a bounded authority a human grants a knob by press-and-hold.\n  The two are related by design (the lease is the operational shadow of\n  the margin) but they are *not the same object*, and the operator map\n  (`docs/13_OPERATOR_MAP.md`) tracks the correspondence explicitly.\n- **Forcing.** Paper, two senses it itself separates: a *forced\n  transition* (control: the dynamics push a state) versus *p forces φ*\n  (logic: the relation this book teaches). Sketched adds a third\n  colloquial sense — nobody \"forces\" a mark onto the shared surface —\n  which is precisely what the coordination model forbids. When this\n  book says *forces*, it means the logical relation, always.\n\nThis box covers the two worst offenders only. The full, machine-checked\naccount — every double-booked term the book uses, all its senses, and a\nverified anchor for each — lives in `book/glossary_collisions.md`\n(browser: `/book/glossary`); by the time you reach chapter 08 it also\ncovers *void* and *surface*, which this book comes to use in more than\none sense of its own.\n\n## Claims\n\nThis chapter's claims are structural facts about the spine model, every\none verified by brute force in the lab — status **obs**, the honest tag\nfor \"a machine checked all 128 subsets; nobody wrote a proof.\"\n\n- Refinement on the spine is a partial order: reflexive, antisymmetric,\n  transitive (**obs**).\n- `00` and `1` have no common refinement (**obs**). Incompatibility is\n  a *permanent* geometric fact — remember it when torsion appears in\n  chapter 04.\n- The spine has **exactly 7 filters**, one per condition: every filter\n  is a principal up-set `up(x)` (**obs**). Coherent histories in a tree\n  are just \"descend, stopping wherever honesty requires.\"\n- The **4 maximal filters are exactly the branches** — the upward\n  closures of the leaves (**obs**). Chapter 05 will call these the\n  finite stand-ins for generics.\n- No filter contains both `0` and `1` (**obs**): incompatible\n  commitments never cohere, which is chapter 01's wedge lemma in\n  miniature.\n\n## Worked example: you never un-know\n\nStabilize atom `a` on the left subtree `{0, 00, 01}` — this is the\nvaluation chapters 04 and 05 use. It is *refinement-closed*: every\nrefinement of a condition where a holds is again a condition where a\nholds. The kernel's `persistent()` check accepts it.\n\nNow mutate it: let a hold at `0` but *not* at `00` or `01`. The kernel\nrejects the valuation, and `Stab(0, a)` flips from true to false — a\ncondition below which a can be forgotten never stabilized a in the\nfirst place. Persistence is not decoration; it is what makes the\nstability set a sieve (chapter 03) and what the ledger tracks as the\npaper's highest-leverage modeling postulate (M-Pers). The lab asserts\nboth directions.\n\n## Lab\n\n```bash\npython book/labs/lab02_conditions.py\n```\n\nIt prints the down-sets, counts the filters by checking all 2⁷\nsubsets, and asserts every fact quoted above. If the kernel and this\nchapter ever disagree, the build fails.\n\n## Exercises\n\n1. **Predict, then run.** How many filters does the depth-3 binary tree\n   have? How many are maximal? Write both numbers down; then change\n   `binary_tree(2)` to `binary_tree(3)` in a copy of the lab's filter\n   count and check.\n2. Show by hand that `{r, 0, 1}` is upward closed but not a filter.\n   Which pair breaks downward directedness, and why is that the same\n   fact as \"the wedge has no cross-branch relations\"?\n3. In a poset that is *not* a tree (draw one with a diamond), exhibit a\n   filter that is not principal-along-a-chain. What does Sketched's\n   stage graph look like when two consented edits merge?\n4. The mutated valuation (\"a holds at 0 only\") describes a system that\n   *revokes* a claim under refinement. Sketched has a legitimate\n   operation that looks like forgetting — shake. Say precisely why\n   shake is not a counterexample to persistence. (Hint: chapter 01's\n   depth-0; a fresh context window is a new descent, not a move within\n   the old one.)\n\n## Boundary note\n\nThis chapter does **not** claim that real Sketched sessions satisfy the\ndisplacement budget — the smoothness contract (`asm:smooth`, C) is\nmeasured per substrate, and chapter 06 shows exactly what you are owed\nwhen it holds and how the guarantee dies when it does not. It also does\nnot claim the spine model *is* the paper's condition poset; it is the\nsmallest honest bench, and every brute-force **obs** fact above is a\nfact about the bench. The general statements live in the paper and, for\nthe load-bearing ones, in Lean.\n",
+      "prerequisites": [
+        {
+          "id": "ch01",
+          "title": "The Room at Zero",
+          "browser_path": "/book/chapter/ch01"
+        }
+      ],
+      "dependents": [
+        {
+          "id": "ch03",
+          "title": "Sieves, Covers, and Two Topologies",
+          "browser_path": "/book/chapter/ch03"
+        },
+        {
+          "id": "ch04",
+          "title": "Forcing: When Does a Claim Hold?",
+          "browser_path": "/book/chapter/ch04"
+        },
+        {
+          "id": "ch05",
+          "title": "Generics and Truth",
+          "browser_path": "/book/chapter/ch05"
+        },
+        {
+          "id": "ch06",
+          "title": "The Margin: Anatomy of a Repair",
+          "browser_path": "/book/chapter/ch06"
+        },
+        {
+          "id": "ch07",
+          "title": "Residues Across the Medium",
+          "browser_path": "/book/chapter/ch07"
+        }
+      ],
+      "source_digest": "8046ced49edc6d12518fd5eb83ad2ab32d5edfa02eb684e7e8da3da5214b4cf0"
+    },
+    {
+      "schema": "sketched.pedagogy.chapter.v1",
+      "id": "ch03",
+      "title": "Sieves, Covers, and Two Topologies",
+      "status": "drafted",
+      "prerequisite_ids": [
+        "ch02"
+      ],
+      "source_path": "book/ch03_sieves_covers_topologies.md",
+      "browser_path": "/book/chapter/ch03",
+      "json_path": "/book/chapters/ch03.json",
+      "aim": "After this chapter you can say what a *cover* is on the spine model, name\nthe two covering rules the rest of this book distinguishes everywhere,\nand prove — by counting, not by trusting the diagram — that one is\nstrictly finer than the other. This is the last piece of scaffolding\nbefore chapter 04 lets you compute forcing by hand.",
+      "boundary_note": "This chapter does **not** claim `J_adm` is the topology real Sketched\nsessions use — the spine's one generator is a minimal illustration, not\nthe operational admissibility class. It also does not claim strictness\nis a defect: `J_adm ⊊ J_nn` is exactly what lets the calibrated reading\nrefuse to certify a decision that mere density would wave through. What\nis claimed: both are genuine sites on this model (Grothendieck axioms\nchecked, not assumed), the Site Bound is machine-verified, and the\nwitness of strictness is a fact about the computed sieve lattice, not a\npicked example.",
+      "atlas_refs": [
+        "def:req",
+        "def:site",
+        "lem:sitebound",
+        "asm:calibration"
+      ],
+      "code_refs": [],
+      "lab": {
+        "kind": "python",
+        "path": "book/labs/lab03_topologies.py"
+      },
+      "word_count": 959,
+      "sections": [
+        {
+          "id": "aim",
+          "title": "Aim",
+          "markdown": "After this chapter you can say what a *cover* is on the spine model, name\nthe two covering rules the rest of this book distinguishes everywhere,\nand prove — by counting, not by trusting the diagram — that one is\nstrictly finer than the other. This is the last piece of scaffolding\nbefore chapter 04 lets you compute forcing by hand."
+        },
+        {
+          "id": "prerequisites",
+          "title": "Prerequisites",
+          "markdown": "Chapter 02 (conditions, refinement, the spine model, filters)."
+        },
+        {
+          "id": "definitions",
+          "title": "Definitions",
+          "markdown": "**Sieve** (part of `def:req`, D). A downward-closed subset `S ⊆ down(p)`:\nif `q ∈ S` and `s ⊑ q`, then `s ∈ S`. A sieve is a *request that, once\ngranted below some point, stays granted below everything finer* — the\nsame closure filters already have, but a sieve need not be directed or\neven connected; it just cannot un-grant. On the spine, `down(r)` has 26\nsieves (every down-closed subset of 7 elements); a leaf has exactly 2 —\nempty, and everything (itself).\n\n**Admissible dense requirement** (`def:req`, D). A family D below p is\n*admissible dense* if every refinement of p has a further *admissible*\nrefinement meeting D. Not every dense family qualifies — density alone\nis cheap; admissibility is the operational cost. D generates the sieve\n`S_D = {q ⊑ p : some admissible refinement of q meets D}`.\n\n**The two topologies.**\n\n- **`J_nn`, the dense (double-negation) topology.** `S` covers `p` iff\n  `S` is dense below `p`: every `q ⊑ p` has some `r ⊑ q` in `S`. This is\n  the ambient reading — it asks only \"is the evidence out there\n  somewhere,\" with no cost accounting.\n- **Generated admissible site `J_adm`** (`def:site`, D). Let\n  `B = {S_D : D admissible dense}`. `J_adm = ⟨B⟩`, the *least*\n  Grothendieck topology containing `B` — closed under pullback and\n  local character, nothing more. On the spine, `J_adm` is generated by\n  one requirement on `r`: \"leave the void\" (every non-root condition\n  covers `r`).\n\nA Grothendieck topology needs three things at every condition: the\nmaximal sieve always covers, covers pull back along refinement, and\ncovers can be verified locally (if a cover-of-covers is really a cover,\nit's already in). The lab checks the first two directly for both `J_nn`\nand `J_adm`; both hold at all 7 conditions of the spine."
+        },
+        {
+          "id": "claims",
+          "title": "Claims",
+          "markdown": "**Site Bound** (`lem:sitebound`, **P**, machine-verified). `J_adm ⊆ J_nn`\nat every condition: every admissibly-generated cover is dense, but not\nevery dense sieve is admissibly generated. Proof idea (the paper gives\nthe full argument): `J_nn` is *itself* a Grothendieck topology on any\nposet, each generator `S_D` is dense by definition of admissible\ndensity, so the *least* topology containing the generators sits inside\nit.\n\n**The containment is strict — the lab exhibits the witness.** At\n`p = r`, the leaf sieve `S = {00, 01, 10, 11}` is `J_nn`-dense (every\ncondition below r has a leaf below it) but is **not** a `J_adm`-cover:\nthe only `J_adm` generator on r is \"leave the void,\" and closing it\nunder pullback and local character never manufactures the leaf sieve.\nDensity says the evidence exists somewhere in the future; `J_adm` asks\nwhether the *specific admissible moves you were actually granted* reach\nit. Chapter 04 names the gap between these two readings **Decision\nReachability** — this chapter proves the gap is nonempty before that\nname is needed."
+        },
+        {
+          "id": "worked-example-what-leave-the-void-buys-and-what-it-doesnt",
+          "title": "Worked example: what \"leave the void\" buys, and what it doesn't",
+          "markdown": "The single generator on r says: every non-root condition together forms\nan admissible cover of r. That's cheap — it only asks you to leave depth\n0 at all. It buys `r ⊩_adm a` nowhere by itself; what it buys is a\n*foothold*: `J_adm` at `0` and `1` still has to be built up from\nwhatever admissible requirements exist *there*. On the 7-condition\nspine, with no further generators declared, `J_adm` below `0` and `1`\nonly contains their own maximal sieves — nothing more is admissibly\ncertified. That asymmetry (rich at r's one generator, empty below it) is\nnot a limitation of this toy model; it is the calibration queue in\nminiature — chapter 08 names it `asm:calibration` and treats it as\nhonest open debt, not a bug to be quietly patched."
+        },
+        {
+          "id": "lab",
+          "title": "Lab",
+          "markdown": "```bash\npython book/labs/lab03_topologies.py\n```\n\nIt enumerates all sieves on all 7 conditions, builds `J_nn` and `J_adm`,\nchecks the Grothendieck axioms hold for both, verifies the Site Bound by\nbrute force over every sieve at every condition, and prints the specific\nstrictness witness quoted above."
+        },
+        {
+          "id": "exercises",
+          "title": "Exercises",
+          "markdown": "1. **Predict, then run.** Add a second `J_adm` generator: \"leave 0\" (all\n   of `{00, 01}` covers `0`). Does `r ⊩_adm b` (b = all leaves) become\n   true? Predict using the pullback-stability requirement, then patch\n   the lab's generator dict and check.\n2. Count the sieves on `0` by hand (5, per the lab) and list them. Which\n   one is the maximal sieve, and which is `A_a(0)` from chapter 02's\n   persistent valuation?\n3. Prove `J_nn` is a Grothendieck topology on an arbitrary finite poset\n   in three lines, using only that `⊑` is transitive.\n4. (Harder.) The witness sieve `{00,01,10,11}` fails to be a `J_adm`\n   cover of `r` for a *structural* reason, not an accident of this\n   generator choice: exhibit a second, different single-generator choice\n   on `r` under which the *same* sieve still fails to be a cover, and\n   say what property of \"leave the void\"-style generators makes that\n   inevitable."
+        },
+        {
+          "id": "boundary-note",
+          "title": "Boundary note",
+          "markdown": "This chapter does **not** claim `J_adm` is the topology real Sketched\nsessions use — the spine's one generator is a minimal illustration, not\nthe operational admissibility class. It also does not claim strictness\nis a defect: `J_adm ⊊ J_nn` is exactly what lets the calibrated reading\nrefuse to certify a decision that mere density would wave through. What\nis claimed: both are genuine sites on this model (Grothendieck axioms\nchecked, not assumed), the Site Bound is machine-verified, and the\nwitness of strictness is a fact about the computed sieve lattice, not a\npicked example."
+        }
+      ],
+      "raw_markdown": "# Chapter 03 · Sieves, Covers, and Two Topologies\n\n## Aim\n\nAfter this chapter you can say what a *cover* is on the spine model, name\nthe two covering rules the rest of this book distinguishes everywhere,\nand prove — by counting, not by trusting the diagram — that one is\nstrictly finer than the other. This is the last piece of scaffolding\nbefore chapter 04 lets you compute forcing by hand.\n\n## Prerequisites\n\nChapter 02 (conditions, refinement, the spine model, filters).\n\n## Definitions\n\n**Sieve** (part of `def:req`, D). A downward-closed subset `S ⊆ down(p)`:\nif `q ∈ S` and `s ⊑ q`, then `s ∈ S`. A sieve is a *request that, once\ngranted below some point, stays granted below everything finer* — the\nsame closure filters already have, but a sieve need not be directed or\neven connected; it just cannot un-grant. On the spine, `down(r)` has 26\nsieves (every down-closed subset of 7 elements); a leaf has exactly 2 —\nempty, and everything (itself).\n\n**Admissible dense requirement** (`def:req`, D). A family D below p is\n*admissible dense* if every refinement of p has a further *admissible*\nrefinement meeting D. Not every dense family qualifies — density alone\nis cheap; admissibility is the operational cost. D generates the sieve\n`S_D = {q ⊑ p : some admissible refinement of q meets D}`.\n\n**The two topologies.**\n\n- **`J_nn`, the dense (double-negation) topology.** `S` covers `p` iff\n  `S` is dense below `p`: every `q ⊑ p` has some `r ⊑ q` in `S`. This is\n  the ambient reading — it asks only \"is the evidence out there\n  somewhere,\" with no cost accounting.\n- **Generated admissible site `J_adm`** (`def:site`, D). Let\n  `B = {S_D : D admissible dense}`. `J_adm = ⟨B⟩`, the *least*\n  Grothendieck topology containing `B` — closed under pullback and\n  local character, nothing more. On the spine, `J_adm` is generated by\n  one requirement on `r`: \"leave the void\" (every non-root condition\n  covers `r`).\n\nA Grothendieck topology needs three things at every condition: the\nmaximal sieve always covers, covers pull back along refinement, and\ncovers can be verified locally (if a cover-of-covers is really a cover,\nit's already in). The lab checks the first two directly for both `J_nn`\nand `J_adm`; both hold at all 7 conditions of the spine.\n\n## Claims\n\n**Site Bound** (`lem:sitebound`, **P**, machine-verified). `J_adm ⊆ J_nn`\nat every condition: every admissibly-generated cover is dense, but not\nevery dense sieve is admissibly generated. Proof idea (the paper gives\nthe full argument): `J_nn` is *itself* a Grothendieck topology on any\nposet, each generator `S_D` is dense by definition of admissible\ndensity, so the *least* topology containing the generators sits inside\nit.\n\n**The containment is strict — the lab exhibits the witness.** At\n`p = r`, the leaf sieve `S = {00, 01, 10, 11}` is `J_nn`-dense (every\ncondition below r has a leaf below it) but is **not** a `J_adm`-cover:\nthe only `J_adm` generator on r is \"leave the void,\" and closing it\nunder pullback and local character never manufactures the leaf sieve.\nDensity says the evidence exists somewhere in the future; `J_adm` asks\nwhether the *specific admissible moves you were actually granted* reach\nit. Chapter 04 names the gap between these two readings **Decision\nReachability** — this chapter proves the gap is nonempty before that\nname is needed.\n\n## Worked example: what \"leave the void\" buys, and what it doesn't\n\nThe single generator on r says: every non-root condition together forms\nan admissible cover of r. That's cheap — it only asks you to leave depth\n0 at all. It buys `r ⊩_adm a` nowhere by itself; what it buys is a\n*foothold*: `J_adm` at `0` and `1` still has to be built up from\nwhatever admissible requirements exist *there*. On the 7-condition\nspine, with no further generators declared, `J_adm` below `0` and `1`\nonly contains their own maximal sieves — nothing more is admissibly\ncertified. That asymmetry (rich at r's one generator, empty below it) is\nnot a limitation of this toy model; it is the calibration queue in\nminiature — chapter 08 names it `asm:calibration` and treats it as\nhonest open debt, not a bug to be quietly patched.\n\n## Lab\n\n```bash\npython book/labs/lab03_topologies.py\n```\n\nIt enumerates all sieves on all 7 conditions, builds `J_nn` and `J_adm`,\nchecks the Grothendieck axioms hold for both, verifies the Site Bound by\nbrute force over every sieve at every condition, and prints the specific\nstrictness witness quoted above.\n\n## Exercises\n\n1. **Predict, then run.** Add a second `J_adm` generator: \"leave 0\" (all\n   of `{00, 01}` covers `0`). Does `r ⊩_adm b` (b = all leaves) become\n   true? Predict using the pullback-stability requirement, then patch\n   the lab's generator dict and check.\n2. Count the sieves on `0` by hand (5, per the lab) and list them. Which\n   one is the maximal sieve, and which is `A_a(0)` from chapter 02's\n   persistent valuation?\n3. Prove `J_nn` is a Grothendieck topology on an arbitrary finite poset\n   in three lines, using only that `⊑` is transitive.\n4. (Harder.) The witness sieve `{00,01,10,11}` fails to be a `J_adm`\n   cover of `r` for a *structural* reason, not an accident of this\n   generator choice: exhibit a second, different single-generator choice\n   on `r` under which the *same* sieve still fails to be a cover, and\n   say what property of \"leave the void\"-style generators makes that\n   inevitable.\n\n## Boundary note\n\nThis chapter does **not** claim `J_adm` is the topology real Sketched\nsessions use — the spine's one generator is a minimal illustration, not\nthe operational admissibility class. It also does not claim strictness\nis a defect: `J_adm ⊊ J_nn` is exactly what lets the calibrated reading\nrefuse to certify a decision that mere density would wave through. What\nis claimed: both are genuine sites on this model (Grothendieck axioms\nchecked, not assumed), the Site Bound is machine-verified, and the\nwitness of strictness is a fact about the computed sieve lattice, not a\npicked example.\n",
+      "prerequisites": [
+        {
+          "id": "ch02",
+          "title": "Conditions and Refinement",
+          "browser_path": "/book/chapter/ch02"
+        }
+      ],
+      "dependents": [
+        {
+          "id": "ch04",
+          "title": "Forcing: When Does a Claim Hold?",
+          "browser_path": "/book/chapter/ch04"
+        },
+        {
+          "id": "ch05",
+          "title": "Generics and Truth",
+          "browser_path": "/book/chapter/ch05"
+        },
+        {
+          "id": "appb",
+          "title": "Appendix B · The Mechanical Witnesses",
+          "browser_path": "/book/chapter/appb"
+        }
+      ],
+      "source_digest": "8046ced49edc6d12518fd5eb83ad2ab32d5edfa02eb684e7e8da3da5214b4cf0"
+    },
+    {
+      "schema": "sketched.pedagogy.chapter.v1",
+      "id": "ch04",
+      "title": "Forcing: When Does a Claim Hold?",
+      "status": "drafted",
+      "prerequisite_ids": [
+        "ch01",
+        "ch02",
+        "ch03"
+      ],
+      "source_path": "book/ch04_forcing.md",
+      "browser_path": "/book/chapter/ch04",
+      "json_path": "/book/chapters/ch04.json",
+      "aim": "After this chapter you can compute, by hand on a seven-condition model,\nwhether a condition *forces* a claim — under both of the system's\nreadings — and you can explain the three distinctions everything else in\nthis book leans on: forced vs. true-here, undecided vs. refuted, and\ncontingent refusal vs. torsion. You will also meet the first place the\ntwo readings genuinely disagree, and why that disagreement is a feature\nwith a name (Decision Reachability), not a bug.",
+      "boundary_note": "This chapter does **not** claim that Sketched's consent pipeline\n*implements* these clauses — that is the calibration queue\n(`asm:calibration`), and it is open. What is claimed: the clauses are\nmachine-verified mathematics (`lem:pers`, `lem:dec`, truth lemma in\nchapter 05), the model is executable, and the analogy is tracked\noperator-by-operator in `docs/13_OPERATOR_MAP.md` with realized/target\nstatuses the build re-checks. Interpretation is free; conflation is not.",
+      "atlas_refs": [
+        "lem:sitebound",
+        "def:stab",
+        "def:force",
+        "def:clauses",
+        "lem:pers",
+        "lem:dec",
+        "lem:reach",
+        "rem:torsion",
+        "asm:calibration"
+      ],
+      "code_refs": [],
+      "lab": {
+        "kind": "python",
+        "path": "book/labs/lab04_forcing.py"
+      },
+      "word_count": 1048,
+      "sections": [
+        {
+          "id": "aim",
+          "title": "Aim",
+          "markdown": "After this chapter you can compute, by hand on a seven-condition model,\nwhether a condition *forces* a claim — under both of the system's\nreadings — and you can explain the three distinctions everything else in\nthis book leans on: forced vs. true-here, undecided vs. refuted, and\ncontingent refusal vs. torsion. You will also meet the first place the\ntwo readings genuinely disagree, and why that disagreement is a feature\nwith a name (Decision Reachability), not a bug."
+        },
+        {
+          "id": "prerequisites",
+          "title": "Prerequisites",
+          "markdown": "Chapters 01–03 (conditions, refinement, sieves, the two topologies\nJ_nn ⊇ J_adm and the Site Bound `lem:sitebound`). All computations here\nuse the **spine model**: conditions `r > {0,1} > {00,01,10,11}` (a\ndepth-2 binary tree), atom `a` stabilized on the left subtree\n`{0,00,01}`, atom `b` stabilized on the leaves, and J_adm generated by\none admissible requirement on `r` — \"leave the void.\""
+        },
+        {
+          "id": "definitions",
+          "title": "Definitions",
+          "markdown": "**Stability, atomic** (`def:stab`, D). `Stab(q, a)`: the atom holds at q\nand persists under every further refinement. The stability set\n`A_a(p) = {q ⊑ p : Stab(q, a)}` is a sieve — this is where the\npersistence postulate (M-Pers) is consumed, and the ledger says so.\n\n**Forcing** (`def:force`, D). Two relations, never silently conflated:\n\n- `p ⊩_H a` — the **calibrated** reading: `A_a(p)` is a J_adm-cover;\n- `p ⊩_nn a` — the **dense** reading: `A_a(p)` is dense below p.\n\nBy the Site Bound, calibrated ⇒ dense. The converse is the whole drama.\n\n**The clauses** (`def:clauses`, D). `∧` componentwise; `∨` when the\ndisjunct-forcers form a cover; and the load-bearing one:\n\n> `p ⊩ ¬φ` iff **no** refinement of p forces φ.\n\nNegation quantifies over the entire future. Hold that thought."
+        },
+        {
+          "id": "claims",
+          "title": "Claims",
+          "markdown": "**Persistence and consistency** (`lem:pers`, **P**, machine-verified).\nWhatever p forces, every refinement of p forces; and nothing forces both\nφ and ¬φ. Forcing is a promise that survives more knowledge.\n\n**Deciding sets are order-dense** (`lem:dec`, **P**, machine-verified).\nBelow any condition there is always a refinement that decides φ, one way\nor the other. Density in the *order* is free; whether the deciding set is\nan *admissible* cover is Decision Reachability (`lem:reach`, P consuming\nthe smoothness contract) — chapter 05's hinge.\n\n**Torsion is the atomic case only** (`rem:torsion`, **P** atomic /\n**O** compound). \"Refuted at every refinement\" and \"no refinement can\nforce it\" coincide for atoms and come apart for compounds — the lab\nshows the countermodel live."
+        },
+        {
+          "id": "worked-example-reading-the-tables",
+          "title": "Worked example: reading the tables",
+          "markdown": "Run the lab; it prints these (x = forces):\n\n```\n   ||-_nn        a    b   ~a   ~b  ~~b        ||-_adm       a    b   ~a   ~b  ~~b\n      r          .    x    .    .    x           r          .    .    .    .    x\n      0          x    x    .    .    x           0          x    .    .    .    x\n      1          .    x    x    .    x           1          .    .    x    .    x\n   leaves 00,01  x    x    .    .    x        leaves 00,01  x    x    .    .    x\n   leaves 10,11  .    x    x    .    x        leaves 10,11  .    x    x    .    x\n```\n\nFive readings, in increasing order of consequence:\n\n1. **Forced ≠ true everywhere.** `0 ⊩ a` because a is stable on 0's\n   entire cone. But `r ⊮ a`: below condition 1 nothing stabilizes a, so\n   the stabilizers are not dense below r. At r, the claim a is simply\n   not settled — and the system says so instead of guessing.\n\n2. **Undecided ≠ refuted.** `r ⊮ a` *and* `r ⊮ ¬a` (condition 0 below r\n   forces a, so the ¬-clause fails too). r is **undecided** on a. The\n   deciding set D_a is everything except r — order-dense, exactly as\n   `lem:dec` promises. Decisions live down the branches; bivalence is a\n   property of completed journeys, not of waypoints.\n\n3. **Torsion.** `1 ⊩ ¬a`: no refinement of 1 will *ever* stabilize a.\n   That is not \"denied for now\"; it is structural — a refusal stable\n   under the entire future. Sketched's human-layer guard is exactly this\n   shape: \"consent cannot be granted\" is a torsion certificate, not a\n   pending request. Contingent and permanent refusal are different\n   mathematical objects, and the consent layer inherits the distinction.\n\n4. **The two readings disagree — strictness, live.** `r ⊩_nn b` (every\n   condition has a leaf below it, and leaves stabilize b) but\n   `r ⊮_adm b`: the leaf sieve is dense yet is *not* a J_adm-cover of r,\n   because our austere generator never authorized it. Density says the\n   evidence is out there; the calibrated reading asks whether *admissible\n   moves can reach it*. The gap between the columns is Decision\n   Reachability made visible — and note how much more the calibrated\n   table withholds: even `0 ⊮_adm b`.\n\n5. **Compound negation misbehaves.** `r ⊩ ¬¬b` by the clause — nobody\n   can ever force ¬b, since every condition has a b-stabilizing leaf\n   below it. But \"¬b is classically stable everywhere below r\" is\n   *false* — at every leaf, b holds. For the compound ¬b, \"no one can\n   force it\" and \"it fails stably everywhere\" diverge. For atoms they\n   coincide (`rem:torsion`); the paper marks the compound case **O**,\n   and the finite model checker found this exact countermodel\n   (φ = ¬b at r) during the audit that produced v15."
+        },
+        {
+          "id": "lab",
+          "title": "Lab",
+          "markdown": "```bash\npython book/labs/lab04_forcing.py\n```\n\nEvery fact quoted above is an assertion in the lab. If the kernel and\nthis chapter ever disagree, the build fails — the prose is not allowed\nto outlive its evidence."
+        },
+        {
+          "id": "exercises",
+          "title": "Exercises",
+          "markdown": "1. **Predict, then run.** Add atom `c` stabilized only at `{01}` to a\n   copy of the lab. Which conditions force c under ⊩_nn? Which force ¬c?\n   Write the eight-row column first; then run.\n2. From the table: which conditions decide *both* a and b under ⊩_nn?\n   What is special about them? (Chapter 05 will name it.)\n3. Show by hand that `D_a` restricted below r is a sieve (you need\n   persistence — say where).\n4. Enlarge the J_adm generators by one sieve so that `r ⊩_adm b`\n   becomes true, without violating the Site Bound. What did you just\n   \"spend\" to buy that decision? (This is the calibration queue in\n   miniature.)\n5. (Harder.) Construct a formula and a condition where ⊩_adm and ⊩_nn\n   agree at every *leaf* but disagree at an interior node. Why can this\n   never happen at leaves in a finite model?"
+        },
+        {
+          "id": "boundary-note",
+          "title": "Boundary note",
+          "markdown": "This chapter does **not** claim that Sketched's consent pipeline\n*implements* these clauses — that is the calibration queue\n(`asm:calibration`), and it is open. What is claimed: the clauses are\nmachine-verified mathematics (`lem:pers`, `lem:dec`, truth lemma in\nchapter 05), the model is executable, and the analogy is tracked\noperator-by-operator in `docs/13_OPERATOR_MAP.md` with realized/target\nstatuses the build re-checks. Interpretation is free; conflation is not."
+        }
+      ],
+      "raw_markdown": "# Chapter 04 · Forcing: When Does a Claim Hold?\n\n## Aim\n\nAfter this chapter you can compute, by hand on a seven-condition model,\nwhether a condition *forces* a claim — under both of the system's\nreadings — and you can explain the three distinctions everything else in\nthis book leans on: forced vs. true-here, undecided vs. refuted, and\ncontingent refusal vs. torsion. You will also meet the first place the\ntwo readings genuinely disagree, and why that disagreement is a feature\nwith a name (Decision Reachability), not a bug.\n\n## Prerequisites\n\nChapters 01–03 (conditions, refinement, sieves, the two topologies\nJ_nn ⊇ J_adm and the Site Bound `lem:sitebound`). All computations here\nuse the **spine model**: conditions `r > {0,1} > {00,01,10,11}` (a\ndepth-2 binary tree), atom `a` stabilized on the left subtree\n`{0,00,01}`, atom `b` stabilized on the leaves, and J_adm generated by\none admissible requirement on `r` — \"leave the void.\"\n\n## Definitions\n\n**Stability, atomic** (`def:stab`, D). `Stab(q, a)`: the atom holds at q\nand persists under every further refinement. The stability set\n`A_a(p) = {q ⊑ p : Stab(q, a)}` is a sieve — this is where the\npersistence postulate (M-Pers) is consumed, and the ledger says so.\n\n**Forcing** (`def:force`, D). Two relations, never silently conflated:\n\n- `p ⊩_H a` — the **calibrated** reading: `A_a(p)` is a J_adm-cover;\n- `p ⊩_nn a` — the **dense** reading: `A_a(p)` is dense below p.\n\nBy the Site Bound, calibrated ⇒ dense. The converse is the whole drama.\n\n**The clauses** (`def:clauses`, D). `∧` componentwise; `∨` when the\ndisjunct-forcers form a cover; and the load-bearing one:\n\n> `p ⊩ ¬φ` iff **no** refinement of p forces φ.\n\nNegation quantifies over the entire future. Hold that thought.\n\n## Claims\n\n**Persistence and consistency** (`lem:pers`, **P**, machine-verified).\nWhatever p forces, every refinement of p forces; and nothing forces both\nφ and ¬φ. Forcing is a promise that survives more knowledge.\n\n**Deciding sets are order-dense** (`lem:dec`, **P**, machine-verified).\nBelow any condition there is always a refinement that decides φ, one way\nor the other. Density in the *order* is free; whether the deciding set is\nan *admissible* cover is Decision Reachability (`lem:reach`, P consuming\nthe smoothness contract) — chapter 05's hinge.\n\n**Torsion is the atomic case only** (`rem:torsion`, **P** atomic /\n**O** compound). \"Refuted at every refinement\" and \"no refinement can\nforce it\" coincide for atoms and come apart for compounds — the lab\nshows the countermodel live.\n\n## Worked example: reading the tables\n\nRun the lab; it prints these (x = forces):\n\n```\n   ||-_nn        a    b   ~a   ~b  ~~b        ||-_adm       a    b   ~a   ~b  ~~b\n      r          .    x    .    .    x           r          .    .    .    .    x\n      0          x    x    .    .    x           0          x    .    .    .    x\n      1          .    x    x    .    x           1          .    .    x    .    x\n   leaves 00,01  x    x    .    .    x        leaves 00,01  x    x    .    .    x\n   leaves 10,11  .    x    x    .    x        leaves 10,11  .    x    x    .    x\n```\n\nFive readings, in increasing order of consequence:\n\n1. **Forced ≠ true everywhere.** `0 ⊩ a` because a is stable on 0's\n   entire cone. But `r ⊮ a`: below condition 1 nothing stabilizes a, so\n   the stabilizers are not dense below r. At r, the claim a is simply\n   not settled — and the system says so instead of guessing.\n\n2. **Undecided ≠ refuted.** `r ⊮ a` *and* `r ⊮ ¬a` (condition 0 below r\n   forces a, so the ¬-clause fails too). r is **undecided** on a. The\n   deciding set D_a is everything except r — order-dense, exactly as\n   `lem:dec` promises. Decisions live down the branches; bivalence is a\n   property of completed journeys, not of waypoints.\n\n3. **Torsion.** `1 ⊩ ¬a`: no refinement of 1 will *ever* stabilize a.\n   That is not \"denied for now\"; it is structural — a refusal stable\n   under the entire future. Sketched's human-layer guard is exactly this\n   shape: \"consent cannot be granted\" is a torsion certificate, not a\n   pending request. Contingent and permanent refusal are different\n   mathematical objects, and the consent layer inherits the distinction.\n\n4. **The two readings disagree — strictness, live.** `r ⊩_nn b` (every\n   condition has a leaf below it, and leaves stabilize b) but\n   `r ⊮_adm b`: the leaf sieve is dense yet is *not* a J_adm-cover of r,\n   because our austere generator never authorized it. Density says the\n   evidence is out there; the calibrated reading asks whether *admissible\n   moves can reach it*. The gap between the columns is Decision\n   Reachability made visible — and note how much more the calibrated\n   table withholds: even `0 ⊮_adm b`.\n\n5. **Compound negation misbehaves.** `r ⊩ ¬¬b` by the clause — nobody\n   can ever force ¬b, since every condition has a b-stabilizing leaf\n   below it. But \"¬b is classically stable everywhere below r\" is\n   *false* — at every leaf, b holds. For the compound ¬b, \"no one can\n   force it\" and \"it fails stably everywhere\" diverge. For atoms they\n   coincide (`rem:torsion`); the paper marks the compound case **O**,\n   and the finite model checker found this exact countermodel\n   (φ = ¬b at r) during the audit that produced v15.\n\n## Lab\n\n```bash\npython book/labs/lab04_forcing.py\n```\n\nEvery fact quoted above is an assertion in the lab. If the kernel and\nthis chapter ever disagree, the build fails — the prose is not allowed\nto outlive its evidence.\n\n## Exercises\n\n1. **Predict, then run.** Add atom `c` stabilized only at `{01}` to a\n   copy of the lab. Which conditions force c under ⊩_nn? Which force ¬c?\n   Write the eight-row column first; then run.\n2. From the table: which conditions decide *both* a and b under ⊩_nn?\n   What is special about them? (Chapter 05 will name it.)\n3. Show by hand that `D_a` restricted below r is a sieve (you need\n   persistence — say where).\n4. Enlarge the J_adm generators by one sieve so that `r ⊩_adm b`\n   becomes true, without violating the Site Bound. What did you just\n   \"spend\" to buy that decision? (This is the calibration queue in\n   miniature.)\n5. (Harder.) Construct a formula and a condition where ⊩_adm and ⊩_nn\n   agree at every *leaf* but disagree at an interior node. Why can this\n   never happen at leaves in a finite model?\n\n## Boundary note\n\nThis chapter does **not** claim that Sketched's consent pipeline\n*implements* these clauses — that is the calibration queue\n(`asm:calibration`), and it is open. What is claimed: the clauses are\nmachine-verified mathematics (`lem:pers`, `lem:dec`, truth lemma in\nchapter 05), the model is executable, and the analogy is tracked\noperator-by-operator in `docs/13_OPERATOR_MAP.md` with realized/target\nstatuses the build re-checks. Interpretation is free; conflation is not.\n",
+      "prerequisites": [
+        {
+          "id": "ch01",
+          "title": "The Room at Zero",
+          "browser_path": "/book/chapter/ch01"
+        },
+        {
+          "id": "ch02",
+          "title": "Conditions and Refinement",
+          "browser_path": "/book/chapter/ch02"
+        },
+        {
+          "id": "ch03",
+          "title": "Sieves, Covers, and Two Topologies",
+          "browser_path": "/book/chapter/ch03"
+        }
+      ],
+      "dependents": [
+        {
+          "id": "ch05",
+          "title": "Generics and Truth",
+          "browser_path": "/book/chapter/ch05"
+        },
+        {
+          "id": "appb",
+          "title": "Appendix B · The Mechanical Witnesses",
+          "browser_path": "/book/chapter/appb"
+        }
+      ],
+      "source_digest": "8046ced49edc6d12518fd5eb83ad2ab32d5edfa02eb684e7e8da3da5214b4cf0"
+    },
+    {
+      "schema": "sketched.pedagogy.chapter.v1",
+      "id": "ch05",
+      "title": "Generics and Truth",
+      "status": "drafted",
+      "prerequisite_ids": [
+        "ch02",
+        "ch03",
+        "ch04"
+      ],
+      "source_path": "book/ch05_generics_and_truth.md",
+      "browser_path": "/book/chapter/ch05",
+      "json_path": "/book/chapters/ch05.json",
+      "aim": "After this chapter you can state Rasiowa–Sikorski genericity, say what\nDecision Reachability adds beyond plain order-density, and explain why a\ngeneric *decides every formula* (bivalence) without that fact being\nmagic. You will also learn this chapter's hardest lesson: the spine\nmodel is small enough to compute on and too small to show you the\ninteresting part. Naming that gap honestly is the chapter's real\ncontent.",
+      "boundary_note": "This chapter does **not** claim the lab demonstrates Rasiowa–Sikorski\nconstructing anything, or that Decision Reachability's conditionality is\nexercised here — both require either a genuinely infinite dense family\nor a site where the smoothness contract actually fails, and the\n7-condition spine has neither. What the lab *does* verify: the\ntruth-lemma pattern holds exactly where the paper says it must, and the\nundecided-root/decided-branch asymmetry that motivates the whole\napparatus is a real, computed fact, not a story. The substantive proofs\n— that the construction terminates for genuinely unbounded families, and\nwhat happens when the contract is violated — live in the paper's proof\nenvironments and, for the base cases, in the Lean kernel\n(`rasiowa_sikorski`, `truth_lemma`, `exists_generic_truth`); this chapter\nis not a substitute for either.",
+      "atlas_refs": [
+        "rem:torsion",
+        "asm:smooth",
+        "def:closure",
+        "lem:dec",
+        "lem:bdd",
+        "lem:reach",
+        "lem:bivalence",
+        "lem:atomic",
+        "thm:prop",
+        "asm:calibration"
+      ],
+      "code_refs": [],
+      "lab": {
+        "kind": "python",
+        "path": "book/labs/lab05_generics.py"
+      },
+      "word_count": 1046,
+      "sections": [
+        {
+          "id": "aim",
+          "title": "Aim",
+          "markdown": "After this chapter you can state Rasiowa–Sikorski genericity, say what\nDecision Reachability adds beyond plain order-density, and explain why a\ngeneric *decides every formula* (bivalence) without that fact being\nmagic. You will also learn this chapter's hardest lesson: the spine\nmodel is small enough to compute on and too small to show you the\ninteresting part. Naming that gap honestly is the chapter's real\ncontent."
+        },
+        {
+          "id": "prerequisites",
+          "title": "Prerequisites",
+          "markdown": "Chapters 02–04 (conditions, the two topologies, forcing, torsion,\nDecision Reachability introduced informally). This chapter states the\nlemma that names it."
+        },
+        {
+          "id": "definitions",
+          "title": "Definitions",
+          "markdown": "**Generic (finite stand-in).** A filter `G` through `p` meeting every\nadmissible dense requirement. On the spine, the four **branches** — root-\nto-leaf chains — are the finite stand-ins: total, maximal, decided at\nevery leaf by construction.\n\n**Admissible deciding closure** `D_p*` (`def:closure`, D). The countable\nfamily obtained by adding every atomic stability set and every\npropositional deciding set to `D_p`, keeping only those that are\n`J_adm`-covers (which Decision Reachability, below, says exist). A\ngeneric meeting `D_p*` is what \"decides every formula\" means precisely."
+        },
+        {
+          "id": "claims",
+          "title": "Claims",
+          "markdown": "**Boundedness yields countability for Rasiowa–Sikorski** (`lem:bdd`,\n**P**, machine-verified — `rasiowa_sikorski` in the Lean kernel). A\nresource-bounded observer tracks only countably many claims over a run\n(the observer-bound postulate M-Bound supplies *countability*, not\ndensity); Rasiowa–Sikorski applied to a countable family of dense sets\nproduces a filter meeting all of them. This is where the classical\nforcing machinery — built for countably infinite dense sets — actually\ndoes work: the theorem is only interesting when the family is genuinely\nunbounded, not when it has seven elements.\n\n**Decision Reachability, conditional** (`lem:reach`, **P** consuming the\nsmoothness contract). Under the smoothness contract (`asm:smooth`, C),\nevery condition has an admissible refinement deciding any given formula\n— equivalently, the deciding sieve is not just order-dense but an actual\n`J_adm`-cover. This is *not* free: order-density (`lem:dec`, chapter 04)\nholds unconditionally, but admissible density is the contract's payoff,\nand where the contract fails, the finite model checker exhibits sites\nwhere it does fail. The step from order-dense to admissibly-dense **is**\nthe calibration debt, not a consequence of it.\n\n**Genericity decides every formula** (`lem:bivalence`, **P** consuming\nC). A generic meeting `D_p*` decides every propositional formula — some\ncondition in it forces φ or forces ¬φ. Bivalence on the generic is P\n*conditional on Decision Reachability*, not on countability alone.\n\n**Propositional Truth Lemma, conditional on calibration** (`thm:prop`,\n**P** — `truth_lemma`/`exists_generic_truth` in the Lean kernel, under\nthe calibration queue `asm:calibration`). For a generic G deciding every\nformula: `G ⊨_H φ ⟺ ∃p ∈ G : p ⊩_H φ`. Induction on φ; the atomic base\ncase is `lem:atomic`, whose (⇒) direction routes through the *maximal\nsieve* — the v14 text's mistake was concluding this from density alone,\nwhich does not imply `J_adm`-covering; only the maximal sieve, present\nin every Grothendieck topology, does."
+        },
+        {
+          "id": "worked-example-the-truth-lemma-pattern-live-and-its-trivialization",
+          "title": "Worked example: the truth lemma pattern, live — and its trivialization",
+          "markdown": "The lab checks, over all 4 branches and 7 formulas (a, b, ¬a, ¬b, ¬¬b,\na∧b, a∨b): **`G ⊨ φ` iff some `q ∈ G` forces φ under `⊩_adm`.** Every one\nof the 28 checks matches. That is a genuine, computed instance of\n`thm:prop`'s pattern — not asserted, verified.\n\nNow the honest part. Every branch on this model **decides every\nformula, trivially** — bivalence never fails, in fact *cannot* fail,\nbecause the valuation is total on the leaves: a leaf is either in `V(a)`\nor it isn't, full stop, and a branch's classical truth is read straight\noff its leaf. That is not Rasiowa–Sikorski doing work; that is what\n\"finite and total\" means. `lem:bdd`'s countability payoff matters when\nthe dense family is genuinely infinite and you need a *construction*\nthat meets all of it without ever finishing; here there is nothing to\nconstruct — you can just look. Compare the root: `r` itself, per chapter\n04, does **not** decide b under `⊩_adm` — the lab reasserts this — even\nthough *every branch through r* decides it. The generic's job is exactly\nto descend far enough to buy the decision; on a finite spine the\ndescent is three steps and always terminates in a leaf that already\nknew everything. On an unbounded observer's actual dense family,\nnothing guarantees a leaf, and that is precisely where `lem:reach`'s\nconditionality and `lem:bdd`'s Rasiowa–Sikorski construction earn their\nkeep."
+        },
+        {
+          "id": "lab",
+          "title": "Lab",
+          "markdown": "```bash\npython book/labs/lab05_generics.py\n```\n\nChecks the truth-lemma pattern over every branch and the small formula\nset, checks bivalence holds on every branch, and reasserts (from chapter\n04's kernel) that r remains undecided on b under `⊩_adm`."
+        },
+        {
+          "id": "exercises",
+          "title": "Exercises",
+          "markdown": "1. **Predict, then run.** Add atom `c`, stabilized only at leaf `01`.\n   Predict, for the branch `{r, 0, 01}`, whether `G ⊨ c` and which\n   condition in `G` forces it; then extend the lab's formula list and\n   check.\n2. Explain in one sentence why a branch on *any* finite tree with a\n   total leaf valuation must decide every formula in the propositional\n   closure of the atoms — no appeal to Rasiowa–Sikorski required.\n3. `lem:reach` requires the smoothness contract. Sketch (prose, not\n   code) a modification of the spine's `J_adm` generator such that some\n   deciding sieve stops being a `J_adm`-cover even though it stays\n   order-dense — you are building a miniature failure of Decision\n   Reachability. (You do not need to prove the general contract fails;\n   exhibit the local symptom.)\n4. (Harder.) `thm:prop`'s induction handles ∨ by routing through\n   deciding sets rather than the naive \"disjunct-forcers form a cover.\"\n   Using the ¬¬b countermodel from chapter 04 (`rem:torsion`), explain\n   why the naive routing would have broken exactly at a disjunction\n   built from that compound."
+        },
+        {
+          "id": "boundary-note",
+          "title": "Boundary note",
+          "markdown": "This chapter does **not** claim the lab demonstrates Rasiowa–Sikorski\nconstructing anything, or that Decision Reachability's conditionality is\nexercised here — both require either a genuinely infinite dense family\nor a site where the smoothness contract actually fails, and the\n7-condition spine has neither. What the lab *does* verify: the\ntruth-lemma pattern holds exactly where the paper says it must, and the\nundecided-root/decided-branch asymmetry that motivates the whole\napparatus is a real, computed fact, not a story. The substantive proofs\n— that the construction terminates for genuinely unbounded families, and\nwhat happens when the contract is violated — live in the paper's proof\nenvironments and, for the base cases, in the Lean kernel\n(`rasiowa_sikorski`, `truth_lemma`, `exists_generic_truth`); this chapter\nis not a substitute for either."
+        }
+      ],
+      "raw_markdown": "# Chapter 05 · Generics and Truth\n\n## Aim\n\nAfter this chapter you can state Rasiowa–Sikorski genericity, say what\nDecision Reachability adds beyond plain order-density, and explain why a\ngeneric *decides every formula* (bivalence) without that fact being\nmagic. You will also learn this chapter's hardest lesson: the spine\nmodel is small enough to compute on and too small to show you the\ninteresting part. Naming that gap honestly is the chapter's real\ncontent.\n\n## Prerequisites\n\nChapters 02–04 (conditions, the two topologies, forcing, torsion,\nDecision Reachability introduced informally). This chapter states the\nlemma that names it.\n\n## Definitions\n\n**Generic (finite stand-in).** A filter `G` through `p` meeting every\nadmissible dense requirement. On the spine, the four **branches** — root-\nto-leaf chains — are the finite stand-ins: total, maximal, decided at\nevery leaf by construction.\n\n**Admissible deciding closure** `D_p*` (`def:closure`, D). The countable\nfamily obtained by adding every atomic stability set and every\npropositional deciding set to `D_p`, keeping only those that are\n`J_adm`-covers (which Decision Reachability, below, says exist). A\ngeneric meeting `D_p*` is what \"decides every formula\" means precisely.\n\n## Claims\n\n**Boundedness yields countability for Rasiowa–Sikorski** (`lem:bdd`,\n**P**, machine-verified — `rasiowa_sikorski` in the Lean kernel). A\nresource-bounded observer tracks only countably many claims over a run\n(the observer-bound postulate M-Bound supplies *countability*, not\ndensity); Rasiowa–Sikorski applied to a countable family of dense sets\nproduces a filter meeting all of them. This is where the classical\nforcing machinery — built for countably infinite dense sets — actually\ndoes work: the theorem is only interesting when the family is genuinely\nunbounded, not when it has seven elements.\n\n**Decision Reachability, conditional** (`lem:reach`, **P** consuming the\nsmoothness contract). Under the smoothness contract (`asm:smooth`, C),\nevery condition has an admissible refinement deciding any given formula\n— equivalently, the deciding sieve is not just order-dense but an actual\n`J_adm`-cover. This is *not* free: order-density (`lem:dec`, chapter 04)\nholds unconditionally, but admissible density is the contract's payoff,\nand where the contract fails, the finite model checker exhibits sites\nwhere it does fail. The step from order-dense to admissibly-dense **is**\nthe calibration debt, not a consequence of it.\n\n**Genericity decides every formula** (`lem:bivalence`, **P** consuming\nC). A generic meeting `D_p*` decides every propositional formula — some\ncondition in it forces φ or forces ¬φ. Bivalence on the generic is P\n*conditional on Decision Reachability*, not on countability alone.\n\n**Propositional Truth Lemma, conditional on calibration** (`thm:prop`,\n**P** — `truth_lemma`/`exists_generic_truth` in the Lean kernel, under\nthe calibration queue `asm:calibration`). For a generic G deciding every\nformula: `G ⊨_H φ ⟺ ∃p ∈ G : p ⊩_H φ`. Induction on φ; the atomic base\ncase is `lem:atomic`, whose (⇒) direction routes through the *maximal\nsieve* — the v14 text's mistake was concluding this from density alone,\nwhich does not imply `J_adm`-covering; only the maximal sieve, present\nin every Grothendieck topology, does.\n\n## Worked example: the truth lemma pattern, live — and its trivialization\n\nThe lab checks, over all 4 branches and 7 formulas (a, b, ¬a, ¬b, ¬¬b,\na∧b, a∨b): **`G ⊨ φ` iff some `q ∈ G` forces φ under `⊩_adm`.** Every one\nof the 28 checks matches. That is a genuine, computed instance of\n`thm:prop`'s pattern — not asserted, verified.\n\nNow the honest part. Every branch on this model **decides every\nformula, trivially** — bivalence never fails, in fact *cannot* fail,\nbecause the valuation is total on the leaves: a leaf is either in `V(a)`\nor it isn't, full stop, and a branch's classical truth is read straight\noff its leaf. That is not Rasiowa–Sikorski doing work; that is what\n\"finite and total\" means. `lem:bdd`'s countability payoff matters when\nthe dense family is genuinely infinite and you need a *construction*\nthat meets all of it without ever finishing; here there is nothing to\nconstruct — you can just look. Compare the root: `r` itself, per chapter\n04, does **not** decide b under `⊩_adm` — the lab reasserts this — even\nthough *every branch through r* decides it. The generic's job is exactly\nto descend far enough to buy the decision; on a finite spine the\ndescent is three steps and always terminates in a leaf that already\nknew everything. On an unbounded observer's actual dense family,\nnothing guarantees a leaf, and that is precisely where `lem:reach`'s\nconditionality and `lem:bdd`'s Rasiowa–Sikorski construction earn their\nkeep.\n\n## Lab\n\n```bash\npython book/labs/lab05_generics.py\n```\n\nChecks the truth-lemma pattern over every branch and the small formula\nset, checks bivalence holds on every branch, and reasserts (from chapter\n04's kernel) that r remains undecided on b under `⊩_adm`.\n\n## Exercises\n\n1. **Predict, then run.** Add atom `c`, stabilized only at leaf `01`.\n   Predict, for the branch `{r, 0, 01}`, whether `G ⊨ c` and which\n   condition in `G` forces it; then extend the lab's formula list and\n   check.\n2. Explain in one sentence why a branch on *any* finite tree with a\n   total leaf valuation must decide every formula in the propositional\n   closure of the atoms — no appeal to Rasiowa–Sikorski required.\n3. `lem:reach` requires the smoothness contract. Sketch (prose, not\n   code) a modification of the spine's `J_adm` generator such that some\n   deciding sieve stops being a `J_adm`-cover even though it stays\n   order-dense — you are building a miniature failure of Decision\n   Reachability. (You do not need to prove the general contract fails;\n   exhibit the local symptom.)\n4. (Harder.) `thm:prop`'s induction handles ∨ by routing through\n   deciding sets rather than the naive \"disjunct-forcers form a cover.\"\n   Using the ¬¬b countermodel from chapter 04 (`rem:torsion`), explain\n   why the naive routing would have broken exactly at a disjunction\n   built from that compound.\n\n## Boundary note\n\nThis chapter does **not** claim the lab demonstrates Rasiowa–Sikorski\nconstructing anything, or that Decision Reachability's conditionality is\nexercised here — both require either a genuinely infinite dense family\nor a site where the smoothness contract actually fails, and the\n7-condition spine has neither. What the lab *does* verify: the\ntruth-lemma pattern holds exactly where the paper says it must, and the\nundecided-root/decided-branch asymmetry that motivates the whole\napparatus is a real, computed fact, not a story. The substantive proofs\n— that the construction terminates for genuinely unbounded families, and\nwhat happens when the contract is violated — live in the paper's proof\nenvironments and, for the base cases, in the Lean kernel\n(`rasiowa_sikorski`, `truth_lemma`, `exists_generic_truth`); this chapter\nis not a substitute for either.\n",
+      "prerequisites": [
+        {
+          "id": "ch02",
+          "title": "Conditions and Refinement",
+          "browser_path": "/book/chapter/ch02"
+        },
+        {
+          "id": "ch03",
+          "title": "Sieves, Covers, and Two Topologies",
+          "browser_path": "/book/chapter/ch03"
+        },
+        {
+          "id": "ch04",
+          "title": "Forcing: When Does a Claim Hold?",
+          "browser_path": "/book/chapter/ch04"
+        }
+      ],
+      "dependents": [
+        {
+          "id": "appb",
+          "title": "Appendix B · The Mechanical Witnesses",
+          "browser_path": "/book/chapter/appb"
+        }
+      ],
+      "source_digest": "8046ced49edc6d12518fd5eb83ad2ab32d5edfa02eb684e7e8da3da5214b4cf0"
+    }
+  ]
+}

@@ -1,0 +1,1227 @@
+{
+  "formulas": 74,
+  "family": [
+    "chain3",
+    "chain4",
+    "fork2",
+    "fork3",
+    "tree2",
+    "diamond",
+    "diamond-tail",
+    "N",
+    "crown"
+  ],
+  "baseline_models": 159,
+  "baseline_violations": [],
+  "census": [
+    {
+      "poset": "chain3",
+      "scheme": "void",
+      "val": 0,
+      "strict": true,
+      "bivalence_gaps": 100
+    },
+    {
+      "poset": "chain3",
+      "scheme": "void",
+      "val": 1,
+      "strict": true,
+      "bivalence_gaps": 50
+    },
+    {
+      "poset": "chain3",
+      "scheme": "void",
+      "val": 2,
+      "strict": true,
+      "bivalence_gaps": 50
+    },
+    {
+      "poset": "chain3",
+      "scheme": "leaf",
+      "val": 0,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "chain3",
+      "scheme": "leaf",
+      "val": 1,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "chain3",
+      "scheme": "leaf",
+      "val": 2,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "chain3",
+      "scheme": "skew",
+      "val": 0,
+      "strict": true,
+      "bivalence_gaps": 100
+    },
+    {
+      "poset": "chain3",
+      "scheme": "skew",
+      "val": 1,
+      "strict": true,
+      "bivalence_gaps": 50
+    },
+    {
+      "poset": "chain3",
+      "scheme": "skew",
+      "val": 2,
+      "strict": true,
+      "bivalence_gaps": 50
+    },
+    {
+      "poset": "chain4",
+      "scheme": "void",
+      "val": 0,
+      "strict": true,
+      "bivalence_gaps": 150
+    },
+    {
+      "poset": "chain4",
+      "scheme": "void",
+      "val": 1,
+      "strict": true,
+      "bivalence_gaps": 125
+    },
+    {
+      "poset": "chain4",
+      "scheme": "void",
+      "val": 2,
+      "strict": true,
+      "bivalence_gaps": 75
+    },
+    {
+      "poset": "chain4",
+      "scheme": "void",
+      "val": 3,
+      "strict": true,
+      "bivalence_gaps": 75
+    },
+    {
+      "poset": "chain4",
+      "scheme": "leaf",
+      "val": 0,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "chain4",
+      "scheme": "leaf",
+      "val": 1,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "chain4",
+      "scheme": "leaf",
+      "val": 2,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "chain4",
+      "scheme": "leaf",
+      "val": 3,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "chain4",
+      "scheme": "skew",
+      "val": 0,
+      "strict": true,
+      "bivalence_gaps": 150
+    },
+    {
+      "poset": "chain4",
+      "scheme": "skew",
+      "val": 1,
+      "strict": true,
+      "bivalence_gaps": 125
+    },
+    {
+      "poset": "chain4",
+      "scheme": "skew",
+      "val": 2,
+      "strict": true,
+      "bivalence_gaps": 75
+    },
+    {
+      "poset": "chain4",
+      "scheme": "skew",
+      "val": 3,
+      "strict": true,
+      "bivalence_gaps": 75
+    },
+    {
+      "poset": "fork2",
+      "scheme": "void",
+      "val": 0,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "fork2",
+      "scheme": "void",
+      "val": 1,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "fork2",
+      "scheme": "void",
+      "val": 2,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "fork2",
+      "scheme": "void",
+      "val": 3,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "fork2",
+      "scheme": "leaf",
+      "val": 0,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "fork2",
+      "scheme": "leaf",
+      "val": 1,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "fork2",
+      "scheme": "leaf",
+      "val": 2,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "fork2",
+      "scheme": "leaf",
+      "val": 3,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "fork2",
+      "scheme": "skew",
+      "val": 0,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "fork2",
+      "scheme": "skew",
+      "val": 1,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "fork2",
+      "scheme": "skew",
+      "val": 2,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "fork2",
+      "scheme": "skew",
+      "val": 3,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "fork3",
+      "scheme": "void",
+      "val": 0,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "fork3",
+      "scheme": "void",
+      "val": 1,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "fork3",
+      "scheme": "void",
+      "val": 2,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "fork3",
+      "scheme": "void",
+      "val": 3,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "fork3",
+      "scheme": "void",
+      "val": 4,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "fork3",
+      "scheme": "void",
+      "val": 5,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "fork3",
+      "scheme": "void",
+      "val": 6,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "fork3",
+      "scheme": "void",
+      "val": 7,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "fork3",
+      "scheme": "leaf",
+      "val": 0,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "fork3",
+      "scheme": "leaf",
+      "val": 1,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "fork3",
+      "scheme": "leaf",
+      "val": 2,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "fork3",
+      "scheme": "leaf",
+      "val": 3,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "fork3",
+      "scheme": "leaf",
+      "val": 4,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "fork3",
+      "scheme": "leaf",
+      "val": 5,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "fork3",
+      "scheme": "leaf",
+      "val": 6,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "fork3",
+      "scheme": "leaf",
+      "val": 7,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "fork3",
+      "scheme": "skew",
+      "val": 0,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "fork3",
+      "scheme": "skew",
+      "val": 1,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "fork3",
+      "scheme": "skew",
+      "val": 2,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "fork3",
+      "scheme": "skew",
+      "val": 3,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "fork3",
+      "scheme": "skew",
+      "val": 4,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "fork3",
+      "scheme": "skew",
+      "val": 5,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "fork3",
+      "scheme": "skew",
+      "val": 6,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "fork3",
+      "scheme": "skew",
+      "val": 7,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "tree2",
+      "scheme": "void",
+      "val": 0,
+      "strict": true,
+      "bivalence_gaps": 143
+    },
+    {
+      "poset": "tree2",
+      "scheme": "void",
+      "val": 1,
+      "strict": true,
+      "bivalence_gaps": 143
+    },
+    {
+      "poset": "tree2",
+      "scheme": "void",
+      "val": 2,
+      "strict": true,
+      "bivalence_gaps": 177
+    },
+    {
+      "poset": "tree2",
+      "scheme": "void",
+      "val": 3,
+      "strict": true,
+      "bivalence_gaps": 177
+    },
+    {
+      "poset": "tree2",
+      "scheme": "void",
+      "val": 4,
+      "strict": true,
+      "bivalence_gaps": 106
+    },
+    {
+      "poset": "tree2",
+      "scheme": "void",
+      "val": 5,
+      "strict": true,
+      "bivalence_gaps": 168
+    },
+    {
+      "poset": "tree2",
+      "scheme": "void",
+      "val": 6,
+      "strict": true,
+      "bivalence_gaps": 106
+    },
+    {
+      "poset": "tree2",
+      "scheme": "void",
+      "val": 7,
+      "strict": true,
+      "bivalence_gaps": 143
+    },
+    {
+      "poset": "tree2",
+      "scheme": "void",
+      "val": 8,
+      "strict": true,
+      "bivalence_gaps": 143
+    },
+    {
+      "poset": "tree2",
+      "scheme": "void",
+      "val": 9,
+      "strict": true,
+      "bivalence_gaps": 125
+    },
+    {
+      "poset": "tree2",
+      "scheme": "leaf",
+      "val": 0,
+      "strict": false,
+      "bivalence_gaps": 62
+    },
+    {
+      "poset": "tree2",
+      "scheme": "leaf",
+      "val": 1,
+      "strict": false,
+      "bivalence_gaps": 62
+    },
+    {
+      "poset": "tree2",
+      "scheme": "leaf",
+      "val": 2,
+      "strict": false,
+      "bivalence_gaps": 93
+    },
+    {
+      "poset": "tree2",
+      "scheme": "leaf",
+      "val": 3,
+      "strict": false,
+      "bivalence_gaps": 93
+    },
+    {
+      "poset": "tree2",
+      "scheme": "leaf",
+      "val": 4,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "tree2",
+      "scheme": "leaf",
+      "val": 5,
+      "strict": false,
+      "bivalence_gaps": 62
+    },
+    {
+      "poset": "tree2",
+      "scheme": "leaf",
+      "val": 6,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "tree2",
+      "scheme": "leaf",
+      "val": 7,
+      "strict": false,
+      "bivalence_gaps": 62
+    },
+    {
+      "poset": "tree2",
+      "scheme": "leaf",
+      "val": 8,
+      "strict": false,
+      "bivalence_gaps": 62
+    },
+    {
+      "poset": "tree2",
+      "scheme": "leaf",
+      "val": 9,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "tree2",
+      "scheme": "skew",
+      "val": 0,
+      "strict": true,
+      "bivalence_gaps": 109
+    },
+    {
+      "poset": "tree2",
+      "scheme": "skew",
+      "val": 1,
+      "strict": true,
+      "bivalence_gaps": 118
+    },
+    {
+      "poset": "tree2",
+      "scheme": "skew",
+      "val": 2,
+      "strict": true,
+      "bivalence_gaps": 149
+    },
+    {
+      "poset": "tree2",
+      "scheme": "skew",
+      "val": 3,
+      "strict": true,
+      "bivalence_gaps": 149
+    },
+    {
+      "poset": "tree2",
+      "scheme": "skew",
+      "val": 4,
+      "strict": true,
+      "bivalence_gaps": 78
+    },
+    {
+      "poset": "tree2",
+      "scheme": "skew",
+      "val": 5,
+      "strict": true,
+      "bivalence_gaps": 118
+    },
+    {
+      "poset": "tree2",
+      "scheme": "skew",
+      "val": 6,
+      "strict": true,
+      "bivalence_gaps": 70
+    },
+    {
+      "poset": "tree2",
+      "scheme": "skew",
+      "val": 7,
+      "strict": true,
+      "bivalence_gaps": 118
+    },
+    {
+      "poset": "tree2",
+      "scheme": "skew",
+      "val": 8,
+      "strict": true,
+      "bivalence_gaps": 101
+    },
+    {
+      "poset": "tree2",
+      "scheme": "skew",
+      "val": 9,
+      "strict": true,
+      "bivalence_gaps": 50
+    },
+    {
+      "poset": "diamond",
+      "scheme": "void",
+      "val": 0,
+      "strict": true,
+      "bivalence_gaps": 150
+    },
+    {
+      "poset": "diamond",
+      "scheme": "void",
+      "val": 1,
+      "strict": true,
+      "bivalence_gaps": 125
+    },
+    {
+      "poset": "diamond",
+      "scheme": "void",
+      "val": 2,
+      "strict": true,
+      "bivalence_gaps": 125
+    },
+    {
+      "poset": "diamond",
+      "scheme": "void",
+      "val": 3,
+      "strict": true,
+      "bivalence_gaps": 75
+    },
+    {
+      "poset": "diamond",
+      "scheme": "void",
+      "val": 4,
+      "strict": true,
+      "bivalence_gaps": 75
+    },
+    {
+      "poset": "diamond",
+      "scheme": "leaf",
+      "val": 0,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "diamond",
+      "scheme": "leaf",
+      "val": 1,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "diamond",
+      "scheme": "leaf",
+      "val": 2,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "diamond",
+      "scheme": "leaf",
+      "val": 3,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "diamond",
+      "scheme": "leaf",
+      "val": 4,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "diamond",
+      "scheme": "skew",
+      "val": 0,
+      "strict": true,
+      "bivalence_gaps": 100
+    },
+    {
+      "poset": "diamond",
+      "scheme": "skew",
+      "val": 1,
+      "strict": true,
+      "bivalence_gaps": 100
+    },
+    {
+      "poset": "diamond",
+      "scheme": "skew",
+      "val": 2,
+      "strict": true,
+      "bivalence_gaps": 50
+    },
+    {
+      "poset": "diamond",
+      "scheme": "skew",
+      "val": 3,
+      "strict": true,
+      "bivalence_gaps": 50
+    },
+    {
+      "poset": "diamond",
+      "scheme": "skew",
+      "val": 4,
+      "strict": true,
+      "bivalence_gaps": 50
+    },
+    {
+      "poset": "diamond-tail",
+      "scheme": "void",
+      "val": 0,
+      "strict": true,
+      "bivalence_gaps": 200
+    },
+    {
+      "poset": "diamond-tail",
+      "scheme": "void",
+      "val": 1,
+      "strict": true,
+      "bivalence_gaps": 175
+    },
+    {
+      "poset": "diamond-tail",
+      "scheme": "void",
+      "val": 2,
+      "strict": true,
+      "bivalence_gaps": 150
+    },
+    {
+      "poset": "diamond-tail",
+      "scheme": "void",
+      "val": 3,
+      "strict": true,
+      "bivalence_gaps": 150
+    },
+    {
+      "poset": "diamond-tail",
+      "scheme": "void",
+      "val": 4,
+      "strict": true,
+      "bivalence_gaps": 100
+    },
+    {
+      "poset": "diamond-tail",
+      "scheme": "void",
+      "val": 5,
+      "strict": true,
+      "bivalence_gaps": 100
+    },
+    {
+      "poset": "diamond-tail",
+      "scheme": "leaf",
+      "val": 0,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "diamond-tail",
+      "scheme": "leaf",
+      "val": 1,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "diamond-tail",
+      "scheme": "leaf",
+      "val": 2,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "diamond-tail",
+      "scheme": "leaf",
+      "val": 3,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "diamond-tail",
+      "scheme": "leaf",
+      "val": 4,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "diamond-tail",
+      "scheme": "leaf",
+      "val": 5,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "diamond-tail",
+      "scheme": "skew",
+      "val": 0,
+      "strict": true,
+      "bivalence_gaps": 200
+    },
+    {
+      "poset": "diamond-tail",
+      "scheme": "skew",
+      "val": 1,
+      "strict": true,
+      "bivalence_gaps": 150
+    },
+    {
+      "poset": "diamond-tail",
+      "scheme": "skew",
+      "val": 2,
+      "strict": true,
+      "bivalence_gaps": 150
+    },
+    {
+      "poset": "diamond-tail",
+      "scheme": "skew",
+      "val": 3,
+      "strict": true,
+      "bivalence_gaps": 100
+    },
+    {
+      "poset": "diamond-tail",
+      "scheme": "skew",
+      "val": 4,
+      "strict": true,
+      "bivalence_gaps": 100
+    },
+    {
+      "poset": "diamond-tail",
+      "scheme": "skew",
+      "val": 5,
+      "strict": true,
+      "bivalence_gaps": 100
+    },
+    {
+      "poset": "N",
+      "scheme": "void",
+      "val": 0,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "N",
+      "scheme": "void",
+      "val": 1,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "N",
+      "scheme": "void",
+      "val": 2,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "N",
+      "scheme": "void",
+      "val": 3,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "N",
+      "scheme": "void",
+      "val": 4,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "N",
+      "scheme": "void",
+      "val": 5,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "N",
+      "scheme": "void",
+      "val": 6,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "N",
+      "scheme": "leaf",
+      "val": 0,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "N",
+      "scheme": "leaf",
+      "val": 1,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "N",
+      "scheme": "leaf",
+      "val": 2,
+      "strict": false,
+      "bivalence_gaps": 31
+    },
+    {
+      "poset": "N",
+      "scheme": "leaf",
+      "val": 3,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "N",
+      "scheme": "leaf",
+      "val": 4,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "N",
+      "scheme": "leaf",
+      "val": 5,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "N",
+      "scheme": "leaf",
+      "val": 6,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "N",
+      "scheme": "skew",
+      "val": 0,
+      "strict": true,
+      "bivalence_gaps": 81
+    },
+    {
+      "poset": "N",
+      "scheme": "skew",
+      "val": 1,
+      "strict": true,
+      "bivalence_gaps": 56
+    },
+    {
+      "poset": "N",
+      "scheme": "skew",
+      "val": 2,
+      "strict": true,
+      "bivalence_gaps": 56
+    },
+    {
+      "poset": "N",
+      "scheme": "skew",
+      "val": 3,
+      "strict": true,
+      "bivalence_gaps": 50
+    },
+    {
+      "poset": "N",
+      "scheme": "skew",
+      "val": 4,
+      "strict": true,
+      "bivalence_gaps": 25
+    },
+    {
+      "poset": "N",
+      "scheme": "skew",
+      "val": 5,
+      "strict": true,
+      "bivalence_gaps": 50
+    },
+    {
+      "poset": "N",
+      "scheme": "skew",
+      "val": 6,
+      "strict": true,
+      "bivalence_gaps": 25
+    },
+    {
+      "poset": "crown",
+      "scheme": "void",
+      "val": 0,
+      "strict": false,
+      "bivalence_gaps": 62
+    },
+    {
+      "poset": "crown",
+      "scheme": "void",
+      "val": 1,
+      "strict": false,
+      "bivalence_gaps": 62
+    },
+    {
+      "poset": "crown",
+      "scheme": "void",
+      "val": 2,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "crown",
+      "scheme": "void",
+      "val": 3,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "crown",
+      "scheme": "void",
+      "val": 4,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "crown",
+      "scheme": "void",
+      "val": 5,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "crown",
+      "scheme": "leaf",
+      "val": 0,
+      "strict": false,
+      "bivalence_gaps": 62
+    },
+    {
+      "poset": "crown",
+      "scheme": "leaf",
+      "val": 1,
+      "strict": false,
+      "bivalence_gaps": 62
+    },
+    {
+      "poset": "crown",
+      "scheme": "leaf",
+      "val": 2,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "crown",
+      "scheme": "leaf",
+      "val": 3,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "crown",
+      "scheme": "leaf",
+      "val": 4,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "crown",
+      "scheme": "leaf",
+      "val": 5,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "crown",
+      "scheme": "skew",
+      "val": 0,
+      "strict": false,
+      "bivalence_gaps": 62
+    },
+    {
+      "poset": "crown",
+      "scheme": "skew",
+      "val": 1,
+      "strict": false,
+      "bivalence_gaps": 62
+    },
+    {
+      "poset": "crown",
+      "scheme": "skew",
+      "val": 2,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "crown",
+      "scheme": "skew",
+      "val": 3,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "crown",
+      "scheme": "skew",
+      "val": 4,
+      "strict": false,
+      "bivalence_gaps": 0
+    },
+    {
+      "poset": "crown",
+      "scheme": "skew",
+      "val": 5,
+      "strict": false,
+      "bivalence_gaps": 0
+    }
+  ],
+  "table": {
+    "persistence|no-pers": {
+      "checked": 213,
+      "broken": []
+    },
+    "persistence|no-dense": {
+      "checked": 105,
+      "broken": []
+    },
+    "persistence|no-pb": {
+      "checked": 159,
+      "broken": [
+        "tree2/skew/v0: ((a & a) | ~a) at r!->0",
+        "tree2/skew/v4: ((a & b) | ~a) at r!->0",
+        "tree2/skew/v6: ((a | b) & (a | b)) at r!->0",
+        "tree2/skew/v8: ((a | b) & (a | b)) at r!->0",
+        "tree2/skew/v9: ((a & a) & (a & a)) at r!->0"
+      ]
+    },
+    "persistence|no-tr": {
+      "checked": 159,
+      "broken": []
+    },
+    "truth-lemma|no-pers": {
+      "checked": 213,
+      "broken": [
+        "chain3/void/nonpers-v0: ((a & a) & (a & a)) on filter(b)",
+        "chain3/void/nonpers-v1: ((a & a) & (a & a)) on filter(b)",
+        "chain3/void/nonpers-v3: ((a & a) & (a & a)) on filter(b)",
+        "chain3/leaf/nonpers-v0: ((a & a) & (a & a)) on filter(b)",
+        "chain3/leaf/nonpers-v1: ((a & a) & (a & a)) on filter(b)"
+      ]
+    },
+    "truth-lemma|no-dense": {
+      "checked": 105,
+      "broken": [
+        "fork2/void/v0: ((a & a) & (a & a)) on filter(y)",
+        "fork2/void/v1: (~a | ~b) on filter(y)",
+        "fork2/void/v2: (~a | ~b) on filter(y)",
+        "fork2/void/v3: (~a | ~b) on filter(y)",
+        "fork2/leaf/v0: ((a & a) & (a & a)) on filter(y)"
+      ]
+    },
+    "truth-lemma|no-pb": {
+      "checked": 159,
+      "broken": []
+    },
+    "truth-lemma|no-tr": {
+      "checked": 159,
+      "broken": []
+    },
+    "site-bound|no-dense": {
+      "checked": 105,
+      "broken": [
+        "fork2/void/v0: sieve ['x'] on r",
+        "fork2/void/v1: sieve ['x'] on r",
+        "fork2/void/v2: sieve ['x'] on r",
+        "fork2/void/v3: sieve ['x'] on r",
+        "fork2/leaf/v0: sieve ['x'] on r"
+      ]
+    },
+    "site-bound|no-pb": {
+      "checked": 159,
+      "broken": []
+    },
+    "site-bound|no-tr": {
+      "checked": 159,
+      "broken": []
+    },
+    "pos-transfer|no-pers": {
+      "checked": 213,
+      "broken": []
+    },
+    "pos-transfer|no-dense": {
+      "checked": 105,
+      "broken": [
+        "fork2/void/v0: ((a & a) & (a & a)) at r",
+        "fork2/leaf/v0: ((a & a) & (a & a)) at r",
+        "fork2/skew/v0: ((a & a) & (a & a)) at r",
+        "fork3/void/v0: ((a & a) & (a & a)) at r",
+        "fork3/void/v1: ((a & a) & (a & a)) at z"
+      ]
+    },
+    "pos-transfer|no-pb": {
+      "checked": 159,
+      "broken": []
+    },
+    "pos-transfer|no-tr": {
+      "checked": 159,
+      "broken": []
+    },
+    "dec-dense|no-pers": {
+      "checked": 213,
+      "broken": []
+    }
+  }
+}

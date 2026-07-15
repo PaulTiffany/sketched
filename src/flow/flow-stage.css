@@ -1,0 +1,186 @@
+.flow-stage-shell {
+  position: relative;
+  min-height: 560px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #090e14;
+}
+.flow-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  transition: background 180ms linear;
+}
+.flow-atmosphere:after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background-image:
+    linear-gradient(#ffffff08 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff08 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+.human-signal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 180px;
+  height: 180px;
+  transform: translate(-50%, -50%);
+  color: var(--fc);
+  text-align: center;
+}
+.human-signal strong,
+.human-signal span {
+  position: relative;
+  z-index: 2;
+}
+.human-signal strong {
+  align-self: end;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+}
+.human-signal span {
+  align-self: start;
+  margin-top: 5px;
+  color: #a2d8d4;
+  font-size: 10px;
+}
+.human-pulse {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--fc);
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 50px #41d9d016,
+    0 0 45px #41d9d01f;
+  transition: transform 180ms linear;
+}
+.orbit-track {
+  position: absolute;
+  top: calc(50% - 145px);
+  left: calc(50% - 145px);
+  width: 290px;
+  height: 290px;
+  border: 1px dashed #ffffff22;
+  border-radius: 50%;
+  transition: transform 180ms linear;
+}
+.orbit-object {
+  position: absolute;
+  top: -12px;
+  left: calc(50% - 34px);
+  width: 68px;
+  padding: 5px;
+  color: #121207;
+  border-radius: 999px;
+  background: var(--fl);
+  font-size: 9px;
+  text-align: center;
+}
+.stage-readout {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  gap: 6px;
+  font:
+    10px ui-monospace,
+    monospace;
+}
+.stage-readout span {
+  padding: 4px 6px;
+  border: 1px solid #ffffff1d;
+  background: #0008;
+}
+.human-floor-line {
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+  left: 20px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  font:
+    9px ui-monospace,
+    monospace;
+  letter-spacing: 0.12em;
+}
+.human-floor-line i {
+  height: 1px;
+  background: linear-gradient(90deg, var(--fc), #ffffff22, var(--fc));
+}
+.trace-heading {
+  display: flex;
+  justify-content: space-between;
+}
+.trace-heading span {
+  color: var(--fm);
+  font:
+    9px ui-monospace,
+    monospace;
+}
+.trace-list {
+  margin-top: 10px;
+}
+.trace-event {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  gap: 8px;
+  padding: 7px 5px;
+  border-left: 2px solid var(--fe);
+  border-bottom: 1px solid #ffffff08;
+}
+.trace-event.accept {
+  border-left-color: var(--fl);
+}
+.trace-event.reject {
+  border-left-color: var(--fr);
+}
+.trace-event.shake {
+  border-left-color: var(--fa);
+}
+.trace-event strong,
+.trace-event span {
+  display: block;
+}
+.trace-event strong {
+  font:
+    10px ui-monospace,
+    monospace;
+}
+.trace-event span,
+.trace-event time,
+.trace-seq {
+  color: var(--fm);
+  font:
+    9px ui-monospace,
+    monospace;
+}
+@media (max-width: 1040px) {
+  .flow-app {
+    grid-template-columns: 250px 1fr;
+  }
+  .trace-panel {
+    grid-column: 1/-1;
+    max-height: 320px;
+  }
+}
+@media (max-width: 720px) {
+  .flow-app {
+    display: block;
+  }
+  .flow-header {
+    grid-template-columns: 1fr;
+  }
+  .flow-header-state {
+    justify-self: start;
+    flex-wrap: wrap;
+  }
+  .flow-stage-shell {
+    min-height: 480px;
+  }
+}

@@ -1,0 +1,256 @@
+{
+ "schema": "sketched.scholium-b-lean-map.v1",
+ "source": "Principia Symbolica Scholium Symbolicum, second half",
+ "boundary": "Static/finite kernels only; Hilbert/colimit/PDE clusters not certified.",
+ "entries": [
+  {
+   "atlas_id": "definition:bk1_reflexive_encoding_depth",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumB.reflexiveIterate_eq_iterate",
+    "ScholiumB.reflexiveIterate_add"
+   ],
+   "note": "The recursive scheme reflect_0=id, reflect_n=F[reflect_{n-1}] is formalized (as reflexiveIterate) and shown to equal F^[n] with the expected additivity law; the divergence-sign Irony(sigma) selection set built on top of the recursion is not modeled."
+  },
+  {
+   "atlas_id": "definition:bk1_operational_irony",
+   "coverage": "definition",
+   "lean": [
+    "ScholiumB.IronyCapacity"
+   ],
+   "note": "The 'operationally encodes irony' predicate is abstracted as a bare Prop field (encodesIrony) inside a structure of laws; the two-layer read-out content of the definition itself (literal/intended content, non-collapsing recoverability) is not modeled, only its stated logical consequences are."
+  },
+  {
+   "atlas_id": "theorem:bk1_symbolic_irony_requires_curvature",
+   "coverage": "conditional",
+   "lean": [
+    "ScholiumB.no_irony_of_shallow_or_flat"
+   ],
+   "note": "Proved by the same Lean theorem as theorem:bk1_operational_irony_requires_reflexive_curvature (both are the flat-or-shallow contrapositive of the IronyCapacity law); the reflexive-encoding-depth and symbolic-curvature-tensor definitions themselves are not modeled, only the stated implication as a structure field."
+  },
+  {
+   "atlas_id": "theorem:bk1_operational_irony_requires_reflexive_curvature",
+   "coverage": "conditional",
+   "lean": [
+    "ScholiumB.no_irony_of_shallow_or_flat"
+   ],
+   "note": "Kept as a hypothesis field of IronyCapacity (encodesIrony implies depth>=2 and curvature<>0); the theorem proved is the contrapositive. Shares its Lean proof with theorem:bk1_symbolic_irony_requires_curvature."
+  },
+  {
+   "atlas_id": "theorem:bk1_operational_irony_requires_imagination",
+   "coverage": "conditional",
+   "lean": [
+    "ScholiumB.no_irony_of_real_only"
+   ],
+   "note": "Kept as a hypothesis field of IronyCapacity (encodesIrony implies imaginaryDistance<>0); the imaginary-symbolic-distance definition from Book IV is not modeled, only the stated implication and its contrapositive."
+  },
+  {
+   "atlas_id": "theorem:bk1_emergence_of_reflection_operator",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumB.idempotent_fixes_image"
+   ],
+   "note": "Only the stated idempotence consequence (R_stab^2 = R_stab) and its direct corollary (every image point is fixed) are formalized, as a fact about any idempotent self-map; the colimit-existence construction of R_stab from the proto-stage tower is not modeled."
+  },
+  {
+   "atlas_id": "corollary:bk1_fixed_point",
+   "coverage": "proved-kernel",
+   "lean": [
+    "ScholiumB.idempotent_fixLocus_nonempty",
+    "ScholiumB.idempotent_fixes_image"
+   ],
+   "note": "The corollary's exact argument (fixed locus nonempty whenever the stabilized image is nonempty, via idempotence) is formalized in full generality for idempotent self-maps; the non-uniqueness discussion is not separately stated since no additional structure (contraction/Lyapunov) is modeled."
+  },
+  {
+   "atlas_id": "theorem:bk1_variational_principle",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumB.gibbsProb_sum_eq_one",
+    "ScholiumB.gibbsProb_antitone"
+   ],
+   "note": "The Lagrange-multiplier derivation and the manifold measure d mu_g are not modeled; instead the finite-discrete Gibbs distribution this variational principle produces is formalized directly (positivity, normalization, and the monotone-in-energy law), over a nonempty finite index type standing in for the symbolic manifold."
+  },
+  {
+   "atlas_id": "corollary:bk1_equilibrium_distribution",
+   "coverage": "conditional",
+   "lean": [
+    "ScholiumB.gibbsProb_pos",
+    "ScholiumB.gibbsProb_sum_eq_one"
+   ],
+   "note": "The stated formula rho_eq(x) = Z^{-1} e^{-beta H(x)} is formalized verbatim as gibbsProb/gibbsZ over a finite index type, with positivity and normalization proved; the manifold integral defining Z is replaced by a Finset.sum."
+  },
+  {
+   "atlas_id": "definition:bk1_minimal_linear_ps_model",
+   "coverage": "definition",
+   "lean": [
+    "ScholiumB.minimalPS_projection",
+    "ScholiumB.minimalPS_drift",
+    "ScholiumB.minimalPS_connU",
+    "ScholiumB.minimalPS_connV"
+   ],
+   "note": "The explicit 2x2-matrix witness (collapse P, drift J, connection coefficients A_u, A_v) is formalized directly and exactly as concrete maps on Real x Real, since it is already finite-dimensional in the source."
+  },
+  {
+   "atlas_id": "theorem:bk1_nonvacuity_minimal_linear_ps_model",
+   "coverage": "proved-kernel",
+   "lean": [
+    "ScholiumB.minimalPS_collapse_ne_id",
+    "ScholiumB.minimalPS_drift_reflection_noncommute",
+    "ScholiumB.minimalPS_connection_curvature_nonzero"
+   ],
+   "note": "All three claims (collapse is not identity, drift/stabilization do not commute, connection has nonzero curvature) are proved unconditionally by explicit witness computation at concrete points, matching the theorem's own finite-dimensional realization claim exactly."
+  },
+  {
+   "atlas_id": "lemma:bk1_local_stability_analysis",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumDyn.equilibrium_of_fixed_and_drift_zero",
+    "ScholiumDyn.equilibrium_cancellation_counterexample",
+    "ScholiumDyn.equilibrium_iff_fixed_and_drift_zero_of_aligned",
+    "ScholiumDyn.recordedCombinedStep_eq_iff",
+    "ScholiumDyn.base_cancellation_not_full_equilibrium",
+    "ScholiumDyn.no_full_equilibrium_of_trace_production",
+    "ScholiumDyn.hasFDerivAt_idempotent_at_fixed",
+    "ScholiumDyn.ReflectiveLinearProjection.derivative_image_kernel_decomposition",
+    "ScholiumDyn.combinedJacobian_apply",
+    "ScholiumDyn.hasFDerivAt_combinedVectorField",
+    "ScholiumDyn.completeJacobian_at_reflective_fixed",
+    "ScholiumDyn.combinedJacobian_on_image",
+    "ScholiumDyn.combinedJacobian_on_kernel",
+    "ScholiumDyn.fixedLocusVelocity_iff_derivative_fixed",
+    "ScholiumDyn.combinedEulerLinearization_on_kernel",
+    "ScholiumDyn.norm_combinedEulerLinearization_on_kernel_le",
+    "ScholiumDyn.combinedEulerLinearization_transverse_contracts",
+    "ScholiumDyn.combinedEulerLinearization_preserves_kernel",
+    "ScholiumDyn.combinedEulerLinearization_iterate_mem_kernel",
+    "ScholiumDyn.norm_combinedEulerLinearization_iterate_le",
+    "ScholiumDyn.combinedEulerLinearization_iterate_tendsto_zero",
+    "ScholiumDyn.transverse_eigenvalue_abs_le",
+    "ScholiumDyn.transverse_eigenvalue_abs_lt_one",
+    "ScholiumDyn.no_transverse_unstable_eigenmode",
+    "ScholiumDyn.combinedEulerLinearization_eigen_of_jacobian_eigen",
+    "ScholiumDyn.transverse_jacobian_eigenvalue_le_negative_margin",
+    "ScholiumDyn.transverse_jacobian_eigenvalue_neg",
+    "ScholiumDyn.transverse_jacobian_eigenmode_tendsto_zero",
+    "ScholiumDyn.jacobianSemigroup_zero",
+    "ScholiumDyn.jacobianSemigroup_add",
+    "ScholiumDyn.jacobianSemigroup_add_apply",
+    "ScholiumDyn.hasDerivAt_jacobianSemigroup",
+    "ScholiumDyn.continuousLinearMap_pow_apply_eigen",
+    "ScholiumDyn.jacobianSemigroup_apply_eigen",
+    "ScholiumDyn.jacobianSemigroup_eigenmode_tendsto_zero",
+    "ScholiumDyn.ReflectiveLinearProjection.apply_apply",
+    "ScholiumDyn.ReflectiveLinearProjection.exists_image_kernel_decomposition",
+    "ScholiumDyn.ReflectiveLinearProjection.image_kernel_intersection_zero",
+    "ScholiumDyn.ReflectiveLinearProjection.sub_identity_on_image",
+    "ScholiumDyn.ReflectiveLinearProjection.sub_identity_on_kernel",
+    "Book4D.CertifiedTTDC.recordedExecute_eq_iff",
+    "Book4D.CertifiedTTDC.abstention_base_inert_but_recorded",
+    "Book7.orbitLimit_base_fixed_but_recorded",
+    "Book7.orbitLimit_linear_image_kernel_split",
+    "Book7.orbitLimit_derivative_image_kernel_split",
+    "Book7.orbitLimit_completeJacobian",
+    "Book7.orbitLimit_fixedLocusVelocity_iff",
+    "Book7.orbitLimit_transverse_contracts",
+    "Book7.orbitLimit_transverse_iterates_tendsto_zero",
+    "Book7.orbitLimit_transverse_eigenvalue_stable",
+    "Book7.orbitLimit_transverse_jacobian_eigenmode_stable",
+    "Book7.orbitLimit_completeJacobian_semigroup",
+    "Book7.orbitLimit_semigroup_transverse_eigenmode_tendsto_zero"
+   ],
+   "note": "Clauses 1-3 have partial honest kernels. Fixed reflection plus zero drift is sufficient for scalar equilibrium, but the claimed converse is false without separation: an explicit idempotent stabilizer cancels nonzero drift. Component alignment recovers the scalar iff, while the history-bearing lift proves full stationarity iff visible flow and trace production both vanish. The algebraic projection kernel proves image/kernel decomposition, trivial intersection, and the actions of P-I on both summands. The chain rule now derives P=dR as an idempotent projection from differentiability, fixedness, and stabilizer idempotence. The complete Jacobian J=(P-I)+alpha*dD is now derived by Frechet derivative rules and restricted exactly to image and kernel directions. The projection image is now identified exactly with curve-based fixed-locus velocities, and the complete Euler linearization has a strict quantitative transverse contraction below the unit perturbation margin. Under the explicit invariant-kernel contract, every transverse iterate remains transverse, obeys the geometric q^n envelope, and converges to zero. Real transverse eigenmodes are now confined to the strict unit disk and neutral or unstable modes are excluded. Each real transverse Jacobian eigenvalue now has a strict negative margin and its explicit continuous-time exponential mode converges to zero. The full complete-Jacobian bounded-operator exponential now has identity, semigroup, pointwise composition, and generator-ODE laws. The semigroup action on every real Jacobian eigenvector is now identified exactly with scalar exponential action, and stable transverse semigroup orbits converge to zero. Full manifold charts, complex spectrum/spectral-radius identification, and center-manifold claims remain open."
+  },
+  {
+   "atlas_id": "corollary:bk1_contrapositive_search_principle",
+   "coverage": "proved-kernel",
+   "lean": [
+    "ScholiumD.shared_invariant_converse_not_derivable",
+    "ScholiumD.mem_jointRefinement_iff",
+    "ScholiumD.jointRefinement_subset_left_right"
+   ],
+   "note": "A concrete logical countermodel proves that the forward shared-paradox implication does not entail its converse without completeness. Joint refinement is modeled as intersection: candidates survive exactly when both observers accept them, and no new candidate is invented."
+  },
+  {
+   "atlas_id": "proposition:bk1_imagination_supplies_effective_dimension",
+   "coverage": "conditional",
+   "lean": [
+    "ScholiumD.ImaginativeGenericityCertificate.supplies_genericity_hypotheses",
+    "ScholiumD.exists_critical_coupling"
+   ],
+   "note": "Faithful certificate form: injective Fin 2 directions provide H1's two effective directions, continuous coupling straddle derives H2's critical coupling, and H3 transversality remains an explicit nonzero-slope obligation. Full complex bundles and generic-imagination claims remain open."
+  },
+  {
+   "atlas_id": "theorem:bk1_symbolic_fluctuation_dissipation_relation",
+   "coverage": "conditional",
+   "lean": [
+    "ScholiumD.symbolic_fluctuation_dissipation"
+   ],
+   "note": "Local scalar calculus kernel: from an explicit HasDerivAt Kubo certificate, response equals the equilibrium-correlation derivative and -beta times the generator correlation. Expectation spaces, equilibrium measures, and derivation from the Fokker-Planck operator remain open."
+  },
+  {
+   "atlas_id": "theorem:bk1_the_fokker_planck_equation_theorem",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumD.jko_step_freeEnergy_le",
+    "ScholiumD.FreeEnergyDescent.antitone"
+   ],
+   "note": "Discrete JKO kernel: minimizing squared transport cost plus free energy against the previous-state competitor proves one-step free-energy descent; the existing descent structure then yields antitonicity. Wasserstein probability geometry, the Fokker-Planck PDE, and the tau-to-zero convergence theorem remain open."
+  },
+  {
+   "atlas_id": "corollary:bk1_wasserstein_geometric_interpretation",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumD.jko_step_transport_cost_le_energy_drop",
+    "ScholiumD.jko_step_freeEnergy_le"
+   ],
+   "note": "Discrete metric-gradient kernel: the JKO minimizer's scaled squared transport displacement is bounded by its free-energy drop, and free energy cannot increase. Construction of P(M), the Wasserstein-2 metric, tangent continuity equations, and identification with the Fokker-Planck PDE remain open."
+  },
+  {
+   "atlas_id": "theorem:bk1_dual_horizon_cosmogenesis",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumD.dual_horizon_cosmogenesis_kernel",
+    "Atlas.no_single_geometry_for_dual_horizon",
+    "Atlas.dual_horizon_fractured"
+   ],
+   "note": "Static geometric kernel: opposite-signed past/future curvature parameters are provably distinct, while the certified dual-horizon chart complex at positive observer resolution admits no single consistent geometry. The cosmological symbolization functor, causal spacetime evolution, bounded observer dynamics, Hamiltonian apparatus, and existence of the intervening domain remain open."
+  },
+  {
+   "atlas_id": "corollary:bk1_event_horizon_identity_field",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumD.event_horizon_identity_field_kernel",
+    "ScholiumD.dual_horizon_cosmogenesis_kernel",
+    "Atlas.no_single_geometry_for_dual_horizon"
+   ],
+   "note": "Static identity-field kernel: defining horizon tension as the past-minus-future curvature contrast, opposite curvature signs force strictly positive tension; at positive observer resolution the same hypotheses obstruct a single geometry reconciling the dual horizon. Construction and evolution of a spacetime identity field, observer measures, and the claimed physical interpretation remain open."
+  },
+  {
+   "atlas_id": "proposition:bk1_newtonian_incompleteness",
+   "coverage": "proved-kernel",
+   "lean": [
+    "ScholiumD.newtonian_incompleteness_kernel",
+    "newtonForce_equivariant",
+    "accelerated_frame_defect",
+    "accelerated_frame_defect_ne"
+   ],
+   "note": "Covariance-boundary kernel: Newton's force map is equivariant throughout its continuous-linear/Galilean frame class, but every nonzero uniform frame acceleration creates the certified nonzero shift 2*w. Extending covariance to accelerated observers therefore requires an explicit fictitious-force correction; relativistic gravity and a general spacetime theory are not claimed."
+  },
+  {
+   "atlas_id": "lemma:bk1_symbolic_quantum_incompatibility",
+   "coverage": "conditional",
+   "lean": [
+    "ScholiumD.symbolic_quantum_incompatibility_kernel"
+   ],
+   "note": "Faithful logical kernel with exact preservation predicates: no map can preserve both reflection and binary reflexive update when joint preservation entails a Hamiltonian-level meta-update and the target quantum model forbids that update. These two category-error premises remain explicit because unitary linear evolution and tensor structure alone do not establish them; a concrete Hilbert-space no-go theorem remains open."
+  },
+  {
+   "atlas_id": "theorem:bk1_symbolic_emergence_theorem_thermodynamics",
+   "coverage": "partial",
+   "lean": [
+    "ScholiumD.emergence_premises_do_not_force_curvature"
+   ],
+   "note": "Proved negative control: horizon-relative novelty, a reflective fixed point, and an abstract strict dimension increase coexist in a concrete Bool model whose designated curvature tensor is identically zero. Thus the source's three displayed hypotheses do not alone force nonzero curvature or quadratic geometry. A typed bridge law tying structural growth/contextual cross-terms to the symbolic connection is required before the positive theorem can be proved."
+  }
+ ]
+}

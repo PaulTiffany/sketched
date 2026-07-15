@@ -1,0 +1,180 @@
+{
+  "schema": "sketched.anchor-attestation.v1",
+  "id": "attest-014-scholium",
+  "paper": "principia_atlas (scholium) + forcing_correspondence",
+  "moves": [
+    {
+      "math_id": "proposition:bk1_sufficient_condition_for_kernel_boundedness_from_uniform_drift_bound",
+      "from": null,
+      "to": "95f9e5dba38b"
+    },
+    {
+      "math_id": "definition:bk1_observer_relative_interpretability",
+      "from": null,
+      "to": "3ead25e5cf0e"
+    },
+    {
+      "math_id": "lemma:bk1_bounded_approximation_and_interpretability",
+      "from": null,
+      "to": "b7af8e4e8467"
+    },
+    {
+      "math_id": "proposition:bk1_stage_composite_operators_are_interpretable",
+      "from": null,
+      "to": "06f921a4b11f"
+    },
+    {
+      "math_id": "lemma:bk1_observer_bounded_emergence_constraint",
+      "from": null,
+      "to": "445ccd590236"
+    },
+    {
+      "math_id": "definition:bk1_reflection_operator",
+      "from": null,
+      "to": "79bc875f4c9d"
+    },
+    {
+      "math_id": "definition:bk1_pre_geometric_operators_and_stages",
+      "from": null,
+      "to": "f7b11acad63a"
+    },
+    {
+      "math_id": "definition:bk1_spinor_like_structure",
+      "from": null,
+      "to": "fa238ace891e"
+    },
+    {
+      "math_id": "definition:bk1_symbolic_contradiction",
+      "from": null,
+      "to": "76950db3ec96"
+    },
+    {
+      "math_id": "lemma:bk1_contextual_nonseparability",
+      "from": null,
+      "to": "bd1839a86f99"
+    },
+    {
+      "math_id": "definition:bk1_symbolic_coupling_basis",
+      "from": null,
+      "to": "b06b866046b3"
+    },
+    {
+      "math_id": "theorem:bk1_reflexivity_quadratic",
+      "from": null,
+      "to": "3db3ab55ebf2"
+    },
+    {
+      "math_id": "lemma:bk1_fixed_point_inheritance",
+      "from": null,
+      "to": "70ff40a4c94e"
+    },
+    {
+      "math_id": "definition:bk1_bounded_observer",
+      "from": null,
+      "to": "b9e985a4def2"
+    },
+    {
+      "math_id": "definition:bk1_bounded_symbolic_approximation",
+      "from": null,
+      "to": "b99a91ce54d6"
+    },
+    {
+      "math_id": "definition:bk1_kernel_based_bounded_symbolic_approximation",
+      "from": null,
+      "to": "d88cf5730e66"
+    },
+    {
+      "math_id": "proposition:bk1_boundedness_from_drift",
+      "from": null,
+      "to": "12f0de85ecee"
+    },
+    {
+      "math_id": "definition:bk1_stage_composite_operator",
+      "from": null,
+      "to": "a28e47daa4c9"
+    },
+    {
+      "math_id": "axiom:bk1_summable_resolution_decay",
+      "from": null,
+      "to": "ea67a1bee36f"
+    },
+    {
+      "math_id": "definition:bk1_symbolic_coupling",
+      "from": null,
+      "to": "b981c6def645"
+    },
+    {
+      "math_id": "lemma:bk1_linear_context_independence",
+      "from": null,
+      "to": "42b5e1f333bc"
+    },
+    {
+      "math_id": "theorem:bk1_minimal_quadratic_sufficiency",
+      "from": null,
+      "to": "dc2f954eb775"
+    },
+    {
+      "math_id": "definition:bk1_reflexive_encoding_depth",
+      "from": null,
+      "to": "14258daa2eae"
+    },
+    {
+      "math_id": "definition:bk1_operational_irony",
+      "from": null,
+      "to": "0fa7ad74efd1"
+    },
+    {
+      "math_id": "theorem:bk1_operational_irony_requires_reflexive_curvature",
+      "from": null,
+      "to": "ee7a7050f3b0"
+    },
+    {
+      "math_id": "theorem:bk1_operational_irony_requires_imagination",
+      "from": null,
+      "to": "8969fc4f4880"
+    },
+    {
+      "math_id": "corollary:bk1_fixed_point",
+      "from": null,
+      "to": "99514a389d52"
+    },
+    {
+      "math_id": "corollary:bk1_equilibrium_distribution",
+      "from": null,
+      "to": "3f57db98469d"
+    },
+    {
+      "math_id": "definition:bk1_minimal_linear_ps_model",
+      "from": null,
+      "to": "2d8f5758a5c3"
+    },
+    {
+      "math_id": "theorem:bk1_nonvacuity_minimal_linear_ps_model",
+      "from": null,
+      "to": "a987c2d551da"
+    },
+    {
+      "math_id": "theorem:bk1_symbolic_irony_requires_curvature",
+      "from": null,
+      "to": "24a31c6983d2"
+    },
+    {
+      "math_id": "theorem:bk1_emergence_of_reflection_operator",
+      "from": null,
+      "to": "1f809e4d2cfb"
+    },
+    {
+      "math_id": "theorem:bk1_variational_principle",
+      "from": null,
+      "to": "2b735264bc39"
+    }
+  ],
+  "artifacts_reviewed": [
+    "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumA.lean",
+    "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumB.lean"
+  ],
+  "note": "Lean PS sprint-era anchors for scholium: 33 statement placements across 2 artifact(s). Shas were computed live from the principia atlas at transcription time by the lead session; accepting this receipt attests that the named artifacts faithfully transcribe/kernelize these statements per their coverage-map honesty notes (verification/*_lean_map.json) and module headers. To sign: set status to 'accepted', attested_by to 'human', supply attested_at, then run: python verification/tools/binding_audit.py --adopt attest-014-scholium",
+  "status": "proposed",
+  "attested_by": null,
+  "attested_at": null
+}
