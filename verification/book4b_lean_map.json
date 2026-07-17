@@ -153,17 +153,25 @@
    "coverage": "proved-kernel",
    "lean": [
     "Book4B.symbolicFreedom_of_flowFreedom",
-    "Book4B.id_has_no_escape"
+    "Book4B.symbolicFreedom_components",
+    "Book4B.id_has_no_escape",
+    "Book4B.coherence_alone_does_not_force_freedom",
+    "Book4B.escape_alone_does_not_force_freedom",
+    "Book4B.freedom_with_nontrivial_initial_constraint"
    ],
-   "note": "The two-clause predicate (reflection-fixed image; escape from U_0) is modeled directly, plus an explicit countermodel (the identity flow) showing the escape clause is a genuine non-vacuous requirement."
+   "note": "The two-clause predicate is modeled directly. Component extraction proves freedom retains both reflection coherence and escape. Independent countermodels show that neither coherence nor boundary crossing alone suffices, while a positive Boolean model proves freedom can coexist with a proper initial constraint domain: freedom is transformation through constraint, not constraintlessness."
   },
   {
    "atlas_id": "theorem:bk4_freedom_criterion",
    "coverage": "proved-kernel",
    "lean": [
-    "Book4B.symbolicFreedom_of_flowFreedom"
+    "Book4B.symbolicFreedom_of_flowFreedom",
+    "Book4B.symbolicFreedom_components",
+    "Book4B.coherence_alone_does_not_force_freedom",
+    "Book4B.escape_alone_does_not_force_freedom",
+    "Book4B.freedom_with_nontrivial_initial_constraint"
    ],
-   "note": "Symbolic freedom is defined exactly as the existential closure of flow freedom, so the criterion is definitional once flow freedom is modeled; only the forward (witness-exhibits-freedom) direction has independent content, and is the theorem proved."
+   "note": "Symbolic freedom is the existential closure of flow freedom. The forward witness theorem and component theorem preserve both source clauses; separating countermodels establish their independence; and a concrete proper-domain witness certifies the manuscript claim that freedom is not absence of constraint."
   },
   {
    "atlas_id": "lemma:bk4_autonomy_freedom_relation",

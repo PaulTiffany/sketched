@@ -7,7 +7,7 @@
     "receipt": "selfcompile/lean_receipt.json",
     "principia_atlas": "C:\\src\\principia\\bib\\principia_atlas.json"
   },
-  "verified_declarations": 1352,
+  "verified_declarations": 1356,
   "mapped_anchors": 104,
   "mapped_declarations": 177,
   "coverage_counts": {

@@ -494,7 +494,11 @@ namespace ForcingAnalysis
 #print axioms Book4B.repairCapacityBound_strictMono
 #print axioms Book4B.repairCapacity_lt_one
 #print axioms Book4B.symbolicFreedom_of_flowFreedom
+#print axioms Book4B.symbolicFreedom_components
 #print axioms Book4B.id_has_no_escape
+#print axioms Book4B.coherence_alone_does_not_force_freedom
+#print axioms Book4B.escape_alone_does_not_force_freedom
+#print axioms Book4B.freedom_with_nontrivial_initial_constraint
 #print axioms Book4B.autonomy_implies_freedom
 #print axioms Book4B.freedomMeasure_nonneg
 #print axioms Book4B.freedomMeasure_le_one

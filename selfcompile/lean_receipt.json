@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "generated_from": "lake env lean ForcingAnalysis.lean (leanprover/lean4:v4.31.0)",
-  "verified": 1352,
+  "verified": 1356,
   "theorems": [
     {
       "name": "transport_identity_iff_residue",
@@ -3760,10 +3760,51 @@
       "status": "P"
     },
     {
+      "name": "Book4B.symbolicFreedom_components",
+      "file": "Book4B.lean",
+      "statement": "Every symbolic-freedom witness carries both reflection coherence and escape from the initial constraint domain",
+      "axioms": [],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "Book4B.id_has_no_escape",
       "file": "Book4B.lean",
       "statement": "Countermodel: the identity flow can never supply flow freedom's escape clause",
       "axioms": [],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4B.coherence_alone_does_not_force_freedom",
+      "file": "Book4B.lean",
+      "statement": "Countermodel: reflection coherence without boundary crossing does not establish freedom",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4B.escape_alone_does_not_force_freedom",
+      "file": "Book4B.lean",
+      "statement": "Countermodel: boundary crossing without reflection coherence does not establish freedom",
+      "axioms": [
+        "propext"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4B.freedom_with_nontrivial_initial_constraint",
+      "file": "Book4B.lean",
+      "statement": "A proper initial constraint domain can admit a coherence-preserving flow that crosses its boundary",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
       "sorry": false,
       "status": "P"
     },

@@ -52,7 +52,7 @@ Operations can occur out of order, but an out-of-order run is not recognized as 
 
 - React/Vite application with **49 passing tests** and a passing production build.
 - Principia Lean program: **476 of 476** claim-bearing atlas nodes mapped; the exact claim frontier is closed.
-- **1,352** verified Lean declarations, with no `sorry` admitted in the tracked program.
+- **1,356** verified Lean declarations, with no `sorry` admitted in the tracked program.
 - Core Lean kernel and the mathlib-backed analysis layer build successfully (8,696 analysis jobs in the current environment).
 - Books 1-3 and the Scholium are complete. Book 4 is complete; Books 5-9 and the appendices have complete claim-bearing atlas coverage; hardening and source-debt repair remain active.
 - FabricPC 0.3.1 has a pinned external installation receipt, 269 passing upstream tests, and a successful CPU MNIST run. The next bridge step is comparing real FabricPC trajectories with the proved guard contracts.

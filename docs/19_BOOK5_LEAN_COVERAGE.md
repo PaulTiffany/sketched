@@ -4,7 +4,7 @@
 
 Mappings certify only the stated formal kernel. Conditional and partial rows do not promote the full prose statement to a Lean theorem.
 
-- Lean declarations in receipt: **1352**
+- Lean declarations in receipt: **1356**
 - Book 5 anchors mapped: **104**
 - Book 5 claim-bearing atlas nodes: **75**
 - Unmapped claim-bearing nodes: **0**

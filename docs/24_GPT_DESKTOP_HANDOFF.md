@@ -53,7 +53,7 @@ viable; both belong to its control and selection policy.
 
 - Principia coverage: **476 / 476** claim-bearing atlas nodes.
 - Book 5 coverage: **75 / 75**; no exact claims remain.
-- Lean receipt: **1,352** verified declarations.
+- Lean receipt: **1,356** verified declarations.
 - Principia projection: **958 bindings across 638 anchors**.
 - Exact global frontier: **0 claims**.
 - Full application suite: **49 / 49 tests passing**.
@@ -148,7 +148,7 @@ The matching runtime certificate requires repeated four-branch measurements in a
 
 Current machine-verified state:
 
-- Lean receipt: **1,352** declarations, **0 `sorry`**;
+- Lean receipt: **1,356** declarations, **0 `sorry`**;
 - exact Principia atlas: **476 / 476**, with **0 frontier claims**;
 - detector/tool tests: **65 / 65 passing**;
 - application tests: **49 / 49 passing**;
@@ -166,4 +166,15 @@ This is recorded as an authorial clarification, not a Principia erratum or a new
 
 A finite trace manifold and a positive observer threshold then define the higher-order attribution. The positive control operationally detects and attributes the process at support two with threshold two. The withholding control presents the identical process and traces at threshold three: operational detection remains true while attribution is false. Thus the implementation distinguishes the process from an observer's collapse without introducing a hidden consciousness substance.
 
-See `docs/30_CONSCIOUSNESS_ATTRIBUTION_CONTRACT.md`. Exact Principia coverage remains **476 / 476**; the Lean receipt is now **1,352** declarations, with **0 `sorry`**.
+See `docs/30_CONSCIOUSNESS_ATTRIBUTION_CONTRACT.md`. Exact Principia coverage remains **476 / 476**; the Lean receipt is now **1,356** declarations, with **0 `sorry`**.
+
+### Book 4 freedom criterion hardened at its source anchor
+
+The freedom work is not classified as an extension. Principia Book 4 explicitly defines symbolic freedom as a self-consistent flow that both preserves identity coherence and exceeds the initial constraint domain, and says directly that freedom is not the absence of constraint. `Book4B.lean` now makes that source claim harder to blur:
+
+- every freedom witness exposes both reflection coherence and boundary crossing;
+- coherence alone has a countermodel;
+- boundary crossing alone has a countermodel; and
+- a proper singleton constraint domain has a positive coherence-preserving freedom witness.
+
+These declarations remain bound to `definition:bk4_symbolic_flow_freedom` and `theorem:bk4_freedom_criterion`; no new atlas anchor or authorial-extension label was introduced.
