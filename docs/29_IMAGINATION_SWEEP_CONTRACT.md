@@ -111,11 +111,12 @@ imagination_identified          = false
 
 ## Certificate currency
 
-`python verification/tools/imagination_certificate_audit.py` rebuilds both
+`python verification/tools/imagination_certificate_audit.py` rebuilds all four detector and attribution
 certificates in memory and compares them with the stored JSON. It also enforces
-the expected control polarity and rejects either artifact if it claims to have
-identified imagination. The check is part of `npm test` through
+the expected control polarity and rejects any artifact that violates its declared
+epistemic boundary. The check is part of `npm test` through
 `imagination:check`; it does not rewrite artifacts.
+
 ## Remaining empirical frontier
 
 The instrument is implemented; the substantive runtime experiment is not.
@@ -130,3 +131,7 @@ The next run must supply actual repeated model/process trajectories under:
 Only those observations can populate the strict certificate with real
 cross-frame evidence. The Lean result already fixes how cautiously that
 evidence must be interpreted.
+
+
+The downstream active-ablation and observer-attribution layer is documented in
+[the consciousness-attribution contract](30_CONSCIOUSNESS_ATTRIBUTION_CONTRACT.md).

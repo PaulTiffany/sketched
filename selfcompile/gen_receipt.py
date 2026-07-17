@@ -1048,6 +1048,27 @@ STMT = {
     "Book8CognitiveScaffold.CertifiedScaffold.iterate_trajectory_bounded": ("Book8CognitiveScaffold.lean", "Every admitted finite scaffold iterate obeys the supplied symbolic-temperature bound."),
     "Book8CognitiveScaffold.composable_operator_order_need_not_commute": ("Book8CognitiveScaffold.lean", "Countermodel: metabolize-then-debug can differ from debug-then-metabolize despite domain closure."),
     "Book8CognitiveScaffold.composability_alone_does_not_bound_trajectory": ("Book8CognitiveScaffold.lean", "Countermodel: composability alone supplies no trajectory-temperature bound."),
+    "Book8ConsciousnessAttribution.operationalDetection_components": (
+        "Book8ConsciousnessAttribution.lean",
+        "Operational detection exposes strict multiframe evidence, an unreal alternative, an ablation-sensitive action, and an admitted authority boundary."),
+    "Book8ConsciousnessAttribution.strict_detector_evidence_alone_does_not_force_regulation": (
+        "Book8ConsciousnessAttribution.lean",
+        "Countermodel: strict passive detector evidence can coexist with no active imagination-to-regulation effect."),
+    "Book8ConsciousnessAttribution.attribution_requires_operational_detection": (
+        "Book8ConsciousnessAttribution.lean",
+        "Observer attribution retains the explicit operational-detection premise."),
+    "Book8ConsciousnessAttribution.attribution_requires_enough_trace_support": (
+        "Book8ConsciousnessAttribution.lean",
+        "Observer attribution retains the observer's finite coherent-trace threshold."),
+    "Book8ConsciousnessAttribution.attribution_agrees_of_same_threshold": (
+        "Book8ConsciousnessAttribution.lean",
+        "Observers sharing a recognition threshold agree on the same trace manifold and operational evidence."),
+    "Book8ConsciousnessAttribution.same_manifold_can_support_different_attributions": (
+        "Book8ConsciousnessAttribution.lean",
+        "Countermodel: observers with different thresholds can classify the same process and trace manifold differently."),
+    "Book8ConsciousnessAttribution.operational_detection_alone_does_not_force_attribution": (
+        "Book8ConsciousnessAttribution.lean",
+        "Countermodel: an observer may withhold higher-order attribution when coherent trace support is below its policy threshold."),
     "Book7NoInteriorTransition.continuousOn_no_discrete_phase_transition": ("Book7NoInteriorTransition.lean", "Continuity on a sweep domain excludes a discrete phase transition at every point of that domain."),
     "Book7NoInteriorTransition.continuous_closed_sweep_has_no_interior_transition": ("Book7NoInteriorTransition.lean", "A continuous effective geometry on a closed observer sub-sweep has no interior discontinuity."),
     "Book7NoInteriorTransition.continuous_reparameterization_preserves_no_transition": ("Book7NoInteriorTransition.lean", "Continuous reparameterization preserves continuity and hence the no-transition certificate."),

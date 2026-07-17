@@ -53,7 +53,7 @@ viable; both belong to its control and selection policy.
 
 - Principia coverage: **476 / 476** claim-bearing atlas nodes.
 - Book 5 coverage: **75 / 75**; no exact claims remain.
-- Lean receipt: **1,345** verified declarations.
+- Lean receipt: **1,352** verified declarations.
 - Principia projection: **958 bindings across 638 anchors**.
 - Exact global frontier: **0 claims**.
 - Full application suite: **49 / 49 tests passing**.
@@ -148,14 +148,22 @@ The matching runtime certificate requires repeated four-branch measurements in a
 
 Current machine-verified state:
 
-- Lean receipt: **1,345** declarations, **0 `sorry`**;
+- Lean receipt: **1,352** declarations, **0 `sorry`**;
 - exact Principia atlas: **476 / 476**, with **0 frontier claims**;
-- detector/tool tests: **57 / 57 passing**;
+- detector/tool tests: **65 / 65 passing**;
 - application tests: **49 / 49 passing**;
 - LeanPS wiring, frontier, binding, source-obligation, and projection audits: **0 findings**;
 - legacy LaTeX ledger audit: **10 known pre-existing findings**;
 - external FabricPC checkout: unchanged at `b6f64adf9314863ce665085a92d544807d585819`, one commit behind upstream, with no local modification or push.
 
-`imagination:check` now rebuilds both detector certificates in memory during `npm test`, compares them with the stored JSON, and enforces the positive/negative control polarity without rewriting artifacts.
+`imagination:check` now rebuilds all four detector and attribution certificates in memory during `npm test`, compares them with the stored JSON, and enforces the positive/negative control polarity without rewriting artifacts.
 
 The continuation is empirical: collect repeated model/process trajectories across neighboring prompt, observer, geometry, and perturbation frames, preserve tool/exception/order traces, and compare them against matched architecture and session controls. A candidate certificate is evidence of a differential stability boundary; it is not an automatic claim about hidden cognition or imagination.
+
+## Consciousness-attribution extension - 2026-07-17
+
+This is recorded as an authorial clarification, not a Principia erratum or a new source-coverage anchor. `Book8ConsciousnessAttribution.lean` consumes Book 4's strict detector evidence, then requires an active ablation bridge: an unreal simulated alternative must change the action selected by an embodiment while the selected action remains inside its admitted authority.
+
+A finite trace manifold and a positive observer threshold then define the higher-order attribution. The positive control operationally detects and attributes the process at support two with threshold two. The withholding control presents the identical process and traces at threshold three: operational detection remains true while attribution is false. Thus the implementation distinguishes the process from an observer's collapse without introducing a hidden consciousness substance.
+
+See `docs/30_CONSCIOUSNESS_ATTRIBUTION_CONTRACT.md`. Exact Principia coverage remains **476 / 476**; the Lean receipt is now **1,352** declarations, with **0 `sorry`**.

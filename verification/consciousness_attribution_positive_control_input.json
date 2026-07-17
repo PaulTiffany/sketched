@@ -1,0 +1,305 @@
+{
+    "schema":  "sketched.consciousness-attribution-input.v1",
+    "run_id":  "synthetic-consciousness-attribution-positive-control",
+    "imagination_sweep_input":  {
+                                    "schema":  "sketched.imagination-sweep-input.v1",
+                                    "run_id":  "synthetic-orientation-sensitive-positive-control",
+                                    "thresholds":  {
+                                                       "residue_norm":  0.1,
+                                                       "commutator_norm":  0.1,
+                                                       "minimum_frame_hits":  2,
+                                                       "minimum_replicate_hits":  2
+                                                   },
+                                    "frames":  [
+                                                   {
+                                                       "frame_id":  "lp-1",
+                                                       "frame_metadata":  {
+                                                                              "geometry":  "synthetic L1"
+                                                                          },
+                                                       "architecture_confound":  false,
+                                                       "replicates":  [
+                                                                          {
+                                                                              "replicate_id":  "lp1-a",
+                                                                              "base_states":  [
+                                                                                                  [
+                                                                                                      0
+                                                                                                  ]
+                                                                                              ],
+                                                                              "first_states":  [
+                                                                                                   [
+                                                                                                       0
+                                                                                                   ]
+                                                                                               ],
+                                                                              "second_states":  [
+                                                                                                    [
+                                                                                                        0
+                                                                                                    ]
+                                                                                                ],
+                                                                              "combined_states":  [
+                                                                                                      [
+                                                                                                          1
+                                                                                                      ]
+                                                                                                  ],
+                                                                              "order_ab_states":  [
+                                                                                                      [
+                                                                                                          1
+                                                                                                      ]
+                                                                                                  ],
+                                                                              "order_ba_states":  [
+                                                                                                      [
+                                                                                                          0
+                                                                                                      ]
+                                                                                                  ]
+                                                                          },
+                                                                          {
+                                                                              "replicate_id":  "lp1-b",
+                                                                              "base_states":  [
+                                                                                                  [
+                                                                                                      0
+                                                                                                  ]
+                                                                                              ],
+                                                                              "first_states":  [
+                                                                                                   [
+                                                                                                       0
+                                                                                                   ]
+                                                                                               ],
+                                                                              "second_states":  [
+                                                                                                    [
+                                                                                                        0
+                                                                                                    ]
+                                                                                                ],
+                                                                              "combined_states":  [
+                                                                                                      [
+                                                                                                          1
+                                                                                                      ]
+                                                                                                  ],
+                                                                              "order_ab_states":  [
+                                                                                                      [
+                                                                                                          1
+                                                                                                      ]
+                                                                                                  ],
+                                                                              "order_ba_states":  [
+                                                                                                      [
+                                                                                                          0
+                                                                                                      ]
+                                                                                                  ]
+                                                                          }
+                                                                      ]
+                                                   },
+                                                   {
+                                                       "frame_id":  "lp-2",
+                                                       "frame_metadata":  {
+                                                                              "geometry":  "synthetic L2"
+                                                                          },
+                                                       "architecture_confound":  false,
+                                                       "replicates":  [
+                                                                          {
+                                                                              "replicate_id":  "lp2-a",
+                                                                              "base_states":  [
+                                                                                                  [
+                                                                                                      0
+                                                                                                  ]
+                                                                                              ],
+                                                                              "first_states":  [
+                                                                                                   [
+                                                                                                       0
+                                                                                                   ]
+                                                                                               ],
+                                                                              "second_states":  [
+                                                                                                    [
+                                                                                                        0
+                                                                                                    ]
+                                                                                                ],
+                                                                              "combined_states":  [
+                                                                                                      [
+                                                                                                          1
+                                                                                                      ]
+                                                                                                  ],
+                                                                              "order_ab_states":  [
+                                                                                                      [
+                                                                                                          1
+                                                                                                      ]
+                                                                                                  ],
+                                                                              "order_ba_states":  [
+                                                                                                      [
+                                                                                                          0
+                                                                                                      ]
+                                                                                                  ]
+                                                                          },
+                                                                          {
+                                                                              "replicate_id":  "lp2-b",
+                                                                              "base_states":  [
+                                                                                                  [
+                                                                                                      0
+                                                                                                  ]
+                                                                                              ],
+                                                                              "first_states":  [
+                                                                                                   [
+                                                                                                       0
+                                                                                                   ]
+                                                                                               ],
+                                                                              "second_states":  [
+                                                                                                    [
+                                                                                                        0
+                                                                                                    ]
+                                                                                                ],
+                                                                              "combined_states":  [
+                                                                                                      [
+                                                                                                          1
+                                                                                                      ]
+                                                                                                  ],
+                                                                              "order_ab_states":  [
+                                                                                                      [
+                                                                                                          1
+                                                                                                      ]
+                                                                                                  ],
+                                                                              "order_ba_states":  [
+                                                                                                      [
+                                                                                                          0
+                                                                                                      ]
+                                                                                                  ]
+                                                                          }
+                                                                      ]
+                                                   }
+                                               ]
+                                },
+    "imagination_sweep_certificate":  {
+                                          "schema":  "sketched.imagination-sweep-certificate.v1",
+                                          "source":  {
+                                                         "input_sha256":  "3f6435abcff2a1c6557f8132309a2c3afadfc6a2fffd85591b5ab6f165ea1fdc",
+                                                         "run_id":  "synthetic-orientation-sensitive-positive-control",
+                                                         "fabricpc_repository":  null,
+                                                         "fabricpc_commit":  null
+                                                     },
+                                          "method":  {
+                                                         "lean_contract":  "ForcingAnalysis.Book4ImaginationDetector",
+                                                         "settings":  {
+                                                                          "residue_norm":  0.1,
+                                                                          "commutator_norm":  0.1,
+                                                                          "minimum_frame_hits":  2,
+                                                                          "minimum_replicate_hits":  2
+                                                                      },
+                                                         "screening_rule":  "replicated mixed residue in at least two distinct, unconfounded frames",
+                                                         "strict_rule":  "screening rule plus replicated order commutator in the same supporting frames",
+                                                         "imagination_claim":  false,
+                                                         "phase_transition_claim":  false,
+                                                         "latent_cause_identified":  false
+                                                     },
+                                          "summary":  {
+                                                          "frame_count":  2,
+                                                          "replicated_residue_frames":  2,
+                                                          "replicated_joint_frames":  2,
+                                                          "unconfounded_residue_frames":  2,
+                                                          "unconfounded_joint_frames":  2,
+                                                          "cross_frame_residue_persistent":  true,
+                                                          "cross_frame_joint_persistent":  true,
+                                                          "screening_candidate":  true,
+                                                          "orientation_sensitive_candidate":  true,
+                                                          "imagination_identified":  false
+                                                      },
+                                          "frames":  [
+                                                         {
+                                                             "frame_id":  "lp-1",
+                                                             "frame_metadata":  {
+                                                                                    "geometry":  "synthetic L1"
+                                                                                },
+                                                             "architecture_confound":  false,
+                                                             "replicate_count":  2,
+                                                             "residue_hit_count":  2,
+                                                             "order_hit_count":  2,
+                                                             "joint_hit_count":  2,
+                                                             "residue_replicated":  true,
+                                                             "order_replicated":  true,
+                                                             "joint_replicated":  true,
+                                                             "unconfounded_residue_hit":  true,
+                                                             "unconfounded_joint_hit":  true,
+                                                             "replicates":  [
+                                                                                {
+                                                                                    "replicate_id":  "lp1-a",
+                                                                                    "input_sha256":  "2d2933a61ff0f5c6e797419c5a4218d130c5f356b7ea25a27f801cf24c74f543",
+                                                                                    "residue_observed":  true,
+                                                                                    "max_residue_norm":  1.0,
+                                                                                    "order_measured":  true,
+                                                                                    "order_observed":  true,
+                                                                                    "max_commutator_norm":  1.0,
+                                                                                    "joint_residue_and_order":  true
+                                                                                },
+                                                                                {
+                                                                                    "replicate_id":  "lp1-b",
+                                                                                    "input_sha256":  "f24c818b085be23cc7ce98ac39e6cfb9e0d6c9fd02ac3b9a5f3bae21c87bf095",
+                                                                                    "residue_observed":  true,
+                                                                                    "max_residue_norm":  1.0,
+                                                                                    "order_measured":  true,
+                                                                                    "order_observed":  true,
+                                                                                    "max_commutator_norm":  1.0,
+                                                                                    "joint_residue_and_order":  true
+                                                                                }
+                                                                            ]
+                                                         },
+                                                         {
+                                                             "frame_id":  "lp-2",
+                                                             "frame_metadata":  {
+                                                                                    "geometry":  "synthetic L2"
+                                                                                },
+                                                             "architecture_confound":  false,
+                                                             "replicate_count":  2,
+                                                             "residue_hit_count":  2,
+                                                             "order_hit_count":  2,
+                                                             "joint_hit_count":  2,
+                                                             "residue_replicated":  true,
+                                                             "order_replicated":  true,
+                                                             "joint_replicated":  true,
+                                                             "unconfounded_residue_hit":  true,
+                                                             "unconfounded_joint_hit":  true,
+                                                             "replicates":  [
+                                                                                {
+                                                                                    "replicate_id":  "lp2-a",
+                                                                                    "input_sha256":  "8c848efa797861d72be470260945bb748401d2e169bb1b5b8c0da8a94453564d",
+                                                                                    "residue_observed":  true,
+                                                                                    "max_residue_norm":  1.0,
+                                                                                    "order_measured":  true,
+                                                                                    "order_observed":  true,
+                                                                                    "max_commutator_norm":  1.0,
+                                                                                    "joint_residue_and_order":  true
+                                                                                },
+                                                                                {
+                                                                                    "replicate_id":  "lp2-b",
+                                                                                    "input_sha256":  "ffd4252aebad636d251253b996af9665e7c1057d2e29633d818ab8fdd9a096fd",
+                                                                                    "residue_observed":  true,
+                                                                                    "max_residue_norm":  1.0,
+                                                                                    "order_measured":  true,
+                                                                                    "order_observed":  true,
+                                                                                    "max_commutator_norm":  1.0,
+                                                                                    "joint_residue_and_order":  true
+                                                                                }
+                                                                            ]
+                                                         }
+                                                     ]
+                                      },
+    "embodiment":  {
+                       "alternative_realized":  false,
+                       "action_with_imagination":  {
+                                                       "choice":  "regulate-left"
+                                                   },
+                       "action_without_imagination":  {
+                                                          "choice":  "continue-forward"
+                                                      },
+                       "action_authorized":  true
+                   },
+    "trace_manifold":  [
+                           {
+                               "frame_id":  "neighbor-frame-a",
+                               "qualia_trace":  true,
+                               "coherent":  true
+                           },
+                           {
+                               "frame_id":  "neighbor-frame-b",
+                               "qualia_trace":  true,
+                               "coherent":  true
+                           }
+                       ],
+    "observer":  {
+                     "observer_id":  "threshold-two-observer",
+                     "minimum_trace_support":  2
+                 }
+}

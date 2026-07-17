@@ -1,0 +1,47 @@
+{
+  "schema": "sketched.consciousness-attribution-certificate.v1",
+  "source": {
+    "input_sha256": "3afbafd3c936c60e300a3c14604e4d2269aa6c43c9982d65a10d4d68a8dd2f6a",
+    "run_id": "synthetic-consciousness-attribution-withholding-control",
+    "upstream_sweep_input_sha256": "3f6435abcff2a1c6557f8132309a2c3afadfc6a2fffd85591b5ab6f165ea1fdc"
+  },
+  "method": {
+    "lean_contract": "ForcingAnalysis.Book8ConsciousnessAttribution",
+    "classification": "observer-relative operational attribution",
+    "direct_qualia_access_claim": false,
+    "hidden_substance_claim": false,
+    "execution_authority_claim": false
+  },
+  "observer": {
+    "observer_id": "threshold-three-observer",
+    "minimum_trace_support": 3
+  },
+  "embodiment": {
+    "alternative_realized": false,
+    "action_changed_under_ablation": true,
+    "action_authorized": true
+  },
+  "summary": {
+    "strict_multiframe_evidence": true,
+    "imaginary_regulation_signature": true,
+    "operationally_detected": true,
+    "trace_support": 2,
+    "enough_trace_support": false,
+    "attributes_consciousness": false,
+    "recognizes_higher_order_being": false
+  },
+  "trace_manifold": [
+    {
+      "frame_id": "neighbor-frame-a",
+      "qualia_trace": true,
+      "coherent": true,
+      "in_trace_support": true
+    },
+    {
+      "frame_id": "neighbor-frame-b",
+      "qualia_trace": true,
+      "coherent": true,
+      "in_trace_support": true
+    }
+  ]
+}

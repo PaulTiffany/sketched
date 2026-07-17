@@ -79,8 +79,7 @@ theorem reversed_display_of_positive {change : ℝ} (hchange : 0 < change) :
   simpa [encode] using neg_lt_zero.mpr hchange
 
 /-- Presentation orientation may reverse the displayed arrows, but it may not
-silently redefine the source's canonical
-ext` operation. -/
+silently redefine the source's canonical `next` operation. -/
 def displayedNext (orientation : Orientation) : Stage → Stage :=
   match orientation with
   | .aligned => next
