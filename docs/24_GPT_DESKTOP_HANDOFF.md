@@ -168,13 +168,8 @@ A finite trace manifold and a positive observer threshold then define the higher
 
 See `docs/30_CONSCIOUSNESS_ATTRIBUTION_CONTRACT.md`. Exact Principia coverage remains **476 / 476**; the Lean receipt is now **1,356** declarations, with **0 `sorry`**.
 
-### Book 4 freedom criterion hardened at its source anchor
+### Freedom culminates in Book 9 Grace
 
-The freedom work is not classified as an extension. Principia Book 4 explicitly defines symbolic freedom as a self-consistent flow that both preserves identity coherence and exceeds the initial constraint domain, and says directly that freedom is not the absence of constraint. `Book4B.lean` now makes that source claim harder to blur:
+The dependency direction is now explicit. Book 4 supplies coherence-preserving transformation of an initial constraint domain; it does not complete the freedom operator. The terminal claim is `theorem:bk9_freedom_as_grace` at the end of Book 9.
 
-- every freedom witness exposes both reflection coherence and boundary crossing;
-- coherence alone has a countermodel;
-- boundary crossing alone has a countermodel; and
-- a proper singleton constraint domain has a positive coherence-preserving freedom witness.
-
-These declarations remain bound to `definition:bk4_symbolic_flow_freedom` and `theorem:bk4_freedom_criterion`; no new atlas anchor or authorial-extension label was introduced.
+`Book9B.lean` now represents all three capacities stated there: sustaining identity under unresolved contradiction, intentionally lowering reflective barriers, and accepting a transient positive free-energy change for positive viability expansion. The maximal-freedom iff deployable-Grace claim remains conditional on an explicit Book 9 correspondence bridge. Countermodels prevent either Book 4 flow freedom or Grace's identity bound alone from being promoted into the terminal theorem.

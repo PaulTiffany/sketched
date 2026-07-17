@@ -75,6 +75,7 @@ external literature, not a mathematical statement).
 
 import Mathlib
 import ForcingAnalysis.FracturedAtlas
+import ForcingAnalysis.Book4B
 
 namespace ForcingAnalysis.Book9B
 
@@ -262,6 +263,90 @@ alternative of proposition:bk9_grace_vs_avoidance). -/
 theorem grace_upsilon_pos (g : GraceOperator) : 0 < g.upsilon := by
   have h : 0 < 1 - g.epsilonCrit := by linarith [g.epsilonCrit_lt_one]
   linarith [g.upsilon_bound]
+
+/-- The complete three-part operational payload stated by
+`theorem:bk9_freedom_as_grace`. Book 4 supplies constraint-transforming flow;
+Book 9 adds the terminal Grace capacities: identity is held under unresolved
+contradiction, reflective barriers can be intentionally lowered, and a
+transient free-energy cost can be accepted for an expansion of viability. -/
+structure GracefulFreedomCapacity extends GraceOperator where
+  contradictionUnresolved : Prop
+  holdsContradiction : contradictionUnresolved
+  reflectiveBarrierBefore : Real
+  reflectiveBarrierAfter : Real
+  lowersReflectiveBarrier : reflectiveBarrierAfter < reflectiveBarrierBefore
+  deltaFreeEnergy : Real
+  deltaViability : Real
+  acceptsTransientCost : 0 < deltaFreeEnergy
+  expandsViability : 0 < deltaViability
+
+/-- Full graceful capacity exposes all three abilities enumerated by the
+terminal Book 9 freedom theorem. -/
+theorem gracefulFreedomCapacity_components (g : GracefulFreedomCapacity) :
+    0 < g.upsilon ∧ g.contradictionUnresolved ∧
+      g.reflectiveBarrierAfter < g.reflectiveBarrierBefore ∧
+      0 < g.deltaFreeEnergy ∧ 0 < g.deltaViability := by
+  exact ⟨grace_upsilon_pos g.toGraceOperator, g.holdsContradiction,
+    g.lowersReflectiveBarrier, g.acceptsTransientCost, g.expandsViability⟩
+
+/-- The manuscript's maximal-freedom iff Grace claim needs an explicit bridge
+between a system's Book 9 maximality order and deployable graceful capacity.
+The bridge is retained as named data rather than manufactured from Book 4. -/
+structure MaximalFreedomGraceBridge (System : Type) where
+  maximalCognitiveFreedom : System → Prop
+  canDeployGrace : System → GracefulFreedomCapacity → Prop
+  correspondence : ∀ system,
+    maximalCognitiveFreedom system ↔ ∃ grace, canDeployGrace system grace
+
+theorem maximalFreedom_iff_canDeployGrace {System : Type}
+    (bridge : MaximalFreedomGraceBridge System) (system : System) :
+    bridge.maximalCognitiveFreedom system ↔
+      ∃ grace, bridge.canDeployGrace system grace :=
+  bridge.correspondence system
+
+/-- Book 4 flow freedom is genuine input material but does not, without the
+Book 9 bridge, force terminal maximal freedom. The Boolean witness preserves
+coherence and crosses a proper constraint boundary while an independently
+specified terminal-maximality proposition remains false. -/
+theorem book4_flow_freedom_does_not_force_terminal_maximality :
+    ∃ (Φ R : Bool → Bool) (Ψ : Bool) (U0 : Set Bool)
+      (terminalMaximal : Prop),
+      Book4B.SymbolicFlowFreedom Φ R Ψ U0 ∧ ¬ terminalMaximal := by
+  let flip : Bool → Bool := fun b => !b
+  let U0 : Set Bool := {false}
+  refine ⟨flip, id, false, U0, False, ?_, by simp⟩
+  exact ⟨rfl, false, by simp [U0], by simp [U0, flip]⟩
+
+/-- The two terminal abilities not contained in the original identity-stability
+fragment of `GraceOperator`. Keeping them typed prevents a positive identity
+bound from silently being reused as evidence for barrier modulation or
+viability-expanding costly transformation. -/
+structure GraceContinuationCapabilities where
+  canLowerReflectiveBarriers : Prop
+  canAcceptCostForViability : Prop
+
+def CompletesGrace (capabilities : GraceContinuationCapabilities) : Prop :=
+  capabilities.canLowerReflectiveBarriers ∧
+    capabilities.canAcceptCostForViability
+
+/-- The identity-stability fragment previously formalized for Grace cannot by
+itself supply the other two enumerated abilities. This concrete Grace operator
+satisfies its identity bound while a concrete capability record supplies
+neither missing operation. -/
+theorem grace_identity_bound_alone_does_not_force_full_capacity :
+    ∃ (g : GraceOperator) (capabilities : GraceContinuationCapabilities),
+      0 < g.upsilon ∧ ¬ CompletesGrace capabilities := by
+  let g : GraceOperator :=
+    { upsilon := 1
+      epsilonCrit := 1 / 2
+      epsilonCrit_pos := by norm_num
+      epsilonCrit_lt_one := by norm_num
+      upsilon_bound := by norm_num }
+  let capabilities : GraceContinuationCapabilities :=
+    { canLowerReflectiveBarriers := False
+      canAcceptCostForViability := False }
+  exact ⟨g, capabilities, grace_upsilon_pos g, by
+    simp [CompletesGrace, capabilities]⟩
 
 /- ================================================================
    theorem:bk9_irreversibility_of_covenant_breach_without_grace

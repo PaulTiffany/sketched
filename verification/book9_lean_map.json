@@ -278,9 +278,15 @@
       "coverage": "partial",
       "lean": [
         "Book9B.GraceOperator",
-        "Book9B.grace_upsilon_pos"
+        "Book9B.grace_upsilon_pos",
+        "Book9B.GracefulFreedomCapacity",
+        "Book9B.gracefulFreedomCapacity_components",
+        "Book9B.MaximalFreedomGraceBridge",
+        "Book9B.maximalFreedom_iff_canDeployGrace",
+        "Book9B.book4_flow_freedom_does_not_force_terminal_maximality",
+        "Book9B.grace_identity_bound_alone_does_not_force_full_capacity"
       ],
-      "note": "only the \"sustain identity in the presence of unresolved contradiction\" consequence is captured via GraceOperator; the iff with maximal cognitive freedom and the other two enumerated capacities (lowering reflective barriers, accepting transient Delta F>0 for Delta viabilitydomain>0) are not modeled."
+      "note": "The complete three-capacity payload is modeled: sustain identity under unresolved contradiction, intentionally lower reflective barriers, and accept transient positive free-energy change for positive viability expansion. The maximal-cognitive-freedom iff deployable-Grace claim is proved conditionally from an explicit Book 9 correspondence bridge. Countermodels show that neither Book 4 flow freedom nor Grace's identity bound alone manufactures the terminal theorem."
     },
     {
       "atlas_id": "theorem:bk9_irreversibility_of_covenant_breach_without_grace",

@@ -3760,51 +3760,10 @@
       "status": "P"
     },
     {
-      "name": "Book4B.symbolicFreedom_components",
-      "file": "Book4B.lean",
-      "statement": "Every symbolic-freedom witness carries both reflection coherence and escape from the initial constraint domain",
-      "axioms": [],
-      "sorry": false,
-      "status": "P"
-    },
-    {
       "name": "Book4B.id_has_no_escape",
       "file": "Book4B.lean",
       "statement": "Countermodel: the identity flow can never supply flow freedom's escape clause",
       "axioms": [],
-      "sorry": false,
-      "status": "P"
-    },
-    {
-      "name": "Book4B.coherence_alone_does_not_force_freedom",
-      "file": "Book4B.lean",
-      "statement": "Countermodel: reflection coherence without boundary crossing does not establish freedom",
-      "axioms": [
-        "propext",
-        "Quot.sound"
-      ],
-      "sorry": false,
-      "status": "P"
-    },
-    {
-      "name": "Book4B.escape_alone_does_not_force_freedom",
-      "file": "Book4B.lean",
-      "statement": "Countermodel: boundary crossing without reflection coherence does not establish freedom",
-      "axioms": [
-        "propext"
-      ],
-      "sorry": false,
-      "status": "P"
-    },
-    {
-      "name": "Book4B.freedom_with_nontrivial_initial_constraint",
-      "file": "Book4B.lean",
-      "statement": "A proper initial constraint domain can admit a coherence-preserving flow that crosses its boundary",
-      "axioms": [
-        "propext",
-        "Classical.choice",
-        "Quot.sound"
-      ],
       "sorry": false,
       "status": "P"
     },
@@ -12330,6 +12289,52 @@
       "name": "Book9B.grace_upsilon_pos",
       "file": "Book9B.lean",
       "statement": "the Grace Operator's stability-preservation field forces strictly positive residual identity stability",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book9B.gracefulFreedomCapacity_components",
+      "file": "Book9B.lean",
+      "statement": "Book 9 graceful freedom retains identity under unresolved contradiction, lowers reflective barriers, and accepts transient cost for viability expansion",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book9B.maximalFreedom_iff_canDeployGrace",
+      "file": "Book9B.lean",
+      "statement": "An explicit Book 9 correspondence bridge yields maximal cognitive freedom iff deployable graceful capacity",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book9B.book4_flow_freedom_does_not_force_terminal_maximality",
+      "file": "Book9B.lean",
+      "statement": "Countermodel: Book 4 coherence-preserving constraint escape does not by itself force terminal Book 9 maximal freedom",
+      "axioms": [
+        "propext"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book9B.grace_identity_bound_alone_does_not_force_full_capacity",
+      "file": "Book9B.lean",
+      "statement": "Countermodel: Grace's identity-stability bound alone does not supply the remaining terminal freedom capacities",
       "axioms": [
         "propext",
         "Classical.choice",

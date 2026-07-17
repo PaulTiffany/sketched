@@ -264,15 +264,6 @@ theorem symbolicFreedom_of_flowFreedom {X : Type} {Φ R : X → X} {Ψ : X} {U0 
     (h : SymbolicFlowFreedom Φ R Ψ U0) : SymbolicFreedom R Ψ U0 :=
   ⟨Φ, h⟩
 
-/-- Freedom retains both source clauses. It cannot be weakened to escape
-alone or to coherence alone: every witness preserves the carrier through
-reflection while also crossing the initial constraint boundary. -/
-theorem symbolicFreedom_components {X : Type} {R : X → X} {Ψ : X} {U0 : Set X}
-    (h : SymbolicFreedom R Ψ U0) :
-    ∃ Φ : X → X,
-      R (Φ Ψ) = Φ Ψ ∧ ∃ x ∈ U0, Φ x ∉ U0 := by
-  exact h
-
 /-- The identity flow can never supply the escape clause of flow freedom,
 for any initial domain: an explicit witness that flow freedom's second
 condition is a genuine (non-vacuous) constraint on the flow, not
@@ -281,39 +272,6 @@ theorem id_has_no_escape {X : Type} (U0 : Set X) :
     ¬ ∃ x ∈ U0, (id : X → X) x ∉ U0 := by
   rintro ⟨x, hx, hx'⟩
   exact hx' hx
-
-/-- Coherence alone does not imply freedom. On a one-state carrier the
-identity flow is reflection-fixed, but there is no boundary it can cross. -/
-theorem coherence_alone_does_not_force_freedom :
-    ∃ (R Φ : Unit → Unit) (Ψ : Unit) (U0 : Set Unit),
-      R (Φ Ψ) = Φ Ψ ∧ ¬ SymbolicFlowFreedom Φ R Ψ U0 := by
-  refine ⟨id, id, (), Set.univ, rfl, ?_⟩
-  simp [SymbolicFlowFreedom]
-
-/-- Boundary crossing alone does not imply freedom. A Boolean flip exits
-the singleton initial domain, but a second flip used as reflection rejects
-the resulting state rather than fixing it. -/
-theorem escape_alone_does_not_force_freedom :
-    ∃ (R Φ : Bool → Bool) (Ψ : Bool) (U0 : Set Bool),
-      (∃ x ∈ U0, Φ x ∉ U0) ∧ ¬ SymbolicFlowFreedom Φ R Ψ U0 := by
-  let flip : Bool → Bool := fun b => !b
-  let U0 : Set Bool := {false}
-  refine ⟨flip, flip, false, U0, ?_, ?_⟩
-  · exact ⟨false, by simp [U0], by simp [U0, flip]⟩
-  · simp [SymbolicFlowFreedom, flip]
-
-/-- The manuscript's explicit "not the absence of constraint" claim has a
-concrete model: the initial domain is a proper singleton, yet a
-coherence-preserving Boolean flow crosses its boundary. -/
-theorem freedom_with_nontrivial_initial_constraint :
-    ∃ (R Φ : Bool → Bool) (Ψ : Bool) (U0 : Set Bool),
-      U0 ≠ Set.univ ∧ SymbolicFlowFreedom Φ R Ψ U0 := by
-  let flip : Bool → Bool := fun b => !b
-  let U0 : Set Bool := {false}
-  refine ⟨id, flip, false, U0, ?_, ?_⟩
-  · simp [U0, Set.ext_iff]
-  · refine ⟨rfl, false, by simp [U0], ?_⟩
-    simp [U0, flip]
 
 /- ================================================================
    lemma:bk4_autonomy_freedom_relation,

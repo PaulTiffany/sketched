@@ -494,11 +494,7 @@ namespace ForcingAnalysis
 #print axioms Book4B.repairCapacityBound_strictMono
 #print axioms Book4B.repairCapacity_lt_one
 #print axioms Book4B.symbolicFreedom_of_flowFreedom
-#print axioms Book4B.symbolicFreedom_components
 #print axioms Book4B.id_has_no_escape
-#print axioms Book4B.coherence_alone_does_not_force_freedom
-#print axioms Book4B.escape_alone_does_not_force_freedom
-#print axioms Book4B.freedom_with_nontrivial_initial_constraint
 #print axioms Book4B.autonomy_implies_freedom
 #print axioms Book4B.freedomMeasure_nonneg
 #print axioms Book4B.freedomMeasure_le_one
@@ -989,6 +985,10 @@ namespace ForcingAnalysis
 #print axioms Book9B.sharedManifold_unique
 #print axioms Book9B.reciprocity_curvature_bounds
 #print axioms Book9B.grace_upsilon_pos
+#print axioms Book9B.gracefulFreedomCapacity_components
+#print axioms Book9B.maximalFreedom_iff_canDeployGrace
+#print axioms Book9B.book4_flow_freedom_does_not_force_terminal_maximality
+#print axioms Book9B.grace_identity_bound_alone_does_not_force_full_capacity
 #print axioms Book9B.covenant_viability_decrease_accum
 #print axioms Book9B.covenant_breach_forces_collapse_without_grace
 #print axioms Book9B.lyapunov_step_le
