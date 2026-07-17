@@ -108,6 +108,57 @@ theorem orientationSensitiveCandidate_components
   rcases h with ⟨⟨hresidue, hpersistent, haudit, hreplicated⟩, horder⟩
   exact ⟨hresidue, hpersistent, haudit, hreplicated, horder⟩
 
+/-- A deliverable package binds detector evidence to reproducibility and
+provenance controls. Package readiness is deliberately independent of a
+positive candidate result: a well-controlled negative experiment is useful. -/
+structure DetectorPackage where
+  evidence : DetectorEvidence
+  sourcePinned : Prop
+  inputHashVerified : Prop
+  thresholdsDeclared : Prop
+  negativeControlPassed : Prop
+  claimsImagination : Prop
+
+/-- The operational package is ready when its source, input, thresholds, and
+negative control are certified and it refuses the oracle claim. -/
+def ReproduciblePackage (package : DetectorPackage) : Prop :=
+  package.sourcePinned ∧
+    package.inputHashVerified ∧
+    package.thresholdsDeclared ∧
+    package.negativeControlPassed ∧
+    ¬ package.claimsImagination
+
+theorem reproduciblePackage_components {package : DetectorPackage}
+    (h : ReproduciblePackage package) :
+    package.sourcePinned ∧
+      package.inputHashVerified ∧
+      package.thresholdsDeclared ∧
+      package.negativeControlPassed ∧
+      ¬ package.claimsImagination :=
+  h
+
+/-- Reproducibility does not require a positive detector event. This concrete
+package is ready while every observational evidence channel remains false. -/
+theorem reproducible_negative_result_is_deliverable :
+    ∃ package : DetectorPackage,
+      ReproduciblePackage package ∧
+        ¬ ScreeningCandidate package.evidence := by
+  let evidence : DetectorEvidence :=
+    { retainedResidue := False
+      crossFramePersistence := False
+      survivesArchitectureAudit := True
+      runtimeReplicated := True
+      orderSensitive := False }
+  let package : DetectorPackage :=
+    { evidence := evidence
+      sourcePinned := True
+      inputHashVerified := True
+      thresholdsDeclared := True
+      negativeControlPassed := True
+      claimsImagination := False }
+  exact ⟨package, by simp [ReproduciblePackage, package], by
+    simp [ScreeningCandidate, package, evidence]⟩
+
 /-- An observational world carries evidence plus an unobserved latent label. -/
 structure LatentWorld where
   evidence : DetectorEvidence

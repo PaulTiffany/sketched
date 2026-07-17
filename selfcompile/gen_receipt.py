@@ -2524,6 +2524,12 @@ STMT = {
     "Book4ImaginationDetector.orientationSensitiveCandidate_components": (
         "Book4ImaginationDetector.lean",
         "A strict detector candidate exposes residue, persistence, audit, replication, and order witnesses."),
+    "Book4ImaginationDetector.reproduciblePackage_components": (
+        "Book4ImaginationDetector.lean",
+        "A reproducible detector package exposes its source pin, input hash, declared thresholds, negative control, and non-oracle boundary."),
+    "Book4ImaginationDetector.reproducible_negative_result_is_deliverable": (
+        "Book4ImaginationDetector.lean",
+        "A provenance-complete negative detector result remains a valid deliverable without manufacturing a positive candidate."),
     "Book4ImaginationDetector.evidence_does_not_identify_imagination": (
         "Book4ImaginationDetector.lean",
         "Countermodel: identical detector evidence is compatible with opposite latent imagination labels."),

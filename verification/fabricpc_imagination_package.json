@@ -1,0 +1,186 @@
+{
+  "schema": "sketched.fabricpc-imagination-package.v1",
+  "source": {
+    "repository": "https://github.com/trueagi-io/FabricPC.git",
+    "commit": "b6f64adf9314863ce665085a92d544807d585819",
+    "install_receipt": "verification/fabricpc_install_receipt.json",
+    "external_checkout_state_claim": false,
+    "upstream_push_authorized": false
+  },
+  "contract": {
+    "lean": "ForcingAnalysis.Book4ImaginationDetector.ReproduciblePackage",
+    "positive_candidate_required": false,
+    "global_lipschitz_claim": false,
+    "hessian_claim": false,
+    "imagination_claim": false,
+    "phase_transition_claim": false,
+    "latent_cause_identified": false
+  },
+  "checks": {
+    "certificate_pairs": [
+      {
+        "input": "verification/fabricpc_orientation_trace.json",
+        "certificate": "verification/fabricpc_orientation_certificate.json",
+        "reproduced": true
+      },
+      {
+        "input": "verification/fabricpc_second_order_trace.json",
+        "certificate": "verification/fabricpc_second_order_certificate.json",
+        "reproduced": true
+      },
+      {
+        "input": "verification/fabricpc_second_order_nonlinear_trace.json",
+        "certificate": "verification/fabricpc_second_order_nonlinear_certificate.json",
+        "reproduced": true
+      },
+      {
+        "input": "verification/fabricpc_imagination_sweep_input.json",
+        "certificate": "verification/fabricpc_imagination_sweep_certificate.json",
+        "reproduced": true
+      }
+    ],
+    "source_documents": [
+      {
+        "path": "verification/fabricpc_orientation_trace.json",
+        "repository_matches": true,
+        "commit_matches": true
+      },
+      {
+        "path": "verification/fabricpc_orientation_certificate.json",
+        "repository_matches": true,
+        "commit_matches": true
+      },
+      {
+        "path": "verification/fabricpc_second_order_trace.json",
+        "repository_matches": true,
+        "commit_matches": true
+      },
+      {
+        "path": "verification/fabricpc_second_order_certificate.json",
+        "repository_matches": true,
+        "commit_matches": true
+      },
+      {
+        "path": "verification/fabricpc_second_order_nonlinear_trace.json",
+        "repository_matches": true,
+        "commit_matches": true
+      },
+      {
+        "path": "verification/fabricpc_second_order_nonlinear_certificate.json",
+        "repository_matches": true,
+        "commit_matches": true
+      },
+      {
+        "path": "verification/fabricpc_imagination_sweep_input.json",
+        "repository_matches": true,
+        "commit_matches": true
+      },
+      {
+        "path": "verification/fabricpc_imagination_sweep_certificate.json",
+        "repository_matches": true,
+        "commit_matches": true
+      }
+    ],
+    "sweep_input_rebuilt": true,
+    "negative_result_publishable": true,
+    "finding_count": 0
+  },
+  "observed_verdict": {
+    "screening_candidate": false,
+    "orientation_sensitive_candidate": false,
+    "imagination_identified": false
+  },
+  "artifacts": [
+    {
+      "path": "verification/fabricpc_install_receipt.json",
+      "sha256": "b18fe3d525f61d132847db1cf08f1899f7572e806522ef50aaac3753e9437320",
+      "bytes": 1152
+    },
+    {
+      "path": "verification/fabricpc_orientation_trace.json",
+      "sha256": "4803d25b2a53da33ff37ae35b5a0625da59b39491144f1efd4e61185f3967eb3",
+      "bytes": 4808
+    },
+    {
+      "path": "verification/fabricpc_orientation_certificate.json",
+      "sha256": "8a6ede577076bd791d7834595a7fab402d1b6e0e2a150203465185dbd8d38c22",
+      "bytes": 6132
+    },
+    {
+      "path": "verification/fabricpc_orientation_sweep.json",
+      "sha256": "c18cf4f153c7844aface93b8923ce98c960d0c8644447774baff03f42462febb",
+      "bytes": 42394
+    },
+    {
+      "path": "verification/fabricpc_orientation_block_sweep.json",
+      "sha256": "43a8c877c5fcd5d04d307463fb3ac6735318ead6ac5e21e8847739721afb37c2",
+      "bytes": 464297
+    },
+    {
+      "path": "verification/fabricpc_second_order_trace.json",
+      "sha256": "ce02658a0dbc9c652c90193fba36002d5fdfc374dd4fb8bfb72e256708ce505c",
+      "bytes": 7252
+    },
+    {
+      "path": "verification/fabricpc_second_order_certificate.json",
+      "sha256": "19c4505018c1a42fdd4b8d10ea481280103dc9d117653f72b5f21177dc828a3f",
+      "bytes": 3845
+    },
+    {
+      "path": "verification/fabricpc_second_order_nonlinear_trace.json",
+      "sha256": "7153f06bf1503753ade29398c1d4b9698cd841fc6a96ac72f432ab0abbe0f964",
+      "bytes": 7152
+    },
+    {
+      "path": "verification/fabricpc_second_order_nonlinear_certificate.json",
+      "sha256": "63a5cf841213e4549d92edccf0408d8614a04b05c15510ee9e38efef798d7cae",
+      "bytes": 4712
+    },
+    {
+      "path": "verification/fabricpc_imagination_sweep_input.json",
+      "sha256": "4718aef9eff7b34dc81035e4abe5ffd944cfaf1aa02b1fec62b5f1d2cb0941e6",
+      "bytes": 18412
+    },
+    {
+      "path": "verification/fabricpc_imagination_sweep_certificate.json",
+      "sha256": "4f94d8330a7b946881d03cee78842e6d6351b7b806b57ba07ae2a8b9eb019c2f",
+      "bytes": 3160
+    },
+    {
+      "path": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4ImaginationDetector.lean",
+      "sha256": "45a10a955d4f1d46e30349e953f8bccae2dad262bc3e7b30c110ce650365e5e2",
+      "bytes": 7216
+    },
+    {
+      "path": "verification/tools/fabricpc_orientation_sensor.py",
+      "sha256": "4bf5160279cf02a15cf43ff8cf07af83a3da6722f15ee37f9e02605ef2f1d7f9",
+      "bytes": 6095
+    },
+    {
+      "path": "verification/tools/second_order_sensor.py",
+      "sha256": "f9c0d423e5808568b69b46a6547fe70d87ca400e2e26c7c1cd792437c1f942c4",
+      "bytes": 8195
+    },
+    {
+      "path": "verification/tools/imagination_sweep_detector.py",
+      "sha256": "2527af881ff1709db9587491616350ae0cb9064d7f093f774103c80df986df26",
+      "bytes": 11689
+    },
+    {
+      "path": "verification/tools/fabricpc_imagination_adapter.py",
+      "sha256": "4b95689a60620b500ba662af868f4f5df461af1398f61207bdf6735c91322faa",
+      "bytes": 4139
+    },
+    {
+      "path": "verification/tools/fabricpc_imagination_package.py",
+      "sha256": "3018a756bbea632f1aad16c065d9d88200475553e2c71583d0a2f48a6e98a581",
+      "bytes": 9658
+    },
+    {
+      "path": "docs/31_FABRICPC_IMAGINATION_PACKAGE.md",
+      "sha256": "6317ff9d044d464f5256dc4fede732728e57fe61db0447d232d2da116233c7d7",
+      "bytes": 2711
+    }
+  ],
+  "ready": true
+}

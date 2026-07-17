@@ -53,7 +53,7 @@ viable; both belong to its control and selection policy.
 
 - Principia coverage: **476 / 476** claim-bearing atlas nodes.
 - Book 5 coverage: **75 / 75**; no exact claims remain.
-- Lean receipt: **1,356** verified declarations.
+- Lean receipt: **1,358** verified declarations.
 - Principia projection: **958 bindings across 638 anchors**.
 - Exact global frontier: **0 claims**.
 - Full application suite: **49 / 49 tests passing**.
@@ -148,9 +148,9 @@ The matching runtime certificate requires repeated four-branch measurements in a
 
 Current machine-verified state:
 
-- Lean receipt: **1,356** declarations, **0 `sorry`**;
+- Lean receipt: **1,358** declarations, **0 `sorry`**;
 - exact Principia atlas: **476 / 476**, with **0 frontier claims**;
-- detector/tool tests: **65 / 65 passing**;
+- detector/tool tests: **68 / 68 passing**;
 - application tests: **49 / 49 passing**;
 - LeanPS wiring, frontier, binding, source-obligation, and projection audits: **0 findings**;
 - legacy LaTeX ledger audit: **10 known pre-existing findings**;
@@ -166,10 +166,16 @@ This is recorded as an authorial clarification, not a Principia erratum or a new
 
 A finite trace manifold and a positive observer threshold then define the higher-order attribution. The positive control operationally detects and attributes the process at support two with threshold two. The withholding control presents the identical process and traces at threshold three: operational detection remains true while attribution is false. Thus the implementation distinguishes the process from an observer's collapse without introducing a hidden consciousness substance.
 
-See `docs/30_CONSCIOUSNESS_ATTRIBUTION_CONTRACT.md`. Exact Principia coverage remains **476 / 476**; the Lean receipt is now **1,356** declarations, with **0 `sorry`**.
+See `docs/30_CONSCIOUSNESS_ATTRIBUTION_CONTRACT.md`. Exact Principia coverage remains **476 / 476**; the Lean receipt is now **1,358** declarations, with **0 `sorry`**.
 
 ### Freedom culminates in Book 9 Grace
 
 The dependency direction is now explicit. Book 4 supplies coherence-preserving transformation of an initial constraint domain; it does not complete the freedom operator. The terminal claim is `theorem:bk9_freedom_as_grace` at the end of Book 9.
 
 `Book9B.lean` now represents all three capacities stated there: sustaining identity under unresolved contradiction, intentionally lowering reflective barriers, and accepting a transient positive free-energy change for positive viability expansion. The maximal-freedom iff deployable-Grace claim remains conditional on an explicit Book 9 correspondence bridge. Countermodels prevent either Book 4 flow freedom or Grace's identity bound alone from being promoted into the terminal theorem.
+
+### FabricPC imagination package
+
+The detector is now packaged as a reproducible experimental deliverable rather than a collection of adjacent scripts. `verification/fabricpc_imagination_package.json` binds the pinned FabricPC commit, 18 hashed artifacts, four recomputed certificate pairs, the rebuilt multiframe input, the Lean package contract, and explicit non-oracle claims. Package readiness does not require a positive detector result: the current FabricPC calibration remains negative and publishable. The portable manifest makes no live checkout-state claim and records that no upstream push is authorized; a separate local inspection shows the pinned checkout is clean and one commit behind upstream.
+
+Run `python verification/tools/fabricpc_imagination_package.py --check`. See `docs/31_FABRICPC_IMAGINATION_PACKAGE.md`.

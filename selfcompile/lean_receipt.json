@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "generated_from": "lake env lean ForcingAnalysis.lean (leanprover/lean4:v4.31.0)",
-  "verified": 1356,
+  "verified": 1358,
   "theorems": [
     {
       "name": "transport_identity_iff_residue",
@@ -15704,6 +15704,24 @@
       "file": "Book4ImaginationDetector.lean",
       "statement": "A strict detector candidate exposes residue, persistence, audit, replication, and order witnesses.",
       "axioms": [],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ImaginationDetector.reproduciblePackage_components",
+      "file": "Book4ImaginationDetector.lean",
+      "statement": "A reproducible detector package exposes its source pin, input hash, declared thresholds, negative control, and non-oracle boundary.",
+      "axioms": [],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ImaginationDetector.reproducible_negative_result_is_deliverable",
+      "file": "Book4ImaginationDetector.lean",
+      "statement": "A provenance-complete negative detector result remains a valid deliverable without manufacturing a positive candidate.",
+      "axioms": [
+        "propext"
+      ],
       "sorry": false,
       "status": "P"
     },
