@@ -65,6 +65,8 @@ def render_doc(packet: dict) -> str:
             f"- {node['id']} ({node['type']}, line {node.get('line', '?')}): "
             f"{node.get('name') or ''}"
         )
+    while lines and not lines[-1]:
+        lines.pop()
     return "\n".join(lines) + "\n"
 
 

@@ -240,6 +240,7 @@ structure FiniteHomologicalExtension where
   bettiBound : ℕ
   new_finrank_le : Module.finrank 𝕜 Hnew ≤ bettiBound
 
+omit [Module.Finite 𝕜 Hext] in
 /-- **proposition:bk4_homological_extension**, direct-sum clause: the
 rank of extended homology is exactly old rank plus newly generated rank. -/
 theorem FiniteHomologicalExtension.finrank_eq_add
@@ -248,6 +249,7 @@ theorem FiniteHomologicalExtension.finrank_eq_add
       Module.finrank 𝕜 Hold + Module.finrank 𝕜 Hnew := by
   rw [LinearEquiv.finrank_eq H.split, Module.finrank_prod]
 
+omit [Module.Finite 𝕜 Hext] in
 /-- The Betti bound on new homology yields the corresponding total-rank
 bound on the extended space. -/
 theorem FiniteHomologicalExtension.finrank_le_old_add_bound

@@ -1,0 +1,19 @@
+{
+  "schema": "lean-coverage-map/v1",
+  "source": "C:/src/principia/src/appendix_symbolic_framing.tex",
+  "boundary": "Appendix D consumes the Principia and Appendix C memory kernel; external empirical claims require an explicit implementation witness.",
+  "entries": [
+    {
+      "atlas_id": "theorem:appD_titans_as_arrow_of_time",
+      "coverage": "conditional",
+      "lean": [
+        "AppendixTitansArrow.memorization_changes_history",
+        "AppendixTitansArrow.memorization_has_positive_cost",
+        "AppendixTitansArrow.titans_arrow_of_time",
+        "AppendixTitansArrow.visible_return_is_not_full_return",
+        "AppendixTitansArrow.bare_testTime_update_need_not_be_irreversible"
+      ],
+      "note": "Conditional downstream kernel: any test-time learning process equipped with the Appendix C MemoryAct laws strictly advances history, pays positive cost, and cannot return to its initial history after a positive number of steps. Visible state can return without full-state return. A reversible Bool update proves a bare external test-time transition does not itself entail irreversibility or empirical validation."
+    }
+  ]
+}

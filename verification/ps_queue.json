@@ -4,6 +4,7 @@
     "principia_atlas": "C:\\src\\principia\\bib\\principia_atlas.json",
     "coverage_maps": [
       "verification/appendix_dual_horizon_lean_map.json",
+      "verification/appendix_symbolic_framing_lean_map.json",
       "verification/book2_lean_map.json",
       "verification/book3_lean_map.json",
       "verification/book4a_lean_map.json",
@@ -20,89 +21,25 @@
   },
   "books_total": 13,
   "claims_total": 476,
-  "mapped_total": 406,
-  "source_obligations_unresolved": 4,
-  "source_obligations_blocked": 3,
+  "mapped_total": 476,
+  "source_obligations_unresolved": 66,
+  "source_obligations_blocked": 58,
   "queue": [
-    {
-      "book": "book5",
-      "claims": 75,
-      "mapped": 60,
-      "bound": 0,
-      "open": 15,
-      "note": "in progress"
-    },
-    {
-      "book": "book4",
-      "claims": 98,
-      "mapped": 85,
-      "bound": 0,
-      "open": 13,
-      "note": "in progress"
-    },
-    {
-      "book": "book6",
-      "claims": 36,
-      "mapped": 28,
-      "bound": 0,
-      "open": 8,
-      "note": "in progress"
-    },
-    {
-      "book": "book8",
-      "claims": 39,
-      "mapped": 31,
-      "bound": 0,
-      "open": 8,
-      "note": "in progress"
-    },
-    {
-      "book": "book7",
-      "claims": 41,
-      "mapped": 34,
-      "bound": 1,
-      "open": 7,
-      "note": "in progress"
-    },
-    {
-      "book": "book9",
-      "claims": 31,
-      "mapped": 25,
-      "bound": 0,
-      "open": 6,
-      "note": "in progress"
-    },
     {
       "book": "appendix_dual_horizon",
       "claims": 35,
-      "mapped": 31,
+      "mapped": 35,
       "bound": 0,
-      "open": 4,
-      "note": "in progress"
-    },
-    {
-      "book": "book2",
-      "claims": 16,
-      "mapped": 12,
-      "bound": 0,
-      "open": 4,
-      "note": "in progress"
-    },
-    {
-      "book": "book3",
-      "claims": 17,
-      "mapped": 13,
-      "bound": 0,
-      "open": 4,
-      "note": "in progress"
+      "open": 0,
+      "note": "complete"
     },
     {
       "book": "appendix_symbolic_framing",
       "claims": 2,
-      "mapped": 1,
+      "mapped": 2,
       "bound": 0,
-      "open": 1,
-      "note": "in progress"
+      "open": 0,
+      "note": "complete"
     },
     {
       "book": "appendix_symbolic_reflexive_validation",
@@ -116,6 +53,70 @@
       "book": "book1",
       "claims": 1,
       "mapped": 1,
+      "bound": 0,
+      "open": 0,
+      "note": "complete"
+    },
+    {
+      "book": "book2",
+      "claims": 16,
+      "mapped": 16,
+      "bound": 0,
+      "open": 0,
+      "note": "complete"
+    },
+    {
+      "book": "book3",
+      "claims": 17,
+      "mapped": 17,
+      "bound": 0,
+      "open": 0,
+      "note": "complete"
+    },
+    {
+      "book": "book4",
+      "claims": 98,
+      "mapped": 98,
+      "bound": 0,
+      "open": 0,
+      "note": "complete"
+    },
+    {
+      "book": "book5",
+      "claims": 75,
+      "mapped": 75,
+      "bound": 0,
+      "open": 0,
+      "note": "complete"
+    },
+    {
+      "book": "book6",
+      "claims": 36,
+      "mapped": 36,
+      "bound": 0,
+      "open": 0,
+      "note": "complete"
+    },
+    {
+      "book": "book7",
+      "claims": 41,
+      "mapped": 41,
+      "bound": 0,
+      "open": 0,
+      "note": "complete"
+    },
+    {
+      "book": "book8",
+      "claims": 39,
+      "mapped": 39,
+      "bound": 0,
+      "open": 0,
+      "note": "complete"
+    },
+    {
+      "book": "book9",
+      "claims": 31,
+      "mapped": 31,
       "bound": 0,
       "open": 0,
       "note": "complete"

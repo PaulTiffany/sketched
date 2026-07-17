@@ -4,6 +4,35 @@
  "boundary": "Mappings certify only the static/algebraic/finite kernel. Manifold, Hilbert-space, PDE, categorical, and asymptotic material is not certified; conditional and partial rows do not promote the full prose statement to a Lean theorem.",
  "entries": [
   {
+   "atlas_id": "proposition:bk4_quantum_geometry",
+   "coverage": "conditional",
+   "lean": [
+    "Book4QuantumGeometry.twoSegmentPathDependent_iff_noncommute",
+    "Book4QuantumGeometry.noncommuting_transport_is_path_dependent",
+    "Book4QuantumGeometry.quantum_fluctuation_of_symbolic_path_dependence",
+    "Book4QuantumGeometry.path_dependence_alone_does_not_force_quantum_fluctuation"
+   ],
+   "note": "Finite holonomy kernel: two-segment symbolic path dependence is exactly noncommutation of transports. A quantum-fluctuation conclusion follows only through an explicit modal bridge preserving that predicate; a logical countermodel shows path dependence alone does not manufacture the physical reading."
+  },  {
+   "atlas_id": "proposition:bk4_gauge_dictionary",
+   "coverage": "conditional",
+   "lean": [
+    "Book4Gauge.derivative_correspondence_bijective",
+    "Book4Gauge.curvature_correspondence_bijective",
+    "Book4Gauge.names_alone_do_not_supply_gauge_dictionary"
+   ],
+   "note": "A structural gauge dictionary is explicit data of reversible translations; its derivative and curvature correspondences are therefore bijective. A Unit-to-Empty countermodel proves that merely listing paired names cannot manufacture such a dictionary."
+  },
+  {
+   "atlas_id": "corollary:bk4_wilson_loop",
+   "coverage": "proved-kernel",
+   "lean": [
+    "Book4Gauge.pathOrderedProduct_nil",
+    "Book4Gauge.pathOrderedProduct_append",
+    "Book4Gauge.two_segment_order_independent_iff"
+   ],
+   "note": "Finite noncommutative Wilson kernel: path ordering is list multiplication, concatenated paths compose in order, the empty loop is identity, and reversing two segments preserves holonomy exactly when they commute. Analytic path-ordered exponentials are not asserted."
+  },  {
    "atlas_id": "lemma:bk4_fragmentation_cascade",
    "coverage": "proved-kernel",
    "lean": [

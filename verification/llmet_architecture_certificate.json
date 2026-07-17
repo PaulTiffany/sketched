@@ -1,0 +1,65 @@
+{
+  "schema": "sketched.llmet-architecture-audit.v1",
+  "source": {
+    "label": "Giants/MagicBeans/Beanbag/Emergence/BridgestoBanach/Code/LLMET.py",
+    "sha256": "adaa83ef0a89918885571e3d3eca519345c34121ffe5eb513e10edb8a155aba0",
+    "executed": false
+  },
+  "input_certificate_sha256": "98162f574a2dc3173b1c2b93f982ce12ff8cfd520b0f9423911e8979e2c3a383",
+  "method": {
+    "boundary_tolerance_lines": 40,
+    "declared_boundary_confound_rule": "cluster center lies within tolerance of a function, method, or class start",
+    "regime_change_disproved": false,
+    "generation_history_claim": false,
+    "cognitive_state_claim": false,
+    "imagination_claim": false
+  },
+  "summary": {
+    "declarations": 70,
+    "persistent_clusters": 2,
+    "clusters_near_declared_boundaries": 2,
+    "interior_unreachable_witnesses": 1
+  },
+  "persistent_cluster_audit": [
+    {
+      "line_estimate": 241,
+      "support_count": 2,
+      "nearest_declaration": {
+        "kind": "FunctionDef",
+        "name": "solve_problem_with_handling",
+        "start_line": 234,
+        "end_line": 256,
+        "distance_to_start": 7
+      },
+      "declared_boundary_confound": true
+    },
+    {
+      "line_estimate": 1681,
+      "support_count": 2,
+      "nearest_declaration": {
+        "kind": "FunctionDef",
+        "name": "on_target_or_time_selected",
+        "start_line": 1720,
+        "end_line": 1774,
+        "distance_to_start": 39
+      },
+      "declared_boundary_confound": true
+    }
+  ],
+  "unreachable_witness_audit": [
+    {
+      "kind": "unreachable_after_guaranteed_termination",
+      "scope": "module/FunctionDef.body@38",
+      "terminator_line": 47,
+      "start_line": 73,
+      "end_line": 94,
+      "owning_declaration": {
+        "kind": "FunctionDef",
+        "name": "check_import",
+        "start_line": 38,
+        "end_line": 94
+      },
+      "interior_control_flow_witness": true
+    }
+  ]
+}

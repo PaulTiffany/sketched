@@ -1,0 +1,2033 @@
+{
+  "schema": "sketched.llmet-regime-certificate.v1",
+  "source": {
+    "label": "Giants/MagicBeans/Beanbag/Emergence/BridgestoBanach/Code/LLMET.py",
+    "sha256": "adaa83ef0a89918885571e3d3eca519345c34121ffe5eb513e10edb8a155aba0",
+    "bytes_utf8": 216095,
+    "line_count": 3646,
+    "executed": false,
+    "copied_into_certificate": false
+  },
+  "method": {
+    "ordered_source_proxy": "line order; not verified generation chronology",
+    "window_lines": 160,
+    "stride_lines": 80,
+    "feature_names": [
+      "comment_rate",
+      "try_rate",
+      "handler_rate",
+      "broad_handler_rate",
+      "pass_rate",
+      "raise_rate",
+      "return_rate",
+      "defensive_term_rate",
+      "tool_boundary_rate",
+      "logging_rate",
+      "warning_suppression_rate"
+    ],
+    "transition_threshold": 1.4489255371154854,
+    "curvature_threshold": 2.307459222162526,
+    "threshold_rule": "median + 3 * 1.4826 * MAD; 1.5 * median fallback",
+    "authorship_claim": false,
+    "cognitive_state_claim": false,
+    "imagination_claim": false,
+    "phase_transition_claim": false
+  },
+  "summary": {
+    "window_count": 45,
+    "transition_count": 44,
+    "candidate_regime_changes": 3,
+    "candidate_second_order_changes": 0,
+    "orientation_reversals": 19,
+    "try_blocks": 86,
+    "exception_handlers": 121,
+    "broad_exception_handlers": 53,
+    "broad_handlers_without_reraise": 38,
+    "pass_only_handlers": 17,
+    "warning_suppressions": 5,
+    "unreachable_regions": 1
+  },
+  "static_witnesses": {
+    "unreachable_regions": [
+      {
+        "kind": "unreachable_after_guaranteed_termination",
+        "scope": "module/FunctionDef.body@38",
+        "terminator_line": 47,
+        "start_line": 73,
+        "end_line": 94
+      }
+    ],
+    "warning_suppression_lines": [
+      216,
+      217,
+      218,
+      219,
+      220
+    ],
+    "broad_handler_sample": [
+      {
+        "line": 210,
+        "reraises": false
+      },
+      {
+        "line": 106,
+        "reraises": false
+      },
+      {
+        "line": 113,
+        "reraises": false
+      },
+      {
+        "line": 194,
+        "reraises": false
+      },
+      {
+        "line": 253,
+        "reraises": false
+      },
+      {
+        "line": 524,
+        "reraises": false
+      },
+      {
+        "line": 998,
+        "reraises": false
+      },
+      {
+        "line": 1713,
+        "reraises": false
+      },
+      {
+        "line": 2410,
+        "reraises": false
+      },
+      {
+        "line": 2787,
+        "reraises": false
+      },
+      {
+        "line": 2896,
+        "reraises": false
+      },
+      {
+        "line": 3205,
+        "reraises": false
+      },
+      {
+        "line": 3305,
+        "reraises": false
+      },
+      {
+        "line": 3341,
+        "reraises": false
+      },
+      {
+        "line": 3531,
+        "reraises": false
+      },
+      {
+        "line": 3624,
+        "reraises": false
+      },
+      {
+        "line": 3633,
+        "reraises": false
+      },
+      {
+        "line": 283,
+        "reraises": false
+      },
+      {
+        "line": 1104,
+        "reraises": false
+      },
+      {
+        "line": 2256,
+        "reraises": true
+      }
+    ],
+    "pass_only_handlers": [
+      {
+        "line": 194
+      },
+      {
+        "line": 940
+      },
+      {
+        "line": 1771
+      },
+      {
+        "line": 2808
+      },
+      {
+        "line": 2809
+      },
+      {
+        "line": 2817
+      },
+      {
+        "line": 2828
+      },
+      {
+        "line": 3624
+      },
+      {
+        "line": 1104
+      },
+      {
+        "line": 1116
+      },
+      {
+        "line": 1128
+      },
+      {
+        "line": 1136
+      },
+      {
+        "line": 1171
+      },
+      {
+        "line": 1230
+      },
+      {
+        "line": 1562
+      },
+      {
+        "line": 2074
+      },
+      {
+        "line": 1348
+      }
+    ]
+  },
+  "ranked_transitions": [
+    {
+      "from_window": 2,
+      "to_window": 3,
+      "boundary_line": 241,
+      "distance": 1.697808832990439,
+      "leading_features": [
+        {
+          "feature": "warning_suppression_rate",
+          "absolute_standardized_change": 4.953835034141018
+        },
+        {
+          "feature": "comment_rate",
+          "absolute_standardized_change": 1.7541558373796067
+        },
+        {
+          "feature": "pass_rate",
+          "absolute_standardized_change": 1.0613741804318368
+        },
+        {
+          "feature": "try_rate",
+          "absolute_standardized_change": 0.9685611589003538
+        }
+      ],
+      "candidate_regime_change": true
+    },
+    {
+      "from_window": 18,
+      "to_window": 19,
+      "boundary_line": 1521,
+      "distance": 1.561613900487601,
+      "leading_features": [
+        {
+          "feature": "try_rate",
+          "absolute_standardized_change": 3.1894239574086445
+        },
+        {
+          "feature": "broad_handler_rate",
+          "absolute_standardized_change": 2.7725930525664473
+        },
+        {
+          "feature": "handler_rate",
+          "absolute_standardized_change": 2.7301661206898906
+        },
+        {
+          "feature": "raise_rate",
+          "absolute_standardized_change": 0.8379374606447549
+        }
+      ],
+      "candidate_regime_change": true
+    },
+    {
+      "from_window": 0,
+      "to_window": 1,
+      "boundary_line": 81,
+      "distance": 1.542699314380186,
+      "leading_features": [
+        {
+          "feature": "warning_suppression_rate",
+          "absolute_standardized_change": 4.748848756866217
+        },
+        {
+          "feature": "pass_rate",
+          "absolute_standardized_change": 1.0453307350970151
+        },
+        {
+          "feature": "broad_handler_rate",
+          "absolute_standardized_change": 0.9245787979499537
+        },
+        {
+          "feature": "comment_rate",
+          "absolute_standardized_change": 0.8328632579278972
+        }
+      ],
+      "candidate_regime_change": true
+    },
+    {
+      "from_window": 6,
+      "to_window": 7,
+      "boundary_line": 561,
+      "distance": 1.3697471113604152,
+      "leading_features": [
+        {
+          "feature": "return_rate",
+          "absolute_standardized_change": 3.53841578653721
+        },
+        {
+          "feature": "comment_rate",
+          "absolute_standardized_change": 1.8667076269113951
+        },
+        {
+          "feature": "broad_handler_rate",
+          "absolute_standardized_change": 1.468587421413604
+        },
+        {
+          "feature": "handler_rate",
+          "absolute_standardized_change": 1.053117429942878
+        }
+      ],
+      "candidate_regime_change": false
+    },
+    {
+      "from_window": 4,
+      "to_window": 5,
+      "boundary_line": 401,
+      "distance": 1.3159454239245,
+      "leading_features": [
+        {
+          "feature": "return_rate",
+          "absolute_standardized_change": 3.3569657576959977
+        },
+        {
+          "feature": "comment_rate",
+          "absolute_standardized_change": 1.7437054237572318
+        },
+        {
+          "feature": "broad_handler_rate",
+          "absolute_standardized_change": 1.5130900705473496
+        },
+        {
+          "feature": "handler_rate",
+          "absolute_standardized_change": 1.0850300793350864
+        }
+      ],
+      "candidate_regime_change": false
+    },
+    {
+      "from_window": 1,
+      "to_window": 2,
+      "boundary_line": 161,
+      "distance": 1.3021191456149763,
+      "leading_features": [
+        {
+          "feature": "pass_rate",
+          "absolute_standardized_change": 4.025902063706967
+        },
+        {
+          "feature": "logging_rate",
+          "absolute_standardized_change": 0.8686072525220541
+        },
+        {
+          "feature": "defensive_term_rate",
+          "absolute_standardized_change": 0.8247033362786511
+        },
+        {
+          "feature": "return_rate",
+          "absolute_standardized_change": 0.7840423536073919
+        }
+      ],
+      "candidate_regime_change": false
+    },
+    {
+      "from_window": 19,
+      "to_window": 20,
+      "boundary_line": 1601,
+      "distance": 1.0651941699557097,
+      "leading_features": [
+        {
+          "feature": "raise_rate",
+          "absolute_standardized_change": 2.502597157795616
+        },
+        {
+          "feature": "broad_handler_rate",
+          "absolute_standardized_change": 1.4334205381079363
+        },
+        {
+          "feature": "try_rate",
+          "absolute_standardized_change": 1.3146537066822281
+        },
+        {
+          "feature": "logging_rate",
+          "absolute_standardized_change": 1.2087003607568871
+        }
+      ],
+      "candidate_regime_change": false
+    },
+    {
+      "from_window": 16,
+      "to_window": 17,
+      "boundary_line": 1361,
+      "distance": 0.9761258001550426,
+      "leading_features": [
+        {
+          "feature": "broad_handler_rate",
+          "absolute_standardized_change": 1.8491501620556994
+        },
+        {
+          "feature": "handler_rate",
+          "absolute_standardized_change": 1.731581047519591
+        },
+        {
+          "feature": "try_rate",
+          "absolute_standardized_change": 1.5793519081877083
+        },
+        {
+          "feature": "raise_rate",
+          "absolute_standardized_change": 0.909497537141807
+        }
+      ],
+      "candidate_regime_change": false
+    },
+    {
+      "from_window": 22,
+      "to_window": 23,
+      "boundary_line": 1841,
+      "distance": 0.9648461960829415,
+      "leading_features": [
+        {
+          "feature": "broad_handler_rate",
+          "absolute_standardized_change": 1.9158550533549175
+        },
+        {
+          "feature": "return_rate",
+          "absolute_standardized_change": 1.4860933499747955
+        },
+        {
+          "feature": "logging_rate",
+          "absolute_standardized_change": 1.3561028437760196
+        },
+        {
+          "feature": "raise_rate",
+          "absolute_standardized_change": 1.137544162634371
+        }
+      ],
+      "candidate_regime_change": false
+    },
+    {
+      "from_window": 30,
+      "to_window": 31,
+      "boundary_line": 2481,
+      "distance": 0.9303559571199558,
+      "leading_features": [
+        {
+          "feature": "defensive_term_rate",
+          "absolute_standardized_change": 2.1575980628004023
+        },
+        {
+          "feature": "logging_rate",
+          "absolute_standardized_change": 1.346416394891905
+        },
+        {
+          "feature": "handler_rate",
+          "absolute_standardized_change": 1.2787854506449232
+        },
+        {
+          "feature": "broad_handler_rate",
+          "absolute_standardized_change": 0.9510851872011912
+        }
+      ],
+      "candidate_regime_change": false
+    },
+    {
+      "from_window": 28,
+      "to_window": 29,
+      "boundary_line": 2321,
+      "distance": 0.8919148486577185,
+      "leading_features": [
+        {
+          "feature": "tool_boundary_rate",
+          "absolute_standardized_change": 1.5931041768259022
+        },
+        {
+          "feature": "raise_rate",
+          "absolute_standardized_change": 1.4266343332888198
+        },
+        {
+          "feature": "defensive_term_rate",
+          "absolute_standardized_change": 1.3758677017255758
+        },
+        {
+          "feature": "handler_rate",
+          "absolute_standardized_change": 1.2926422589336457
+        }
+      ],
+      "candidate_regime_change": false
+    },
+    {
+      "from_window": 8,
+      "to_window": 9,
+      "boundary_line": 721,
+      "distance": 0.8656865285253076,
+      "leading_features": [
+        {
+          "feature": "comment_rate",
+          "absolute_standardized_change": 2.8390974284582104
+        },
+        {
+          "feature": "tool_boundary_rate",
+          "absolute_standardized_change": 0.4235311954982163
+        },
+        {
+          "feature": "defensive_term_rate",
+          "absolute_standardized_change": 0.05692441745666699
+        },
+        {
+          "feature": "try_rate",
+          "absolute_standardized_change": 0.015496681243964305
+        }
+      ],
+      "candidate_regime_change": false
+    }
+  ],
+  "ranked_second_order_changes": [
+    {
+      "window": 1,
+      "curvature_norm": 2.1330917226567765,
+      "successive_change_cosine": -0.118142666661144,
+      "orientation_reversal": true,
+      "candidate_second_order_change": false
+    },
+    {
+      "window": 2,
+      "curvature_norm": 2.0433583477820068,
+      "successive_change_cosine": 0.09109032612871161,
+      "orientation_reversal": false,
+      "candidate_second_order_change": false
+    },
+    {
+      "window": 4,
+      "curvature_norm": 2.006279576139985,
+      "successive_change_cosine": -0.7226345237756193,
+      "orientation_reversal": true,
+      "candidate_second_order_change": false
+    },
+    {
+      "window": 18,
+      "curvature_norm": 1.8413754132407703,
+      "successive_change_cosine": -0.6322891091279478,
+      "orientation_reversal": true,
+      "candidate_second_order_change": false
+    },
+    {
+      "window": 3,
+      "curvature_norm": 1.770061834906004,
+      "successive_change_cosine": 0.15844426764323985,
+      "orientation_reversal": false,
+      "candidate_second_order_change": false
+    },
+    {
+      "window": 6,
+      "curvature_norm": 1.4532713922000065,
+      "successive_change_cosine": -0.14594179994462447,
+      "orientation_reversal": true,
+      "candidate_second_order_change": false
+    },
+    {
+      "window": 22,
+      "curvature_norm": 1.3906061321730254,
+      "successive_change_cosine": -0.3493611887583446,
+      "orientation_reversal": true,
+      "candidate_second_order_change": false
+    },
+    {
+      "window": 19,
+      "curvature_norm": 1.3074275160655606,
+      "successive_change_cosine": 0.5602636790011085,
+      "orientation_reversal": false,
+      "candidate_second_order_change": false
+    },
+    {
+      "window": 7,
+      "curvature_norm": 1.2929010133402763,
+      "successive_change_cosine": 0.3375592426580201,
+      "orientation_reversal": false,
+      "candidate_second_order_change": false
+    },
+    {
+      "window": 30,
+      "curvature_norm": 1.2649734847725496,
+      "successive_change_cosine": -0.4476449508061929,
+      "orientation_reversal": true,
+      "candidate_second_order_change": false
+    },
+    {
+      "window": 36,
+      "curvature_norm": 1.2570176812742813,
+      "successive_change_cosine": -0.19988492021332466,
+      "orientation_reversal": true,
+      "candidate_second_order_change": false
+    },
+    {
+      "window": 8,
+      "curvature_norm": 1.2558948011795539,
+      "successive_change_cosine": -0.5343090526355107,
+      "orientation_reversal": true,
+      "candidate_second_order_change": false
+    }
+  ],
+  "windows": [
+    {
+      "index": 0,
+      "start_line": 1,
+      "end_line": 160,
+      "nonblank_lines": 146,
+      "counts": {
+        "comments": 35,
+        "tries": 4,
+        "handlers": 4,
+        "broad_handlers": 2,
+        "passes": 12,
+        "raises": 0,
+        "returns": 6,
+        "defensive_terms": 5,
+        "tool_terms": 13,
+        "logging_calls": 3,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 23.972602739726025,
+        "try_rate": 2.73972602739726,
+        "handler_rate": 2.73972602739726,
+        "broad_handler_rate": 1.36986301369863,
+        "pass_rate": 8.21917808219178,
+        "raise_rate": 0.0,
+        "return_rate": 4.10958904109589,
+        "defensive_term_rate": 3.4246575342465753,
+        "tool_boundary_rate": 8.904109589041095,
+        "logging_rate": 2.054794520547945,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 1,
+      "start_line": 81,
+      "end_line": 240,
+      "nonblank_lines": 145,
+      "counts": {
+        "comments": 45,
+        "tries": 5,
+        "handlers": 5,
+        "broad_handlers": 4,
+        "passes": 15,
+        "raises": 0,
+        "returns": 4,
+        "defensive_terms": 16,
+        "tool_terms": 23,
+        "logging_calls": 3,
+        "warning_suppressions": 5
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 31.03448275862069,
+        "try_rate": 3.4482758620689657,
+        "handler_rate": 3.4482758620689657,
+        "broad_handler_rate": 2.7586206896551726,
+        "pass_rate": 10.344827586206897,
+        "raise_rate": 0.0,
+        "return_rate": 2.7586206896551726,
+        "defensive_term_rate": 11.03448275862069,
+        "tool_boundary_rate": 15.862068965517242,
+        "logging_rate": 2.0689655172413794,
+        "warning_suppression_rate": 3.4482758620689657
+      }
+    },
+    {
+      "index": 2,
+      "start_line": 161,
+      "end_line": 320,
+      "nonblank_lines": 139,
+      "counts": {
+        "comments": 47,
+        "tries": 4,
+        "handlers": 6,
+        "broad_handlers": 4,
+        "passes": 3,
+        "raises": 0,
+        "returns": 7,
+        "defensive_terms": 29,
+        "tool_terms": 28,
+        "logging_calls": 8,
+        "warning_suppressions": 5
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 33.81294964028777,
+        "try_rate": 2.8776978417266186,
+        "handler_rate": 4.316546762589928,
+        "broad_handler_rate": 2.8776978417266186,
+        "pass_rate": 2.158273381294964,
+        "raise_rate": 0.0,
+        "return_rate": 5.0359712230215825,
+        "defensive_term_rate": 20.863309352517984,
+        "tool_boundary_rate": 20.14388489208633,
+        "logging_rate": 5.755395683453237,
+        "warning_suppression_rate": 3.597122302158273
+      }
+    },
+    {
+      "index": 3,
+      "start_line": 241,
+      "end_line": 400,
+      "nonblank_lines": 132,
+      "counts": {
+        "comments": 25,
+        "tries": 1,
+        "handlers": 4,
+        "broad_handlers": 2,
+        "passes": 0,
+        "raises": 0,
+        "returns": 8,
+        "defensive_terms": 18,
+        "tool_terms": 12,
+        "logging_calls": 7,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 18.939393939393938,
+        "try_rate": 0.7575757575757576,
+        "handler_rate": 3.0303030303030303,
+        "broad_handler_rate": 1.5151515151515151,
+        "pass_rate": 0.0,
+        "raise_rate": 0.0,
+        "return_rate": 6.0606060606060606,
+        "defensive_term_rate": 13.636363636363637,
+        "tool_boundary_rate": 9.09090909090909,
+        "logging_rate": 5.303030303030303,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 4,
+      "start_line": 321,
+      "end_line": 480,
+      "nonblank_lines": 124,
+      "counts": {
+        "comments": 23,
+        "tries": 0,
+        "handlers": 0,
+        "broad_handlers": 0,
+        "passes": 0,
+        "raises": 0,
+        "returns": 2,
+        "defensive_terms": 1,
+        "tool_terms": 0,
+        "logging_calls": 0,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 18.548387096774192,
+        "try_rate": 0.0,
+        "handler_rate": 0.0,
+        "broad_handler_rate": 0.0,
+        "pass_rate": 0.0,
+        "raise_rate": 0.0,
+        "return_rate": 1.6129032258064515,
+        "defensive_term_rate": 0.8064516129032258,
+        "tool_boundary_rate": 0.0,
+        "logging_rate": 0.0,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 5,
+      "start_line": 401,
+      "end_line": 560,
+      "nonblank_lines": 132,
+      "counts": {
+        "comments": 44,
+        "tries": 3,
+        "handlers": 4,
+        "broad_handlers": 3,
+        "passes": 0,
+        "raises": 0,
+        "returns": 15,
+        "defensive_terms": 8,
+        "tool_terms": 0,
+        "logging_calls": 0,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 33.333333333333336,
+        "try_rate": 2.2727272727272725,
+        "handler_rate": 3.0303030303030303,
+        "broad_handler_rate": 2.2727272727272725,
+        "pass_rate": 0.0,
+        "raise_rate": 0.0,
+        "return_rate": 11.363636363636363,
+        "defensive_term_rate": 6.0606060606060606,
+        "tool_boundary_rate": 0.0,
+        "logging_rate": 0.0,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 6,
+      "start_line": 481,
+      "end_line": 640,
+      "nonblank_lines": 136,
+      "counts": {
+        "comments": 50,
+        "tries": 3,
+        "handlers": 4,
+        "broad_handlers": 3,
+        "passes": 0,
+        "raises": 0,
+        "returns": 17,
+        "defensive_terms": 18,
+        "tool_terms": 0,
+        "logging_calls": 4,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 36.76470588235294,
+        "try_rate": 2.2058823529411766,
+        "handler_rate": 2.9411764705882355,
+        "broad_handler_rate": 2.2058823529411766,
+        "pass_rate": 0.0,
+        "raise_rate": 0.0,
+        "return_rate": 12.5,
+        "defensive_term_rate": 13.23529411764706,
+        "tool_boundary_rate": 0.0,
+        "logging_rate": 2.9411764705882355,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 7,
+      "start_line": 561,
+      "end_line": 720,
+      "nonblank_lines": 135,
+      "counts": {
+        "comments": 71,
+        "tries": 0,
+        "handlers": 0,
+        "broad_handlers": 0,
+        "passes": 0,
+        "raises": 0,
+        "returns": 3,
+        "defensive_terms": 12,
+        "tool_terms": 10,
+        "logging_calls": 4,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 52.59259259259259,
+        "try_rate": 0.0,
+        "handler_rate": 0.0,
+        "broad_handler_rate": 0.0,
+        "pass_rate": 0.0,
+        "raise_rate": 0.0,
+        "return_rate": 2.2222222222222223,
+        "defensive_term_rate": 8.88888888888889,
+        "tool_boundary_rate": 7.4074074074074066,
+        "logging_rate": 2.962962962962963,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 8,
+      "start_line": 641,
+      "end_line": 800,
+      "nonblank_lines": 134,
+      "counts": {
+        "comments": 82,
+        "tries": 3,
+        "handlers": 3,
+        "broad_handlers": 0,
+        "passes": 0,
+        "raises": 0,
+        "returns": 0,
+        "defensive_terms": 7,
+        "tool_terms": 10,
+        "logging_calls": 3,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 61.194029850746276,
+        "try_rate": 2.238805970149254,
+        "handler_rate": 2.238805970149254,
+        "broad_handler_rate": 0.0,
+        "pass_rate": 0.0,
+        "raise_rate": 0.0,
+        "return_rate": 0.0,
+        "defensive_term_rate": 5.223880597014926,
+        "tool_boundary_rate": 7.462686567164179,
+        "logging_rate": 2.238805970149254,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 9,
+      "start_line": 721,
+      "end_line": 880,
+      "nonblank_lines": 132,
+      "counts": {
+        "comments": 49,
+        "tries": 3,
+        "handlers": 3,
+        "broad_handlers": 0,
+        "passes": 0,
+        "raises": 0,
+        "returns": 0,
+        "defensive_terms": 6,
+        "tool_terms": 1,
+        "logging_calls": 3,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 37.12121212121212,
+        "try_rate": 2.2727272727272725,
+        "handler_rate": 2.2727272727272725,
+        "broad_handler_rate": 0.0,
+        "pass_rate": 0.0,
+        "raise_rate": 0.0,
+        "return_rate": 0.0,
+        "defensive_term_rate": 4.545454545454545,
+        "tool_boundary_rate": 0.7575757575757576,
+        "logging_rate": 2.2727272727272725,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 10,
+      "start_line": 801,
+      "end_line": 960,
+      "nonblank_lines": 131,
+      "counts": {
+        "comments": 42,
+        "tries": 1,
+        "handlers": 1,
+        "broad_handlers": 0,
+        "passes": 1,
+        "raises": 0,
+        "returns": 0,
+        "defensive_terms": 1,
+        "tool_terms": 2,
+        "logging_calls": 0,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 32.06106870229008,
+        "try_rate": 0.7633587786259542,
+        "handler_rate": 0.7633587786259542,
+        "broad_handler_rate": 0.0,
+        "pass_rate": 0.7633587786259542,
+        "raise_rate": 0.0,
+        "return_rate": 0.0,
+        "defensive_term_rate": 0.7633587786259542,
+        "tool_boundary_rate": 1.5267175572519085,
+        "logging_rate": 0.0,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 11,
+      "start_line": 881,
+      "end_line": 1040,
+      "nonblank_lines": 130,
+      "counts": {
+        "comments": 47,
+        "tries": 2,
+        "handlers": 2,
+        "broad_handlers": 1,
+        "passes": 1,
+        "raises": 0,
+        "returns": 0,
+        "defensive_terms": 11,
+        "tool_terms": 1,
+        "logging_calls": 7,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 36.15384615384615,
+        "try_rate": 1.5384615384615385,
+        "handler_rate": 1.5384615384615385,
+        "broad_handler_rate": 0.7692307692307693,
+        "pass_rate": 0.7692307692307693,
+        "raise_rate": 0.0,
+        "return_rate": 0.0,
+        "defensive_term_rate": 8.461538461538462,
+        "tool_boundary_rate": 0.7692307692307693,
+        "logging_rate": 5.384615384615385,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 12,
+      "start_line": 961,
+      "end_line": 1120,
+      "nonblank_lines": 135,
+      "counts": {
+        "comments": 39,
+        "tries": 3,
+        "handlers": 3,
+        "broad_handlers": 2,
+        "passes": 2,
+        "raises": 0,
+        "returns": 0,
+        "defensive_terms": 11,
+        "tool_terms": 13,
+        "logging_calls": 7,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 28.888888888888886,
+        "try_rate": 2.2222222222222223,
+        "handler_rate": 2.2222222222222223,
+        "broad_handler_rate": 1.4814814814814814,
+        "pass_rate": 1.4814814814814814,
+        "raise_rate": 0.0,
+        "return_rate": 0.0,
+        "defensive_term_rate": 8.148148148148147,
+        "tool_boundary_rate": 9.62962962962963,
+        "logging_rate": 5.185185185185185,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 13,
+      "start_line": 1041,
+      "end_line": 1200,
+      "nonblank_lines": 136,
+      "counts": {
+        "comments": 32,
+        "tries": 6,
+        "handlers": 6,
+        "broad_handlers": 1,
+        "passes": 5,
+        "raises": 0,
+        "returns": 0,
+        "defensive_terms": 9,
+        "tool_terms": 13,
+        "logging_calls": 3,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 23.529411764705884,
+        "try_rate": 4.411764705882353,
+        "handler_rate": 4.411764705882353,
+        "broad_handler_rate": 0.7352941176470589,
+        "pass_rate": 3.6764705882352944,
+        "raise_rate": 0.0,
+        "return_rate": 0.0,
+        "defensive_term_rate": 6.61764705882353,
+        "tool_boundary_rate": 9.558823529411764,
+        "logging_rate": 2.2058823529411766,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 14,
+      "start_line": 1121,
+      "end_line": 1280,
+      "nonblank_lines": 136,
+      "counts": {
+        "comments": 39,
+        "tries": 9,
+        "handlers": 8,
+        "broad_handlers": 1,
+        "passes": 4,
+        "raises": 5,
+        "returns": 2,
+        "defensive_terms": 15,
+        "tool_terms": 0,
+        "logging_calls": 7,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 28.676470588235297,
+        "try_rate": 6.61764705882353,
+        "handler_rate": 5.882352941176471,
+        "broad_handler_rate": 0.7352941176470589,
+        "pass_rate": 2.9411764705882355,
+        "raise_rate": 3.6764705882352944,
+        "return_rate": 1.4705882352941178,
+        "defensive_term_rate": 11.029411764705884,
+        "tool_boundary_rate": 0.0,
+        "logging_rate": 5.147058823529412,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 15,
+      "start_line": 1201,
+      "end_line": 1360,
+      "nonblank_lines": 139,
+      "counts": {
+        "comments": 44,
+        "tries": 10,
+        "handlers": 9,
+        "broad_handlers": 3,
+        "passes": 2,
+        "raises": 13,
+        "returns": 2,
+        "defensive_terms": 15,
+        "tool_terms": 0,
+        "logging_calls": 9,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 31.654676258992804,
+        "try_rate": 7.194244604316546,
+        "handler_rate": 6.474820143884892,
+        "broad_handler_rate": 2.158273381294964,
+        "pass_rate": 1.4388489208633093,
+        "raise_rate": 9.35251798561151,
+        "return_rate": 1.4388489208633093,
+        "defensive_term_rate": 10.79136690647482,
+        "tool_boundary_rate": 0.0,
+        "logging_rate": 6.474820143884892,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 16,
+      "start_line": 1281,
+      "end_line": 1440,
+      "nonblank_lines": 142,
+      "counts": {
+        "comments": 38,
+        "tries": 8,
+        "handlers": 12,
+        "broad_handlers": 4,
+        "passes": 1,
+        "raises": 16,
+        "returns": 0,
+        "defensive_terms": 24,
+        "tool_terms": 0,
+        "logging_calls": 11,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 26.76056338028169,
+        "try_rate": 5.633802816901408,
+        "handler_rate": 8.450704225352112,
+        "broad_handler_rate": 2.816901408450704,
+        "pass_rate": 0.704225352112676,
+        "raise_rate": 11.267605633802816,
+        "return_rate": 0.0,
+        "defensive_term_rate": 16.901408450704224,
+        "tool_boundary_rate": 0.0,
+        "logging_rate": 7.746478873239436,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 17,
+      "start_line": 1361,
+      "end_line": 1520,
+      "nonblank_lines": 143,
+      "counts": {
+        "comments": 33,
+        "tries": 13,
+        "handlers": 19,
+        "broad_handlers": 8,
+        "passes": 0,
+        "raises": 12,
+        "returns": 0,
+        "defensive_terms": 34,
+        "tool_terms": 0,
+        "logging_calls": 13,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 23.076923076923077,
+        "try_rate": 9.09090909090909,
+        "handler_rate": 13.286713286713287,
+        "broad_handler_rate": 5.594405594405594,
+        "pass_rate": 0.0,
+        "raise_rate": 8.391608391608392,
+        "return_rate": 0.0,
+        "defensive_term_rate": 23.776223776223777,
+        "tool_boundary_rate": 0.0,
+        "logging_rate": 9.09090909090909,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 18,
+      "start_line": 1441,
+      "end_line": 1600,
+      "nonblank_lines": 142,
+      "counts": {
+        "comments": 34,
+        "tries": 14,
+        "handlers": 19,
+        "broad_handlers": 10,
+        "passes": 1,
+        "raises": 15,
+        "returns": 0,
+        "defensive_terms": 32,
+        "tool_terms": 0,
+        "logging_calls": 11,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 23.943661971830984,
+        "try_rate": 9.859154929577464,
+        "handler_rate": 13.380281690140844,
+        "broad_handler_rate": 7.04225352112676,
+        "pass_rate": 0.704225352112676,
+        "raise_rate": 10.56338028169014,
+        "return_rate": 0.0,
+        "defensive_term_rate": 22.535211267605632,
+        "tool_boundary_rate": 0.0,
+        "logging_rate": 7.746478873239436,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 19,
+      "start_line": 1521,
+      "end_line": 1680,
+      "nonblank_lines": 139,
+      "counts": {
+        "comments": 37,
+        "tries": 4,
+        "handlers": 8,
+        "broad_handlers": 4,
+        "passes": 1,
+        "raises": 11,
+        "returns": 1,
+        "defensive_terms": 18,
+        "tool_terms": 0,
+        "logging_calls": 11,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 26.61870503597122,
+        "try_rate": 2.8776978417266186,
+        "handler_rate": 5.755395683453237,
+        "broad_handler_rate": 2.8776978417266186,
+        "pass_rate": 0.7194244604316546,
+        "raise_rate": 7.913669064748201,
+        "return_rate": 0.7194244604316546,
+        "defensive_term_rate": 12.949640287769784,
+        "tool_boundary_rate": 0.0,
+        "logging_rate": 7.913669064748201,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 20,
+      "start_line": 1601,
+      "end_line": 1760,
+      "nonblank_lines": 138,
+      "counts": {
+        "comments": 30,
+        "tries": 0,
+        "handlers": 7,
+        "broad_handlers": 1,
+        "passes": 0,
+        "raises": 0,
+        "returns": 1,
+        "defensive_terms": 29,
+        "tool_terms": 0,
+        "logging_calls": 18,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 21.73913043478261,
+        "try_rate": 0.0,
+        "handler_rate": 5.072463768115942,
+        "broad_handler_rate": 0.7246376811594203,
+        "pass_rate": 0.0,
+        "raise_rate": 0.0,
+        "return_rate": 0.7246376811594203,
+        "defensive_term_rate": 21.014492753623188,
+        "tool_boundary_rate": 0.0,
+        "logging_rate": 13.043478260869565,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 21,
+      "start_line": 1681,
+      "end_line": 1840,
+      "nonblank_lines": 140,
+      "counts": {
+        "comments": 30,
+        "tries": 1,
+        "handlers": 7,
+        "broad_handlers": 1,
+        "passes": 1,
+        "raises": 0,
+        "returns": 6,
+        "defensive_terms": 34,
+        "tool_terms": 2,
+        "logging_calls": 14,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 21.42857142857143,
+        "try_rate": 0.7142857142857143,
+        "handler_rate": 5.0,
+        "broad_handler_rate": 0.7142857142857143,
+        "pass_rate": 0.7142857142857143,
+        "raise_rate": 0.0,
+        "return_rate": 4.285714285714286,
+        "defensive_term_rate": 24.285714285714285,
+        "tool_boundary_rate": 1.4285714285714286,
+        "logging_rate": 10.0,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 22,
+      "start_line": 1761,
+      "end_line": 1920,
+      "nonblank_lines": 139,
+      "counts": {
+        "comments": 45,
+        "tries": 3,
+        "handlers": 2,
+        "broad_handlers": 0,
+        "passes": 1,
+        "raises": 1,
+        "returns": 6,
+        "defensive_terms": 20,
+        "tool_terms": 2,
+        "logging_calls": 8,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 32.37410071942446,
+        "try_rate": 2.158273381294964,
+        "handler_rate": 1.4388489208633093,
+        "broad_handler_rate": 0.0,
+        "pass_rate": 0.7194244604316546,
+        "raise_rate": 0.7194244604316546,
+        "return_rate": 4.316546762589928,
+        "defensive_term_rate": 14.388489208633093,
+        "tool_boundary_rate": 1.4388489208633093,
+        "logging_rate": 5.755395683453237,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 23,
+      "start_line": 1841,
+      "end_line": 2000,
+      "nonblank_lines": 139,
+      "counts": {
+        "comments": 46,
+        "tries": 5,
+        "handlers": 5,
+        "broad_handlers": 4,
+        "passes": 0,
+        "raises": 6,
+        "returns": 0,
+        "defensive_terms": 24,
+        "tool_terms": 0,
+        "logging_calls": 16,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 33.093525179856115,
+        "try_rate": 3.597122302158273,
+        "handler_rate": 3.597122302158273,
+        "broad_handler_rate": 2.8776978417266186,
+        "pass_rate": 0.0,
+        "raise_rate": 4.316546762589928,
+        "return_rate": 0.0,
+        "defensive_term_rate": 17.26618705035971,
+        "tool_boundary_rate": 0.0,
+        "logging_rate": 11.510791366906474,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 24,
+      "start_line": 1921,
+      "end_line": 2080,
+      "nonblank_lines": 142,
+      "counts": {
+        "comments": 40,
+        "tries": 5,
+        "handlers": 6,
+        "broad_handlers": 6,
+        "passes": 1,
+        "raises": 9,
+        "returns": 0,
+        "defensive_terms": 25,
+        "tool_terms": 0,
+        "logging_calls": 19,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 28.16901408450704,
+        "try_rate": 3.52112676056338,
+        "handler_rate": 4.225352112676056,
+        "broad_handler_rate": 4.225352112676056,
+        "pass_rate": 0.704225352112676,
+        "raise_rate": 6.338028169014084,
+        "return_rate": 0.0,
+        "defensive_term_rate": 17.6056338028169,
+        "tool_boundary_rate": 0.0,
+        "logging_rate": 13.380281690140844,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 25,
+      "start_line": 2001,
+      "end_line": 2160,
+      "nonblank_lines": 139,
+      "counts": {
+        "comments": 43,
+        "tries": 4,
+        "handlers": 4,
+        "broad_handlers": 3,
+        "passes": 1,
+        "raises": 5,
+        "returns": 0,
+        "defensive_terms": 17,
+        "tool_terms": 0,
+        "logging_calls": 12,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 30.93525179856115,
+        "try_rate": 2.8776978417266186,
+        "handler_rate": 2.8776978417266186,
+        "broad_handler_rate": 2.158273381294964,
+        "pass_rate": 0.7194244604316546,
+        "raise_rate": 3.597122302158273,
+        "return_rate": 0.0,
+        "defensive_term_rate": 12.230215827338128,
+        "tool_boundary_rate": 0.0,
+        "logging_rate": 8.633093525179856,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 26,
+      "start_line": 2081,
+      "end_line": 2240,
+      "nonblank_lines": 133,
+      "counts": {
+        "comments": 44,
+        "tries": 5,
+        "handlers": 4,
+        "broad_handlers": 1,
+        "passes": 0,
+        "raises": 2,
+        "returns": 0,
+        "defensive_terms": 23,
+        "tool_terms": 3,
+        "logging_calls": 14,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 33.08270676691729,
+        "try_rate": 3.7593984962406015,
+        "handler_rate": 3.007518796992481,
+        "broad_handler_rate": 0.7518796992481203,
+        "pass_rate": 0.0,
+        "raise_rate": 1.5037593984962405,
+        "return_rate": 0.0,
+        "defensive_term_rate": 17.293233082706767,
+        "tool_boundary_rate": 2.2556390977443606,
+        "logging_rate": 10.526315789473683,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 27,
+      "start_line": 2161,
+      "end_line": 2320,
+      "nonblank_lines": 132,
+      "counts": {
+        "comments": 40,
+        "tries": 4,
+        "handlers": 3,
+        "broad_handlers": 1,
+        "passes": 0,
+        "raises": 7,
+        "returns": 0,
+        "defensive_terms": 36,
+        "tool_terms": 5,
+        "logging_calls": 20,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 30.303030303030305,
+        "try_rate": 3.0303030303030303,
+        "handler_rate": 2.2727272727272725,
+        "broad_handler_rate": 0.7575757575757576,
+        "pass_rate": 0.0,
+        "raise_rate": 5.303030303030303,
+        "return_rate": 0.0,
+        "defensive_term_rate": 27.272727272727273,
+        "tool_boundary_rate": 3.787878787878788,
+        "logging_rate": 15.151515151515152,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 28,
+      "start_line": 2241,
+      "end_line": 2400,
+      "nonblank_lines": 133,
+      "counts": {
+        "comments": 44,
+        "tries": 1,
+        "handlers": 4,
+        "broad_handlers": 2,
+        "passes": 0,
+        "raises": 6,
+        "returns": 1,
+        "defensive_terms": 31,
+        "tool_terms": 31,
+        "logging_calls": 18,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 33.08270676691729,
+        "try_rate": 0.7518796992481203,
+        "handler_rate": 3.007518796992481,
+        "broad_handler_rate": 1.5037593984962405,
+        "pass_rate": 0.0,
+        "raise_rate": 4.511278195488721,
+        "return_rate": 0.7518796992481203,
+        "defensive_term_rate": 23.308270676691727,
+        "tool_boundary_rate": 23.308270676691727,
+        "logging_rate": 13.533834586466165,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 29,
+      "start_line": 2321,
+      "end_line": 2480,
+      "nonblank_lines": 136,
+      "counts": {
+        "comments": 48,
+        "tries": 1,
+        "handlers": 9,
+        "broad_handlers": 3,
+        "passes": 0,
+        "raises": 0,
+        "returns": 3,
+        "defensive_terms": 54,
+        "tool_terms": 66,
+        "logging_calls": 20,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 35.294117647058826,
+        "try_rate": 0.7352941176470589,
+        "handler_rate": 6.61764705882353,
+        "broad_handler_rate": 2.2058823529411766,
+        "pass_rate": 0.0,
+        "raise_rate": 0.0,
+        "return_rate": 2.2058823529411766,
+        "defensive_term_rate": 39.70588235294118,
+        "tool_boundary_rate": 48.529411764705884,
+        "logging_rate": 14.705882352941178,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 30,
+      "start_line": 2401,
+      "end_line": 2560,
+      "nonblank_lines": 140,
+      "counts": {
+        "comments": 45,
+        "tries": 2,
+        "handlers": 7,
+        "broad_handlers": 3,
+        "passes": 0,
+        "raises": 0,
+        "returns": 2,
+        "defensive_terms": 82,
+        "tool_terms": 66,
+        "logging_calls": 21,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 32.142857142857146,
+        "try_rate": 1.4285714285714286,
+        "handler_rate": 5.0,
+        "broad_handler_rate": 2.142857142857143,
+        "pass_rate": 0.0,
+        "raise_rate": 0.0,
+        "return_rate": 1.4285714285714286,
+        "defensive_term_rate": 58.57142857142857,
+        "tool_boundary_rate": 47.142857142857146,
+        "logging_rate": 15.0,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 31,
+      "start_line": 2481,
+      "end_line": 2640,
+      "nonblank_lines": 140,
+      "counts": {
+        "comments": 45,
+        "tries": 3,
+        "handlers": 2,
+        "broad_handlers": 1,
+        "passes": 0,
+        "raises": 0,
+        "returns": 0,
+        "defensive_terms": 46,
+        "tool_terms": 57,
+        "logging_calls": 13,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 32.142857142857146,
+        "try_rate": 2.142857142857143,
+        "handler_rate": 1.4285714285714286,
+        "broad_handler_rate": 0.7142857142857143,
+        "pass_rate": 0.0,
+        "raise_rate": 0.0,
+        "return_rate": 0.0,
+        "defensive_term_rate": 32.85714285714286,
+        "tool_boundary_rate": 40.714285714285715,
+        "logging_rate": 9.285714285714286,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 32,
+      "start_line": 2561,
+      "end_line": 2720,
+      "nonblank_lines": 139,
+      "counts": {
+        "comments": 42,
+        "tries": 3,
+        "handlers": 2,
+        "broad_handlers": 0,
+        "passes": 0,
+        "raises": 1,
+        "returns": 0,
+        "defensive_terms": 19,
+        "tool_terms": 31,
+        "logging_calls": 9,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 30.215827338129493,
+        "try_rate": 2.158273381294964,
+        "handler_rate": 1.4388489208633093,
+        "broad_handler_rate": 0.0,
+        "pass_rate": 0.0,
+        "raise_rate": 0.7194244604316546,
+        "return_rate": 0.0,
+        "defensive_term_rate": 13.66906474820144,
+        "tool_boundary_rate": 22.302158273381295,
+        "logging_rate": 6.474820143884892,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 33,
+      "start_line": 2641,
+      "end_line": 2800,
+      "nonblank_lines": 140,
+      "counts": {
+        "comments": 35,
+        "tries": 1,
+        "handlers": 3,
+        "broad_handlers": 1,
+        "passes": 0,
+        "raises": 1,
+        "returns": 0,
+        "defensive_terms": 41,
+        "tool_terms": 3,
+        "logging_calls": 14,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 25.0,
+        "try_rate": 0.7142857142857143,
+        "handler_rate": 2.142857142857143,
+        "broad_handler_rate": 0.7142857142857143,
+        "pass_rate": 0.0,
+        "raise_rate": 0.7142857142857143,
+        "return_rate": 0.0,
+        "defensive_term_rate": 29.285714285714285,
+        "tool_boundary_rate": 2.142857142857143,
+        "logging_rate": 10.0,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 34,
+      "start_line": 2721,
+      "end_line": 2880,
+      "nonblank_lines": 139,
+      "counts": {
+        "comments": 34,
+        "tries": 5,
+        "handlers": 7,
+        "broad_handlers": 2,
+        "passes": 4,
+        "raises": 0,
+        "returns": 3,
+        "defensive_terms": 52,
+        "tool_terms": 27,
+        "logging_calls": 14,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 24.460431654676256,
+        "try_rate": 3.597122302158273,
+        "handler_rate": 5.0359712230215825,
+        "broad_handler_rate": 1.4388489208633093,
+        "pass_rate": 2.8776978417266186,
+        "raise_rate": 0.0,
+        "return_rate": 2.158273381294964,
+        "defensive_term_rate": 37.41007194244604,
+        "tool_boundary_rate": 19.424460431654676,
+        "logging_rate": 10.071942446043165,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 35,
+      "start_line": 2801,
+      "end_line": 2960,
+      "nonblank_lines": 137,
+      "counts": {
+        "comments": 45,
+        "tries": 6,
+        "handlers": 6,
+        "broad_handlers": 2,
+        "passes": 4,
+        "raises": 0,
+        "returns": 6,
+        "defensive_terms": 50,
+        "tool_terms": 77,
+        "logging_calls": 13,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 32.846715328467155,
+        "try_rate": 4.37956204379562,
+        "handler_rate": 4.37956204379562,
+        "broad_handler_rate": 1.4598540145985401,
+        "pass_rate": 2.9197080291970803,
+        "raise_rate": 0.0,
+        "return_rate": 4.37956204379562,
+        "defensive_term_rate": 36.496350364963504,
+        "tool_boundary_rate": 56.2043795620438,
+        "logging_rate": 9.489051094890511,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 36,
+      "start_line": 2881,
+      "end_line": 3040,
+      "nonblank_lines": 137,
+      "counts": {
+        "comments": 48,
+        "tries": 1,
+        "handlers": 4,
+        "broad_handlers": 2,
+        "passes": 0,
+        "raises": 0,
+        "returns": 7,
+        "defensive_terms": 51,
+        "tool_terms": 78,
+        "logging_calls": 20,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 35.03649635036496,
+        "try_rate": 0.7299270072992701,
+        "handler_rate": 2.9197080291970803,
+        "broad_handler_rate": 1.4598540145985401,
+        "pass_rate": 0.0,
+        "raise_rate": 0.0,
+        "return_rate": 5.10948905109489,
+        "defensive_term_rate": 37.22627737226277,
+        "tool_boundary_rate": 56.934306569343065,
+        "logging_rate": 14.598540145985401,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 37,
+      "start_line": 2961,
+      "end_line": 3120,
+      "nonblank_lines": 134,
+      "counts": {
+        "comments": 36,
+        "tries": 1,
+        "handlers": 3,
+        "broad_handlers": 1,
+        "passes": 0,
+        "raises": 1,
+        "returns": 7,
+        "defensive_terms": 40,
+        "tool_terms": 28,
+        "logging_calls": 14,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 26.865671641791046,
+        "try_rate": 0.746268656716418,
+        "handler_rate": 2.238805970149254,
+        "broad_handler_rate": 0.746268656716418,
+        "pass_rate": 0.0,
+        "raise_rate": 0.746268656716418,
+        "return_rate": 5.223880597014926,
+        "defensive_term_rate": 29.850746268656717,
+        "tool_boundary_rate": 20.895522388059703,
+        "logging_rate": 10.447761194029852,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 38,
+      "start_line": 3041,
+      "end_line": 3200,
+      "nonblank_lines": 127,
+      "counts": {
+        "comments": 34,
+        "tries": 1,
+        "handlers": 0,
+        "broad_handlers": 0,
+        "passes": 0,
+        "raises": 1,
+        "returns": 4,
+        "defensive_terms": 19,
+        "tool_terms": 0,
+        "logging_calls": 4,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 26.77165354330709,
+        "try_rate": 0.7874015748031497,
+        "handler_rate": 0.0,
+        "broad_handler_rate": 0.0,
+        "pass_rate": 0.0,
+        "raise_rate": 0.7874015748031497,
+        "return_rate": 3.1496062992125986,
+        "defensive_term_rate": 14.960629921259843,
+        "tool_boundary_rate": 0.0,
+        "logging_rate": 3.1496062992125986,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 39,
+      "start_line": 3121,
+      "end_line": 3280,
+      "nonblank_lines": 130,
+      "counts": {
+        "comments": 30,
+        "tries": 2,
+        "handlers": 3,
+        "broad_handlers": 1,
+        "passes": 0,
+        "raises": 0,
+        "returns": 6,
+        "defensive_terms": 21,
+        "tool_terms": 0,
+        "logging_calls": 6,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 23.076923076923077,
+        "try_rate": 1.5384615384615385,
+        "handler_rate": 2.307692307692308,
+        "broad_handler_rate": 0.7692307692307693,
+        "pass_rate": 0.0,
+        "raise_rate": 0.0,
+        "return_rate": 4.615384615384616,
+        "defensive_term_rate": 16.153846153846153,
+        "tool_boundary_rate": 0.0,
+        "logging_rate": 4.615384615384616,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 40,
+      "start_line": 3201,
+      "end_line": 3360,
+      "nonblank_lines": 138,
+      "counts": {
+        "comments": 20,
+        "tries": 3,
+        "handlers": 7,
+        "broad_handlers": 3,
+        "passes": 0,
+        "raises": 0,
+        "returns": 9,
+        "defensive_terms": 46,
+        "tool_terms": 2,
+        "logging_calls": 14,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 14.492753623188406,
+        "try_rate": 2.1739130434782608,
+        "handler_rate": 5.072463768115942,
+        "broad_handler_rate": 2.1739130434782608,
+        "pass_rate": 0.0,
+        "raise_rate": 0.0,
+        "return_rate": 6.521739130434782,
+        "defensive_term_rate": 33.333333333333336,
+        "tool_boundary_rate": 1.4492753623188406,
+        "logging_rate": 10.144927536231885,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 41,
+      "start_line": 3281,
+      "end_line": 3440,
+      "nonblank_lines": 135,
+      "counts": {
+        "comments": 16,
+        "tries": 1,
+        "handlers": 4,
+        "broad_handlers": 2,
+        "passes": 0,
+        "raises": 0,
+        "returns": 6,
+        "defensive_terms": 38,
+        "tool_terms": 4,
+        "logging_calls": 12,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 11.851851851851851,
+        "try_rate": 0.7407407407407407,
+        "handler_rate": 2.962962962962963,
+        "broad_handler_rate": 1.4814814814814814,
+        "pass_rate": 0.0,
+        "raise_rate": 0.0,
+        "return_rate": 4.444444444444445,
+        "defensive_term_rate": 28.148148148148145,
+        "tool_boundary_rate": 2.962962962962963,
+        "logging_rate": 8.88888888888889,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 42,
+      "start_line": 3361,
+      "end_line": 3520,
+      "nonblank_lines": 140,
+      "counts": {
+        "comments": 23,
+        "tries": 3,
+        "handlers": 3,
+        "broad_handlers": 2,
+        "passes": 0,
+        "raises": 1,
+        "returns": 2,
+        "defensive_terms": 28,
+        "tool_terms": 2,
+        "logging_calls": 6,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 16.42857142857143,
+        "try_rate": 2.142857142857143,
+        "handler_rate": 2.142857142857143,
+        "broad_handler_rate": 1.4285714285714286,
+        "pass_rate": 0.0,
+        "raise_rate": 0.7142857142857143,
+        "return_rate": 1.4285714285714286,
+        "defensive_term_rate": 20.0,
+        "tool_boundary_rate": 1.4285714285714286,
+        "logging_rate": 4.285714285714286,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 43,
+      "start_line": 3441,
+      "end_line": 3600,
+      "nonblank_lines": 145,
+      "counts": {
+        "comments": 36,
+        "tries": 5,
+        "handlers": 7,
+        "broad_handlers": 3,
+        "passes": 0,
+        "raises": 1,
+        "returns": 0,
+        "defensive_terms": 40,
+        "tool_terms": 0,
+        "logging_calls": 9,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 24.827586206896555,
+        "try_rate": 3.4482758620689657,
+        "handler_rate": 4.827586206896552,
+        "broad_handler_rate": 2.0689655172413794,
+        "pass_rate": 0.0,
+        "raise_rate": 0.6896551724137931,
+        "return_rate": 0.0,
+        "defensive_term_rate": 27.586206896551726,
+        "tool_boundary_rate": 0.0,
+        "logging_rate": 6.206896551724139,
+        "warning_suppression_rate": 0.0
+      }
+    },
+    {
+      "index": 44,
+      "start_line": 3487,
+      "end_line": 3646,
+      "nonblank_lines": 147,
+      "counts": {
+        "comments": 37,
+        "tries": 6,
+        "handlers": 11,
+        "broad_handlers": 7,
+        "passes": 1,
+        "raises": 0,
+        "returns": 0,
+        "defensive_terms": 43,
+        "tool_terms": 0,
+        "logging_calls": 10,
+        "warning_suppressions": 0
+      },
+      "features_per_100_nonblank_lines": {
+        "comment_rate": 25.170068027210885,
+        "try_rate": 4.081632653061225,
+        "handler_rate": 7.482993197278911,
+        "broad_handler_rate": 4.761904761904762,
+        "pass_rate": 0.6802721088435374,
+        "raise_rate": 0.0,
+        "return_rate": 0.0,
+        "defensive_term_rate": 29.25170068027211,
+        "tool_boundary_rate": 0.0,
+        "logging_rate": 6.802721088435374,
+        "warning_suppression_rate": 0.0
+      }
+    }
+  ]
+}

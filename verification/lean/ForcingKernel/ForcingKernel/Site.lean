@@ -43,7 +43,7 @@ def Sieve.max (p : P) : Sieve P p where
   down h hr := trans hr h
 
 /-- Pullback of a sieve on `p` along `q ⊑ p`. -/
-def Sieve.pullback {p q : P} (h : q ⊑ p) (S : Sieve P p) : Sieve P q where
+def Sieve.pullback {p q : P} (_h : q ⊑ p) (S : Sieve P p) : Sieve P q where
   mem r := r ⊑ q ∧ S.mem r
   le_of_mem hr := hr.1
   down hr hs := ⟨trans hs hr.1, S.down hr.2 hs⟩
@@ -75,11 +75,11 @@ def denseBelow (p : P) (S : Sieve P p) : Prop :=
 /-- The dense (double-negation) topology J_nn: covers are the dense sieves. -/
 def Jnn (P : Type u) [Refines P] : Topology P where
   covers := denseBelow
-  max_mem p q hq := ⟨q, refl q, hq⟩
-  pull {p q} h S hS := fun r hrq =>
+  max_mem _p q hq := ⟨q, refl q, hq⟩
+  pull {_p _q} h _S hS := fun r hrq =>
     match hS r (trans hrq h) with
     | ⟨s, hsr, hSs⟩ => ⟨s, hsr, trans hsr hrq, hSs⟩
-  trans {p} S hS R hR := fun q hq =>
+  trans {_p} _S hS _R hR := fun q hq =>
     match hS q hq with
     | ⟨s, hsq, hSs⟩ =>
       match hR s hSs s (refl s) with

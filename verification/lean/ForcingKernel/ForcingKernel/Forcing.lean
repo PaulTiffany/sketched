@@ -65,9 +65,9 @@ stability plus supersieve monotonicity. This single lemma is the atomic
 persistence step of lem:pers. -/
 def coverPred (J : Topology P) (f : PersistentPred P) : PersistentPred P where
   holds p := J.covers p (f.sieve p)
-  persist {p q} hp hq :=
+  persist {p _q} hp hq :=
     J.mono (J.pull hq (f.sieve p) hp)
-      (fun r hr => ⟨hr.1, hr.2.2⟩)
+      (fun _r hr => ⟨hr.1, hr.2.2⟩)
 
 def andPP (f g : PersistentPred P) : PersistentPred P where
   holds p := f.holds p ∧ g.holds p

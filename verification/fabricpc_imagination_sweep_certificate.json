@@ -1,0 +1,96 @@
+{
+  "schema": "sketched.imagination-sweep-certificate.v1",
+  "source": {
+    "input_sha256": "7293cd54cfdf7755059630ca2e125c8ca8dfac8e89981c33bc73146471c7f058",
+    "run_id": "fabricpc-imagination-calibration",
+    "fabricpc_repository": "https://github.com/trueagi-io/FabricPC.git",
+    "fabricpc_commit": "b6f64adf9314863ce665085a92d544807d585819"
+  },
+  "method": {
+    "lean_contract": "ForcingAnalysis.Book4ImaginationDetector",
+    "settings": {
+      "residue_norm": 1e-07,
+      "commutator_norm": 1e-07,
+      "minimum_frame_hits": 2,
+      "minimum_replicate_hits": 2
+    },
+    "screening_rule": "replicated mixed residue in at least two distinct, unconfounded frames",
+    "strict_rule": "screening rule plus replicated order commutator in the same supporting frames",
+    "imagination_claim": false,
+    "phase_transition_claim": false,
+    "latent_cause_identified": false
+  },
+  "summary": {
+    "frame_count": 2,
+    "replicated_residue_frames": 0,
+    "replicated_joint_frames": 0,
+    "unconfounded_residue_frames": 0,
+    "unconfounded_joint_frames": 0,
+    "cross_frame_residue_persistent": false,
+    "cross_frame_joint_persistent": false,
+    "screening_candidate": false,
+    "orientation_sensitive_candidate": false,
+    "imagination_identified": false
+  },
+  "frames": [
+    {
+      "frame_id": "linear-activation",
+      "frame_metadata": {
+        "activation": "linear",
+        "epsilon": 0.1
+      },
+      "architecture_confound": false,
+      "replicate_count": 1,
+      "residue_hit_count": 0,
+      "order_hit_count": 0,
+      "joint_hit_count": 0,
+      "residue_replicated": false,
+      "order_replicated": false,
+      "joint_replicated": false,
+      "unconfounded_residue_hit": false,
+      "unconfounded_joint_hit": false,
+      "replicates": [
+        {
+          "replicate_id": "seed17-23",
+          "input_sha256": "0ad17c5fdef55bcba92da2b5e66d47c83d1acbf6e005333f5826be190e557585",
+          "residue_observed": false,
+          "max_residue_norm": 0.0,
+          "order_measured": false,
+          "order_observed": false,
+          "max_commutator_norm": null,
+          "joint_residue_and_order": false
+        }
+      ]
+    },
+    {
+      "frame_id": "sigmoid-activation",
+      "frame_metadata": {
+        "activation": "sigmoid",
+        "epsilon": 0.1,
+        "known_mechanism": "sigmoid nonlinearity can produce mixed residue"
+      },
+      "architecture_confound": true,
+      "replicate_count": 1,
+      "residue_hit_count": 1,
+      "order_hit_count": 0,
+      "joint_hit_count": 0,
+      "residue_replicated": false,
+      "order_replicated": false,
+      "joint_replicated": false,
+      "unconfounded_residue_hit": false,
+      "unconfounded_joint_hit": false,
+      "replicates": [
+        {
+          "replicate_id": "seed17-23",
+          "input_sha256": "318c89cb89a2b06391c9ac6978ac1c895df3d7578fa946459234a46385b8bda9",
+          "residue_observed": true,
+          "max_residue_norm": 0.0017851115632471575,
+          "order_measured": false,
+          "order_observed": false,
+          "max_commutator_norm": null,
+          "joint_residue_and_order": false
+        }
+      ]
+    }
+  ]
+}

@@ -21,6 +21,7 @@ and is checked against the current atlas.json:
   BINDING_UNSTAMPED     statement_sha is null (never attested)
   BINDING_FILE_MISSING  artifact file absent (its tree is present)
   BINDING_DECL_MISSING  declared name/marker absent from the artifact
+  BINDING_NOTE_OVERSIZED generated note likely contains pasted source instead of a gloss
   ATLAS_UNHASHED        atlas.json carries no statement hashes (rerun
                         atlas_extract.py)
   ATTEST_MALFORMED      a receipt in verification/attestations/ violates
@@ -169,6 +170,9 @@ def audit(
             continue
         if b["declares"] not in file.read_text(encoding="utf-8"):
             findings.append(("BINDING_DECL_MISSING", f"{label}: marker not found in artifact"))
+        if len(b.get("note") or "") > 500:
+            findings.append(("BINDING_NOTE_OVERSIZED",
+                             f"{label}: note exceeds 500 characters"))
         att = b.get("attested_in")
         if att is None:
             unattested += 1

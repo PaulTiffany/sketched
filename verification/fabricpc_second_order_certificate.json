@@ -1,0 +1,185 @@
+{
+  "schema": "sketched.second-order-certificate.v1",
+  "source": {
+    "input_sha256": "c7d5eb49530db2c638b45f6ed8182944baf506b4f97dba98eabff58aedebf4f6",
+    "run_id": "fabricpc-four-branch-hidden-e1-e2-eps0.1-nonlinear0",
+    "fabricpc_repository": "https://github.com/trueagi-io/FabricPC.git",
+    "fabricpc_commit": "b6f64adf9314863ce665085a92d544807d585819"
+  },
+  "method": {
+    "observable": "mixed finite-difference interaction residue",
+    "formula": "F(x+d1+d2)-F(x+d1)-F(x+d2)+F(x)",
+    "commutator_formula": "F_A_then_B(x)-F_B_then_A(x)",
+    "order_branches_measured": false,
+    "residue_threshold": 1e-07,
+    "commutator_threshold": 1e-07,
+    "global_lipschitz_claim": false,
+    "hessian_claim": false,
+    "imagination_claim": false,
+    "latent_cause_identified": false
+  },
+  "dimension": 4,
+  "step_count": 13,
+  "steps_with_second_order_residue": 0,
+  "max_residue_norm": 0.0,
+  "steps": [
+    {
+      "step": 0,
+      "residue": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residue_norm": 0.0,
+      "interaction_ratio": 0.0,
+      "second_order_observed": false
+    },
+    {
+      "step": 1,
+      "residue": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residue_norm": 0.0,
+      "interaction_ratio": 0.0,
+      "second_order_observed": false
+    },
+    {
+      "step": 2,
+      "residue": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residue_norm": 0.0,
+      "interaction_ratio": 0.0,
+      "second_order_observed": false
+    },
+    {
+      "step": 3,
+      "residue": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residue_norm": 0.0,
+      "interaction_ratio": 0.0,
+      "second_order_observed": false
+    },
+    {
+      "step": 4,
+      "residue": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residue_norm": 0.0,
+      "interaction_ratio": 0.0,
+      "second_order_observed": false
+    },
+    {
+      "step": 5,
+      "residue": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residue_norm": 0.0,
+      "interaction_ratio": 0.0,
+      "second_order_observed": false
+    },
+    {
+      "step": 6,
+      "residue": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residue_norm": 0.0,
+      "interaction_ratio": 0.0,
+      "second_order_observed": false
+    },
+    {
+      "step": 7,
+      "residue": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residue_norm": 0.0,
+      "interaction_ratio": 0.0,
+      "second_order_observed": false
+    },
+    {
+      "step": 8,
+      "residue": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residue_norm": 0.0,
+      "interaction_ratio": 0.0,
+      "second_order_observed": false
+    },
+    {
+      "step": 9,
+      "residue": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residue_norm": 0.0,
+      "interaction_ratio": 0.0,
+      "second_order_observed": false
+    },
+    {
+      "step": 10,
+      "residue": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residue_norm": 0.0,
+      "interaction_ratio": 0.0,
+      "second_order_observed": false
+    },
+    {
+      "step": 11,
+      "residue": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residue_norm": 0.0,
+      "interaction_ratio": 0.0,
+      "second_order_observed": false
+    },
+    {
+      "step": 12,
+      "residue": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residue_norm": 0.0,
+      "interaction_ratio": 0.0,
+      "second_order_observed": false
+    }
+  ],
+  "steps_with_order_dependence": null,
+  "max_commutator_norm": null
+}

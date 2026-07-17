@@ -1,408 +1,495 @@
 {
- "schema": "sketched.book8-lean-map.v1",
- "source": "Principia Symbolica Book 8",
- "boundary": "Mappings certify only the static/algebraic/finite kernel. Manifold, Hilbert-space, and ODE material is not certified; conditional and partial rows do not promote the full prose statement to a Lean theorem.",
- "entries": [
-  {
-   "atlas_id": "definition:bk8_observer_relative_artifact",
-   "coverage": "definition",
-   "lean": [
-    "Book8.Material",
-    "Book8.material_specialize"
-   ],
-   "note": "Models only the observer-indexed invariant claim; the projection map X->Y and 'bounded symbolic interval' persistence are not modeled."
-  },
-  {
-   "atlas_id": "definition:bk8_material_projection",
-   "coverage": "proved-kernel",
-   "lean": [
-    "Book8.visible_to_observer_zero",
-    "Book8.not_material_visible_example"
-   ],
-   "note": "Explicit Fin 2 countermodel proving visibility to one observer does not imply materiality over the class -- exactly the text's 'not visibility to all possible observers' point."
-  },
-  {
-   "atlas_id": "definition:bk8_transform_group",
-   "coverage": "definition",
-   "lean": [
-    "Book8.IsFixedPoint"
-   ],
-   "note": "Only the fixed-point predicate is modeled; the group structure of G_{1->2} itself is not."
-  },
-  {
-   "atlas_id": "axiom:bk8_binding_curvature_limit",
-   "coverage": "conditional",
-   "lean": [
-    "Book8.meaning_preserved_at_fixed_point",
-    "Book8.bool_swap_no_fixed_points"
-   ],
-   "note": "Proves the 'unless' direction (fixed points preserve meaning) and gives a finite countermodel (Bool swap has no fixed points) showing the generic-loss case is non-vacuous. Does not prove meaning strictly differs off fixed points in general (would require injectivity assumptions not in the source)."
-  },
-  {
-   "atlas_id": "corollary:bk8_projective_drift",
-   "coverage": "proved-kernel",
-   "lean": [
-    "Book8.inverse_of_drift_not_stasis"
-   ],
-   "note": "Honest algebraic content of 'the inverse of the expanded drift is not stasis but contextual reexpression': a genuine pointwise inverse cannot be a constant map on a domain with two distinct points."
-  },
-  {
-   "atlas_id": "definition:bk8_identitystability",
-   "coverage": "definition",
-   "lean": [
-    "Book8.ProjectionLossLaw",
-    "Book8.UniversalEmbeddingBound",
-    "Book8.FreeWillLoss"
-   ],
-   "note": "Stability kept as a real-valued structure field constrained to [0,1]; the drift/reflection commutator norm defining it is not modeled."
-  },
-  {
-   "atlas_id": "definition:bk8_translation_loss",
-   "coverage": "definition",
-   "lean": [
-    "Book8.ProjectionLossLaw"
-   ],
-   "note": "Loss kept as a free structure field satisfying the stated lower bound; not derived from an explicit free-energy functional."
-  },
-  {
-   "atlas_id": "theorem:bk8_no_free_projection",
-   "coverage": "conditional",
-   "lean": [
-    "Book8.ProjectionLossLaw"
-   ],
-   "note": "The loss >= (1/2)*(1-stability)*freeEnergy law is kept as a structure field/hypothesis rather than derived; the 'dense subset' and flat-foliation equality-case qualifiers are dropped."
-  },
-  {
-   "atlas_id": "corollary:bk8_translation_limit",
-   "coverage": "proved-kernel",
-   "lean": [
-    "Book8.loss_positive_of_imperfect_stability"
-   ],
-   "note": "Direct consequence of the loss law: stability < 1 and positive free energy force strictly positive loss, i.e. 'all projection implies symbolic loss unless stability is maximal'."
-  },
-  {
-   "atlas_id": "corollary:bk8_bound_on_universal_embedding",
-   "coverage": "proved-kernel",
-   "lean": [
-    "Book8.universal_embedding_epsilon_nonneg",
-    "Book8.perfect_translation_forces_maximal_stability"
-   ],
-   "note": "epsilon >= (1/2)*(1-stability) kept as a structure field (the sup/inf over projections is not modeled); proves epsilon=0 forces stability=1, i.e. perfect translation is impossible unless identity stability is maximal."
-  },
-  {
-   "atlas_id": "corollary:bk8_universality_condition",
-   "coverage": "partial",
-   "lean": [
-    "Book8.universal_embedding_epsilon_nonneg"
-   ],
-   "note": "Only the nonnegativity-of-distortion consequence is modeled via the same UniversalEmbeddingBound structure; the existence claim 'forall S_i exists Pi_i with D(Pi_i) < epsilon' is not modeled."
-  },
-  {
-   "atlas_id": "theorem:bk8_holographic_surface_entropy",
-   "coverage": "partial",
-   "lean": [
-    "Book8.frameResidual",
-    "Book8.frameResidual_eq_zero_iff"
-   ],
-   "note": "Only the algebraic rearrangement of the stated equation is proved; the 'vanishes iff identical symbolic expressivity' characterization is not modeled (would require a formal notion of frame expressivity)."
-  },
-  {
-   "atlas_id": "axiom:bk8_symbolic_reidemeister_algebra",
-   "coverage": "partial",
-   "lean": [
-    "Book8.collapse_within_threshold",
-    "Book8.drift_cancellation",
-    "Book8.reflective_permutation_assoc"
-   ],
-   "note": "The three Type I/II/III propositions below are worked instances of this axiom's finite-rule-set claim; the general existence of a finite rule set reducing any SRMF-compliant entangled structure is not proved."
-  },
-  {
-   "atlas_id": "proposition:bk8_membrane_identity_collapse",
-   "coverage": "conditional",
-   "lean": [
-    "Book8.LocalReflectionCollapse",
-    "Book8.collapse_within_threshold"
-   ],
-   "note": "Type I: metric-proximity collapse bound -- if R\u2218D is within eps of Id and eps is below the local threshold, the loop stays strictly within that threshold of Id."
-  },
-  {
-   "atlas_id": "proposition:bk8_observer_frame_invariance",
-   "coverage": "conditional",
-   "lean": [
-    "Book8.drift_cancellation"
-   ],
-   "note": "Type II: 'opposite reflective directions form a stable braid' is read as two exact one-sided inverses, from which the four-fold composite collapsing to identity follows by direct calculation."
-  },
-  {
-   "atlas_id": "proposition:bk8_membrane_operator_symmetry",
-   "coverage": "proved-kernel",
-   "lean": [
-    "Book8.reflective_permutation_assoc"
-   ],
-   "note": "Type III: proves exact, unconditional associativity of composition -- strictly stronger than the source's 'up to an observer-bounded transformation T_epsilon' claim, which is a genuine honesty gap (we prove more than was claimed, by dropping the approximation)."
-  },
-  {
-   "atlas_id": "definition:bk8_symbolic_adjacency",
-   "coverage": "definition",
-   "lean": [
-    "Book8.MetabolicSufficiency"
-   ],
-   "note": "Only the 'high symbolic free energy' framing of a knot is modeled via nonnegativity of the free-energy sequence; the Xi-threshold and 'unstable recursive structure' narrative are not modeled."
-  },
-  {
-   "atlas_id": "axiom:bk8_mutation_phase_shift",
-   "coverage": "conditional",
-   "lean": [
-    "Book8.MetabolicSufficiency"
-   ],
-   "note": "The per-step strict decrease by deltaF > 0 is kept as a structure field/hypothesis, not derived."
-  },
-  {
-   "atlas_id": "theorem:bk8_biological_phase_transition",
-   "coverage": "partial",
-   "lean": [
-    "Book8.metabolicSufficiency_decrease_accum",
-    "Book8.metabolicSufficiency_terminates"
-   ],
-   "note": "Finite/discrete honest kernel only: bounded, steadily-decreasing free energy forces termination within a computable step count. The limsup/exponential identity-stability convergence claim is not modeled."
-  },
-  {
-   "atlas_id": "theorem:bk8_threshold_of_metabolic_autonomy",
-   "coverage": "partial",
-   "lean": [
-    "Book8.metabolicSufficiency_decrease_accum",
-    "Book8.metabolicSufficiency_terminates"
-   ],
-   "note": "Same claim as theorem:bk8_biological_phase_transition under a different anchor label in the source; same partial coverage applies."
-  },
-  {
-   "atlas_id": "theorem:bk8_thermodynamic_necessity_of_symbolic_metabolism",
-   "coverage": "conditional",
-   "lean": [
-    "Book8.CycleViability",
-    "Book8.cycleViability_ratio_lt_one"
-   ],
-   "note": "The tau_Omega < tau_drift viability condition is kept as a structure field/hypothesis; only the derived ratio-below-one consequence is proved."
-  },
-  {
-   "atlas_id": "definition:bk8_metabolic_programming_cycle",
-   "coverage": "partial",
-   "lean": [
-    "Book8.CycleViability"
-   ],
-   "note": "Only the shared timing-viability clause is modeled via CycleViability; the digest/repair/synthesize/validate four-step internal structure is not."
-  },
-  {
-   "atlas_id": "definition:bk8_recursive_symbolic_metaboloic_cycle",
-   "coverage": "partial",
-   "lean": [
-    "Book8.CycleViability"
-   ],
-   "note": "Same timing clause as definition:bk8_metabolic_programming_cycle, restated under a different anchor; the four-step Xi_d/Xi_r/Xi_s/Xi_v structure is not modeled."
-  },
-  {
-   "atlas_id": "corollary:bk8_symbolic_free_will",
-   "coverage": "proved-kernel",
-   "lean": [
-    "Book8.FreeWillLoss",
-    "Book8.freeWillLoss_le",
-    "Book8.freeWillLoss_nonneg"
-   ],
-   "note": "Direct algebraic consequence of the stated expected-loss formula E[loss_vol] = (1-stability)*E[loss_id]; the volitional projection operator and rank/dimension Freedom Emergence Criterion it presupposes are not modeled."
-  },
-  {
-   "atlas_id": "theorem:bk8_observer_projection_tensor",
-   "coverage": "proved-kernel",
-   "lean": [
-    "Book8.DebuggingThermodynamics",
-    "Book8.DebuggingFavored",
-    "Book8.debuggingFavored_net_gain",
-    "Book8.finiteThermodynamicSnapshot",
-    "Book8.finiteThermodynamicSnapshot_freeEnergy",
-    "Book8.debuggedFiniteSnapshot",
-    "Book8.debugging_preserves_finite_viability"
-   ],
-   "note": "Cost-vs-reduction net-gain inequality: literal reading of 'the cost must be offset by the reduction'. The Book 2 -> Book 5 -> Book 8 bridge identifies finite ensemble free energy with Book 5 snapshot free energy and proves that a favored debugging step preserves positive-free-energy viability. The operator's own four-step definition (detect/project/apply/validate) is not modeled."
-  },
-  {
-   "atlas_id": "definition:bk8_reflective_selection_operator",
-   "coverage": "proved-kernel",
-   "lean": [
-    "Book8.reflectiveSelection_exists"
-   ],
-   "note": "Existence of an argmax of confidence-minus-loss over any nonempty finite hypothesis set, via Finset.exists_max_image. The 'symbolic Bayesian update rule' reading of iterating this over time is not modeled."
-  },
-  {
-   "atlas_id": "axiom:bk8_coherence_horizon",
-   "coverage": "partial",
-   "lean": [
-    "Book68B.mutuallyAssuredProgress_accum",
-    "Book68B.mutuallyAssuredProgress_unbounded"
-   ],
-   "note": "Only the Mutually Assured Progress viability clause (joint free energy surplus positive indefinitely) is formalized, strengthened to genuine divergence under a fixed positive per-step growth rate. The shared projective interface P_ij and bidirectional reflectivity of Phi are not modeled."
-  },
-  {
-   "atlas_id": "definition:bk8_symbolic_stress_tensor",
-   "coverage": "partial",
-   "lean": [
-    "Book68B.debugCompose_injective"
-   ],
-   "note": "Only the four-step composite structure (detect/project/repair/validate) and its injectivity-preservation are modeled; the free-energy detection threshold theta_F and the disjunctive validation condition are not."
-  },
-  {
-   "atlas_id": "definition:bk8_projective_compression_operator",
-   "coverage": "partial",
-   "lean": [
-    "Book68B.exists_argmin"
-   ],
-   "note": "Only the argmin-existence half (a minimal-free-energy representative exists in any nonempty finite fibre) is proved; the projection map Pi and the fibre Pi^{-1}(phi) itself are not modeled."
-  },
-  {
-   "atlas_id": "definition:bk8_reflexive_debugging_operator",
-   "coverage": "definition",
-   "lean": [
-    "Book68B.debugCompose_injective"
-   ],
-   "note": "O_debug := Xi_v o Xi_s o Xi_r o Xi_d is modeled directly as ReflexiveDebuggingStep/debugCompose; the operator's own recursive/self-application content (lemma:bk8_resursive_self_tuning) is not modeled."
-  },
-  {
-   "atlas_id": "corollary:bk8_symbolic_agents_as_projections",
-   "coverage": "partial",
-   "lean": [
-    "Book68B.debugCompose_injective"
-   ],
-   "note": "The Diagnostic/Transformative/Reflective-Integration modular substructure is modeled as the same four-field ReflexiveDebuggingStep, with injectivity-preservation as the honest per-step-composition consequence; the SRMF contradiction-detection and symbolic-Reidemeister-rule content is not modeled."
-  },
-  {
-   "atlas_id": "definition:bk8_symbolic_hypothesis_set",
-   "coverage": "partial",
-   "lean": [
-    "Book68B.exists_argmin"
-   ],
-   "note": "Only the argmin-existence content (dual to confidence-loss argmax, cf. Book8.lean's reflectiveSelection_exists) is proved for a nonempty finite hypothesis index set; the confidence/loss functions themselves are left abstract and no Bayesian update dynamics are modeled."
-  },
-  {
-   "atlas_id": "theorem:bk8_freedom_emergence_criterion",
-   "coverage": "conditional",
-   "lean": [
-    "Book8Freedom.freedom_emergence_iff_surjective",
-    "Book8Freedom.freedom_can_fail"
-   ],
-   "note": "Rank onto codomain is exactly surjectivity, for a linear map between finite-dim spaces; failure side witnessed concretely. The viability-domain/action-manifold identification is interpretation."
-  },
-  {
-   "atlas_id": "definition:bk8_volitional_projection_operator",
-   "coverage": "definition",
-   "lean": [
-    "Book8Freedom.freedom_emergence_iff_surjective"
-   ],
-   "note": "Modeled generically as a linear map between finite-dimensional spaces."
-  },
-  {
-   "atlas_id": "theorem:bk8_freedom_via_meta_metabolic_control",
-   "coverage": "conditional",
-   "lean": [
-    "Book8Freedom.meta_metabolic_freedom_iff_surjective"
-   ],
-   "note": "The freedom-emergence kernel instantiated at the domain-restricted operator - the same theorem serving both anchors."
-  },
-  {
-   "atlas_id": "proposition:bk8_genetic_symbolic_resonance",
-   "coverage": "conditional",
-   "lean": [
-    "Book8Freedom.contraction_orbit_bounded"
-   ],
-   "note": "Discrete absorbing-ball analogue of Lipschitz-plus-bounded-forcing boundedness; the specific R^3 ODE system stays open."
-  },
-  {
-   "atlas_id": "axiom:bk8_surface_energy_dynamics",
-   "coverage": "partial",
-   "lean": [
-    "Book8Freedom.contraction_orbit_bounded"
-   ],
-   "note": "The generating step map of the discrete flow whose boundedness is certified; the specific coupled ODE system stays open."
-  },
-  {
-   "atlas_id": "lemma:bk8_resursive_self_tuning",
-   "coverage": "conditional",
-   "lean": [
-    "ScholiumDyn.flowOrbit",
-    "ScholiumDyn.flow_unique"
-   ],
-   "note": "The self-application recursion is exactly the discrete flow orbit already certified in ScholiumDynamics.lean: existence and uniqueness of the self-tuning sequence."
-  },
-  {
-   "atlas_id": "definition:bk8_symbolic_projection",
-   "coverage": "definition",
-   "lean": [
-    "ForcingKernel: CertifiedTransport (Witness.lean)"
-   ],
-   "note": "Structure-preserving re-encoding between symbolic manifolds is the certified-transport pattern; absolute preservation in the limit corresponds to loss = exact."
-  },
-  {
-   "atlas_id": "definition:bk8_symbolic_interface",
-   "coverage": "definition",
-   "lean": [
-    "ForcingKernel: CertifiedTransport (Witness.lean)"
-   ],
-   "note": "Mutual-intelligibility mediation between agents is the same transport pattern at the interface."
-  },
-  {
-   "atlas_id": "axiom:bk8_observer_bounded_emergence",
-   "coverage": "conditional",
-   "lean": [
-    "ForcingKernel: CertifiedTransport (Witness.lean)"
-   ],
-   "note": "Structural-invariant-preserving projection under a transformation group modulo reframing is a certified transport with loss in {quotient, interpretive}."
-  },
-  {
-   "atlas_id": "lemma:bk8_mutation_projection",
-   "coverage": "conditional",
-   "lean": [
-    "ForcingKernel: CertifiedTransport (Witness.lean)"
-   ],
-   "note": "Post-mutation structure-preserving projection is the same transport pattern applied after a mutation map."
-  },
-  {
-   "atlas_id": "theorem:bk8_rg_fixed_point",
-   "coverage": "conditional",
-   "lean": [
-    "Book5Op.contraction_flow_converges",
-    "Book5Op.contraction_flow_unique_fixed_point"
-   ],
-   "note": "The RG map converges to a unique fixed point (contraction-Banach); the diffeomorphism congruence and the specific R_lambda stay open."
-  },
-  {
-   "atlas_id": "proposition:bk8_operator_curvature_flux",
-   "coverage": "proved-kernel",
-   "lean": [
-    "ThermoRes.flattening_reduces_curvature"
-   ],
-   "note": "Decoherence as flattening reduces curvature with equality iff flat; the Hilbert decoherence operator stays open."
-  },
-  {
-   "atlas_id": "corollary:bk8_memory_repair_robustness",
-   "coverage": "conditional",
-   "lean": [
-    "Atlas.holonomy_zero_iff_commute"
-   ],
-   "note": "Entangled iff curvature nonzero: the flatness-iff-commuting kernel."
-  },
-  {
-   "atlas_id": "corollary:bk8_entanglement_frame_invariance",
-   "coverage": "conditional",
-   "lean": [
-    "Atlas.non_euclidean_necessity"
-   ],
-   "note": "Entanglement frame-invariant under linear frames, variant under curved."
-  },
-  {
-   "atlas_id": "corollary:bk8_resonant_cognition",
-   "coverage": "conditional",
-   "lean": [
-    "ForcingKernel: CertifiedTransport (Witness.lean)"
-   ],
-   "note": "Mutual understanding by reflective simulation: the certified-transport interface."
-  }
- ]
+  "schema": "sketched.book8-lean-map.v1",
+  "source": "Principia Symbolica Book 8",
+  "boundary": "Mappings certify only the static/algebraic/finite kernel. Manifold, Hilbert-space, and ODE material is not certified; conditional and partial rows do not promote the full prose statement to a Lean theorem.",
+  "entries": [
+    {
+      "atlas_id": "definition:bk8_observer_relative_artifact",
+      "coverage": "definition",
+      "lean": [
+        "Book8.Material",
+        "Book8.material_specialize"
+      ],
+      "note": "Models only the observer-indexed invariant claim; the projection map X->Y and 'bounded symbolic interval' persistence are not modeled."
+    },
+    {
+      "atlas_id": "definition:bk8_material_projection",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book8.visible_to_observer_zero",
+        "Book8.not_material_visible_example"
+      ],
+      "note": "Explicit Fin 2 countermodel proving visibility to one observer does not imply materiality over the class -- exactly the text's 'not visibility to all possible observers' point."
+    },
+    {
+      "atlas_id": "definition:bk8_transform_group",
+      "coverage": "definition",
+      "lean": [
+        "Book8.IsFixedPoint"
+      ],
+      "note": "Only the fixed-point predicate is modeled; the group structure of G_{1->2} itself is not."
+    },
+    {
+      "atlas_id": "axiom:bk8_binding_curvature_limit",
+      "coverage": "conditional",
+      "lean": [
+        "Book8.meaning_preserved_at_fixed_point",
+        "Book8.bool_swap_no_fixed_points"
+      ],
+      "note": "Proves the 'unless' direction (fixed points preserve meaning) and gives a finite countermodel (Bool swap has no fixed points) showing the generic-loss case is non-vacuous. Does not prove meaning strictly differs off fixed points in general (would require injectivity assumptions not in the source)."
+    },
+    {
+      "atlas_id": "corollary:bk8_projective_drift",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book8.inverse_of_drift_not_stasis"
+      ],
+      "note": "Honest algebraic content of 'the inverse of the expanded drift is not stasis but contextual reexpression': a genuine pointwise inverse cannot be a constant map on a domain with two distinct points."
+    },
+    {
+      "atlas_id": "definition:bk8_identitystability",
+      "coverage": "definition",
+      "lean": [
+        "Book8.ProjectionLossLaw",
+        "Book8.UniversalEmbeddingBound",
+        "Book8.FreeWillLoss"
+      ],
+      "note": "Stability kept as a real-valued structure field constrained to [0,1]; the drift/reflection commutator norm defining it is not modeled."
+    },
+    {
+      "atlas_id": "definition:bk8_translation_loss",
+      "coverage": "definition",
+      "lean": [
+        "Book8.ProjectionLossLaw"
+      ],
+      "note": "Loss kept as a free structure field satisfying the stated lower bound; not derived from an explicit free-energy functional."
+    },
+    {
+      "atlas_id": "theorem:bk8_no_free_projection",
+      "coverage": "conditional",
+      "lean": [
+        "Book8.ProjectionLossLaw"
+      ],
+      "note": "The loss >= (1/2)*(1-stability)*freeEnergy law is kept as a structure field/hypothesis rather than derived; the 'dense subset' and flat-foliation equality-case qualifiers are dropped."
+    },
+    {
+      "atlas_id": "corollary:bk8_translation_limit",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book8.loss_positive_of_imperfect_stability"
+      ],
+      "note": "Direct consequence of the loss law: stability < 1 and positive free energy force strictly positive loss, i.e. 'all projection implies symbolic loss unless stability is maximal'."
+    },
+    {
+      "atlas_id": "corollary:bk8_bound_on_universal_embedding",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book8.universal_embedding_epsilon_nonneg",
+        "Book8.perfect_translation_forces_maximal_stability"
+      ],
+      "note": "epsilon >= (1/2)*(1-stability) kept as a structure field (the sup/inf over projections is not modeled); proves epsilon=0 forces stability=1, i.e. perfect translation is impossible unless identity stability is maximal."
+    },
+    {
+      "atlas_id": "corollary:bk8_universality_condition",
+      "coverage": "partial",
+      "lean": [
+        "Book8.universal_embedding_epsilon_nonneg"
+      ],
+      "note": "Only the nonnegativity-of-distortion consequence is modeled via the same UniversalEmbeddingBound structure; the existence claim 'forall S_i exists Pi_i with D(Pi_i) < epsilon' is not modeled."
+    },
+    {
+      "atlas_id": "theorem:bk8_holographic_surface_entropy",
+      "coverage": "partial",
+      "lean": [
+        "Book8.frameResidual",
+        "Book8.frameResidual_eq_zero_iff"
+      ],
+      "note": "Only the algebraic rearrangement of the stated equation is proved; the 'vanishes iff identical symbolic expressivity' characterization is not modeled (would require a formal notion of frame expressivity)."
+    },
+    {
+      "atlas_id": "axiom:bk8_symbolic_reidemeister_algebra",
+      "coverage": "partial",
+      "lean": [
+        "Book8.collapse_within_threshold",
+        "Book8.drift_cancellation",
+        "Book8.reflective_permutation_assoc"
+      ],
+      "note": "The three Type I/II/III propositions below are worked instances of this axiom's finite-rule-set claim; the general existence of a finite rule set reducing any SRMF-compliant entangled structure is not proved."
+    },
+    {
+      "atlas_id": "proposition:bk8_membrane_identity_collapse",
+      "coverage": "conditional",
+      "lean": [
+        "Book8.LocalReflectionCollapse",
+        "Book8.collapse_within_threshold"
+      ],
+      "note": "Type I: metric-proximity collapse bound -- if R\u00e2\u02c6\u02dcD is within eps of Id and eps is below the local threshold, the loop stays strictly within that threshold of Id."
+    },
+    {
+      "atlas_id": "proposition:bk8_observer_frame_invariance",
+      "coverage": "conditional",
+      "lean": [
+        "Book8.drift_cancellation"
+      ],
+      "note": "Type II: 'opposite reflective directions form a stable braid' is read as two exact one-sided inverses, from which the four-fold composite collapsing to identity follows by direct calculation."
+    },
+    {
+      "atlas_id": "proposition:bk8_membrane_operator_symmetry",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book8.reflective_permutation_assoc"
+      ],
+      "note": "Type III: proves exact, unconditional associativity of composition -- strictly stronger than the source's 'up to an observer-bounded transformation T_epsilon' claim, which is a genuine honesty gap (we prove more than was claimed, by dropping the approximation)."
+    },
+    {
+      "atlas_id": "definition:bk8_symbolic_adjacency",
+      "coverage": "definition",
+      "lean": [
+        "Book8.MetabolicSufficiency"
+      ],
+      "note": "Only the 'high symbolic free energy' framing of a knot is modeled via nonnegativity of the free-energy sequence; the Xi-threshold and 'unstable recursive structure' narrative are not modeled."
+    },
+    {
+      "atlas_id": "axiom:bk8_mutation_phase_shift",
+      "coverage": "conditional",
+      "lean": [
+        "Book8.MetabolicSufficiency"
+      ],
+      "note": "The per-step strict decrease by deltaF > 0 is kept as a structure field/hypothesis, not derived."
+    },
+    {
+      "atlas_id": "theorem:bk8_biological_phase_transition",
+      "coverage": "partial",
+      "lean": [
+        "Book8.metabolicSufficiency_decrease_accum",
+        "Book8.metabolicSufficiency_terminates"
+      ],
+      "note": "Finite/discrete honest kernel only: bounded, steadily-decreasing free energy forces termination within a computable step count. The limsup/exponential identity-stability convergence claim is not modeled."
+    },
+    {
+      "atlas_id": "theorem:bk8_threshold_of_metabolic_autonomy",
+      "coverage": "partial",
+      "lean": [
+        "Book8.metabolicSufficiency_decrease_accum",
+        "Book8.metabolicSufficiency_terminates"
+      ],
+      "note": "Same claim as theorem:bk8_biological_phase_transition under a different anchor label in the source; same partial coverage applies."
+    },
+    {
+      "atlas_id": "theorem:bk8_thermodynamic_necessity_of_symbolic_metabolism",
+      "coverage": "conditional",
+      "lean": [
+        "Book8.CycleViability",
+        "Book8.cycleViability_ratio_lt_one"
+      ],
+      "note": "The tau_Omega < tau_drift viability condition is kept as a structure field/hypothesis; only the derived ratio-below-one consequence is proved."
+    },
+    {
+      "atlas_id": "definition:bk8_metabolic_programming_cycle",
+      "coverage": "partial",
+      "lean": [
+        "Book8.CycleViability"
+      ],
+      "note": "Only the shared timing-viability clause is modeled via CycleViability; the digest/repair/synthesize/validate four-step internal structure is not."
+    },
+    {
+      "atlas_id": "definition:bk8_recursive_symbolic_metaboloic_cycle",
+      "coverage": "partial",
+      "lean": [
+        "Book8.CycleViability"
+      ],
+      "note": "Same timing clause as definition:bk8_metabolic_programming_cycle, restated under a different anchor; the four-step Xi_d/Xi_r/Xi_s/Xi_v structure is not modeled."
+    },
+    {
+      "atlas_id": "corollary:bk8_symbolic_free_will",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book8.FreeWillLoss",
+        "Book8.freeWillLoss_le",
+        "Book8.freeWillLoss_nonneg"
+      ],
+      "note": "Direct algebraic consequence of the stated expected-loss formula E[loss_vol] = (1-stability)*E[loss_id]; the volitional projection operator and rank/dimension Freedom Emergence Criterion it presupposes are not modeled."
+    },
+    {
+      "atlas_id": "theorem:bk8_observer_projection_tensor",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book8.DebuggingThermodynamics",
+        "Book8.DebuggingFavored",
+        "Book8.debuggingFavored_net_gain",
+        "Book8.finiteThermodynamicSnapshot",
+        "Book8.finiteThermodynamicSnapshot_freeEnergy",
+        "Book8.debuggedFiniteSnapshot",
+        "Book8.debugging_preserves_finite_viability"
+      ],
+      "note": "Cost-vs-reduction net-gain inequality: literal reading of 'the cost must be offset by the reduction'. The Book 2 -> Book 5 -> Book 8 bridge identifies finite ensemble free energy with Book 5 snapshot free energy and proves that a favored debugging step preserves positive-free-energy viability. The operator's own four-step definition (detect/project/apply/validate) is not modeled."
+    },
+    {
+      "atlas_id": "definition:bk8_reflective_selection_operator",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book8.reflectiveSelection_exists"
+      ],
+      "note": "Existence of an argmax of confidence-minus-loss over any nonempty finite hypothesis set, via Finset.exists_max_image. The 'symbolic Bayesian update rule' reading of iterating this over time is not modeled."
+    },
+    {
+      "atlas_id": "axiom:bk8_coherence_horizon",
+      "coverage": "partial",
+      "lean": [
+        "Book68B.mutuallyAssuredProgress_accum",
+        "Book68B.mutuallyAssuredProgress_unbounded"
+      ],
+      "note": "Only the Mutually Assured Progress viability clause (joint free energy surplus positive indefinitely) is formalized, strengthened to genuine divergence under a fixed positive per-step growth rate. The shared projective interface P_ij and bidirectional reflectivity of Phi are not modeled."
+    },
+    {
+      "atlas_id": "definition:bk8_symbolic_stress_tensor",
+      "coverage": "partial",
+      "lean": [
+        "Book68B.debugCompose_injective"
+      ],
+      "note": "Only the four-step composite structure (detect/project/repair/validate) and its injectivity-preservation are modeled; the free-energy detection threshold theta_F and the disjunctive validation condition are not."
+    },
+    {
+      "atlas_id": "definition:bk8_projective_compression_operator",
+      "coverage": "partial",
+      "lean": [
+        "Book68B.exists_argmin"
+      ],
+      "note": "Only the argmin-existence half (a minimal-free-energy representative exists in any nonempty finite fibre) is proved; the projection map Pi and the fibre Pi^{-1}(phi) itself are not modeled."
+    },
+    {
+      "atlas_id": "definition:bk8_reflexive_debugging_operator",
+      "coverage": "definition",
+      "lean": [
+        "Book68B.debugCompose_injective"
+      ],
+      "note": "O_debug := Xi_v o Xi_s o Xi_r o Xi_d is modeled directly as ReflexiveDebuggingStep/debugCompose; the operator's own recursive/self-application content (lemma:bk8_resursive_self_tuning) is not modeled."
+    },
+    {
+      "atlas_id": "corollary:bk8_symbolic_agents_as_projections",
+      "coverage": "partial",
+      "lean": [
+        "Book68B.debugCompose_injective"
+      ],
+      "note": "The Diagnostic/Transformative/Reflective-Integration modular substructure is modeled as the same four-field ReflexiveDebuggingStep, with injectivity-preservation as the honest per-step-composition consequence; the SRMF contradiction-detection and symbolic-Reidemeister-rule content is not modeled."
+    },
+    {
+      "atlas_id": "definition:bk8_symbolic_hypothesis_set",
+      "coverage": "partial",
+      "lean": [
+        "Book68B.exists_argmin"
+      ],
+      "note": "Only the argmin-existence content (dual to confidence-loss argmax, cf. Book8.lean's reflectiveSelection_exists) is proved for a nonempty finite hypothesis index set; the confidence/loss functions themselves are left abstract and no Bayesian update dynamics are modeled."
+    },
+    {
+      "atlas_id": "theorem:bk8_freedom_emergence_criterion",
+      "coverage": "conditional",
+      "lean": [
+        "Book8Freedom.freedom_emergence_iff_surjective",
+        "Book8Freedom.freedom_can_fail"
+      ],
+      "note": "Rank onto codomain is exactly surjectivity, for a linear map between finite-dim spaces; failure side witnessed concretely. The viability-domain/action-manifold identification is interpretation."
+    },
+    {
+      "atlas_id": "definition:bk8_volitional_projection_operator",
+      "coverage": "definition",
+      "lean": [
+        "Book8Freedom.freedom_emergence_iff_surjective"
+      ],
+      "note": "Modeled generically as a linear map between finite-dimensional spaces."
+    },
+    {
+      "atlas_id": "theorem:bk8_freedom_via_meta_metabolic_control",
+      "coverage": "conditional",
+      "lean": [
+        "Book8Freedom.meta_metabolic_freedom_iff_surjective"
+      ],
+      "note": "The freedom-emergence kernel instantiated at the domain-restricted operator - the same theorem serving both anchors."
+    },
+    {
+      "atlas_id": "proposition:bk8_genetic_symbolic_resonance",
+      "coverage": "conditional",
+      "lean": [
+        "Book8Freedom.contraction_orbit_bounded"
+      ],
+      "note": "Discrete absorbing-ball analogue of Lipschitz-plus-bounded-forcing boundedness; the specific R^3 ODE system stays open."
+    },
+    {
+      "atlas_id": "axiom:bk8_surface_energy_dynamics",
+      "coverage": "partial",
+      "lean": [
+        "Book8Freedom.contraction_orbit_bounded"
+      ],
+      "note": "The generating step map of the discrete flow whose boundedness is certified; the specific coupled ODE system stays open."
+    },
+    {
+      "atlas_id": "lemma:bk8_resursive_self_tuning",
+      "coverage": "conditional",
+      "lean": [
+        "ScholiumDyn.flowOrbit",
+        "ScholiumDyn.flow_unique"
+      ],
+      "note": "The self-application recursion is exactly the discrete flow orbit already certified in ScholiumDynamics.lean: existence and uniqueness of the self-tuning sequence."
+    },
+    {
+      "atlas_id": "definition:bk8_symbolic_projection",
+      "coverage": "definition",
+      "lean": [
+        "ForcingKernel: CertifiedTransport (Witness.lean)"
+      ],
+      "note": "Structure-preserving re-encoding between symbolic manifolds is the certified-transport pattern; absolute preservation in the limit corresponds to loss = exact."
+    },
+    {
+      "atlas_id": "definition:bk8_symbolic_interface",
+      "coverage": "definition",
+      "lean": [
+        "ForcingKernel: CertifiedTransport (Witness.lean)"
+      ],
+      "note": "Mutual-intelligibility mediation between agents is the same transport pattern at the interface."
+    },
+    {
+      "atlas_id": "axiom:bk8_observer_bounded_emergence",
+      "coverage": "conditional",
+      "lean": [
+        "ForcingKernel: CertifiedTransport (Witness.lean)"
+      ],
+      "note": "Structural-invariant-preserving projection under a transformation group modulo reframing is a certified transport with loss in {quotient, interpretive}."
+    },
+    {
+      "atlas_id": "lemma:bk8_mutation_projection",
+      "coverage": "conditional",
+      "lean": [
+        "ForcingKernel: CertifiedTransport (Witness.lean)"
+      ],
+      "note": "Post-mutation structure-preserving projection is the same transport pattern applied after a mutation map."
+    },
+    {
+      "atlas_id": "theorem:bk8_rg_fixed_point",
+      "coverage": "conditional",
+      "lean": [
+        "Book5Op.contraction_flow_converges",
+        "Book5Op.contraction_flow_unique_fixed_point"
+      ],
+      "note": "The RG map converges to a unique fixed point (contraction-Banach); the diffeomorphism congruence and the specific R_lambda stay open."
+    },
+    {
+      "atlas_id": "proposition:bk8_operator_curvature_flux",
+      "coverage": "proved-kernel",
+      "lean": [
+        "ThermoRes.flattening_reduces_curvature"
+      ],
+      "note": "Decoherence as flattening reduces curvature with equality iff flat; the Hilbert decoherence operator stays open."
+    },
+    {
+      "atlas_id": "corollary:bk8_memory_repair_robustness",
+      "coverage": "conditional",
+      "lean": [
+        "Atlas.holonomy_zero_iff_commute"
+      ],
+      "note": "Entangled iff curvature nonzero: the flatness-iff-commuting kernel."
+    },
+    {
+      "atlas_id": "corollary:bk8_entanglement_frame_invariance",
+      "coverage": "conditional",
+      "lean": [
+        "Atlas.non_euclidean_necessity"
+      ],
+      "note": "Entanglement frame-invariant under linear frames, variant under curved."
+    },
+    {
+      "atlas_id": "corollary:bk8_resonant_cognition",
+      "coverage": "conditional",
+      "lean": [
+        "ForcingKernel: CertifiedTransport (Witness.lean)"
+      ],
+      "note": "Mutual understanding by reflective simulation: the certified-transport interface."
+    },
+    {
+      "atlas_id": "axiom:bk8_curvature_transformation",
+      "coverage": "conditional",
+      "lean": [
+        "Book8OrientationSignposting.next_four",
+        "Book8OrientationSignposting.transport_preserves_canonical_change",
+        "Book8OrientationSignposting.opposite_signs_agree_iff_zero",
+        "Book8OrientationSignposting.reversed_display_of_positive",
+        "Book8OrientationSignposting.displayedNext_differs_across_orientations"
+      ],
+      "note": "Proves the exact four-stage directed cycle and separates canonical direction from audience display orientation. Explicit conjugation preserves canonical changes across aligned/reversed frames; raw opposite signs agree only at zero. Observer bounds, differentiability, and semantic stage operators remain premises rather than consequences of the finite cycle."
+    },
+    {
+      "atlas_id": "corollary:bk8_emergent_cognitive_scaffold",
+      "coverage": "conditional",
+      "lean": [
+        "Book8CognitiveScaffold.ComposablePair.step_closed",
+        "Book8CognitiveScaffold.ComposablePair.iterate_closed",
+        "Book8CognitiveScaffold.CertifiedScaffold.one_step_freeEnergy_nonincrease",
+        "Book8CognitiveScaffold.CertifiedScaffold.iterate_identity_preserved",
+        "Book8CognitiveScaffold.CertifiedScaffold.iterate_trajectory_bounded",
+        "Book8CognitiveScaffold.composable_operator_order_need_not_commute",
+        "Book8CognitiveScaffold.composability_alone_does_not_bound_trajectory"
+      ],
+      "note": "Operational kernel: composable metabolic/debugging operators preserve an admitted domain through finite iteration. Free-energy descent, identity preservation, and temperature-bounded trajectories follow only from separate CertifiedScaffold fields. Countermodels show operator order need not commute and composability alone supplies no trajectory bound."
+    },
+    {
+      "atlas_id": "proposition:bk8_optimal_projection_path",
+      "coverage": "conditional",
+      "lean": [
+        "Book8OptimalProjectionPath.exists_optimal_projection_path",
+        "Book8OptimalProjectionPath.optimal_path_satisfies_constraints",
+        "Book8OptimalProjectionPath.constraints_can_leave_no_admissible_path"
+      ],
+      "note": "Finite constrained kernel: a utility maximizer exists when the finite SR-dynamics/curvature-admissible inventory is nonempty, and the selected maximizer satisfies both constraints. The source still owes compactness or another existence premise for its continuous trajectory space."
+    },
+    {
+      "atlas_id": "corollary:bk8_sr_path_maximization",
+      "coverage": "conditional",
+      "lean": [
+        "Book8OptimalProjectionPath.utility_maximizer_need_not_be_geodesic",
+        "Book8OptimalProjectionPath.maximizer_is_geodesic_of_variational_bridge"
+      ],
+      "note": "The geodesic conclusion requires an explicit variational bridge tying the utility to the projection metric action. Countermodel: an arbitrary utility maximizer need not satisfy an unrelated geodesic predicate."
+    },
+    {
+      "atlas_id": "proposition:bk8_critical_projection_point",
+      "coverage": "conditional",
+      "lean": [
+        "Book8CriticalProjection.projectionTransition_iff_det_eq_zero",
+        "Book8CriticalProjection.fisher_singular_of_projection_transition",
+        "Book8CriticalProjection.criticalProjection_certificate"
+      ],
+      "note": "The determinant-zero transition criterion is represented exactly. Identifying symbolic Fisher information with the hypothesis metric yields Fisher singularity. Preservation of RG invariants remains a separate explicit witness rather than a consequence of metric degeneracy."
+    },
+    {
+      "atlas_id": "corollary:bk8_projection_transition_enabling_structural_emergence",
+      "coverage": "conditional",
+      "lean": [
+        "Book8CriticalProjection.singularity_alone_does_not_force_structural_emergence",
+        "Book8CriticalProjection.structuralEmergence_of_fisher_singular"
+      ],
+      "note": "A countermodel shows singularity alone does not force an unrelated emergence predicate. Structural emergence follows when the projective-drift bridge from Fisher singularity is supplied explicitly."
+    },
+    {
+      "atlas_id": "theorem:bk8_gradient_dissipation_balance",
+      "coverage": "conditional",
+      "lean": [
+        "Book8FramingEquivalence.framing_equivalence",
+        "Book8FramingEquivalence.curvature_zero_iff_separable",
+        "Book8FramingEquivalence.curvature_nonzero_iff_perceivedEntangled",
+        "Book8FramingEquivalence.curvature_nonzero_iff_all_productSpans_excluded",
+        "Book8FramingEquivalence.curvature_alone_does_not_force_entanglement"
+      ],
+      "note": "Exact logical framing kernel: perceived entanglement is exclusion from every locally admissible product span. Given explicit curvature-to-projection-residual and residual-to-separability bridges, nonzero curvature is equivalent to that universal exclusion. A countermodel shows an unconstrained scalar curvature label alone does not force entanglement; the manifold integral, Frechet derivative, and physical tensor-product semantics remain in the bridge obligation."
+    },
+    {
+      "atlas_id": "theorem:bk8_sr_convergence",
+      "coverage": "conditional",
+      "lean": [
+        "Book8SRConvergence.orbit_freeEnergy_nonincreasing",
+        "Book8SRConvergence.invariant_freeEnergy_nonincreasing",
+        "Book8SRConvergence.distanceToInvariant_tendsto_zero",
+        "Book8SRConvergence.lyapunov_descent_alone_does_not_force_invariant_approach"
+      ],
+      "note": "Discrete quantitative LaSalle kernel: a step-closed nonempty invariant set and global free-energy descent are retained, while a vanishing nonnegative energy gap plus an explicit distance-to-gap control squeezes the orbit distance to zero. A constant-energy, constant-distance countermodel shows bounded-below monotonicity alone does not force approach. The continuous R3 flow, global precompactness, and derivation of the coercive gap estimate remain analytic obligations."
+    }
+  ]
 }

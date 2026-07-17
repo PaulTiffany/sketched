@@ -49,17 +49,26 @@ The first realized integration is `selfcompile`:
 - `ellie._bridge_fabricpc` renders a bridge lesson from those claims.
 - `selfcompile/goals.json` adds `fabricpc-bridge` as a `bridge` mode goal.
 
-## Next Runtime Instrument
+## Runtime instruments
 
-A trajectory-level FabricPC runtime adapter should stay optional and emit manifest claims,
-not prose. A minimal useful instrument would run a tiny graph and emit:
+The first trajectory-level instruments now exist outside the ignored checkout.
+They emit hash-pinned JSON certificates rather than prose claims:
 
-- graph topology: nodes, edges, update regime;
-- run boundary: FabricPC commit or package version, JAX backend, seed;
-- observed quantities: loss or energy trace, convergence status, runtime notes;
-- comparison mode: predictive coding and backpropagation on the same topology;
-- failure boundary: hardware/backend limitations and any divergence from the
-  FabricPC demo baselines.
+- `verification/tools/fabricpc_orientation_adapter.py` records paired finite
+  differences, directional gain, and orientation transport;
+- `verification/tools/fabricpc_orientation_block_sweep.py` compares full,
+  blockwise, and hidden-only metrics so downstream transport is not misread as
+  intrinsic instability;
+- `verification/tools/fabricpc_second_order_adapter.py` records the four
+  perturbation-square branches and the mixed finite-difference residue.
 
-Until that exists, FabricPC is a grounded external bridge, not a local empirical
-result.
+The second-order certificate has an explicit additive null and nonlinear positive
+control. It can also accept ordered A-then-B and B-then-A trajectories, but a
+square residue alone is not an order or imagination certificate. See
+[`docs/26_FABRICPC_ORIENTATION_SENSOR.md`](26_FABRICPC_ORIENTATION_SENSOR.md)
+and [`docs/27_FABRICPC_SECOND_ORDER_SENSOR.md`](27_FABRICPC_SECOND_ORDER_SENSOR.md).
+
+These adapters verify the FabricPC commit from the local installation receipt,
+retain raw trajectories, and never infer a latent cause from a scalar anomaly.
+FabricPC remains a grounded external bridge; the correspondence to
+`FabricPCGuard.lean` is still conditional and no upstream changes are made.

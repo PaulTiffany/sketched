@@ -1,407 +1,447 @@
 {
- "schema": "sketched.appendix_dual_horizon-lean-map.v1",
- "source": "Principia Symbolica Appendix Dual Horizon (frame space, bounded discernibility, orthogonal additivity)",
- "boundary": "Mappings certify only the static/algebraic/finite kernel. Manifold, Hilbert-space, PDE, categorical, and asymptotic material is not certified; conditional and partial rows do not promote the full prose statement to a Lean theorem.",
- "entries": [
-  {
-   "atlas_id": "definition:appC_bounded_reflexive_emergence",
-   "coverage": "definition",
-   "lean": [
-    "AppendixDH.dual_horizon_signature"
-   ],
-   "note": "Modeled as the hypothesis pair (0 < tauE, tauE <= deltaPhi) taken by dual_horizon_signature, rather than as a standalone named Prop."
-  },
-  {
-   "atlas_id": "theorem:appC_dual_horizon_signature",
-   "coverage": "conditional",
-   "lean": [
-    "AppendixDH.dual_horizon_signature"
-   ],
-   "note": "Proved via the Emergence Domination route (Proof II of the source): bounded reflexive emergence plus the DualHorizonBalance sandwich forces min(G,C) > 0, hence G > 0 and C > 0. The source's alternative Proof I 'from Bounded Observability alone' is not modeled since that assumption is not given with enough precision in the packet."
-  },
-  {
-   "atlas_id": "theorem:appC_dual_horizon_biconditional",
-   "coverage": "proved-kernel",
-   "lean": [
-    "AppendixDH.dualHorizon_sufficiency",
-    "AppendixDH.dualHorizon_necessity",
-    "AppendixDH.dualHorizon_necessity_pos",
-    "AppendixDH.dualHorizon_tight_biconditional"
-   ],
-   "note": "The full sandwich kappa*m <= deltaPhi <= Lambda*m, sufficiency, necessity, and the tight kappa=Lambda biconditional are all proved unconditionally from the DualHorizonBalance data."
-  },
-  {
-   "atlas_id": "definition:appC_observer_token_space",
-   "coverage": "definition",
-   "lean": [
-    "AppendixDH.TokenResolution",
-    "AppendixDH.tokensOf",
-    "AppendixDH.tokensOfSet"
-   ],
-   "note": "The observer's collapse/refinement map is realized as a resolving function tau -> iota (each token resolves to exactly one frame index), replacing the abstract Proj(Horizon) apparatus with a finite combinatorial model."
-  },
-  {
-   "atlas_id": "lemma:appC_orthogonal_token_separation",
-   "coverage": "proved-kernel",
-   "lean": [
-    "AppendixDH.orthogonal_token_separation"
-   ],
-   "note": "Tokens resolving to distinct indices are disjoint, proved directly from the resolving-function model rather than from an operator-orthogonality hypothesis."
-  },
-  {
-   "atlas_id": "lemma:appC_coarse_graining_tokens",
-   "coverage": "proved-kernel",
-   "lean": [
-    "AppendixDH.tokensOfSet_eq_biUnion"
-   ],
-   "note": "Coarse-graining a set of frame indices resolves to exactly the Finset.biUnion of the individual token sets."
-  },
-  {
-   "atlas_id": "definition:appC_observer_coherence_budget",
-   "coverage": "definition",
-   "lean": [
-    "AppendixDH.CoherenceBudget"
-   ],
-   "note": "Kept as a [0,1]-normalized, binary finitely-additive assignment on Finset tau; the Born-rule token-budget representation formula itself is not modeled."
-  },
-  {
-   "atlas_id": "theorem:appC_orthogonal_additivity",
-   "coverage": "proved-kernel",
-   "lean": [
-    "AppendixDH.orthogonal_additivity",
-    "AppendixDH.mu_biUnion_eq_sum"
-   ],
-   "note": "Binary additivity is extended by induction to any finite pairwise-disjoint indexed family, then combined with the token-resolution model to give additivity of mu over any finite orthogonal family."
-  },
-  {
-   "atlas_id": "axiom:appC_psc1",
-   "coverage": "proved-kernel",
-   "lean": [
-    "AppendixDH.mu_le_one"
-   ],
-   "note": "Boundedness is derived as a theorem from mu_nonneg plus finite additivity (mu(full) = mu(A) + mu(full\\A) >= mu(A)), rather than postulated as a separate axiom."
-  },
-  {
-   "atlas_id": "axiom:appC_psc3",
-   "coverage": "conditional",
-   "lean": [
-    "AppendixDH.mu_conservation"
-   ],
-   "note": "Conservation (sum over all frame indices = 1) is derived given the added hypothesis that the frame's coarse-graining of every index covers the full admissible token set (tokensOfSet Finset.univ = full); this hypothesis is implicit-by-construction in the source's discernible complete frame but must be stated explicitly here."
-  },
-  {
-   "atlas_id": "lemma:appC_sigma_additivity",
-   "coverage": "partial",
-   "lean": [
-    "AppendixDH.mu_conservation"
-   ],
-   "note": "Only the finite-dimensional remark is realized: since the frame-index type is a Fintype, summing mu_conservation over Finset.univ already covers every orthogonal family a finite-dimensional Horizon can present. The Gleason-frame-function / normalized-measure identification itself is not separately formalized."
-  },
-  {
-   "atlas_id": "definition:appC_reflective_state_space",
-   "coverage": "definition",
-   "lean": [
-    "AppendixDH.MemoryAct"
-   ],
-   "note": "The reflective state space X x H is used directly as the domain/codomain of MemoryAct.step rather than given its own named type."
-  },
-  {
-   "atlas_id": "axiom:appC_axiom_of_memory",
-   "coverage": "proved-kernel",
-   "lean": [
-    "AppendixDH.memoryAct_hist_changes"
-   ],
-   "note": "History-change on every act is proved as a theorem from the strictly increasing order parameter carried by MemoryAct, upgrading the source's postulated axiom to a derived consequence of the monotone-order model."
-  },
-  {
-   "atlas_id": "theorem:appC_fundamental_irreversibility_final",
-   "coverage": "proved-kernel",
-   "lean": [
-    "AppendixDH.memoryAct_irreversible"
-   ],
-   "note": "Every act incurs strictly positive cost, direct from the MemoryAct.cost_pos field."
-  },
-  {
-   "atlas_id": "corollary:appC_emergence_of_time_arrow_final",
-   "coverage": "proved-kernel",
-   "lean": [
-    "AppendixDH.memoryAct_no_return",
-    "AppendixDH.memoryAct_order_iterate"
-   ],
-   "note": "The order parameter accumulates by at least n over n steps, hence the history never returns to an earlier value along any nontrivial path -- the discrete/finite kernel of the induced directed order and arrow of time."
-  },
-  {
-   "atlas_id": "definition:appC_lagrangian_potential",
-   "coverage": "conditional",
-   "lean": [
-    "AppendixDH.V",
-    "AppendixDH.V_nonneg",
-    "AppendixDH.V_eq_zero_iff"
-   ],
-   "note": "V(C) = (1/2)(C - 1/C)^2 kept exactly; nonnegativity is unconditional, the zero-locus characterization (V(C)=0 iff C=1) is proved for C > 0."
-  },
-  {
-   "atlas_id": "definition:appC_sustainable_growth_rate",
-   "coverage": "definition",
-   "lean": [
-    "AppendixDH.Sustainable",
-    "AppendixDH.sustainable_phi"
-   ],
-   "note": "Reframed algebraically from the source's asymptotic-ratio condition to the fixed-point inequality theta >= 1 + 1/theta (the same inequality theorem:appC_phi_minimal_curvature_parameter states verbatim for the curvature parameter) -- an explicit honesty gap against the source's limit-of-sequence phrasing."
-  },
-  {
-   "atlas_id": "theorem:appC_phi_min_growth",
-   "coverage": "conditional",
-   "lean": [
-    "AppendixDH.sustainable_ge_phi"
-   ],
-   "note": "phi is the least value satisfying the algebraic reframing of Sustainable; not a statement about limits of sequences of ratios."
-  },
-  {
-   "atlas_id": "definition:appC_complexity_growth_operator",
-   "coverage": "definition",
-   "lean": [
-    "AppendixDH.Gop"
-   ],
-   "note": "Kept as a pair-valued map (x,y) |-> (x+y,x) rather than a 2x2 matrix."
-  },
-  {
-   "atlas_id": "definition:appC_complexity_entropy_tradeof",
-   "coverage": "definition",
-   "lean": [
-    "AppendixDH.kappa"
-   ],
-   "note": "Same formula theta + 1/theta as definition:appC_symbolic_curvature_function, stated once and reused for both anchors."
-  },
-  {
-   "atlas_id": "theorem:appC_phi_minimized_entropy_per_complexity",
-   "coverage": "conditional",
-   "lean": [
-    "AppendixDH.kappa_min_at_phi"
-   ],
-   "note": "Proved among Sustainable rates (the algebraic reframing), not among all sustainable-in-the-source's-asymptotic-sense rates."
-  },
-  {
-   "atlas_id": "definition:appC_phi_stable_region",
-   "coverage": "partial",
-   "lean": [
-    "AppendixDH.PhiStableRegion"
-   ],
-   "note": "Only the contraction clause (iii) is modeled, as a global hypothesis rather than one restricted to an unspecified neighborhood U. The invariance clause (i) and the curvature inner-product clause (ii) are dropped -- no operator K_t is modeled in this pass."
-  },
-  {
-   "atlas_id": "lemma:appC_geodesic_convergence",
-   "coverage": "conditional",
-   "lean": [
-    "AppendixDH.geodesic_convergence"
-   ],
-   "note": "Given the PhiStableRegion's global contraction hypothesis, distance to M shrinks geometrically: infDist(x_n, M) <= q^n * infDist(x_0, M)."
-  },
-  {
-   "atlas_id": "definition:appC_symbolic_operator_assumptions",
-   "coverage": "definition",
-   "lean": [
-    "AppendixDH.Gop_step"
-   ],
-   "note": "The two-step closure hypothesis s(n+2)=s(n+1)+s(n) is taken directly as a hypothesis of Gop_step rather than given its own named Prop."
-  },
-  {
-   "atlas_id": "lemma:appC_matrix_representation_symbolic_operators",
-   "coverage": "proved-kernel",
-   "lean": [
-    "AppendixDH.Gop_step"
-   ],
-   "note": "Gop advances consecutive terms of any two-step-closure sequence: Gop(s(n+1),s(n)) = (s(n+2),s(n+1))."
-  },
-  {
-   "atlas_id": "theorem:appC_phi_eigenvalue_recursive_emergence",
-   "coverage": "conditional",
-   "lean": [
-    "AppendixDH.Gop_phi_eigen"
-   ],
-   "note": "Reframed from a Perron-Frobenius/matrix-norm spectral-radius argument to a direct eigenvector exhibition: Gop(phi,1) = (phi*phi,phi) = phi . (phi,1)."
-  },
-  {
-   "atlas_id": "definition:appC_symbolic_curvature_function",
-   "coverage": "definition",
-   "lean": [
-    "AppendixDH.kappa"
-   ],
-   "note": "Identical formula to definition:appC_complexity_entropy_tradeof (theta + 1/theta), stated once as kappa and reused for both anchors rather than duplicated."
-  },
-  {
-   "atlas_id": "theorem:appC_phi_minimal_curvature_parameter",
-   "coverage": "conditional",
-   "lean": [
-    "AppendixDH.kappa_min_at_phi",
-    "AppendixDH.sustainable_ge_phi"
-   ],
-   "note": "The same theorem as theorem:appC_phi_minimized_entropy_per_complexity, stated twice in the source under two names; both are discharged by kappa_min_at_phi (and its minimality precondition by sustainable_ge_phi), restricted to the algebraic Sustainable domain theta >= 1 + 1/theta given verbatim by this anchor."
-  },
-  {
-   "atlas_id": "definition:appC_symbolic_flow_stability",
-   "coverage": "definition",
-   "lean": [
-    "AppendixDH.stability_phi_flow"
-   ],
-   "note": "The stability condition |d/dtheta(1+1/theta)| < 1 at theta=phi is realized directly as the closed-form inequality 1/(phi*phi) < 1, without modeling a general derivative operator."
-  },
-  {
-   "atlas_id": "lemma:appC_stability_phi_flow",
-   "coverage": "proved-kernel",
-   "lean": [
-    "AppendixDH.stability_phi_flow"
-   ],
-   "note": "1/(phi*phi) < 1, proved from phi > 1."
-  },
-  {
-   "atlas_id": "theorem:appC_unified_recursive_fixed_point",
-   "coverage": "proved-kernel",
-   "lean": [
-    "AppendixDH.fixed_point_iff_phi"
-   ],
-   "note": "Among positive reals, phi is the unique fixed point of lam = 1 + 1/lam, proved via the same factoring argument as sustainable_ge_phi plus uniqueness of the positive root of lam^2-lam-1=0."
-  },
-  {
-   "atlas_id": "definition:appC_horizon_fluxes",
-   "coverage": "partial",
-   "lean": [
-    "Book7B.posPart_sub_negPart"
-   ],
-   "note": "Only the pointwise real identity x = max(x,0)-max(-x,0) underlying the divergence-theorem remark is modeled; the observer measure and manifold integrals G_Obs, C_Obs themselves are not."
-  },
-  {
-   "atlas_id": "theorem:appC_phi_from_lagrangian",
-   "coverage": "conditional",
-   "lean": [
-    "Book7B.shiftedFib_ratio_tendsto_goldenRatio"
-   ],
-   "note": "Witnessed only for the canonical positive-initial-data instance C_n=fib(n+1) (C_0=C_1=1); generalizing to arbitrary C_0,C_1>0 is not attempted."
-  },
-  {
-   "atlas_id": "definition:appC_bounded_observation_frame",
-   "coverage": "partial",
-   "lean": [
-    "Book7B.complexity_card_le"
-   ],
-   "note": "Frame modeled as a Finset rather than a Hilbert-space metric ball."
-  },
-  {
-   "atlas_id": "definition:appC_complexity_measure",
-   "coverage": "partial",
-   "lean": [
-    "Book7B.complexity_card_le"
-   ],
-   "note": "Finset.card of an intersection stands in for dim(span(...)); genuine linear-algebra dimension is not modeled."
-  },
-  {
-   "atlas_id": "theorem:appC_phi_as_spectral_radius",
-   "coverage": "conditional",
-   "lean": [
-    "Book7B.shiftedFib_ratio_tendsto_goldenRatio"
-   ],
-   "note": "The scalar growth-rate content of rho(G)=phi is witnessed by the same golden-ratio limit; the operator G and its spectral radius/operator norm are not modeled."
-  },
-  {
-   "atlas_id": "lemma:appC_fibonacci_structure_matrix_powers",
-   "coverage": "proved-kernel",
-   "lean": [
-    "Book7B.fibMatrix",
-    "Book7B.fibMatrix_pow_succ"
-   ],
-   "note": "Exact matrix-power identity for n>=1, reindexed n|->n+1 to avoid Nat subtraction at the excluded n=0 case."
-  },
-  {
-   "atlas_id": "definition:appC_bounded_symbolic_observer_dynamics",
-   "coverage": "definition",
-   "lean": [
-    "Book7B.symbolicEffort_ge_two"
-   ],
-   "note": "theta as forward-drift rate, 1/theta as curvature penalty, kept as plain reals rather than a manifold dynamical system."
-  },
-  {
-   "atlas_id": "lemma:appC_geometric_interpretation_curvature",
-   "coverage": "proved-kernel",
-   "lean": [
-    "Book7B.symbolicEffort_ge_two",
-    "Book7B.symbolicEffort_eq_two_iff"
-   ],
-   "note": "AM-GM lower bound on kappa(theta)=theta+1/theta plus its equality trichotomy at theta=1."
-  },
-  {
-   "atlas_id": "definition:appC_modal_transference_map",
-   "coverage": "partial",
-   "lean": [
-    "Book7B.QuasiLipschitz"
-   ],
-   "note": "Only clause (2), observer-bounded distortion, is modeled; ordinal preservation, operator semi-conjugacy, and invariant preservation are not."
-  },
-  {
-   "atlas_id": "theorem:appC_modal_transference",
-   "coverage": "conditional",
-   "lean": [
-    "Book7B.quasiLipschitz_comp",
-    "Book7B.shiftedFib_ratio_tendsto_goldenRatio"
-   ],
-   "note": "Distortion-composition bound covers the quantitative 'preserved up to observer resolution' content under composition; the golden-ratio tail clause is covered by the shared Fibonacci-ratio theorem. Ordinal/operator-recurrence invariant preservation itself is not modeled."
-  },
-  {
-   "atlas_id": "axiom:appC_psc2",
-   "coverage": "proved-kernel",
-   "lean": [
-    "Born.psc2_unitary_covariance"
-   ],
-   "note": "The Born coherence form satisfies unitary covariance; forward direction of the Born rule."
-  },
-  {
-   "atlas_id": "lemma:appC_unitary_invariance",
-   "coverage": "proved-kernel",
-   "lean": [
-    "Born.psc2_unitary_covariance"
-   ],
-   "note": "The measure family is unitary-covariant - same kernel as PS-C2."
-  },
-  {
-   "atlas_id": "axiom:appC_psc4",
-   "coverage": "proved-kernel",
-   "lean": [
-    "Born.psc4_ray_invariance"
-   ],
-   "note": "The Born form is phase-invariant (ray invariance)."
-  },
-  {
-   "atlas_id": "axiom:appC_psc6",
-   "coverage": "proved-kernel",
-   "lean": [
-    "Born.psc6_calibration"
-   ],
-   "note": "The Born form calibrates: a pure state answers its own question with coherence 1."
-  },
-  {
-   "atlas_id": "theorem:appC_born_rule",
-   "coverage": "conditional",
-   "lean": [
-    "Born.qubit_born",
-    "Born.coh_le_one"
-   ],
-   "note": "The rank-one Born value taken as the coherence functional, computed on the qubit and bounded by 1; Gleason-type uniqueness (axioms force this form in d>=3) stays a counsel-permanent open."
-  },
-  {
-   "atlas_id": "corollary:appC_qubit_case",
-   "coverage": "proved-kernel",
-   "lean": [
-    "Born.qubit_born"
-   ],
-   "note": "The qubit Born value equals the squared amplitude, computed on C^2."
-  },
-  {
-   "atlas_id": "corollary:appC_mixed_states",
-   "coverage": "conditional",
-   "lean": [
-    "Born.mixed_affine",
-    "Born.cohMix_nonneg"
-   ],
-   "note": "The mixed-state coherence is affine in the mixing weights, matching tr(rho Pi_a)."
-  }
- ]
+  "schema": "sketched.appendix_dual_horizon-lean-map.v1",
+  "source": "Principia Symbolica Appendix Dual Horizon (frame space, bounded discernibility, orthogonal additivity)",
+  "boundary": "Mappings certify only the static/algebraic/finite kernel. Manifold, Hilbert-space, PDE, categorical, and asymptotic material is not certified; conditional and partial rows do not promote the full prose statement to a Lean theorem.",
+  "entries": [
+    {
+      "atlas_id": "definition:appC_bounded_reflexive_emergence",
+      "coverage": "definition",
+      "lean": [
+        "AppendixDH.dual_horizon_signature"
+      ],
+      "note": "Modeled as the hypothesis pair (0 < tauE, tauE <= deltaPhi) taken by dual_horizon_signature, rather than as a standalone named Prop."
+    },
+    {
+      "atlas_id": "theorem:appC_dual_horizon_signature",
+      "coverage": "conditional",
+      "lean": [
+        "AppendixDH.dual_horizon_signature"
+      ],
+      "note": "Proved via the Emergence Domination route (Proof II of the source): bounded reflexive emergence plus the DualHorizonBalance sandwich forces min(G,C) > 0, hence G > 0 and C > 0. The source's alternative Proof I 'from Bounded Observability alone' is not modeled since that assumption is not given with enough precision in the packet."
+    },
+    {
+      "atlas_id": "theorem:appC_dual_horizon_biconditional",
+      "coverage": "proved-kernel",
+      "lean": [
+        "AppendixDH.dualHorizon_sufficiency",
+        "AppendixDH.dualHorizon_necessity",
+        "AppendixDH.dualHorizon_necessity_pos",
+        "AppendixDH.dualHorizon_tight_biconditional"
+      ],
+      "note": "The full sandwich kappa*m <= deltaPhi <= Lambda*m, sufficiency, necessity, and the tight kappa=Lambda biconditional are all proved unconditionally from the DualHorizonBalance data."
+    },
+    {
+      "atlas_id": "definition:appC_observer_token_space",
+      "coverage": "definition",
+      "lean": [
+        "AppendixDH.TokenResolution",
+        "AppendixDH.tokensOf",
+        "AppendixDH.tokensOfSet"
+      ],
+      "note": "The observer's collapse/refinement map is realized as a resolving function tau -> iota (each token resolves to exactly one frame index), replacing the abstract Proj(Horizon) apparatus with a finite combinatorial model."
+    },
+    {
+      "atlas_id": "lemma:appC_orthogonal_token_separation",
+      "coverage": "proved-kernel",
+      "lean": [
+        "AppendixDH.orthogonal_token_separation"
+      ],
+      "note": "Tokens resolving to distinct indices are disjoint, proved directly from the resolving-function model rather than from an operator-orthogonality hypothesis."
+    },
+    {
+      "atlas_id": "lemma:appC_coarse_graining_tokens",
+      "coverage": "proved-kernel",
+      "lean": [
+        "AppendixDH.tokensOfSet_eq_biUnion"
+      ],
+      "note": "Coarse-graining a set of frame indices resolves to exactly the Finset.biUnion of the individual token sets."
+    },
+    {
+      "atlas_id": "definition:appC_observer_coherence_budget",
+      "coverage": "definition",
+      "lean": [
+        "AppendixDH.CoherenceBudget"
+      ],
+      "note": "Kept as a [0,1]-normalized, binary finitely-additive assignment on Finset tau; the Born-rule token-budget representation formula itself is not modeled."
+    },
+    {
+      "atlas_id": "theorem:appC_orthogonal_additivity",
+      "coverage": "proved-kernel",
+      "lean": [
+        "AppendixDH.orthogonal_additivity",
+        "AppendixDH.mu_biUnion_eq_sum"
+      ],
+      "note": "Binary additivity is extended by induction to any finite pairwise-disjoint indexed family, then combined with the token-resolution model to give additivity of mu over any finite orthogonal family."
+    },
+    {
+      "atlas_id": "axiom:appC_psc1",
+      "coverage": "proved-kernel",
+      "lean": [
+        "AppendixDH.mu_le_one"
+      ],
+      "note": "Boundedness is derived as a theorem from mu_nonneg plus finite additivity (mu(full) = mu(A) + mu(full\\A) >= mu(A)), rather than postulated as a separate axiom."
+    },
+    {
+      "atlas_id": "axiom:appC_psc3",
+      "coverage": "conditional",
+      "lean": [
+        "AppendixDH.mu_conservation"
+      ],
+      "note": "Conservation (sum over all frame indices = 1) is derived given the added hypothesis that the frame's coarse-graining of every index covers the full admissible token set (tokensOfSet Finset.univ = full); this hypothesis is implicit-by-construction in the source's discernible complete frame but must be stated explicitly here."
+    },
+    {
+      "atlas_id": "lemma:appC_sigma_additivity",
+      "coverage": "partial",
+      "lean": [
+        "AppendixDH.mu_conservation"
+      ],
+      "note": "Only the finite-dimensional remark is realized: since the frame-index type is a Fintype, summing mu_conservation over Finset.univ already covers every orthogonal family a finite-dimensional Horizon can present. The Gleason-frame-function / normalized-measure identification itself is not separately formalized."
+    },
+    {
+      "atlas_id": "definition:appC_reflective_state_space",
+      "coverage": "definition",
+      "lean": [
+        "AppendixDH.MemoryAct"
+      ],
+      "note": "The reflective state space X x H is used directly as the domain/codomain of MemoryAct.step rather than given its own named type."
+    },
+    {
+      "atlas_id": "axiom:appC_axiom_of_memory",
+      "coverage": "proved-kernel",
+      "lean": [
+        "AppendixDH.memoryAct_hist_changes"
+      ],
+      "note": "History-change on every act is proved as a theorem from the strictly increasing order parameter carried by MemoryAct, upgrading the source's postulated axiom to a derived consequence of the monotone-order model."
+    },
+    {
+      "atlas_id": "theorem:appC_fundamental_irreversibility_final",
+      "coverage": "proved-kernel",
+      "lean": [
+        "AppendixDH.memoryAct_irreversible"
+      ],
+      "note": "Every act incurs strictly positive cost, direct from the MemoryAct.cost_pos field."
+    },
+    {
+      "atlas_id": "corollary:appC_emergence_of_time_arrow_final",
+      "coverage": "proved-kernel",
+      "lean": [
+        "AppendixDH.memoryAct_no_return",
+        "AppendixDH.memoryAct_order_iterate"
+      ],
+      "note": "The order parameter accumulates by at least n over n steps, hence the history never returns to an earlier value along any nontrivial path -- the discrete/finite kernel of the induced directed order and arrow of time."
+    },
+    {
+      "atlas_id": "definition:appC_lagrangian_potential",
+      "coverage": "conditional",
+      "lean": [
+        "AppendixDH.V",
+        "AppendixDH.V_nonneg",
+        "AppendixDH.V_eq_zero_iff"
+      ],
+      "note": "V(C) = (1/2)(C - 1/C)^2 kept exactly; nonnegativity is unconditional, the zero-locus characterization (V(C)=0 iff C=1) is proved for C > 0."
+    },
+    {
+      "atlas_id": "definition:appC_sustainable_growth_rate",
+      "coverage": "definition",
+      "lean": [
+        "AppendixDH.Sustainable",
+        "AppendixDH.sustainable_phi"
+      ],
+      "note": "Reframed algebraically from the source's asymptotic-ratio condition to the fixed-point inequality theta >= 1 + 1/theta (the same inequality theorem:appC_phi_minimal_curvature_parameter states verbatim for the curvature parameter) -- an explicit honesty gap against the source's limit-of-sequence phrasing."
+    },
+    {
+      "atlas_id": "theorem:appC_phi_min_growth",
+      "coverage": "conditional",
+      "lean": [
+        "AppendixDH.sustainable_ge_phi"
+      ],
+      "note": "phi is the least value satisfying the algebraic reframing of Sustainable; not a statement about limits of sequences of ratios."
+    },
+    {
+      "atlas_id": "definition:appC_complexity_growth_operator",
+      "coverage": "definition",
+      "lean": [
+        "AppendixDH.Gop"
+      ],
+      "note": "Kept as a pair-valued map (x,y) |-> (x+y,x) rather than a 2x2 matrix."
+    },
+    {
+      "atlas_id": "definition:appC_complexity_entropy_tradeof",
+      "coverage": "definition",
+      "lean": [
+        "AppendixDH.kappa"
+      ],
+      "note": "Same formula theta + 1/theta as definition:appC_symbolic_curvature_function, stated once and reused for both anchors."
+    },
+    {
+      "atlas_id": "theorem:appC_phi_minimized_entropy_per_complexity",
+      "coverage": "conditional",
+      "lean": [
+        "AppendixDH.kappa_min_at_phi"
+      ],
+      "note": "Proved among Sustainable rates (the algebraic reframing), not among all sustainable-in-the-source's-asymptotic-sense rates."
+    },
+    {
+      "atlas_id": "definition:appC_phi_stable_region",
+      "coverage": "partial",
+      "lean": [
+        "AppendixDH.PhiStableRegion"
+      ],
+      "note": "Only the contraction clause (iii) is modeled, as a global hypothesis rather than one restricted to an unspecified neighborhood U. The invariance clause (i) and the curvature inner-product clause (ii) are dropped -- no operator K_t is modeled in this pass."
+    },
+    {
+      "atlas_id": "lemma:appC_geodesic_convergence",
+      "coverage": "conditional",
+      "lean": [
+        "AppendixDH.geodesic_convergence"
+      ],
+      "note": "Given the PhiStableRegion's global contraction hypothesis, distance to M shrinks geometrically: infDist(x_n, M) <= q^n * infDist(x_0, M)."
+    },
+    {
+      "atlas_id": "definition:appC_symbolic_operator_assumptions",
+      "coverage": "definition",
+      "lean": [
+        "AppendixDH.Gop_step"
+      ],
+      "note": "The two-step closure hypothesis s(n+2)=s(n+1)+s(n) is taken directly as a hypothesis of Gop_step rather than given its own named Prop."
+    },
+    {
+      "atlas_id": "lemma:appC_matrix_representation_symbolic_operators",
+      "coverage": "proved-kernel",
+      "lean": [
+        "AppendixDH.Gop_step"
+      ],
+      "note": "Gop advances consecutive terms of any two-step-closure sequence: Gop(s(n+1),s(n)) = (s(n+2),s(n+1))."
+    },
+    {
+      "atlas_id": "theorem:appC_phi_eigenvalue_recursive_emergence",
+      "coverage": "conditional",
+      "lean": [
+        "AppendixDH.Gop_phi_eigen"
+      ],
+      "note": "Reframed from a Perron-Frobenius/matrix-norm spectral-radius argument to a direct eigenvector exhibition: Gop(phi,1) = (phi*phi,phi) = phi . (phi,1)."
+    },
+    {
+      "atlas_id": "definition:appC_symbolic_curvature_function",
+      "coverage": "definition",
+      "lean": [
+        "AppendixDH.kappa"
+      ],
+      "note": "Identical formula to definition:appC_complexity_entropy_tradeof (theta + 1/theta), stated once as kappa and reused for both anchors rather than duplicated."
+    },
+    {
+      "atlas_id": "theorem:appC_phi_minimal_curvature_parameter",
+      "coverage": "conditional",
+      "lean": [
+        "AppendixDH.kappa_min_at_phi",
+        "AppendixDH.sustainable_ge_phi"
+      ],
+      "note": "The same theorem as theorem:appC_phi_minimized_entropy_per_complexity, stated twice in the source under two names; both are discharged by kappa_min_at_phi (and its minimality precondition by sustainable_ge_phi), restricted to the algebraic Sustainable domain theta >= 1 + 1/theta given verbatim by this anchor."
+    },
+    {
+      "atlas_id": "definition:appC_symbolic_flow_stability",
+      "coverage": "definition",
+      "lean": [
+        "AppendixDH.stability_phi_flow"
+      ],
+      "note": "The stability condition |d/dtheta(1+1/theta)| < 1 at theta=phi is realized directly as the closed-form inequality 1/(phi*phi) < 1, without modeling a general derivative operator."
+    },
+    {
+      "atlas_id": "lemma:appC_stability_phi_flow",
+      "coverage": "proved-kernel",
+      "lean": [
+        "AppendixDH.stability_phi_flow"
+      ],
+      "note": "1/(phi*phi) < 1, proved from phi > 1."
+    },
+    {
+      "atlas_id": "theorem:appC_unified_recursive_fixed_point",
+      "coverage": "proved-kernel",
+      "lean": [
+        "AppendixDH.fixed_point_iff_phi"
+      ],
+      "note": "Among positive reals, phi is the unique fixed point of lam = 1 + 1/lam, proved via the same factoring argument as sustainable_ge_phi plus uniqueness of the positive root of lam^2-lam-1=0."
+    },
+    {
+      "atlas_id": "definition:appC_horizon_fluxes",
+      "coverage": "partial",
+      "lean": [
+        "Book7B.posPart_sub_negPart"
+      ],
+      "note": "Only the pointwise real identity x = max(x,0)-max(-x,0) underlying the divergence-theorem remark is modeled; the observer measure and manifold integrals G_Obs, C_Obs themselves are not."
+    },
+    {
+      "atlas_id": "theorem:appC_phi_from_lagrangian",
+      "coverage": "conditional",
+      "lean": [
+        "Book7B.shiftedFib_ratio_tendsto_goldenRatio"
+      ],
+      "note": "Witnessed only for the canonical positive-initial-data instance C_n=fib(n+1) (C_0=C_1=1); generalizing to arbitrary C_0,C_1>0 is not attempted."
+    },
+    {
+      "atlas_id": "definition:appC_bounded_observation_frame",
+      "coverage": "partial",
+      "lean": [
+        "Book7B.complexity_card_le"
+      ],
+      "note": "Frame modeled as a Finset rather than a Hilbert-space metric ball."
+    },
+    {
+      "atlas_id": "definition:appC_complexity_measure",
+      "coverage": "partial",
+      "lean": [
+        "Book7B.complexity_card_le"
+      ],
+      "note": "Finset.card of an intersection stands in for dim(span(...)); genuine linear-algebra dimension is not modeled."
+    },
+    {
+      "atlas_id": "theorem:appC_phi_as_spectral_radius",
+      "coverage": "conditional",
+      "lean": [
+        "Book7B.shiftedFib_ratio_tendsto_goldenRatio"
+      ],
+      "note": "The scalar growth-rate content of rho(G)=phi is witnessed by the same golden-ratio limit; the operator G and its spectral radius/operator norm are not modeled."
+    },
+    {
+      "atlas_id": "lemma:appC_fibonacci_structure_matrix_powers",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book7B.fibMatrix",
+        "Book7B.fibMatrix_pow_succ"
+      ],
+      "note": "Exact matrix-power identity for n>=1, reindexed n|->n+1 to avoid Nat subtraction at the excluded n=0 case."
+    },
+    {
+      "atlas_id": "definition:appC_bounded_symbolic_observer_dynamics",
+      "coverage": "definition",
+      "lean": [
+        "Book7B.symbolicEffort_ge_two"
+      ],
+      "note": "theta as forward-drift rate, 1/theta as curvature penalty, kept as plain reals rather than a manifold dynamical system."
+    },
+    {
+      "atlas_id": "lemma:appC_geometric_interpretation_curvature",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book7B.symbolicEffort_ge_two",
+        "Book7B.symbolicEffort_eq_two_iff"
+      ],
+      "note": "AM-GM lower bound on kappa(theta)=theta+1/theta plus its equality trichotomy at theta=1."
+    },
+    {
+      "atlas_id": "definition:appC_modal_transference_map",
+      "coverage": "partial",
+      "lean": [
+        "Book7B.QuasiLipschitz"
+      ],
+      "note": "Only clause (2), observer-bounded distortion, is modeled; ordinal preservation, operator semi-conjugacy, and invariant preservation are not."
+    },
+    {
+      "atlas_id": "theorem:appC_modal_transference",
+      "coverage": "conditional",
+      "lean": [
+        "Book7B.quasiLipschitz_comp",
+        "Book7B.shiftedFib_ratio_tendsto_goldenRatio"
+      ],
+      "note": "Distortion-composition bound covers the quantitative 'preserved up to observer resolution' content under composition; the golden-ratio tail clause is covered by the shared Fibonacci-ratio theorem. Ordinal/operator-recurrence invariant preservation itself is not modeled."
+    },
+    {
+      "atlas_id": "axiom:appC_psc2",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Born.psc2_unitary_covariance"
+      ],
+      "note": "The Born coherence form satisfies unitary covariance; forward direction of the Born rule."
+    },
+    {
+      "atlas_id": "lemma:appC_unitary_invariance",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Born.psc2_unitary_covariance"
+      ],
+      "note": "The measure family is unitary-covariant - same kernel as PS-C2."
+    },
+    {
+      "atlas_id": "axiom:appC_psc4",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Born.psc4_ray_invariance"
+      ],
+      "note": "The Born form is phase-invariant (ray invariance)."
+    },
+    {
+      "atlas_id": "axiom:appC_psc6",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Born.psc6_calibration"
+      ],
+      "note": "The Born form calibrates: a pure state answers its own question with coherence 1."
+    },
+    {
+      "atlas_id": "theorem:appC_born_rule",
+      "coverage": "conditional",
+      "lean": [
+        "Born.qubit_born",
+        "Born.coh_le_one"
+      ],
+      "note": "The rank-one Born value taken as the coherence functional, computed on the qubit and bounded by 1; Gleason-type uniqueness (axioms force this form in d>=3) stays a counsel-permanent open."
+    },
+    {
+      "atlas_id": "corollary:appC_qubit_case",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Born.qubit_born"
+      ],
+      "note": "The qubit Born value equals the squared amplitude, computed on C^2."
+    },
+    {
+      "atlas_id": "corollary:appC_mixed_states",
+      "coverage": "conditional",
+      "lean": [
+        "Born.mixed_affine",
+        "Born.cohMix_nonneg"
+      ],
+      "note": "The mixed-state coherence is affine in the mixing weights, matching tr(rho Pi_a)."
+    },
+    {
+      "atlas_id": "axiom:appC_psc3prime",
+      "coverage": "conditional",
+      "lean": [
+        "AppendixCoherenceAxioms.noncontextual_budget_frame_independent",
+        "AppendixCoherenceAxioms.bounded_budget_does_not_force_noncontextuality"
+      ],
+      "note": "Typed noncontextuality axiom: a budget satisfying NoncontextualAt gives equal values for the same question across frames. Countermodel confirms unit-interval boundedness does not derive frame independence, matching the source declaration that PS-C3-prime is posited."
+    },
+    {
+      "atlas_id": "axiom:appC_psc5",
+      "coverage": "conditional",
+      "lean": [
+        "AppendixCoherenceAxioms.separated_orthogonal_questions_not_both_maximal",
+        "AppendixCoherenceAxioms.boundedness_does_not_force_resolution_distinguishability"
+      ],
+      "note": "Typed resolution axiom excludes simultaneous unit coherence for separated orthogonal questions. Countermodel confirms ordinary [0,1] boundedness does not derive PS-C5; it remains an explicit physical axiom."
+    },
+    {
+      "atlas_id": "proposition:appC_conditional_minimality_2x2",
+      "coverage": "proved-kernel",
+      "lean": [
+        "AppendixMemoryMinimality.current_only_update_forgets_memory",
+        "AppendixMemoryMinimality.memory_projection_not_representable_by_current_only",
+        "AppendixMemoryMinimality.memoryStep_encodes_recurrence",
+        "AppendixMemoryMinimality.two_coordinate_form_conditionally_minimal"
+      ],
+      "note": "Exact operational kernel under the stated one-step-memory assumption: a current-only scalar update cannot distinguish histories sharing the current value and cannot represent the rule next=previous; the two-coordinate state (current, previous) represents every one-step recurrence and shifts memory exactly."
+    },
+    {
+      "atlas_id": "lemma:appC_banach_space_of_curvature_flows",
+      "coverage": "conditional",
+      "lean": [
+        "AppendixCurvatureFlows.boundedContinuousFlow_cauchy_converges",
+        "AppendixCurvatureFlows.pointwise_limit_preserves_lipschitz_bound",
+        "AppendixCurvatureFlows.observer_bound_closed_under_pointwise_limit",
+        "AppendixCurvatureFlows.pointwise_convergence_alone_does_not_preserve_bound"
+      ],
+      "note": "Analytic kernel: bounded continuous flows into a complete normed target are complete in the uniform ambient metric, and a shared Lipschitz bound—including the printed C1*delta bound—passes to pointwise limits. A countermodel shows pointwise convergence without a common bound is insufficient. The exact custom Lipschitz norm and bounded-operator specialization are not reconstructed."
+    }
+  ]
 }

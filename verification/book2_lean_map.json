@@ -168,6 +168,42 @@
    "note": "Global inverse temperature = density-weighted mean of local inverse temps, bounded by the extremes; the manifold integral stays open."
   },
   {
+   "atlas_id": "theorem:bk2_wasserstein_gradient_flow",
+   "coverage": "conditional",
+   "lean": [
+    "Book2H.trajectory_isDensity",
+    "Book2H.freeEnergy_trajectory_antitone"
+   ],
+   "note": "Finite discrete gradient-flow kernel: every repeated detailed-balance step preserves density and the complete free-energy trajectory is antitone. No Wasserstein metric or continuum Fokker-Planck identification is asserted."
+  },
+  {
+   "atlas_id": "theorem:bk2_symbolic_fluctuation_dissipation_relation",
+   "coverage": "conditional",
+   "lean": [
+    "Book2Response.fluctuation_response_hasDerivAt"
+   ],
+   "note": "Finite static Kubo kernel: under H_h = H - hB, the derivative at h=0 of the Gibbs expectation of A equals beta times the equilibrium covariance of A and B. The continuous-time correlation derivative requires a differentiable equilibrium semigroup and remains outside this kernel."
+  },
+  {
+   "atlas_id": "lemma:bk2_thermodynamic_consistency_hypothesis_manifolds",
+   "coverage": "conditional",
+   "lean": [
+    "Book2Consistency.thermodynamic_consistency",
+    "Book2Consistency.boundedCurvature_alone_insufficient"
+   ],
+   "note": "The displayed balance follows after making the proof's closed-surface balance premise explicit. A compiled countermodel shows bounded curvature alone cannot force the relation."
+  },
+  {
+   "atlas_id": "corollary:bk2_interpretative_framework",
+   "coverage": "partial",
+   "lean": [
+    "Book2.entropy_nonneg",
+    "Book2.gibbs_minimizes",
+    "Book2Response.fluctuation_response_hasDerivAt"
+   ],
+   "note": "Quantitative roles are certified: entropy is nonnegative uncertainty, Gibbs free energy is minimized at equilibrium, and beta scales finite linear response. The prose interpretations remain authored semantics, not propositions promoted by Lean."
+  },
+  {
    "atlas_id": "theorem:bk2_emergence_structure_symb_thermo",
    "coverage": "conditional",
    "lean": [

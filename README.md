@@ -51,15 +51,17 @@ Operations can occur out of order, but an out-of-order run is not recognized as 
 ## Current status
 
 - React/Vite application with **49 passing tests** and a passing production build.
-- Principia Lean program: **406 of 476** claim-bearing atlas nodes mapped.
-- **1,047** verified Lean declarations, with no `sorry` admitted in the tracked program.
-- Core Lean kernel and the mathlib-backed analysis layer build successfully (8,630 analysis jobs in the current environment).
-- Scholium coverage is complete; Books 4, 5, 6, 7, 8, and 9 remain active frontiers.
+- Principia Lean program: **476 of 476** claim-bearing atlas nodes mapped; the exact claim frontier is closed.
+- **1,345** verified Lean declarations, with no `sorry` admitted in the tracked program.
+- Core Lean kernel and the mathlib-backed analysis layer build successfully (8,695 analysis jobs in the current environment).
+- Books 1-3 and the Scholium are complete. Book 4 is complete; Books 5-9 and the appendices have complete claim-bearing atlas coverage; hardening and source-debt repair remain active.
 - FabricPC 0.3.1 has a pinned external installation receipt, 269 passing upstream tests, and a successful CPU MNIST run. The next bridge step is comparing real FabricPC trajectories with the proved guard contracts.
 
 Coverage is not presented as completion. The generated queue and source-debt register are the authority:
 
 - [`docs/20_PS_LEAN_QUEUE.md`](docs/20_PS_LEAN_QUEUE.md)
+- [`docs/22_PS_LEAN_FRONTIER.md`](docs/22_PS_LEAN_FRONTIER.md) — every open claim by source anchor and dependency
+- [`docs/23_PS_BINDING_LEDGER.md`](docs/23_PS_BINDING_LEDGER.md) — human projection of the machine-readable SHA bindings
 - [`docs/21_PS_SOURCE_OBLIGATIONS.md`](docs/21_PS_SOURCE_OBLIGATIONS.md)
 - [`docs/18_LEAN_PS_LEDGER.md`](docs/18_LEAN_PS_LEDGER.md)
 

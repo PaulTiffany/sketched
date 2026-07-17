@@ -59,6 +59,12 @@ class BindingAuditTests(unittest.TestCase):
         findings, _, _ = audit.audit(forged, shas, audit.ROOT)
         self.assertEqual([code for code, _ in findings], ["BINDING_DECL_MISSING"])
 
+    def test_oversized_note_is_a_finding(self) -> None:
+        bindings, shas, unavailable = load_repo_state()
+        forged = [{**bindings[0], "note": "x" * 501}]
+        forged[0].pop("attested_in", None)
+        findings, _, _ = audit.audit(forged, shas, audit.ROOT)
+        self.assertTrue(any(code == "BINDING_NOTE_OVERSIZED" for code, _ in findings))
     def test_absent_tree_skips_instead_of_failing(self) -> None:
         bindings, shas, unavailable = load_repo_state()
         with tempfile.TemporaryDirectory() as tmp:

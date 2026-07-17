@@ -1,431 +1,513 @@
 {
- "schema": "sketched.book7-lean-map.v1",
- "source": "Principia Symbolica Book 7",
- "boundary": "Mappings certify only the scalar/sequence/finite kernel. Banach and Hilbert space theory, measure theory, infinite-limit stabilization claims, and the quantum-foundational cluster are not certified; the numeric interface model (verification/kernel/interface_model.py) covers several bridge anchors empirically under its own dual-source bindings.",
- "entries": [
-  {
-   "atlas_id": "lemma:bk7_involutive_dual_symmetry",
-   "coverage": "conditional",
-   "lean": [
-    "Book7.involutive_pair_witness",
-    "Book7.dualityRecovers"
-   ],
-   "note": "The involutive algebra (double application returns the input, single application need not) is proved generically and witnessed concretely on Bool; the manifold-level Sigma_P/Sigma_U operators and the spinor analogy are not modeled."
-  },
-  {
-   "atlas_id": "proposition:bk7_power_uncertainty_duality",
-   "coverage": "conditional",
-   "lean": [
-    "Book7.dualityRecovers"
-   ],
-   "note": "Only the algebraic consequence 'an involution can be inverted by itself' is captured, applied abstractly to a stated duality U = f(P); the manifold definitions of Sigma_P, Sigma_U and the correlation/collapse narrative are not modeled."
-  },
-  {
-   "atlas_id": "definition:bk7_adaptive_refinement_recurrence",
-   "coverage": "definition",
-   "lean": [
-    "Book7.dz",
-    "Book7.DeadbandController"
-   ],
-   "note": "The deadzone function and the exact per-step recurrence e_(n+1) = e_n + w_(n+1) - k*dz_tau(e_n) are formalized verbatim as a def and a structure's law field."
-  },
-  {
-   "atlas_id": "theorem:bk7_adaptive_refinement_deadband_stabilization",
-   "coverage": "proved-kernel",
-   "lean": [
-    "Book7.deadband_contraction",
-    "Book7.deadband_region_invariant",
-    "Book7.deadband_strict_decrease",
-    "Book7.deadband_confidence_ascent",
-    "Book7.deadband_geometric_decay"
-   ],
-   "note": "Parts (i) and a discrete invariant form of (ii) are proved exactly; part (iv) is proved as strict decrease/confidence ascent outside the ultimate-bound region; part (iii)'s log-formula hitting time is replaced by an honest geometric decay bound (W=0 case), the discrete substitute for the stated finite-step formula."
-  },
-  {
-   "atlas_id": "corollary:bk7_self_correction_criterion",
-   "coverage": "proved-kernel",
-   "lean": [
-    "Book7.selfCorrection_succeeds",
-    "Book7.selfCorrection_fails_as_gain_vanishes",
-    "Book7.selfCorrection_fails_as_disturbance_grows"
-   ],
-   "note": "Both halves are proved: the positive half as a uniform bound under k >= kmin > 0, W <= Wmax, and the failure half as two explicit unbounded-family countermodels (gain -> 0, disturbance -> infinity) rather than as an unformalized limit claim."
-  },
-  {
-   "atlas_id": "axiom:bk7_convergence_potential",
-   "coverage": "definition",
-   "lean": [
-    "Book7.CaristiDescent"
-   ],
-   "note": "Bounded-below free energy is kept as a structure field (Fmin, bounded_below), not as a Lean axiom; the manifold-integral definition of the functional itself is not modeled."
-  },
-  {
-   "atlas_id": "axiom:bk7_caristi_descent_for_reflection",
-   "coverage": "definition",
-   "lean": [
-    "Book7.CaristiDescent"
-   ],
-   "note": "The exchange-rate inequality (displacement <= free-energy drop) is kept as a structure field (descent_pays), not as a Lean axiom."
-  },
-  {
-   "atlas_id": "theorem:bk7_reflective_convergence_to_stable_identity",
-   "coverage": "partial",
-   "lean": [
-    "Book7.caristiDescent_sum_le_energy_drop",
-    "Book7.caristiDescent_total_displacement_bound"
-   ],
-   "note": "Only the summable-increments / bounded-total-displacement consequence of hypothesis (i) is proved, by telescoping. The W_2-Cauchy convergence to an actual limit, hypothesis (ii)'s self-map clause, and the closed-graph/fixed-point conclusion all require completeness of (prob(M), W_2) and are not modeled."
-  },
-  {
-   "atlas_id": "corollary:bk7_observer_converges",
-   "coverage": "conditional",
-   "lean": [
-    "Book7.caristiDescent_total_displacement_bound"
-   ],
-   "note": "The corollary's content is that the canonical reflective operator already instantiates the two CaristiDescent fields; no further Lean content beyond the telescoping bound above is added or needed."
-  },
-  {
-   "atlas_id": "corollary:bk7_geometric_convergence_rate",
-   "coverage": "proved-kernel",
-   "lean": [
-    "Book7.geometric_gap_decay"
-   ],
-   "note": "The geometric-rate bound g_n <= q^n g_0 is proved directly by induction from the one-step contraction hypothesis; the Wasserstein-distance envelope sum <= g_n is not modeled (no metric structure on the orbit is used)."
-  },
-  {
-   "atlas_id": "proposition:bk7_stabilization_as_orbit_limit",
-   "coverage": "proved-kernel",
-   "lean": [
-    "Book7.OrbitLimit",
-    "Book7.orbitLimit_idempotent",
-    "Book7.orbitLimit_linear_image_kernel_split",
-    "Book7.orbitLimit_derivative_image_kernel_split",
-    "Book7.orbitLimit_completeJacobian",
-    "Book7.orbitLimit_fixedLocusVelocity_iff",
-    "Book7.orbitLimit_transverse_contracts",
-    "Book7.orbitLimit_transverse_iterates_tendsto_zero",
-    "Book7.orbitLimit_transverse_eigenvalue_stable",
-    "Book7.orbitLimit_transverse_jacobian_eigenmode_stable",
-    "Book7.orbitLimit_completeJacobian_semigroup",
-    "Book7.orbitLimit_semigroup_transverse_eigenmode_tendsto_zero",
-    "Book7.contractionRefinementOrbitLimit",
-    "Book7.tendsto_refinement_to_orbitLimit",
-    "Book7.orbitLimit_iterate_fixed_under_representation",
-    "Book7.orbitLimit_base_fixed_but_recorded"
-   ],
-   "note": "Idempotence follows from the orbit-limit fixedness laws. The Scholium -> Book 4 -> Book 7 bridge proves finite recursive reflection stability under representations, while the history-bearing refinement shows that a visibly fixed orbit-limit still advances as a full observer-state whenever reflection writes a positive trace. Moreover, any Book 4 contraction refinement on a nonempty complete metric space canonically realizes the Book 7 OrbitLimit structure, and every refinement orbit genuinely converges to the value its limit operator selects. The fixed-locus curve velocities are exactly the derivative projection image, and the complete linearized Euler step strictly contracts transverse directions below the unit perturbation margin. Invariant transverse drift now yields a geometric bound for every complete linearized iterate and convergence to zero. Every real transverse eigenmode is now proved strictly stable below the perturbation margin. Real transverse Jacobian eigenmodes now have a negative margin and explicit exponential decay. The full complete-Jacobian continuous-time operator semigroup is now constructed with its generator equation. The full semigroup action on every real Jacobian eigenvector is now exactly scalar exponential action, with transverse stable orbits converging to zero. The full Wasserstein-space construction and complex spectral-radius identification remain outside the model."
-  },
-  {
-   "atlas_id": "definition:bk7_interactive_drift_reflection_pair",
-   "coverage": "definition",
-   "lean": [
-    "Book7.prodDist"
-   ],
-   "note": "Only the product pseudometric max(d_A, d_B) is modeled; the joint drift/reflection operator pair as a dynamical system is not."
-  },
-  {
-   "atlas_id": "definition:bk7_reflective_interaction_operator_",
-   "coverage": "definition",
-   "lean": [
-    "Book7.product_contraction"
-   ],
-   "note": "The operator Phi(x,y) = (fA y, fB x) is modeled exactly as the map whose Lipschitz constant is computed; only its contraction property is used, not any interpretation as mutual reflection."
-  },
-  {
-   "atlas_id": "theorem:bk7_two_way_street_convergence",
-   "coverage": "conditional",
-   "lean": [
-    "Book7.product_contraction",
-    "Book7.mutualRefinement",
-    "Book7.mutualLimit_fixed",
-    "Book7.reciprocalPair_unique",
-    "Book7.tendsto_mutualRefinement"
-   ],
-   "note": "For nonempty complete metric factors and cross-Lipschitz constants whose positive maximum is below one, the product map is packaged as a Book 4 contraction refinement. Its iterates converge from every initial pair to a canonical reciprocal limit, and that limit is the unique fixed pair."
-  },
-  {
-   "atlas_id": "theorem:bk7_two_way_street_fixed_point",
-   "coverage": "conditional",
-   "lean": [
-    "Book7.mutualLimit_fixed",
-    "Book7.reciprocalPair_unique"
-   ],
-   "note": "The Book 4 contraction engine constructs the reciprocal fixed pair and proves it unique under explicit nonempty complete metric and strict-contraction hypotheses."
-  },
-  {
-   "atlas_id": "corollary:bk7_stability_near_reciprocity",
-   "coverage": "conditional",
-   "lean": [
-    "Book7.ContractionToFixedPoint",
-    "Book7.contraction_step"
-   ],
-   "note": "The one-step contraction-to-a-known-fixed-point bound is proved for a general Lipschitz map given a posited fixed point; the fixed point's existence (from Thm 2-way-street) is a hypothesis here, not derived, and the reciprocity-domain set itself is not modeled."
-  },
-  {
-   "atlas_id": "lemma:bk7_frame_temperature_exponent_correspondence",
-   "coverage": "partial",
-   "lean": [
-    "Book7.exponent_uniqueness"
-   ],
-   "note": "Only the uniqueness clause (a strictly antitone function is injective, hence at most one xi* with p(xi*)=2) is proved. Existence of xi* (via the intermediate value theorem from the stated limits) and the explicit construction of p from the frame-temperature quotient are not modeled."
-  },
-  {
-   "atlas_id": "theorem:bk7_hilbert_banach_bridge",
-   "coverage": "partial",
-   "lean": [
-    "Book7.l1_l2_comparison"
-   ],
-   "note": "Only the finite two-coordinate shadow of the Banach(p=1)/Hilbert(p=2) norm comparison is proved (L^1 and L^2 on R^2 bound each other within sqrt 2). The general L^p interpolation inequality, the emergent-exponent construction, and the phase-transition/threshold clause are not modeled."
-  },
-  {
-   "atlas_id": "lemma:bk7_coarsegrained_convexity",
-   "coverage": "partial",
-   "lean": [
-    "Book7.square_strictly_convex_midpoint"
-   ],
-   "note": "Only the p=2 (Hilbert) cross-section is proved, as strict midpoint convexity of x |-> x^2. Strict convexity for general p in (1, infinity), and the underlying coarse-grained error-field functional, are not modeled."
-  },
-  {
-   "atlas_id": "lemma:bk7_reflective_integration_lemma___formalized",
-   "coverage": "conditional",
-   "lean": [
-    "Asymptotics.GeometricErrorBound",
-    "Asymptotics.GeometricErrorBound.tendsto_zero"
-   ],
-   "note": "The divergence residual ||nabla . (R^n(Delta phi))|| decaying geometrically tends to 0, the honest scalar-sequence kernel of 'recursive reflection systematically reduces the divergence introduced by drift'. The rho_n -> identity clause is separately covered by the Contraction engine (see axiom:bk7_emergence_of_coherence_via_convergence); the manifold/coherence-potential structure (M, metric, rho as a density) is not modeled."
-  },
-  {
-   "atlas_id": "axiom:bk7_reflective_stabilization",
-   "coverage": "partial",
-   "lean": [
-    "Asymptotics.AntitoneBoundedProcess",
-    "Asymptotics.AntitoneBoundedProcess.tendsto_iInf",
-    "Asymptotics.Contraction",
-    "Asymptotics.Contraction.tendsto_fixedPt"
-   ],
-   "note": "Two clauses, both genuine: the free-energy sequence along the combined flow converging to F_min is an AntitoneBoundedProcess instance (antitone + bounded below converges to its infimum); the basin-of-attraction stabilization of a perturbation (R^n(identity + Delta phi) -> identity) is exactly a Contraction instance. The existence of a reflective operator R achieving this for an arbitrary divergent drift field is not modeled -- the contraction/boundedness properties are taken as hypotheses of an already-given process, not derived from a drift field."
-  },
-  {
-   "atlas_id": "axiom:bk7_emergence_of_coherence_via_convergence",
-   "coverage": "conditional",
-   "lean": [
-    "Asymptotics.Contraction",
-    "Asymptotics.Contraction.tendsto_fixedPt"
-   ],
-   "note": "lim_{n->infinity} R^n(rho_0) = identity for rho_0 in the basin of attraction is exactly the conclusion of Contraction.tendsto_fixedPt, with 'identity' as the fixed point. The characterization of 'identity' as a local minimum of the symbolic free energy with R(identity) ~= identity is not modeled."
-  },
-  {
-   "atlas_id": "theorem:bk7_emergent_lp_norm",
-   "coverage": "partial",
-   "lean": [
-    "Asymptotics.AsymptoticExponentField",
-    "Asymptotics.AsymptoticExponentField.eventually_near_one"
-   ],
-   "note": "Only the boundary limit lim_{eps->infinity} p(eps) = 1 (kept as a structure hypothesis together with p(eps) > 1 everywhere) and its derived 'eventually within any delta of 1' consequence are modeled. The companion limit lim_{eps->0+} p(eps) = infinity, the C^1 and strict-monotonicity clauses, and the existence/uniqueness of p itself (as the minimizer's effective exponent) are not modeled."
-  },
-  {
-   "atlas_id": "definition:bk7_symbolic_free_energy",
-   "coverage": "definition",
-   "lean": [
-    "Book7B.freeEnergy",
-    "Book7B.freeEnergy_bounded_below"
-   ],
-   "note": "Scalar F=E-T*S plus the bounded-below hypothesis every downstream convergence result assumes; the manifold-integral definitions of E and S are not modeled."
-  },
-  {
-   "atlas_id": "definition:bk7_reflective_operator",
-   "coverage": "conditional",
-   "lean": [
-    "Book7B.ContractiveReflection"
-   ],
-   "note": "Contraction toward a fixed point models the stabilizing/near-involution role; entropy reduction and anti-commutation with drift are not modeled."
-  },
-  {
-   "atlas_id": "definition:bk7_convergent_symbolic_identity",
-   "coverage": "partial",
-   "lean": [
-    "Book7B.ContractiveReflection"
-   ],
-   "note": "The `star`/`fixed` fields model the fixed-point clause only; the free-energy-local-minimum clause is not modeled."
-  },
-  {
-   "atlas_id": "corollary:bk7_drift_collapse_equivalence",
-   "coverage": "conditional",
-   "lean": [
-    "Book7B.contractiveReflection_fixedPoint_dist_eq_zero"
-   ],
-   "note": "Shared-attractor content: any two fixed points of the contraction coincide up to distance zero. The Lyapunov/free-energy-descent framing itself is not separately modeled."
-  },
-  {
-   "atlas_id": "corollary:bk7_recursive_convergence_principle",
-   "coverage": "conditional",
-   "lean": [
-    "Book7B.contractiveReflection_iterate_bound",
-    "Book7B.contractiveReflection_tendsto_star"
-   ],
-   "note": "Given reflect is a kappa<1 contraction with an exact fixed point star, iterates converge to star; geometric bound plus Tendsto-to-zero of the distance."
-  },
-  {
-   "atlas_id": "definition:bk7_mutual_modeling_operators",
-   "coverage": "definition",
-   "lean": [
-    "Book7B.MutualModel"
-   ],
-   "note": "phiH, phiM as a plain structure of two functions."
-  },
-  {
-   "atlas_id": "definition:bk7_symbolic_resonance",
-   "coverage": "definition",
-   "lean": [
-    "Book7B.Resonant"
-   ],
-   "note": "Joint fixed point of the mutual modeling operators."
-  },
-  {
-   "atlas_id": "lemma:bk7_information_preservation",
-   "coverage": "conditional",
-   "lean": [
-    "Book7B.resonance_information_preservation"
-   ],
-   "note": "Proves the exact equality phiH(phiM(H*))=H* at a resonant point, strictly stronger than the source's epsilon-tolerance claim -- an honesty gap noted in the file."
-  },
-  {
-   "atlas_id": "definition:bk7_symbolic_horizon",
-   "coverage": "partial",
-   "lean": [
-    "Book7B.HorizonExpansion"
-   ],
-   "note": "Horizon kept as an abstract real-valued quantity inside HorizonExpansion; the reachable-state-space cardinality definition itself is not modeled."
-  },
-  {
-   "atlas_id": "proposition:bk7_horizon_expansion",
-   "coverage": "conditional",
-   "lean": [
-    "Book7B.horizonExpansion_delta_pos"
-   ],
-   "note": "Strict superadditivity kept as the structure's own hypothesis field; theorem extracts the defining inequality."
-  },
-  {
-   "atlas_id": "definition:bk7_decency_potential",
-   "coverage": "proved-kernel",
-   "lean": [
-    "Book7B.decencyPotential",
-    "Book7B.decencyPotential_mono"
-   ],
-   "note": "Weighted linear functional plus a genuine 4-argument monotonicity theorem."
-  },
-  {
-   "atlas_id": "theorem:bk7_symbolic_convergence",
-   "coverage": "conditional",
-   "lean": [
-    "Book7B.ResonanceProbabilityLaw",
-    "Book7B.resonanceProbabilityLaw_mono_of_decency"
-   ],
-   "note": "Resonance-probability monotonicity in decency, as a named hypothesis composed with decencyPotential_mono; the probabilistic content of the source is not modeled."
-  },
-  {
-   "atlas_id": "lemma:bk7_symbolic_expansion",
-   "coverage": "conditional",
-   "lean": [
-    "Book7B.horizonExpansion_delta_pos"
-   ],
-   "note": "Same claim as proposition:bk7_horizon_expansion under a second anchor; same theorem covers both."
-  },
-  {
-   "atlas_id": "proposition:bk7_srmf_decency_regulation",
-   "coverage": "proved-kernel",
-   "lean": [
-    "Book7B.srmfRegulation_exists"
-   ],
-   "note": "Since the decency term does not depend on the candidate, argmin reduces to Finset.exists_min_image on the loss."
-  },
-  {
-   "atlas_id": "theorem:bk7_relative_convergence_under_meta_drift",
-   "coverage": "conditional",
-   "lean": [
-    "Book7B.PerturbedContraction",
-    "Book7B.perturbedContraction_bound"
-   ],
-   "note": "Discrete perturbed-contraction skeleton of the adiabatic tracking claim; the manifold/timescale content (tau_meta, tau_conv) is not modeled, only the resulting recursive bound."
-  },
-  {
-   "atlas_id": "definition:bk7_reciprocity_domain",
-   "coverage": "definition",
-   "lean": [
-    "Book7B.ReciprocityDomain"
-   ],
-   "note": "Set on a metric product cut out by the two mutual-reflection tolerance conditions."
-  },
-  {
-   "atlas_id": "proposition:bk7_structural_properties_of_reciprocity_domain",
-   "coverage": "partial",
-   "lean": [
-    "Book7B.reciprocity_contains_fixed_point",
-    "Book7B.reciprocityDomain_isOpen",
-    "Book7B.reciprocityDomain_eq_preimage_of_eq_eps"
-   ],
-   "note": "Covers parts (1) topological openness, (2) contains fixed points, and (5) information-theoretic preimage characterization in the honest equal-tolerance special case. Part (3) thermodynamic stability and part (4) the epsilon-neighborhood-of-a-graph reading are not modeled; the source's general two-tolerance form of part (5) is not an exact set equality and is not claimed."
-  },
-  {
-   "atlas_id": "lemma:bk7_non_triviality_via_convergence_potential",
-   "coverage": "conditional",
-   "lean": [
-    "Book7B.reciprocityDomain_nonempty_of_fixed_point"
-   ],
-   "note": "Antecedent promoted from 'free-energy minimizer' to the explicit hypothesis that the minimizer is a fixed point of the interaction operator, the load-bearing but unstated step in the source."
-  },
-  {
-   "atlas_id": "definition:bk7_time_varying_reciprocity_domain",
-   "coverage": "definition",
-   "lean": [
-    "Book7B.ReciprocityDomain"
-   ],
-   "note": "The time-varying domain is the same ReciprocityDomain applied pointwise at each t with time-dependent arguments; no separate Lean object is needed."
-  },
-  {
-   "atlas_id": "corollary:bk7_fixed_point_tracking_within_evolving_reciprocity",
-   "coverage": "conditional",
-   "lean": [
-    "Book7B.perturbedContraction_bound"
-   ],
-   "note": "Same discrete tracking-error bound as theorem:bk7_relative_convergence_under_meta_drift; shared coverage."
-  },
-  {
-   "atlas_id": "lemma:bk7_coherence_window",
-   "coverage": "proved-kernel",
-   "lean": [
-    "Book7B.coherenceWindow_iff"
-   ],
-   "note": "Iff-form division-threshold rewrite of N<=Nmax."
-  },
-  {
-   "atlas_id": "definition:bk7_frame_temperature_quotient",
-   "coverage": "proved-kernel",
-   "lean": [
-    "Book7B.frameTempQuotient_mono"
-   ],
-   "note": "Monotonicity of xi=T/T_F(eps) in eps under a strictly-decreasing T_F, stated via two explicit T_F values rather than a functional hypothesis."
-  },
-  {
-   "atlas_id": "corollary:bk7_stability_innovation_equilibrium",
-   "coverage": "conditional",
-   "lean": [
-    "Book7B.contextualCurvature_with_stableIdentity",
-    "Book7B.contractiveReflection_tendsto_star",
-    "Book4D.contextualStructuralGrowth_induces_curvature",
-    "Book7B.freeEnergy_bounded_below"
-   ],
-   "note": "Spine-level dynamical kernel: a contextually nonseparable update carries a certified nonzero Book 4 holonomy witness while an independent contractive reflection converges to its stable identity, so innovation-bearing curvature need not be erased by stabilization. Free energy is separately bounded below under explicit energy/entropy bounds. The source's claim that the limit optimizes the full energy-entropy tradeoff for the given operators is not derived."
-  },
-  {
-   "atlas_id": "lemma:bk7_budgetlimited_minimizer",
-   "coverage": "conditional",
-   "lean": [
-    "Book7B.srmfRegulation_exists",
-    "Book7B.budgetLimitedObjective_not_unique",
-    "Book7B.budgetLimited_uniqueMinimizer_of_injectiveCost"
-   ],
-   "note": "Existence over a nonempty finite feasible regulator set follows from finite argmin selection. The source's displayed objective is candidate-independent, and a concrete Bool model proves it has two distinct tied minimizers. Uniqueness is recovered under the explicit missing no-ties condition that the candidate-dependent cost is injective on the feasible set."
-  }
- ]
+  "schema": "sketched.book7-lean-map.v1",
+  "source": "Principia Symbolica Book 7",
+  "boundary": "Mappings certify only the scalar/sequence/finite kernel. Banach and Hilbert space theory, measure theory, infinite-limit stabilization claims, and the quantum-foundational cluster are not certified; the numeric interface model (verification/kernel/interface_model.py) covers several bridge anchors empirically under its own dual-source bindings.",
+  "entries": [
+    {
+      "atlas_id": "lemma:bk7_involutive_dual_symmetry",
+      "coverage": "conditional",
+      "lean": [
+        "Book7.involutive_pair_witness",
+        "Book7.dualityRecovers"
+      ],
+      "note": "The involutive algebra (double application returns the input, single application need not) is proved generically and witnessed concretely on Bool; the manifold-level Sigma_P/Sigma_U operators and the spinor analogy are not modeled."
+    },
+    {
+      "atlas_id": "proposition:bk7_power_uncertainty_duality",
+      "coverage": "conditional",
+      "lean": [
+        "Book7.dualityRecovers"
+      ],
+      "note": "Only the algebraic consequence 'an involution can be inverted by itself' is captured, applied abstractly to a stated duality U = f(P); the manifold definitions of Sigma_P, Sigma_U and the correlation/collapse narrative are not modeled."
+    },
+    {
+      "atlas_id": "definition:bk7_adaptive_refinement_recurrence",
+      "coverage": "definition",
+      "lean": [
+        "Book7.dz",
+        "Book7.DeadbandController"
+      ],
+      "note": "The deadzone function and the exact per-step recurrence e_(n+1) = e_n + w_(n+1) - k*dz_tau(e_n) are formalized verbatim as a def and a structure's law field."
+    },
+    {
+      "atlas_id": "theorem:bk7_adaptive_refinement_deadband_stabilization",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book7.deadband_contraction",
+        "Book7.deadband_region_invariant",
+        "Book7.deadband_strict_decrease",
+        "Book7.deadband_confidence_ascent",
+        "Book7.deadband_geometric_decay"
+      ],
+      "note": "Parts (i) and a discrete invariant form of (ii) are proved exactly; part (iv) is proved as strict decrease/confidence ascent outside the ultimate-bound region; part (iii)'s log-formula hitting time is replaced by an honest geometric decay bound (W=0 case), the discrete substitute for the stated finite-step formula."
+    },
+    {
+      "atlas_id": "corollary:bk7_self_correction_criterion",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book7.selfCorrection_succeeds",
+        "Book7.selfCorrection_fails_as_gain_vanishes",
+        "Book7.selfCorrection_fails_as_disturbance_grows"
+      ],
+      "note": "Both halves are proved: the positive half as a uniform bound under k >= kmin > 0, W <= Wmax, and the failure half as two explicit unbounded-family countermodels (gain -> 0, disturbance -> infinity) rather than as an unformalized limit claim."
+    },
+    {
+      "atlas_id": "axiom:bk7_convergence_potential",
+      "coverage": "definition",
+      "lean": [
+        "Book7.CaristiDescent"
+      ],
+      "note": "Bounded-below free energy is kept as a structure field (Fmin, bounded_below), not as a Lean axiom; the manifold-integral definition of the functional itself is not modeled."
+    },
+    {
+      "atlas_id": "axiom:bk7_caristi_descent_for_reflection",
+      "coverage": "definition",
+      "lean": [
+        "Book7.CaristiDescent"
+      ],
+      "note": "The exchange-rate inequality (displacement <= free-energy drop) is kept as a structure field (descent_pays), not as a Lean axiom."
+    },
+    {
+      "atlas_id": "theorem:bk7_reflective_convergence_to_stable_identity",
+      "coverage": "partial",
+      "lean": [
+        "Book7.caristiDescent_sum_le_energy_drop",
+        "Book7.caristiDescent_total_displacement_bound"
+      ],
+      "note": "Only the summable-increments / bounded-total-displacement consequence of hypothesis (i) is proved, by telescoping. The W_2-Cauchy convergence to an actual limit, hypothesis (ii)'s self-map clause, and the closed-graph/fixed-point conclusion all require completeness of (prob(M), W_2) and are not modeled."
+    },
+    {
+      "atlas_id": "corollary:bk7_observer_converges",
+      "coverage": "conditional",
+      "lean": [
+        "Book7.caristiDescent_total_displacement_bound"
+      ],
+      "note": "The corollary's content is that the canonical reflective operator already instantiates the two CaristiDescent fields; no further Lean content beyond the telescoping bound above is added or needed."
+    },
+    {
+      "atlas_id": "corollary:bk7_geometric_convergence_rate",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book7.geometric_gap_decay"
+      ],
+      "note": "The geometric-rate bound g_n <= q^n g_0 is proved directly by induction from the one-step contraction hypothesis; the Wasserstein-distance envelope sum <= g_n is not modeled (no metric structure on the orbit is used)."
+    },
+    {
+      "atlas_id": "proposition:bk7_stabilization_as_orbit_limit",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book7.OrbitLimit",
+        "Book7.orbitLimit_idempotent",
+        "Book7.orbitLimit_linear_image_kernel_split",
+        "Book7.orbitLimit_derivative_image_kernel_split",
+        "Book7.orbitLimit_completeJacobian",
+        "Book7.orbitLimit_fixedLocusVelocity_iff",
+        "Book7.orbitLimit_transverse_contracts",
+        "Book7.orbitLimit_transverse_iterates_tendsto_zero",
+        "Book7.orbitLimit_transverse_eigenvalue_stable",
+        "Book7.orbitLimit_transverse_jacobian_eigenmode_stable",
+        "Book7.orbitLimit_completeJacobian_semigroup",
+        "Book7.orbitLimit_semigroup_transverse_eigenmode_tendsto_zero",
+        "Book7.contractionRefinementOrbitLimit",
+        "Book7.tendsto_refinement_to_orbitLimit",
+        "Book7.orbitLimit_iterate_fixed_under_representation",
+        "Book7.orbitLimit_base_fixed_but_recorded"
+      ],
+      "note": "Idempotence follows from the orbit-limit fixedness laws. The Scholium -> Book 4 -> Book 7 bridge proves finite recursive reflection stability under representations, while the history-bearing refinement shows that a visibly fixed orbit-limit still advances as a full observer-state whenever reflection writes a positive trace. Moreover, any Book 4 contraction refinement on a nonempty complete metric space canonically realizes the Book 7 OrbitLimit structure, and every refinement orbit genuinely converges to the value its limit operator selects. The fixed-locus curve velocities are exactly the derivative projection image, and the complete linearized Euler step strictly contracts transverse directions below the unit perturbation margin. Invariant transverse drift now yields a geometric bound for every complete linearized iterate and convergence to zero. Every real transverse eigenmode is now proved strictly stable below the perturbation margin. Real transverse Jacobian eigenmodes now have a negative margin and explicit exponential decay. The full complete-Jacobian continuous-time operator semigroup is now constructed with its generator equation. The full semigroup action on every real Jacobian eigenvector is now exactly scalar exponential action, with transverse stable orbits converging to zero. The full Wasserstein-space construction and complex spectral-radius identification remain outside the model."
+    },
+    {
+      "atlas_id": "definition:bk7_interactive_drift_reflection_pair",
+      "coverage": "definition",
+      "lean": [
+        "Book7.prodDist"
+      ],
+      "note": "Only the product pseudometric max(d_A, d_B) is modeled; the joint drift/reflection operator pair as a dynamical system is not."
+    },
+    {
+      "atlas_id": "definition:bk7_reflective_interaction_operator_",
+      "coverage": "definition",
+      "lean": [
+        "Book7.product_contraction"
+      ],
+      "note": "The operator Phi(x,y) = (fA y, fB x) is modeled exactly as the map whose Lipschitz constant is computed; only its contraction property is used, not any interpretation as mutual reflection."
+    },
+    {
+      "atlas_id": "theorem:bk7_two_way_street_convergence",
+      "coverage": "conditional",
+      "lean": [
+        "Book7.product_contraction",
+        "Book7.mutualRefinement",
+        "Book7.mutualLimit_fixed",
+        "Book7.reciprocalPair_unique",
+        "Book7.tendsto_mutualRefinement"
+      ],
+      "note": "For nonempty complete metric factors and cross-Lipschitz constants whose positive maximum is below one, the product map is packaged as a Book 4 contraction refinement. Its iterates converge from every initial pair to a canonical reciprocal limit, and that limit is the unique fixed pair."
+    },
+    {
+      "atlas_id": "theorem:bk7_two_way_street_fixed_point",
+      "coverage": "conditional",
+      "lean": [
+        "Book7.mutualLimit_fixed",
+        "Book7.reciprocalPair_unique"
+      ],
+      "note": "The Book 4 contraction engine constructs the reciprocal fixed pair and proves it unique under explicit nonempty complete metric and strict-contraction hypotheses."
+    },
+    {
+      "atlas_id": "corollary:bk7_stability_near_reciprocity",
+      "coverage": "conditional",
+      "lean": [
+        "Book7.ContractionToFixedPoint",
+        "Book7.contraction_step"
+      ],
+      "note": "The one-step contraction-to-a-known-fixed-point bound is proved for a general Lipschitz map given a posited fixed point; the fixed point's existence (from Thm 2-way-street) is a hypothesis here, not derived, and the reciprocity-domain set itself is not modeled."
+    },
+    {
+      "atlas_id": "lemma:bk7_frame_temperature_exponent_correspondence",
+      "coverage": "partial",
+      "lean": [
+        "Book7.exponent_uniqueness"
+      ],
+      "note": "Only the uniqueness clause (a strictly antitone function is injective, hence at most one xi* with p(xi*)=2) is proved. Existence of xi* (via the intermediate value theorem from the stated limits) and the explicit construction of p from the frame-temperature quotient are not modeled."
+    },
+    {
+      "atlas_id": "theorem:bk7_hilbert_banach_bridge",
+      "coverage": "partial",
+      "lean": [
+        "Book7.l1_l2_comparison"
+      ],
+      "note": "Only the finite two-coordinate shadow of the Banach(p=1)/Hilbert(p=2) norm comparison is proved (L^1 and L^2 on R^2 bound each other within sqrt 2). The general L^p interpolation inequality, the emergent-exponent construction, and the phase-transition/threshold clause are not modeled."
+    },
+    {
+      "atlas_id": "lemma:bk7_coarsegrained_convexity",
+      "coverage": "partial",
+      "lean": [
+        "Book7.square_strictly_convex_midpoint"
+      ],
+      "note": "Only the p=2 (Hilbert) cross-section is proved, as strict midpoint convexity of x |-> x^2. Strict convexity for general p in (1, infinity), and the underlying coarse-grained error-field functional, are not modeled."
+    },
+    {
+      "atlas_id": "lemma:bk7_reflective_integration_lemma___formalized",
+      "coverage": "conditional",
+      "lean": [
+        "Asymptotics.GeometricErrorBound",
+        "Asymptotics.GeometricErrorBound.tendsto_zero"
+      ],
+      "note": "The divergence residual ||nabla . (R^n(Delta phi))|| decaying geometrically tends to 0, the honest scalar-sequence kernel of 'recursive reflection systematically reduces the divergence introduced by drift'. The rho_n -> identity clause is separately covered by the Contraction engine (see axiom:bk7_emergence_of_coherence_via_convergence); the manifold/coherence-potential structure (M, metric, rho as a density) is not modeled."
+    },
+    {
+      "atlas_id": "axiom:bk7_reflective_stabilization",
+      "coverage": "partial",
+      "lean": [
+        "Asymptotics.AntitoneBoundedProcess",
+        "Asymptotics.AntitoneBoundedProcess.tendsto_iInf",
+        "Asymptotics.Contraction",
+        "Asymptotics.Contraction.tendsto_fixedPt"
+      ],
+      "note": "Two clauses, both genuine: the free-energy sequence along the combined flow converging to F_min is an AntitoneBoundedProcess instance (antitone + bounded below converges to its infimum); the basin-of-attraction stabilization of a perturbation (R^n(identity + Delta phi) -> identity) is exactly a Contraction instance. The existence of a reflective operator R achieving this for an arbitrary divergent drift field is not modeled -- the contraction/boundedness properties are taken as hypotheses of an already-given process, not derived from a drift field."
+    },
+    {
+      "atlas_id": "axiom:bk7_emergence_of_coherence_via_convergence",
+      "coverage": "conditional",
+      "lean": [
+        "Asymptotics.Contraction",
+        "Asymptotics.Contraction.tendsto_fixedPt"
+      ],
+      "note": "lim_{n->infinity} R^n(rho_0) = identity for rho_0 in the basin of attraction is exactly the conclusion of Contraction.tendsto_fixedPt, with 'identity' as the fixed point. The characterization of 'identity' as a local minimum of the symbolic free energy with R(identity) ~= identity is not modeled."
+    },
+    {
+      "atlas_id": "theorem:bk7_emergent_lp_norm",
+      "coverage": "partial",
+      "lean": [
+        "Asymptotics.AsymptoticExponentField",
+        "Asymptotics.AsymptoticExponentField.eventually_near_one"
+      ],
+      "note": "Only the boundary limit lim_{eps->infinity} p(eps) = 1 (kept as a structure hypothesis together with p(eps) > 1 everywhere) and its derived 'eventually within any delta of 1' consequence are modeled. The companion limit lim_{eps->0+} p(eps) = infinity, the C^1 and strict-monotonicity clauses, and the existence/uniqueness of p itself (as the minimizer's effective exponent) are not modeled."
+    },
+    {
+      "atlas_id": "definition:bk7_symbolic_free_energy",
+      "coverage": "definition",
+      "lean": [
+        "Book7B.freeEnergy",
+        "Book7B.freeEnergy_bounded_below"
+      ],
+      "note": "Scalar F=E-T*S plus the bounded-below hypothesis every downstream convergence result assumes; the manifold-integral definitions of E and S are not modeled."
+    },
+    {
+      "atlas_id": "definition:bk7_reflective_operator",
+      "coverage": "conditional",
+      "lean": [
+        "Book7B.ContractiveReflection"
+      ],
+      "note": "Contraction toward a fixed point models the stabilizing/near-involution role; entropy reduction and anti-commutation with drift are not modeled."
+    },
+    {
+      "atlas_id": "definition:bk7_convergent_symbolic_identity",
+      "coverage": "partial",
+      "lean": [
+        "Book7B.ContractiveReflection"
+      ],
+      "note": "The `star`/`fixed` fields model the fixed-point clause only; the free-energy-local-minimum clause is not modeled."
+    },
+    {
+      "atlas_id": "corollary:bk7_drift_collapse_equivalence",
+      "coverage": "conditional",
+      "lean": [
+        "Book7B.contractiveReflection_fixedPoint_dist_eq_zero"
+      ],
+      "note": "Shared-attractor content: any two fixed points of the contraction coincide up to distance zero. The Lyapunov/free-energy-descent framing itself is not separately modeled."
+    },
+    {
+      "atlas_id": "corollary:bk7_recursive_convergence_principle",
+      "coverage": "conditional",
+      "lean": [
+        "Book7B.contractiveReflection_iterate_bound",
+        "Book7B.contractiveReflection_tendsto_star"
+      ],
+      "note": "Given reflect is a kappa<1 contraction with an exact fixed point star, iterates converge to star; geometric bound plus Tendsto-to-zero of the distance."
+    },
+    {
+      "atlas_id": "definition:bk7_mutual_modeling_operators",
+      "coverage": "definition",
+      "lean": [
+        "Book7B.MutualModel"
+      ],
+      "note": "phiH, phiM as a plain structure of two functions."
+    },
+    {
+      "atlas_id": "definition:bk7_symbolic_resonance",
+      "coverage": "definition",
+      "lean": [
+        "Book7B.Resonant"
+      ],
+      "note": "Joint fixed point of the mutual modeling operators."
+    },
+    {
+      "atlas_id": "lemma:bk7_information_preservation",
+      "coverage": "conditional",
+      "lean": [
+        "Book7B.resonance_information_preservation"
+      ],
+      "note": "Proves the exact equality phiH(phiM(H*))=H* at a resonant point, strictly stronger than the source's epsilon-tolerance claim -- an honesty gap noted in the file."
+    },
+    {
+      "atlas_id": "definition:bk7_symbolic_horizon",
+      "coverage": "partial",
+      "lean": [
+        "Book7B.HorizonExpansion"
+      ],
+      "note": "Horizon kept as an abstract real-valued quantity inside HorizonExpansion; the reachable-state-space cardinality definition itself is not modeled."
+    },
+    {
+      "atlas_id": "proposition:bk7_horizon_expansion",
+      "coverage": "conditional",
+      "lean": [
+        "Book7B.horizonExpansion_delta_pos"
+      ],
+      "note": "Strict superadditivity kept as the structure's own hypothesis field; theorem extracts the defining inequality."
+    },
+    {
+      "atlas_id": "definition:bk7_decency_potential",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book7B.decencyPotential",
+        "Book7B.decencyPotential_mono"
+      ],
+      "note": "Weighted linear functional plus a genuine 4-argument monotonicity theorem."
+    },
+    {
+      "atlas_id": "theorem:bk7_symbolic_convergence",
+      "coverage": "conditional",
+      "lean": [
+        "Book7B.ResonanceProbabilityLaw",
+        "Book7B.resonanceProbabilityLaw_mono_of_decency"
+      ],
+      "note": "Resonance-probability monotonicity in decency, as a named hypothesis composed with decencyPotential_mono; the probabilistic content of the source is not modeled."
+    },
+    {
+      "atlas_id": "lemma:bk7_symbolic_expansion",
+      "coverage": "conditional",
+      "lean": [
+        "Book7B.horizonExpansion_delta_pos"
+      ],
+      "note": "Same claim as proposition:bk7_horizon_expansion under a second anchor; same theorem covers both."
+    },
+    {
+      "atlas_id": "proposition:bk7_srmf_decency_regulation",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book7B.srmfRegulation_exists"
+      ],
+      "note": "Since the decency term does not depend on the candidate, argmin reduces to Finset.exists_min_image on the loss."
+    },
+    {
+      "atlas_id": "theorem:bk7_relative_convergence_under_meta_drift",
+      "coverage": "conditional",
+      "lean": [
+        "Book7B.PerturbedContraction",
+        "Book7B.perturbedContraction_bound"
+      ],
+      "note": "Discrete perturbed-contraction skeleton of the adiabatic tracking claim; the manifold/timescale content (tau_meta, tau_conv) is not modeled, only the resulting recursive bound."
+    },
+    {
+      "atlas_id": "definition:bk7_reciprocity_domain",
+      "coverage": "definition",
+      "lean": [
+        "Book7B.ReciprocityDomain"
+      ],
+      "note": "Set on a metric product cut out by the two mutual-reflection tolerance conditions."
+    },
+    {
+      "atlas_id": "proposition:bk7_structural_properties_of_reciprocity_domain",
+      "coverage": "partial",
+      "lean": [
+        "Book7B.reciprocity_contains_fixed_point",
+        "Book7B.reciprocityDomain_isOpen",
+        "Book7B.reciprocityDomain_eq_preimage_of_eq_eps"
+      ],
+      "note": "Covers parts (1) topological openness, (2) contains fixed points, and (5) information-theoretic preimage characterization in the honest equal-tolerance special case. Part (3) thermodynamic stability and part (4) the epsilon-neighborhood-of-a-graph reading are not modeled; the source's general two-tolerance form of part (5) is not an exact set equality and is not claimed."
+    },
+    {
+      "atlas_id": "lemma:bk7_non_triviality_via_convergence_potential",
+      "coverage": "conditional",
+      "lean": [
+        "Book7B.reciprocityDomain_nonempty_of_fixed_point"
+      ],
+      "note": "Antecedent promoted from 'free-energy minimizer' to the explicit hypothesis that the minimizer is a fixed point of the interaction operator, the load-bearing but unstated step in the source."
+    },
+    {
+      "atlas_id": "definition:bk7_time_varying_reciprocity_domain",
+      "coverage": "definition",
+      "lean": [
+        "Book7B.ReciprocityDomain"
+      ],
+      "note": "The time-varying domain is the same ReciprocityDomain applied pointwise at each t with time-dependent arguments; no separate Lean object is needed."
+    },
+    {
+      "atlas_id": "corollary:bk7_fixed_point_tracking_within_evolving_reciprocity",
+      "coverage": "conditional",
+      "lean": [
+        "Book7B.perturbedContraction_bound"
+      ],
+      "note": "Same discrete tracking-error bound as theorem:bk7_relative_convergence_under_meta_drift; shared coverage."
+    },
+    {
+      "atlas_id": "lemma:bk7_coherence_window",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book7B.coherenceWindow_iff"
+      ],
+      "note": "Iff-form division-threshold rewrite of N<=Nmax."
+    },
+    {
+      "atlas_id": "definition:bk7_frame_temperature_quotient",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book7B.frameTempQuotient_mono"
+      ],
+      "note": "Monotonicity of xi=T/T_F(eps) in eps under a strictly-decreasing T_F, stated via two explicit T_F values rather than a functional hypothesis."
+    },
+    {
+      "atlas_id": "corollary:bk7_stability_innovation_equilibrium",
+      "coverage": "conditional",
+      "lean": [
+        "Book7B.contextualCurvature_with_stableIdentity",
+        "Book7B.contractiveReflection_tendsto_star",
+        "Book4D.contextualStructuralGrowth_induces_curvature",
+        "Book7B.freeEnergy_bounded_below"
+      ],
+      "note": "Spine-level dynamical kernel: a contextually nonseparable update carries a certified nonzero Book 4 holonomy witness while an independent contractive reflection converges to its stable identity, so innovation-bearing curvature need not be erased by stabilization. Free energy is separately bounded below under explicit energy/entropy bounds. The source's claim that the limit optimizes the full energy-entropy tradeoff for the given operators is not derived."
+    },
+    {
+      "atlas_id": "lemma:bk7_budgetlimited_minimizer",
+      "coverage": "conditional",
+      "lean": [
+        "Book7B.srmfRegulation_exists",
+        "Book7B.budgetLimitedObjective_not_unique",
+        "Book7B.budgetLimited_uniqueMinimizer_of_injectiveCost"
+      ],
+      "note": "Existence over a nonempty finite feasible regulator set follows from finite argmin selection. The source's displayed objective is candidate-independent, and a concrete Bool model proves it has two distinct tied minimizers. Uniqueness is recovered under the explicit missing no-ties condition that the candidate-dependent cost is injective on the feasible set."
+    },
+    {
+      "atlas_id": "proposition:bk7_power_from_coherent_confidence_regulation",
+      "coverage": "conditional",
+      "lean": [
+        "Book7SystemicPower.localPower_pos",
+        "Book7SystemicPower.systemicPower_pos",
+        "Book7SystemicPower.high_confidence_alone_does_not_force_power",
+        "Book7SystemicPower.gradient_reversal_preserves_unoriented_power",
+        "Book7SystemicPower.equal_power_does_not_determine_gradient_orientation"
+      ],
+      "note": "Finite regulatory-basin kernel: strictly positive density, confidence, gradient magnitude, and operational volume force positive systemic power. Maximal confidence alone gives zero power on a flat landscape. Because the printed integrand uses a gradient norm, opposite gradient orientations have identical scalar power; coherent alignment remains an explicit premise."
+    },
+    {
+      "atlas_id": "corollary:bk7_bridge_no_interior_transition",
+      "coverage": "conditional",
+      "lean": [
+        "Book7NoInteriorTransition.continuousOn_no_discrete_phase_transition",
+        "Book7NoInteriorTransition.continuous_closed_sweep_has_no_interior_transition",
+        "Book7NoInteriorTransition.continuous_reparameterization_preserves_no_transition",
+        "Book7NoInteriorTransition.continuity_from_threshold_bridge"
+      ],
+      "note": "Topological kernel: continuity of effective geometry on the closed sub-sweep excludes a discrete phase transition defined as failure of relative continuity; continuous reparameterization preserves the certificate. The source claim that kappa below threshold supplies this continuity remains conditional on an explicit curvature-to-regularity bridge."
+    },
+    {
+      "atlas_id": "theorem:bk7_pisu",
+      "coverage": "conditional",
+      "lean": [
+        "Book7PISU.two_sqrt_product_le_sum",
+        "Book7PISU.allocation_uncertainty_bound",
+        "Book7PISU.pisu_derived_bound",
+        "Book7PISU.balanced_allocation_saturates_amgm"
+      ],
+      "note": "Derived allocation kernel: AM-GM and the shared coherence-window budget yield the factor-two uncertainty floor; substituting Nmax = bandwidth*resolution/drift gives the printed drift-over-bandwidth times resolution scaling, and the balanced allocation is sharp. The two channel variance floors are consumed through their combined positive product-floor premise."
+    },
+    {
+      "atlas_id": "corollary:bk7_procedural_detection",
+      "coverage": "conditional",
+      "lean": [
+        "Book7ProceduralDetection.fittedExponent_decreases",
+        "Book7ProceduralDetection.logLogSecantSlope_neg",
+        "Book7ProceduralDetection.decreasing_exponent_does_not_force_decreasing_observable",
+        "Book7ProceduralDetection.proceduralDetection_certificate"
+      ],
+      "note": "Strict antitonicity proves the fitted-exponent ordering. A decreasing residual observable over positive increasing scales gives a strictly negative log-log secant slope. A countermodel shows exponent ordering alone does not orient a distinct residual observable, so the combined procedural certificate consumes residual decrease explicitly."
+    },
+    {
+      "atlas_id": "lemma:bk7_noncontextuality_forces_hilbert",
+      "coverage": "conditional",
+      "lean": [
+        "Book7NoncontextualHilbert.l2_parallelogram",
+        "Book7NoncontextualHilbert.l1_parallelogram_fails",
+        "Book7NoncontextualHilbert.noncontextual_iff_hilbert_crossSection",
+        "Book7NoncontextualHilbert.hilbert_geometry_alone_does_not_force_noncontextuality"
+      ],
+      "note": "Two-dimensional geometric kernel: the Euclidean squared norm satisfies the parallelogram identity universally, while L1 fails on the coordinate basis. Noncontextuality iff p=2 follows by composing explicit coherence-to-parallelogram and Lp-to-p=2 bridges. Hilbert exponent data alone does not determine an unconstrained coherence functional."
+    },
+    {
+      "atlas_id": "theorem:bk7_observer_relative_free_energy_minimization_as_lp_regression",
+      "coverage": "conditional",
+      "lean": [
+        "Book7LpRegression.regressionLoss_eq_sum",
+        "Book7LpRegression.freeEnergy_minimization_iff_lp_regression",
+        "Book7LpRegression.trace_step_descent_iff",
+        "Book7LpRegression.trace_minimizer_iff",
+        "Book7LpRegression.bounded_descent_does_not_force_lp_representation"
+      ],
+      "note": "Finite observer-relative kernel: the displayed powered-residual sum is modeled directly. A positive affine representation makes basin-wide free-energy and Lp argmins identical; a weaker orbit-local representation makes every Book-7 reflective trace descent and trace minimizer identical in both objectives. A bounded-below descending free energy does not itself supply that statistical bridge or select p, as shown by a two-model counterexample. Appendix SRV traces may validate this orbit downstream but are not consumed as premises."
+    },
+    {
+      "atlas_id": "theorem:bk7_born_collapse",
+      "coverage": "conditional",
+      "lean": [
+        "Book7BornCollapse.defect_eq_zero_iff_hilbertFrame",
+        "Book7BornCollapse.unique_stable_crossSection",
+        "Book7BornCollapse.nonhilbert_defect_pos",
+        "Book7BornCollapse.collapse_limit_eq_hilbertFrame",
+        "Book7BornCollapse.collapse_tendsto_hilbertFrame",
+        "Book7BornCollapse.born_readout_at_hilbert",
+        "Book7BornCollapse.hilbert_collapse_alone_does_not_determine_readout"
+      ],
+      "note": "Conditional Book 7 kernel: supplied exponent/defect and fixed-point bridges make the Hilbert frame the unique stable cross-section and every non-Hilbert defect positive. Any convergent orbit whose continuous defect tends to zero must converge to that frame. Born readout requires a separate Gleason-style uniqueness bridge; a countermodel shows Hilbert collapse alone does not determine a probability functional. Appendix C remains a downstream validator rather than a Book 7 premise."
+    }
+  ]
 }

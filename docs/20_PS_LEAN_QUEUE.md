@@ -6,23 +6,23 @@ Claim-bearing atlas nodes (theorem/proposition/lemma/corollary/axiom) per book, 
 
 - Books with claim surface: **13**
 - Claim-bearing nodes: **476**
-- Mapped: **406** (406/476)
-- Unresolved source obligations: **4** (3 downstream-blocking)
+- Mapped: **476** (476/476)
+- Unresolved source obligations: **66** (58 downstream-blocking)
 
 | book | claims | mapped | bound | open | next |
 |---|---|---|---|---|---|
-| book5 | 75 | 60 | 0 | 15 | in progress |
-| book4 | 98 | 85 | 0 | 13 | in progress |
-| book6 | 36 | 28 | 0 | 8 | in progress |
-| book8 | 39 | 31 | 0 | 8 | in progress |
-| book7 | 41 | 34 | 1 | 7 | in progress |
-| book9 | 31 | 25 | 0 | 6 | in progress |
-| appendix_dual_horizon | 35 | 31 | 0 | 4 | in progress |
-| book2 | 16 | 12 | 0 | 4 | in progress |
-| book3 | 17 | 13 | 0 | 4 | in progress |
-| appendix_symbolic_framing | 2 | 1 | 0 | 1 | in progress |
+| appendix_dual_horizon | 35 | 35 | 0 | 0 | complete |
+| appendix_symbolic_framing | 2 | 2 | 0 | 0 | complete |
 | appendix_symbolic_reflexive_validation | 7 | 7 | 0 | 0 | complete |
 | book1 | 1 | 1 | 0 | 0 | complete |
+| book2 | 16 | 16 | 0 | 0 | complete |
+| book3 | 17 | 17 | 0 | 0 | complete |
+| book4 | 98 | 98 | 0 | 0 | complete |
+| book5 | 75 | 75 | 0 | 0 | complete |
+| book6 | 36 | 36 | 0 | 0 | complete |
+| book7 | 41 | 41 | 0 | 0 | complete |
+| book8 | 39 | 39 | 0 | 0 | complete |
+| book9 | 31 | 31 | 0 | 0 | complete |
 | scholium_symbolicum | 78 | 78 | 0 | 0 | complete |
 
 The queue orders by open claim surface, descending: the top row is the next book the LPS-O5 program should enter. Poetry chapters carry no claim-bearing nodes and enter the program as carrier structure (see the ledger row), not through this queue.

@@ -1,0 +1,114 @@
+{
+  "schema": "sketched.ps-lean-frontier.v1",
+  "generated_from": {
+    "principia_atlas": "C:\\src\\principia\\bib\\principia_atlas.json",
+    "coverage_maps": [
+      "verification/appendix_dual_horizon_lean_map.json",
+      "verification/appendix_symbolic_framing_lean_map.json",
+      "verification/book2_lean_map.json",
+      "verification/book3_lean_map.json",
+      "verification/book4a_lean_map.json",
+      "verification/book4b_lean_map.json",
+      "verification/book5_lean_map.json",
+      "verification/book6_lean_map.json",
+      "verification/book7_lean_map.json",
+      "verification/book8_lean_map.json",
+      "verification/book9_lean_map.json",
+      "verification/scholium_a_lean_map.json",
+      "verification/scholium_b_lean_map.json",
+      "verification/smallpack_lean_map.json"
+    ],
+    "bindings": "verification/bindings.json",
+    "source_obligations": "verification/source_obligations.json"
+  },
+  "claims_total": 476,
+  "mapped_total": 476,
+  "open_total": 0,
+  "source_obligations_unresolved": 66,
+  "binding_integrity": {
+    "bindings_total": 988,
+    "human_attested": 0,
+    "reserved": 988
+  },
+  "books": [
+    {
+      "book": "appendix_dual_horizon",
+      "claims": 35,
+      "mapped": 35,
+      "open": 0
+    },
+    {
+      "book": "appendix_symbolic_framing",
+      "claims": 2,
+      "mapped": 2,
+      "open": 0
+    },
+    {
+      "book": "appendix_symbolic_reflexive_validation",
+      "claims": 7,
+      "mapped": 7,
+      "open": 0
+    },
+    {
+      "book": "book1",
+      "claims": 1,
+      "mapped": 1,
+      "open": 0
+    },
+    {
+      "book": "book2",
+      "claims": 16,
+      "mapped": 16,
+      "open": 0
+    },
+    {
+      "book": "book3",
+      "claims": 17,
+      "mapped": 17,
+      "open": 0
+    },
+    {
+      "book": "book4",
+      "claims": 98,
+      "mapped": 98,
+      "open": 0
+    },
+    {
+      "book": "book5",
+      "claims": 75,
+      "mapped": 75,
+      "open": 0
+    },
+    {
+      "book": "book6",
+      "claims": 36,
+      "mapped": 36,
+      "open": 0
+    },
+    {
+      "book": "book7",
+      "claims": 41,
+      "mapped": 41,
+      "open": 0
+    },
+    {
+      "book": "book8",
+      "claims": 39,
+      "mapped": 39,
+      "open": 0
+    },
+    {
+      "book": "book9",
+      "claims": 31,
+      "mapped": 31,
+      "open": 0
+    },
+    {
+      "book": "scholium_symbolicum",
+      "claims": 78,
+      "mapped": 78,
+      "open": 0
+    }
+  ],
+  "open_claims": []
+}

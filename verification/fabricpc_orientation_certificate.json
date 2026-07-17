@@ -1,0 +1,168 @@
+{
+  "schema": "sketched.fabricpc-orientation-certificate.v1",
+  "source": {
+    "input_sha256": "282ac59fb2892d12d0e0271c23c2c61a18f06c9ae6b2107f1d98cc9aaf19f324",
+    "fabricpc_repository": "https://github.com/trueagi-io/FabricPC.git",
+    "fabricpc_commit": "b6f64adf9314863ce665085a92d544807d585819",
+    "run_id": "tiny-paired-inference-seed17-23-eps0.001"
+  },
+  "method": {
+    "quantity": "paired finite-difference directional gain",
+    "global_lipschitz_claim": false,
+    "imagination_claim": false,
+    "thresholds": {
+      "directional_gain": 1.0,
+      "orientation_cosine": 0.0,
+      "zero_tolerance": 1e-12
+    }
+  },
+  "dimension": 4,
+  "transition_count": 12,
+  "candidate_count": 1,
+  "transitions": [
+    {
+      "step": 0,
+      "input_perturbation_norm": 0.001000046730041504,
+      "output_perturbation_norm": 0.0015938389942899373,
+      "directional_gain": 1.593764517607882,
+      "orientation_cosine": 0.5961066589056567,
+      "degenerate_orientation": false,
+      "gain_breach": true,
+      "orientation_reversal": false,
+      "candidate_transition": true,
+      "interpretation": "candidate: audit latent traversal, operator order, and projection"
+    },
+    {
+      "step": 1,
+      "input_perturbation_norm": 0.0015938389942899373,
+      "output_perturbation_norm": 0.0015141488925451156,
+      "directional_gain": 0.9500011594456416,
+      "orientation_cosine": 0.9999999987533055,
+      "degenerate_orientation": false,
+      "gain_breach": false,
+      "orientation_reversal": false,
+      "candidate_transition": false,
+      "interpretation": "no configured breach observed"
+    },
+    {
+      "step": 2,
+      "input_perturbation_norm": 0.0015141488925451156,
+      "output_perturbation_norm": 0.0014383920918430168,
+      "directional_gain": 0.9499674034204391,
+      "orientation_cosine": 0.9999999992064335,
+      "degenerate_orientation": false,
+      "gain_breach": false,
+      "orientation_reversal": false,
+      "candidate_transition": false,
+      "interpretation": "no configured breach observed"
+    },
+    {
+      "step": 3,
+      "input_perturbation_norm": 0.0014383920918430168,
+      "output_perturbation_norm": 0.0013663758211908904,
+      "directional_gain": 0.9499327957512255,
+      "orientation_cosine": 0.9999999980498328,
+      "degenerate_orientation": false,
+      "gain_breach": false,
+      "orientation_reversal": false,
+      "candidate_transition": false,
+      "interpretation": "no configured breach observed"
+    },
+    {
+      "step": 4,
+      "input_perturbation_norm": 0.0013663758211908904,
+      "output_perturbation_norm": 0.001297942117035926,
+      "directional_gain": 0.9499158993494778,
+      "orientation_cosine": 0.9999999996909542,
+      "degenerate_orientation": false,
+      "gain_breach": false,
+      "orientation_reversal": false,
+      "candidate_transition": false,
+      "interpretation": "no configured breach observed"
+    },
+    {
+      "step": 5,
+      "input_perturbation_norm": 0.001297942117035926,
+      "output_perturbation_norm": 0.0012329590683875001,
+      "directional_gain": 0.949933785339499,
+      "orientation_cosine": 0.9999999995314836,
+      "degenerate_orientation": false,
+      "gain_breach": false,
+      "orientation_reversal": false,
+      "candidate_transition": false,
+      "interpretation": "no configured breach observed"
+    },
+    {
+      "step": 6,
+      "input_perturbation_norm": 0.0012329590683875001,
+      "output_perturbation_norm": 0.001171291940636771,
+      "directional_gain": 0.9499844485256277,
+      "orientation_cosine": 0.9999999985155272,
+      "degenerate_orientation": false,
+      "gain_breach": false,
+      "orientation_reversal": false,
+      "candidate_transition": false,
+      "interpretation": "no configured breach observed"
+    },
+    {
+      "step": 7,
+      "input_perturbation_norm": 0.001171291940636771,
+      "output_perturbation_norm": 0.0011127377586868839,
+      "directional_gain": 0.9500088919607401,
+      "orientation_cosine": 0.9999999985230658,
+      "degenerate_orientation": false,
+      "gain_breach": false,
+      "orientation_reversal": false,
+      "candidate_transition": false,
+      "interpretation": "no configured breach observed"
+    },
+    {
+      "step": 8,
+      "input_perturbation_norm": 0.0011127377586868839,
+      "output_perturbation_norm": 0.0010571487661301987,
+      "directional_gain": 0.9500430428259355,
+      "orientation_cosine": 0.9999999999772604,
+      "degenerate_orientation": false,
+      "gain_breach": false,
+      "orientation_reversal": false,
+      "candidate_transition": false,
+      "interpretation": "no configured breach observed"
+    },
+    {
+      "step": 9,
+      "input_perturbation_norm": 0.0010571487661301987,
+      "output_perturbation_norm": 0.0010042583167746003,
+      "directional_gain": 0.9499687735064865,
+      "orientation_cosine": 0.9999999966478371,
+      "degenerate_orientation": false,
+      "gain_breach": false,
+      "orientation_reversal": false,
+      "candidate_transition": false,
+      "interpretation": "no configured breach observed"
+    },
+    {
+      "step": 10,
+      "input_perturbation_norm": 0.0010042583167746003,
+      "output_perturbation_norm": 0.0009541170537961449,
+      "directional_gain": 0.9500713490334884,
+      "orientation_cosine": 0.9999999949167017,
+      "degenerate_orientation": false,
+      "gain_breach": false,
+      "orientation_reversal": false,
+      "candidate_transition": false,
+      "interpretation": "no configured breach observed"
+    },
+    {
+      "step": 11,
+      "input_perturbation_norm": 0.0009541170537961449,
+      "output_perturbation_norm": 0.0009063366257400144,
+      "directional_gain": 0.9499218383467452,
+      "orientation_cosine": 0.9999999973953375,
+      "degenerate_orientation": false,
+      "gain_breach": false,
+      "orientation_reversal": false,
+      "candidate_transition": false,
+      "interpretation": "no configured breach observed"
+    }
+  ]
+}

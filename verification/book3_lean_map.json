@@ -4,6 +4,43 @@
  "boundary": "Mappings certify only the static/algebraic/finite-discrete kernel. The Riemannian membrane geometry, PDE dynamics, and Helmholtz material are not certified; conditional and partial rows do not promote the full prose statement to a Lean theorem.",
  "entries": [
   {
+   "atlas_id": "theorem:bk3_emergence_of_symbolic_networks",
+   "coverage": "conditional",
+   "lean": [
+    "Book3.assembled_network_stability_pos",
+    "Book3.growth_alone_does_not_generate_network"
+   ],
+   "note": "Given compressed nodes, bridge edges, and positive global stability, the network constructor has positive stability. A countermodel with a nonempty node index and empty compression codomain proves that sustained growth alone cannot generate the omitted node/edge data."
+  },
+  {
+   "atlas_id": "theorem:bk3_symbolic_life_satisfies_canonical_definitions",
+   "coverage": "conditional",
+   "lean": [
+    "Book3CanonicalLife.persistentLife_satisfies_canonical",
+    "Book3CanonicalLife.persistence_alone_does_not_supply_correspondence"
+   ],
+   "note": "All named external life clauses follow from an explicit LifeCorrespondence witness. A concrete positive-persistence system paired with a false regeneration clause proves that Book 3's three numeric persistence fields alone do not supply the semantic correspondence."
+  },  {
+   "atlas_id": "lemma:bk3_helmholtz_decomposition_refinement_field",
+   "coverage": "partial",
+   "lean": [
+    "Book3Helmholtz.finite_helmholtz_reconstruction",
+    "Book3Helmholtz.integrativeComponent_mem",
+    "Book3Helmholtz.differentiativeComponent_mem_orthogonal",
+    "Book3Helmholtz.components_inner_eq_zero",
+    "Book3Helmholtz.finite_helmholtz_unique"
+   ],
+   "note": "Finite-dimensional Hilbert kernel relative to a chosen gradient-like subspace: orthogonal projection gives an exact and unique integrative/differentiative split, with the simplified harmonic component set to zero. The manifold differential operators and global Hodge hypotheses are not asserted."
+  },  {
+   "atlas_id": "lemma:bk3_wellposedness_of_symbolic_membranes",
+   "coverage": "partial",
+   "lean": [
+    "Book3.exists_static_membrane",
+    "Book3.canonicalMembrane_stability_pos",
+    "Book3.exists_static_membrane_at_smaller_bound"
+   ],
+   "note": "Constructive static kernel: every positive drift budget, and every smaller positive budget, admits numeric membrane data with zero deviation, valid permeability, and strictly positive exp(-alpha H) stability. Existence of connected relatively compact open submanifolds with smooth boundary remains differential-topology machinery, not certified here."
+  },  {
    "atlas_id": "definition:bk3_symbolic_membrane",
    "coverage": "partial",
    "lean": [

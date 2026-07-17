@@ -470,6 +470,7 @@ theorem observerFlow_perturbation_iff
   · exact hΦ.controlledPerturbation_of_reachable_zero ε
 /-! ### Chart conjugacy and observer-independent iteration -/
 
+omit [TopologicalSpace S] [TopologicalSpace T] in
 /-- An invertible observer substitution conjugates the substituted drift to
 the original drift exactly. -/
 theorem substituted_drift_conjugacy
@@ -478,6 +479,7 @@ theorem substituted_drift_conjugacy
     (u ∘ D ∘ uinv) (u x) = u (D x) := by
   simp [Function.comp_apply, hleft x]
 
+omit [TopologicalSpace S] [TopologicalSpace T] in
 /-- Conjugacy persists through every finite iterate: changing observer chart
 does not alter the underlying drift orbit. -/
 theorem substituted_drift_iterate_conjugacy
