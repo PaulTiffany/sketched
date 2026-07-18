@@ -172,14 +172,104 @@
       "bytes": 4139
     },
     {
+      "path": "verification/tools/fabricpc_orientation_adapter.py",
+      "sha256": "8f63ed5c962547c4e7a059f37c10ababb263c14f5abad4e68e3c6ff19a0039a8",
+      "bytes": 7555
+    },
+    {
       "path": "verification/tools/fabricpc_imagination_package.py",
-      "sha256": "3018a756bbea632f1aad16c065d9d88200475553e2c71583d0a2f48a6e98a581",
-      "bytes": 9658
+      "sha256": "bb8381d86adc8692d6110495a9291b06c533d18631d2d6167febb91c7131d585",
+      "bytes": 10683
     },
     {
       "path": "docs/31_FABRICPC_IMAGINATION_PACKAGE.md",
       "sha256": "6317ff9d044d464f5256dc4fede732728e57fe61db0447d232d2da116233c7d7",
       "bytes": 2711
+    },
+    {
+      "path": "docs/32_FABRICPC_MAINTAINER_HANDOFF.md",
+      "sha256": "e909b1d53377076658074121d4cf68f8f6377635b7ac39445f0fd904393fc21f",
+      "bytes": 3882
+    },
+    {
+      "path": "contrib/fabricpc-trajectory-probe/README.md",
+      "sha256": "86ffcedcd7402e089098a0760bf0cf00a473c7b1b51185d05b4d34089972587b",
+      "bytes": 3758
+    },
+    {
+      "path": "contrib/fabricpc-trajectory-probe/EXAMPLE.md",
+      "sha256": "df2b359e828b380b7cf202977dc5770d055bfcbc60013132e150c731a3ddc51d",
+      "bytes": 3398
+    },
+    {
+      "path": "contrib/fabricpc-trajectory-probe/presentation/index.html",
+      "sha256": "25e2d74ac8e3e26b46417fdc7dbae81d3057f4d9c7837c8098500c8b7b68e22a",
+      "bytes": 15162
+    },
+    {
+      "path": "contrib/fabricpc-trajectory-probe/tennessee-eastman/README.md",
+      "sha256": "a6b4eaf78c458d33f4de6dc8c0e166f491f8b85ee0a81baf459c0553853fc6c5",
+      "bytes": 6500
+    },
+    {
+      "path": "contrib/fabricpc-trajectory-probe/tennessee-eastman/SOURCE.json",
+      "sha256": "24101bab048563140b63ee2f93c00bcdfd076bbb37c22d9f2d4b5a3a1b73382d",
+      "bytes": 1423
+    },
+    {
+      "path": "contrib/fabricpc-trajectory-probe/tennessee-eastman/run.ps1",
+      "sha256": "4f565d88fd771f10efb24e4049730c8dbf74593b0150d41e3fd24ac26f38d939",
+      "bytes": 4498
+    },
+    {
+      "path": "contrib/fabricpc-trajectory-probe/run.ps1",
+      "sha256": "8e9260cb01eb7a3b5b4df11148ca88dc771de238dcfeef11ccfd2f03d461d915",
+      "bytes": 1474
+    },
+    {
+      "path": "contrib/fabricpc-trajectory-probe/PACKAGE.json",
+      "sha256": "1096091a4ad8e72bd4c5091f4369133b94e29c635dde5fdf8f6f5a77a7898e72",
+      "bytes": 2155
+    },
+    {
+      "path": "verification/tep_fault1_certificate.json",
+      "sha256": "c5936e057e99860cb92b11388f2db3d6a60f4832019f9b671a5c1a5da0de37cc",
+      "bytes": 26006
+    },
+    {
+      "path": "verification/tep_fabricpc_predictive_coding.json",
+      "sha256": "a51b1dc6360938847ffea38fb63562ab52fe2719bfea8c156b4bf15a4b9909c6",
+      "bytes": 47646
+    },
+    {
+      "path": "verification/tep_fabricpc_alarm_router.json",
+      "sha256": "f54a29f73f9faeaae10bc2605f1a841b010dfb6668b8f5a45d3b2ac7e32097a9",
+      "bytes": 53042
+    },
+    {
+      "path": "verification/tools/tep_trajectory_probe.py",
+      "sha256": "c9c469c37e034dd27ae4932601ccaf28fc5c647eb18fd3f8e00d85bf150c4571",
+      "bytes": 9137
+    },
+    {
+      "path": "verification/tools/tep_fabricpc_predictive_coding.py",
+      "sha256": "24a968153c47b1eab8ae0e702e4ec0822af617dcc8a97a93273f1c442f0210db",
+      "bytes": 14742
+    },
+    {
+      "path": "verification/tools/tep_fabricpc_alarm_router.py",
+      "sha256": "7058468b42d5e06089503b120591805f365084d5c41c12cfc2e6db51734bc784",
+      "bytes": 8916
+    },
+    {
+      "path": "verification/tools/test_tep_fabricpc_predictive_coding.py",
+      "sha256": "9c73cc5778bbcea8dfaa0c6e30eee59cf443815525267310576aff2ee69bd5c0",
+      "bytes": 1998
+    },
+    {
+      "path": "verification/tools/test_tep_trajectory_probe.py",
+      "sha256": "80d51d413918d5443a39a77af0d1b174783145c7d2e9e0edae5ebce7962d4162",
+      "bytes": 1248
     }
   ],
   "ready": true

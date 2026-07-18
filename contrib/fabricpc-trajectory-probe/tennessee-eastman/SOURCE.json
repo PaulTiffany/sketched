@@ -1,0 +1,38 @@
+{
+  "schema": "sketched.tep-source-receipt.v1",
+  "dataset": {
+    "title": "The Tennessee Eastman process (TEP)",
+    "authors": [
+      "Shuchen Shen",
+      "Liangliang Shang"
+    ],
+    "published": "2026-06-04",
+    "version": 1,
+    "doi": "10.17632/g2st27k8ww.1",
+    "landing_page": "https://data.mendeley.com/datasets/g2st27k8ww/1",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "archive": {
+    "filename": "TEdata.zip",
+    "bytes": 4607223,
+    "sha256": "0ff82bbdef0f5f52746c8a03b2a9645f656dbee3cd57587d15a4963087d233db",
+    "file_id": "1e1fd5e2-4d70-41f7-8fc7-d42ebbf749eb",
+    "download_url": "https://data.mendeley.com/public-files/datasets/g2st27k8ww/files/1e1fd5e2-4d70-41f7-8fc7-d42ebbf749eb/file_downloaded"
+  },
+  "embedded_simulator": {
+    "temain_mod_f_sha256": "31b83c17f8d52332d6f6fe46d9da3ee7131de2d018bb83945453350bf635c8b6",
+    "teprob_f_sha256": "409975e070780a3b197d37125dddeca64e46c11d8c99028528a56a1f238d45e3",
+    "license": "University of Illinois permissive three-condition license in readme.txt and source headers",
+    "endorsement_granted": false
+  },
+  "transformation": {
+    "compiler": "GNU Fortran 13.2.0",
+    "duration_seconds": 36000,
+    "intervention_seconds": 28800,
+    "sample_seconds": 180,
+    "normal_fault_difference": "Fault 1 flag only",
+    "raw_data_committed": false,
+    "changes_disclosed": true
+  }
+}

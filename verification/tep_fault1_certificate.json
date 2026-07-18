@@ -1,0 +1,743 @@
+{
+  "schema": "sketched.tep-trajectory-certificate.v1",
+  "source": {
+    "dataset": "The Tennessee Eastman process (TEP)",
+    "dataset_doi": "10.17632/g2st27k8ww.1",
+    "dataset_version": 1,
+    "dataset_license": "CC BY 4.0",
+    "archive_sha256": "0ff82bbdef0f5f52746c8a03b2a9645f656dbee3cd57587d15a4963087d233db",
+    "paired_input_sha256": "29599c327b7b2db2183705304e9ffe28cc49bb28b76fb6acaf98f7ae3a8456c0"
+  },
+  "experiment": {
+    "fault_id": 1,
+    "fault_description": "A/C feed ratio step; B composition constant (stream 4)",
+    "same_initial_state": true,
+    "same_noise_seed": true,
+    "intervention_index": 160,
+    "intervention_seconds": 28800,
+    "sample_seconds": 180,
+    "observation_dimension": 53,
+    "observation_count": 200
+  },
+  "checks": {
+    "pre_intervention_max_absolute_delta": 0.0,
+    "paired_pre_intervention_history_exact": true,
+    "finding_count": 0
+  },
+  "first_observable_response": {
+    "sample_index": 160,
+    "seconds": 28800,
+    "minutes_after_intervention": 0.0,
+    "standardized_whole_state_norm": 1.798500045452543,
+    "directional_gain": null,
+    "orientation_cosine": null,
+    "dominant_observed_block": "reactor",
+    "block_norms": {
+      "feed": 0.01700106120593111,
+      "recycle_compressor": 0.45380359081966315,
+      "reactor": 1.4947396204595786,
+      "separator": 0.7423668990355179,
+      "stripper": 0.49297112756691436,
+      "composition_analyzers": 0.0
+    }
+  },
+  "first_nonzero_sample_by_block": {
+    "feed": 160,
+    "recycle_compressor": 160,
+    "reactor": 160,
+    "separator": 160,
+    "stripper": 160,
+    "composition_analyzers": 162
+  },
+  "timeline": [
+    {
+      "sample_index": 160,
+      "seconds": 28800,
+      "minutes_after_intervention": 0.0,
+      "standardized_whole_state_norm": 1.798500045452543,
+      "directional_gain": null,
+      "orientation_cosine": null,
+      "dominant_observed_block": "reactor",
+      "block_norms": {
+        "feed": 0.01700106120593111,
+        "recycle_compressor": 0.45380359081966315,
+        "reactor": 1.4947396204595786,
+        "separator": 0.7423668990355179,
+        "stripper": 0.49297112756691436,
+        "composition_analyzers": 0.0
+      }
+    },
+    {
+      "sample_index": 161,
+      "seconds": 28980,
+      "minutes_after_intervention": 3.0,
+      "standardized_whole_state_norm": 3.0094419869999394,
+      "directional_gain": 1.6733065949090349,
+      "orientation_cosine": 0.8360376775188162,
+      "dominant_observed_block": "separator",
+      "block_norms": {
+        "feed": 0.028292148737280115,
+        "recycle_compressor": 1.1689803405011168,
+        "reactor": 1.6747474546210013,
+        "separator": 1.8229936249142218,
+        "stripper": 1.2495362330570683,
+        "composition_analyzers": 0.0
+      }
+    },
+    {
+      "sample_index": 162,
+      "seconds": 29160,
+      "minutes_after_intervention": 6.0,
+      "standardized_whole_state_norm": 4.351840277812292,
+      "directional_gain": 1.4460621924633166,
+      "orientation_cosine": 0.9704161917222663,
+      "dominant_observed_block": "separator",
+      "block_norms": {
+        "feed": 0.007436400317820199,
+        "recycle_compressor": 1.9921629941213967,
+        "reactor": 1.9574405046490573,
+        "separator": 2.517645332057851,
+        "stripper": 2.1907865272202076,
+        "composition_analyzers": 0.00938899728075745
+      }
+    },
+    {
+      "sample_index": 163,
+      "seconds": 29340,
+      "minutes_after_intervention": 9.0,
+      "standardized_whole_state_norm": 5.538399761894069,
+      "directional_gain": 1.2726569470234028,
+      "orientation_cosine": 0.9849613764489961,
+      "dominant_observed_block": "stripper",
+      "block_norms": {
+        "feed": 0.038303260909512096,
+        "recycle_compressor": 2.8631755288416705,
+        "reactor": 2.380697181783473,
+        "separator": 2.676083844718448,
+        "stripper": 3.1057042204964427,
+        "composition_analyzers": 0.00938899728075745
+      }
+    },
+    {
+      "sample_index": 164,
+      "seconds": 29520,
+      "minutes_after_intervention": 12.0,
+      "standardized_whole_state_norm": 7.221036518936914,
+      "directional_gain": 1.303812803225205,
+      "orientation_cosine": 0.9065846769576059,
+      "dominant_observed_block": "stripper",
+      "block_norms": {
+        "feed": 0.08516222367424643,
+        "recycle_compressor": 3.657136146925857,
+        "reactor": 2.872917344086999,
+        "separator": 2.6220199049182344,
+        "stripper": 3.8788337998758977,
+        "composition_analyzers": 2.9304397129995134
+      }
+    },
+    {
+      "sample_index": 165,
+      "seconds": 29700,
+      "minutes_after_intervention": 15.0,
+      "standardized_whole_state_norm": 8.272068404538313,
+      "directional_gain": 1.1455513876498347,
+      "orientation_cosine": 0.9921519973699112,
+      "dominant_observed_block": "stripper",
+      "block_norms": {
+        "feed": 0.12640737936504406,
+        "recycle_compressor": 4.388975316906852,
+        "reactor": 3.565449339793993,
+        "separator": 2.566456249023513,
+        "stripper": 4.611011705371346,
+        "composition_analyzers": 2.9304397129995134
+      }
+    },
+    {
+      "sample_index": 166,
+      "seconds": 29880,
+      "minutes_after_intervention": 18.0,
+      "standardized_whole_state_norm": 11.007245717734373,
+      "directional_gain": 1.3306521633326263,
+      "orientation_cosine": 0.9428344721393849,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 2.4291169117966995,
+        "recycle_compressor": 5.1465869811911515,
+        "reactor": 3.852978706192592,
+        "separator": 2.8090273572899633,
+        "stripper": 5.639344718424596,
+        "composition_analyzers": 5.850914741033091
+      }
+    },
+    {
+      "sample_index": 167,
+      "seconds": 30060,
+      "minutes_after_intervention": 21.0,
+      "standardized_whole_state_norm": 12.082712098726283,
+      "directional_gain": 1.097705312352496,
+      "orientation_cosine": 0.9966251517442866,
+      "dominant_observed_block": "stripper",
+      "block_norms": {
+        "feed": 2.4317884050371834,
+        "recycle_compressor": 5.627975511903473,
+        "reactor": 4.481542854628561,
+        "separator": 3.2460382131762087,
+        "stripper": 6.5992450102369435,
+        "composition_analyzers": 5.850914741033091
+      }
+    },
+    {
+      "sample_index": 168,
+      "seconds": 30240,
+      "minutes_after_intervention": 24.0,
+      "standardized_whole_state_norm": 15.388959815739982,
+      "directional_gain": 1.2736345689609068,
+      "orientation_cosine": 0.983501271591013,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 4.5070519205118105,
+        "recycle_compressor": 6.1879227267552475,
+        "reactor": 4.999159416727937,
+        "separator": 3.9011737161030564,
+        "stripper": 7.78583086067361,
+        "composition_analyzers": 8.796946407469248
+      }
+    },
+    {
+      "sample_index": 169,
+      "seconds": 30420,
+      "minutes_after_intervention": 27.0,
+      "standardized_whole_state_norm": 16.481865057247184,
+      "directional_gain": 1.071018785843431,
+      "orientation_cosine": 0.9970102899040217,
+      "dominant_observed_block": "stripper",
+      "block_norms": {
+        "feed": 4.5121570584835515,
+        "recycle_compressor": 6.571897455097927,
+        "reactor": 5.655567855103672,
+        "separator": 4.513877340372812,
+        "stripper": 8.851874139472441,
+        "composition_analyzers": 8.796946407469248
+      }
+    },
+    {
+      "sample_index": 170,
+      "seconds": 30600,
+      "minutes_after_intervention": 30.0,
+      "standardized_whole_state_norm": 19.95032785894071,
+      "directional_gain": 1.2104411600050335,
+      "orientation_cosine": 0.9920938538753297,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 6.690807122575913,
+        "recycle_compressor": 6.972429890798654,
+        "reactor": 6.355329631994277,
+        "separator": 5.247427738023853,
+        "stripper": 10.122501567751048,
+        "composition_analyzers": 11.586334733616221
+      }
+    },
+    {
+      "sample_index": 171,
+      "seconds": 30780,
+      "minutes_after_intervention": 33.0,
+      "standardized_whole_state_norm": 21.003923266055953,
+      "directional_gain": 1.0528109319588488,
+      "orientation_cosine": 0.9978600335049626,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 6.700203687619362,
+        "recycle_compressor": 7.116422789562145,
+        "reactor": 7.094426479648158,
+        "separator": 5.971344657965011,
+        "stripper": 11.19810667623046,
+        "composition_analyzers": 11.586334733616221
+      }
+    },
+    {
+      "sample_index": 172,
+      "seconds": 30960,
+      "minutes_after_intervention": 36.0,
+      "standardized_whole_state_norm": 24.336484801251743,
+      "directional_gain": 1.158663764525434,
+      "orientation_cosine": 0.9959347174793224,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 8.677826640755589,
+        "recycle_compressor": 7.384493322463553,
+        "reactor": 7.848096702285201,
+        "separator": 6.7994656205469575,
+        "stripper": 12.387299805818952,
+        "composition_analyzers": 14.183036508180422
+      }
+    },
+    {
+      "sample_index": 173,
+      "seconds": 31140,
+      "minutes_after_intervention": 39.0,
+      "standardized_whole_state_norm": 25.379060215874706,
+      "directional_gain": 1.042840016671978,
+      "orientation_cosine": 0.9987001680619764,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 8.693455823053073,
+        "recycle_compressor": 7.438963768764031,
+        "reactor": 8.596802972823491,
+        "separator": 7.589475984576387,
+        "stripper": 13.435722893623838,
+        "composition_analyzers": 14.183036508180422
+      }
+    },
+    {
+      "sample_index": 174,
+      "seconds": 31320,
+      "minutes_after_intervention": 42.0,
+      "standardized_whole_state_norm": 28.55228411354434,
+      "directional_gain": 1.1250331521608026,
+      "orientation_cosine": 0.9975715370851015,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 10.602728981831731,
+        "recycle_compressor": 7.668649875270439,
+        "reactor": 9.343149201792048,
+        "separator": 8.46015747134427,
+        "stripper": 14.54323226848992,
+        "composition_analyzers": 16.541842976729054
+      }
+    },
+    {
+      "sample_index": 175,
+      "seconds": 31500,
+      "minutes_after_intervention": 45.0,
+      "standardized_whole_state_norm": 29.536763696570784,
+      "directional_gain": 1.0344798888632325,
+      "orientation_cosine": 0.9988373747073858,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 10.627213742231632,
+        "recycle_compressor": 7.62650930611696,
+        "reactor": 10.067312407018417,
+        "separator": 9.293998556353678,
+        "stripper": 15.494020203763561,
+        "composition_analyzers": 16.53859858655055
+      }
+    },
+    {
+      "sample_index": 176,
+      "seconds": 31680,
+      "minutes_after_intervention": 48.0,
+      "standardized_whole_state_norm": 32.55015755045267,
+      "directional_gain": 1.1020218018750558,
+      "orientation_cosine": 0.9982080121083746,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 12.405529089887358,
+        "recycle_compressor": 7.910128071472151,
+        "reactor": 10.801716080858997,
+        "separator": 10.172716298693633,
+        "stripper": 16.5221039069428,
+        "composition_analyzers": 18.705729971191925
+      }
+    },
+    {
+      "sample_index": 177,
+      "seconds": 31860,
+      "minutes_after_intervention": 51.0,
+      "standardized_whole_state_norm": 33.44616810136899,
+      "directional_gain": 1.027527072627145,
+      "orientation_cosine": 0.9993713111107242,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 12.442717195073095,
+        "recycle_compressor": 7.802852658905024,
+        "reactor": 11.463454672709384,
+        "separator": 10.972648942824083,
+        "stripper": 17.355871866345833,
+        "composition_analyzers": 18.705729971191925
+      }
+    },
+    {
+      "sample_index": 178,
+      "seconds": 32040,
+      "minutes_after_intervention": 54.0,
+      "standardized_whole_state_norm": 36.263285822182965,
+      "directional_gain": 1.0842284148149894,
+      "orientation_cosine": 0.9988704794494965,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 14.117305324984011,
+        "recycle_compressor": 8.106456565445539,
+        "reactor": 12.16197618956797,
+        "separator": 11.836294025323427,
+        "stripper": 18.283205280248318,
+        "composition_analyzers": 20.68153365990622
+      }
+    },
+    {
+      "sample_index": 179,
+      "seconds": 32220,
+      "minutes_after_intervention": 57.0,
+      "standardized_whole_state_norm": 37.078802437981025,
+      "directional_gain": 1.022488767835241,
+      "orientation_cosine": 0.9995278200020327,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 14.168958659928814,
+        "recycle_compressor": 7.956557112024804,
+        "reactor": 12.761329672934991,
+        "separator": 12.620049243172351,
+        "stripper": 18.99811535926349,
+        "composition_analyzers": 20.68153365990622
+      }
+    },
+    {
+      "sample_index": 180,
+      "seconds": 32400,
+      "minutes_after_intervention": 60.0,
+      "standardized_whole_state_norm": 39.639427548169586,
+      "directional_gain": 1.0690590024980318,
+      "orientation_cosine": 0.9988210894694212,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 15.761695748056036,
+        "recycle_compressor": 8.286000448065234,
+        "reactor": 13.38496674133404,
+        "separator": 13.423578009701423,
+        "stripper": 19.76084891076375,
+        "composition_analyzers": 22.457836697771445
+      }
+    },
+    {
+      "sample_index": 181,
+      "seconds": 32580,
+      "minutes_after_intervention": 63.0,
+      "standardized_whole_state_norm": 40.354641588027114,
+      "directional_gain": 1.0180429961807194,
+      "orientation_cosine": 0.9996881946873981,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 15.828732024616682,
+        "recycle_compressor": 8.152797668633603,
+        "reactor": 13.919608113545491,
+        "separator": 14.145806760439793,
+        "stripper": 20.32895625169106,
+        "composition_analyzers": 22.457836697771445
+      }
+    },
+    {
+      "sample_index": 182,
+      "seconds": 32760,
+      "minutes_after_intervention": 66.0,
+      "standardized_whole_state_norm": 42.62932641999788,
+      "directional_gain": 1.056367365498933,
+      "orientation_cosine": 0.999344946722708,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 17.35293397038298,
+        "recycle_compressor": 8.511797783776677,
+        "reactor": 14.433907403140271,
+        "separator": 14.853336814122038,
+        "stripper": 20.98246234526028,
+        "composition_analyzers": 23.967924996209113
+      }
+    },
+    {
+      "sample_index": 183,
+      "seconds": 32940,
+      "minutes_after_intervention": 69.0,
+      "standardized_whole_state_norm": 43.216974739871844,
+      "directional_gain": 1.013785071668369,
+      "orientation_cosine": 0.9996996071789997,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 17.437856825395478,
+        "recycle_compressor": 8.399092468730329,
+        "reactor": 14.851030715019503,
+        "separator": 15.468451279470628,
+        "stripper": 21.419518523947552,
+        "composition_analyzers": 23.967924996209113
+      }
+    },
+    {
+      "sample_index": 184,
+      "seconds": 33120,
+      "minutes_after_intervention": 72.0,
+      "standardized_whole_state_norm": 45.20860608367205,
+      "directional_gain": 1.0460844692574636,
+      "orientation_cosine": 0.9994215351126312,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 18.88212955894812,
+        "recycle_compressor": 8.779972577065529,
+        "reactor": 15.281299622475496,
+        "separator": 16.075114752628952,
+        "stripper": 21.87166687129219,
+        "composition_analyzers": 25.296206923229924
+      }
+    },
+    {
+      "sample_index": 185,
+      "seconds": 33300,
+      "minutes_after_intervention": 75.0,
+      "standardized_whole_state_norm": 45.740598900524326,
+      "directional_gain": 1.011767512049977,
+      "orientation_cosine": 0.9993030881541614,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 18.984097638135697,
+        "recycle_compressor": 8.692044817973699,
+        "reactor": 15.596703024377659,
+        "separator": 16.616674692074408,
+        "stripper": 22.176012080331464,
+        "composition_analyzers": 25.398981213561502
+      }
+    },
+    {
+      "sample_index": 186,
+      "seconds": 33480,
+      "minutes_after_intervention": 78.0,
+      "standardized_whole_state_norm": 47.43139673690909,
+      "directional_gain": 1.0369649256246487,
+      "orientation_cosine": 0.9995286752586295,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 20.392041304738584,
+        "recycle_compressor": 9.090441666273488,
+        "reactor": 15.899204003768613,
+        "separator": 17.124431888351534,
+        "stripper": 22.489486094052143,
+        "composition_analyzers": 26.4472697631566
+      }
+    },
+    {
+      "sample_index": 187,
+      "seconds": 33660,
+      "minutes_after_intervention": 81.0,
+      "standardized_whole_state_norm": 47.762038922081764,
+      "directional_gain": 1.0069709561159808,
+      "orientation_cosine": 0.9998611083119094,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 20.51226625746625,
+        "recycle_compressor": 9.009034620670345,
+        "reactor": 16.117485403481904,
+        "separator": 17.564869065286434,
+        "stripper": 22.617262240234606,
+        "composition_analyzers": 26.4472697631566
+      }
+    },
+    {
+      "sample_index": 188,
+      "seconds": 33840,
+      "minutes_after_intervention": 84.0,
+      "standardized_whole_state_norm": 49.15311292260634,
+      "directional_gain": 1.0291250966650305,
+      "orientation_cosine": 0.9996560795096122,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 21.878591857903757,
+        "recycle_compressor": 9.351883302214892,
+        "reactor": 16.333946094593774,
+        "separator": 17.971877631959405,
+        "stripper": 22.77143495133725,
+        "composition_analyzers": 27.231848571430305
+      }
+    },
+    {
+      "sample_index": 189,
+      "seconds": 34020,
+      "minutes_after_intervention": 87.0,
+      "standardized_whole_state_norm": 49.33206393684675,
+      "directional_gain": 1.0036406852709854,
+      "orientation_cosine": 0.9998517541888098,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 22.012271589449107,
+        "recycle_compressor": 9.312232123926103,
+        "reactor": 16.44753530179048,
+        "separator": 18.239738016757087,
+        "stripper": 22.75108189890532,
+        "composition_analyzers": 27.231848571430305
+      }
+    },
+    {
+      "sample_index": 190,
+      "seconds": 34200,
+      "minutes_after_intervention": 90.0,
+      "standardized_whole_state_norm": 50.556456544094424,
+      "directional_gain": 1.0248194076942554,
+      "orientation_cosine": 0.9991134951074067,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 23.32127372667146,
+        "recycle_compressor": 9.630509535441202,
+        "reactor": 16.55580451925006,
+        "separator": 18.515055863930666,
+        "stripper": 22.803391035699086,
+        "composition_analyzers": 27.971953390802938
+      }
+    },
+    {
+      "sample_index": 191,
+      "seconds": 34380,
+      "minutes_after_intervention": 93.0,
+      "standardized_whole_state_norm": 50.621959398651825,
+      "directional_gain": 1.0012956377688431,
+      "orientation_cosine": 0.9998271359391571,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 23.47047214345747,
+        "recycle_compressor": 9.619716562470671,
+        "reactor": 16.56222136598333,
+        "separator": 18.677821446167897,
+        "stripper": 22.662356385240532,
+        "composition_analyzers": 27.971953390802938
+      }
+    },
+    {
+      "sample_index": 192,
+      "seconds": 34560,
+      "minutes_after_intervention": 96.0,
+      "standardized_whole_state_norm": 51.417911841544836,
+      "directional_gain": 1.015723461761423,
+      "orientation_cosine": 0.9996078867069804,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 24.757752486989226,
+        "recycle_compressor": 9.87621335084259,
+        "reactor": 16.543137090154865,
+        "separator": 18.839568821835567,
+        "stripper": 22.53464775840714,
+        "composition_analyzers": 28.229429183295117
+      }
+    },
+    {
+      "sample_index": 193,
+      "seconds": 34740,
+      "minutes_after_intervention": 99.0,
+      "standardized_whole_state_norm": 51.37192110671755,
+      "directional_gain": 0.999105550319332,
+      "orientation_cosine": 0.9998508672294906,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 24.915487782749384,
+        "recycle_compressor": 9.850234066290025,
+        "reactor": 16.45941839981829,
+        "separator": 18.909908171209647,
+        "stripper": 22.268091127513507,
+        "composition_analyzers": 28.229429183295117
+      }
+    },
+    {
+      "sample_index": 194,
+      "seconds": 34920,
+      "minutes_after_intervention": 102.0,
+      "standardized_whole_state_norm": 51.86622072158595,
+      "directional_gain": 1.0096219803390565,
+      "orientation_cosine": 0.9996400446434731,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 26.142452405062347,
+        "recycle_compressor": 10.049256775731637,
+        "reactor": 16.326376636193114,
+        "separator": 18.966040009685706,
+        "stripper": 22.008547912455576,
+        "composition_analyzers": 28.196667241254755
+      }
+    },
+    {
+      "sample_index": 195,
+      "seconds": 35100,
+      "minutes_after_intervention": 105.0,
+      "standardized_whole_state_norm": 51.88379791983604,
+      "directional_gain": 1.0003388949108987,
+      "orientation_cosine": 0.9992103563078742,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 26.3077707954678,
+        "recycle_compressor": 10.032588621729664,
+        "reactor": 16.11463507878914,
+        "separator": 18.96114242150123,
+        "stripper": 21.64419446342186,
+        "composition_analyzers": 28.486826925532412
+      }
+    },
+    {
+      "sample_index": 196,
+      "seconds": 35280,
+      "minutes_after_intervention": 108.0,
+      "standardized_whole_state_norm": 52.1289735748986,
+      "directional_gain": 1.0047254762544826,
+      "orientation_cosine": 0.9995027325244512,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 27.481190353917277,
+        "recycle_compressor": 10.159678822317328,
+        "reactor": 15.898424350325866,
+        "separator": 18.852912485109954,
+        "stripper": 21.283899982427645,
+        "composition_analyzers": 28.24532500211964
+      }
+    },
+    {
+      "sample_index": 197,
+      "seconds": 35460,
+      "minutes_after_intervention": 111.0,
+      "standardized_whole_state_norm": 51.87004230100171,
+      "directional_gain": 0.9950328721987042,
+      "orientation_cosine": 0.999738846398194,
+      "dominant_observed_block": "composition_analyzers",
+      "block_norms": {
+        "feed": 27.6466984540114,
+        "recycle_compressor": 10.165210756250701,
+        "reactor": 15.607961385812802,
+        "separator": 18.645585335922522,
+        "stripper": 20.827029254459642,
+        "composition_analyzers": 28.24532500211964
+      }
+    },
+    {
+      "sample_index": 198,
+      "seconds": 35640,
+      "minutes_after_intervention": 114.0,
+      "standardized_whole_state_norm": 51.86711310794611,
+      "directional_gain": 0.9999435282308312,
+      "orientation_cosine": 0.999415575188938,
+      "dominant_observed_block": "feed",
+      "block_norms": {
+        "feed": 28.77258417541277,
+        "recycle_compressor": 10.223305083657126,
+        "reactor": 15.304151214460093,
+        "separator": 18.30191855059877,
+        "stripper": 20.410643395218823,
+        "composition_analyzers": 27.785755781571442
+      }
+    },
+    {
+      "sample_index": 199,
+      "seconds": 35820,
+      "minutes_after_intervention": 117.0,
+      "standardized_whole_state_norm": 51.56151654155047,
+      "directional_gain": 0.9941080860667986,
+      "orientation_cosine": 0.9996462597547179,
+      "dominant_observed_block": "feed",
+      "block_norms": {
+        "feed": 28.941882624383204,
+        "recycle_compressor": 10.266431618700043,
+        "reactor": 14.895756415452775,
+        "separator": 18.07226095052875,
+        "stripper": 19.87509498427427,
+        "composition_analyzers": 27.785755781571442
+      }
+    }
+  ],
+  "interpretation": {
+    "known_simulated_source": "feed composition disturbance",
+    "first_dominant_observed_block": "reactor",
+    "source_directly_observed": false,
+    "claim": "the controlled disturbance is first visible downstream; whole-state response does not directly localize its source",
+    "fabricpc_defect_claim": false,
+    "causal_identification_from_observations_alone": false,
+    "global_lipschitz_claim": false
+  }
+}

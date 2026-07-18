@@ -1,0 +1,1314 @@
+{
+  "schema": "sketched.tep-fabricpc-predictive-coding.v1",
+  "source": {
+    "fabricpc_repository": "https://github.com/trueagi-io/FabricPC.git",
+    "fabricpc_commit": "b6f64adf9314863ce665085a92d544807d585819",
+    "dataset": "The Tennessee Eastman process (TEP)",
+    "dataset_doi": "10.17632/g2st27k8ww.1",
+    "dataset_license": "CC BY 4.0",
+    "paired_input_sha256": "29599c327b7b2db2183705304e9ffe28cc49bb28b76fb6acaf98f7ae3a8456c0"
+  },
+  "experiment": {
+    "task": "one-step prediction from normal process observations",
+    "training_observation_count": 159,
+    "evaluation_sample_index": 160,
+    "normal_only_training": true,
+    "same_parameter_seed_across_arms": true,
+    "same_state_seed_across_paired_runs": true,
+    "latent_width": 8,
+    "infer_steps": 20,
+    "eta_infer": 0.03,
+    "epochs": 30,
+    "batch_size": 32,
+    "learning_rate": 0.001,
+    "parameter_seed": 41,
+    "state_seed": 43,
+    "standardization_mean": [
+      0.2447001039981842,
+      3668.054443359375,
+      4505.19970703125,
+      9.35838508605957,
+      26.907625198364258,
+      42.326393127441406,
+      2706.463623046875,
+      75.0331802368164,
+      120.398681640625,
+      0.3347660303115845,
+      80.07062530517578,
+      50.021602630615234,
+      2635.197509765625,
+      25.147502899169922,
+      49.86817932128906,
+      3103.698486328125,
+      22.916208267211914,
+      65.91545104980469,
+      235.73782348632812,
+      341.2972717285156,
+      94.59716033935547,
+      77.28350067138672,
+      32.19853973388672,
+      8.884045600891113,
+      26.449325561523438,
+      6.880948066711426,
+      18.761112213134766,
+      1.6560899019241333,
+      32.89208984375,
+      13.808063507080078,
+      24.085464477539062,
+      1.234810709953308,
+      18.57241439819336,
+      2.258657217025757,
+      4.840225696563721,
+      2.2961339950561523,
+      0.018250465393066406,
+      0.8337500691413879,
+      0.09602949768304825,
+      53.74433517456055,
+      43.812904357910156,
+      63.06451416015625,
+      53.96255111694336,
+      24.11945915222168,
+      61.305484771728516,
+      22.22870445251465,
+      39.79507064819336,
+      38.16363525390625,
+      46.228939056396484,
+      48.82819747924805,
+      41.11845016479492,
+      18.202861785888672,
+      50.0
+    ],
+    "standardization_scale": [
+      0.03197573870420456,
+      35.219783782958984,
+      40.36442947387695,
+      0.08617986738681793,
+      0.23294667899608612,
+      0.23260708153247833,
+      6.847458362579346,
+      0.5218660831451416,
+      0.018897347152233124,
+      0.011787538416683674,
+      0.22562555968761444,
+      1.0166640281677246,
+      7.3282551765441895,
+      0.9622195959091187,
+      1.0324007272720337,
+      5.52227783203125,
+      0.6438080668449402,
+      0.23048433661460876,
+      6.84645938873291,
+      1.8619179725646973,
+      0.1315915584564209,
+      0.2412615567445755,
+      0.31685084104537964,
+      0.09801775962114334,
+      0.28578928112983704,
+      0.1151362881064415,
+      0.32385772466659546,
+      0.026046905666589737,
+      0.39329034090042114,
+      0.09946859627962112,
+      0.34628257155418396,
+      0.09771442413330078,
+      0.3311712443828583,
+      0.02402057684957981,
+      0.05726891756057739,
+      0.05427570268511772,
+      0.009024271741509438,
+      0.016555573791265488,
+      0.008212452754378319,
+      0.5345357060432434,
+      0.5190067291259766,
+      0.6053306460380554,
+      0.5005539059638977,
+      3.1644558906555176,
+      1.145898461341858,
+      0.57011878490448,
+      1.514184832572937,
+      2.9918816089630127,
+      2.38926100730896,
+      1.7391963005065918,
+      0.5407784581184387,
+      1.5274885892868042,
+      8.212452939915238e-09
+    ]
+  },
+  "arms": {
+    "process": {
+      "internal_edges": [
+        [
+          "feed",
+          "reactor"
+        ],
+        [
+          "reactor",
+          "separator"
+        ],
+        [
+          "separator",
+          "recycle_compressor"
+        ],
+        [
+          "recycle_compressor",
+          "reactor"
+        ],
+        [
+          "separator",
+          "stripper"
+        ],
+        [
+          "stripper",
+          "composition_analyzers"
+        ]
+      ],
+      "training_energy": [
+        39.96298370361328,
+        37.54757652282715,
+        35.41233177185059,
+        33.44809989929199,
+        31.662190628051757,
+        30.033050537109375,
+        28.551798629760743,
+        27.201952362060545,
+        25.970275115966796,
+        24.83372573852539,
+        23.78815574645996,
+        22.820267486572266,
+        21.91961326599121,
+        21.078654861450197,
+        20.292541885375975,
+        19.554799270629882,
+        18.858788681030273,
+        18.200935745239256,
+        17.580900382995605,
+        16.99205379486084,
+        16.434364128112794,
+        15.90813102722168,
+        15.401815605163574,
+        14.921257019042969,
+        14.46546459197998,
+        14.031110382080078,
+        13.61648998260498,
+        13.218621444702148,
+        12.83761043548584,
+        12.476326942443848
+      ],
+      "normal_next_state_mse": 3.425994396209717,
+      "fault_next_state_mse": 3.8019304275512695,
+      "paired_output_displacement_norm": 2.1282100677490234,
+      "paired_inference": {
+        "timeline": [
+          {
+            "inference_step": 1,
+            "block_energy_delta": {
+              "feed": 0.25002479553222656,
+              "recycle_compressor": 0.36706066131591797,
+              "reactor": 0.4729747772216797,
+              "separator": 1.4178028106689453,
+              "stripper": 0.623866081237793,
+              "composition_analyzers": 0.4392509460449219
+            },
+            "dominant_block": "separator",
+            "dominant_share": 0.39703464653230225,
+            "concentration": 0.23629941195944287,
+            "effective_block_count": 4.231919122048575
+          },
+          {
+            "inference_step": 2,
+            "block_energy_delta": {
+              "feed": 0.1946558952331543,
+              "recycle_compressor": 0.13936853408813477,
+              "reactor": 0.3837316036224365,
+              "separator": 1.137932300567627,
+              "stripper": 0.732213020324707,
+              "composition_analyzers": 0.4345664978027344
+            },
+            "dominant_block": "separator",
+            "dominant_share": 0.3764911179950634,
+            "concentration": 0.243498890807109,
+            "effective_block_count": 4.1067948879987455
+          },
+          {
+            "inference_step": 3,
+            "block_energy_delta": {
+              "feed": 0.15400218963623047,
+              "recycle_compressor": 0.032090187072753906,
+              "reactor": 0.3182990550994873,
+              "separator": 0.9289703369140625,
+              "stripper": 0.7583193778991699,
+              "composition_analyzers": 0.40062546730041504
+            },
+            "dominant_block": "separator",
+            "dominant_share": 0.35835665886318324,
+            "concentration": 0.25663421476167214,
+            "effective_block_count": 3.8965965661619495
+          },
+          {
+            "inference_step": 4,
+            "block_energy_delta": {
+              "feed": 0.12445330619812012,
+              "recycle_compressor": 0.015746474266052246,
+              "reactor": 0.26711153984069824,
+              "separator": 0.7685823440551758,
+              "stripper": 0.745628833770752,
+              "composition_analyzers": 0.36010289192199707
+            },
+            "dominant_block": "separator",
+            "dominant_share": 0.33685737694100226,
+            "concentration": 0.26190722748930473,
+            "effective_block_count": 3.818145873965376
+          },
+          {
+            "inference_step": 5,
+            "block_energy_delta": {
+              "feed": 0.10313916206359863,
+              "recycle_compressor": 0.03476583957672119,
+              "reactor": 0.225752592086792,
+              "separator": 0.6421687602996826,
+              "stripper": 0.7151713371276855,
+              "composition_analyzers": 0.3217313289642334
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.3501058290571127,
+            "concentration": 0.26126044425029654,
+            "effective_block_count": 3.8275981764846323
+          },
+          {
+            "inference_step": 6,
+            "block_energy_delta": {
+              "feed": 0.0878603458404541,
+              "recycle_compressor": 0.04029560089111328,
+              "reactor": 0.19191479682922363,
+              "separator": 0.5401923656463623,
+              "stripper": 0.677203893661499,
+              "composition_analyzers": 0.2882503271102905
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.3709248318683099,
+            "concentration": 0.263909777563083,
+            "effective_block_count": 3.789173744276934
+          },
+          {
+            "inference_step": 7,
+            "block_energy_delta": {
+              "feed": 0.07696866989135742,
+              "recycle_compressor": 0.03992581367492676,
+              "reactor": 0.16417884826660156,
+              "separator": 0.45633769035339355,
+              "stripper": 0.6367626190185547,
+              "composition_analyzers": 0.2599703073501587
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.38966127774827797,
+            "concentration": 0.2680351760777595,
+            "effective_block_count": 3.7308535940442784
+          },
+          {
+            "inference_step": 8,
+            "block_energy_delta": {
+              "feed": 0.06924068927764893,
+              "recycle_compressor": 0.0373307466506958,
+              "reactor": 0.14152121543884277,
+              "separator": 0.3863248825073242,
+              "stripper": 0.5963180065155029,
+              "composition_analyzers": 0.23633301258087158
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.4064690810173318,
+            "concentration": 0.27269161997458957,
+            "effective_block_count": 3.6671460607890474
+          },
+          {
+            "inference_step": 9,
+            "block_energy_delta": {
+              "feed": 0.06377625465393066,
+              "recycle_compressor": 0.0342099666595459,
+              "reactor": 0.12312483787536621,
+              "separator": 0.3271695375442505,
+              "stripper": 0.5570740699768066,
+              "composition_analyzers": 0.21656382083892822
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.4214133286007393,
+            "concentration": 0.2773547997100622,
+            "effective_block_count": 3.6054901557332624
+          },
+          {
+            "inference_step": 10,
+            "block_energy_delta": {
+              "feed": 0.05991566181182861,
+              "recycle_compressor": 0.03128015995025635,
+              "reactor": 0.10829603672027588,
+              "separator": 0.2767249345779419,
+              "stripper": 0.5195925235748291,
+              "composition_analyzers": 0.19992029666900635
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.43454014836936955,
+            "concentration": 0.2817360599414347,
+            "effective_block_count": 3.549421398907449
+          },
+          {
+            "inference_step": 11,
+            "block_energy_delta": {
+              "feed": 0.057177066802978516,
+              "recycle_compressor": 0.02878093719482422,
+              "reactor": 0.09644043445587158,
+              "separator": 0.23339545726776123,
+              "stripper": 0.48411083221435547,
+              "composition_analyzers": 0.18577289581298828
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.4459066131829723,
+            "concentration": 0.2856942338540426,
+            "effective_block_count": 3.500245652528244
+          },
+          {
+            "inference_step": 12,
+            "block_energy_delta": {
+              "feed": 0.05521190166473389,
+              "recycle_compressor": 0.026730835437774658,
+              "reactor": 0.08704328536987305,
+              "separator": 0.19596469402313232,
+              "stripper": 0.4506959915161133,
+              "composition_analyzers": 0.1736142635345459
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.4555885701340208,
+            "concentration": 0.28918822578900216,
+            "effective_block_count": 3.4579554450104797
+          },
+          {
+            "inference_step": 13,
+            "block_energy_delta": {
+              "feed": 0.05376636981964111,
+              "recycle_compressor": 0.02505737543106079,
+              "reactor": 0.07966530323028564,
+              "separator": 0.1634806990623474,
+              "stripper": 0.4193282127380371,
+              "composition_analyzers": 0.16304445266723633
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.4636830106981464,
+            "concentration": 0.29224816647288043,
+            "effective_block_count": 3.4217494401040027
+          },
+          {
+            "inference_step": 14,
+            "block_energy_delta": {
+              "feed": 0.05265951156616211,
+              "recycle_compressor": 0.023660719394683838,
+              "reactor": 0.07393193244934082,
+              "separator": 0.1351826786994934,
+              "stripper": 0.3899405002593994,
+              "composition_analyzers": 0.15375107526779175
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.47030282953808844,
+            "concentration": 0.2949537364592438,
+            "effective_block_count": 3.3903622039322032
+          },
+          {
+            "inference_step": 15,
+            "block_energy_delta": {
+              "feed": 0.05176115036010742,
+              "recycle_compressor": 0.022441327571868896,
+              "reactor": 0.06953001022338867,
+              "separator": 0.11045318841934204,
+              "stripper": 0.3624410629272461,
+              "composition_analyzers": 0.14549201726913452
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.4755703224820512,
+            "concentration": 0.2974193782639239,
+            "effective_block_count": 3.3622557004763167
+          },
+          {
+            "inference_step": 16,
+            "block_energy_delta": {
+              "feed": 0.050980210304260254,
+              "recycle_compressor": 0.021313607692718506,
+              "reactor": 0.06619524955749512,
+              "separator": 0.0887840986251831,
+              "stripper": 0.3367290496826172,
+              "composition_analyzers": 0.13807672262191772
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.4796170789706705,
+            "concentration": 0.2997867023410579,
+            "effective_block_count": 3.3357049935534877
+          },
+          {
+            "inference_step": 17,
+            "block_energy_delta": {
+              "feed": 0.05025327205657959,
+              "recycle_compressor": 0.020208656787872314,
+              "reactor": 0.06371176242828369,
+              "separator": 0.0697517991065979,
+              "stripper": 0.31269705295562744,
+              "composition_analyzers": 0.13135695457458496
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.48257244861052395,
+            "concentration": 0.30221290970900505,
+            "effective_block_count": 3.3089254888643924
+          },
+          {
+            "inference_step": 18,
+            "block_energy_delta": {
+              "feed": 0.04953718185424805,
+              "recycle_compressor": 0.019075334072113037,
+              "reactor": 0.06189972162246704,
+              "separator": 0.05300191044807434,
+              "stripper": 0.29024016857147217,
+              "composition_analyzers": 0.12521427869796753
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.48456658807363956,
+            "concentration": 0.3048709999915172,
+            "effective_block_count": 3.2800758354445794
+          },
+          {
+            "inference_step": 19,
+            "block_energy_delta": {
+              "feed": 0.04880392551422119,
+              "recycle_compressor": 0.017876625061035156,
+              "reactor": 0.06061446666717529,
+              "separator": 0.03823363780975342,
+              "stripper": 0.2692537307739258,
+              "composition_analyzers": 0.11955606937408447
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.4857208231687386,
+            "concentration": 0.3079442902914778,
+            "effective_block_count": 3.2473406116849004
+          },
+          {
+            "inference_step": 20,
+            "block_energy_delta": {
+              "feed": 0.04803574085235596,
+              "recycle_compressor": 0.016588568687438965,
+              "reactor": 0.059736549854278564,
+              "separator": 0.02519199252128601,
+              "stripper": 0.24963903427124023,
+              "composition_analyzers": 0.11430716514587402
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.48615286361961974,
+            "concentration": 0.31163183694939606,
+            "effective_block_count": 3.208914755915596
+          }
+        ],
+        "final": {
+          "inference_step": 20,
+          "block_energy_delta": {
+            "feed": 0.04803574085235596,
+            "recycle_compressor": 0.016588568687438965,
+            "reactor": 0.059736549854278564,
+            "separator": 0.02519199252128601,
+            "stripper": 0.24963903427124023,
+            "composition_analyzers": 0.11430716514587402
+          },
+          "dominant_block": "stripper",
+          "dominant_share": 0.48615286361961974,
+          "concentration": 0.31163183694939606,
+          "effective_block_count": 3.208914755915596
+        },
+        "mean_effective_block_count": 3.5868334853962223
+      }
+    },
+    "dense": {
+      "internal_edges": [
+        [
+          "feed",
+          "recycle_compressor"
+        ],
+        [
+          "feed",
+          "reactor"
+        ],
+        [
+          "feed",
+          "separator"
+        ],
+        [
+          "feed",
+          "stripper"
+        ],
+        [
+          "feed",
+          "composition_analyzers"
+        ],
+        [
+          "recycle_compressor",
+          "composition_analyzers"
+        ]
+      ],
+      "training_energy": [
+        42.58738250732422,
+        40.066314697265625,
+        37.817555618286136,
+        35.72176856994629,
+        33.79762954711914,
+        32.0291748046875,
+        30.40671501159668,
+        28.922060775756837,
+        27.56398696899414,
+        26.311328887939453,
+        25.161525344848634,
+        24.10029411315918,
+        23.115547561645506,
+        22.20286445617676,
+        21.353563690185545,
+        20.55901679992676,
+        19.809315872192382,
+        19.11240577697754,
+        18.454943084716795,
+        17.838990783691408,
+        17.2487548828125,
+        16.694902229309083,
+        16.16406307220459,
+        15.661833572387696,
+        15.184720230102538,
+        14.734990119934082,
+        14.2954345703125,
+        13.88068504333496,
+        13.487703132629395,
+        13.104462051391602
+      ],
+      "normal_next_state_mse": 2.5020740032196045,
+      "fault_next_state_mse": 2.646582841873169,
+      "paired_output_displacement_norm": 1.5491386651992798,
+      "paired_inference": {
+        "timeline": [
+          {
+            "inference_step": 1,
+            "block_energy_delta": {
+              "feed": 0.1176609992980957,
+              "recycle_compressor": 0.06907796859741211,
+              "reactor": 0.8193273544311523,
+              "separator": 1.3919286727905273,
+              "stripper": 0.7612366676330566,
+              "composition_analyzers": 0.3867220878601074
+            },
+            "dominant_block": "separator",
+            "dominant_share": 0.3925399964821707,
+            "concentration": 0.26693736663550555,
+            "effective_block_count": 3.746197142063921
+          },
+          {
+            "inference_step": 2,
+            "block_energy_delta": {
+              "feed": 0.23970508575439453,
+              "recycle_compressor": 0.20920300483703613,
+              "reactor": 0.5987019538879395,
+              "separator": 1.2173829078674316,
+              "stripper": 0.86529541015625,
+              "composition_analyzers": 0.29425668716430664
+            },
+            "dominant_block": "separator",
+            "dominant_share": 0.3554874852604674,
+            "concentration": 0.23679476964174107,
+            "effective_block_count": 4.223066250631089
+          },
+          {
+            "inference_step": 3,
+            "block_energy_delta": {
+              "feed": 0.29769206047058105,
+              "recycle_compressor": 0.30449581146240234,
+              "reactor": 0.47281455993652344,
+              "separator": 1.0610952377319336,
+              "stripper": 0.8636898994445801,
+              "composition_analyzers": 0.17714858055114746
+            },
+            "dominant_block": "separator",
+            "dominant_share": 0.3339995479186698,
+            "concentration": 0.22869061493817305,
+            "effective_block_count": 4.372719887391758
+          },
+          {
+            "inference_step": 4,
+            "block_energy_delta": {
+              "feed": 0.3296675682067871,
+              "recycle_compressor": 0.3349759578704834,
+              "reactor": 0.3888571262359619,
+              "separator": 0.9276537895202637,
+              "stripper": 0.8362340927124023,
+              "composition_analyzers": 0.10013461112976074
+            },
+            "dominant_block": "separator",
+            "dominant_share": 0.3179593590869119,
+            "concentration": 0.2281448313803729,
+            "effective_block_count": 4.383180604835868
+          },
+          {
+            "inference_step": 5,
+            "block_energy_delta": {
+              "feed": 0.3491482734680176,
+              "recycle_compressor": 0.3409651517868042,
+              "reactor": 0.32912135124206543,
+              "separator": 0.815100908279419,
+              "stripper": 0.8016862869262695,
+              "composition_analyzers": 0.05459010601043701
+            },
+            "dominant_block": "separator",
+            "dominant_share": 0.3029425590671713,
+            "concentration": 0.2288248486752036,
+            "effective_block_count": 4.370154752814501
+          },
+          {
+            "inference_step": 6,
+            "block_energy_delta": {
+              "feed": 0.3618299961090088,
+              "recycle_compressor": 0.3374149799346924,
+              "reactor": 0.2847316265106201,
+              "separator": 0.7206507921218872,
+              "stripper": 0.765087366104126,
+              "composition_analyzers": 0.028653502464294434
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.3062348242890772,
+            "concentration": 0.22931671857383032,
+            "effective_block_count": 4.360781046489823
+          },
+          {
+            "inference_step": 7,
+            "block_energy_delta": {
+              "feed": 0.37046098709106445,
+              "recycle_compressor": 0.33021700382232666,
+              "reactor": 0.25063180923461914,
+              "separator": 0.6413954496383667,
+              "stripper": 0.728114128112793,
+              "composition_analyzers": 0.01437520980834961
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.3118001951296011,
+            "concentration": 0.229381108897915,
+            "effective_block_count": 4.359556917326811
+          },
+          {
+            "inference_step": 8,
+            "block_energy_delta": {
+              "feed": 0.37653303146362305,
+              "recycle_compressor": 0.321799635887146,
+              "reactor": 0.22372865676879883,
+              "separator": 0.574609637260437,
+              "stripper": 0.6915209293365479,
+              "composition_analyzers": 0.0069773197174072266
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.3150194190268558,
+            "concentration": 0.2290653517131781,
+            "effective_block_count": 4.365566387587679
+          },
+          {
+            "inference_step": 9,
+            "block_energy_delta": {
+              "feed": 0.38092684745788574,
+              "recycle_compressor": 0.3131904602050781,
+              "reactor": 0.20201373100280762,
+              "separator": 0.5179287195205688,
+              "stripper": 0.6557338237762451,
+              "composition_analyzers": 0.003652334213256836
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.3162531603359335,
+            "concentration": 0.22847470566575107,
+            "effective_block_count": 4.376852120614866
+          },
+          {
+            "inference_step": 10,
+            "block_energy_delta": {
+              "feed": 0.384199857711792,
+              "recycle_compressor": 0.3048204183578491,
+              "reactor": 0.1841275691986084,
+              "separator": 0.46939611434936523,
+              "stripper": 0.6210329532623291,
+              "composition_analyzers": 0.0027464628219604492
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.31583459818283627,
+            "concentration": 0.2277167067745082,
+            "effective_block_count": 4.391421315390045
+          },
+          {
+            "inference_step": 11,
+            "block_energy_delta": {
+              "feed": 0.3867151737213135,
+              "recycle_compressor": 0.2968558669090271,
+              "reactor": 0.16912221908569336,
+              "separator": 0.4274420738220215,
+              "stripper": 0.5875959396362305,
+              "composition_analyzers": 0.0032731294631958008
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.31405374504085587,
+            "concentration": 0.2268890316069617,
+            "effective_block_count": 4.407440910287339
+          },
+          {
+            "inference_step": 12,
+            "block_energy_delta": {
+              "feed": 0.3887152671813965,
+              "recycle_compressor": 0.28934645652770996,
+              "reactor": 0.15631914138793945,
+              "separator": 0.39083075523376465,
+              "stripper": 0.5555324554443359,
+              "composition_analyzers": 0.004633963108062744
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.31115676531555914,
+            "concentration": 0.22607879817798066,
+            "effective_block_count": 4.423236535487726
+          },
+          {
+            "inference_step": 13,
+            "block_energy_delta": {
+              "feed": 0.3903639316558838,
+              "recycle_compressor": 0.2822880148887634,
+              "reactor": 0.14522981643676758,
+              "separator": 0.3585958480834961,
+              "stripper": 0.5248990058898926,
+              "composition_analyzers": 0.006458401679992676
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.30734760686045937,
+            "concentration": 0.22536214902420032,
+            "effective_block_count": 4.4373023789927375
+          },
+          {
+            "inference_step": 14,
+            "block_energy_delta": {
+              "feed": 0.391772985458374,
+              "recycle_compressor": 0.27565521001815796,
+              "reactor": 0.13549578189849854,
+              "separator": 0.3299849033355713,
+              "stripper": 0.495713472366333,
+              "composition_analyzers": 0.008513271808624268
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.30279316192938194,
+            "concentration": 0.22480501384372384,
+            "effective_block_count": 4.4482993635327155
+          },
+          {
+            "inference_step": 15,
+            "block_energy_delta": {
+              "feed": 0.3930165767669678,
+              "recycle_compressor": 0.2694154977798462,
+              "reactor": 0.12685132026672363,
+              "separator": 0.3044081926345825,
+              "stripper": 0.467968225479126,
+              "composition_analyzers": 0.010650336742401123
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.29763098939318633,
+            "concentration": 0.22446371312526742,
+            "effective_block_count": 4.455063074903006
+          },
+          {
+            "inference_step": 16,
+            "block_energy_delta": {
+              "feed": 0.39414405822753906,
+              "recycle_compressor": 0.2635355591773987,
+              "reactor": 0.11909699440002441,
+              "separator": 0.2814030051231384,
+              "stripper": 0.4416360855102539,
+              "composition_analyzers": 0.01277458667755127
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.29197337090428227,
+            "concentration": 0.22438537697872835,
+            "effective_block_count": 4.456618401183958
+          },
+          {
+            "inference_step": 17,
+            "block_energy_delta": {
+              "feed": 0.3951900005340576,
+              "recycle_compressor": 0.2579840421676636,
+              "reactor": 0.11208188533782959,
+              "separator": 0.26059967279434204,
+              "stripper": 0.41667652130126953,
+              "composition_analyzers": 0.014826655387878418
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.2859121087598362,
+            "concentration": 0.22460841168277973,
+            "effective_block_count": 4.452193007857274
+          },
+          {
+            "inference_step": 18,
+            "block_energy_delta": {
+              "feed": 0.3961760997772217,
+              "recycle_compressor": 0.2527327537536621,
+              "reactor": 0.1056891679763794,
+              "separator": 0.24170297384262085,
+              "stripper": 0.39304232597351074,
+              "composition_analyzers": 0.016768574714660645
+            },
+            "dominant_block": "feed",
+            "dominant_share": 0.2817528966887422,
+            "concentration": 0.22516408982712965,
+            "effective_block_count": 4.441205526013285
+          },
+          {
+            "inference_step": 19,
+            "block_energy_delta": {
+              "feed": 0.39711785316467285,
+              "recycle_compressor": 0.24775677919387817,
+              "reactor": 0.09982883930206299,
+              "separator": 0.22447249293327332,
+              "stripper": 0.37068068981170654,
+              "composition_analyzers": 0.01857924461364746
+            },
+            "dominant_block": "feed",
+            "dominant_share": 0.2923346279727903,
+            "concentration": 0.22607608405961474,
+            "effective_block_count": 4.423289637909274
+          },
+          {
+            "inference_step": 20,
+            "block_energy_delta": {
+              "feed": 0.398021936416626,
+              "recycle_compressor": 0.2430344820022583,
+              "reactor": 0.0944293737411499,
+              "separator": 0.20870977640151978,
+              "stripper": 0.3495370149612427,
+              "composition_analyzers": 0.020247340202331543
+            },
+            "dominant_block": "feed",
+            "dominant_share": 0.30291325554521054,
+            "concentration": 0.22736179971125742,
+            "effective_block_count": 4.3982762331665635
+          }
+        ],
+        "final": {
+          "inference_step": 20,
+          "block_energy_delta": {
+            "feed": 0.398021936416626,
+            "recycle_compressor": 0.2430344820022583,
+            "reactor": 0.0944293737411499,
+            "separator": 0.20870977640151978,
+            "stripper": 0.3495370149612427,
+            "composition_analyzers": 0.020247340202331543
+          },
+          "dominant_block": "feed",
+          "dominant_share": 0.30291325554521054,
+          "concentration": 0.22736179971125742,
+          "effective_block_count": 4.3982762331665635
+        },
+        "mean_effective_block_count": 4.364621074724013
+      }
+    },
+    "shuffled": {
+      "internal_edges": [
+        [
+          "feed",
+          "separator"
+        ],
+        [
+          "reactor",
+          "stripper"
+        ],
+        [
+          "separator",
+          "composition_analyzers"
+        ],
+        [
+          "recycle_compressor",
+          "separator"
+        ],
+        [
+          "separator",
+          "reactor"
+        ],
+        [
+          "stripper",
+          "recycle_compressor"
+        ]
+      ],
+      "training_energy": [
+        40.96200180053711,
+        38.490343475341795,
+        36.29715080261231,
+        34.265906524658206,
+        32.39992561340332,
+        30.693267822265625,
+        29.133634567260742,
+        27.714522933959962,
+        26.416898345947267,
+        25.228883361816408,
+        24.14551773071289,
+        23.143506240844726,
+        22.2220157623291,
+        21.368346405029296,
+        20.572163009643553,
+        19.838047409057616,
+        19.143349838256835,
+        18.49340362548828,
+        17.88330421447754,
+        17.311050796508788,
+        16.760142517089843,
+        16.24507541656494,
+        15.749943351745605,
+        15.283582305908203,
+        14.837324142456055,
+        14.413941192626954,
+        14.00377540588379,
+        13.615881538391113,
+        13.247178649902343,
+        12.88911190032959
+      ],
+      "normal_next_state_mse": 3.324526786804199,
+      "fault_next_state_mse": 3.5707125663757324,
+      "paired_output_displacement_norm": 1.5074257850646973,
+      "paired_inference": {
+        "timeline": [
+          {
+            "inference_step": 1,
+            "block_energy_delta": {
+              "feed": 0.2998464107513428,
+              "recycle_compressor": 0.20499086380004883,
+              "reactor": 0.14419078826904297,
+              "separator": 2.0021800994873047,
+              "stripper": 0.8480381965637207,
+              "composition_analyzers": 1.5684757232666016
+            },
+            "dominant_block": "separator",
+            "dominant_share": 0.39508482648333965,
+            "concentration": 0.28583386311949854,
+            "effective_block_count": 3.4985357895888285
+          },
+          {
+            "inference_step": 2,
+            "block_energy_delta": {
+              "feed": 0.317584753036499,
+              "recycle_compressor": 0.14228081703186035,
+              "reactor": 0.013351917266845703,
+              "separator": 1.0471739768981934,
+              "stripper": 0.8354129791259766,
+              "composition_analyzers": 1.0655393600463867
+            },
+            "dominant_block": "composition_analyzers",
+            "dominant_share": 0.31143884428852203,
+            "concentration": 0.2606569681331614,
+            "effective_block_count": 3.836459877370827
+          },
+          {
+            "inference_step": 3,
+            "block_energy_delta": {
+              "feed": 0.329245924949646,
+              "recycle_compressor": 0.11735677719116211,
+              "reactor": 0.1228790283203125,
+              "separator": 0.5666422843933105,
+              "stripper": 0.8069314956665039,
+              "composition_analyzers": 0.7613615989685059
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.29837538478627734,
+            "concentration": 0.23095402435332432,
+            "effective_block_count": 4.32986609694297
+          },
+          {
+            "inference_step": 4,
+            "block_energy_delta": {
+              "feed": 0.3357083797454834,
+              "recycle_compressor": 0.10777771472930908,
+              "reactor": 0.1972641944885254,
+              "separator": 0.3135099411010742,
+              "stripper": 0.7739338874816895,
+              "composition_analyzers": 0.5678319931030273
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.3370753859863078,
+            "concentration": 0.22438996460887073,
+            "effective_block_count": 4.456527286071275
+          },
+          {
+            "inference_step": 5,
+            "block_energy_delta": {
+              "feed": 0.33824193477630615,
+              "recycle_compressor": 0.10383951663970947,
+              "reactor": 0.24557042121887207,
+              "separator": 0.17518353462219238,
+              "stripper": 0.7410297393798828,
+              "composition_analyzers": 0.4403136968612671
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.3625072932032448,
+            "concentration": 0.2295434279460638,
+            "effective_block_count": 4.356474105784338
+          },
+          {
+            "inference_step": 6,
+            "block_energy_delta": {
+              "feed": 0.33791351318359375,
+              "recycle_compressor": 0.10148459672927856,
+              "reactor": 0.27514147758483887,
+              "separator": 0.0971376895904541,
+              "stripper": 0.7099742889404297,
+              "composition_analyzers": 0.3536407947540283
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.3785939215601205,
+            "concentration": 0.238502976864142,
+            "effective_block_count": 4.1928197842563115
+          },
+          {
+            "inference_step": 7,
+            "block_energy_delta": {
+              "feed": 0.3355168104171753,
+              "recycle_compressor": 0.09916579723358154,
+              "reactor": 0.291614294052124,
+              "separator": 0.05176901817321777,
+              "stripper": 0.6813123226165771,
+              "composition_analyzers": 0.29285454750061035
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.3888252328728466,
+            "concentration": 0.24755551274797796,
+            "effective_block_count": 4.0394980055162115
+          },
+          {
+            "inference_step": 8,
+            "block_energy_delta": {
+              "feed": 0.3316221237182617,
+              "recycle_compressor": 0.09641879796981812,
+              "reactor": 0.299102783203125,
+              "separator": 0.024630069732666016,
+              "stripper": 0.6550686359405518,
+              "composition_analyzers": 0.2488178014755249
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.39565403044471203,
+            "concentration": 0.2554944569857459,
+            "effective_block_count": 3.9139792377405285
+          },
+          {
+            "inference_step": 9,
+            "block_energy_delta": {
+              "feed": 0.32663726806640625,
+              "recycle_compressor": 0.09321385622024536,
+              "reactor": 0.30053091049194336,
+              "separator": 0.007950127124786377,
+              "stripper": 0.6310677528381348,
+              "composition_analyzers": 0.2158491611480713
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.40061458374876563,
+            "concentration": 0.26218973127560824,
+            "effective_block_count": 3.8140319040520367
+          },
+          {
+            "inference_step": 10,
+            "block_energy_delta": {
+              "feed": 0.3208591938018799,
+              "recycle_compressor": 0.08966517448425293,
+              "reactor": 0.2979412078857422,
+              "separator": 0.002553880214691162,
+              "stripper": 0.6090686321258545,
+              "composition_analyzers": 0.19036555290222168
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.40323556806114247,
+            "concentration": 0.26604318260780346,
+            "effective_block_count": 3.758788292178055
+          },
+          {
+            "inference_step": 11,
+            "block_energy_delta": {
+              "feed": 0.3145068883895874,
+              "recycle_compressor": 0.0859115719795227,
+              "reactor": 0.29274797439575195,
+              "separator": 0.009300947189331055,
+              "stripper": 0.5888268947601318,
+              "composition_analyzers": 0.1700732707977295
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.4029286785262178,
+            "concentration": 0.26583938698724596,
+            "effective_block_count": 3.7616698237721127
+          },
+          {
+            "inference_step": 12,
+            "block_energy_delta": {
+              "feed": 0.30774593353271484,
+              "recycle_compressor": 0.08207163214683533,
+              "reactor": 0.2859225273132324,
+              "separator": 0.013694167137145996,
+              "stripper": 0.5701165199279785,
+              "composition_analyzers": 0.1534794569015503
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.40347085647278774,
+            "concentration": 0.26643134172959326,
+            "effective_block_count": 3.7533121798220006
+          },
+          {
+            "inference_step": 13,
+            "block_energy_delta": {
+              "feed": 0.3007025718688965,
+              "recycle_compressor": 0.07823255658149719,
+              "reactor": 0.2781273126602173,
+              "separator": 0.016569942235946655,
+              "stripper": 0.5527416467666626,
+              "composition_analyzers": 0.13959604501724243
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.4046513586425901,
+            "concentration": 0.2675325625804671,
+            "effective_block_count": 3.7378627496950956
+          },
+          {
+            "inference_step": 14,
+            "block_energy_delta": {
+              "feed": 0.2934753894805908,
+              "recycle_compressor": 0.07445234060287476,
+              "reactor": 0.2698138952255249,
+              "separator": 0.018442004919052124,
+              "stripper": 0.5365334749221802,
+              "composition_analyzers": 0.12775546312332153
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.4063192888767636,
+            "concentration": 0.2689764687374455,
+            "effective_block_count": 3.717797340019823
+          },
+          {
+            "inference_step": 15,
+            "block_energy_delta": {
+              "feed": 0.2861429452896118,
+              "recycle_compressor": 0.07076632976531982,
+              "reactor": 0.26128411293029785,
+              "separator": 0.01963561773300171,
+              "stripper": 0.5213520526885986,
+              "composition_analyzers": 0.11749565601348877
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.4083665400957212,
+            "concentration": 0.27066253544539376,
+            "effective_block_count": 3.6946376725335535
+          },
+          {
+            "inference_step": 16,
+            "block_energy_delta": {
+              "feed": 0.278766393661499,
+              "recycle_compressor": 0.06719374656677246,
+              "reactor": 0.2527395486831665,
+              "separator": 0.020362883806228638,
+              "stripper": 0.5070768594741821,
+              "composition_analyzers": 0.10849106311798096
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.4107114326112053,
+            "concentration": 0.2725260676034646,
+            "effective_block_count": 3.669373754935754
+          },
+          {
+            "inference_step": 17,
+            "block_energy_delta": {
+              "feed": 0.27139461040496826,
+              "recycle_compressor": 0.06374281644821167,
+              "reactor": 0.24431121349334717,
+              "separator": 0.020765751600265503,
+              "stripper": 0.493607759475708,
+              "composition_analyzers": 0.10050517320632935
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.41329353293420645,
+            "concentration": 0.2745249590773259,
+            "effective_block_count": 3.6426560388570293
+          },
+          {
+            "inference_step": 18,
+            "block_energy_delta": {
+              "feed": 0.26406681537628174,
+              "recycle_compressor": 0.06041499972343445,
+              "reactor": 0.23608171939849854,
+              "separator": 0.020942002534866333,
+              "stripper": 0.480862021446228,
+              "composition_analyzers": 0.09336298704147339
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.4160675888596051,
+            "concentration": 0.2766307626981263,
+            "effective_block_count": 3.6149269526153582
+          },
+          {
+            "inference_step": 19,
+            "block_energy_delta": {
+              "feed": 0.25681352615356445,
+              "recycle_compressor": 0.057207733392715454,
+              "reactor": 0.22810399532318115,
+              "separator": 0.020960256457328796,
+              "stripper": 0.46876847743988037,
+              "composition_analyzers": 0.08693104982376099
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.4189978067909154,
+            "concentration": 0.27882332569712615,
+            "effective_block_count": 3.58650051067197
+          },
+          {
+            "inference_step": 20,
+            "block_energy_delta": {
+              "feed": 0.2496587038040161,
+              "recycle_compressor": 0.05411753058433533,
+              "reactor": 0.22040629386901855,
+              "separator": 0.02086898684501648,
+              "stripper": 0.45726609230041504,
+              "composition_analyzers": 0.08110606670379639
+            },
+            "dominant_block": "stripper",
+            "dominant_share": 0.42205658158382153,
+            "concentration": 0.2810880645091904,
+            "effective_block_count": 3.557603919419724
+          }
+        ],
+        "final": {
+          "inference_step": 20,
+          "block_energy_delta": {
+            "feed": 0.2496587038040161,
+            "recycle_compressor": 0.05411753058433533,
+            "reactor": 0.22040629386901855,
+            "separator": 0.02086898684501648,
+            "stripper": 0.45726609230041504,
+            "composition_analyzers": 0.08110606670379639
+          },
+          "dominant_block": "stripper",
+          "dominant_share": 0.42205658158382153,
+          "concentration": 0.2810880645091904,
+          "effective_block_count": 3.557603919419724
+        },
+        "mean_effective_block_count": 3.8466660660921894
+      }
+    }
+  },
+  "comparison": {
+    "process_mean_effective_block_count": 3.5868334853962223,
+    "control_mean_effective_block_count": 4.105643570408102,
+    "process_more_localized_than_both_controls": true,
+    "process_final_dominant_block": "stripper",
+    "cumulative_training_process_energy": {
+      "process": 659.0218875885009,
+      "dense": 697.3899337768554,
+      "shuffled": 672.7691967010499
+    },
+    "training_process_energy_regret_to_per_epoch_oracle": {
+      "process": 0.0,
+      "dense": 38.368046188354505,
+      "shuffled": 13.74730911254883
+    },
+    "process_zero_training_process_energy_regret": true,
+    "regret_scope": "in-sample FabricPC process energy over recorded training epochs; not held-out prediction regret or causal-localization regret"
+  },
+  "claims": {
+    "fabricpc_was_trained": true,
+    "plant_source_identified": false,
+    "causal_identification": false,
+    "imagination_identified": false,
+    "consciousness_identified": false,
+    "topology_comparison_is_exploratory": true
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schema": "sketched.fabricpc-trajectory-probe.v1",
+  "name": "FabricPC inference trajectory sensitivity probe",
+  "status": "experimental",
+  "source": {
+    "repository": "https://github.com/trueagi-io/FabricPC.git",
+    "commit": "b6f64adf9314863ce665085a92d544807d585819",
+    "version": "0.3.1"
+  },
+  "entrypoint": "contrib/fabricpc-trajectory-probe/run.ps1",
+  "worked_example": "contrib/fabricpc-trajectory-probe/EXAMPLE.md",
+  "presentation": "contrib/fabricpc-trajectory-probe/presentation/index.html",
+  "public_benchmark": {
+    "name": "Tennessee Eastman Process Fault 1",
+    "entrypoint": "contrib/fabricpc-trajectory-probe/tennessee-eastman/run.ps1",
+    "trajectory_certificate": "verification/tep_fault1_certificate.json",
+    "predictive_coding_certificate": "verification/tep_fabricpc_predictive_coding.json",
+    "predictive_coding_runner": "verification/tools/tep_fabricpc_predictive_coding.py",
+    "alarm_router_certificate": "verification/tep_fabricpc_alarm_router.json",
+    "alarm_router_runner": "verification/tools/tep_fabricpc_alarm_router.py",
+    "control_arms": [
+      "process",
+      "dense",
+      "shuffled"
+    ]
+  },
+  "implementation": "verification/tools/fabricpc_orientation_adapter.py",
+  "certificate_builder": "verification/tools/fabricpc_orientation_sensor.py",
+  "outputs": [
+    "fabricpc_orientation_trace.json",
+    "fabricpc_orientation_certificate.json"
+  ],
+  "measures": [
+    "paired finite-difference directional gain",
+    "represented perturbation orientation cosine"
+  ],
+  "claims": {
+    "complete_paired_trajectory_export": true,
+    "deterministic_certificate_from_trace": true,
+    "fabricpc_trained_on_normal_tep_trajectory": true,
+    "matched_topology_controls": true,
+    "negative_result_is_valid_output": true
+  },
+  "non_claims": {
+    "global_lipschitz_constant": false,
+    "hessian": false,
+    "phase_transition": false,
+    "latent_cause_identified": false,
+    "imagination_identified": false,
+    "consciousness_identified": false,
+    "fabricpc_defect": false
+  },
+  "authority": {
+    "upstream_push_authorized": false,
+    "human_review_required": true
+  }
+}

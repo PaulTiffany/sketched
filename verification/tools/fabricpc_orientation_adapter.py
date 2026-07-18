@@ -1,4 +1,5 @@
 """Export a paired real-FabricPC inference trace for orientation auditing."""
+
 from __future__ import annotations
 
 import argparse
@@ -65,8 +66,12 @@ def run(
 
     source = IdentityNode(shape=(2,), name="source")
     activation = SigmoidActivation() if nonlinear else None
-    hidden = Linear(shape=(2,), name="hidden", **({"activation": activation} if activation else {}))
-    latent = Linear(shape=(2,), name="latent", **({"activation": activation} if activation else {}))
+    hidden = Linear(
+        shape=(2,), name="hidden", **({"activation": activation} if activation else {})
+    )
+    latent = Linear(
+        shape=(2,), name="latent", **({"activation": activation} if activation else {})
+    )
     structure = graph(
         nodes=[source, hidden, latent],
         edges=[
@@ -148,23 +153,43 @@ def run(
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        description="Export paired FabricPC inference trajectory diagnostics."
+    )
     parser.add_argument("--output-dir", type=Path, default=ROOT / "verification")
     parser.add_argument("--perturbation", type=float, default=1e-3)
     parser.add_argument("--infer-steps", type=int, default=12)
     parser.add_argument("--eta", type=float, default=0.05)
+    parser.add_argument("--parameter-seed", type=int, default=17)
+    parser.add_argument("--state-seed", type=int, default=23)
+    parser.add_argument(
+        "--direction",
+        type=float,
+        nargs=2,
+        metavar=("X", "Y"),
+        default=(1.0, 0.0),
+    )
+    parser.add_argument("--nonlinear", action="store_true")
     args = parser.parse_args()
     if args.perturbation == 0 or args.infer_steps < 1 or args.eta <= 0:
         raise ValueError("require nonzero perturbation, infer_steps >= 1, eta > 0")
 
-    payload, certificate = run(args.perturbation, args.infer_steps, args.eta)
+    if args.direction[0] == 0 and args.direction[1] == 0:
+        raise ValueError("require a nonzero perturbation direction")
+    payload, certificate = run(
+        args.perturbation,
+        args.infer_steps,
+        args.eta,
+        parameter_seed=args.parameter_seed,
+        state_seed=args.state_seed,
+        direction=tuple(args.direction),
+        nonlinear=args.nonlinear,
+    )
     args.output_dir.mkdir(parents=True, exist_ok=True)
     raw_path = args.output_dir / "fabricpc_orientation_trace.json"
     cert_path = args.output_dir / "fabricpc_orientation_certificate.json"
     raw_path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
-    cert_path.write_text(
-        json.dumps(certificate, indent=2) + "\n", encoding="utf-8"
-    )
+    cert_path.write_text(json.dumps(certificate, indent=2) + "\n", encoding="utf-8")
     print(f"trace -> {raw_path}")
     print(f"certificate -> {cert_path}")
     print(
