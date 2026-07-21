@@ -2842,10 +2842,39 @@
         "appendix"
       ],
       "failure_mode": "missing_premise",
-      "summary": "Defect convergence identifies the Hilbert fixed point under explicit premises. The formal quantum program supplies complementary Gleason-facing half-bridges joined by a non-invertible observer lowering. In the source-to-readout half, normalized pure-state data construct a Hermitian density, lower through a fixed response kernel, and yield the existing Hermitian-compatible observer readout. In the readout-to-representation half, explicit quadratic or conjugate-linear/linear Hermitian certificate laws construct representations of certified observer values. This representation is not an inverse recovering the source. Global phase gives an exact collision: distinct normalized vectors produce equal densities and equal fixed-kernel observer certificates. Countermodels prove that arbitrary FrameReadoutSystem and QuantumResolutionCertificate data do not reconstruct Hermitian upstream structure. Finite partial trace preserves trace and represented local-observer expectations as an exact lowering. No temporal channel or quantitative monotonic-loss theorem is certified, so decoherence/noise as continued directional becoming remains interpretive.",
-      "required_latex_repair": "Completed for the present formal scope: Book VII and Appendix C distinguish the two complementary half-bridges, mark their non-invertible observer seam, preserve the countermodels, and identify exact partial-trace reduction separately from the interpretive decoherence/noise account.",
+      "summary": "Defect convergence identifies the Hilbert fixed point under explicit premises. The quantum program supplies complementary source-to-readout and readout-to-representation half-bridges joined by a non-invertible observer lowering; global phase gives an exact collision and countermodels block unconditional reverse reconstruction. Finite partial trace exactly preserves trace and represented local expectations. Independently, the Cost of Cacophony-facing temporal backbone is kernel-certified: finite-support simultaneous compression obeys norm-fracture bounds and a strict diagonal cost gap; directed staged displacement telescopes; a minimizing JKO step pays transport cost from free-energy decrease; and staged trajectories converge under explicit summability/completeness or positive Lyapunov-descent premises. Temporal becoming is therefore not merely interpretive. The interpretive bridge is an operational physical mapping of quantum decoherence/noise onto this general directed transport-and-loss geometry: testable and usable like weather mapping, without asserting a kernel identity between domains.",
+      "required_latex_repair": "Completed: Book VII and Appendix C distinguish the exact general temporal cost/transport arrow, the exact partial-trace and observer-loss results, and the interpretive physical bridge identifying decoherence/noise with that shared directional geometry.",
       "lean_evidence": [
+                {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5Norm.lean",
+          "declaration": "Book5.axisCostOn_le_card_rpow_mul_lpCostOn",
+          "kind": "simultaneous_compression_cost_bound"
+        },
         {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5Decoherence.lean",
+          "declaration": "Book5.diagonalDecoherence_pos",
+          "kind": "strict_diagonal_cost_gap"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumA.lean",
+          "declaration": "ScholiumA.chainedApprox_telescope",
+          "kind": "staged_displacement_telescope"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumD.lean",
+          "declaration": "ScholiumD.jko_step_transport_cost_le_energy_drop",
+          "kind": "directed_transport_dissipation"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumA.lean",
+          "declaration": "ScholiumA.ChainedApprox.exists_limit_with_tail_bound",
+          "kind": "summable_staged_convergence"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Descent.lean",
+          "declaration": "cauchy_forcing_completion",
+          "kind": "lyapunov_paid_increment_convergence"
+        },{
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7BornCollapse.lean",
           "declaration": "Book7BornCollapse.unique_stable_crossSection",
           "kind": "fixed_locus_kernel"

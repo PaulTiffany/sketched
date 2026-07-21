@@ -59,9 +59,17 @@ is not an inverse of the first and does not recover an originating source state.
 Their seam is a proved non-invertible observer lowering. Global phase supplies a
 concrete collision, while the frame and resolution countermodels block unconditional
 reverse reconstruction. Finite partial trace is separately recorded as an exact
-reduction preserving trace and represented local expectations. The wider reading of
-decoherence and noise as continued directional loss is `interpretive`: the present
-lake does not contain a temporal channel or distinguishability-monotonicity theorem.
+reduction preserving trace and represented local expectations.
+
+Temporal direction has its own exact Cacophony-facing backbone: finite-support
+compression obeys norm-fracture bounds and a strict diagonal cost gap; staged paths
+carry telescoped per-step displacement; and JKO minimization pays transport cost from
+free-energy decrease. Convergence is conditional on the registered summability,
+completeness, preservation, or Lyapunov-descent premises. What remains `interpretive`
+is the functionally interpretive physical mapping of quantum decoherence/noise onto
+this general directed cost-and-loss geometry, not temporal becoming itself. Like a
+weather map, that correspondence is operational and testable without being a kernel
+identity between domains.
 
 The Book VII attractor reading and Hilbert-cross-section scholium remain explicitly
 interpretive. `Operatio` is registered as poetry: it is preserved as a semantic

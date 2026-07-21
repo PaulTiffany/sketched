@@ -49,3 +49,9 @@ def test_reversible_observer_lowering_wording_is_rejected():
     e["claim"] = "Observer lowering is a reversible equivalence."
     doc = {"schema": "sketched.ps-alignment.v1", "entries": [e]}
     assert any("stale reverse-lift" in f for f in audit(doc, node(), receipt("T")))
+
+def test_temporal_becoming_cannot_be_flattened_to_interpretive():
+    e = entry()
+    e["claim"] = "Temporal becoming is merely interpretive."
+    doc = {"schema": "sketched.ps-alignment.v1", "entries": [e]}
+    assert any("stale reverse-lift" in f for f in audit(doc, node(), receipt("T")))

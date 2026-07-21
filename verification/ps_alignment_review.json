@@ -14,7 +14,7 @@
     {
       "source_file": "appendix_dual_horizon.tex",
       "atlas_id": "remark:appC_psc3prime_open_route",
-      "source_line": 546,
+      "source_line": 558,
       "current_classification": "open_bridge",
       "lean_witness": "Book7QuantumGleason.completeFrameCoherence_does_not_supply_hermitian_certificate",
       "reason": "The existing continuity-plus-density route is explicitly speculative and distinct from the now-refuted direct frame-readout lift; later editing should keep those two boundaries separate.",
@@ -23,7 +23,7 @@
     {
       "source_file": "appendix_dual_horizon.tex",
       "atlas_id": "corollary:appC_qubit_case",
-      "source_line": 737,
+      "source_line": 749,
       "current_classification": "conditional",
       "lean_witness": "Book7GleasonBoundary.rank_two_frame_axioms_do_not_force_born",
       "reason": "The human proof uses an explicit higher-rank extension; Lean certifies the lower-rank obstruction but not this full extension argument.",
@@ -32,7 +32,7 @@
     {
       "source_file": "appendix_dual_horizon.tex",
       "atlas_id": "corollary:appC_mixed_states",
-      "source_line": 762,
+      "source_line": 774,
       "current_classification": "conditional",
       "lean_witness": null,
       "reason": "The affine-mixture premise is visible in the prose but the mixed-state construction is not part of the current Lean receipt.",
@@ -41,7 +41,7 @@
     {
       "source_file": "appendix_dual_horizon.tex",
       "atlas_id": "subsec:appC_born_interpretation_ps",
-      "source_line": 791,
+      "source_line": 803,
       "current_classification": "interpretive",
       "lean_witness": null,
       "reason": "The emergence-of-randomness and free-energy language is an observer interpretation, not the finite observer-lowering theorem itself.",
@@ -50,7 +50,7 @@
     {
       "source_file": "appendix_dual_horizon.tex",
       "atlas_id": "subsec:appC_born_outlook",
-      "source_line": 802,
+      "source_line": 814,
       "current_classification": "interpretive",
       "lean_witness": null,
       "reason": "The resolution-limit outlook is intentionally synthetic and empirical-facing; it should remain outside exact kernel projection unless separately witnessed.",

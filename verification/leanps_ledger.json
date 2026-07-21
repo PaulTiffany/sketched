@@ -5028,7 +5028,7 @@
       "depends_on": ["LPS-P164"],
       "consumes": [],
       "falsifier": "Pure-state density is non-Hermitian, its normalized lowering fails the observer certificate, the forward Hermitian certificate cannot be constructed, or global-phase-distinct source vectors remain distinguishable in the lowered density/certificate.",
-      "next": "Mathematical scope frozen. Atlas and prose may interpret subsequent decoherence/noise as continued directional loss, while exact channel monotonicity requires its own already-typed witness."
+      "next": "Mathematical scope frozen. Correspondence must retain the exact Cacophony-facing temporal cost/transport arrow and exact observer-loss results while classifying their physical quantum identification as interpretive."
     }
   ]
 }

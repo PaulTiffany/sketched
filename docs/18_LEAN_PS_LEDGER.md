@@ -1964,4 +1964,4 @@ Source-to-readout half-bridge and non-invertible seam: normalized pure-state den
 - **Depends on:** LPS-P164
 - **Formal source:** `verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuantumGleason.lean`
 - **Falsifier / negative control:** Pure-state density is non-Hermitian, its normalized lowering fails the observer certificate, the forward Hermitian certificate cannot be constructed, or global-phase-distinct source vectors remain distinguishable in the lowered density/certificate.
-- **Next closure action:** Mathematical scope frozen. Atlas and prose may interpret subsequent decoherence/noise as continued directional loss, while exact channel monotonicity requires its own already-typed witness.
+- **Next closure action:** Mathematical scope frozen. Correspondence must retain the exact Cacophony-facing temporal cost/transport arrow and exact observer-loss results while classifying their physical quantum identification as interpretive.

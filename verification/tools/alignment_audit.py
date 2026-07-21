@@ -24,7 +24,9 @@ STALE = re.compile(
     r"adding only.{0,40}ishermitian|open gleason reconstruction|"
     r"conditional hermitian reconstruction.{0,80}full quantum gleason|"
     r"observer lowering.{0,100}(?:bidirectional|reversible equivalence)|"
-    r"(?:decoherence|noise).{0,100}kernel[- ](?:proved|certified).{0,80}(?:time|monotonic))",
+    r"(?:decoherence|noise).{0,100}kernel[- ](?:proved|certified).{0,80}(?:time|monotonic)|"
+    r"(?:temporal becoming|temporal direction).{0,80}(?:merely |only )?interpretive|"
+    r"lake (?:lacks|does not contain).{0,80}(?:formal )?temporal)",
     re.IGNORECASE | re.DOTALL,
 )
 
