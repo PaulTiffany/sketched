@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#050607">
 <title>Z0 / Sketched</title>
 <style>html,body{height:100%;margin:0;background:#050607;color:#f4f0e6;font:14px system-ui}main{height:100%;display:grid;place-items:center}p{opacity:.72}</style>
 </head>
@@ -14,7 +15,60 @@
   try{
     const response=await fetch(source,{cache:'no-store'});
     if(!response.ok) throw new Error('source '+response.status);
-    const html=await response.text();
+    let html=await response.text();
+
+    // Live presentation pass: retain the one-file body and policy kernel while
+    // making the public surface human-readable and vertically embodied.
+    html=html.replace(
+      '.workspace{min-height:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,360px);background:var(--frame);gap:3px;padding:3px}',
+      '.workspace{min-height:0;display:grid;grid-template-columns:1fr;grid-template-rows:minmax(54%,1.35fr) minmax(250px,.75fr);background:#000;gap:2px;padding:2px}'
+    );
+    html=html.replace(
+      '.side{min-height:0;display:grid;grid-template-rows:auto 1fr auto;background:#171c22}',
+      '.side{min-height:0;display:grid;grid-template-rows:auto 1fr auto;background:#11151a;border-top:1px solid #303841}'
+    );
+    html=html.replace(
+      '@media(max-width:820px){.workspace{grid-template-columns:1fr;grid-template-rows:minmax(52%,1fr) minmax(220px,40%)}',
+      '@media(max-width:820px){.workspace{grid-template-columns:1fr;grid-template-rows:minmax(50%,1fr) minmax(250px,46%)}'
+    );
+
+    const help=`
+      [data-help]{position:relative}
+      [data-help]:hover::after,[data-help]:focus-visible::after{
+        content:attr(data-help);position:absolute;z-index:100;left:50%;top:calc(100% + .5rem);
+        transform:translateX(-50%);width:max-content;max-width:min(330px,82vw);padding:.5rem .62rem;
+        border:1px solid #3b4652;border-radius:.45rem;background:#07090c;color:#f4f1e8;
+        font:600 11px/1.45 ui-monospace,Consolas,monospace;white-space:normal;
+        box-shadow:0 12px 36px rgba(0,0,0,.6);pointer-events:none
+      }
+      .draw-foot [data-help]:hover::after,.bottombar [data-help]:hover::after{top:auto;bottom:calc(100% + .5rem)}
+    `;
+    html=html.replace('</style>',help+'</style>');
+
+    html=html.replace('one-file embodied surface','draw above · speak below · hover for meaning');
+    html=html.replace('local ledger','local-only · mock agent');
+    html=html.replace('Omega seat','terms');
+    html=html.replace('zero point: human authority','your surface · human marks persist');
+    html=html.replace('local embodiment · seated below the human','local simulation · no model connected');
+    html=html.replace('Speak into the shared body…','Speak below the surface…');
+    html=html.replace('Place a human text mark…','Write on the human floor…');
+    html=html.replace('shake generated','shake');
+
+    const attrs=new Map([
+      ['id="transportChip"','id="transportChip" data-help="This is currently stored in your browser. Buzz and a real model are not connected yet."'],
+      ['id="cameraBtn"','id="cameraBtn" data-help="Show your camera behind the drawing surface. Pages provides the HTTPS permission context."'],
+      ['id="seatBtn"','id="seatBtn" data-help="Open the evolving terms that govern what Omega may see, say, generate, and retain."'],
+      ['id="auditBtn"','id="auditBtn" data-help="Open the append-only witness history. Revocation adds a new event rather than rewriting the past."'],
+      ['id="markBtn"','id="markBtn" data-help="Place a human-owned text mark. Human marks survive shake."'],
+      ['id="undoBtn"','id="undoBtn" data-help="Withdraw your newest active human mark while preserving its historical receipt."'],
+      ['id="pulseBtn"','id="pulseBtn" data-help="Give the current local Omega simulation one deliberate turn."'],
+      ['id="shakeBtn"','id="shakeBtn" data-help="Remove uncommitted generated residue. Human marks remain."'],
+      ['id="snapshotBtn"','id="snapshotBtn" data-help="Download an image of the current visible surface."'],
+      ['id="exportBtn"','id="exportBtn" data-help="Download the signed event history as JSON."'],
+      ['id="importBtn"','id="importBtn" data-help="Load and verify a previously exported witness history."']
+    ]);
+    for(const [from,to] of attrs) html=html.replace(from,to);
+
     document.open();
     document.write(html);
     document.close();
