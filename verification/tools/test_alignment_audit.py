@@ -42,3 +42,10 @@ def test_interpretive_is_allowed_but_not_kernel_certified():
     e["kernel_certified"] = False
     doc = {"schema": "sketched.ps-alignment.v1", "entries": [e]}
     assert audit(doc, node(), receipt()) == []
+
+
+def test_reversible_observer_lowering_wording_is_rejected():
+    e = entry()
+    e["claim"] = "Observer lowering is a reversible equivalence."
+    doc = {"schema": "sketched.ps-alignment.v1", "entries": [e]}
+    assert any("stale reverse-lift" in f for f in audit(doc, node(), receipt("T")))

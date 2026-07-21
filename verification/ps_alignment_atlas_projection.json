@@ -17,12 +17,12 @@
       "line": 372,
       "name": "Formal correspondence at the observer boundary",
       "matter_region": "appendix",
-      "statement_sha": "6ddb00bedcd0"
+      "statement_sha": "891beea33c6a"
     },
     {
       "label": "remark:appC_psc3prime_open_route",
       "file": "appendix_dual_horizon.tex",
-      "line": 538,
+      "line": 546,
       "name": "Open derivation route for PS--C3$'$",
       "matter_region": "appendix",
       "statement_sha": "67bf7ae683ec"
@@ -30,7 +30,7 @@
     {
       "label": "axiom:appC_psc4",
       "file": "appendix_dual_horizon.tex",
-      "line": 592,
+      "line": 600,
       "name": "PS--C4 (Ray invariance)",
       "matter_region": "appendix",
       "statement_sha": "f25498138ac0"
@@ -38,7 +38,7 @@
     {
       "label": "theorem:appC_born_rule",
       "file": "appendix_dual_horizon.tex",
-      "line": 681,
+      "line": 689,
       "name": "Observer-relative Born Rule",
       "matter_region": "appendix",
       "statement_sha": "cab8ba890a2e"
@@ -46,7 +46,7 @@
     {
       "label": "corollary:appC_qubit_case",
       "file": "appendix_dual_horizon.tex",
-      "line": 729,
+      "line": 737,
       "name": "Qubit case \\texorpdfstring{$d = 2$}{d = 2}",
       "matter_region": "appendix",
       "statement_sha": "837d107080ad"
@@ -54,7 +54,7 @@
     {
       "label": "corollary:appC_mixed_states",
       "file": "appendix_dual_horizon.tex",
-      "line": 754,
+      "line": 762,
       "name": "Mixed states",
       "matter_region": "appendix",
       "statement_sha": "03fa24beed3a"
@@ -62,7 +62,7 @@
     {
       "label": "subsec:appC_born_interpretation_ps",
       "file": "appendix_dual_horizon.tex",
-      "line": 783,
+      "line": 791,
       "name": "Interpretation Within Principia Symbolica",
       "matter_region": "appendix",
       "statement_sha": "e3b0c44298fc"
@@ -70,7 +70,7 @@
     {
       "label": "subsec:appC_born_outlook",
       "file": "appendix_dual_horizon.tex",
-      "line": 794,
+      "line": 802,
       "name": "Implications and Outlook",
       "matter_region": "appendix",
       "statement_sha": "e3b0c44298fc"
@@ -97,7 +97,7 @@
       "line": 1973,
       "name": "Born as the Hilbert cross-section",
       "matter_region": "mainmatter",
-      "statement_sha": "59cac27d7727"
+      "statement_sha": "3118b76d9fa8"
     },
     {
       "label": "sec:bk1_operatio",

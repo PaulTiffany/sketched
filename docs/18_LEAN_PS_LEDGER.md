@@ -1904,7 +1904,7 @@ Explicit rank-two Gleason obstruction: a nonnegative ray-invariant quartic frame
 - **Depends on:** LPS-P158
 - **Formal source:** `verification/lean/ForcingAnalysis/ForcingAnalysis/Book7GleasonBoundary.lean`
 - **Falsifier / negative control:** The quartic function becomes negative, changes under nonzero ray scaling, fails orthogonal-pair normalization, admits a quadratic representation, or rank-two frame axioms force Born despite the explicit witness.
-- **Next closure action:** Begin the positive Gleason reconstruction only in real or complex frame rank at least three, with the required boundedness/regularity and complete frame quantifiers explicit.
+- **Next closure action:** Preserve the rank-two obstruction and the proved half-bridges; do not turn the negative boundary into a new classical-reconstruction campaign.
 
 ## LPS-P160 (P, book7)
 
@@ -1918,13 +1918,13 @@ Phase-faithful quantum readout kernel: finite complex operator expectations scal
 
 ## LPS-P161 (P, book7)
 
-Dashed Hermitian reconstruction interface: explicit conjugate-linear/linear cross laws, Hermitian exchange, and diagonal recovery construct a genuine complex Hermitian sesquilinear form and force modulus-squared scaling of the observed readout.
+Readout-to-representation half-bridge: explicit conjugate-linear/linear cross laws, Hermitian exchange, and diagonal recovery construct a complex Hermitian sesquilinear representation of the certified readout.
 
 - **Hypotheses:** a supplied complex cross term; additivity and conjugate homogeneity in the first argument; additivity and homogeneity in the second argument; Hermitian exchange; diagonal recovery
 - **Depends on:** LPS-P160
 - **Formal source:** `verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuantumGleason.lean`
 - **Falsifier / negative control:** The supplied cross laws fail to define a sesquilinear form, Hermitian exchange fails to induce symmetry, the diagonal fails to recover the readout, or certified diagonal values violate conjugate-modulus scaling.
-- **Next closure action:** The attempted direct bridge is now refuted for the existing source type by LPS-P162. Strengthen or replace the coherence structure only where its intended complete-frame semantics can be expressed strongly enough for the bridge type to become inhabited.
+- **Next closure action:** Keep this construction directional: it represents certified observer values but does not invert observer lowering or recover an originating source state.
 
 ## LPS-P162 (P, book7)
 
@@ -1958,10 +1958,10 @@ Reduced-state Hermiticity is not derivable from the present QuantumResolutionCer
 
 ## LPS-P165 (P, book7)
 
-Observer-boundary lowering: a normalized pure-state density is Hermitian upstream, lowers with a supplied observer response into QuantumResolutionCertificate, and constructs the existing Hermitian readout certificate; global-phase-related distinct normalized vectors produce the same density and the same lowered observer certificate.
+Source-to-readout half-bridge and non-invertible seam: normalized pure-state density is Hermitian upstream, lowers with a fixed observer response, and constructs the Hermitian-compatible readout; global-phase-related distinct normalized vectors collide in density and observer certificate.
 
 - **Hypotheses:** a normalized finite complex pure-state vector; a supplied observer response kernel; unit-modulus phase for the loss theorem
 - **Depends on:** LPS-P164
 - **Formal source:** `verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuantumGleason.lean`
 - **Falsifier / negative control:** Pure-state density is non-Hermitian, its normalized lowering fails the observer certificate, the forward Hermitian certificate cannot be constructed, or global-phase-distinct source vectors remain distinguishable in the lowered density/certificate.
-- **Next closure action:** Preserve the directionality: richer pure-state structure lowers to observer resolution with explicit global-phase loss; arbitrary resolved data do not invert that map.
+- **Next closure action:** Mathematical scope frozen. Atlas and prose may interpret subsequent decoherence/noise as continued directional loss, while exact channel monotonicity requires its own already-typed witness.

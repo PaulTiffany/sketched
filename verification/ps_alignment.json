@@ -17,10 +17,10 @@
       "atlas_id": "remark:appC_observer_lowering_boundary",
       "source_file": "appendix_dual_horizon.tex",
       "source_line": 372,
-      "source_statement_sha": "6ddb00bedcd0",
+      "source_statement_sha": "891beea33c6a",
       "status": "constructed",
       "kernel_certified": true,
-      "claim": "A normalized pure-state vector constructs a Hermitian rank-one density and lowers through a fixed observer response into the existing resolution certificate.",
+      "claim": "The source-to-readout half constructs a Hermitian rank-one density from a normalized pure-state vector and lowers it through a fixed observer response into a Born/Hermitian-compatible resolution certificate.",
       "lean_witnesses": [
         "Book7QuantumGleason.pureStateDensity_isHermitian",
         "Book7QuantumGleason.pureStateToResolution_reducedState_isHermitian",
@@ -29,14 +29,14 @@
       "premises": [],
       "countermodels": [],
       "bounds": [],
-      "atlas_note": "The construction is forward. The observer certificate is not strengthened with an upstream invariant."
+      "atlas_note": "First of two complementary Gleason-facing half-bridges. The construction is forward and preserves upstream Hermiticity without strengthening the observer certificate."
     },
     {
       "id": "Q-PHASE-02",
       "atlas_id": "remark:appC_observer_lowering_boundary",
       "source_file": "appendix_dual_horizon.tex",
       "source_line": 372,
-      "source_statement_sha": "6ddb00bedcd0",
+      "source_statement_sha": "891beea33c6a",
       "status": "exact",
       "kernel_certified": true,
       "claim": "Global-phase-related vectors have the same pure-state density and the same fixed-kernel observer certificate; distinct normalized vectors collide under lowering.",
@@ -55,7 +55,7 @@
       "atlas_id": "remark:appC_observer_lowering_boundary",
       "source_file": "appendix_dual_horizon.tex",
       "source_line": 372,
-      "source_statement_sha": "6ddb00bedcd0",
+      "source_statement_sha": "891beea33c6a",
       "status": "refuted",
       "kernel_certified": true,
       "claim": "An arbitrary complete-frame readout system reconstructs a Hermitian readout certificate.",
@@ -74,7 +74,7 @@
       "atlas_id": "remark:appC_observer_lowering_boundary",
       "source_file": "appendix_dual_horizon.tex",
       "source_line": 372,
-      "source_statement_sha": "6ddb00bedcd0",
+      "source_statement_sha": "891beea33c6a",
       "status": "refuted",
       "kernel_certified": true,
       "claim": "An arbitrary normalized observer-resolution certificate forces Hermiticity or reconstructs the full upstream state.",
@@ -95,24 +95,26 @@
       "atlas_id": "remark:appC_observer_lowering_boundary",
       "source_file": "appendix_dual_horizon.tex",
       "source_line": 372,
-      "source_statement_sha": "6ddb00bedcd0",
+      "source_statement_sha": "891beea33c6a",
       "status": "conditional",
       "kernel_certified": true,
-      "claim": "A resolution certificate whose retained matrix is explicitly Hermitian constructs the existing Hermitian readout certificate.",
+      "claim": "The readout-to-representation half constructs a Hermitian sesquilinear representation when explicit cross laws are supplied, or from a resolution certificate whose retained matrix is explicitly Hermitian.",
       "lean_witnesses": [
         "Book7QuantumGleason.quantumResolution_to_hermitian_certificate",
         "Book7QuantumGleason.hermitian_reconstruction_from_certificate"
       ],
-      "premises": ["The retained reduced-state matrix is Hermitian."],
+      "premises": [
+        "Explicit conjugate-linear/linear Hermitian cross laws, or a retained reduced-state matrix certified Hermitian."
+      ],
       "countermodels": [],
       "bounds": ["Q-RESOLVE-04"],
-      "atlas_note": "A completed local conditional construction; it is not full quantum Gleason."
+      "atlas_note": "Second complementary Gleason-facing half-bridge. It represents the certified observer-level values and is not an inverse recovering the originating source."
     },
     {
       "id": "Q-COMPLEX-06",
       "atlas_id": "axiom:appC_psc4",
       "source_file": "appendix_dual_horizon.tex",
-      "source_line": 592,
+      "source_line": 600,
       "source_statement_sha": "f25498138ac0",
       "status": "exact",
       "kernel_certified": true,
@@ -131,16 +133,16 @@
       "id": "Q-BORN-07",
       "atlas_id": "theorem:appC_born_rule",
       "source_file": "appendix_dual_horizon.tex",
-      "source_line": 681,
+      "source_line": 689,
       "source_statement_sha": "cab8ba890a2e",
       "status": "interpretive",
       "kernel_certified": false,
-      "claim": "The appendix gives a human mathematical Gleason derivation under PS-C1--PS-C6; the Lean companion supplies bounded finite constructions and boundaries but does not certify this full theorem.",
+      "claim": "The appendix gives a human mathematical derivation under PS-C1--PS-C6; the Lean companion supplies the two finite half-bridges and their proved observer boundary without certifying the appendix theorem itself.",
       "lean_witnesses": [],
       "premises": [],
       "countermodels": [],
       "bounds": [],
-      "atlas_note": "The distinction preserves the book proof and prevents projection of the local conditional Hermitian construction as full quantum Gleason."
+      "atlas_note": "The broader appendix argument remains human mathematics; neither formal half-bridge is mislabeled as the classical theorem."
     },
     {
       "id": "Q-BK7-08",
@@ -186,15 +188,15 @@
       "atlas_id": "scholium:bk7_born_as_hilbert_cross_section",
       "source_file": "book7.tex",
       "source_line": 1973,
-      "source_statement_sha": "59cac27d7727",
+      "source_statement_sha": "3118b76d9fa8",
       "status": "interpretive",
       "kernel_certified": false,
-      "claim": "Born as the p=2 slice of a continuous observer geometry is the book's synthetic reading; deterministic-looking limits describe resolved appearance and do not invert the observer map.",
+      "claim": "Born as the p=2 slice of a continuous observer geometry, and decoherence/noise as continued directional becoming through loss or stabilization, are synthetic readings grounded by exact reductions and non-injectivity.",
       "lean_witnesses": [],
       "premises": [],
       "countermodels": [],
       "bounds": [],
-      "atlas_note": "The scholium remains literary and synthetic while the reconstruction boundary is visible."
+      "atlas_note": "The scholium preserves constitution-before-appearance and separates resolved randomness from claims about every richer process frame."
     },
     {
       "id": "POETRY-01",
@@ -210,6 +212,39 @@
       "countermodels": [],
       "bounds": [],
       "atlas_note": "Formal silence does not reject or flatten the operator-poetic register."
+    },
+    {
+      "id": "Q-PARTIAL-11",
+      "atlas_id": "remark:appC_observer_lowering_boundary",
+      "source_file": "appendix_dual_horizon.tex",
+      "source_line": 372,
+      "source_statement_sha": "891beea33c6a",
+      "status": "exact",
+      "kernel_certified": true,
+      "claim": "Finite environmental partial trace preserves trace and every represented local-observer expectation while lowering a joint operator to a reduced observer operator.",
+      "lean_witnesses": [
+        "Book4QuantumMeasurement.trace_partialTraceEnvironment",
+        "Book4QuantumMeasurement.jointExpectation_local_eq_reduced"
+      ],
+      "premises": [],
+      "countermodels": [],
+      "bounds": [],
+      "atlas_note": "This is an exact reduction/regrouping theorem, not a certified temporal channel or distinguishability monotonicity law."
+    },
+    {
+      "id": "Q-DECOHERENCE-12",
+      "atlas_id": "remark:appC_observer_lowering_boundary",
+      "source_file": "appendix_dual_horizon.tex",
+      "source_line": 372,
+      "source_statement_sha": "891beea33c6a",
+      "status": "interpretive",
+      "kernel_certified": false,
+      "claim": "Decoherence and noise continue the observer arrow through successive loss, quotient, or stabilization.",
+      "lean_witnesses": [],
+      "premises": [],
+      "countermodels": [],
+      "bounds": ["Q-PHASE-02", "Q-PARTIAL-11"],
+      "atlas_note": "Grounded by exact partial-trace reduction and proved phase-collision non-injectivity; no temporal channel or quantitative monotonic-loss theorem is claimed."
     }
   ]
 }

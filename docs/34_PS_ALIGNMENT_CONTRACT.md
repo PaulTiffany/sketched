@@ -49,12 +49,19 @@ formal statuses.
 
 ## Observer-boundary alignment
 
-The aligned quantum cluster records the forward construction from normalized pure
-state through Hermitian density and observer resolution, its preservation of
-Hermiticity, and its global-phase non-injectivity. It separately records the proved
-failure of arbitrary frame or resolution data to reconstruct upstream Hermitian
-structure. The local conditional Hermitian construction remains complete and local;
-it is not projected as full quantum Gleason.
+The aligned quantum cluster records two complementary Gleason-facing half-bridges.
+The source-to-readout half runs from normalized pure state through Hermitian density
+and fixed observer resolution. The readout-to-representation half constructs a
+Hermitian or quadratic representation when its explicit certificate laws are
+available. The second half represents the values visible at the observer surface; it
+is not an inverse of the first and does not recover an originating source state.
+
+Their seam is a proved non-invertible observer lowering. Global phase supplies a
+concrete collision, while the frame and resolution countermodels block unconditional
+reverse reconstruction. Finite partial trace is separately recorded as an exact
+reduction preserving trace and represented local expectations. The wider reading of
+decoherence and noise as continued directional loss is `interpretive`: the present
+lake does not contain a temporal channel or distinguishability-monotonicity theorem.
 
 The Book VII attractor reading and Hilbert-cross-section scholium remain explicitly
 interpretive. `Operatio` is registered as poetry: it is preserved as a semantic

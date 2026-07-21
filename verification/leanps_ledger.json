@@ -4944,7 +4944,7 @@
       "depends_on": ["LPS-P158"],
       "consumes": [],
       "falsifier": "The quartic function becomes negative, changes under nonzero ray scaling, fails orthogonal-pair normalization, admits a quadratic representation, or rank-two frame axioms force Born despite the explicit witness.",
-      "next": "Begin the positive Gleason reconstruction only in real or complex frame rank at least three, with the required boundedness/regularity and complete frame quantifiers explicit."
+      "next": "Preserve the rank-two obstruction and the proved half-bridges; do not turn the negative boundary into a new classical-reconstruction campaign."
     },
     {
       "id": "LPS-P160",
@@ -4962,7 +4962,7 @@
     },
     {
       "id": "LPS-P161",
-      "statement": "Dashed Hermitian reconstruction interface: explicit conjugate-linear/linear cross laws, Hermitian exchange, and diagonal recovery construct a genuine complex Hermitian sesquilinear form and force modulus-squared scaling of the observed readout.",
+      "statement": "Readout-to-representation half-bridge: explicit conjugate-linear/linear cross laws, Hermitian exchange, and diagonal recovery construct a complex Hermitian sesquilinear representation of the certified readout.",
       "domain": "book7",
       "status": "P",
       "hypotheses": ["a supplied complex cross term", "additivity and conjugate homogeneity in the first argument", "additivity and homogeneity in the second argument", "Hermitian exchange", "diagonal recovery"],
@@ -4972,7 +4972,7 @@
       "depends_on": ["LPS-P160"],
       "consumes": [],
       "falsifier": "The supplied cross laws fail to define a sesquilinear form, Hermitian exchange fails to induce symmetry, the diagonal fails to recover the readout, or certified diagonal values violate conjugate-modulus scaling.",
-      "next": "The attempted direct bridge is now refuted for the existing source type by LPS-P162. Strengthen or replace the coherence structure only where its intended complete-frame semantics can be expressed strongly enough for the bridge type to become inhabited."
+      "next": "Keep this construction directional: it represents certified observer values but does not invert observer lowering or recover an originating source state."
     },
     {
       "id": "LPS-P162",
@@ -5018,7 +5018,7 @@
     },
     {
       "id": "LPS-P165",
-      "statement": "Observer-boundary lowering: a normalized pure-state density is Hermitian upstream, lowers with a supplied observer response into QuantumResolutionCertificate, and constructs the existing Hermitian readout certificate; global-phase-related distinct normalized vectors produce the same density and the same lowered observer certificate.",
+      "statement": "Source-to-readout half-bridge and non-invertible seam: normalized pure-state density is Hermitian upstream, lowers with a fixed observer response, and constructs the Hermitian-compatible readout; global-phase-related distinct normalized vectors collide in density and observer certificate.",
       "domain": "book7",
       "status": "P",
       "hypotheses": ["a normalized finite complex pure-state vector", "a supplied observer response kernel", "unit-modulus phase for the loss theorem"],
@@ -5028,7 +5028,7 @@
       "depends_on": ["LPS-P164"],
       "consumes": [],
       "falsifier": "Pure-state density is non-Hermitian, its normalized lowering fails the observer certificate, the forward Hermitian certificate cannot be constructed, or global-phase-distinct source vectors remain distinguishable in the lowered density/certificate.",
-      "next": "Preserve the directionality: richer pure-state structure lowers to observer resolution with explicit global-phase loss; arbitrary resolved data do not invert that map."
+      "next": "Mathematical scope frozen. Atlas and prose may interpret subsequent decoherence/noise as continued directional loss, while exact channel monotonicity requires its own already-typed witness."
     }
   ]
 }

@@ -10223,7 +10223,7 @@
       "math_id": "theorem:bk7_born_collapse",
       "source": "principia",
       "statement_sha": "127b405ebd78",
-      "note": "The dashed reconstruction is complete conditional on explicit cross laws; deriving those laws from overlapping frame measures is still the substantive Gleason obligation."
+      "note": "The readout-to-representation half is complete conditional on explicit cross laws. It represents certified values and is not an inverse of the source-to-readout lowering."
     },
     {
       "artifact": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuantumGleason.lean",

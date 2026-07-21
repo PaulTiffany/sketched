@@ -22,7 +22,9 @@ NONFORMAL = {"open_bridge", "interpretive", "poetic"}
 STALE = re.compile(
     r"(?:quantumresolutioncertificate.{0,80}(?:needs|missing).{0,40}hermitian|"
     r"adding only.{0,40}ishermitian|open gleason reconstruction|"
-    r"conditional hermitian reconstruction.{0,80}full quantum gleason)",
+    r"conditional hermitian reconstruction.{0,80}full quantum gleason|"
+    r"observer lowering.{0,100}(?:bidirectional|reversible equivalence)|"
+    r"(?:decoherence|noise).{0,100}kernel[- ](?:proved|certified).{0,80}(?:time|monotonic))",
     re.IGNORECASE | re.DOTALL,
 )
 
