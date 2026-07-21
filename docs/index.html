@@ -2,79 +2,120 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#050607">
 <title>Z0 / Sketched</title>
-<style>html,body{height:100%;margin:0;background:#050607;color:#f4f0e6;font:14px system-ui}main{height:100%;display:grid;place-items:center}p{opacity:.72}</style>
+<style>
+:root{--bg:#050607;--panel:#101419;--line:#333d47;--chalk:#f4f0e7;--muted:#98a4af;--human:#6fe2f0;--agent:#ffc468;--danger:#ff7474;--ok:#80e1a0}
+*{box-sizing:border-box}html,body{height:100%;margin:0;background:var(--bg);color:var(--chalk);font-family:Inter,system-ui,sans-serif}
+button,input,textarea,select{font:inherit}button{color:inherit}.app{height:100%;display:grid;grid-template-rows:auto minmax(0,58%) auto minmax(0,42%);overflow:hidden}
+.top,.tools{display:flex;align-items:center;gap:.42rem;padding:.5rem .62rem;background:#0b0e12;border-color:#000;overflow-x:auto}
+.top{border-bottom:1px solid #000}.tools{border-block:1px solid #000}.brand{display:flex;align-items:baseline;gap:.5rem;white-space:nowrap}.brand strong{font:700 1rem Georgia,serif}.brand span{font:700 .6rem ui-monospace,Consolas,monospace;color:var(--human);letter-spacing:.11em;text-transform:uppercase}
+.spacer{flex:1}.btn,.chip,.seatbtn{border:1px solid var(--line);background:#151b21;border-radius:999px;padding:.43rem .65rem;font:700 .66rem ui-monospace,Consolas,monospace;white-space:nowrap}.btn,.seatbtn{cursor:pointer}.btn:hover,.seatbtn:hover{border-color:var(--chalk)}.btn.human{color:var(--human);border-color:#397985}.btn.agent,.seatbtn.active{color:var(--agent);border-color:#806536}.btn.danger{color:var(--danger);border-color:#843f3f}.chip{color:var(--muted)}.chip.live{color:var(--ok);border-color:#326b45}.btn:disabled{opacity:.35;cursor:not-allowed}
+.stage{position:relative;min-height:0;background:#14191e;overflow:hidden}#stage{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair}.badge{position:absolute;left:.65rem;top:.65rem;background:rgba(4,6,8,.78);border:1px solid var(--line);border-radius:.5rem;padding:.43rem .55rem;font:700 .62rem/1.35 ui-monospace,Consolas,monospace;pointer-events:none}.badge b{color:var(--human)}.receipt{position:absolute;left:50%;bottom:.65rem;transform:translate(-50%,12px);opacity:0;transition:.2s;background:rgba(5,7,9,.94);border:1px solid var(--ok);color:var(--ok);border-radius:.45rem;padding:.5rem .6rem;font:700 .62rem ui-monospace,Consolas,monospace;pointer-events:none}.receipt.show{opacity:1;transform:translate(-50%,0)}
+.textmark,.chatbox{background:#0d1115;color:var(--chalk);border:1px solid var(--line);border-radius:.48rem;padding:.52rem .58rem;outline:none}.textmark{height:2.05rem;min-width:180px;flex:1}.textmark:focus,.chatbox:focus{border-color:var(--human)}
+.chat{min-height:0;display:grid;grid-template-rows:auto 1fr auto;background:var(--panel);border-top:1px solid #2b333b}.seats{display:flex;align-items:center;gap:.42rem;padding:.52rem .62rem;border-bottom:1px solid #28313a;overflow-x:auto}.seatmeta{font:600 .61rem ui-monospace,Consolas,monospace;color:var(--muted);white-space:nowrap}.stream{min-height:0;overflow:auto;padding:.6rem;display:flex;flex-direction:column;gap:.45rem}.msg{max-width:88%;border:1px solid var(--line);border-radius:.62rem;padding:.52rem .6rem;font-size:.79rem;line-height:1.42;white-space:pre-wrap}.msg.human{align-self:flex-end;border-color:#397985;background:rgba(111,226,240,.05)}.msg.agent{align-self:flex-start;border-color:#806536;background:rgba(255,196,104,.05)}.msg.system{align-self:center;color:var(--muted);font:600 .63rem ui-monospace,Consolas,monospace;background:transparent}.msg footer{margin-top:.23rem;color:var(--muted);font:600 .55rem ui-monospace,Consolas,monospace}
+.compose{display:grid;grid-template-columns:1fr auto;gap:.42rem;padding:.58rem;border-top:1px solid #28313a}.chatbox{height:3rem;resize:none}
+.drawer,.modal{position:fixed;z-index:30;background:rgba(11,14,18,.985);border:1px solid var(--line);box-shadow:0 20px 70px rgba(0,0,0,.6)}.drawer{right:.65rem;top:3.5rem;bottom:3.5rem;width:min(94vw,520px);display:none;border-radius:.65rem;padding:.8rem;overflow:auto}.drawer.open{display:block}.scrim{position:fixed;inset:0;z-index:40;display:none;place-items:center;background:rgba(2,3,4,.76);padding:1rem}.scrim.open{display:grid}.modal{position:relative;width:min(96vw,600px);max-height:92vh;overflow:auto;border-radius:.7rem;padding:1rem}.modal h2,.drawer h2{font-family:Georgia,serif;margin:.05rem 0 .25rem}.modal p,.drawer p{color:var(--muted);font-size:.76rem}.row{display:flex;align-items:center;gap:.45rem;flex-wrap:wrap}.field{display:grid;gap:.26rem;margin:.58rem 0}.field label{color:var(--muted);font:700 .62rem ui-monospace,Consolas,monospace}.field input,.field select{background:#0d1115;color:var(--chalk);border:1px solid var(--line);border-radius:.42rem;padding:.52rem}.checks{display:grid;grid-template-columns:1fr 1fr;gap:.38rem}.check{border:1px solid var(--line);border-radius:.45rem;padding:.48rem;font-size:.75rem}.fine{font:600 .61rem/1.45 ui-monospace,Consolas,monospace;color:var(--muted)}.audit{list-style:none;padding:0}.audit li{padding:.42rem 0;border-bottom:1px solid #232a31;font:600 .62rem/1.4 ui-monospace,Consolas,monospace}
+[data-help]{position:relative}[data-help]:hover::after,[data-help]:focus-visible::after{content:attr(data-help);position:absolute;z-index:80;left:50%;top:calc(100% + .48rem);transform:translateX(-50%);width:max-content;max-width:min(330px,82vw);padding:.48rem .58rem;border:1px solid var(--line);border-radius:.42rem;background:#050709;color:var(--chalk);font:600 .64rem/1.4 ui-monospace,Consolas,monospace;white-space:normal;box-shadow:0 12px 36px rgba(0,0,0,.6);pointer-events:none}.tools [data-help]:hover::after{top:auto;bottom:calc(100% + .48rem)}
+@media(max-width:760px){.app{grid-template-rows:auto minmax(0,54%) auto minmax(0,46%)}.brand span{display:none}.checks{grid-template-columns:1fr}.tools{min-width:900px}}
+</style>
 </head>
 <body>
-<main><p>Opening the Z0 body…</p></main>
+<div class="app">
+<header class="top">
+  <div class="brand"><strong>Z0 / Sketched</strong><span>human persists · agents change the scene</span></div>
+  <span class="chip" id="net">local mock</span><span class="spacer"></span>
+  <button class="btn" id="cameraBtn" data-help="The camera is your human-owned persistence ground. Agents cannot turn it off or shake it away.">camera</button>
+  <button class="btn" id="keyBtn" data-help="Remove a green background so agent scenery can appear behind your body.">green key</button>
+  <button class="btn agent" id="termsBtn" data-help="Change the selected agent's evolving terms: what it may inspect, say, draw, and retain.">terms</button>
+  <button class="btn" id="auditBtn" data-help="Read the append-only witness history.">witness</button>
+</header>
+<section class="stage">
+  <canvas id="stage"></canvas><video id="video" playsinline muted hidden></video>
+  <div class="badge"><b>HUMAN GROUND</b><br><span id="stats">camera off · 0 human · 0 generated</span></div>
+  <div class="receipt" id="receipt"></div>
+</section>
+<div class="tools">
+  <input class="textmark" id="markText" placeholder="Write on the human floor…">
+  <button class="btn human" id="markBtn" data-help="Place a human-owned text mark.">mark</button>
+  <button class="btn" id="undoBtn" data-help="Revoke your newest active human mark without deleting history.">revoke last</button>
+  <button class="btn agent" id="pulseBtn" data-help="Give the selected agent one turn.">agent pulse</button>
+  <button class="btn danger" id="shakeBtn" data-help="Clear only the selected agent's uncommitted residue.">shake agent</button>
+  <button class="btn" id="motionBtn" data-help="On a phone, enable physical shaking to clear the selected agent.">enable phone shake</button>
+  <button class="btn" id="snapshotBtn">snapshot</button>
+</div>
+<section class="chat">
+  <div class="seats"><span class="seatmeta">AGENTS</span><div id="seatButtons" class="row"></div><button class="seatbtn" id="addAgent">+ agent</button><span class="spacer"></span><span class="seatmeta" id="seatStatus">Omega selected · mock</span></div>
+  <div class="stream" id="stream"></div>
+  <div class="compose"><textarea class="chatbox" id="chatInput" placeholder="Speak below the surface…"></textarea><button class="btn agent" id="sendBtn">send</button></div>
+</section>
+</div>
+<aside class="drawer" id="auditDrawer"><div class="row"><h2>Witness ledger</h2><span class="spacer"></span><button class="btn" id="closeAudit">close</button></div><p>Camera state, terms, marks, chat, and scoped shakes are recorded as events.</p><ol class="audit" id="audit"></ol></aside>
+<div class="scrim" id="termsScrim"><section class="modal">
+<h2 id="termsTitle">Omega's current terms</h2>
+<p>This is an evolving agreement. The camera and human layer remain yours. The selected agent receives only the permissions below.</p>
+<div class="checks">
+<label class="check"><input id="capObserve" type="checkbox" checked> inspect witnessed state when invoked</label>
+<label class="check"><input id="capSpeak" type="checkbox" checked> answer in conversation</label>
+<label class="check"><input id="capBack" type="checkbox" checked> draw behind the keyed human</label>
+<label class="check"><input id="capFront" type="checkbox"> draw in front of the human</label>
+</div>
+<div class="field"><label>connection</label><select id="mode"><option value="guest">sponsored guest inference</option><option value="local">local mock</option><option value="gateway">personal OmegaClaw gateway</option></select></div>
+<div class="field"><label>gateway / guest endpoint</label><input id="endpoint" placeholder="Configured by the site owner, or your own gateway URL"></div>
+<label class="row"><input id="allowVision" type="checkbox"> allow one current surface snapshot when explicitly invoked</label>
+<p class="fine">Guest mode requires the site-owned inference Worker. Visitors never enter a provider credential. Until that Worker is connected, guest mode falls back visibly to the local mock.</p>
+<div class="row"><button class="btn agent" id="saveTerms">accept these terms</button><button class="btn" id="cancelTerms">cancel</button></div>
+</section></div>
+<div class="scrim" id="agentScrim"><section class="modal">
+<h2>Add an agent seat</h2><div class="field"><label>name</label><input id="agentName" placeholder="Director"></div><div class="field"><label>role</label><input id="agentRole" placeholder="Stages coherent scenes around the human"></div>
+<div class="row"><button class="btn agent" id="saveAgent">add seat</button><button class="btn" id="cancelAgent">cancel</button></div>
+</section></div>
 <script>
-(async()=>{
-  const source='https://raw.githubusercontent.com/PaulTiffany/sketched/agent/sketched-html-body/z0.html';
-  try{
-    const response=await fetch(source,{cache:'no-store'});
-    if(!response.ok) throw new Error('source '+response.status);
-    let html=await response.text();
-
-    // Live presentation pass: retain the one-file body and policy kernel while
-    // making the public surface human-readable and vertically embodied.
-    html=html.replace(
-      '.workspace{min-height:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,360px);background:var(--frame);gap:3px;padding:3px}',
-      '.workspace{min-height:0;display:grid;grid-template-columns:1fr;grid-template-rows:minmax(54%,1.35fr) minmax(250px,.75fr);background:#000;gap:2px;padding:2px}'
-    );
-    html=html.replace(
-      '.side{min-height:0;display:grid;grid-template-rows:auto 1fr auto;background:#171c22}',
-      '.side{min-height:0;display:grid;grid-template-rows:auto 1fr auto;background:#11151a;border-top:1px solid #303841}'
-    );
-    html=html.replace(
-      '@media(max-width:820px){.workspace{grid-template-columns:1fr;grid-template-rows:minmax(52%,1fr) minmax(220px,40%)}',
-      '@media(max-width:820px){.workspace{grid-template-columns:1fr;grid-template-rows:minmax(50%,1fr) minmax(250px,46%)}'
-    );
-
-    const help=`
-      [data-help]{position:relative}
-      [data-help]:hover::after,[data-help]:focus-visible::after{
-        content:attr(data-help);position:absolute;z-index:100;left:50%;top:calc(100% + .5rem);
-        transform:translateX(-50%);width:max-content;max-width:min(330px,82vw);padding:.5rem .62rem;
-        border:1px solid #3b4652;border-radius:.45rem;background:#07090c;color:#f4f1e8;
-        font:600 11px/1.45 ui-monospace,Consolas,monospace;white-space:normal;
-        box-shadow:0 12px 36px rgba(0,0,0,.6);pointer-events:none
-      }
-      .draw-foot [data-help]:hover::after,.bottombar [data-help]:hover::after{top:auto;bottom:calc(100% + .5rem)}
-    `;
-    html=html.replace('</style>',help+'</style>');
-
-    html=html.replace('one-file embodied surface','draw above · speak below · hover for meaning');
-    html=html.replace('local ledger','local-only · mock agent');
-    html=html.replace('Omega seat','terms');
-    html=html.replace('zero point: human authority','your surface · human marks persist');
-    html=html.replace('local embodiment · seated below the human','local simulation · no model connected');
-    html=html.replace('Speak into the shared body…','Speak below the surface…');
-    html=html.replace('Place a human text mark…','Write on the human floor…');
-    html=html.replace('shake generated','shake');
-
-    const attrs=new Map([
-      ['id="transportChip"','id="transportChip" data-help="This is currently stored in your browser. Buzz and a real model are not connected yet."'],
-      ['id="cameraBtn"','id="cameraBtn" data-help="Show your camera behind the drawing surface. Pages provides the HTTPS permission context."'],
-      ['id="seatBtn"','id="seatBtn" data-help="Open the evolving terms that govern what Omega may see, say, generate, and retain."'],
-      ['id="auditBtn"','id="auditBtn" data-help="Open the append-only witness history. Revocation adds a new event rather than rewriting the past."'],
-      ['id="markBtn"','id="markBtn" data-help="Place a human-owned text mark. Human marks survive shake."'],
-      ['id="undoBtn"','id="undoBtn" data-help="Withdraw your newest active human mark while preserving its historical receipt."'],
-      ['id="pulseBtn"','id="pulseBtn" data-help="Give the current local Omega simulation one deliberate turn."'],
-      ['id="shakeBtn"','id="shakeBtn" data-help="Remove uncommitted generated residue. Human marks remain."'],
-      ['id="snapshotBtn"','id="snapshotBtn" data-help="Download an image of the current visible surface."'],
-      ['id="exportBtn"','id="exportBtn" data-help="Download the signed event history as JSON."'],
-      ['id="importBtn"','id="importBtn" data-help="Load and verify a previously exported witness history."']
-    ]);
-    for(const [from,to] of attrs) html=html.replace(from,to);
-
-    document.open();
-    document.write(html);
-    document.close();
-  }catch(error){
-    document.body.innerHTML='<main><p>Could not open the Z0 body: '+String(error.message||error)+'</p></main>';
-  }
+(()=>{
+'use strict';
+const VERSION='z0-live-0.4',STORE='z0.live.v4',OWNER_ENDPOINT='';
+const $=s=>document.querySelector(s),canvas=$('#stage'),ctx=canvas.getContext('2d',{willReadFrequently:true}),video=$('#video'),camCanvas=document.createElement('canvas'),camCtx=camCanvas.getContext('2d',{willReadFrequently:true});
+let S=load(),draw=null,cam=null,keyOn=false,toastTimer=null,motionOn=false,lastShake=0;
+function defaults(){return{selected:'omega',agents:[
+{id:'omega',name:'Omega',role:'Witness and scene interpreter',color:'#ffc468',mode:'guest',endpoint:OWNER_ENDPOINT,caps:{observe:true,speak:true,back:true,front:false},vision:false},
+{id:'synth',name:'Synth',role:'Synthesizes a coherent scene',color:'#c7a6ff',mode:'guest',endpoint:OWNER_ENDPOINT,caps:{observe:true,speak:true,back:true,front:false},vision:false},
+{id:'challenge',name:'Challenger',role:'Introduces contrast and tests the scene',color:'#ff8f8f',mode:'guest',endpoint:OWNER_ENDPOINT,caps:{observe:true,speak:true,back:false,front:true},vision:false}
+],events:[]}}
+function load(){try{return Object.assign(defaults(),JSON.parse(localStorage.getItem(STORE)||'{}'))}catch{return defaults()}}function save(){localStorage.setItem(STORE,JSON.stringify(S))}
+function id(){return crypto.randomUUID()}function now(){return new Date().toISOString()}function agent(){return S.agents.find(a=>a.id===S.selected)||S.agents[0]}
+function add(kind,actor,payload){const e={id:id(),version:VERSION,at:now(),kind,actor,payload,prev:S.events.at(-1)?.id||null};S.events.push(e);save();render();return e}
+function active(){const revoked=new Set(),accepted=new Set();for(const e of S.events){if(e.kind==='revoke')revoked.add(e.payload.target);if(e.kind==='accept')accepted.add(e.payload.target);if(e.kind==='shake')for(const x of S.events)if(x.kind==='mark'&&x.actor===e.payload.agent&&!accepted.has(x.id))revoked.add(x.id)}return S.events.filter(e=>e.kind==='mark'&&!revoked.has(e.id)).map(e=>({...e,accepted:accepted.has(e.id)}))}
+function flash(t,ok=true){clearTimeout(toastTimer);const el=$('#receipt');el.textContent=t;el.style.borderColor=ok?'var(--ok)':'var(--danger)';el.style.color=ok?'var(--ok)':'var(--danger)';el.classList.add('show');toastTimer=setTimeout(()=>el.classList.remove('show'),2500)}
+function fit(){const r=canvas.getBoundingClientRect(),d=devicePixelRatio||1;canvas.width=Math.max(1,Math.floor(r.width*d));canvas.height=Math.max(1,Math.floor(r.height*d));ctx.setTransform(d,0,0,d,0,0)}
+function scene(p,w,h){const g=ctx.createLinearGradient(0,0,0,h);g.addColorStop(0,p.sky||'#101a28');g.addColorStop(1,p.ground||'#201612');ctx.fillStyle=g;ctx.fillRect(0,0,w,h);ctx.fillStyle=p.sun||'rgba(255,210,120,.8)';ctx.beginPath();ctx.arc((p.sunX||.75)*w,(p.sunY||.25)*h,Math.min(w,h)*.08,0,Math.PI*2);ctx.fill();ctx.fillStyle=p.ground||'#201612';ctx.fillRect(0,(p.horizon||.68)*h,w,h)}
+function drawMark(e,w,h){const p=e.payload;ctx.save();ctx.strokeStyle=p.color||'#fff';ctx.fillStyle=p.color||'#fff';ctx.lineWidth=p.width||3;ctx.lineCap='round';ctx.lineJoin='round';if(p.type==='stroke'){ctx.beginPath();p.points.forEach(([x,y],i)=>i?ctx.lineTo(x*w,y*h):ctx.moveTo(x*w,y*h));ctx.stroke()}else if(p.type==='text'){ctx.font=p.actorType==='human'?'600 18px Georgia,serif':'600 15px ui-monospace,Consolas,monospace';ctx.fillText(p.text,(p.x||.2)*w,(p.y||.3)*h)}ctx.restore()}
+function keyedCamera(w,h){if(!cam||!video.videoWidth)return;const pw=Math.min(640,Math.max(1,Math.floor(w))),ph=Math.max(1,Math.floor(pw*h/w));if(camCanvas.width!==pw||camCanvas.height!==ph){camCanvas.width=pw;camCanvas.height=ph}camCtx.clearRect(0,0,pw,ph);camCtx.drawImage(video,0,0,pw,ph);if(keyOn){const im=camCtx.getImageData(0,0,pw,ph),d=im.data;for(let i=0;i<d.length;i+=4){const r=d[i],g=d[i+1],b=d[i+2];if(g>75&&g>r*1.22&&g>b*1.18)d[i+3]=Math.max(0,255-(g-Math.max(r,b))*4)}camCtx.putImageData(im,0,0)}ctx.drawImage(camCanvas,0,0,w,h)}
+function paint(){const w=canvas.clientWidth,h=canvas.clientHeight;ctx.clearRect(0,0,w,h);ctx.fillStyle='#14191e';ctx.fillRect(0,0,w,h);const marks=active();for(const e of marks)if(e.payload.plane==='behind'&&e.payload.type==='scene')scene(e.payload.scene||{},w,h);for(const e of marks)if(e.payload.plane==='behind'&&e.payload.type!=='scene')drawMark(e,w,h);keyedCamera(w,h);for(const e of marks)if(e.payload.actorType==='human')drawMark(e,w,h);for(const e of marks)if(e.payload.plane==='front')drawMark(e,w,h);if(draw)drawMark({payload:{type:'stroke',points:draw,color:'#6fe2f0',actorType:'human'}},w,h);requestAnimationFrame(paint)}
+function pos(ev){const r=canvas.getBoundingClientRect();return[(ev.clientX-r.left)/r.width,(ev.clientY-r.top)/r.height]}
+canvas.onpointerdown=e=>{canvas.setPointerCapture(e.pointerId);draw=[pos(e)]};canvas.onpointermove=e=>{if(draw)draw.push(pos(e))};canvas.onpointerup=()=>{if(draw&&draw.length>1)add('mark','human',{type:'stroke',points:draw,color:'#6fe2f0',actorType:'human',plane:'human'});draw=null};canvas.onpointercancel=()=>draw=null;
+function seatButtons(){const box=$('#seatButtons');box.innerHTML='';for(const a of S.agents){const b=document.createElement('button');b.className='seatbtn'+(a.id===S.selected?' active':'');b.textContent=a.name;b.title=a.role;b.onclick=()=>{S.selected=a.id;save();render()};box.append(b)}const a=agent();$('#seatStatus').textContent=`${a.name} selected · ${a.mode==='guest'&&!(a.endpoint||OWNER_ENDPOINT)?'guest unavailable → mock':a.mode}`;$('#shakeBtn').textContent=`shake ${a.name}`}
+function chat(){const stream=$('#stream');stream.innerHTML='';const msgs=S.events.filter(e=>e.kind==='chat');if(!msgs.length){const d=document.createElement('div');d.className='msg system';d.textContent='Draw above. Choose an agent. Speak below. Each agent owns a separate removable layer.';stream.append(d)}for(const e of msgs.slice(-80)){const d=document.createElement('article');d.className='msg '+(e.actor==='human'?'human':'agent');d.textContent=e.payload.text;const f=document.createElement('footer');f.textContent=e.actor==='human'?'human':(S.agents.find(a=>a.id===e.actor)?.name||e.actor);d.append(f);stream.append(d)}stream.scrollTop=stream.scrollHeight}
+function render(){seatButtons();chat();const marks=active(),human=marks.filter(e=>e.payload.actorType==='human').length,gen=marks.length-human;$('#stats').textContent=`camera ${cam?'on':'off'}${keyOn?' · green keyed':''} · ${human} human · ${gen} generated`;$('#net').textContent=agent().mode==='guest'&&!(agent().endpoint||OWNER_ENDPOINT)?'guest offline · mock fallback':agent().mode;const list=$('#audit');list.innerHTML='';for(const e of S.events.slice(-100).reverse()){const li=document.createElement('li');li.textContent=`${e.kind} · ${e.actor} · ${new Date(e.at).toLocaleTimeString()}`;list.append(li)}}
+function shakeSelected(source='button'){const a=agent();add('shake','human',{agent:a.id,source});flash(`${a.name} residue cleared; human ground preserved`)}
+function mockTurn(a,prompt){const n=S.events.filter(e=>e.kind==='mark'&&e.actor===a.id).length;const lower=prompt.toLowerCase();const palette=lower.includes('space')?{sky:'#060816',ground:'#141027',sun:'#d6c7ff'}:lower.includes('forest')?{sky:'#10251f',ground:'#172219',sun:'#e7d89a'}:lower.includes('desert')?{sky:'#563321',ground:'#472718',sun:'#ffc970'}:{sky:n%2?'#1d1b31':'#142531',ground:n%2?'#2a1728':'#1b211d',sun:a.color};return{say:`${a.name}: I can change my own scene layer without touching the camera or human marks.`,operations:[{op:'scene',plane:'behind',scene:palette},{op:'text',plane:a.caps.front?'front':'behind',text:`${a.name} · ${prompt.slice(0,42)||'witnessed turn'}`,x:.58,y:.25+(n*.1)%0.5}]}}
+async function snapshot(){const out=document.createElement('canvas');out.width=canvas.width;out.height=canvas.height;out.getContext('2d').drawImage(canvas,0,0);return out.toDataURL('image/jpeg',.68)}
+async function infer(a,prompt){const endpoint=a.endpoint||OWNER_ENDPOINT;if(a.mode==='guest'&&endpoint){const body={agent:{id:a.id,name:a.name,role:a.role,caps:a.caps},prompt,witness:{marks:active().map(e=>({actor:e.actor,payload:e.payload})).slice(-40)},snapshot:a.vision?await snapshot():null};const r=await fetch(endpoint,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});if(!r.ok)throw Error('guest '+r.status);return r.json()}if(a.mode==='gateway'&&a.endpoint){const r=await fetch(a.endpoint,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({agent:a,prompt,events:S.events.slice(-80),snapshot:a.vision?await snapshot():null})});if(!r.ok)throw Error('gateway '+r.status);return r.json()}return mockTurn(a,prompt)}
+function applyOps(a,out){if(a.caps.speak&&out.say)add('chat',a.id,{text:String(out.say)});for(const op of out.operations||[]){if(op.op==='scene'&&a.caps.back)add('mark',a.id,{type:'scene',plane:'behind',scene:op.scene||{},actorType:'agent',agent:a.id});if(op.op==='text'){const plane=op.plane==='front'&&a.caps.front?'front':'behind';if(plane==='behind'&&!a.caps.back)continue;add('mark',a.id,{type:'text',plane,text:String(op.text||''),x:Number(op.x??.6),y:Number(op.y??.3),color:a.color,actorType:'agent',agent:a.id})}}}
+async function turn(prompt){const a=agent();if(!a.caps.observe){flash(`${a.name} is not allowed to inspect the witness`,false);return}if(prompt)add('chat','human',{text:prompt});$('#seatStatus').textContent=`${a.name} working…`;try{applyOps(a,await infer(a,prompt))}catch(e){flash(`Inference unavailable: ${e.message}; using local fallback`,false);applyOps(a,mockTurn(a,prompt))}render()}
+$('#cameraBtn').onclick=async()=>{if(cam){cam.getTracks().forEach(t=>t.stop());cam=null;video.srcObject=null;add('camera','human',{on:false,key:keyOn});return}try{cam=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:false});video.srcObject=cam;await video.play();add('camera','human',{on:true,key:keyOn})}catch{flash('Camera permission was not granted',false)}};
+$('#keyBtn').onclick=()=>{keyOn=!keyOn;$('#keyBtn').classList.toggle('human',keyOn);add('camera','human',{on:!!cam,key:keyOn})};
+$('#markBtn').onclick=()=>{const i=$('#markText'),t=i.value.trim();if(!t)return;i.value='';add('mark','human',{type:'text',text:t,x:.12+(S.events.length*.13)%0.55,y:.2+(S.events.length*.09)%0.6,color:'#6fe2f0',actorType:'human',plane:'human'})};$('#markText').onkeydown=e=>{if(e.key==='Enter')$('#markBtn').click()};
+$('#undoBtn').onclick=()=>{const e=S.events.slice().reverse().find(x=>x.kind==='mark'&&x.actor==='human'&&active().some(a=>a.id===x.id));if(e)add('revoke','human',{target:e.id});else flash('No active human mark',false)};
+$('#pulseBtn').onclick=()=>turn('');$('#shakeBtn').onclick=()=>shakeSelected();$('#sendBtn').onclick=()=>{const i=$('#chatInput'),t=i.value.trim();if(!t)return;i.value='';turn(t)};$('#chatInput').onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();$('#sendBtn').click()}};
+$('#motionBtn').onclick=async()=>{try{if(typeof DeviceMotionEvent!=='undefined'&&typeof DeviceMotionEvent.requestPermission==='function'){const p=await DeviceMotionEvent.requestPermission();if(p!=='granted')throw Error('permission denied')}motionOn=!motionOn;$('#motionBtn').classList.toggle('human',motionOn);$('#motionBtn').textContent=motionOn?'phone shake on':'enable phone shake';if(motionOn)window.addEventListener('devicemotion',motion);else window.removeEventListener('devicemotion',motion)}catch(e){flash('Motion permission unavailable: '+e.message,false)}};
+function motion(e){const a=e.accelerationIncludingGravity;if(!a)return;const mag=Math.sqrt((a.x||0)**2+(a.y||0)**2+(a.z||0)**2),t=Date.now();if(mag>22&&t-lastShake>1800){lastShake=t;shakeSelected('physical')}}
+$('#snapshotBtn').onclick=()=>{const a=document.createElement('a');a.href=canvas.toDataURL('image/jpeg',.8);a.download=`z0-${Date.now()}.jpg`;a.click()};
+$('#termsBtn').onclick=()=>{const a=agent();$('#termsTitle').textContent=`${a.name}'s current terms`;$('#capObserve').checked=a.caps.observe;$('#capSpeak').checked=a.caps.speak;$('#capBack').checked=a.caps.back;$('#capFront').checked=a.caps.front;$('#mode').value=a.mode;$('#endpoint').value=a.endpoint||'';$('#allowVision').checked=a.vision;$('#termsScrim').classList.add('open')};$('#cancelTerms').onclick=()=>$('#termsScrim').classList.remove('open');
+$('#saveTerms').onclick=()=>{const a=agent();a.caps={observe:$('#capObserve').checked,speak:$('#capSpeak').checked,back:$('#capBack').checked,front:$('#capFront').checked};a.mode=$('#mode').value;a.endpoint=$('#endpoint').value.trim();a.vision=$('#allowVision').checked;add('terms','human',{agent:a.id,caps:a.caps,mode:a.mode,vision:a.vision});$('#termsScrim').classList.remove('open')};
+$('#auditBtn').onclick=()=>$('#auditDrawer').classList.add('open');$('#closeAudit').onclick=()=>$('#auditDrawer').classList.remove('open');
+$('#addAgent').onclick=()=>$('#agentScrim').classList.add('open');$('#cancelAgent').onclick=()=>$('#agentScrim').classList.remove('open');$('#saveAgent').onclick=()=>{const name=$('#agentName').value.trim(),role=$('#agentRole').value.trim();if(!name)return;const a={id:name.toLowerCase().replace(/[^a-z0-9]+/g,'-')+'-'+Math.random().toString(36).slice(2,6),name,role:role||'Custom agent',color:'#9fd08b',mode:'guest',endpoint:OWNER_ENDPOINT,caps:{observe:true,speak:true,back:true,front:false},vision:false};S.agents.push(a);S.selected=a.id;add('agent.add','human',{agent:a});$('#agentScrim').classList.remove('open');$('#agentName').value='';$('#agentRole').value=''};
+window.onresize=fit;fit();paint();render();if(!S.events.length)add('surface','human',{invariant:'human persists; agents change their own scene layers'});
 })();
 </script>
 </body>
