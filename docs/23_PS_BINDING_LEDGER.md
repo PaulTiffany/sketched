@@ -29,7 +29,7 @@ mechanically but still awaits human attestation.
 | `axiom:appC_psc1` | PS--C1 (Boundedness) | proved-kernel | 1 | 1 | `5c16b246bb91` | reserved |
 | `axiom:appC_psc2` | PS--C2 (Unitary covariance) | proved-kernel | 1 | 1 | `1bb88823df35` | reserved |
 | `axiom:appC_psc3` | PS--C3 (Conservation of interpretive budget) | conditional | 1 | 1 | `b77a6039a52b` | reserved |
-| `axiom:appC_psc4` | PS--C4 (Ray invariance) | proved-kernel | 1 | 1 | `9ec4dc567ff6` | reserved |
+| `axiom:appC_psc4` | PS--C4 (Ray invariance) | proved-kernel | 1 | 1 | `f25498138ac0` | reserved |
 | `axiom:appC_psc5` | PS--C5 (Resolution-limited distinguishability) | conditional | 1 | 2 | `df691b08a3de` | reserved |
 | `axiom:appC_psc6` | PS--C6 (Pure-state calibration) | proved-kernel | 1 | 1 | `24b364d2544a` | reserved |
 | `lemma:appC_sigma_additivity` | Finite orthogonal additivity gives a Gleason frame function | partial | 1 | 1 | `673de25b6803` | reserved |

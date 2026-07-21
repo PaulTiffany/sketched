@@ -24,7 +24,7 @@
     "voice:render": ".\\.venv-voice\\Scripts\\python.exe selfcompile/voices/render.py",
     "video:render": ".\\.venv-voice\\Scripts\\python.exe selfcompile/voices/video.py",
     "video:check": "python verification/tools/video_audit.py",
-    "content:check": "npm run contribution:check && npm run epistemology:check && npm run imagination:check && npm run fabricpc:package:check && npm run voice:check && npm run video:check && npm run book:check && npm run book:test && npm run book5:lean && npm run ps:source:check && npm run ps:flattening:check && npm run ps:frontier:check && npm run ps:bindings:check && npm run ps:bindings:audit",
+    "content:check": "npm run contribution:check && npm run epistemology:check && npm run imagination:check && npm run fabricpc:package:check && npm run voice:check && npm run video:check && npm run book:check && npm run book:test && npm run book5:lean && npm run ps:source:check && npm run ps:alignment:check && npm run ps:flattening:check && npm run ps:frontier:check && npm run ps:bindings:check && npm run ps:bindings:audit",
     "dev": "npm run contribution:check && npm run book:ledger && npm run book:glossary && npm run book:project && npm run book5:lean && vite",
     "build": "npm run contribution:check && npm run epistemology:check && npm run imagination:check && npm run fabricpc:package:check && npm run voice:check && npm run video:check && npm run book:ledger && npm run book:glossary && npm run book:project && npm run book5:lean && tsc -b && vite build",
     "preview": "vite preview",
@@ -34,7 +34,8 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "ps:flattening:check": "python verification/tools/flattening_audit.py --check",
-    "ps:source:check": "python verification/tools/source_obligations.py --check"
+    "ps:source:check": "python verification/tools/source_obligations.py --check",
+    "ps:alignment:check": "python verification/tools/alignment_audit.py"
   },
   "dependencies": {
     "react": "^18.3.1",

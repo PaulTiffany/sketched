@@ -5258,7 +5258,7 @@
       "declares": "psc4_ray_invariance",
       "math_id": "axiom:appC_psc4",
       "source": "principia",
-      "statement_sha": "9ec4dc567ff6",
+      "statement_sha": "f25498138ac0",
       "note": "the Born form satisfies ray invariance (phase-independence), forward direction"
     },
     {

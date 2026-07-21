@@ -1,0 +1,215 @@
+{
+  "schema": "sketched.ps-alignment.v1",
+  "description": "Claim-level typed correspondence layered on the existing Principia Atlas. Lean is the validity boundary; this registry records correspondence status without collapsing literary expression into theorem text.",
+  "status_vocabulary": {
+    "exact": "directly kernel-supported claim",
+    "constructed": "object explicitly constructed by Lean",
+    "conditional": "kernel theorem with visible premise",
+    "countermodel": "explicit boundary witness",
+    "refuted": "proposed implication formally false",
+    "open_bridge": "genuinely unconstructed typed implication",
+    "interpretive": "philosophical or synthetic reading grounded in but not identical to formal results",
+    "poetic": "intentionally non-propositional material outside theorem certification"
+  },
+  "entries": [
+    {
+      "id": "Q-LOWER-01",
+      "atlas_id": "remark:appC_observer_lowering_boundary",
+      "source_file": "appendix_dual_horizon.tex",
+      "source_line": 372,
+      "source_statement_sha": "6ddb00bedcd0",
+      "status": "constructed",
+      "kernel_certified": true,
+      "claim": "A normalized pure-state vector constructs a Hermitian rank-one density and lowers through a fixed observer response into the existing resolution certificate.",
+      "lean_witnesses": [
+        "Book7QuantumGleason.pureStateDensity_isHermitian",
+        "Book7QuantumGleason.pureStateToResolution_reducedState_isHermitian",
+        "Book7QuantumGleason.pureState_forward_chain"
+      ],
+      "premises": [],
+      "countermodels": [],
+      "bounds": [],
+      "atlas_note": "The construction is forward. The observer certificate is not strengthened with an upstream invariant."
+    },
+    {
+      "id": "Q-PHASE-02",
+      "atlas_id": "remark:appC_observer_lowering_boundary",
+      "source_file": "appendix_dual_horizon.tex",
+      "source_line": 372,
+      "source_statement_sha": "6ddb00bedcd0",
+      "status": "exact",
+      "kernel_certified": true,
+      "claim": "Global-phase-related vectors have the same pure-state density and the same fixed-kernel observer certificate; distinct normalized vectors collide under lowering.",
+      "lean_witnesses": [
+        "Book7QuantumGleason.pureStateDensity_globalPhase",
+        "Book7QuantumGleason.pureStateToResolution_globalPhase",
+        "Book7QuantumGleason.pureState_lowering_not_injective"
+      ],
+      "premises": [],
+      "countermodels": [],
+      "bounds": [],
+      "atlas_note": "This is the proved non-injectivity of observer lowering."
+    },
+    {
+      "id": "Q-FRAME-03",
+      "atlas_id": "remark:appC_observer_lowering_boundary",
+      "source_file": "appendix_dual_horizon.tex",
+      "source_line": 372,
+      "source_statement_sha": "6ddb00bedcd0",
+      "status": "refuted",
+      "kernel_certified": true,
+      "claim": "An arbitrary complete-frame readout system reconstructs a Hermitian readout certificate.",
+      "lean_witnesses": [
+        "Book7QuantumGleason.completeFrameCoherence_does_not_supply_hermitian_certificate"
+      ],
+      "premises": [],
+      "countermodels": [
+        "Book7QuantumGleason.completeFrameCoherence_does_not_supply_hermitian_certificate"
+      ],
+      "bounds": ["Q-LOWER-01"],
+      "atlas_note": "The implication is formally false, not awaiting proof."
+    },
+    {
+      "id": "Q-RESOLVE-04",
+      "atlas_id": "remark:appC_observer_lowering_boundary",
+      "source_file": "appendix_dual_horizon.tex",
+      "source_line": 372,
+      "source_statement_sha": "6ddb00bedcd0",
+      "status": "refuted",
+      "kernel_certified": true,
+      "claim": "An arbitrary normalized observer-resolution certificate forces Hermiticity or reconstructs the full upstream state.",
+      "lean_witnesses": [
+        "Book7QuantumGleason.quantumResolution_without_matrixHermiticity_does_not_supply_certificate",
+        "Book7QuantumGleason.quantumResolution_does_not_force_reducedState_isHermitian"
+      ],
+      "premises": [],
+      "countermodels": [
+        "Book7QuantumGleason.quantumResolution_without_matrixHermiticity_does_not_supply_certificate",
+        "Book7QuantumGleason.quantumResolution_does_not_force_reducedState_isHermitian"
+      ],
+      "bounds": ["Q-LOWER-01"],
+      "atlas_note": "The failure is information loss across the observer boundary, not a missing certificate field."
+    },
+    {
+      "id": "Q-HERMITIAN-05",
+      "atlas_id": "remark:appC_observer_lowering_boundary",
+      "source_file": "appendix_dual_horizon.tex",
+      "source_line": 372,
+      "source_statement_sha": "6ddb00bedcd0",
+      "status": "conditional",
+      "kernel_certified": true,
+      "claim": "A resolution certificate whose retained matrix is explicitly Hermitian constructs the existing Hermitian readout certificate.",
+      "lean_witnesses": [
+        "Book7QuantumGleason.quantumResolution_to_hermitian_certificate",
+        "Book7QuantumGleason.hermitian_reconstruction_from_certificate"
+      ],
+      "premises": ["The retained reduced-state matrix is Hermitian."],
+      "countermodels": [],
+      "bounds": ["Q-RESOLVE-04"],
+      "atlas_note": "A completed local conditional construction; it is not full quantum Gleason."
+    },
+    {
+      "id": "Q-COMPLEX-06",
+      "atlas_id": "axiom:appC_psc4",
+      "source_file": "appendix_dual_horizon.tex",
+      "source_line": 592,
+      "source_statement_sha": "f25498138ac0",
+      "status": "exact",
+      "kernel_certified": true,
+      "claim": "Complex operator expectations scale by conjugate(a)*a and are invariant under certified global phase; real a^2 scaling is not the complex law.",
+      "lean_witnesses": [
+        "Book7QuantumGleason.vectorExpectation_smul",
+        "Book7QuantumGleason.vectorExpectation_globalPhase",
+        "Book7QuantumGleason.complex_phase_refutes_real_degreeTwo"
+      ],
+      "premises": [],
+      "countermodels": [],
+      "bounds": [],
+      "atlas_note": "The exact kernel supports the phase-faithful correction without certifying the PS axiom as derived."
+    },
+    {
+      "id": "Q-BORN-07",
+      "atlas_id": "theorem:appC_born_rule",
+      "source_file": "appendix_dual_horizon.tex",
+      "source_line": 681,
+      "source_statement_sha": "cab8ba890a2e",
+      "status": "interpretive",
+      "kernel_certified": false,
+      "claim": "The appendix gives a human mathematical Gleason derivation under PS-C1--PS-C6; the Lean companion supplies bounded finite constructions and boundaries but does not certify this full theorem.",
+      "lean_witnesses": [],
+      "premises": [],
+      "countermodels": [],
+      "bounds": [],
+      "atlas_note": "The distinction preserves the book proof and prevents projection of the local conditional Hermitian construction as full quantum Gleason."
+    },
+    {
+      "id": "Q-BK7-08",
+      "atlas_id": "theorem:bk7_born_collapse",
+      "source_file": "book7.tex",
+      "source_line": 1924,
+      "source_statement_sha": "127b405ebd78",
+      "status": "conditional",
+      "kernel_certified": true,
+      "claim": "Zero-defect convergence identifies the Hilbert cross-section; Born identification additionally consumes a separate uniqueness certificate.",
+      "lean_witnesses": [
+        "Book7BornCollapse.collapse_limit_eq_hilbertFrame",
+        "Book7BornCollapse.hilbert_collapse_alone_does_not_determine_readout"
+      ],
+      "premises": [
+        "Defect continuity and convergence to zero.",
+        "A separate Born/Gleason-style uniqueness certificate."
+      ],
+      "countermodels": [
+        "Book7BornCollapse.hilbert_collapse_alone_does_not_determine_readout"
+      ],
+      "bounds": [],
+      "atlas_note": "Hilbert collapse alone does not select a probability functional.",
+      "coverage": "partial"
+    },
+    {
+      "id": "Q-ATTRACTOR-09",
+      "atlas_id": "remark:bk7_born_collapse_psc3prime",
+      "source_file": "book7.tex",
+      "source_line": 1955,
+      "source_statement_sha": "b918c78a0355",
+      "status": "interpretive",
+      "kernel_certified": false,
+      "claim": "Reading non-contextuality as the fixed-point condition of reflective collapse is an interpretive synthesis of the conditional theorem.",
+      "lean_witnesses": [],
+      "premises": [],
+      "countermodels": [],
+      "bounds": [],
+      "atlas_note": "The prose reach is preserved but not presented as a further kernel identity."
+    },
+    {
+      "id": "Q-SCHOLIUM-10",
+      "atlas_id": "scholium:bk7_born_as_hilbert_cross_section",
+      "source_file": "book7.tex",
+      "source_line": 1973,
+      "source_statement_sha": "59cac27d7727",
+      "status": "interpretive",
+      "kernel_certified": false,
+      "claim": "Born as the p=2 slice of a continuous observer geometry is the book's synthetic reading; deterministic-looking limits describe resolved appearance and do not invert the observer map.",
+      "lean_witnesses": [],
+      "premises": [],
+      "countermodels": [],
+      "bounds": [],
+      "atlas_note": "The scholium remains literary and synthetic while the reconstruction boundary is visible."
+    },
+    {
+      "id": "POETRY-01",
+      "atlas_id": "sec:bk1_operatio",
+      "source_file": "operatio.tex",
+      "source_line": 1,
+      "source_statement_sha": "e3b0c44298fc",
+      "status": "poetic",
+      "kernel_certified": false,
+      "claim": "Operatio is intentional operator-poetry and a semantic carrier, not a proposition awaiting theorem certification.",
+      "lean_witnesses": [],
+      "premises": [],
+      "countermodels": [],
+      "bounds": [],
+      "atlas_note": "Formal silence does not reject or flatten the operator-poetic register."
+    }
+  ]
+}

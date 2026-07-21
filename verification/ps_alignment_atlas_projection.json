@@ -1,0 +1,111 @@
+{
+  "schema": "sketched.ps-alignment-atlas-projection.v1",
+  "source": "Principia Symbolica authoritative Atlas",
+  "description": "Minimal source-hash projection for the explicitly reviewed alignment anchors; contains no manuscript prose.",
+  "nodes": [
+    {
+      "label": "remark:appC_born_rule_dependency",
+      "file": "appendix_dual_horizon.tex",
+      "line": 312,
+      "name": "Derivation Structure",
+      "matter_region": "appendix",
+      "statement_sha": "a553196e68ac"
+    },
+    {
+      "label": "remark:appC_observer_lowering_boundary",
+      "file": "appendix_dual_horizon.tex",
+      "line": 372,
+      "name": "Formal correspondence at the observer boundary",
+      "matter_region": "appendix",
+      "statement_sha": "6ddb00bedcd0"
+    },
+    {
+      "label": "remark:appC_psc3prime_open_route",
+      "file": "appendix_dual_horizon.tex",
+      "line": 538,
+      "name": "Open derivation route for PS--C3$'$",
+      "matter_region": "appendix",
+      "statement_sha": "67bf7ae683ec"
+    },
+    {
+      "label": "axiom:appC_psc4",
+      "file": "appendix_dual_horizon.tex",
+      "line": 592,
+      "name": "PS--C4 (Ray invariance)",
+      "matter_region": "appendix",
+      "statement_sha": "f25498138ac0"
+    },
+    {
+      "label": "theorem:appC_born_rule",
+      "file": "appendix_dual_horizon.tex",
+      "line": 681,
+      "name": "Observer-relative Born Rule",
+      "matter_region": "appendix",
+      "statement_sha": "cab8ba890a2e"
+    },
+    {
+      "label": "corollary:appC_qubit_case",
+      "file": "appendix_dual_horizon.tex",
+      "line": 729,
+      "name": "Qubit case \\texorpdfstring{$d = 2$}{d = 2}",
+      "matter_region": "appendix",
+      "statement_sha": "837d107080ad"
+    },
+    {
+      "label": "corollary:appC_mixed_states",
+      "file": "appendix_dual_horizon.tex",
+      "line": 754,
+      "name": "Mixed states",
+      "matter_region": "appendix",
+      "statement_sha": "03fa24beed3a"
+    },
+    {
+      "label": "subsec:appC_born_interpretation_ps",
+      "file": "appendix_dual_horizon.tex",
+      "line": 783,
+      "name": "Interpretation Within Principia Symbolica",
+      "matter_region": "appendix",
+      "statement_sha": "e3b0c44298fc"
+    },
+    {
+      "label": "subsec:appC_born_outlook",
+      "file": "appendix_dual_horizon.tex",
+      "line": 794,
+      "name": "Implications and Outlook",
+      "matter_region": "appendix",
+      "statement_sha": "e3b0c44298fc"
+    },
+    {
+      "label": "theorem:bk7_born_collapse",
+      "file": "book7.tex",
+      "line": 1924,
+      "name": "Conditional Born collapse at the Hilbert cross-section",
+      "matter_region": "mainmatter",
+      "statement_sha": "127b405ebd78"
+    },
+    {
+      "label": "remark:bk7_born_collapse_psc3prime",
+      "file": "book7.tex",
+      "line": 1955,
+      "name": "Interpretive reading of PS-C3$'$: from axiom to attractor",
+      "matter_region": "mainmatter",
+      "statement_sha": "b918c78a0355"
+    },
+    {
+      "label": "scholium:bk7_born_as_hilbert_cross_section",
+      "file": "book7.tex",
+      "line": 1973,
+      "name": "Born as the Hilbert cross-section",
+      "matter_region": "mainmatter",
+      "statement_sha": "59cac27d7727"
+    },
+    {
+      "label": "sec:bk1_operatio",
+      "file": "operatio.tex",
+      "line": 1,
+      "name": "Operatio",
+      "matter_region": "operator_poetry",
+      "statement_sha": "e3b0c44298fc"
+    }
+  ]
+}
