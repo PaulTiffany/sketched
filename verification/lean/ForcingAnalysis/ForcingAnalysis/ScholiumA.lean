@@ -311,6 +311,93 @@ theorem projection_idempotent_ne_id_exists :
    definition:bk1_spinor_like_structure
    ================================================================ -/
 
+/-- A co-emergent operational pair on one embodied carrier. The fields are
+supplied together; neither drift nor reflection is constructed from the other.
+Their composite `step` records operational order only. -/
+structure CoemergentPhaseProcess (X : Type*) where
+  drift : X -> X
+  reflect : X -> X
+
+namespace CoemergentPhaseProcess
+
+/-- One recursive operational step: differentiate, then reflect/stabilize.
+The ordering is compositional, not an assertion of ontological precedence. -/
+def step {X : Type*} (P : CoemergentPhaseProcess X) : X -> X :=
+  fun x => P.reflect (P.drift x)
+
+/-- The observer-relative, partial spinor certificate justified by the source
+without importing full spin geometry. The process is inert data until the
+explicit `reader` supplies an `operate` action. `operate_realizes_process`
+certifies that this enactment faithfully realizes the co-emergent pair. At the
+half-cycle the observer detects an orientation change; at the double cycle the
+embodied phase returns. -/
+structure ObserverPhaseCertificate (X Signal Reader : Type*) where
+  process : CoemergentPhaseProcess X
+  reader : Reader
+  operate : Reader -> X -> X
+  operate_realizes_process : operate reader = process.step
+  psi : X
+  halfPeriod : Nat
+  halfPeriod_pos : 0 < halfPeriod
+  observe : X -> Signal
+  half_distinguished :
+    Not (observe (((operate reader)^[halfPeriod]) psi) = observe psi)
+  double_returns :
+    ((operate reader)^[2 * halfPeriod]) psi = psi
+
+/-- The certificate retains operation and both sides of the phase claim
+together: a reader-enacted step, visible half-cycle difference, and full-cycle
+restoration. -/
+theorem ObserverPhaseCertificate.components {X Signal Reader : Type*}
+    (P : ObserverPhaseCertificate X Signal Reader) :
+    And
+      (P.operate P.reader = P.process.step)
+      (And
+        (Not (P.observe (((P.operate P.reader)^[P.halfPeriod]) P.psi) =
+          P.observe P.psi))
+        (((P.operate P.reader)^[2 * P.halfPeriod]) P.psi = P.psi)) :=
+  And.intro P.operate_realizes_process
+    (And.intro P.half_distinguished P.double_returns)
+
+/-- The concrete co-emergent pair used by the phase witness. -/
+def zmod4PhaseProcess : CoemergentPhaseProcess (ZMod 4) where
+  drift := fun x => x + 2
+  reflect := fun x => x + 3
+
+/-- A concrete reader-operated witness on `ZMod 4`. Drift adds two and
+reflection adds three, so both are nonidentity while their enacted composite
+adds one. Two operations are observer-distinguishable from the start; four
+restore it. This witnesses recursive phase behavior, not curvature coupling
+or a spinor bundle. -/
+def zmod4ObserverPhaseCertificate :
+    ObserverPhaseCertificate (ZMod 4) (ZMod 4) PUnit where
+  process := zmod4PhaseProcess
+  reader := PUnit.unit
+  operate := fun _ => zmod4PhaseProcess.step
+  operate_realizes_process := rfl
+  psi := 0
+  halfPeriod := 2
+  halfPeriod_pos := by decide
+  observe := id
+  half_distinguished := by decide
+  double_returns := by decide
+/-- Both operations in the concrete phase witness are genuinely nonidentity;
+the recurrence is not obtained by padding a one-operator process with `id`. -/
+theorem zmod4_pair_nontrivial :
+    And
+      (Not (zmod4ObserverPhaseCertificate.process.drift = id))
+      (Not (zmod4ObserverPhaseCertificate.process.reflect = id)) := by
+  constructor
+  · intro h
+    have hx := congrFun h 0
+    norm_num [zmod4ObserverPhaseCertificate] at hx
+    exact (by decide : Not ((2 : ZMod 4) = 0)) hx
+  · intro h
+    have hx := congrFun h 0
+    norm_num [zmod4ObserverPhaseCertificate] at hx
+    exact (by decide : Not ((3 : ZMod 4) = 0)) hx
+
+end CoemergentPhaseProcess
 /-- The successor map on `ZMod 4`, standing in for the recursive reflection
 operator `reflect_n` in definition:bk1_spinor_like_structure. -/
 def stepZMod4 (x : ZMod 4) : ZMod 4 := x + 1

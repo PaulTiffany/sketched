@@ -4,6 +4,16 @@
  "boundary": "Mappings certify only the static/algebraic/finite kernel. Manifold, Hilbert-space, PDE, categorical, and asymptotic material is not certified; conditional and partial rows do not promote the full prose statement to a Lean theorem.",
  "entries": [
   {
+   "atlas_id": "definition:bk1_let_cats_be_the_category",
+   "coverage": "definition",
+   "lean": [
+    "ScholiumC.CategoryOfStructures.existsUnique_from_empty",
+    "ScholiumC.CategoryOfStructures.exists_colimit_cocone",
+    "ScholiumC.CategoryOfStructures.hom_advances_stage"
+   ],
+   "note": "Typed ambient interface only: an arbitrary staged category, initial void, and universe-bounded cocompleteness are recorded as supplied data. This list-first definition has no ontological priority over the co-emergent drift/reflection operation and does not manufacture either operation or the later manifold."
+  },
+  {
    "atlas_id": "definition:bk1_bounded_observer",
    "coverage": "definition",
    "lean": [
@@ -33,7 +43,7 @@
    "lean": [
     "ScholiumA.kernelBounded_le"
    ],
-   "note": "The sup-bound hypothesis is represented as a plain scalar bound (drift \u2264 \u03b4) rather than an actual supremum over a domain."
+   "note": "The sup-bound hypothesis is represented as a plain scalar bound (drift ≤ δ) rather than an actual supremum over a domain."
   },
   {
    "atlas_id": "proposition:bk1_sufficient_condition_for_kernel_boundedness_from_uniform_drift_bound",
@@ -41,7 +51,7 @@
    "lean": [
     "ScholiumA.kernelBounded_le"
    ],
-   "note": "This anchor's own inline proof is exactly the \u2016K\u20161=1 submultiplicativity chain now proved by kernelBounded_le; kernel norm and convolution remain hypotheses, not derived objects."
+   "note": "This anchor's own inline proof is exactly the ‖K‖1=1 submultiplicativity chain now proved by kernelBounded_le; kernel norm and convolution remain hypotheses, not derived objects."
   },
   {
    "atlas_id": "definition:bk1_observer_relative_interpretability",
@@ -60,7 +70,7 @@
     "ScholiumA.ifValue_le_eps",
     "ScholiumA.nu_le_ifValue"
    ],
-   "note": "The c_min \u2264 c \u2264 1 and c_min*eps \u2265 nu hypotheses genuinely force nu \u2264 c*eps \u2264 eps; this is a real inequality derivation, not a restatement."
+   "note": "The c_min ≤ c ≤ 1 and c_min*eps ≥ nu hypotheses genuinely force nu ≤ c*eps ≤ eps; this is a real inequality derivation, not a restatement."
   },
   {
    "atlas_id": "proposition:bk1_stage_composite_operators_are_interpretable",
@@ -76,7 +86,7 @@
    "lean": [
     "ScholiumA.twoStep_bound"
    ],
-   "note": "Modeled as the TwoStepBoundedApprox structure's stabilize \u2218 drift composite; no standalone theorem beyond twoStep_bound."
+   "note": "Modeled as the TwoStepBoundedApprox structure's stabilize ∘ drift composite; no standalone theorem beyond twoStep_bound."
   },
   {
    "atlas_id": "lemma:bk1_observer_bounded_emergence_constraint",
@@ -87,7 +97,7 @@
     "ScholiumA.ChainedApprox.cauchySeq",
     "ScholiumA.ChainedApprox.exists_limit_with_tail_bound"
    ],
-   "note": "Part (i)'s 2\u03b4 bound follows from the triangle inequality. Part (ii) includes finite telescoping and, from summable resolution decay, full Cauchy and complete-space convergence with a tail displacement bound."
+   "note": "Part (i)'s 2δ bound follows from the triangle inequality. Part (ii) includes finite telescoping and, from summable resolution decay, full Cauchy and complete-space convergence with a tail displacement bound."
   },
   {
    "atlas_id": "axiom:bk1_summable_resolution_decay",
@@ -106,24 +116,28 @@
    "lean": [
     "ScholiumA.mirror_involution_ne_id_exists"
    ],
-   "note": "Witnesses existence of a concrete inner-product-preserving involution on Real\u00d7Real satisfying R\u2260\u00b1Id, exactly the source's non-triviality clause for the mirror component; does not model the general tangent-bundle map or its relation to R_stab."
+   "note": "Witnesses existence of a concrete inner-product-preserving involution on Real×Real satisfying R≠±Id, exactly the source's non-triviality clause for the mirror component; does not model the general tangent-bundle map or its relation to R_stab."
   },
   {
    "atlas_id": "definition:bk1_pre_geometric_operators_and_stages",
-   "coverage": "partial",
+   "coverage": "conditional",
    "lean": [
-    "ScholiumA.projection_idempotent_ne_id_exists"
+    "ScholiumA.projection_idempotent_ne_id_exists",
+    "ScholiumC.OperationalStage.operators_coemerge",
+    "ScholiumC.OperationalStage.drift_advances_stage"
    ],
-   "note": "Only the stabilization operator's idempotence-but-not-identity clause is witnessed concretely; the colimit/ordinal-stage-tower content of this definition is not modeled."
+   "note": "A categorical OperationalStage now carries drift and idempotent stabilization jointly as one co-emergent witness; neither operator is derived from the other. The drift morphism preserves emergence orientation. The earlier concrete projection remains a nontrivial stabilization witness; ordinal limits, topology, and continuity remain open."
   },
   {
    "atlas_id": "definition:bk1_spinor_like_structure",
-   "coverage": "proved-kernel",
+   "coverage": "partial",
    "lean": [
+    "ScholiumA.CoemergentPhaseProcess.zmod4_pair_nontrivial",
+    "ScholiumA.CoemergentPhaseProcess.ObserverPhaseCertificate.components",
     "ScholiumA.stepZMod4_four_returns",
     "ScholiumA.stepZMod4_two_no_return"
    ],
-   "note": "Witnesses the 'double rotation, not single rotation' periodicity clause concretely on ZMod 4 (n0=2, 2*n0=4); orientation-sensitivity and observer-bounded curvature coupling clauses are not modeled (require a manifold and a sign-changing structure)."
+   "note": "A reader-operated co-emergent drift/reflection process drives the recursive step: the structure is inert until an explicit operate action is supplied and certified faithful. The observer distinguishes the half-cycle orientation and the double cycle restores embodied phase; a ZMod 4 construction proves both operations nonidentity. This remains partial: curvature coupling, smooth transport, general minimality, and a genuine spinor bundle are open."
   },
   {
    "atlas_id": "definition:bk1_symbolic_contradiction",
@@ -189,7 +203,7 @@
    "lean": [
     "ScholiumA.fixedPointInheritance"
    ],
-   "note": "Proved in the generalized (linearity-free) form: only invertibility of f is used, matching the toolchain guidance to drop unused hypotheses; f\u2218g\u2218f\u207b\u00b9 fixes f(x) given g fixes x."
+   "note": "Proved in the generalized (linearity-free) form: only invertibility of f is used, matching the toolchain guidance to drop unused hypotheses; f∘g∘f⁻¹ fixes f(x) given g fixes x."
   },
   {
    "atlas_id": "definition:bk1_proto_symbolic_space",
@@ -784,9 +798,10 @@
    "atlas_id": "axiom:bk1_observable_gradation_of_pre_geometric_operations",
    "coverage": "conditional",
    "lean": [
-    "Atlas.tower_glues"
+    "Atlas.tower_glues",
+    "ScholiumC.OperationalStage.observed_drift_ne_zero"
    ],
-   "note": "Observable continuous variation of D_lambda/R_lambda in the stage parameter: the tower-convergence kernel; the observer-continuity predicate stays interpretive."
+   "note": "Observable transformation requires an explicit Observation map and nonzero drift signal; continuity across the stage parameter remains represented only by the Atlas tower-convergence kernel. Detectability is not inferred from category structure."
   },
   {
    "atlas_id": "theorem:bk1_dual_horizon_unification_principle",

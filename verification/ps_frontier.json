@@ -24,11 +24,11 @@
   "claims_total": 476,
   "mapped_total": 476,
   "open_total": 0,
-  "source_obligations_unresolved": 66,
+  "source_obligations_unresolved": 15,
   "binding_integrity": {
-    "bindings_total": 988,
+    "bindings_total": 1295,
     "human_attested": 0,
-    "reserved": 988
+    "reserved": 1295
   },
   "books": [
     {

@@ -51,4 +51,35 @@ theorem observer_bound_alone_does_not_force_identity_preservation :
     (0 : ℝ) ≤ 1 ∧ ¬ |(0 : ℝ) - 2| ≤ 1 := by
   norm_num
 
+/-- A coherent observer extension carries its domain/fallback construction
+and separate normed certificates for the identities it claims to preserve. -/
+structure ObserverOperatorExtensionCertificate (Point Value : Type*) where
+  admissible : Point → Prop
+  localField : {point // admissible point} → Value
+  fallback : Value
+  divergenceDefect : Point → ℝ
+  entropyDefect : Point → ℝ
+  epsilon : ℝ
+  epsilon_nonneg : 0 ≤ epsilon
+  divergence_bound : ∀ point, |divergenceDefect point| ≤ epsilon
+  entropy_bound : ∀ point, |entropyDefect point| ≤ epsilon
+
+namespace ObserverOperatorExtensionCertificate
+
+/-- The certificate constructs a total field agreeing with the local field on
+the observer-admissible subtype. -/
+theorem exists_total_extension {Point Value : Type*}
+    (C : ObserverOperatorExtensionCertificate Point Value) :
+    ∃ extended : Point → Value, ∀ point (hpoint : C.admissible point),
+      extended point = C.localField ⟨point, hpoint⟩ :=
+  exists_observerExtension C.admissible C.localField C.fallback
+
+/-- Both advertised preservation defects are controlled by the same explicit
+observer budget; neither estimate follows from curvature boundedness alone. -/
+theorem joint_defect_bound {Point Value : Type*}
+    (C : ObserverOperatorExtensionCertificate Point Value) (point : Point) :
+    max |C.divergenceDefect point| |C.entropyDefect point| ≤ C.epsilon := by
+  exact max_le (C.divergence_bound point) (C.entropy_bound point)
+
+end ObserverOperatorExtensionCertificate
 end ForcingAnalysis.Book6ObserverExtension

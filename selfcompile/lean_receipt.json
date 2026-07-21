@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "generated_from": "lake env lean ForcingAnalysis.lean (leanprover/lean4:v4.31.0)",
-  "verified": 1358,
+  "verified": 1737,
   "theorems": [
     {
       "name": "transport_identity_iff_residue",
@@ -734,7 +734,7 @@
     {
       "name": "Book5.effectiveSupportDimensionInfinity_log_ratio",
       "file": "Book5NormInfinity.lean",
-      "statement": "The logarithmic infinity ratio yields effective support dimension two.",
+      "statement": "The logarithmic infinity ratio yields effective support frame rank two.",
       "axioms": [
         "propext",
         "Classical.choice",
@@ -4899,6 +4899,25 @@
       "status": "P"
     },
     {
+      "name": "ScholiumA.CoemergentPhaseProcess.ObserverPhaseCertificate.components",
+      "file": "ScholiumA.lean",
+      "statement": "A reader-enacted operation faithfully realizes the co-emergent pair while retaining visible half-cycle orientation change and double-cycle phase restoration",
+      "axioms": [],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "ScholiumA.CoemergentPhaseProcess.zmod4_pair_nontrivial",
+      "file": "ScholiumA.lean",
+      "statement": "The concrete ZMod 4 phase witness uses jointly nonidentity drift and reflection operations",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "ScholiumA.stepZMod4_four_returns",
       "file": "ScholiumA.lean",
       "statement": "The successor map on ZMod 4, iterated four times, returns every point to itself",
@@ -5473,6 +5492,162 @@
       "status": "P"
     },
     {
+      "name": "Book2CycleConsistency.cycleWork_eq_zero",
+      "file": "Book2CycleConsistency.lean",
+      "statement": "Every scalar state function has zero total work around a finite closed permutation cycle.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book2CycleConsistency.entropyTemperatureHolonomy_eq_zero_of_integrable",
+      "file": "Book2CycleConsistency.lean",
+      "statement": "An entropy-temperature exchange with a global potential has zero closed-cycle holonomy.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book2CycleConsistency.thermodynamic_consistency_of_closed_integrable_cycle",
+      "file": "Book2CycleConsistency.lean",
+      "statement": "Closed-cycle state-function exactness plus integrable entropy-temperature exchange yields the hypothesis-surface consistency equation.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book2CycleConsistency.consistency_iff_zero_entropyTemperatureHolonomy",
+      "file": "Book2CycleConsistency.lean",
+      "statement": "On a closed cycle, thermodynamic consistency is equivalent to vanishing entropy-temperature holonomy.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book2CycleConsistency.path_thermodynamic_consistency",
+      "file": "Book2CycleConsistency.lean",
+      "statement": "Along a continuous parameterized boundary trace, first variation and closed balance yield the entropy-temperature exchange identity.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book2CycleConsistency.closed_cycle_can_have_nonzero_entropyTemperatureHolonomy",
+      "file": "Book2CycleConsistency.lean",
+      "statement": "A closed two-state cycle can retain nonzero entropy-temperature holonomy, so closedness alone does not imply integrability.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book2HypothesisSurfaceStokes.HypothesisSurfaceThermodynamics.boundary_balance_with_residue",
+      "file": "Book2HypothesisSurfaceStokes.lean",
+      "statement": "Pulled-back first variation exposes free-energy circulation as observer-accounting residue minus entropy-temperature exchange.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book2HypothesisSurfaceStokes.HypothesisSurfaceThermodynamics.boundary_consistency_iff_residue_zero",
+      "file": "Book2HypothesisSurfaceStokes.lean",
+      "statement": "Boundary thermodynamic consistency is exactly vanishing observer-accounting residue.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book2HypothesisSurfaceStokes.HypothesisSurfaceThermodynamics.boundary_thermodynamic_consistency",
+      "file": "Book2HypothesisSurfaceStokes.lean",
+      "statement": "Closed observer accounting yields the canonical boundary entropy-temperature exchange identity.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book2HypothesisSurfaceStokes.HypothesisSurfaceThermodynamics.interior_thermodynamic_consistency",
+      "file": "Book2HypothesisSurfaceStokes.lean",
+      "statement": "A supplied oriented degree-correct Stokes law transports the closed boundary identity into the hypothesis interior.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book2HypothesisSurfaceStokes.HypothesisSurfaceThermodynamics.interior_consistency_iff_residue_zero",
+      "file": "Book2HypothesisSurfaceStokes.lean",
+      "statement": "Under Stokes, interior thermodynamic consistency remains equivalent to vanishing accounting residue.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book2HypothesisSurfaceStokes.scalar_closed_surface_consistent",
+      "file": "Book2HypothesisSurfaceStokes.lean",
+      "statement": "Positive control: an explicit scalar surface with closed accounting satisfies both boundary and interior consistency.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book2HypothesisSurfaceStokes.bounded_curvature_does_not_zero_residue",
+      "file": "Book2HypothesisSurfaceStokes.lean",
+      "statement": "Countermodel: bounded curvature can coexist with nonzero observer-accounting residue and failed thermodynamic consistency.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "Book5Adaptation.adapted_state_viable",
       "file": "Book5Adaptation.lean",
       "statement": "Adaptation as explicit data: under a condition change, a selected transfer, reflection, or drift update preserves viability.",
@@ -5531,6 +5706,102 @@
       "name": "Book5ConvergenceMAP.increasing_drift_alone_does_not_force_map_convergence",
       "file": "Book5ConvergenceMAP.lean",
       "statement": "Countermodel: strictly increasing drift can coexist with a population share fixed at one half.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5ConvergenceMAP.PersistentMAPAdvantage.contraction_nonneg",
+      "file": "Book5ConvergenceMAP.lean",
+      "statement": "Nonnegative non-MAP fitness and positive MAP fitness make the residual selection ratio nonnegative.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5ConvergenceMAP.PersistentMAPAdvantage.contraction_lt_one",
+      "file": "Book5ConvergenceMAP.lean",
+      "statement": "A strict persistent MAP fitness advantage makes the residual selection ratio contractive.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5ConvergenceMAP.MAPPopulationOrbit.residual_eq_pow",
+      "file": "Book5ConvergenceMAP.lean",
+      "statement": "The mutation-free residual recurrence determines geometric non-MAP mass decay.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5ConvergenceMAP.MAPPopulationOrbit.share_le_one",
+      "file": "Book5ConvergenceMAP.lean",
+      "statement": "The quantitative population law preserves the upper probability-simplex face.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5ConvergenceMAP.MAPPopulationOrbit.share_nonneg",
+      "file": "Book5ConvergenceMAP.lean",
+      "statement": "The quantitative population law preserves nonnegative MAP share.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5ConvergenceMAP.MAPPopulationOrbit.share_eq_mapShare",
+      "file": "Book5ConvergenceMAP.lean",
+      "statement": "The certified population orbit coincides with the explicit geometric contraction trajectory.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5ConvergenceMAP.MAPPopulationOrbit.share_tendsto_one",
+      "file": "Book5ConvergenceMAP.lean",
+      "statement": "Persistent quantitative advantage plus no inflow forces MAP population mass to one.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5ConvergenceMAP.MAPPopulationOrbit.fitness_gap_with_inflow_does_not_force_convergence",
+      "file": "Book5ConvergenceMAP.lean",
+      "statement": "Countermodel: replenishing non-MAP inflow can hold population share fixed despite a strict fitness gap.",
       "axioms": [
         "propext",
         "Classical.choice",
@@ -5646,6 +5917,66 @@
       "name": "Book5ESSEquivalence.population_concentration_alone_does_not_identify_strategy_sets",
       "file": "Book5ESSEquivalence.lean",
       "statement": "Countermodel: population concentration on MAP does not alone identify the abstract ESS and MAP sets.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5ESSEquivalence.TwoSidedStrategyApproximation.hausdorffDist_le",
+      "file": "Book5ESSEquivalence.lean",
+      "statement": "Two directed metric transports bound the genuine ESS--MAP Hausdorff distance.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5ESSEquivalence.TwoSidedStrategyApproximation.hausdorffDist_tendsto_zero",
+      "file": "Book5ESSEquivalence.lean",
+      "statement": "Shrinking two-sided strategy tolerance forces Hausdorff convergence without finite-stage equality.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5ESSEquivalence.TwoSidedStrategyApproximation.of_eventual_equality",
+      "file": "Book5ESSEquivalence.lean",
+      "statement": "Literal set equality is a sufficient zero-tolerance boundary, not a premise of metric convergence.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5ESSEquivalence.one_sided_ess_to_map_does_not_identify_sets",
+      "file": "Book5ESSEquivalence.lean",
+      "statement": "Countermodel: ESS-to-MAP inclusion does not supply the reverse strategy transport.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5ESSEquivalence.population_limit_does_not_supply_two_sided_approximation",
+      "file": "Book5ESSEquivalence.lean",
+      "statement": "Countermodel: population-mass convergence does not identify or approximate the abstract ESS set.",
       "axioms": [
         "propext",
         "Classical.choice",
@@ -5775,6 +6106,78 @@
       "status": "P"
     },
     {
+      "name": "Book5StatefulOperatorLearning.step_current",
+      "file": "Book5StatefulOperatorLearning.lean",
+      "statement": "A learning step installs the feedback-selected operator as the new incumbent.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5StatefulOperatorLearning.step_records_incumbent",
+      "file": "Book5StatefulOperatorLearning.lean",
+      "statement": "A learning step retains the previous incumbent in ordered history.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5StatefulOperatorLearning.step_comparatorRegret_nonpos",
+      "file": "Book5StatefulOperatorLearning.lean",
+      "statement": "Certified selection has nonpositive regret against every operator in the updated inventory.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5StatefulOperatorLearning.boolFeedbackLaw_responds",
+      "file": "Book5StatefulOperatorLearning.lean",
+      "statement": "A concrete feedback-sensitive law routes one persistent state to distinct future operators.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5StatefulOperatorLearning.two_steps_retain_ordered_history",
+      "file": "Book5StatefulOperatorLearning.lean",
+      "statement": "Two feedback steps retain both prior incumbents in temporal order.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5StatefulOperatorLearning.feedback_response_does_not_force_inventory_change",
+      "file": "Book5StatefulOperatorLearning.lean",
+      "statement": "Feedback-sensitive selection can occur while the supplied operator inventory remains fixed.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "Book5ReflectiveAccuracy.fidelity_le_log_of_depth_bound",
       "file": "Book5ReflectiveAccuracy.lean",
       "statement": "A bounded per-level fidelity gain composed with a logarithmic metabolic depth bound yields logarithmically bounded reflective accuracy.",
@@ -5802,6 +6205,66 @@
       "name": "Book5ReflectiveAccuracy.capacity_alone_does_not_bound_unconstrained_fidelity",
       "file": "Book5ReflectiveAccuracy.lean",
       "statement": "Countermodel: metabolic capacity alone cannot bound an otherwise unconstrained fidelity value.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5ReflectiveAccuracy.ReflectiveFidelityProcess.fidelity_le_linear",
+      "file": "Book5ReflectiveAccuracy.lean",
+      "statement": "Uniform marginal fidelity control telescopes over every finite reflective depth.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5ReflectiveAccuracy.GeometricRecursionBudget.power_le_capacity_ratio_add_one",
+      "file": "Book5ReflectiveAccuracy.lean",
+      "statement": "Positive geometric recursion cost yields the dimensionless power budget before logarithmic calibration.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5ReflectiveAccuracy.ReflectiveAccuracyCertificate.beta_nonneg",
+      "file": "Book5ReflectiveAccuracy.lean",
+      "statement": "Marginal gain and log-coordinate calibration construct a nonnegative source coefficient beta.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5ReflectiveAccuracy.ReflectiveAccuracyCertificate.fidelity_le_log_capacity",
+      "file": "Book5ReflectiveAccuracy.lean",
+      "statement": "The process, metabolic budget, and explicit calibration compose into the logarithmic fidelity envelope.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5ReflectiveAccuracy.depth_budget_without_marginal_control_countermodel",
+      "file": "Book5ReflectiveAccuracy.lean",
+      "statement": "Countermodel: an admissible metabolic depth does not bound an unrestricted fidelity process.",
       "axioms": [
         "propext",
         "Classical.choice",
@@ -5877,6 +6340,68 @@
       "status": "P"
     },
     {
+      "name": "Book5ShadeTransfer.ShadeInterface.faithful_comp",
+      "file": "Book5ShadeTransfer.lean",
+      "statement": "Faithful shade interfaces compose through a shared observer-readable intermediate decoder.",
+      "axioms": [],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5ShadeTransfer.ShadeInterface.identity_faithful",
+      "file": "Book5ShadeTransfer.lean",
+      "statement": "Identity representation is a faithful shade-transport boundary.",
+      "axioms": [],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5ShadeTransfer.faithfulControlTransport_components",
+      "file": "Book5ShadeTransfer.lean",
+      "statement": "Joint control fidelity exposes both shade and shadow-price preservation.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5ShadeTransfer.radius_preservation_implies_control_fidelity",
+      "file": "Book5ShadeTransfer.lean",
+      "statement": "Exact radius transport preserves every radial shade normalization and shadow-price readout.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5ShadeTransfer.shade_without_shadow_price_is_not_control_fidelity",
+      "file": "Book5ShadeTransfer.lean",
+      "statement": "Countermodel: identical shade can conceal a changed shadow price.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5ShadeTransfer.monotone_encoding_not_semantically_faithful",
+      "file": "Book5ShadeTransfer.lean",
+      "statement": "Countermodel: strictly monotone representation transport need not commute with shade semantics.",
+      "axioms": [
+        "propext"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "Book6DriftMutation.mutationRate_eq_weighted_curvature_change",
       "file": "Book6DriftMutation.lean",
       "statement": "Mutation rate is the density-weighted magnitude of curvature change along drift.",
@@ -5925,6 +6450,30 @@
       "status": "P"
     },
     {
+      "name": "Book6DriftMutation.MutationConstitutiveCertificate.rate_nonneg",
+      "file": "Book6DriftMutation.lean",
+      "statement": "A nonnegative calibration applied to a normalized nonnegative density gives a nonnegative constitutive mutation rate.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book6DriftMutation.MutationConstitutiveCertificate.rate_le_calibrated_uniform_bound",
+      "file": "Book6DriftMutation.lean",
+      "statement": "The constitutive mutation rate inherits the response bound scaled by its explicit calibration.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "Book6ThermodynamicMutation.mem_feasibleStates_iff",
       "file": "Book6ThermodynamicMutation.lean",
       "statement": "Reflective entropy thresholding exactly characterizes the finite feasible mutation states.",
@@ -5952,6 +6501,30 @@
       "name": "Book6ThermodynamicMutation.equilibrium_balance_alone_does_not_imply_mepp",
       "file": "Book6ThermodynamicMutation.lean",
       "statement": "Countermodel: equality of production and dissipation at equilibrium does not imply constrained maximality.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book6ThermodynamicMutation.MEPPSelectionLaw.trajectory_tendsto",
+      "file": "Book6ThermodynamicMutation.lean",
+      "statement": "An explicit eventual-selection law converges to its certified constrained MEPP state.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book6ThermodynamicMutation.argmax_exists_without_selection_dynamics",
+      "file": "Book6ThermodynamicMutation.lean",
+      "statement": "Countermodel: a unique finite maximizer can exist while a constant trajectory never selects it.",
       "axioms": [
         "propext",
         "Classical.choice",
@@ -6012,6 +6585,30 @@
       "name": "Book6ConfidenceGradient.regularity_alone_does_not_force_confidence_dynamics",
       "file": "Book6ConfidenceGradient.lean",
       "statement": "Countermodel: regular confidence data alone does not impose the printed mutation velocity law.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book6ConfidenceGradient.confidenceVelocity_descends_of_perturbation_control",
+      "file": "Book6ConfidenceGradient.lean",
+      "statement": "A typed directional bound on the retained perturbation proves non-increasing confidence along the full velocity.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book6ConfidenceGradient.confidenceVelocity_strictly_descends_of_strict_control",
+      "file": "Book6ConfidenceGradient.lean",
+      "statement": "Strict directional domination of the typed perturbation proves strict confidence descent.",
       "axioms": [
         "propext",
         "Classical.choice",
@@ -6153,6 +6750,66 @@
       "status": "P"
     },
     {
+      "name": "Book4ImaginationGuard.opposite_phases_cancel_projection_not_exposure",
+      "file": "Book4ImaginationGuard.lean",
+      "statement": "Opposite signed phases can cancel in projection while retaining strictly positive traversal exposure.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ImaginationGuard.phaseBudget_nonneg",
+      "file": "Book4ImaginationGuard.lean",
+      "statement": "Retained absolute phase exposure is nonnegative.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ImaginationGuard.certifiedRate_lt_one_of_penalty_below_margin",
+      "file": "Book4ImaginationGuard.lean",
+      "statement": "A calibrated phase-to-rate response remains contractive when its certified envelope fits inside the unused margin.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ImaginationGuard.linearPhaseRateLaw_recovers_effectiveRate",
+      "file": "Book4ImaginationGuard.lean",
+      "statement": "The earlier linear penalty is recovered as a particular calibrated response law.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ImaginationGuard.zero_calibration_alone_does_not_determine_rate",
+      "file": "Book4ImaginationGuard.lean",
+      "statement": "Countermodel: identical zero-exposure calibration does not determine phase response away from zero.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "Book6ConfidenceStability.stabilityVelocity_eq",
       "file": "Book6ConfidenceStability.lean",
       "statement": "The scalar confidence-stability velocity is negative coupling times the Hamiltonian quotient slope.",
@@ -6201,6 +6858,18 @@
       "status": "P"
     },
     {
+      "name": "Book6ConfidenceStability.ConfidenceStabilityCertificate.velocity_nonpos",
+      "file": "Book6ConfidenceStability.lean",
+      "statement": "A typed constitutive certificate and nonnegative quotient slope force nonpositive stability velocity.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "Book6ObserverExtension.observerExtension_agrees",
       "file": "Book6ObserverExtension.lean",
       "statement": "An observer-local field extension agrees exactly on its admitted domain.",
@@ -6240,6 +6909,30 @@
       "name": "Book6ObserverExtension.observer_bound_alone_does_not_force_identity_preservation",
       "file": "Book6ObserverExtension.lean",
       "statement": "Countermodel: a curvature bound alone does not preserve an arbitrary divergence or entropy identity.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book6ObserverExtension.ObserverOperatorExtensionCertificate.exists_total_extension",
+      "file": "Book6ObserverExtension.lean",
+      "statement": "The observer certificate constructs a total fallback extension agreeing exactly on its admissible subtype.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book6ObserverExtension.ObserverOperatorExtensionCertificate.joint_defect_bound",
+      "file": "Book6ObserverExtension.lean",
+      "statement": "Separate divergence and entropy defects obey their shared explicit observer budget.",
       "axioms": [
         "propext",
         "Classical.choice",
@@ -6301,9 +6994,93 @@
       "status": "P"
     },
     {
+      "name": "Book8OrientationSignposting.encode_eq_orientationSign_mul",
+      "file": "Book8OrientationSignposting.lean",
+      "statement": "Audience encoding is multiplication by its explicit orientation parity.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book8OrientationSignposting.transport_eq_relativeSign_mul",
+      "file": "Book8OrientationSignposting.lean",
+      "statement": "Cross-frame sign is uniquely derived from source and target orientation witnesses.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book8OrientationSignposting.transport_trans",
+      "file": "Book8OrientationSignposting.lean",
+      "statement": "Signed audience transport composes coherently through intermediate frames.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book8OrientationSignposting.transport_roundtrip",
+      "file": "Book8OrientationSignposting.lean",
+      "statement": "Round-trip orientation transport recovers the original displayed change.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book8OrientationSignposting.transport_positive_of_same_orientation",
+      "file": "Book8OrientationSignposting.lean",
+      "statement": "A witnessed same orientation preserves positive sign.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book8OrientationSignposting.transport_negative_of_opposite_orientation",
+      "file": "Book8OrientationSignposting.lean",
+      "statement": "A witnessed opposite orientation reverses positive sign.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "Book7SystemicPower.localPower_pos",
       "file": "Book7SystemicPower.lean",
       "statement": "Positive confidence, gradient magnitude, and effective volume yield positive local symbolic power.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7SystemicPower.orientedLocalPower_pos",
+      "file": "Book7SystemicPower.lean",
+      "statement": "Positive confidence, an explicitly positive identity-directed inner product, and positive volume yield positive oriented local power.",
       "axioms": [
         "propext",
         "Classical.choice",
@@ -6552,6 +7329,78 @@
       "name": "Book7NoInteriorTransition.continuity_from_threshold_bridge",
       "file": "Book7NoInteriorTransition.lean",
       "statement": "A curvature threshold yields continuity only when an explicit threshold-to-regularity bridge is supplied.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7NoInteriorTransition.regularizedGeometry_continuousOn",
+      "file": "Book7NoInteriorTransition.lean",
+      "statement": "For the explicit resolvent geometry, continuous signal and curvature paths with a positive subcritical margin construct continuity.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7NoInteriorTransition.regularizedGeometry_has_no_interior_transition",
+      "file": "Book7NoInteriorTransition.lean",
+      "statement": "The constructed subcritical resolvent geometry has no discrete transition at any admitted point of the closed sweep.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7NoInteriorTransition.subcriticalLpExponent_zero_curvature",
+      "file": "Book7NoInteriorTransition.lean",
+      "statement": "The constructed curvature-indexed Lp coordinate equals the Hilbert exponent two at zero curvature.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7NoInteriorTransition.subcriticalLpExponent_continuousOn",
+      "file": "Book7NoInteriorTransition.lean",
+      "statement": "A continuous curvature path with positive subcritical margin constructs a continuous Lp-exponent sweep.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7NoInteriorTransition.subcriticalLpExponent_strict_order",
+      "file": "Book7NoInteriorTransition.lean",
+      "statement": "For a positive threshold, the constructed subcritical Lp coordinate strictly preserves curvature order.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7NoInteriorTransition.subcriticalLpExponent_has_no_interior_transition",
+      "file": "Book7NoInteriorTransition.lean",
+      "statement": "The constructed curvature-indexed Lp sweep has no interior transition while curvature remains continuous and subcritical.",
       "axioms": [
         "propext",
         "Classical.choice",
@@ -7093,6 +7942,102 @@
       "status": "P"
     },
     {
+      "name": "Book7NoncontextualHilbert.translate_square_commutes",
+      "file": "Book7NoncontextualHilbert.lean",
+      "statement": "Canonical additive transports form commuting affine squares.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7NoncontextualHilbert.commuting_transport_does_not_force_metric_parallelogram",
+      "file": "Book7NoncontextualHilbert.lean",
+      "statement": "Countermodel: commuting affine transport on L1 does not imply the metric parallelogram law.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7NoncontextualHilbert.quadraticEnergy_parallelogram",
+      "file": "Book7NoncontextualHilbert.lean",
+      "statement": "A symmetric bilinear coupling induces a quadratic energy satisfying the metric parallelogram identity.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7NoncontextualHilbert.innerProductSpace_exists_of_metric_parallelogram",
+      "file": "Book7NoncontextualHilbert.lean",
+      "statement": "The metric parallelogram identity constructs a compatible real inner-product structure by Fr\u00e9chet-von Neumann-Jordan.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7EventHorizonTetrad.reconstructedValue_eq",
+      "file": "Book7EventHorizonTetrad.lean",
+      "statement": "Every scalar field on the four BH/WH input-output corners has an exact affine-bilinear reconstruction.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7EventHorizonTetrad.mixedCoefficient_eq_zero_iff_separable",
+      "file": "Book7EventHorizonTetrad.lean",
+      "statement": "The tetrad mixed cross-difference vanishes exactly for additive input-output separability.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7EventHorizonTetrad.nonzero_mixedCoefficient_iff_nonseparable",
+      "file": "Book7EventHorizonTetrad.lean",
+      "statement": "A nonzero tetrad mixed coefficient is exactly a finite witness of input-output nonseparability.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7EventHorizonTetrad.tetrad_reconstruction_does_not_force_hilbert_metric",
+      "file": "Book7EventHorizonTetrad.lean",
+      "statement": "Countermodel boundary: exhaustive affine-bilinear tetrad reconstruction does not force a Hilbert metric.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "AppendixCurvatureFlows.boundedContinuousFlow_cauchy_converges",
       "file": "AppendixCurvatureFlows.lean",
       "statement": "Cauchy sequences of bounded continuous flows into a complete normed space converge in the uniform ambient space.",
@@ -7189,6 +8134,30 @@
       "status": "P"
     },
     {
+      "name": "Book6ThermodynamicMAP.AveragedConstitutiveLaw.thermodynamicMAPDuality",
+      "file": "Book6ThermodynamicMAP.lean",
+      "statement": "The explicit averaged constitutive balance derives the oriented thermodynamic-MAP identity.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book6ThermodynamicMAP.AveragedConstitutiveLaw.dualityResidual_eq_zero",
+      "file": "Book6ThermodynamicMAP.lean",
+      "statement": "The averaged constitutive law forces the oriented MAP residual to vanish.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "Book5StrategyBalance.balance_iff_capacity_above_threshold",
       "file": "Book5StrategyBalance.lean",
       "statement": "At positive cooperation, strict balance is exactly capacity above drift divided by cooperation.",
@@ -7240,6 +8209,66 @@
       "name": "Book5StrategyBalance.local_cancellation_is_not_strict_balance",
       "file": "Book5StrategyBalance.lean",
       "statement": "Exact local cancellation has zero margin and fails strict strategic balance.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5StrategyBalance.OperatorStrategySpace.exists_operator_balance_of_cofinal",
+      "file": "Book5StrategyBalance.lean",
+      "statement": "Cofinal available reflection capacity supplies an operator beyond the cooperation-adjusted drift threshold.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5StrategyBalance.OperatorStrategySpace.viableMAP_nonempty_of_richness",
+      "file": "Book5StrategyBalance.lean",
+      "statement": "One cooperative MAP strategy with cofinal inventory constructs a nonempty drift-indexed viable subset.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5StrategyBalance.OperatorStrategySpace.mem_viableMAP_iff",
+      "file": "Book5StrategyBalance.lean",
+      "statement": "Membership in the constructed subset exposes MAP status and an actual available balancing operator.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5StrategyBalance.OperatorStrategySpace.viableMAP_eq_isMAP_of_uniform_richness",
+      "file": "Book5StrategyBalance.lean",
+      "statement": "Uniform positive cooperation and cofinal inventories make every MAP strategy viable.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5StrategyBalance.OperatorStrategySpace.submaximal_drift_without_inventory_countermodel",
+      "file": "Book5StrategyBalance.lean",
+      "statement": "Countermodel: a sub-maximal drift and positive cooperation cannot populate an empty typed reflection inventory.",
       "axioms": [
         "propext",
         "Classical.choice",
@@ -7325,6 +8354,126 @@
       "status": "P"
     },
     {
+      "name": "Book5DualityProof.covenantTrajectory_tendsto_target",
+      "file": "Book5DualityProof.lean",
+      "statement": "A supplied contractive covenant law converges to its oriented free-energy target.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5DualityProof.map_target_eventually_viable",
+      "file": "Book5DualityProof.lean",
+      "statement": "A positive MAP target under contractive feedback yields eventual positive free energy.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5DualityProof.covenantTrajectory_orientation_dual",
+      "file": "Book5DualityProof.lean",
+      "statement": "Reversing target and initial orientation reflects the whole trajectory, not merely its final sign.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5DualityProof.mad_target_eventually_collapsed",
+      "file": "Book5DualityProof.lean",
+      "statement": "A negative MAD target under contractive feedback yields eventual negative free energy.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5DualityProof.geometric_decoupling_vanishes",
+      "file": "Book5DualityProof.lean",
+      "statement": "Contractive transport forces the residual interaction to vanish geometrically.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5DualityProof.decoupling_without_contraction_can_persist",
+      "file": "Book5DualityProof.lean",
+      "statement": "Countermodel: unit gain preserves a nonzero interaction residue forever.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5DualityProof.EnhancedDualityRealizationCertificate.map_realization",
+      "file": "Book5DualityProof.lean",
+      "statement": "The MAP certificate jointly realizes classification, positive rate, target convergence, and eventual viability.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5DualityProof.EnhancedDualityRealizationCertificate.mad_realization",
+      "file": "Book5DualityProof.lean",
+      "statement": "The MAD certificate jointly realizes classification, negative rate, and zero-target convergence.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5DualityProof.EnhancedDualityRealizationCertificate.decoupling_realization",
+      "file": "Book5DualityProof.lean",
+      "statement": "The weak-coupling certificate jointly realizes decoupled classification and vanishing interaction residue.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5DualityProof.EnhancedDualityRealizationCertificate.enhanced_map_mad_dynamical_realization",
+      "file": "Book5DualityProof.lean",
+      "statement": "One typed certificate realizes all three clauses of the repaired enhanced MAP--MAD theorem.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "Book5Hysteresis.HysteresisThresholds.lower_lt_upper",
       "file": "Book5Hysteresis.lean",
       "statement": "The source thresholds lower than one and higher than one form a strictly ordered hysteresis band.",
@@ -7400,6 +8549,66 @@
       "name": "Book5Hysteresis.memoryless_classifier_cannot_remember_history",
       "file": "Book5Hysteresis.lean",
       "statement": "Countermodel boundary: a memoryless classifier cannot return two history-dependent regimes at one coupling.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5Hysteresis.ActivationBarrier.threshold_gap",
+      "file": "Book5Hysteresis.lean",
+      "statement": "A positive half-width constructs a threshold separation of exactly twice that width.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5Hysteresis.ActivationBarrier.energy_eq",
+      "file": "Book5Hysteresis.lean",
+      "statement": "Constant barrier density turns the constructed threshold gap into activation energy 2 \u03be b.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5Hysteresis.ActivationBarrier.energy_pos",
+      "file": "Book5Hysteresis.lean",
+      "statement": "Positive density and positive half-width force strictly positive activation energy.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5Hysteresis.runHysteresis_in_band",
+      "file": "Book5Hysteresis.lean",
+      "statement": "Every finite observation path confined to the hysteresis band preserves its incoming regime.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5Hysteresis.same_in_band_path_retains_distinct_histories",
+      "file": "Book5Hysteresis.lean",
+      "statement": "The same finite in-band path retains distinct MAP and non-MAP histories.",
       "axioms": [
         "propext",
         "Classical.choice",
@@ -7545,6 +8754,66 @@
       "status": "P"
     },
     {
+      "name": "Book4StatisticalMechanics.coarseObserverMetric_symmetric",
+      "file": "Book4StatisticalMechanics.lean",
+      "statement": "Normalized microscopic averaging plus a symmetric entropy response constructs a symmetric coarse observer metric.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4StatisticalMechanics.metricQuadratic_ensembleMetric",
+      "file": "Book4StatisticalMechanics.lean",
+      "statement": "The quadratic form of an ensemble metric is the weighted ensemble of microscopic quadratic forms.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4StatisticalMechanics.metricQuadratic_thermalMetric",
+      "file": "Book4StatisticalMechanics.lean",
+      "statement": "The thermal metric quadratic form decomposes into ensemble and inverse-temperature entropy-response terms.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4StatisticalMechanics.coarseObserverMetric_psd",
+      "file": "Book4StatisticalMechanics.lean",
+      "statement": "Nonnegative normalized weights, microscopic PSD, entropy-response PSD, and positive beta yield a PSD observer metric.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4StatisticalMechanics.ensembleMetric_of_constant",
+      "file": "Book4StatisticalMechanics.lean",
+      "statement": "Normalized ensemble averaging preserves a microscopic metric constant across microstates.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "Book4QuantumMeasurement.jointExpectation_eq_sum_partialTrace",
       "file": "Book4QuantumMeasurement.lean",
       "statement": "A finite environmental partial trace exactly regroups the diagonal joint expectation by observer state.",
@@ -7584,6 +8853,174 @@
       "name": "Book4QuantumMeasurement.joint_state_does_not_reduce_to_arbitrary_observer",
       "file": "Book4QuantumMeasurement.lean",
       "statement": "Countermodel: a general joint state need not equal the partial-trace value at an arbitrarily selected observer state.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4QuantumMeasurement.trace_partialTraceEnvironment",
+      "file": "Book4QuantumMeasurement.lean",
+      "statement": "Environmental partial trace preserves the trace of an arbitrary finite complex joint operator.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4QuantumMeasurement.jointExpectation_local_eq_reduced",
+      "file": "Book4QuantumMeasurement.lean",
+      "statement": "Every local observer observable has equal joint-space and reduced-state expectations, including correlated mixed states.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4QuantumMeasurement.trace_pureStateDensity_mul",
+      "file": "Book4QuantumMeasurement.lean",
+      "statement": "A pure-state density trace expectation equals the corresponding finite bra-ket coordinate expectation.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4QuantumMeasurement.observerMetric_eq_reduced",
+      "file": "Book4QuantumMeasurement.lean",
+      "statement": "An explicit quantum-geometric certificate identifies the observer metric with its reduced-state operator expectation.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4QuantumResolution.inducedMetric_symmetric",
+      "file": "Book4QuantumResolution.lean",
+      "statement": "The reduced-state-weighted pullback metric is symmetric.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4QuantumResolution.inducedMetric_diagonal_nonneg",
+      "file": "Book4QuantumResolution.lean",
+      "statement": "Nonnegative reduced-state readout weights make every induced metric diagonal nonnegative.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4QuantumResolution.inducedMetric_zero_of_response_zero",
+      "file": "Book4QuantumResolution.lean",
+      "statement": "A direction erased by every resolution channel has zero induced metric norm.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4QuantumResolution.inducedMetric_diagonal_pos_of_channel",
+      "file": "Book4QuantumResolution.lean",
+      "statement": "A positive-weight channel with nonzero response makes the induced metric strictly detect that direction.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4QuantumResolution.quantum_resolution_constructs_observer_metric",
+      "file": "Book4QuantumResolution.lean",
+      "statement": "Reduced quantum weights plus a resolution response construct a symmetric positive-semidefinite observer metric.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4QuantumResolution.reduced_state_does_not_determine_resolution_kernel",
+      "file": "Book4QuantumResolution.lean",
+      "statement": "Countermodel: one reduced state supports distinct response kernels and distinct induced metrics.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4Holographic.reconstructedEntropy_nonneg",
+      "file": "Book4Holographic.lean",
+      "statement": "A selected nonnegative-area RT surface has nonnegative entropy when Newton's constant is positive.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4Holographic.selectedSurface_minimizes_entropy",
+      "file": "Book4Holographic.lean",
+      "statement": "Area minimality and positive Newton constant make the selected surface minimize RT entropy.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4Holographic.selectedSurface_unique_of_uniqueMinimizer",
+      "file": "Book4Holographic.lean",
+      "statement": "A supplied unique-minimizer witness identifies every equal-area admissible surface with the selected surface.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4Holographic.minimal_area_does_not_force_unique_surface",
+      "file": "Book4Holographic.lean",
+      "statement": "Countermodel: distinct admissible bulk surfaces can share the same minimal area.",
       "axioms": [
         "propext",
         "Classical.choice",
@@ -7648,6 +9085,110 @@
         "propext",
         "Classical.choice",
         "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4Meaning.identityMeaning_nonneg_on_accessible",
+      "file": "Book4Meaning.lean",
+      "statement": "Identity-relative energetic meaning is nonnegative on the identity's accessible domain.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4Meaning.identityMeaning_pos_iff_on_accessible",
+      "file": "Book4Meaning.lean",
+      "statement": "Accessible energetic meaning is positive exactly below the identity-relative ceiling.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4Meaning.identityMeaning_is_nontrivial",
+      "file": "Book4Meaning.lean",
+      "statement": "A strict-below-ceiling accessible witness makes the identity-relative meaning map nontrivial.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4Meaning.identityMeaning_ceiling_witness_has_zero_value",
+      "file": "Book4Meaning.lean",
+      "statement": "An accessible configuration attaining the energy ceiling has zero energetic value.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4Meaning.identityMeaning_strict_preference_iff",
+      "file": "Book4Meaning.lean",
+      "statement": "Identity-relative energetic preference reverses strict free-energy order.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4Meaning.preferentialFlow_meaning_nondecreasing",
+      "file": "Book4Meaning.lean",
+      "statement": "Certified energy descent along a preferential flow makes energetic meaning nondecreasing.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4Meaning.transition_with_bridge_generates_positive_meaning",
+      "file": "Book4Meaning.lean",
+      "statement": "A freedom-life transition generates positive energetic meaning only through the supplied domain bridge.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4Meaning.retained_distinction_does_not_force_action_distinction",
+      "file": "Book4Meaning.lean",
+      "statement": "Countermodel: a constant action policy can erase a retained interpretive distinction.",
+      "axioms": [
+        "propext"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4Meaning.value_map_does_not_determine_significance",
+      "file": "Book4Meaning.lean",
+      "statement": "Countermodel: identical interpretation maps can carry opposite identity-relative significance predicates.",
+      "axioms": [
+        "propext"
       ],
       "sorry": false,
       "status": "P"
@@ -7725,6 +9266,114 @@
       "status": "P"
     },
     {
+      "name": "Book4FieldRegularization.regularizeField_passband",
+      "file": "Book4FieldRegularization.lean",
+      "statement": "The certified field operator preserves every momentum mode in its passband.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4FieldRegularization.regularizeField_stopband",
+      "file": "Book4FieldRegularization.lean",
+      "statement": "The certified field operator eliminates every momentum mode above its cutoff.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4FieldRegularization.regularizeField_add",
+      "file": "Book4FieldRegularization.lean",
+      "statement": "Observer field regularization is additive.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4FieldRegularization.regularizeField_smul",
+      "file": "Book4FieldRegularization.lean",
+      "statement": "Observer field regularization commutes with real scalar multiplication.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4FieldRegularization.regularizeField_idempotent",
+      "file": "Book4FieldRegularization.lean",
+      "statement": "The hard-cutoff field regularizer is an idempotent projection.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4FieldRegularization.regularized_support_bounded",
+      "file": "Book4FieldRegularization.lean",
+      "statement": "Every regularized field is supported within the observer-accessible momentum band.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4FieldRegularization.accessibleAssignment_card",
+      "file": "Book4FieldRegularization.lean",
+      "statement": "A fixed-order diagram has exactly (cutoff+1)^order accessible momentum assignments.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4FieldRegularization.fixedOrderDiagram_zero",
+      "file": "Book4FieldRegularization.lean",
+      "statement": "The zero-order diagram evaluates at its unique empty momentum assignment.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4FieldRegularization.fixed_orders_do_not_force_all_orders_control",
+      "file": "Book4FieldRegularization.lean",
+      "statement": "Countermodel: finite unit coefficients at every order have unbounded all-orders partial sums.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "Book4InformationCurvature.fisherInformation_nonneg",
       "file": "Book4InformationCurvature.lean",
       "statement": "The finite expected-squared-score Fisher information is nonnegative under nonnegative weights.",
@@ -7773,6 +9422,102 @@
       "status": "P"
     },
     {
+      "name": "Book4InformationCurvature.fisherMetric_symm",
+      "file": "Book4InformationCurvature.lean",
+      "statement": "The finite Fisher score-outer-product metric is symmetric.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4InformationCurvature.fisherMetric_diagonal_nonneg",
+      "file": "Book4InformationCurvature.lean",
+      "statement": "Nonnegative sample weights make every Fisher metric diagonal nonnegative.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4InformationCurvature.riemannCurvature_swap",
+      "file": "Book4InformationCurvature.lean",
+      "statement": "Christoffel-constructed coordinate curvature is antisymmetric in its curvature-coordinate pair.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4InformationCurvature.riemannCurvature_diagonal_zero",
+      "file": "Book4InformationCurvature.lean",
+      "statement": "The constructed Riemann curvature vanishes when its curvature-coordinate indices coincide.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4InformationCurvature.christoffel_eq_zero_of_dMetric_zero",
+      "file": "Book4InformationCurvature.lean",
+      "statement": "Vanishing first metric derivatives force the coordinate Christoffel symbols to vanish.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4InformationCurvature.riemannCurvature_eq_zero_of_constant_jet",
+      "file": "Book4InformationCurvature.lean",
+      "statement": "A constant metric two-jet has zero coordinate Riemann curvature.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4InformationCurvature.unit_hessianMoment_diagonal",
+      "file": "Book4InformationCurvature.lean",
+      "statement": "The separately named unit Hessian-moment tensor is one on its full diagonal.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4InformationCurvature.hessianMoment_is_not_riemannCurvature",
+      "file": "Book4InformationCurvature.lean",
+      "statement": "Countermodel: a flat constant metric has zero Riemann curvature while the unit Hessian moment equals one.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "Book4MetricLearning.gradientStep_eq_self_iff",
       "file": "Book4MetricLearning.lean",
       "statement": "At nonzero learning rate, the scalar metric-learning update is stationary exactly when its gradient vanishes.",
@@ -7800,6 +9545,114 @@
       "name": "Book4MetricLearning.differentiability_alone_does_not_guarantee_descent",
       "file": "Book4MetricLearning.lean",
       "statement": "Countermodel: an oversized positive gradient step on a differentiable quadratic loss increases the loss.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4MetricLearning.positiveMetric_pos",
+      "file": "Book4MetricLearning.lean",
+      "statement": "A log-parameterized scalar metric coefficient is strictly positive.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4MetricLearning.metricLearningStep_strict_descent",
+      "file": "Book4MetricLearning.lean",
+      "statement": "The realizable quadratic metric loss strictly decreases away from its target when the step size lies in (0,1).",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4MetricLearning.learnedParameter_zero",
+      "file": "Book4MetricLearning.lean",
+      "statement": "The closed learning trajectory begins at its declared initial parameter.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4MetricLearning.learnedParameter_succ",
+      "file": "Book4MetricLearning.lean",
+      "statement": "The closed trajectory obeys the exact recursive gradient-update law.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4MetricLearning.learnedMetric_positive",
+      "file": "Book4MetricLearning.lean",
+      "statement": "Log-parameterization preserves scalar positive definiteness throughout learning.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4MetricLearning.learnedParameter_tendsto_target",
+      "file": "Book4MetricLearning.lean",
+      "statement": "The contractive quadratic learning trajectory converges geometrically to its supplied target.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4MetricLearning.target_identified_from_equal_readout",
+      "file": "Book4MetricLearning.lean",
+      "statement": "Equal observations identify equal parameters only through an explicit injective readout.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4MetricLearning.positiveMetric_injective",
+      "file": "Book4MetricLearning.lean",
+      "statement": "The scalar exponential metric parameterization is injective.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4MetricLearning.certified_metric_learning",
+      "file": "Book4MetricLearning.lean",
+      "statement": "A certificate packages validity, step-size control, convergence, and a separate identifiability bridge.",
       "axioms": [
         "propext",
         "Classical.choice",
@@ -7837,6 +9690,56 @@
       "status": "P"
     },
     {
+      "name": "Book4QuantumGeometry.certified_gauge_action_natural",
+      "file": "Book4QuantumGeometry.lean",
+      "statement": "A supplied structural quantum-geometry certificate intertwines symbolic and target gauge actions on translated states.",
+      "axioms": [
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4QuantumGeometry.certified_curvature_natural",
+      "file": "Book4QuantumGeometry.lean",
+      "statement": "A supplied structural quantum-geometry certificate transports symbolic curvature construction to target curvature.",
+      "axioms": [
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4QuantumGeometry.certified_holonomy_natural",
+      "file": "Book4QuantumGeometry.lean",
+      "statement": "A supplied structural quantum-geometry certificate transports symbolic holonomy construction to target holonomy.",
+      "axioms": [
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4QuantumGeometry.certified_quantum_fluctuation_iff_symbolic",
+      "file": "Book4QuantumGeometry.lean",
+      "statement": "Under the full certificate, the target fluctuation predicate holds exactly when the source holonomy has the declared symbolic fluctuation predicate.",
+      "axioms": [
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4QuantumGeometry.equivalences_alone_do_not_force_quantum_geometry_certificate",
+      "file": "Book4QuantumGeometry.lean",
+      "statement": "Countermodel: reversible carrier translations alone cannot reconcile incompatible symbolic and target fluctuation predicates.",
+      "axioms": [
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "Book4QuantumGeometry.path_dependence_alone_does_not_force_quantum_fluctuation",
       "file": "Book4QuantumGeometry.lean",
       "statement": "Countermodel: symbolic path dependence alone does not logically imply a physical quantum fluctuation.",
@@ -7865,10 +9768,114 @@
       "status": "P"
     },
     {
+      "name": "Book4Gauge.StructuralGaugeCertificate.connectionAction_square",
+      "file": "Book4Gauge.lean",
+      "statement": "The symbolic connection action translates exactly to the target covariant derivative.",
+      "axioms": [
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4Gauge.StructuralGaugeCertificate.curvature_square",
+      "file": "Book4Gauge.lean",
+      "statement": "The certified curvature construction commutes with symbolic-to-target translation.",
+      "axioms": [
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4Gauge.StructuralGaugeCertificate.fieldAction_square",
+      "file": "Book4Gauge.lean",
+      "statement": "Field translation is equivariant under the specified symbolic and target gauge actions.",
+      "axioms": [
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4Gauge.StructuralGaugeCertificate.holonomy_square",
+      "file": "Book4Gauge.lean",
+      "statement": "Certified symbolic transport translates exactly to target holonomy.",
+      "axioms": [
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4Gauge.ObserverAtlas.global_unique_of_local_compatibility",
+      "file": "Book4Gauge.lean",
+      "statement": "Jointly separating observer-local views make any compatible global gauge geometry unique without making it directly observable.",
+      "axioms": [],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4Gauge.coordinateObserverAtlas_assembles",
+      "file": "Book4Gauge.lean",
+      "statement": "The complete observer-indexed coordinate family provides a concrete global carrier whose restriction recovers every local view.",
+      "axioms": [
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4Gauge.observer_local_types_do_not_force_global_existence",
+      "file": "Book4Gauge.lean",
+      "statement": "Countermodel: inhabited observer-local data types do not force an arbitrary global carrier to be inhabited.",
+      "axioms": [
+        "propext"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "Book4Gauge.names_alone_do_not_supply_gauge_dictionary",
       "file": "Book4Gauge.lean",
       "statement": "Countermodel: paired symbolic and gauge names alone cannot manufacture reversible typed translations.",
       "axioms": [
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4Gauge.WilsonTransportCertificate.trajectory_initial",
+      "file": "Book4Gauge.lean",
+      "statement": "The Picard-certified Wilson transport begins at its declared initial transport.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4Gauge.WilsonTransportCertificate.trajectory_hasDerivWithinAt",
+      "file": "Book4Gauge.lean",
+      "statement": "The Wilson trajectory satisfies the noncommutative transport ODE throughout its certified interval.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4Gauge.WilsonTransportCertificate.holonomy_eq_endpoint",
+      "file": "Book4Gauge.lean",
+      "statement": "Analytic holonomy is the terminal value of the certified transport trajectory.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
         "Quot.sound"
       ],
       "sorry": false,
@@ -7903,6 +9910,409 @@
       "status": "P"
     },
     {
+      "name": "Book4FuzzyStokes.FuzzyStokesCertificate.fuzzy_stokes",
+      "file": "Book4FuzzyStokes.lean",
+      "statement": "Typed Fuzzy Stokes: classical boundary-to-interior transport and the curvature-interaction decomposition yield curvature integral plus interaction residue.",
+      "axioms": [],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4FuzzyStokes.FuzzyStokesCertificate.classical_recovery",
+      "file": "Book4FuzzyStokes.lean",
+      "statement": "A zero integrated observer-interaction residue recovers the curvature-only Stokes law.",
+      "axioms": [
+        "propext"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4FuzzyStokes.FuzzyStokesCertificate.integrated_residue_zero_of_classical_recovery",
+      "file": "Book4FuzzyStokes.lean",
+      "statement": "Curvature-only boundary recovery forces the integrated interaction residue to vanish.",
+      "axioms": [
+        "propext"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4FuzzyStokes.FuzzyStokesCertificate.interactionForm_eq_zero_of_classical_recovery",
+      "file": "Book4FuzzyStokes.lean",
+      "statement": "An injective interior functional upgrades integrated recovery to vanishing of the interaction form.",
+      "axioms": [
+        "propext"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4FuzzyStokes.cancellingInteraction_ne_zero",
+      "file": "Book4FuzzyStokes.lean",
+      "statement": "The explicit two-cell oriented interaction form is nonzero.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4FuzzyStokes.cancellingInteraction_integral_eq_zero",
+      "file": "Book4FuzzyStokes.lean",
+      "statement": "The nonzero two-cell interaction has zero oriented integral by cancellation.",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4FuzzyStokes.integrated_zero_does_not_force_form_zero",
+      "file": "Book4FuzzyStokes.lean",
+      "statement": "Countermodel: zero integrated residue does not imply a pointwise-zero interaction form.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4FuzzyStokes.sum_stripExteriorDerivative",
+      "file": "Book4FuzzyStokes.lean",
+      "statement": "Finite oriented-strip exterior derivatives telescope to terminal minus initial boundary data.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4FuzzyStokes.discrete_fuzzy_stokes",
+      "file": "Book4FuzzyStokes.lean",
+      "statement": "A finite oriented strip realizes Fuzzy Stokes from cellwise curvature-plus-interaction decomposition.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4FuzzyStokes.discrete_classical_recovery",
+      "file": "Book4FuzzyStokes.lean",
+      "statement": "The discrete Fuzzy Stokes law recovers its curvature-only boundary law when the oriented interaction sum vanishes.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4FuzzyStokes.RectangleFuzzyStokesData.exteriorDensity_integrable",
+      "file": "Book4FuzzyStokes.lean",
+      "statement": "The rectangular-chart exterior density is integrable from its certified curvature and interaction decomposition.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4FuzzyStokes.RectangleFuzzyStokesData.rectangle_stokes",
+      "file": "Book4FuzzyStokes.lean",
+      "statement": "Green--Stokes on an oriented rectangle follows from mathlib planar divergence after rotating the covariant one-form coefficients.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4FuzzyStokes.RectangleFuzzyStokesData.analytic_fuzzy_stokes",
+      "file": "Book4FuzzyStokes.lean",
+      "statement": "A differentiable covariant one-form on an oriented rectangular chart satisfies the analytic Fuzzy Stokes law with Lebesgue surface integrals.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4FuzzyStokes.RectangleFuzzyStokesData.analytic_classical_recovery",
+      "file": "Book4FuzzyStokes.lean",
+      "statement": "Zero analytic interaction integral recovers curvature-only Green--Stokes on the chart.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4FuzzyStokes.RectangleFuzzyStokesData.analytic_curvature_transports_through_gauge",
+      "file": "Book4FuzzyStokes.lean",
+      "statement": "The analytic curvature density transports through the Book IV structural gauge dictionary's curvature square.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4FuzzyStokes.FuzzyStokesAtlasCertificate.assembled_fuzzy_stokes",
+      "file": "Book4FuzzyStokes.lean",
+      "statement": "A finite oriented atlas with certified overlap-boundary cancellation assembles local Fuzzy Stokes laws into the global law.",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4FuzzyStokes.FuzzyStokesAtlasCertificate.assembled_classical_recovery",
+      "file": "Book4FuzzyStokes.lean",
+      "statement": "Zero assembled interaction residue recovers the global curvature-only boundary law.",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4WilsonGlobal.WilsonContinuationTrace.chartAt_mem",
+      "file": "Book4WilsonGlobal.lean",
+      "statement": "The chosen continuation chart actually contains the covered parameter point.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4WilsonGlobal.WilsonContinuationTrace.globalTransport_eq_local",
+      "file": "Book4WilsonGlobal.lean",
+      "statement": "Overlap uniqueness makes the glued global transport agree with every containing local chart.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4WilsonGlobal.WilsonContinuationTrace.globalHolonomy_eq_endpoint_of_initial_eq_one",
+      "file": "Book4WilsonGlobal.lean",
+      "statement": "With identity initial transport, global relative holonomy is the glued terminal value.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4WilsonGlobal.AnalyticWilsonContinuationTrace.globalTransport_eq_certified_trajectory",
+      "file": "Book4WilsonGlobal.lean",
+      "statement": "The glued transport agrees locally with the actual Picard-selected Wilson trajectory.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4WilsonGlobal.AnalyticWilsonContinuationTrace.local_trajectory_hasDerivWithinAt",
+      "file": "Book4WilsonGlobal.lean",
+      "statement": "Every continuation chart satisfies the shared Wilson transport ODE on its certified interval.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4WilsonGlobal.reverseOrderedIncrements_prod",
+      "file": "Book4WilsonGlobal.lean",
+      "statement": "Latest-first exact increments telescope to terminal times inverse initial transport without commutativity.",
+      "axioms": [
+        "propext"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4WilsonGlobal.exact_partition_transport_eq_holonomy",
+      "file": "Book4WilsonGlobal.lean",
+      "statement": "Exact partition transports compose to endpoint holonomy under identity normalization.",
+      "axioms": [
+        "propext"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4WilsonGlobal.wilsonObservable_eq_trace",
+      "file": "Book4WilsonGlobal.lean",
+      "statement": "The declared Wilson observable is exactly the supplied trace of holonomy.",
+      "axioms": [],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4WilsonGlobal.symbolic_loop_has_wilson_representation",
+      "file": "Book4WilsonGlobal.lean",
+      "statement": "An explicit compatibility witness transports a symbolic loop observable to the Wilson trace representation.",
+      "axioms": [],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4WilsonGlobal.endpoint_alone_does_not_identify_symbolic_loop",
+      "file": "Book4WilsonGlobal.lean",
+      "statement": "Countermodel: endpoint data alone do not identify a symbolic loop observable with a Wilson trace.",
+      "axioms": [],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4WilsonGlobal.ObserverWilsonApproximationCertificate.observed_error_tendsto_zero",
+      "file": "Book4WilsonGlobal.lean",
+      "statement": "Certified observer-smoothed Wilson error tends to zero beyond the observer's admissible resolution floor.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4WilsonGlobal.ObserverWilsonApproximationCertificate.observed_approximation_tendsto",
+      "file": "Book4WilsonGlobal.lean",
+      "statement": "A certified Wilson approximation converges in the observer's smoothed state space.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4WilsonGlobal.ObserverWilsonApproximationCertificate.admissible_iff_visible_above_floor",
+      "file": "Book4WilsonGlobal.lean",
+      "statement": "Partition admissibility is exactly visibility above the declared observer-resolution floor.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4WilsonGlobal.CrossObserverWilsonTransport.transported_target_eq",
+      "file": "Book4WilsonGlobal.lean",
+      "statement": "Cross-observer target agreement is carried by an explicit smoothing-intertwining transport.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4WilsonGlobal.CrossObserverWilsonTransport.transported_approximation_eq",
+      "file": "Book4WilsonGlobal.lean",
+      "statement": "Each approximate Wilson observation is comparable through the same declared observer transport.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4WilsonGlobal.shared_raw_endpoint_does_not_force_shared_observation",
+      "file": "Book4WilsonGlobal.lean",
+      "statement": "Countermodel: a shared raw endpoint can have different presentations under different observer smoothing maps.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4WilsonGlobal.positive_resolution_floor_not_unique",
+      "file": "Book4WilsonGlobal.lean",
+      "statement": "Countermodel: positivity alone does not select a universal observer-resolution floor.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4WilsonGlobal.scalarConstantEulerApproximation_tendsto",
+      "file": "Book4WilsonGlobal.lean",
+      "statement": "Explicit Euler products for the constant scalar Wilson equation converge to the exact exponential transport.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4WilsonGlobal.scalarConstantObserverCertificate_tendsto",
+      "file": "Book4WilsonGlobal.lean",
+      "statement": "Continuous observer smoothing carries the concrete constant scalar Euler solver into observer-relative convergence.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "Book4ObserverGeometry.recursivelyStabilized_iff",
       "file": "Book4ObserverGeometry.lean",
       "statement": "A coupled observer-geometry state is recursively stabilized exactly when both component update equations fix it.",
@@ -7924,6 +10334,100 @@
       "name": "Book4ObserverGeometry.driftingSystem_has_no_stabilized_state",
       "file": "Book4ObserverGeometry.lean",
       "statement": "Countermodel: a coupled affine translation system has no recursively stabilized state.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ObserverGeometry.jointEquilibrium_iff",
+      "file": "Book4ObserverGeometry.lean",
+      "statement": "Continuous recursive stabilization is exactly zero velocity in both coupled components.",
+      "axioms": [
+        "propext"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ObserverGeometry.equilibrium_constantTrajectory_solves",
+      "file": "Book4ObserverGeometry.lean",
+      "statement": "A supplied joint equilibrium yields a constant trajectory solving the coupled differential equation.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ObserverGeometry.exists_picardLindelof_certificate_of_locallyLipschitz",
+      "file": "Book4ObserverGeometry.lean",
+      "statement": "Local Lipschitz regularity constructively yields the quantitative ball, norm, and time certificate required by Picard--Lindelof.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ObserverGeometry.locallyLipschitz_finiteDimensional_local_existence",
+      "file": "Book4ObserverGeometry.lean",
+      "statement": "On finite-dimensional observer and geometry spaces, a locally Lipschitz coupled field admits a local ODE trajectory through every supplied state.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ObserverGeometry.picardLindelof_local_existence",
+      "file": "Book4ObserverGeometry.lean",
+      "statement": "A mathlib Picard--Lindelof certificate for the coupled product field yields a local trajectory satisfying the ODE.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ObserverGeometry.CoupledAttractionCertificate.jointError_tendsto_zero",
+      "file": "Book4ObserverGeometry.lean",
+      "statement": "A supplied geometric contraction certificate forces joint observer-geometry error to converge to zero.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ObserverGeometry.picardLindelof_local_uniqueness",
+      "file": "Book4ObserverGeometry.lean",
+      "statement": "Two certified local solutions with the same initial state agree throughout the Picard interval.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ObserverGeometry.translatingVectorField_has_no_jointEquilibrium",
+      "file": "Book4ObserverGeometry.lean",
+      "statement": "Countermodel: a constant nonzero coupled vector field has no joint equilibrium.",
       "axioms": [
         "propext",
         "Classical.choice",
@@ -7960,6 +10464,54 @@
       "name": "Book4GeodesicFailure.curvature_error_bound",
       "file": "Book4GeodesicFailure.lean",
       "statement": "Second-derivative approximation error propagates through the squared curvature diagnostic with the combined-magnitude factor.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4GeodesicFailure.JacobiCertificate.acceleration_eq_neg_curvature",
+      "file": "Book4GeodesicFailure.lean",
+      "statement": "An explicit Jacobi convention forces covariant acceleration to be the negative oriented curvature action.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4GeodesicFailure.norm_sq_error_bound",
+      "file": "Book4GeodesicFailure.lean",
+      "statement": "A common-fibre derivative approximation controls squared-norm error by epsilon times the combined magnitudes.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4GeodesicFailure.norm_sq_error_bound_of_uniform",
+      "file": "Book4GeodesicFailure.lean",
+      "statement": "Uniform derivative bounds specialize the magnitude-sensitive estimate to the source's 2 B epsilon bound.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4GeodesicFailure.JacobiCertificate.observer_diagnostic_certificate",
+      "file": "Book4GeodesicFailure.lean",
+      "statement": "One Jacobi certificate jointly fixes orientation and proves both observer diagnostic error bounds.",
       "axioms": [
         "propext",
         "Classical.choice",
@@ -8029,6 +10581,174 @@
       "status": "P"
     },
     {
+      "name": "Book4AssembledConnection.globalNablaAt_apply",
+      "file": "Book4AssembledConnection.lean",
+      "statement": "The global connection coefficient is the pointwise partition-weighted sum of local coefficients.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4AssembledConnection.globalNablaAt_eq_of_local_eq",
+      "file": "Book4AssembledConnection.lean",
+      "statement": "Locally agreeing coefficients glue to their common global value through the partition law.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4AssembledConnection.assembledTorsionAt_eq_zero_of_local_symmetric",
+      "file": "Book4AssembledConnection.lean",
+      "statement": "Pointwise local symmetry glues to global zero-bracket torsion-freeness.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4AssembledConnection.certified_coefficient_transformation",
+      "file": "Book4AssembledConnection.lean",
+      "statement": "Affine coefficient transport consumes the retained Hessian correction on overlaps.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4AssembledConnection.certified_jacobian_cocycle",
+      "file": "Book4AssembledConnection.lean",
+      "statement": "Certified transition Jacobians compose coherently on triple overlaps.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4AssembledConnection.discreteParallelTransport_append",
+      "file": "Book4AssembledConnection.lean",
+      "statement": "Finite parallel transport preserves path ordering through composition under concatenation.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4AssembledConnection.singleton_globalNablaAt",
+      "file": "Book4AssembledConnection.lean",
+      "statement": "A one-chart partition assembles every point-dependent continuous bilinear coefficient exactly.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4AssembledConnection.ObserverFloorRegularity.coefficient_uses_observer_floor",
+      "file": "Book4AssembledConnection.lean",
+      "statement": "The transport coefficient is assembled only after an explicit observer and positive resolution floor smooth the raw path.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4AssembledConnection.EffectiveParallelTransportCertificate.solves_observer_floor_transport",
+      "file": "Book4AssembledConnection.lean",
+      "statement": "The certified trajectory solves the assembled connection equation along the observer-floor-smoothed coefficient field.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4AssembledConnection.EffectiveParallelTransportCertificate.eq_certified_trajectory",
+      "file": "Book4AssembledConnection.lean",
+      "statement": "A candidate with the same initial value and observer-floor transport law equals the certified trajectory by supplied uniqueness.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4AssembledConnection.EffectiveParallelTransportCertificate.observed_endpoint_error_tendsto_zero",
+      "file": "Book4AssembledConnection.lean",
+      "statement": "Admissible effective approximations have endpoint error tending to zero after observer-floor smoothing.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4AssembledConnection.EffectiveParallelTransportCertificate.observed_endpoint_tendsto",
+      "file": "Book4AssembledConnection.lean",
+      "statement": "Effective endpoint approximations converge in the observer's smoothed state space.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4AssembledConnection.observer_floor_can_change_visible_path",
+      "file": "Book4AssembledConnection.lean",
+      "statement": "Countermodel: different positive observer floors can expose different visible states of one raw path.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4AssembledConnection.step_size_matters",
+      "file": "Book4AssembledConnection.lean",
+      "statement": "Countermodel: finite transport depends on discretization and is not silently an analytic ODE limit.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "Book3.assembled_network_stability_pos",
       "file": "Book3NetworkEmergence.lean",
       "statement": "A network assembled from supplied nodes, edges, and positive stability has positive global stability.",
@@ -8053,6 +10773,102 @@
       "status": "P"
     },
     {
+      "name": "Book3.runNetworkEmergence_nodes",
+      "file": "Book3NetworkEmergence.lean",
+      "statement": "Executing an emergence process compresses each selected region into its network node.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3.runNetworkEmergence_edges",
+      "file": "Book3NetworkEmergence.lean",
+      "statement": "Executing an emergence process preserves its selected edge relation.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3.runNetworkEmergence_edge_has_bridge",
+      "file": "Book3NetworkEmergence.lean",
+      "statement": "Every generated edge carries the process supplied conceptual-bridge certificate.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3.runNetworkEmergence_stability",
+      "file": "Book3NetworkEmergence.lean",
+      "statement": "Generated network stability is evaluated at the selected growth stage.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3.runNetworkEmergence_stability_pos",
+      "file": "Book3NetworkEmergence.lean",
+      "statement": "Positive stage stability transfers to the generated network.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3.runNetworkEmergence_stability_pos_from_floor",
+      "file": "Book3NetworkEmergence.lean",
+      "statement": "The supplied positive node-coherence floor forces strictly positive global network stability.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3.runNetworkEmergence_realizes_assembly",
+      "file": "Book3NetworkEmergence.lean",
+      "statement": "Execution jointly realizes compressed nodes, bridge-backed selected edges, and strict global stability.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3.same_growth_allows_distinct_nodes",
+      "file": "Book3NetworkEmergence.lean",
+      "statement": "The same sustained-growth trace can yield distinct nodes under different compression policies; growth does not identify the router.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "Book3CanonicalLife.persistentLife_satisfies_canonical",
       "file": "Book3CanonicalLife.lean",
       "statement": "Persistent symbolic life satisfies all named canonical clauses when an explicit clause-by-clause correspondence is supplied.",
@@ -8068,6 +10884,66 @@
       "name": "Book3CanonicalLife.persistence_alone_does_not_supply_correspondence",
       "file": "Book3CanonicalLife.lean",
       "statement": "Countermodel: positive persistence data alone can coexist with an unmet external life clause.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3CanonicalLife.operational_correspondence",
+      "file": "Book3CanonicalLife.lean",
+      "statement": "Book-3-local organism operations and inspectable witnesses construct the canonical-life correspondence without importing Book 4 repair.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3CanonicalLife.operational_symbolic_life_satisfies_canonical",
+      "file": "Book3CanonicalLife.lean",
+      "statement": "An operational symbolic organism with repair, reproduction, heredity, variation, selection, and response witnesses satisfies the declared canonical clauses.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3CanonicalLife.repair_improves_iff_morphological_error_decreases",
+      "file": "Book3CanonicalLife.lean",
+      "statement": "Under an explicit representation bridge, coherence-improving repair is equivalent to reduced target-morphology error.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3CanonicalLife.operational_substrate_translation",
+      "file": "Book3CanonicalLife.lean",
+      "statement": "Self-maintenance, heritable variation, and differential fitness construct the declared structural substrate translation.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3CanonicalLife.operational_symbolic_life_realizes_canonical_demarcations",
+      "file": "Book3CanonicalLife.lean",
+      "statement": "One Book-3-local witness realizes the substrate translation and every Koshland, NASA, and textbook clause, including evolutionary adaptation.",
       "axioms": [
         "propext",
         "Classical.choice",
@@ -8137,6 +11013,186 @@
       "status": "P"
     },
     {
+      "name": "Book3Helmholtz.FiniteHodgeData.reconstruction",
+      "file": "Book3Helmholtz.lean",
+      "statement": "Exact, coexact, and harmonic components reconstruct the finite refinement field.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3Helmholtz.FiniteHodgeData.harmonicComponent_mem",
+      "file": "Book3Helmholtz.lean",
+      "statement": "The retained harmonic component lies orthogonal to both exact and coexact sectors.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3Helmholtz.FiniteHodgeData.exact_coexact_inner_eq_zero",
+      "file": "Book3Helmholtz.lean",
+      "statement": "The exact and coexact components are orthogonal.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3Helmholtz.FiniteHodgeData.exact_harmonic_inner_eq_zero",
+      "file": "Book3Helmholtz.lean",
+      "statement": "The exact and harmonic components are orthogonal.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3Helmholtz.FiniteHodgeData.coexact_harmonic_inner_eq_zero",
+      "file": "Book3Helmholtz.lean",
+      "statement": "The coexact and harmonic components are orthogonal.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3Helmholtz.FiniteHodgeData.harmonicComponent_eq_self_of_exact_eq_bot_of_coexact_eq_bot",
+      "file": "Book3Helmholtz.lean",
+      "statement": "When exact and coexact sectors vanish, the whole field remains as harmonic content.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3Helmholtz.FiniteHodgeData.nonzero_harmonic_component_exists",
+      "file": "Book3Helmholtz.lean",
+      "statement": "A nontrivial finite Hodge model can have a nonzero harmonic component, refuting forced harmonic erasure.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3Helmholtz.GlobalHodgeCertificate.components",
+      "file": "Book3Helmholtz.lean",
+      "statement": "A global Hodge certificate retains exact, coexact, and harmonic sectors with their memberships and reconstruction.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3Helmholtz.GlobalHodgeCertificate.refinement_energy_decomposes",
+      "file": "Book3Helmholtz.lean",
+      "statement": "Pairwise orthogonality makes squared refinement energy additive across the three Hodge channels.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3Helmholtz.GlobalHodgeCertificate.harmonic_eq_zero_of_subsingleton_cohomology",
+      "file": "Book3Helmholtz.lean",
+      "statement": "Trivial first cohomology kills the harmonic part through the supplied faithful harmonic-class map.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3Helmholtz.GlobalHodgeCertificate.operational_readout_reconstructs",
+      "file": "Book3Helmholtz.lean",
+      "statement": "Every linear operational readout, including sonification, preserves the certified three-channel reconstruction without creating its hypotheses.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3Helmholtz.GlobalHodgeCertificate.multimodal_readout_reconstructs",
+      "file": "Book3Helmholtz.lean",
+      "statement": "Every carrier-indexed linear instrument\u2014sound, light, temperature, pressure, or another sensor\u2014preserves the certified three-channel reconstruction.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3Helmholtz.GlobalHodgeCertificate.faithful_readout_detects_harmonic",
+      "file": "Book3Helmholtz.lean",
+      "statement": "An explicitly injective instrument detects any nonzero harmonic residue.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3Helmholtz.unfaithful_readout_can_erase_harmonic",
+      "file": "Book3Helmholtz.lean",
+      "statement": "Countermodel: an unfaithful zero instrument erases a nonzero harmonic input, so silence does not prove absence.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3Helmholtz.harmonic_channel_can_be_operationally_detected",
+      "file": "Book3Helmholtz.lean",
+      "statement": "Positive control: an identity readout detects a supplied nonzero harmonic channel rather than silently erasing it.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "Book3.exists_static_membrane",
       "file": "Book3WellPosedness.lean",
       "statement": "Every positive perturbation budget admits static membrane data with zero deviation, valid permeability, and Hamiltonian-derived stability.",
@@ -8164,6 +11220,42 @@
       "name": "Book3.exists_static_membrane_at_smaller_bound",
       "file": "Book3WellPosedness.lean",
       "statement": "Every smaller positive perturbation budget also admits canonical static membrane data.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3.exists_chart_membrane",
+      "file": "Book3WellPosedness.lean",
+      "statement": "Every positive radius and nonnegative drift budget admits a connected relatively compact interval membrane with computed frontier and carrier-indexed fields.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3.conditional_symbolic_membrane_wellposed",
+      "file": "Book3WellPosedness.lean",
+      "statement": "A supplied nonempty connected open relatively compact smooth-boundary domain with smooth drift and Hamiltonian carries canonical membrane data for every positive perturbation and alpha.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book3.perturbation_budget_does_not_supply_domain",
+      "file": "Book3WellPosedness.lean",
+      "statement": "Countermodel: a positive perturbation budget cannot manufacture a nonempty carrier in an empty ambient type.",
       "axioms": [
         "propext",
         "Classical.choice",
@@ -8221,6 +11313,102 @@
       "status": "P"
     },
     {
+      "name": "Book5TransitionDynamics.expEvolution_zero",
+      "file": "Book5TransitionDynamics.lean",
+      "statement": "Constant-rate free-energy evolution starts at the supplied initial value.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5TransitionDynamics.expEvolution_hasDerivAt",
+      "file": "Book5TransitionDynamics.lean",
+      "statement": "The constructed exponential trajectory satisfies the stated constant-rate differential law.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5TransitionDynamics.expEvolution_add",
+      "file": "Book5TransitionDynamics.lean",
+      "statement": "Constant-rate covenant evolution composes exactly across adjacent time steps.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5TransitionDynamics.mapStep_eq_expEvolution",
+      "file": "Book5TransitionDynamics.lean",
+      "statement": "The MAP exponential step is evaluation of the positive-oriented continuous evolution.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5TransitionDynamics.madStep_eq_expEvolution",
+      "file": "Book5TransitionDynamics.lean",
+      "statement": "The MAD exponential step is evaluation of the negative-oriented continuous evolution.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5TransitionDynamics.solution_eq_shifted_expEvolution",
+      "file": "Book5TransitionDynamics.lean",
+      "statement": "Every global solution of the supplied constant-rate ODE is the shifted exponential determined by any reference value.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5TransitionDynamics.exact_step_of_constant_rate_ode",
+      "file": "Book5TransitionDynamics.lean",
+      "statement": "Every solution of the supplied constant-rate ODE obeys the source's exact adjacent-step law.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5TransitionDynamics.constant_rate_ode_solution_unique",
+      "file": "Book5TransitionDynamics.lean",
+      "statement": "Two solutions of the same constant-rate ODE that agree once agree everywhere.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "Book5EnhancedDuality.classify_map",
       "file": "Book5EnhancedDuality.lean",
       "statement": "Strong coupling with positive polarity is classified as MAP.",
@@ -8257,6 +11445,18 @@
       "status": "P"
     },
     {
+      "name": "Book5EnhancedDuality.existsUnique_regimeCondition",
+      "file": "Book5EnhancedDuality.lean",
+      "statement": "Every coupling/threshold/polarity triple satisfies exactly one MAP, MAD, decoupled, or critical regime condition.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "Book5EnhancedDuality.classify_neg_of_strong",
       "file": "Book5EnhancedDuality.lean",
       "statement": "At strong nonzero coupling, polarity reversal exchanges the MAP and MAD classifications.",
@@ -8284,6 +11484,18 @@
       "name": "Book5EquilibriumConservation.energy_rate_linear_spectral_bound",
       "file": "Book5EquilibriumConservation.lean",
       "statement": "The two linear drift/reflection residual estimates give a linear spectral-radius bound on total energy-rate defect.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5EquilibriumConservation.energy_rate_norm_linear_spectral_bound",
+      "file": "Book5EquilibriumConservation.lean",
+      "statement": "The source-level linear conservation estimate holds for residuals in every seminormed additive state space.",
       "axioms": [
         "propext",
         "Classical.choice",
@@ -8380,6 +11592,90 @@
       "name": "Book5.positive_coupling_above_critical_insufficient",
       "file": "Book5Alignment.lean",
       "statement": "Countermodel: positive polarity and coupling above kappa-critical do not imply positive contribution without a bound relating drift to restorative strength.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5AlignmentDynamics.alignmentError_succ",
+      "file": "Book5AlignmentDynamics.lean",
+      "statement": "Reflective alignment error evolves recursively by the declared feedback gain.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5AlignmentDynamics.alignmentError_tendsto_zero",
+      "file": "Book5AlignmentDynamics.lean",
+      "statement": "A feedback gain of absolute value below one drives alignment error to zero.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5AlignmentDynamics.realizedContribution_tendsto_margin",
+      "file": "Book5AlignmentDynamics.lean",
+      "statement": "Under contractive reflection, realized free-energy contribution converges to the full covenant stability margin.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5AlignmentDynamics.eventually_realizedContribution_pos",
+      "file": "Book5AlignmentDynamics.lean",
+      "statement": "A stable covenant with contractive reflection eventually makes a strictly positive realized contribution.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5AlignmentDynamics.margin_sub_realizedContribution",
+      "file": "Book5AlignmentDynamics.lean",
+      "statement": "The deficit from full covenant margin is exactly the remaining alignment-error magnitude.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5AlignmentDynamics.ReflectiveAlignmentCertificate.realizes_reflective_drift_alignment",
+      "file": "Book5AlignmentDynamics.lean",
+      "statement": "One certificate jointly realizes MAP classification, the distinct drift-relative margin, convergence, and eventual positive contribution.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book5AlignmentDynamics.positive_margin_without_contraction_does_not_align",
+      "file": "Book5AlignmentDynamics.lean",
+      "statement": "Countermodel: positive covenant margin with unit feedback gain can retain nonzero alignment error forever.",
       "axioms": [
         "propext",
         "Classical.choice",
@@ -11413,6 +14709,78 @@
       "statement": "Generic group-valued law: an observer correction term vanishes iff the observer rule collapses to the classical rule",
       "axioms": [
         "propext"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "ScholiumC.OperationalStage.operators_coemerge",
+      "file": "ScholiumC.lean",
+      "statement": "Drift and reflection are supplied jointly by one operational-stage witness; neither is constructed from the other",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "ScholiumC.OperationalStage.drift_advances_stage",
+      "file": "ScholiumC.lean",
+      "statement": "The drift member of the co-emergent operator pair witnesses weakly forward ordinal orientation",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "ScholiumC.OperationalStage.observed_drift_ne_zero",
+      "file": "ScholiumC.lean",
+      "statement": "An explicit bounded-observation certificate makes the operational difference visible without deriving it from category structure",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "ScholiumC.CategoryOfStructures.existsUnique_from_empty",
+      "file": "ScholiumC.lean",
+      "statement": "The certified pre-structured void has a unique morphism into every structural object",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "ScholiumC.CategoryOfStructures.exists_colimit_cocone",
+      "file": "ScholiumC.lean",
+      "statement": "Universe-bounded cocompleteness supplies a colimit cocone for every diagram in the category of structures",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "ScholiumC.CategoryOfStructures.hom_advances_stage",
+      "file": "ScholiumC.lean",
+      "statement": "Every emergence-compatible morphism advances weakly in ordinal stage",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
       ],
       "sorry": false,
       "status": "P"
@@ -15122,6 +18490,18 @@
       "status": "P"
     },
     {
+      "name": "ScholiumD.newtonian_incompleteness_normedSpace",
+      "file": "ScholiumD.lean",
+      "statement": "On every real normed vector space, Newtonian scalar force is continuous-linear equivariant while nonzero frame acceleration creates a nonzero defect.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "ScholiumD.symbolic_quantum_incompatibility_kernel",
       "file": "ScholiumD.lean",
       "statement": "Joint reflection/update preservation is impossible when it requires a Hamiltonian meta-update that the target quantum model forbids.",
@@ -15130,9 +18510,69 @@
       "status": "P"
     },
     {
+      "name": "ScholiumQuantumTensorNoGo.no_self_tensor_linearEquiv",
+      "file": "ScholiumQuantumTensorNoGo.lean",
+      "statement": "A nontrivial finite-dimensional carrier is not linearly isomorphic to its self-tensor product.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "ScholiumQuantumTensorNoGo.no_lossless_tensor_closure",
+      "file": "ScholiumQuantumTensorNoGo.lean",
+      "statement": "Any proposed lossless linear tensor closure contradicts the finite-dimensional dimension obstruction.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "ScholiumQuantumTensorNoGo.self_tensor_linearEquiv_exists_dim_one",
+      "file": "ScholiumQuantumTensorNoGo.lean",
+      "statement": "Dimension one is the sharp boundary where a self-tensor linear equivalence exists.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "ScholiumQuantumTensorNoGo.self_tensor_finrank_eq_forces_one",
+      "file": "ScholiumQuantumTensorNoGo.lean",
+      "statement": "Positive finite dimension satisfying self-tensor dimension equality must equal one.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "ScholiumD.emergence_premises_do_not_force_curvature",
       "file": "ScholiumD.lean",
       "statement": "Novelty, reflective identity, and abstract structural growth admit a concrete zero-curvature model, exposing the missing geometric bridge law.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "ScholiumD.contextualGrowth_exposes_crossError",
+      "file": "ScholiumD.lean",
+      "statement": "Contextual nonseparability exposes a nonzero mixed cross-error locally in the Scholium, before Book IV geometrizes it.",
       "axioms": [
         "propext",
         "Classical.choice",
@@ -15384,6 +18824,690 @@
       "name": "Book7BornCollapse.hilbert_collapse_alone_does_not_determine_readout",
       "file": "Book7BornCollapse.lean",
       "statement": "Countermodel: Hilbert collapse alone does not select a Born probability functional.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7BornCollapse.finiteBornValue_nonneg",
+      "file": "Book7BornCollapse.lean",
+      "statement": "Every outcome of the constructive finite squared-amplitude Born model has nonnegative probability.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7BornCollapse.finiteBornValue_sum_one",
+      "file": "Book7BornCollapse.lean",
+      "statement": "Normalized finite complex amplitudes produce Born probabilities summing exactly to one.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7BornCollapse.amplitudeCalibratedReadout_unique",
+      "file": "Book7BornCollapse.lean",
+      "statement": "Pointwise squared-amplitude calibration uniquely determines the finite Born readout.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7BornCollapse.zero_curvature_hilbert_finiteBorn",
+      "file": "Book7BornCollapse.lean",
+      "statement": "At zero curvature the constructed exponent is two and every amplitude-calibrated finite outcome has its Born value.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7BornCollapse.finiteBornValue_amplitudeOfProbability",
+      "file": "Book7BornCollapse.lean",
+      "statement": "The squared norm of the canonical square-root amplitude recovers each finite nonnegative probability exactly.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7BornCollapse.finite_probability_has_born_representation",
+      "file": "Book7BornCollapse.lean",
+      "statement": "Every finite nonnegative probability assignment has a constructive complex-amplitude Born representation in a fixed outcome basis.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7BornCollapse.amplitudeOfProbability_normalized",
+      "file": "Book7BornCollapse.lean",
+      "statement": "A normalized finite probability vector lifts to a normalized complex amplitude vector.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7BornCollapse.normalization_alone_does_not_force_finiteBorn",
+      "file": "Book7BornCollapse.lean",
+      "statement": "Countermodel: normalized amplitudes and a normalized readout can disagree, so normalization alone does not select Born.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7FrameMeasure.FrameReadoutSystem.globalValue_eq_local",
+      "file": "Book7FrameMeasure.lean",
+      "statement": "The glued global assignment agrees with every covered local frame readout.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7FrameMeasure.FrameReadoutSystem.globalValue_nonnegative",
+      "file": "Book7FrameMeasure.lean",
+      "statement": "Nonnegative local frame readouts glue to a nonnegative global assignment.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7FrameMeasure.FrameReadoutSystem.globalValue_normalized_on_frame",
+      "file": "Book7FrameMeasure.lean",
+      "statement": "The glued global assignment remains normalized on every frame.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7FrameMeasure.FrameReadoutSystem.globalValue_unique",
+      "file": "Book7FrameMeasure.lean",
+      "statement": "Coverage and overlap noncontextuality uniquely determine the global assignment from its local restrictions.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7FrameMeasure.FrameReadoutSystem.globalValue_eq_finiteBorn",
+      "file": "Book7FrameMeasure.lean",
+      "statement": "Local squared-amplitude calibration transports through noncontextual gluing to the global finite Born assignment.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7FrameMeasure.noncontextual_gluing_alone_does_not_force_born",
+      "file": "Book7FrameMeasure.lean",
+      "statement": "Countermodel: compatible normalized frame measures need not equal a selected Born assignment without a quadratic calibration law.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuadraticTrace.quadratic_eq_trace_pureStateDensity_mul",
+      "file": "Book7QuadraticTrace.lean",
+      "statement": "A supplied finite quadratic value is exactly the trace of the corresponding pure-state density times its operator.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuadraticTrace.FrameReadoutSystem.globalValue_eq_trace_of_quadratic",
+      "file": "Book7QuadraticTrace.lean",
+      "statement": "A quadratic representation of the glued global measure transports pointwise to trace form.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuadraticTrace.gluing_requires_quadratic_existence_bridge",
+      "file": "Book7QuadraticTrace.lean",
+      "statement": "Countermodel boundary: frame gluing does not construct the quadratic operator witness.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuadraticPolarization.quadraticForm_has_symmetric_bilinear_representation",
+      "file": "Book7QuadraticPolarization.lean",
+      "statement": "Every real quadratic form canonically polarizes to a symmetric bilinear coupling whose diagonal recovers it exactly.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuadraticPolarization.associated_diagonal_nonnegative",
+      "file": "Book7QuadraticPolarization.lean",
+      "statement": "A nonnegative quadratic form gives a positive-semidefinite diagonal on its canonical associated bilinear form.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuadraticPolarization.nonnegative_readout_does_not_force_quadratic",
+      "file": "Book7QuadraticPolarization.lean",
+      "statement": "Countermodel: a nonnegative readout need not obey quadratic scaling and therefore need not admit a quadratic-form representation.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuadraticPolarization.QuadraticReadoutLaws.toQuadraticForm_apply",
+      "file": "Book7QuadraticPolarization.lean",
+      "statement": "Degree-two scaling and bilinear polarization laws construct a genuine quadratic form preserving the readout pointwise.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuadraticPolarization.QuadraticReadoutLaws.roundtrip_value",
+      "file": "Book7QuadraticPolarization.lean",
+      "statement": "The certificate-to-quadratic-form round trip preserves the complete readout function.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuadraticPolarization.certified_readout_has_symmetric_bilinear_representation",
+      "file": "Book7QuadraticPolarization.lean",
+      "statement": "A readout satisfying the explicit quadratic certificate laws constructively admits a coordinate-free symmetric bilinear representation.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7GleasonBoundary.quarticFrameValue_nonnegative",
+      "file": "Book7GleasonBoundary.lean",
+      "statement": "The explicit quartic projective frame function is nonnegative on every real two-vector.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7GleasonBoundary.quarticFrameValue_smul",
+      "file": "Book7GleasonBoundary.lean",
+      "statement": "The quartic frame function is invariant under every nonzero real rescaling and therefore descends to rays.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7GleasonBoundary.quartic_orthogonal_pair_normalized",
+      "file": "Book7GleasonBoundary.lean",
+      "statement": "Every nonzero vector and its quarter-turn companion receive quartic frame values summing exactly to one.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7GleasonBoundary.quadraticForm_parallelogram",
+      "file": "Book7GleasonBoundary.lean",
+      "statement": "Every real quadratic form satisfies the parallelogram identity.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7GleasonBoundary.quartic_frame_function_is_not_quadratic",
+      "file": "Book7GleasonBoundary.lean",
+      "statement": "The quartic rank-two frame function cannot equal any real quadratic form.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7GleasonBoundary.rank_two_frame_axioms_do_not_force_born",
+      "file": "Book7GleasonBoundary.lean",
+      "statement": "Rank-two countermodel: nonnegativity, ray invariance, and orthogonal-frame normalization do not force a Born/quadratic representation.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuantumGleason.vectorExpectation_smul",
+      "file": "Book7QuantumGleason.lean",
+      "statement": "Complex operator expectations scale by star(a)*a, preserving quantum phase rather than flattening to real a-squared scaling.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuantumGleason.HermitianReadoutCertificate.toSesquilinear_apply",
+      "file": "Book7QuantumGleason.lean",
+      "statement": "The explicit cross-term certificate constructs a genuine complex sesquilinear form with the stated pointwise values.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuantumGleason.HermitianReadoutCertificate.toSesquilinear_isSymm",
+      "file": "Book7QuantumGleason.lean",
+      "statement": "Hermitian exchange in the certificate becomes Mathlib symmetry of the reconstructed sesquilinear form.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuantumGleason.HermitianReadoutCertificate.toSesquilinear_diagonal",
+      "file": "Book7QuantumGleason.lean",
+      "statement": "The reconstructed Hermitian form recovers the certified ray readout on its diagonal.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuantumGleason.HermitianReadoutCertificate.value_smul",
+      "file": "Book7QuantumGleason.lean",
+      "statement": "A Hermitian certificate forces conjugate-modulus scaling of its diagonal readout.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuantumGleason.hermitian_reconstruction_from_certificate",
+      "file": "Book7QuantumGleason.lean",
+      "statement": "Explicit cross laws construct a Hermitian sesquilinear representation; arbitrary observer-resolution data cannot reverse-lift them, while the richer pure-state lowering preserves them forward.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuantumGleason.completeFrameCoherence_does_not_supply_hermitian_certificate",
+      "file": "Book7QuantumGleason.lean",
+      "statement": "The existing complete-frame coherence type admits a normalized constant-one countermodel that cannot be the diagonal of any Hermitian form.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuantumGleason.quantumResolution_to_hermitian_certificate",
+      "file": "Book7QuantumGleason.lean",
+      "statement": "A quantum-resolution certificate whose existing reduced matrix is Hermitian directly constructs the existing Hermitian readout certificate.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuantumGleason.quantumResolution_without_matrixHermiticity_does_not_supply_certificate",
+      "file": "Book7QuantumGleason.lean",
+      "statement": "The bare quantum-resolution contract admits a normalized non-Hermitian reduced matrix with non-real expectation, refuting the unrefined arrow.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuantumGleason.quantumResolution_does_not_force_reducedState_isHermitian",
+      "file": "Book7QuantumGleason.lean",
+      "statement": "The current upstream quantum-resolution contract does not force reduced-state Hermiticity; the preserved countermodel proves the exact premise cannot be removed.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuantumGleason.pureStateDensity_isHermitian",
+      "file": "Book7QuantumGleason.lean",
+      "statement": "The richer pure-state operator construction is Hermitian before observer resolution.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuantumGleason.pureStateToResolution_reducedState_isHermitian",
+      "file": "Book7QuantumGleason.lean",
+      "statement": "Forward lowering of a normalized pure state preserves its operator Hermiticity.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuantumGleason.pureState_forward_chain",
+      "file": "Book7QuantumGleason.lean",
+      "statement": "A legitimate normalized pure state lowers through observer resolution into the existing Hermitian readout certificate.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuantumGleason.pureStateDensity_globalPhase",
+      "file": "Book7QuantumGleason.lean",
+      "statement": "Global phase is forgotten by pure-state density lowering.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuantumGleason.pureStateToResolution_globalPhase",
+      "file": "Book7QuantumGleason.lean",
+      "statement": "Global-phase-related states produce the same observer-resolution certificate for a fixed response kernel.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuantumGleason.pureState_lowering_not_injective",
+      "file": "Book7QuantumGleason.lean",
+      "statement": "Distinct normalized source vectors can lower to the same density, giving a concrete information-loss witness.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuantumGleason.vectorExpectation_globalPhase",
+      "file": "Book7QuantumGleason.lean",
+      "statement": "Every unit-modulus global phase leaves finite operator expectations unchanged.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuantumGleason.complex_phase_refutes_real_degreeTwo",
+      "file": "Book7QuantumGleason.lean",
+      "statement": "The imaginary unit proves ordinary real degree-two scaling is not the complex quantum scaling law.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7QuantumGleason.operatorQuantumRayReadout_globalPhase",
+      "file": "Book7QuantumGleason.lean",
+      "statement": "The constructed finite operator ray readout is invariant under every certified global phase.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7RegimeReconstruction.RegimeEstimate.latent_critical_within_error",
+      "file": "Book7RegimeReconstruction.lean",
+      "statement": "The latent critical-pair conflict lies within the declared observer error of rho-hat.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7RegimeReconstruction.RegimeEstimate.latent_critical_lt_of_rhoHat_margin",
+      "file": "Book7RegimeReconstruction.lean",
+      "statement": "A low-regime decision transports to latent conflict when its margin exceeds reconstruction error.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7RegimeReconstruction.RegimeEstimate.lt_latent_critical_of_margin",
+      "file": "Book7RegimeReconstruction.lean",
+      "statement": "A high-regime decision transports to latent conflict when its margin exceeds reconstruction error.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7RegimeReconstruction.same_rhoHat_does_not_identify_latent",
+      "file": "Book7RegimeReconstruction.lean",
+      "statement": "Countermodel: identical rho-hat screening values can conceal different latent conflict geometries.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7RegimeReconstruction.regime_does_not_determine_rhoO",
+      "file": "Book7RegimeReconstruction.lean",
+      "statement": "Countermodel: a fixed collapse estimator does not determine observer reintegration residue.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7RegimeReconstruction.RegimeEstimate.reframe_rhoHat",
+      "file": "Book7RegimeReconstruction.lean",
+      "statement": "The regime statistic transforms equivariantly under an order-isomorphic observer reframing.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7RegimeReconstruction.RegimeEstimate.reframe_order_iff",
+      "file": "Book7RegimeReconstruction.lean",
+      "statement": "Every pair ranking is invariant under order-isomorphic observer coordinates.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7RegimeReconstruction.RegimeEstimate.reframe_threshold_iff",
+      "file": "Book7RegimeReconstruction.lean",
+      "statement": "Routing decisions are invariant when both regime statistic and threshold are transported through the same order isomorphism.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7RegimeReconstruction.ordinal_agreement_does_not_identify_scale",
+      "file": "Book7RegimeReconstruction.lean",
+      "statement": "Countermodel: complete ordinal agreement does not identify numerical conflict scale.",
       "axioms": [
         "propext",
         "Classical.choice",
@@ -15652,6 +19776,98 @@
       "status": "P"
     },
     {
+      "name": "Book9Stewardship.safeguarded_child_of_preserving_derivation",
+      "file": "Book9Stewardship.lean",
+      "statement": "An explicit preservation witness transports a named safeguard from parent to derivative.",
+      "axioms": [],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book9Stewardship.release_evidence_supports_child",
+      "file": "Book9Stewardship.lean",
+      "statement": "A release certificate carries technical evidence supporting the particular derivative.",
+      "axioms": [],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book9Stewardship.release_requires_valid_authority",
+      "file": "Book9Stewardship.lean",
+      "statement": "Release authorization is a separately validated witness, not a consequence of technical evidence.",
+      "axioms": [],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book9Stewardship.safeguarded_parent_does_not_force_safeguarded_child",
+      "file": "Book9Stewardship.lean",
+      "statement": "Countermodel: derivation from a safeguarded parent does not by itself make the child safeguarded.",
+      "axioms": [
+        "propext"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book9Stewardship.preservation_and_evidence_do_not_force_authority",
+      "file": "Book9Stewardship.lean",
+      "statement": "Countermodel: safeguard preservation and supporting evidence do not manufacture release authority.",
+      "axioms": [
+        "propext"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book9HopeDriver.residual_pos_iff",
+      "file": "Book9HopeDriver.lean",
+      "statement": "Visible residual is positive exactly when drive exceeds bounded capacity.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book9HopeDriver.bounded_capacity_unbounded_drive_produces_breach",
+      "file": "Book9HopeDriver.lean",
+      "statement": "Globally bounded capacity under an unbounded drive guarantees a capacity breach somewhere.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book9HopeDriver.hope_drives_change",
+      "file": "Book9HopeDriver.lean",
+      "statement": "Hope operationally witnesses a viable transition to strictly lower unresolved residual.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book9HopeDriver.hope_alone_does_not_force_shared_good",
+      "file": "Book9HopeDriver.lean",
+      "statement": "Moloch countermodel: genuine viable residual reduction does not determine shared good.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "Book4ImaginationDetector.mixedResidue_eq_zero_of_additive",
       "file": "Book4ImaginationDetector.lean",
       "statement": "An additive four-branch response has zero mixed finite-difference residue.",
@@ -15736,6 +19952,228 @@
       "status": "P"
     },
     {
+      "name": "Book4ImaginaryRegulationCurvature.reintegrationResidue_iff_noncommuting",
+      "file": "Book4ImaginaryRegulationCurvature.lean",
+      "statement": "Reintegration residue exists exactly when imagination and embodied regulation fail to commute.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ImaginaryRegulationCurvature.residue_implies_imaginationActive",
+      "file": "Book4ImaginaryRegulationCurvature.lean",
+      "statement": "A nonzero imagination-regulation commutator entails that imagination is operationally nontrivial somewhere.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ImaginaryRegulationCurvature.imagination_alone_does_not_force_residue",
+      "file": "Book4ImaginaryRegulationCurvature.lean",
+      "statement": "Countermodel: active Boolean imagination commutes with identity regulation and produces no residue.",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ImaginaryRegulationCurvature.curvature_alone_does_not_force_imagination",
+      "file": "Book4ImaginaryRegulationCurvature.lean",
+      "statement": "Countermodel: external curvature data can coexist with an identity imagination map.",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ImaginaryRegulationCurvature.imaginaryTraversalCost_nonneg",
+      "file": "Book4ImaginaryRegulationCurvature.lean",
+      "statement": "The norm of the imagination-regulation reintegration defect is a nonnegative traversal-cost candidate.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ImaginaryRegulationCurvature.imaginaryTraversalCost_eq_zero_iff",
+      "file": "Book4ImaginaryRegulationCurvature.lean",
+      "statement": "Imaginary traversal is free exactly when imagination and regulation commute at the embodied state.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ImaginaryRegulationCurvature.imaginaryTraversalCost_pos_iff",
+      "file": "Book4ImaginaryRegulationCurvature.lean",
+      "statement": "Unweighted traversal cost is positive exactly at a pointwise reintegration residue.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ImaginaryRegulationCurvature.weightedTraversalCost_nonneg",
+      "file": "Book4ImaginaryRegulationCurvature.lean",
+      "statement": "Nonnegative material gravity times reintegration-defect norm yields nonnegative realized traversal cost.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ImaginaryRegulationCurvature.weightedTraversalCost_pos_iff",
+      "file": "Book4ImaginaryRegulationCurvature.lean",
+      "statement": "Weighted curvature cost is positive exactly when positive material gravity meets noncommuting imaginary traversal.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ImaginaryRegulationCurvature.weightedTraversalCost_mono_gravity",
+      "file": "Book4ImaginaryRegulationCurvature.lean",
+      "statement": "For a fixed traversal residue, increasing material gravity cannot decrease realized curvature cost.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ImaginaryRegulationCurvature.zero_gravity_zero_cost",
+      "file": "Book4ImaginaryRegulationCurvature.lean",
+      "statement": "A weightless channel has zero realized traversal cost even when the latent traversal may be noncommuting.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ImaginaryRegulationCurvature.CurvatureCostCertificate.curvature_nonneg",
+      "file": "Book4ImaginaryRegulationCurvature.lean",
+      "statement": "An explicit weighted-cost bridge forces its declared curvature cost nonnegative.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ImaginaryRegulationCurvature.CurvatureCostCertificate.curvature_pos_iff",
+      "file": "Book4ImaginaryRegulationCurvature.lean",
+      "statement": "Under the bridge, positive curvature cost is equivalent to positive material gravity plus reintegration residue.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ImaginaryRegulationCurvature.CurvatureCostCertificate.curvature_zero_of_free_reintegration",
+      "file": "Book4ImaginaryRegulationCurvature.lean",
+      "statement": "Free reintegration forces zero curvature cost for every material weight.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ImaginaryRegulationCurvature.active_imagination_can_have_zero_traversalCost",
+      "file": "Book4ImaginaryRegulationCurvature.lean",
+      "statement": "Countermodel: active imagination may commute with regulation and incur zero traversal cost everywhere.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ImaginaryRegulationCurvature.operationalControl_components",
+      "file": "Book4ImaginaryRegulationCurvature.lean",
+      "statement": "Operational imaginary control exposes unreal variation, action-level causal difference, and authorized embodied return.",
+      "axioms": [],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ImaginaryRegulationCurvature.accumulatedResidue_succ",
+      "file": "Book4ImaginaryRegulationCurvature.lean",
+      "statement": "Constant oriented residue adds exactly once per recurrence.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ImaginaryRegulationCurvature.accumulatedResidue_strictMono",
+      "file": "Book4ImaginaryRegulationCurvature.lean",
+      "statement": "Positive recurring residue makes the accumulated trajectory strictly increasing.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book4ImaginaryRegulationCurvature.accumulatedResidue_ne_initial",
+      "file": "Book4ImaginaryRegulationCurvature.lean",
+      "statement": "A positive oriented residue prevents every positive recurrence from returning to its initial state.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
       "name": "Book7B.contextualCurvature_with_stableIdentity",
       "file": "Book7B.lean",
       "statement": "Contextual nonzero curvature coexists with reflective convergence to a stable identity.",
@@ -15763,6 +20201,18 @@
       "name": "Book7B.budgetLimited_uniqueMinimizer_of_injectiveCost",
       "file": "Book7B.lean",
       "statement": "A candidate-dependent cost has a unique minimizer on a nonempty finite feasible set when it has no ties there.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorry": false,
+      "status": "P"
+    },
+    {
+      "name": "Book7B.budgetLimited_existsUniqueMinimizer_of_compact",
+      "file": "Book7B.lean",
+      "statement": "Compactness and lower semicontinuity give an analytic minimizer, and strict convexity makes it unique.",
       "axioms": [
         "propext",
         "Classical.choice",

@@ -39,6 +39,71 @@ theorem classify_decoupled {coupling critical polarity : ℝ}
     classify coupling critical polarity = .decoupled := by
   simp [classify, hCoupling, not_lt.mpr hCoupling.le]
 
+/-! ## Exact four-way classification -/
+
+def RegimeCondition (coupling critical polarity : ℝ) : Regime → Prop
+  | .map => critical < coupling ∧ 0 < polarity
+  | .mad => critical < coupling ∧ polarity < 0
+  | .decoupled => coupling < critical
+  | .critical => coupling = critical ∨ (critical < coupling ∧ polarity = 0)
+
+theorem classify_eq_map_iff {coupling critical polarity : ℝ} :
+    classify coupling critical polarity = .map ↔
+      RegimeCondition coupling critical polarity .map := by
+  simp only [RegimeCondition]
+  unfold classify
+  split_ifs <;> simp_all [le_of_lt]
+
+theorem classify_eq_mad_iff {coupling critical polarity : ℝ} :
+    classify coupling critical polarity = .mad ↔
+      RegimeCondition coupling critical polarity .mad := by
+  simp only [RegimeCondition]
+  unfold classify
+  split_ifs <;> simp_all [le_of_lt]
+
+theorem classify_eq_decoupled_iff {coupling critical polarity : ℝ} :
+    classify coupling critical polarity = .decoupled ↔
+      RegimeCondition coupling critical polarity .decoupled := by
+  simp only [RegimeCondition]
+  unfold classify
+  split_ifs <;> simp_all [le_of_lt]
+
+theorem classify_eq_critical_iff {coupling critical polarity : ℝ} :
+    classify coupling critical polarity = .critical ↔
+      RegimeCondition coupling critical polarity .critical := by
+  unfold classify RegimeCondition
+  by_cases hs : critical < coupling
+  · by_cases hp : 0 < polarity
+    · simp [hs, hp, ne_of_gt hs, ne_of_gt hp]
+    · by_cases hn : polarity < 0
+      · simp [hs, hp, hn, ne_of_gt hs, ne_of_lt hn]
+      · have hz : polarity = 0 := le_antisymm (not_lt.mp hp) (not_lt.mp hn)
+        simp [hs, hz, ne_of_gt hs]
+  · have hle : coupling ≤ critical := not_lt.mp hs
+    by_cases hw : coupling < critical
+    · simp [hs, hw, ne_of_lt hw]
+    · have heq : coupling = critical := le_antisymm hle (not_lt.mp hw)
+      simp [heq]
+
+theorem regimeCondition_iff_classify_eq
+    {coupling critical polarity : ℝ} (r : Regime) :
+    RegimeCondition coupling critical polarity r ↔
+      classify coupling critical polarity = r := by
+  cases r with
+  | map => exact classify_eq_map_iff.symm
+  | mad => exact classify_eq_mad_iff.symm
+  | decoupled => exact classify_eq_decoupled_iff.symm
+  | critical => exact classify_eq_critical_iff.symm
+
+/-- For every parameter triple, exactly one of MAP, MAD, decoupled, or the
+critical boundary obtains. Equality and zero polarity are retained in the
+critical case rather than silently assigned to a neighboring regime. -/
+theorem existsUnique_regimeCondition (coupling critical polarity : ℝ) :
+    ∃! r : Regime, RegimeCondition coupling critical polarity r := by
+  refine ⟨classify coupling critical polarity, ?_, ?_⟩
+  · exact (regimeCondition_iff_classify_eq _).2 rfl
+  · intro r hr
+    exact ((regimeCondition_iff_classify_eq r).1 hr).symm
 /-- Polarity reversal exchanges the two strong-coupling regimes. -/
 theorem classify_neg_of_strong {coupling critical polarity : ℝ}
     (hCoupling : critical < coupling) (hPolarity : polarity ≠ 0) :

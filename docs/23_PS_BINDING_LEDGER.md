@@ -8,8 +8,8 @@ artifact. `bound-only` means the transcription is drift-protected but has
 not yet been admitted by a coverage map. `reserved` means the hash matches
 mechanically but still awaits human attestation.
 
-- Bound declarations: **958**
-- Unique Principia anchors: **638**
+- Bound declarations: **1265**
+- Unique Principia anchors: **646**
 - Human-attested bindings: **0**
 
 ## appendix_dual_horizon
@@ -122,7 +122,7 @@ mechanically but still awaits human attestation.
 | `theorem:bk2_classification_symb_phase_transitions` | Classification of Symbolic Phase Transitions | partial | 1 | 1 | `f04112f09764` | reserved |
 | `theorem:bk2_symbolic_fluctuation_dissipation_relation` | Symbolic Fluctuation-Dissipation Relation | conditional | 1 | 1 | `577840734a0e` | reserved |
 | `proposition:bk2_global_local_temp_relation` | Global-Local Temperature Relation | proved-kernel | 1 | 1 | `60962d03feb2` | reserved |
-| `lemma:bk2_thermodynamic_consistency_hypothesis_manifolds` | Thermodynamic Consistency of Hypothesis Manifolds | conditional | 1 | 2 | `c2a0aa4b4615` | reserved |
+| `lemma:bk2_thermodynamic_consistency_hypothesis_manifolds` | Thermodynamic Consistency of Hypothesis Manifolds | conditional | 3 | 10 | `c12ff606e403` | reserved |
 | `theorem:bk2_emergence_structure_symb_thermo` | Emergence of Symbolic Structure | conditional | 1 | 1 | `78e66bc7b68b` | reserved |
 
 ## book3
@@ -130,6 +130,7 @@ mechanically but still awaits human attestation.
 | anchor | name | coverage | artifacts | declarations | SHA | attestation |
 |---|---|---|---:|---:|---|---|
 | `definition:bk3_symbolic_membrane` | Symbolic Membrane | partial | 1 | 1 | `44a3a2a7be9c` | reserved |
+| `lemma:bk3_wellposedness_of_symbolic_membranes` | Conditional Well-posedness of Symbolic Membranes | conditional | 1 | 2 | `2bf876be0d5d` | reserved |
 | `definition:bk3_membrane_thermodynamics` | Membrane Thermodynamics | partial | 1 | 1 | `b20c27c9e66a` | reserved |
 | `theorem:bk3_membrane_stability_criteria` | Membrane Stability Criteria | conditional | 1 | 1 | `f869ea7eeaaa` | reserved |
 | `definition:bk3_coupling_map` | Coupling Map | partial | 1 | 1 | `c397e0cbd01d` | reserved |
@@ -144,17 +145,18 @@ mechanically but still awaits human attestation.
 | `definition:bk3_symbiotic_curvature` | Symbiotic Curvature | definition | 1 | 1 | `b46df02af5ed` | reserved |
 | `theorem:bk3_properties_of_symbiotic_curvature` | Properties of Symbiotic Curvature | conditional | 1 | 4 | `58405671b66f` | reserved |
 | `theorem:bk3_symbiotic_curvature_and_resilience` | Symbiotic Curvature and Resilience | conditional | 1 | 1 | `65b132d3d62d` | reserved |
-| `lemma:bk3_helmholtz_decomposition_refinement_field` | Helmholtz Decomposition of Refinement Field | partial | 1 | 5 | `ec21645050d4` | reserved |
+| `lemma:bk3_helmholtz_decomposition_refinement_field` | Hodge--Helmholtz Decomposition of the Refinement Field | conditional | 1 | 13 | `cbb92ab32b3f` | reserved |
 | `theorem:bk3_evolution_of_symbolic_knowledge` | Evolution of Symbolic Knowledge | conditional | 1 | 1 | `8173d614b26d` | reserved |
 | `corollary:bk3_integrated_knowledge_structure` | Integrated Knowledge Structure | proved-kernel | 1 | 1 | `ed997a1c1f9d` | reserved |
 | `theorem:bk3_conditions_sustained_symbolic_growth` | Conditions for Sustained Symbolic Growth | conditional | 1 | 1 | `58e10553c26f` | reserved |
+| `theorem:bk3_emergence_of_symbolic_networks` | Conditional Assembly of Symbolic Networks | conditional | 1 | 2 | `6987756fc49a` | reserved |
 | `definition:bk3_conceptual_bridge_sequence` | Conceptual Bridge Sequence | definition | 1 | 1 | `7245eac7f552` | reserved |
 | `theorem:bk3_closure_conceptual_bridge_sequence` | Closure of Conceptual Bridge Sequence | conditional | 1 | 2 | `4ca69b79e806` | reserved |
 | `definition:bk3_symbolic_metabolic_rate` | Symbolic Metabolic Rate | partial | 1 | 1 | `eaa4d432e1a5` | reserved |
 | `definition:bk3_symbolic_homeostasis` | Symbolic Homeostasis | proved-kernel | 1 | 1 | `2c23740e7956` | reserved |
 | `theorem:bk3_homeostatic_reflexes` | Homeostatic Reflexes | conditional | 1 | 1 | `8163eec95670` | reserved |
 | `theorem:bk3_criteria_persistent_symbolic_life` | Persistent Symbolic Life Criteria | conditional | 1 | 1 | `83079d8b6b47` | reserved |
-| `theorem:bk3_symbolic_life_satisfies_canonical_definitions` | Canonical Life Correspondence | conditional | 1 | 2 | `c518981383b9` | reserved |
+| `theorem:bk3_symbolic_life_satisfies_canonical_definitions` | Certified Canonical Life Correspondence | conditional | 1 | 5 | `92c925cd298b` | reserved |
 
 ## book4
 
@@ -191,7 +193,7 @@ mechanically but still awaits human attestation.
 | `definition:bk4_event_horizon_wheel` | Event Horizon Wheel | definition | 1 | 2 | `e9ad4e76eea4` | reserved |
 | `proposition:bk4_wheel_refines_signature` | The wheel refines the effective horizon signature | proved-kernel | 1 | 2 | `857c5fcaeb34` | reserved |
 | `proposition:bk4_spiral_transition` | Spiral transition between modes | proved-kernel | 1 | 2 | `da372e9bfcbf` | reserved |
-| `proposition:bk4_imagination_bridges_wheel` | Imagination bridges the wheel | partial | 2 | 6 | `351bb54dbbc1` | reserved |
+| `proposition:bk4_imagination_bridges_wheel` | Imagination bridges the wheel | conditional | 2 | 11 | `8ae4b55213a0` | reserved |
 | `corollary:bk4_chromatic_transference_of_wheel` | Chromatic transference of the wheel | proved-kernel | 1 | 4 | `928433472fb5` | reserved |
 | `remark:bk4_invariant_limited_transfer` | Invariant-limited transfer | bound-only | 1 | 1 | `21496455872e` | reserved |
 | `theorem:bk4_golden_event_horizon_spiral` | Golden Event Horizon Spiral | proved-kernel | 1 | 2 | `2d5c6b6a2c61` | reserved |
@@ -228,25 +230,25 @@ mechanically but still awaits human attestation.
 | `proposition:bk4_autonomy_implies_freedom` | Goal-Directed Autonomy Enables Freedom | proved-kernel | 1 | 1 | `ba1ac5f893f3` | reserved |
 | `theorem:bk4_self_authorship_and_freedom` | Self-Authorship and Freedom | conditional | 1 | 1 | `138e29f0627d` | reserved |
 | `theorem:bk4_freedom_life_connection` | Freedom-Life Connection | proved-kernel | 1 | 1 | `6134b827e49c` | reserved |
-| `corollary:bk4_emergence_of_meaning` | Emergence of Meaning | conditional | 1 | 5 | `4bbb168d82b0` | reserved |
+| `corollary:bk4_emergence_of_meaning` | Emergence of Meaning | conditional | 1 | 14 | `c809a8b69fa0` | reserved |
 | `definition:bk4_fuzzy_symbolic_substitution` | Fuzzy Symbolic Substitution | conditional | 1 | 2 | `3846784ee383` | reserved |
 | `definition:bk4_observer_differentiable_` | Observer-Differentiable Structure | conditional | 1 | 3 | `1122938c0082` | reserved |
 | `definition:bk4_observer_metric` | Observer-Induced Metric | conditional | 1 | 1 | `d7598addc433` | reserved |
 | `lemma:bk4_observer_metric_properties` | Properties of Observer-Induced Metric | proved-kernel | 1 | 3 | `f90392c686fe` | reserved |
-| `theorem:bk4_quantum_measurement` | Quantum Measurement Interpretation | conditional | 1 | 4 | `868180b14231` | reserved |
-| `proposition:bk4_field_regularization` | Field Theory Regularization | conditional | 1 | 6 | `a67e80ac5527` | reserved |
-| `lemma:bk4_statistical_mechanics` | Statistical Mechanics Interpretation | conditional | 1 | 5 | `b34d99c6b1c7` | reserved |
-| `theorem:bk4_ml_metric_learning` | Machine Learning Metric Learning | conditional | 1 | 3 | `b640ac5f6893` | reserved |
-| `corollary:bk4_information_curvature` | Information-Geometric Curvature | partial | 1 | 4 | `f8be761aea32` | reserved |
-| `proposition:bk4_holographic_emergence` | Holographic Emergence | conditional | 1 | 7 | `0967a3226bd5` | reserved |
+| `theorem:bk4_quantum_measurement` | Quantum Measurement Interpretation | conditional | 2 | 14 | `0305c96db2f9` | reserved |
+| `proposition:bk4_field_regularization` | Field Theory Regularization | conditional | 1 | 15 | `774eda162ddb` | reserved |
+| `lemma:bk4_statistical_mechanics` | Statistical Mechanics Interpretation | proved | 1 | 10 | `a6ef3e7226bc` | reserved |
+| `theorem:bk4_ml_metric_learning` | Machine Learning Metric Learning | conditional | 1 | 12 | `b640ac5f6893` | reserved |
+| `corollary:bk4_information_curvature` | Information-Geometric Curvature | conditional | 1 | 12 | `917bccf89701` | reserved |
+| `proposition:bk4_holographic_emergence` | Holographic Emergence | conditional | 1 | 11 | `5a2978bbbbb8` | reserved |
 | `lemma:bk4_local_differentiability_substituted_drift` | Local Differentiability of Substituted Drift | conditional | 1 | 1 | `bc0011c0863a` | reserved |
 | `lemma:bk4_observer_relative_smoothness` | Observer-Relative Smoothness | conditional | 1 | 1 | `f6576b29154b` | reserved |
 | `theorem:bk4_fuzzy_symbolic_geometry_theorem` | Fuzzy Symbolic Geometry Theorem | partial | 1 | 1 | `f2361cbefea9` | reserved |
 | `corollary:bk4_smoothness_as_epistemic_phenomenon` | Smoothness as an Epistemic Phenomenon | partial | 1 | 2 | `63a9708993d2` | reserved |
 | `theorem:bk4_compatibility_drift_reflective_operations` | Compatibility with Drift-Reflective Operations | conditional | 1 | 1 | `8c87437b4c96` | reserved |
 | `theorem:bk4_restated_fuzzy_symbolic_geometry_theorem` | Restated: Fuzzy Symbolic Geometry Theorem | partial | 1 | 1 | `f9e69e88c6c9` | reserved |
-| `proposition:bk4_fuzzy_connection` | Fuzzy Connection | partial | 1 | 4 | `b46926df4d64` | reserved |
-| `proposition:bk4_geodesic_failure` | Geodesic Interpretation of Symbolic Curvature | conditional | 1 | 4 | `f333c3c9eeb8` | reserved |
+| `proposition:bk4_fuzzy_connection` | Conditional Fuzzy Connection | conditional | 2 | 18 | `4da79b9c9496` | reserved |
+| `proposition:bk4_geodesic_failure` | Conditional Jacobi-Deviation Diagnostic | conditional | 1 | 8 | `9eea61335538` | reserved |
 | `corollary:bk4_emergence_of_classical_ge` | Emergence of Classical Geometry | partial | 1 | 1 | `c9a9dd5844ca` | reserved |
 | `definition:bk4_observer_valid_different` | Observer-Valid Differentiation | conditional | 1 | 1 | `7c573c8d9411` | reserved |
 | `lemma:bk4_convergence_of_symbolic_drift` | Convergence of Symbolic Drift | partial | 1 | 1 | `2fddaef1a3d0` | reserved |
@@ -267,20 +269,20 @@ mechanically but still awaits human attestation.
 | `corollary:bk4_fuzzy_multivariable_chain` | Chain Rule for Fuzzy Compositions | conditional | 1 | 2 | `b8ce33adc3bd` | reserved |
 | `definition:bk4_symbolic_vector_field` | Symbolic Vector Field | conditional | 1 | 1 | `2eb3cb616ab5` | reserved |
 | `theorem:bk4_fuzzy_divergence` | Divergence and Symbolic Conservation | conditional | 1 | 1 | `da19d7a42b5c` | reserved |
-| `theorem:bk4_observer_geometry_coevolution` | Observer-Geometry Co-Evolution | conditional | 1 | 3 | `89d4f85d5962` | reserved |
+| `theorem:bk4_observer_geometry_coevolution` | Conditional Observer--Geometry Co-Evolution | conditional | 1 | 11 | `f087cf1dbb3e` | reserved |
 | `definition:bk4_fuzzy_integral_operator` | Fuzzy Integral Operator | definition | 1 | 1 | `645ea9f5ddeb` | reserved |
 | `definition:bk4_symbolic_memory_distortion` | Symbolic Memory Distortion | definition | 1 | 1 | `c3a837536d18` | reserved |
 | `theorem:bk4_fuzzy_fundamental` | Fuzzy Fundamental Theorem of Calculus | conditional | 1 | 1 | `18edefe2b7cd` | reserved |
 | `definition:bk4_symbolic_holonomy_term` | Symbolic Holonomy Term | definition | 1 | 1 | `a86d730cc61e` | reserved |
 | `definition:bk4_symbolic_covariant` | Symbolic Covariant Derivative | conditional | 1 | 1 | `d4061d3dd289` | reserved |
-| `theorem:bk4_symbolic_stokes` | Symbolic Stokes' Theorem | conditional | 1 | 1 | `0ad8a4c63aa1` | reserved |
-| `proposition:bk4_gauge_dictionary` | Gauge-Theoretic Dictionary | conditional | 1 | 3 | `360ea22c6ddf` | reserved |
-| `corollary:bk4_wilson_loop` | Wilson Loop Representation | proved-kernel | 1 | 3 | `40089f5d6c1e` | reserved |
-| `proposition:bk4_quantum_geometry` | Symbolic Quantum Geometry | conditional | 1 | 4 | `5f4aeb6aef3b` | reserved |
+| `theorem:bk4_symbolic_stokes` | Symbolic Stokes' Theorem | conditional | 1 | 17 | `6ad2ec21bdbe` | reserved |
+| `proposition:bk4_gauge_dictionary` | Certified Gauge-Theoretic Interpretation | conditional | 1 | 10 | `056d11a98e0b` | reserved |
+| `corollary:bk4_wilson_loop` | Conditional Wilson Holonomy Representation | conditional | 2 | 25 | `86a526d15620` | reserved |
+| `proposition:bk4_quantum_geometry` | Certified Symbolic Quantum Geometry | conditional | 1 | 9 | `9b137a665012` | reserved |
 | `definition:bk4_fuzzy_vector_field` | Fuzzy Symbolic Vector Field | conditional | 1 | 1 | `056669ee9bc3` | reserved |
 | `definition:bk4_fuzzy_divergence_operator` | Fuzzy Divergence Operator | conditional | 1 | 1 | `da115e181bcd` | reserved |
 | `definition:bk4_fuzzy_curl_operator` | Fuzzy Curl Operator | conditional | 1 | 1 | `a3ce1ef9f04c` | reserved |
-| `theorem:bk4_fuzzy_divergence_theorem` | Fuzzy Divergence Theorem | conditional | 1 | 1 | `c9389b223c5a` | reserved |
+| `theorem:bk4_fuzzy_divergence_theorem` | Fuzzy Divergence Theorem | conditional | 1 | 1 | `d9d12194e285` | reserved |
 | `theorem:bk4_fuzzy_curl_theorem` | Fuzzy Curl Theorem | conditional | 1 | 1 | `52f4541591e2` | reserved |
 | `theorem:bk4_fuzzy_helmholtz_decomposition` | Fuzzy Helmholtz Decomposition | conditional | 1 | 1 | `d0ec22d81115` | reserved |
 
@@ -301,6 +303,7 @@ mechanically but still awaits human attestation.
 | `theorem:bk5_map_equilibrium` | MAP Equilibrium | conditional | 1 | 1 | `0979194a1b3b` | reserved |
 | `theorem:bk5_covenant_stability_theorem` | Covenant Stability Theorem | conditional | 1 | 1 | `9cc378d6526e` | reserved |
 | `definition:bk5_map_nash_point` | MAP Nash Point | partial | 1 | 1 | `7e0c7e3d7e3b` | reserved |
+| `proposition:bk5_reflective_drift_alignment_in_map` | Reflective Drift Alignment in MAP | conditional | 1 | 2 | `2566e3d79f64` | reserved |
 | `proposition:bk5_map_mad_dichotomy` | MAP-MAD Dichotomy | conditional | 1 | 1 | `cce52468d690` | reserved |
 | `theorem:bk5__map_dominance` | MAP Dominance | conditional | 1 | 3 | `ba5585745be4` | reserved |
 | `definition:bk5_covenant_resilience_index` | Covenant Resilience Index | proved-kernel | 1 | 2 | `f998973024fc` | reserved |
@@ -309,50 +312,50 @@ mechanically but still awaits human attestation.
 | `definition:bk5_reflective_drift_coupling_tensor` | Reflective-Drift Coupling Tensor | conditional | 1 | 1 | `d43a6987a5a2` | reserved |
 | `definition:bk5_spectral_radius_of_coupl` | Spectral Radius of Coupling Tensor | conditional | 1 | 1 | `d5008097977f` | reserved |
 | `axiom:bk5_reflective_equilibrium_stability_flux` | Reflective Equilibrium Stability | conditional | 1 | 1 | `ba0783f8afda` | reserved |
-| `theorem:bk5_reflective_equilibrium_conservation` | Reflective Equilibrium Conservation | conditional | 1 | 3 | `b643b0d3e50b` | reserved |
+| `theorem:bk5_reflective_equilibrium_conservation` | Reflective Equilibrium Conservation | proved-kernel | 1 | 4 | `bc2c48beaebd` | reserved |
 | `lemma:bk5_recursive_flow_convergence` | Recursive Flow Convergence | conditional | 1 | 1 | `c34294d9cd6f` | reserved |
 | `proposition:bk5_viability_domain_preservation` | Viability Domain Preservation | conditional | 1 | 1 | `dd88878f5ac4` | reserved |
 | `corollary:bk5_spectral_radius_optimality` | Spectral Radius Optimality | proved-kernel | 1 | 1 | `3332b5fc503f` | reserved |
 | `theorem:bk5_reflective_stability_criterion` | Reflective Stability Criterion | proved-kernel | 1 | 1 | `ca4d67d61d2f` | reserved |
-| `theorem:bk5_enhanced_map_mad_duality` | Enhanced MAP-MAD Duality | conditional | 1 | 5 | `fc37f812a24a` | reserved |
+| `theorem:bk5_enhanced_map_mad_duality` | Enhanced MAP--MAD Regime Classification | proved-kernel | 1 | 6 | `99b09c21d79f` | reserved |
 | `definition:bk5_reflective_coupling_stab` | Reflective Coupling Stability Parameter | proved-kernel | 1 | 2 | `af79742f517d` | reserved |
 | `definition:bk5_symbolic_bifurcation_man` | Symbolic Bifurcation Manifold | proved-kernel | 1 | 1 | `801ca7d56ad6` | reserved |
 | `lemma:bk5_symbolic_divergence_bounds` | Symbolic Divergence Bounds | partial | 1 | 1 | `6f3b2efb8e17` | reserved |
-| `proposition:bk5_transactional_covenant_dynamics` | Transitional Covenant Dynamics | conditional | 1 | 4 | `d2dc65e5e43e` | reserved |
+| `proposition:bk5_transactional_covenant_dynamics` | Transitional Covenant Dynamics | proved-kernel | 1 | 7 | `64108ed7c9db` | reserved |
 | `theorem:bk5_map_mad_critical_temperature` | MAP-MAD Critical Temperature | partial | 1 | 1 | `c04cb6e75068` | reserved |
-| `corollary:bk5_reflective_hysteresis` | Reflective Hysteresis | conditional | 1 | 7 | `32bac9c8f781` | reserved |
+| `corollary:bk5_reflective_hysteresis` | Reflective Hysteresis | proved | 1 | 12 | `ac465370934b` | reserved |
 | `proposition:bk5_multi_agent_map_mad_classification` | Multi-Agent MAP-MAD Classification | proved-kernel | 1 | 2 | `e8cf5ec87281` | reserved |
-| `theorem:bk5_enhanced_map_mad_duality_pr` | Enhanced MAP-MAD Duality Proof | conditional | 1 | 7 | `8737a7a9254d` | reserved |
+| `theorem:bk5_enhanced_map_mad_duality_pr` | Enhanced MAP--MAD Dynamical Realization | conditional | 1 | 11 | `66f445c0ae3a` | reserved |
 | `definition:bk5_symbolic_strategy` | Symbolic Strategy | conditional | 1 | 1 | `a48777447b2e` | reserved |
 | `definition:bk5_strategy_space` | Strategy Space | conditional | 1 | 1 | `dead2d721c95` | reserved |
 | `definition:bk5_symbolic_fitness` | Symbolic Fitness | conditional | 1 | 1 | `62d2ebc1d0fc` | reserved |
 | `definition:bk5_symbolic_ess` | Symbolic ESS | proved-kernel | 1 | 1 | `94cb721f102f` | reserved |
 | `lemma:bk5_map_fitness_advantage` | MAP Fitness Advantage | proved-kernel | 1 | 1 | `81aec248de69` | reserved |
 | `lemma:bk5_covenant_non_invasibility` | Covenant Non-Invasibility | conditional | 1 | 1 | `2529a421b6db` | reserved |
-| `theorem:bk5_rift_reflection_balance_in_strategy_space` | Drift-Reflection Balance in Strategy Space | conditional | 1 | 5 | `0e7d80b685e1` | reserved |
+| `theorem:bk5_rift_reflection_balance_in_strategy_space` | Drift--Reflection Balance in Strategy Space | proved | 1 | 10 | `19f275dc418a` | reserved |
 | `proposition:bk5_symbolic_ess_via_map_observability_variant` | Symbolic ESS via MAP | conditional | 1 | 1 | `63af3c716e78` | reserved |
-| `corollary:bk5_convergence_to_map` | Convergence to MAP | conditional | 1 | 4 | `6d5813649132` | reserved |
+| `corollary:bk5_convergence_to_map` | Convergence to MAP | proved | 1 | 12 | `e55bd8dd7788` | reserved |
 | `lemma:bk5_map_population_stability` | MAP Population Stability | conditional | 1 | 1 | `be1c6ac36c36` | reserved |
 | `theorem:bk5_map_as_strong_ess` | MAP as Strong ESS | partial | 1 | 1 | `0cbcee71d07e` | reserved |
 | `definition:bk5_symbolic_invasion_barrier` | Symbolic Invasion Barrier | partial | 1 | 1 | `34d79db322f5` | reserved |
 | `lemma:bk5_map_invasion_barrier_strength` | MAP Invasion Barrier Strength | partial | 1 | 1 | `fa44130f364b` | reserved |
-| `proposition:bk5_symbolic_population_ess_map_equivalence_case2` | Symbolic Population ESS-MAP Equivalence | conditional | 1 | 5 | `57eb5106fbc8` | reserved |
+| `proposition:bk5_symbolic_population_ess_map_equivalence_case2` | Symbolic Population ESS--MAP Approximation | proved | 1 | 10 | `99949450dddb` | reserved |
 | `proposition:bk5_operator_evolution` | Operator Evolution | conditional | 1 | 1 | `eec1a2c2ee10` | reserved |
 | `definition:bk5_process_free_energy` | Process Free Energy $\Fproc$ | conditional | 1 | 1 | `1cb1c0915f27` | reserved |
 | `proposition:bk5_fixed_metabolic_capacity` | Fixed Metabolic Capacity | proved-kernel | 1 | 1 | `c9da6853ebbf` | reserved |
 | `definition:bk5_metabolic_capacity_mc_` | Metabolic Capacity $\MC$ | conditional | 1 | 1 | `c2c0a77ca797` | reserved |
 | `proposition:bk5_metabolic_capacity_non_decreasing` | proposition:bk5_metabolic_capacity_non_decreasing | proved-kernel | 1 | 1 | `4f305c2d1beb` | reserved |
-| `axiom:bk5_srmf_operator_selection_evolution` | SRMF for Operator Selection and Evolution | conditional | 1 | 4 | `3f5336a76dbf` | reserved |
+| `axiom:bk5_srmf_operator_selection_evolution` | Stateful SRMF Operator Selection and Evolution | partial | 2 | 8 | `40a5bd5962a3` | reserved |
 | `theorem:bk5_operator_convergence` | Operator Convergence | conditional | 1 | 1 | `4cefbf89ebe1` | reserved |
 | `axiom:bk5_metabolically_bounded_reflection` | Metabolically Bounded Reflection | conditional | 1 | 1 | `d140437bd5dc` | reserved |
 | `corollary:bk5__metabolically_bounded_reflection_corollary` | corollary:bk5__metabolically_bounded_reflection_corollary | proved-kernel | 1 | 1 | `9c761c5d4933` | reserved |
-| `theorem:bk5__srmf_operator_adaptation` | SRMF Operator Adaptation | conditional | 1 | 6 | `956146d19d81` | reserved |
+| `theorem:bk5__srmf_operator_adaptation` | Certified SRMF Operator Adaptation | partial | 2 | 8 | `8cdb72da18b0` | reserved |
 | `definition:bk5__operator_viability_set_v` | Operator Viability Set $\mathcal{V}_{\text{op}}$ | conditional | 1 | 1 | `d119edc431a9` | reserved |
 | `proposition:bk5_operators_evolve` | proposition:bk5_operators_evolve | conditional | 1 | 1 | `8541bb30269d` | reserved |
 | `definition:bk5_complexity_stability_maintenance` | Operator Complexity, Stability Margin, Maintenance Cost | definition | 1 | 1 | `98f880e76ec6` | reserved |
 | `theorem:bk5_complexity_stability_tradeoff` | Complexity-Stability Tradeoff | proved-kernel | 1 | 1 | `a669eaaa0248` | reserved |
 | `corollary:bk5_complexity_stability_tradeoff` | Complexity Stability Tradeoff | proved-kernel | 1 | 1 | `282958a20f76` | reserved |
-| `theorem:bk5_metabolic_constraints_reflective_accuracy` | Metabolic Constraints on Reflective Accuracy | conditional | 1 | 3 | `055353f1057b` | reserved |
+| `theorem:bk5_metabolic_constraints_reflective_accuracy` | Metabolic Constraints on Reflective Accuracy | proved | 1 | 8 | `2fe8dcdc8fbc` | reserved |
 | `definition:bk5_balanced_two_step_memory_closure` | Balanced Two-Step Symbolic Memory Closure | proved-kernel | 1 | 1 | `f8c787333af7` | reserved |
 | `lemma:bk5_balanced_observer_normalization` | Balanced Observer Normalization Selects the Closure Matrix | conditional | 1 | 1 | `afbfe76983f1` | reserved |
 | `theorem:bk5_golden_ratio_spectral_invariant` | Golden Ratio as Spectral Invariant of Balanced Recursive Memory | proved-kernel | 1 | 1 | `7d8ca1f46f1d` | reserved |
@@ -376,7 +379,7 @@ mechanically but still awaits human attestation.
 | `theorem:bk5_grand_unified_symbolic_geometric` | Product Theorem of the Symbolic-Geometric Interface | partial | 1 | 1 | `206691856db0` | reserved |
 | `definition:bk5_two_way_street_tensor` | Two-Way Street reciprocity tensor | proved-kernel | 1 | 1 | `c350acf7d667` | reserved |
 | `theorem:bk5_golden_rule_reciprocity` | Golden Rule Reciprocity | proved-kernel | 1 | 1 | `a04397dacc7b` | reserved |
-| `proposition:bk5_shade_transfers` | Shade transfers, and the golden spiral paints equal shade-steps | conditional | 1 | 6 | `01485433e4aa` | reserved |
+| `proposition:bk5_shade_transfers` | Faithful shade and shadow-price transfer | proved | 1 | 12 | `dbf9f3265d8e` | reserved |
 
 ## book6
 
@@ -396,9 +399,9 @@ mechanically but still awaits human attestation.
 | `axiom:bk6_bifurcation_as_emergence_operator` | Bifurcation as Emergence Operator | partial | 1 | 1 | `d4ef7873b808` | reserved |
 | `axiom:bk6_reflective_regulation_of_mutation` | Reflective Regulation of Mutation | conditional | 1 | 1 | `c43fbe4c0bc0` | reserved |
 | `axiom:bk6_equilibrium_of_mutability` | Equilibrium of Mutability | conditional | 1 | 1 | `17a38aae9a7c` | reserved |
-| `lemma:bk6_symbolic_drift_mutation_relation` | Symbolic Drift-Mutation Relation | conditional | 1 | 4 | `64766a089f19` | reserved |
+| `lemma:bk6_symbolic_drift_mutation_relation` | Calibrated Symbolic Drift--Mutation Relation | conditional | 1 | 6 | `ef02baecf62e` | reserved |
 | `proposition:bk6_bifurcation_threshold` | Bifurcation Threshold | proved-kernel | 1 | 1 | `8f5017b27da1` | reserved |
-| `proposition:bk6_thermodynamic_interpretation` | Thermodynamic Interpretation | conditional | 1 | 3 | `43cf23693bf0` | reserved |
+| `proposition:bk6_thermodynamic_interpretation` | Constrained MEPP Selection Certificate | conditional | 1 | 5 | `386d38f4372e` | reserved |
 | `corollary:bk6_mutation_memory` | Mutation Memory | proved-kernel | 1 | 1 | `dade7632a896` | reserved |
 | `corollary:bk6_reflective_capacity_theorem` | Reflective Capacity Theorem | proved-kernel | 1 | 1 | `eb9278a31523` | reserved |
 | `definition:bk6_mutation_operator` | Mutation Operator | partial | 1 | 1 | `719e6ee2fab4` | reserved |
@@ -406,7 +409,7 @@ mechanically but still awaits human attestation.
 | `proposition:bk6_entropic_dissolution` | Entropic Dissolution | proved-kernel | 1 | 1 | `f49c7e555088` | reserved |
 | `definition:bk6_symbolic_regulatory_cycle` | Symbolic Regulatory Cycle | proved-kernel | 1 | 1 | `27684a56f27b` | reserved |
 | `definition:bk6_symbolic_confidence_field` | Symbolic Confidence Field | proved-kernel | 1 | 1 | `01bc0b8d567e` | reserved |
-| `proposition:bk6_confidence_gradient` | Confidence Gradient Theorem | conditional | 1 | 5 | `c5e30c7db07b` | reserved |
+| `proposition:bk6_confidence_gradient` | Typed Confidence-Gradient Control | conditional | 1 | 7 | `113a669ed942` | reserved |
 | `definition:bk6_symbolic_power` | Symbolic Power | proved-kernel | 1 | 1 | `44016e2ec2bf` | reserved |
 | `lemma:bk6_power_scaling` | Power Scaling Law | proved-kernel | 1 | 1 | `2d6635665397` | reserved |
 | `definition:bk6_regulatory_basin` | Regulatory Basin | partial | 1 | 1 | `56ed12ca67f3` | reserved |
@@ -424,15 +427,15 @@ mechanically but still awaits human attestation.
 | `axiom:bk6_non_commutativity_evolution_reflection` | Non-Commutativity of Evolution and Reflection | proved-kernel | 1 | 1 | `62cc91413acc` | reserved |
 | `axiom:bk6_map_equilibrium_invariance_complete` | MAP Equilibrium Invariance | conditional | 1 | 1 | `443a6ae07493` | reserved |
 | `axiom:bk6_symbolic_mass_conservation_complete` | Symbolic Mass Conservation | proved-kernel | 1 | 1 | `bbddc36a01cf` | reserved |
-| `axiom:bk6_thermodynamic_consistency` | Thermodynamic Consistency | conditional | 1 | 7 | `5b28c9dc110b` | reserved |
-| `axiom:bk6_confidence_stability_coupling` | Confidence-Stability Coupling | conditional | 1 | 4 | `5e675265a1c8` | reserved |
+| `axiom:bk6_thermodynamic_consistency` | Thermodynamic Consistency and Potential Orientation | conditional | 1 | 7 | `b0ddf000658d` | reserved |
+| `axiom:bk6_confidence_stability_coupling` | Certified Confidence--Stability Coupling | conditional | 1 | 5 | `2fd3bf8e50c1` | reserved |
 | `axiom:bk6_reflective_coherence_complete` | Reflective Coherence | definition | 1 | 1 | `94df1b353d36` | reserved |
 | `axiom:bk6_symbolic_time_irreversibility_complete` | Symbolic Time Irreversibility | conditional | 1 | 1 | `7c3b1e0d1f6c` | reserved |
-| `axiom:bk6_laplace_beltrami_observer_extension` | Symbolic Operator Coherence under Observer Bounds | conditional | 1 | 4 | `a6672e22ddf9` | reserved |
+| `axiom:bk6_laplace_beltrami_observer_extension` | Certified Symbolic Operator Extension under Observer Bounds | conditional | 1 | 6 | `3695e0cccb26` | reserved |
 | `theorem:bk6_symbolic_diffusion_governs_evolution` | Symbolic Diffusion Operator Governs Thermodynamic Evolution | partial | 1 | 1 | `33dab44b1a69` | reserved |
 | `theorem:bk6_complete_operator_closure` | Complete Operator Closure | partial | 1 | 1 | `0f122a13a7e7` | reserved |
-| `theorem:bk6_thermodynamic_map_duality` | Thermodynamic-MAP Duality | conditional | 1 | 4 | `1830753a8502` | reserved |
-| `lemma:bk6_grace_basin_correspondence` | Grace-Basin Correspondence | conditional | 1 | 4 | `35af192d4aaf` | reserved |
+| `theorem:bk6_thermodynamic_map_duality` | Certified Thermodynamic--MAP Balance | conditional | 1 | 6 | `f42b1e589035` | reserved |
+| `lemma:bk6_grace_basin_correspondence` | Certified Grace--Basin Correspondence | conditional | 1 | 4 | `ebd15d955b6f` | reserved |
 | `proposition:bk6_symbolic_charge_conservation` | Symbolic Charge Conservation | conditional | 1 | 1 | `906346f7298c` | reserved |
 | `proposition:bk6_total_symbolic_action_conservation` | Total Symbolic Action Conservation | conditional | 1 | 1 | `7cc08d0fad85` | reserved |
 | `proposition:bk6_map_invariant` | MAP Invariant | proved-kernel | 1 | 1 | `a1f7879f55d8` | reserved |
@@ -441,7 +444,7 @@ mechanically but still awaits human attestation.
 
 | anchor | name | coverage | artifacts | declarations | SHA | attestation |
 |---|---|---|---:|---:|---|---|
-| `proposition:bk7_power_from_coherent_confidence_regulation` | Power from Coherent Confidence and Regulation | conditional | 1 | 5 | `6833a9157df8` | reserved |
+| `proposition:bk7_power_from_coherent_confidence_regulation` | Magnitude and Orientation of Systemic Power | conditional | 1 | 6 | `a7c3634836ab` | reserved |
 | `proposition:bk7_power_uncertainty_duality` | Power-Uncertainty Duality | conditional | 1 | 1 | `1536e8a9dacd` | reserved |
 | `lemma:bk7_involutive_dual_symmetry` | Involutive Dual Symmetry of Symbolic Power and Uncertainty | conditional | 1 | 1 | `234c0151f1d1` | reserved |
 | `definition:bk7_adaptive_refinement_recurrence` | Controlled symbolic refinement recurrence | definition | 1 | 1 | `bbe431defe00` | reserved |
@@ -461,7 +464,7 @@ mechanically but still awaits human attestation.
 | `corollary:bk7_observer_converges` | $\Obs$ converges into being | conditional | 1 | 1 | `981b6207a566` | reserved |
 | `corollary:bk7_geometric_convergence_rate` | Geometric energy decay gives exponential convergence | proved-kernel | 1 | 1 | `3fb28b18786e` | reserved |
 | `proposition:bk7_stabilization_as_orbit_limit` | State-level stabilization is the orbit limit of reflection | proved-kernel | 1 | 1 | `9229e4c2979f` | reserved |
-| `theorem:bk7_observer_relative_free_energy_minimization_as_lp_regression` | Observer-Relative Free Energy Minimization as $L^p$ Regression Equivalence | conditional | 1 | 9 | `d197af748647` | reserved |
+| `theorem:bk7_observer_relative_free_energy_minimization_as_lp_regression` | Certified Observer-Relative Free-Energy/$L^p$ Equivalence | partial | 1 | 9 | `0cc8a6bbb33a` | reserved |
 | `definition:bk7_mutual_modeling_operators` | Mutual Modeling Operators | definition | 1 | 1 | `aa148c5b877d` | reserved |
 | `definition:bk7_symbolic_resonance` | Symbolic Resonance | definition | 1 | 1 | `81f8d3a0c40d` | reserved |
 | `lemma:bk7_information_preservation` | Information Preservation Condition | conditional | 1 | 1 | `63d0f4edfc7f` | reserved |
@@ -483,18 +486,18 @@ mechanically but still awaits human attestation.
 | `definition:bk7_time_varying_reciprocity_domain` | Time-Varying Reciprocity Domain | definition | 1 | 1 | `50469f5f2285` | reserved |
 | `corollary:bk7_fixed_point_tracking_within_evolving_reciprocity` | Fixed Point Tracking within Evolving Reciprocity | conditional | 1 | 1 | `ab92b9d27461` | reserved |
 | `lemma:bk7_coherence_window` | Coherence window | proved-kernel | 1 | 1 | `446d67320882` | reserved |
-| `theorem:bk7_pisu` | Universal Symbolic Uncertainty Principle (PISU), derived form | conditional | 1 | 4 | `d6920f4a2e57` | reserved |
+| `theorem:bk7_pisu` | Universal Symbolic Uncertainty Principle (PISU), derived form | conditional | 1 | 4 | `44d81e48c721` | reserved |
 | `lemma:bk7_coarsegrained_convexity` | Coarse-Grained Convexity | partial | 1 | 1 | `b2c18437b8c6` | reserved |
-| `lemma:bk7_budgetlimited_minimizer` | Budget-Limited Minimizer | conditional | 1 | 1 | `8dc53246d498` | reserved |
+| `lemma:bk7_budgetlimited_minimizer` | Budget-Limited Minimizer | conditional | 2 | 4 | `5c874353e7eb` | reserved |
 | `theorem:bk7_emergent_lp_norm` | Emergent L$^{p}$ Norm | partial | 2 | 1 | `fef1d06c8f64` | reserved |
-| `corollary:bk7_procedural_detection` | Procedural Detection | conditional | 1 | 4 | `4adbe85d1177` | reserved |
+| `corollary:bk7_procedural_detection` | Certified Procedural Detection | conditional | 1 | 4 | `a4fbbb663792` | reserved |
 | `definition:bk7_frame_temperature_quotient` | Frame-temperature quotient | proved-kernel | 1 | 1 | `af391da8c3a9` | reserved |
 | `lemma:bk7_frame_temperature_exponent_correspondence` | Frame-temperature/exponent correspondence | partial | 2 | 1 | `ad246e66b97f` | reserved |
 | `theorem:bk7_hilbert_banach_bridge` | Hilbert--Banach Bridge | partial | 2 | 1 | `b2dc487eca1a` | reserved |
-| `corollary:bk7_bridge_no_interior_transition` | Continuous $L^{p}$ sweep has no interior phase transition | conditional | 2 | 5 | `98c97a80596b` | reserved |
-| `lemma:bk7_noncontextuality_forces_hilbert` | Non-contextuality is available only at the Hilbert cross-section | conditional | 1 | 4 | `5139ab9d8af7` | reserved |
+| `corollary:bk7_bridge_no_interior_transition` | Certified continuous $L^p$ sweep has no interior transition | partial | 2 | 11 | `1561a295c096` | reserved |
+| `lemma:bk7_noncontextuality_forces_hilbert` | Certified non-contextuality/Hilbert cross-section equivalence | partial | 3 | 15 | `5caef0a23f10` | reserved |
 | `definition:bk7_contextuality_defect` | Contextuality defect | bound-only | 1 | 1 | `13ff353078b6` | reserved |
-| `theorem:bk7_born_collapse` | Born collapse: the Banach--Hilbert collapse is measurement | conditional | 1 | 7 | `356478257a89` | reserved |
+| `theorem:bk7_born_collapse` | Conditional Born collapse at the Hilbert cross-section | partial | 6 | 50 | `127b405ebd78` | reserved |
 
 ## book8
 
@@ -544,7 +547,7 @@ mechanically but still awaits human attestation.
 | `corollary:bk8_symbolic_agents_as_projections` | Symbolic Agents as $\mathcal{O}_{\mathrm{debug}}$ Projections | partial | 1 | 1 | `b063c91b3470` | reserved |
 | `theorem:bk8_threshold_of_metabolic_autonomy` | Threshold of Metabolic Autonomy | partial | 1 | 1 | `814c736786ec` | reserved |
 | `theorem:bk8_freedom_via_meta_metabolic_control` | Freedom via Meta‑Metabolic Control | conditional | 1 | 1 | `467bdf497e50` | reserved |
-| `axiom:bk8_curvature_transformation` | Symbolic Cognition Cycle | conditional | 1 | 5 | `c07f757a067b` | reserved |
+| `axiom:bk8_curvature_transformation` | Symbolic Cognition Cycle | conditional | 1 | 11 | `c07f757a067b` | reserved |
 | `axiom:bk8_surface_energy_dynamics` | Coupled Differential Dynamics | partial | 1 | 1 | `b6c2f96dbe95` | reserved |
 | `proposition:bk8_genetic_symbolic_resonance` | Boundedness | conditional | 1 | 1 | `7e3833e5cc7c` | reserved |
 | `theorem:bk8_sr_convergence` | SR Convergence | conditional | 1 | 4 | `06cfb77e6de5` | reserved |
@@ -597,7 +600,7 @@ mechanically but still awaits human attestation.
 | `proposition:bk9_grace_vs_avoidance` | Grace vs. Avoidance | partial | 1 | 1 | `6f0c841d118e` | reserved |
 | `theorem:bk9_irreversibility_of_covenant_breach_without_grace` | Irreversibility of Covenant Breach without Grace | proved-kernel | 1 | 3 | `60737130009a` | reserved |
 | `proposition:bk9_criteria_for_ethical_intervention` | Criteria for Ethical Intervention | conditional | 1 | 9 | `dc25864ffc21` | reserved |
-| `proposition:bk9_stability_conditions_for_the_good` | Stability Conditions for "The Good" | partial | 1 | 1 | `9536c717c1cf` | reserved |
+| `proposition:bk9_stability_conditions_for_the_good` | Stability Conditions for "The Good" | partial | 1 | 1 | `5100fc2e928c` | reserved |
 | `theorem:bk9_good_as_lyapunov_basin` | The Good as a Lyapunov Basin | proved-kernel | 1 | 3 | `48d1d623abb1` | reserved |
 | `proof:bk9_good_as_lyapunov_basin` | Lyapunov descent, threshold selection, and basin identity | bound-only | 1 | 1 | `e02d7998f27e` | reserved |
 | `axiom:bk9_preconditions_for_reciprocal_cognition` | Preconditions for Reciprocal Cognition | conditional | 1 | 1 | `eca292139b0d` | reserved |
@@ -613,12 +616,14 @@ mechanically but still awaits human attestation.
 
 | anchor | name | coverage | artifacts | declarations | SHA | attestation |
 |---|---|---|---:|---:|---|---|
+| `definition:bk1_let_cats_be_the_category` | Category of Structures | definition | 1 | 3 | `8e3d761bbd2e` | reserved |
 | `definition:bk1_bounded_observer` | Bounded Observer | definition | 1 | 1 | `b9e985a4def2` | reserved |
 | `proposition:bk1_observer_relative_bounded_approximation` | Observer–Relative Bounded Approximation | conditional | 1 | 1 | `1dbba783a64e` | reserved |
 | `definition:bk1_observer_relative_interpretability` | Observer–Relative Interpretability | conditional | 1 | 1 | `3ead25e5cf0e` | reserved |
 | `lemma:bk1_bounded_approximation_and_interpretability` | Bounded Approximation Implies Interpretability | proved-kernel | 1 | 1 | `b7af8e4e8467` | reserved |
 | `proposition:bk1_stage_composite_operators_are_interpretable` | Stage–Composite Operators Are Interpretable | conditional | 1 | 1 | `06f921a4b11f` | reserved |
-| `definition:bk1_pre_geometric_operators_and_stages` | Pre-geometric Operators and Stages | partial | 1 | 1 | `f7b11acad63a` | reserved |
+| `definition:bk1_pre_geometric_operators_and_stages` | Pre-geometric Operators and Stages | conditional | 2 | 3 | `f7b11acad63a` | reserved |
+| `axiom:bk1_observable_gradation_of_pre_geometric_operations` | Observable Gradation of Pre-geometric Operations | conditional | 1 | 1 | `3a310133db4a` | reserved |
 | `definition:bk1_bounded_symbolic_approximation` | \textbf{Bounded Symbolic Approximation} | conditional | 1 | 1 | `b99a91ce54d6` | reserved |
 | `definition:bk1_kernel_based_bounded_symbolic_approximation` | \textbf{Kernel-Based Bounded Symbolic Approximation (Illustration)} | conditional | 1 | 1 | `d88cf5730e66` | reserved |
 | `proposition:bk1_boundedness_from_drift` | \textbf{Boundedness from Drift} | conditional | 1 | 1 | `12f0de85ecee` | reserved |
@@ -636,7 +641,7 @@ mechanically but still awaits human attestation.
 | `corollary:bk1_horizon_duality_principle` | Horizon Duality Principle | partial | 1 | 1 | `7139f9078576` | reserved |
 | `theorem:bk1_constitutive_bootstrap` | Constitutive Bootstrap Theorem | partial | 1 | 1 | `8f1b5857aa99` | reserved |
 | `axiom:bk1_pre_geometric_nature` | Pre-geometric Nature | conditional | 1 | 1 | `5a085fde72b3` | reserved |
-| `definition:bk1_spinor_like_structure` | Spinor-Like Symbolic Structure | proved-kernel | 1 | 2 | `fa238ace891e` | reserved |
+| `definition:bk1_spinor_like_structure` | Spinor-Like Symbolic Structure | partial | 1 | 4 | `fa238ace891e` | reserved |
 | `definition:bk1_symbolic_manifold` | Symbolic Manifold | conditional | 1 | 1 | `750d6ddae578` | reserved |
 | `definition:bk1_reflection_operator` | Reflection Operator | proved-kernel | 1 | 1 | `79bc875f4c9d` | reserved |
 | `axiom:bk1_dual_horizon_postulate` | Dual Horizon Postulate | conditional | 1 | 1 | `f2df7f7f55a4` | reserved |
@@ -666,7 +671,10 @@ mechanically but still awaits human attestation.
 | `theorem:bk1_symbolic_emergence_and_curvature` | Symbolic Emergence and Curvature | conditional | 1 | 1 | `c059683eade2` | reserved |
 | `corollary:bk1_dimensional_bounds_emergence` | Dimensional Bounds on Emergence | partial | 1 | 1 | `d651a140526b` | reserved |
 | `definition:bk1_newtonian_category_error` | Newtonian Category Error | partial | 1 | 1 | `673463f7be92` | reserved |
-| `corollary:bk1_necessity_of_non_euclidean_symbolic_space` | Necessity of Non-Euclidean Symbolic Space | conditional | 1 | 1 | `b13259c8a5b4` | reserved |
+| `proposition:bk1_newtonian_incompleteness` | Newtonian Incompleteness | proved-kernel | 2 | 3 | `2081ff18d02d` | reserved |
+| `lemma:bk1_symbolic_quantum_incompatibility` | Finite-Dimensional Symbolic--Quantum Tensor Obstruction | conditional | 1 | 4 | `12d4bc14186f` | reserved |
+| `theorem:bk1_symbolic_emergence_theorem_thermodynamics` | Symbolic Emergence Theorem---Contextual Cross-Error | proved-kernel | 1 | 2 | `56939e76b1ce` | reserved |
+| `corollary:bk1_necessity_of_non_euclidean_symbolic_space` | Necessity of Non-Euclidean Symbolic Transport | conditional | 1 | 1 | `cfa6d5346757` | reserved |
 | `definition:bk1_paradox_triggered_emergence` | Paradox-Triggered Emergence | conditional | 1 | 1 | `7788beb25e19` | reserved |
 | `lemma:bk1_paradoxical_symmetry_breaking` | Paradoxical Symmetry Breaking | proved-kernel | 1 | 1 | `f184e99de249` | reserved |
 | `definition:bk1_shared_boundary_paradox` | Shared Boundary Paradox | definition | 1 | 1 | `54071442b740` | reserved |

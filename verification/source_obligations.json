@@ -1,21 +1,26 @@
 {
-  "schema": "sketched.ps-source-obligations.v1",
+  "schema": "sketched.ps-source-obligations.v2",
   "description": "Machine-readable source-level debts exposed while formalizing Principia Symbolica. Mapping or receipt coverage never closes an obligation: Lean evidence, LaTeX repair, and downstream discharge are tracked independently.",
   "obligations": [
     {
       "id": "PS-SRC-001",
       "source_anchor": "theorem:bk1_symbolic_emergence_theorem_thermodynamics",
       "source_file": "scholium_symbolicum.tex",
-      "source_line": 2144,
+      "source_line": 2160,
       "source_layer": "scholium",
       "repair_owner": "book4",
       "downstream_consumers": [
         "book7"
       ],
       "failure_mode": "counterexample",
-      "summary": "Novelty, reflective identity, and an abstract dimension increase do not entail nonzero symbolic curvature or quadratic geometry.",
-      "required_latex_repair": "Use the proved Book 4 typed bridge by replacing structural growth with contextual nonseparability, or prove that the source's strict dimension increase entails nonseparability. Then amend the Scholium theorem to cite that bridge and let Book 7 consume its curvature certificate.",
+      "summary": "The Scholium now proves its own upstream certificate: contextual nonseparability forces a nonzero mixed cross-error by explicit additive decomposition. Novelty, reflective identity, and dimension growth alone retain a compiled zero-curvature countermodel. Book IV consumes the cross-error to construct noncommuting transport; Book VII consumes that geometry, restoring the intended layer direction.",
+      "required_latex_repair": "Repaired without a backward Book IV proof dependency: the Scholium proves the contextual cross-error locally and identifies Book IV geometrization as downstream consumption. Bilinear lowest-order language is explicitly deferred to smooth local-expansion hypotheses.",
       "lean_evidence": [
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumD.lean",
+          "declaration": "ScholiumD.contextualGrowth_exposes_crossError",
+          "kind": "scholium_local_positive_certificate"
+        },
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumD.lean",
           "declaration": "ScholiumD.emergence_premises_do_not_force_curvature",
@@ -37,34 +42,55 @@
           "kind": "downstream_consumer"
         }
       ],
-      "lean_status": "typed_bridge_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "partially_discharged"
+      "lean_status": "positive_kernel_proved",
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "56939e76b1ce"
     },
     {
       "id": "PS-SRC-002",
       "source_anchor": "lemma:bk1_symbolic_quantum_incompatibility",
       "source_file": "scholium_symbolicum.tex",
-      "source_line": 2110,
+      "source_line": 2123,
       "source_layer": "scholium",
       "repair_owner": "scholium",
       "downstream_consumers": [
-        "book4",
-        "book7"
+        "appendix"
       ],
       "failure_mode": "missing_premise",
-      "summary": "Unitary linear evolution and tensor structure alone do not prove that joint preservation requires, and simultaneously forbids, a Hamiltonian-level meta-update.",
-      "required_latex_repair": "State the meta-update requirement and the quantum prohibition as explicit hypotheses, or replace them with a concrete Hilbert-space no-go theorem whose assumptions entail both clauses.",
+      "summary": "The original equation conflated an H-valued update with a tensor in H tensor H. Lean proves the sharp finite-dimensional obstruction: above dimension one no lossless linear self-tensor closure exists, while dimension one admits one. Appendix E now consumes only that obstruction and explicitly does not infer amplitudes or prohibit controlled Hamiltonians or larger carriers.",
+      "required_latex_repair": "Completed: the Scholium states the typed finite-dimensional tensor-closure no-go, and Appendix E preserves its scope rather than treating it as an amplitude derivation or universal Hamiltonian prohibition.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumD.lean",
           "declaration": "ScholiumD.symbolic_quantum_incompatibility_kernel",
           "kind": "conditional_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumQuantumTensorNoGo.lean",
+          "declaration": "ScholiumQuantumTensorNoGo.no_self_tensor_linearEquiv",
+          "kind": "tensor_dimension_no_go"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumQuantumTensorNoGo.lean",
+          "declaration": "ScholiumQuantumTensorNoGo.no_lossless_tensor_closure",
+          "kind": "typed_closure_obstruction"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumQuantumTensorNoGo.lean",
+          "declaration": "ScholiumQuantumTensorNoGo.self_tensor_linearEquiv_exists_dim_one",
+          "kind": "sharp_boundary_witness"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumQuantumTensorNoGo.lean",
+          "declaration": "ScholiumQuantumTensorNoGo.self_tensor_finrank_eq_forces_one",
+          "kind": "dimension_characterization"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "positive_kernel_proved",
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "12d4bc14186f"
     },
     {
       "id": "PS-SRC-003",
@@ -78,32 +104,43 @@
         "book7"
       ],
       "failure_mode": "ill_typed",
-      "summary": "Newtonian smoothness alone does not imply the advertised impossibility of reflexive update, and the accessibility expression alpha(rho(s,D(s))) subset O lacks a typed codomain/subset contract.",
-      "required_latex_repair": "Define the types and codomains of alpha, O, D, and rho and add a premise connecting Newtonian covariance to failure of reflexive update; alternatively replace the proposition with the proved covariance-boundary statement that accelerated frames require an explicit fictitious-force correction.",
+      "summary": "The source was correctly narrowed from an ill-typed reflexive-impossibility claim to a covariance boundary. Lean now matches its full quantifier: on every real normed vector space, scalar Newtonian force commutes with every continuous linear frame map, while nonzero uniform frame acceleration yields a nonzero 2*w defect. The earlier NVec construction remains a concrete differentiable-trajectory witness.",
+      "required_latex_repair": "Repaired as the typed covariance-boundary statement. Lean has now been unflattened from the three-coordinate instance to the source-level arbitrary real normed vector space; the concrete accelerated trajectory remains separately certified.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumD.lean",
+          "declaration": "ScholiumD.newtonian_incompleteness_normedSpace",
+          "kind": "generic_source_level_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumD.lean",
           "declaration": "ScholiumD.newtonian_incompleteness_kernel",
-          "kind": "replacement_kernel"
+          "kind": "concrete_three_coordinate_instance"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Newton.lean",
+          "declaration": "accelerated_frame_defect",
+          "kind": "differentiable_trajectory_witness"
         }
       ],
       "lean_status": "positive_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "2081ff18d02d"
     },
     {
       "id": "PS-SRC-004",
       "source_anchor": "lemma:bk7_budgetlimited_minimizer",
       "source_file": "book7.tex",
-      "source_line": 1581,
+      "source_line": 1558,
       "source_layer": "book7",
       "repair_owner": "book7",
       "downstream_consumers": [
         "book9"
       ],
       "failure_mode": "counterexample",
-      "summary": "The displayed free-energy objective does not depend on the candidate regulator, so any feasible set with two elements has tied minimizers and uniqueness fails.",
-      "required_latex_repair": "Make the minimized objective depend on the candidate regulator and add a strict-convexity, strict-separation, or no-ties hypothesis. For the finite kernel, injectivity of the cost on the feasible set is sufficient for uniqueness.",
+      "summary": "The repaired source theorem is now represented at its analytic level: for any supplied topology on regulators, nonempty compactness and lower semicontinuity yield existence, while strict convexity on the admissible set yields uniqueness. The finite no-ties theorem and constant-objective countermodel remain as special case and forensic scar.",
+      "required_latex_repair": "Completed: the objective depends on the candidate regulator and the theorem explicitly assumes a nonempty convex weak-star-compact admissible class, weak-star lower semicontinuity, and strict convexity. Lean consumes these as abstract topological and convex hypotheses without manufacturing the weak-star model.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7B.lean",
@@ -114,11 +151,17 @@
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7B.lean",
           "declaration": "Book7B.budgetLimited_uniqueMinimizer_of_injectiveCost",
           "kind": "conditional_repair_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7B.lean",
+          "declaration": "Book7B.budgetLimited_existsUniqueMinimizer_of_compact",
+          "kind": "compact_lsc_strict_convex_analytic_kernel"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "positive_kernel_proved",
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "5c874353e7eb"
     },
     {
       "id": "PS-SRC-005",
@@ -131,8 +174,8 @@
         "book4"
       ],
       "failure_mode": "missing_premise",
-      "summary": "Bounded curvature alone does not imply the displayed hypothesis-surface thermodynamic balance; the proof introduces a closed-surface balance assumption absent from the lemma statement.",
-      "required_latex_repair": "Move the closed hypothesis-surface balance assumption into the lemma statement, or derive its observer-energy and temperature-entropy cancellation clauses from previously stated geometric and thermodynamic hypotheses.",
+      "summary": "Lean now carries a degree-correct oriented surface calculus with distinct boundary one-form and interior two-form carriers. Pulled-back first variation derives the observer-accounting residue law; zero residue is equivalent to thermodynamic consistency on the boundary and, through separately supplied Stokes evidence, in the interior. Positive and bounded-curvature negative controls prevent reconciliation from being inferred from regularity.",
+      "required_latex_repair": "The canonical LaTeX now states the pulled-back boundary one-form identity and explicitly requires a separate orientation, form-degree, and Stokes hypothesis for any interior reformulation. The remaining formal lift is from interval integrals to differential forms on the intended manifold.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book2Consistency.lean",
@@ -143,11 +186,47 @@
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book2Consistency.lean",
           "declaration": "Book2Consistency.boundedCurvature_alone_insufficient",
           "kind": "countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book2CycleConsistency.lean",
+          "declaration": "Book2CycleConsistency.thermodynamic_consistency_of_closed_integrable_cycle",
+          "kind": "closed_cycle_integrability_construction"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book2CycleConsistency.lean",
+          "declaration": "Book2CycleConsistency.consistency_iff_zero_entropyTemperatureHolonomy",
+          "kind": "holonomy_obstruction_characterization"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book2CycleConsistency.lean",
+          "declaration": "Book2CycleConsistency.path_thermodynamic_consistency",
+          "kind": "continuous_boundary_trace_integral_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book2HypothesisSurfaceStokes.lean",
+          "declaration": "Book2HypothesisSurfaceStokes.HypothesisSurfaceThermodynamics.boundary_balance_with_residue",
+          "kind": "differential_form_residue_law"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book2HypothesisSurfaceStokes.lean",
+          "declaration": "Book2HypothesisSurfaceStokes.HypothesisSurfaceThermodynamics.boundary_consistency_iff_residue_zero",
+          "kind": "boundary_obstruction_characterization"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book2HypothesisSurfaceStokes.lean",
+          "declaration": "Book2HypothesisSurfaceStokes.HypothesisSurfaceThermodynamics.interior_consistency_iff_residue_zero",
+          "kind": "oriented_stokes_bridge"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book2HypothesisSurfaceStokes.lean",
+          "declaration": "Book2HypothesisSurfaceStokes.bounded_curvature_does_not_zero_residue",
+          "kind": "regularity_not_reconciliation_countermodel"
         }
       ],
       "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "c12ff606e403"
     },
     {
       "id": "PS-SRC-006",
@@ -160,37 +239,38 @@
         "book6"
       ],
       "failure_mode": "missing_premise",
-      "summary": "Positive reflective polarity and coupling above a fixed critical value do not bound drift, so they cannot by themselves imply a positive net free-energy contribution.",
+      "summary": "Lean now realizes the repaired proposition end-to-end in one certificate while keeping its three judgments distinct: the fixed threshold and positive polarity classify MAP, the drift-relative margin proves a positive restoration balance, and a separately supplied contractive update drives error to zero and realized contribution to that positive margin. Unit gain remains a countermodel showing margin alone does not imply temporal alignment.",
       "required_latex_repair": "Add the drift-relative stability premise Omega times the minimum coupling exceeds the sum of both drift terms, or derive it from an earlier MAP stability result; distinguish this restoration margin from the fixed kappa_crit condition.",
       "lean_evidence": [
         {
-          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5Alignment.lean",
-          "declaration": "Book5.reflective_drift_alignment_positive",
-          "kind": "conditional_kernel"
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5AlignmentDynamics.lean",
+          "declaration": "Book5AlignmentDynamics.ReflectiveAlignmentCertificate.realizes_reflective_drift_alignment",
+          "kind": "positive_kernel"
         },
         {
-          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5Alignment.lean",
-          "declaration": "Book5.positive_coupling_above_critical_insufficient",
-          "kind": "countermodel"
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5AlignmentDynamics.lean",
+          "declaration": "Book5AlignmentDynamics.positive_margin_without_contraction_does_not_align",
+          "kind": "missing_dynamics_countermodel"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "premise_packaged",
+      "latex_status": "repaired",
+      "downstream_status": "blocked",
+      "source_statement_sha": "2566e3d79f64"
     },
     {
       "id": "PS-SRC-007",
       "source_anchor": "theorem:bk5_reflective_equilibrium_conservation",
       "source_file": "book5.tex",
-      "source_line": 499,
+      "source_line": 530,
       "source_layer": "book5",
       "repair_owner": "book5",
       "downstream_consumers": [
         "book8"
       ],
       "failure_mode": "counterexample",
-      "summary": "Residual bounds linear in the coupling spectral radius imply a linear total energy-rate bound, not the stated quadratic bound; the displayed choice of epsilon does not repair the exponent mismatch.",
-      "required_latex_repair": "Replace the conclusion by a linear bound rho times the sum of the state norms, or strengthen both residual hypotheses to quadratic order and use the sum of their quadratic constants.",
+      "summary": "The authoritative source has been repaired to the correct first-order spectral estimate. Lean now proves it over arbitrary seminormed additive residual spaces, with the scalar theorem as a specialization; the old quadratic countermodel is retained as forensic evidence of the superseded exponent mismatch.",
+      "required_latex_repair": "Completed: the conclusion is linear in rho and uses the sum of state norms, matching the residual hypotheses. No Book 8 premise is required.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5EquilibriumConservation.lean",
@@ -206,53 +286,65 @@
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5EquilibriumConservation.lean",
           "declaration": "Book5EquilibriumConservation.energy_rate_quadratic_spectral_bound",
           "kind": "conditional_repair_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5EquilibriumConservation.lean",
+          "declaration": "Book5EquilibriumConservation.energy_rate_norm_linear_spectral_bound",
+          "kind": "generic_source_level_normed_kernel"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "positive_kernel_proved",
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "bc2c48beaebd"
     },
     {
       "id": "PS-SRC-008",
       "source_anchor": "theorem:bk5_enhanced_map_mad_duality",
       "source_file": "book5.tex",
-      "source_line": 701,
+      "source_line": 747,
       "source_layer": "book5",
       "repair_owner": "book5",
       "downstream_consumers": [
         "book8"
       ],
       "failure_mode": "missing_premise",
-      "summary": "Coupling magnitude and polarity classify parameter regimes but do not determine any free-energy trajectory, its limit, collapse rate, decoupling error, or entropy inflection.",
+      "summary": "Lean now proves the repaired theorem at its exact stated strength: the four parameter conditions form an exhaustive and unique classification, with equality and strong zero polarity retained as critical, and nonzero polarity reversal exchanging MAP and MAD. A countermodel preserves the explicit source boundary that parameter classification supplies no free-energy trajectory or asymptotics.",
       "required_latex_repair": "Supply an explicit covenant evolution law and prove its MAP, MAD, and decoupling asymptotics from the stated parameter regions; state separate regularity and transversality hypotheses for the bifurcation and entropy-inflection claims.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5EnhancedDuality.lean",
+          "declaration": "Book5EnhancedDuality.existsUnique_regimeCondition",
+          "kind": "positive_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5EnhancedDuality.lean",
           "declaration": "Book5EnhancedDuality.classify_neg_of_strong",
-          "kind": "typed_classification_kernel"
+          "kind": "orientation_duality"
         },
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5EnhancedDuality.lean",
           "declaration": "Book5EnhancedDuality.positive_regime_parameters_do_not_force_viability",
-          "kind": "countermodel"
+          "kind": "dynamics_nonidentification_countermodel"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "positive_kernel_proved",
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "99b09c21d79f"
     },
     {
       "id": "PS-SRC-009",
       "source_anchor": "proposition:bk5_transactional_covenant_dynamics",
       "source_file": "book5.tex",
-      "source_line": 796,
+      "source_line": 855,
       "source_layer": "book5",
       "repair_owner": "book5",
       "downstream_consumers": [
         "book8"
       ],
       "failure_mode": "missing_premise",
-      "summary": "Crossing Lambda=1 and choosing a polarity do not entail an exponential free-energy update; the demonstratio introduces a differential equation and constant-coefficient solution that are absent from the proposition hypotheses.",
+      "summary": "The constant-rate source claim is now fully represented. Lean constructs the exponential trajectory and proves an integrating-factor uniqueness theorem: every global solution of F-prime = rate times F is the shifted exponential determined by any reference value, hence obeys the exact adjacent-step MAP/MAD law; two solutions agreeing once agree everywhere. The boundary-crossing countermodel remains to prevent classification from manufacturing dynamics. Time-varying coupling is correctly reserved for a separate integral-rate theorem.",
       "required_latex_repair": "State the free-energy evolution equation as a hypothesis or derive it from earlier operator dynamics. For the displayed exponential step, specify whether Lambda is constant over the interval; otherwise use the integral of the time-varying rate.",
       "lean_evidence": [
         {
@@ -269,11 +361,47 @@
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5TransitionDynamics.lean",
           "declaration": "Book5TransitionDynamics.crossing_alone_does_not_force_growth",
           "kind": "countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5TransitionDynamics.lean",
+          "declaration": "Book5TransitionDynamics.expEvolution_hasDerivAt",
+          "kind": "continuous_evolution_law"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5TransitionDynamics.lean",
+          "declaration": "Book5TransitionDynamics.expEvolution_add",
+          "kind": "exact_step_composition"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5TransitionDynamics.lean",
+          "declaration": "Book5TransitionDynamics.mapStep_eq_expEvolution",
+          "kind": "map_step_derivation"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5TransitionDynamics.lean",
+          "declaration": "Book5TransitionDynamics.madStep_eq_expEvolution",
+          "kind": "mad_step_derivation"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5TransitionDynamics.lean",
+          "declaration": "Book5TransitionDynamics.solution_eq_shifted_expEvolution",
+          "kind": "constant_rate_solution_classification"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5TransitionDynamics.lean",
+          "declaration": "Book5TransitionDynamics.exact_step_of_constant_rate_ode",
+          "kind": "arbitrary_solution_exact_step"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5TransitionDynamics.lean",
+          "declaration": "Book5TransitionDynamics.constant_rate_ode_solution_unique",
+          "kind": "ode_uniqueness"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "positive_kernel_proved",
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "64108ed7c9db"
     },
     {
       "id": "PS-SRC-010",
@@ -287,8 +415,8 @@
         "book5"
       ],
       "failure_mode": "missing_machinery",
-      "summary": "The numeric membrane fields are constructively consistent for every positive perturbation budget, but the claimed connected open submanifold with compact closure and smooth boundary is not supplied by smallness of delta and requires an explicit differential-topology construction.",
-      "required_latex_repair": "State the manifold hypotheses supporting a relatively compact smooth-boundary domain and cite or prove the corresponding existence theorem; then define the restricted tangent field, boundary permeability domain, and Hamiltonian stability functional on that domain.",
+      "summary": "Lean now directly represents the conditional source theorem: a supplied nonempty connected open relatively compact smooth-boundary domain, smooth global drift, and smooth Hamiltonian construct canonical membrane data for every positive perturbation budget and alpha. The explicit empty-ambient countermodel proves the budget cannot supply the domain or its regularity.",
+      "required_latex_repair": "The source is correctly conditional on an ambient smooth domain. Retain that hypothesis; the Lean chart construction is a local positive model and must not be promoted to an existence theorem for every manifold.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3WellPosedness.lean",
@@ -299,17 +427,33 @@
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3WellPosedness.lean",
           "declaration": "Book3.canonicalMembrane_stability_pos",
           "kind": "positive_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3WellPosedness.lean",
+          "declaration": "Book3.exists_chart_membrane",
+          "kind": "constructed_chart_domain"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3WellPosedness.lean",
+          "declaration": "Book3.conditional_symbolic_membrane_wellposed",
+          "kind": "conditional_global_membrane_construction"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3WellPosedness.lean",
+          "declaration": "Book3.perturbation_budget_does_not_supply_domain",
+          "kind": "domain_nonmanufacture_countermodel"
         }
       ],
-      "lean_status": "bridge_partially_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "partially_discharged"
+      "lean_status": "premise_packaged",
+      "latex_status": "repaired",
+      "downstream_status": "blocked",
+      "source_statement_sha": "2bf876be0d5d"
     },
     {
       "id": "PS-SRC-011",
       "source_anchor": "lemma:bk3_helmholtz_decomposition_refinement_field",
       "source_file": "book3.tex",
-      "source_line": 377,
+      "source_line": 395,
       "source_layer": "book3",
       "repair_owner": "book3",
       "downstream_consumers": [
@@ -317,7 +461,7 @@
         "book5"
       ],
       "failure_mode": "missing_machinery",
-      "summary": "A finite-dimensional orthogonal decomposition is certified, but the global manifold Hodge-Helmholtz statement requires precise differential-form operators, analytic boundary conditions, completeness or compactness hypotheses, and a topology-sensitive harmonic sector.",
+      "summary": "Lean now retains the intended membrane hypotheses in a typed global Hodge certificate, with exact, coexact, and harmonic sectors, unique orthogonal reconstruction, additive sector energy, a faithful first-cohomology class map, and vanishing harmonic content under trivial H1. Linear operational readouts preserve the split without manufacturing it; the finite positive control prevents harmonic erasure. The operational bridge is carrier-neutral across sound, light, temperature, pressure, and other linear instruments; only a faithful instrument can certify detection of nonzero harmonic residue, and an unfaithful zero readout supplies the negative control.",
       "required_latex_repair": "State a precise Hodge decomposition theorem for the intended class of membranes, including dimension, orientation or differential-form formulation, metric regularity, compactness or boundary conditions, and the cohomological hypothesis under which the harmonic component vanishes.",
       "lean_evidence": [
         {
@@ -329,62 +473,118 @@
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3Helmholtz.lean",
           "declaration": "Book3Helmholtz.finite_helmholtz_unique",
           "kind": "uniqueness_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3Helmholtz.lean",
+          "declaration": "Book3Helmholtz.FiniteHodgeData.reconstruction",
+          "kind": "three_sector_construction"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3Helmholtz.lean",
+          "declaration": "Book3Helmholtz.FiniteHodgeData.nonzero_harmonic_component_exists",
+          "kind": "anti_flattening_countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3Helmholtz.lean",
+          "declaration": "Book3Helmholtz.GlobalHodgeCertificate.components",
+          "kind": "conditional_global_hodge_bridge"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3Helmholtz.lean",
+          "declaration": "Book3Helmholtz.GlobalHodgeCertificate.refinement_energy_decomposes",
+          "kind": "orthogonal_energy_decomposition"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3Helmholtz.lean",
+          "declaration": "Book3Helmholtz.GlobalHodgeCertificate.harmonic_eq_zero_of_subsingleton_cohomology",
+          "kind": "cohomology_vanishing_bridge"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3Helmholtz.lean",
+          "declaration": "Book3Helmholtz.GlobalHodgeCertificate.operational_readout_reconstructs",
+          "kind": "operational_readout_bridge"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3Helmholtz.lean",
+          "declaration": "Book3Helmholtz.GlobalHodgeCertificate.multimodal_readout_reconstructs",
+          "kind": "multimodal_operational_bridge"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3Helmholtz.lean",
+          "declaration": "Book3Helmholtz.GlobalHodgeCertificate.faithful_readout_detects_harmonic",
+          "kind": "faithful_instrument_detection"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3Helmholtz.lean",
+          "declaration": "Book3Helmholtz.unfaithful_readout_can_erase_harmonic",
+          "kind": "instrument_blindness_countermodel"
         }
       ],
-      "lean_status": "bridge_partially_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "partially_discharged"
+      "lean_status": "premise_packaged",
+      "latex_status": "repaired",
+      "downstream_status": "blocked",
+      "source_statement_sha": "cbb92ab32b3f"
     },
     {
       "id": "PS-SRC-012",
       "source_anchor": "theorem:bk3_emergence_of_symbolic_networks",
       "source_file": "book3.tex",
-      "source_line": 496,
+      "source_line": 546,
       "source_layer": "book3",
       "repair_owner": "book3",
       "downstream_consumers": [
-        "book4",
-        "book5"
+        "book3",
+        "book9",
+        "appendix"
       ],
       "failure_mode": "missing_premise",
-      "summary": "Sustained knowledge growth does not provide a compression codomain, stable regions, compression outputs, reflexive encodings, bridge edges, or a positive network-stability lower bound.",
+      "summary": "Lean now proves the repaired conditional assembly theorem as one operational certificate: a sustained-growth trace is accompanied by selected regions, total compression, bridge-certified selected edges, and a positive node-coherence floor below stage stability. Execution jointly yields the compressed nodes, every selected-edge bridge, and strictly positive global stability. A paired model still proves growth does not identify the compression policy.",
       "required_latex_repair": "Add existence hypotheses or prior theorems for high-coherence regions, a total compression operator into a populated codomain, reflexive encodings between the selected regions, and a network stability functional bounded below by positive node coherence.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3NetworkEmergence.lean",
-          "declaration": "Book3.assembled_network_stability_pos",
-          "kind": "conditional_constructor"
+          "declaration": "Book3.runNetworkEmergence_realizes_assembly",
+          "kind": "positive_kernel"
         },
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3NetworkEmergence.lean",
-          "declaration": "Book3.growth_alone_does_not_generate_network",
-          "kind": "countermodel"
+          "declaration": "Book3.runNetworkEmergence_stability_pos_from_floor",
+          "kind": "strict_stability_from_floor"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3NetworkEmergence.lean",
+          "declaration": "Book3.same_growth_allows_distinct_nodes",
+          "kind": "policy_nonidentification_countermodel"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "premise_packaged",
+      "latex_status": "repaired",
+      "downstream_status": "blocked",
+      "source_statement_sha": "6987756fc49a"
     },
     {
       "id": "PS-SRC-013",
       "source_anchor": "theorem:bk3_symbolic_life_satisfies_canonical_definitions",
       "source_file": "book3.tex",
-      "source_line": 820,
+      "source_line": 878,
       "source_layer": "book3",
       "repair_owner": "book3",
       "downstream_consumers": [
-        "book4",
-        "book5",
         "book9"
       ],
       "failure_mode": "interpretive_only",
-      "summary": "The three formal persistence criteria do not contain evidence for every Koshland, NASA, and textbook clause; regeneration, reproduction, heredity, selection, and the chemical-to-symbolic translation enter through interpretive identifications.",
+      "summary": "Lean now constructs the complete repaired correspondence from a Book-3-local operational organism: the same witness supplies the structural chemical-to-symbolic translation and every Koshland, NASA, and textbook clause, including the previously omitted evolutionary-adaptation field. An optional morphology bridge equates regenerative coherence improvement with reduced target-form error under explicit representation laws. Target revision is retained separately as proto-self-authorship and is not promoted to Book IX freedom.",
       "required_latex_repair": "Promote each claimed correspondence to a separately typed bridge obligation with explicit witnesses, especially autopoietic regeneration, reproduction, heritable variation, differential selection, and the scope of the chemical-to-symbolic translation.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3CanonicalLife.lean",
-          "declaration": "Book3CanonicalLife.persistentLife_satisfies_canonical",
-          "kind": "typed_bridge_kernel"
+          "declaration": "Book3CanonicalLife.operational_symbolic_life_realizes_canonical_demarcations",
+          "kind": "positive_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3CanonicalLife.lean",
+          "declaration": "Book3CanonicalLife.repair_improves_iff_morphological_error_decreases",
+          "kind": "morphological_representation_bridge"
         },
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3CanonicalLife.lean",
@@ -392,23 +592,23 @@
           "kind": "countermodel"
         }
       ],
-      "lean_status": "typed_bridge_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "partially_discharged"
+      "lean_status": "premise_packaged",
+      "latex_status": "repaired",
+      "downstream_status": "blocked",
+      "source_statement_sha": "92c925cd298b"
     },
     {
       "id": "PS-SRC-014",
       "source_anchor": "proposition:bk4_fuzzy_connection",
       "source_file": "book4.tex",
-      "source_line": 3861,
+      "source_line": 3977,
       "source_layer": "book4",
       "repair_owner": "book4",
       "downstream_consumers": [
-        "book5",
-        "book7"
+        "book4"
       ],
       "failure_mode": "missing_machinery",
-      "summary": "The finite flat connection and torsion estimate are certified, but observer-relative first-order differentiability does not supply the second derivatives required by the Christoffel transformation law, nor does approximate overlap consistency automatically define a global affine connection or computable parallel transport.",
+      "summary": "Point-dependent coefficients glue through an explicit partition of unity with Hessian-aware overlap transport and global torsion transfer. Analytic parallel transport is now represented conditionally: a positive observer floor supplies the smooth path presentation, while existence, uniqueness, admissibility, and effective error bounds remain explicit certificate evidence; the resulting observed endpoint approximations converge.",
       "required_latex_repair": "Require observer differentiability through order at least two, state quantitative cocycle compatibility for patched coefficients, provide a partition-of-unity or connection-gluing theorem, and state the coefficient regularity and effective bounds needed for existence and observer-computability of parallel-transport ODE solutions.",
       "lean_evidence": [
         {
@@ -420,56 +620,106 @@
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4FuzzyConnection.lean",
           "declaration": "Book4FuzzyConnection.torsion_control_of_approx_symmetric",
           "kind": "conditional_torsion_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4AssembledConnection.lean",
+          "declaration": "Book4AssembledConnection.globalNablaAt_eq_of_local_eq",
+          "kind": "partition_gluing_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4AssembledConnection.lean",
+          "declaration": "Book4AssembledConnection.certified_coefficient_transformation",
+          "kind": "second_order_overlap_bridge"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4AssembledConnection.lean",
+          "declaration": "Book4AssembledConnection.assembledTorsionAt_eq_zero_of_local_symmetric",
+          "kind": "global_torsion_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4AssembledConnection.lean",
+          "declaration": "Book4AssembledConnection.discreteParallelTransport_append",
+          "kind": "ordered_transport_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4AssembledConnection.lean",
+          "declaration": "Book4AssembledConnection.step_size_matters",
+          "kind": "analytic_boundary_countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4AssembledConnection.lean",
+          "declaration": "Book4AssembledConnection.ObserverFloorRegularity.coefficient_uses_observer_floor",
+          "kind": "observer_floor_regularity_bridge"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4AssembledConnection.lean",
+          "declaration": "Book4AssembledConnection.EffectiveParallelTransportCertificate.solves_observer_floor_transport",
+          "kind": "conditional_analytic_transport"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4AssembledConnection.lean",
+          "declaration": "Book4AssembledConnection.EffectiveParallelTransportCertificate.eq_certified_trajectory",
+          "kind": "supplied_uniqueness_bridge"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4AssembledConnection.lean",
+          "declaration": "Book4AssembledConnection.EffectiveParallelTransportCertificate.observed_endpoint_tendsto",
+          "kind": "effective_observer_convergence"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4AssembledConnection.lean",
+          "declaration": "Book4AssembledConnection.observer_floor_can_change_visible_path",
+          "kind": "observer_floor_countermodel"
         }
       ],
-      "lean_status": "bridge_partially_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "partially_discharged"
+      "lean_status": "conditional_kernel_proved",
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "4da79b9c9496"
     },
     {
       "id": "PS-SRC-015",
       "source_anchor": "proposition:bk4_geodesic_failure",
       "source_file": "book4.tex",
-      "source_line": 3915,
+      "source_line": 4028,
       "source_layer": "book4",
       "repair_owner": "book4",
       "downstream_consumers": [
-        "book5",
-        "book7"
+        "book4"
       ],
       "failure_mode": "missing_premise",
-      "summary": "Approximation of the observer second derivative by a covariant second derivative controls the squared diagnostic, but it does not make the reflexive displacement a Jacobi field or identify its acceleration with the Riemann-curvature term.",
-      "required_latex_repair": "State a curve, tangent field, and reflexive displacement satisfying the Jacobi equation for the fuzzy connection, including the sign convention and norm comparison. Replace the bare epsilon claim for squared norms by the magnitude-dependent error bound or add uniform derivative bounds.",
+      "summary": "Lean now proves the repaired conditional proposition in one theorem: an explicit common-fibre Jacobi certificate fixes the oriented curvature sign, observer approximation yields the magnitude-sensitive squared diagnostic bound, and uniform derivative bounds yield the stated 2 B epsilon corollary. The paired countermodel preserves the boundary that approximation alone does not construct a Jacobi field.",
+      "required_latex_repair": "The LaTeX now states the curve, tangent field, common normed fibre, Jacobi equation, sign convention, magnitude-dependent error, and uniform 2 B epsilon corollary. The remaining formal obligation is the analytic construction of a C2 field along a fuzzy-connection geodesic satisfying that certificate.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4GeodesicFailure.lean",
-          "declaration": "Book4GeodesicFailure.curvature_error_bound",
-          "kind": "quantitative_kernel"
+          "declaration": "Book4GeodesicFailure.JacobiCertificate.observer_diagnostic_certificate",
+          "kind": "positive_kernel"
         },
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4GeodesicFailure.lean",
           "declaration": "Book4GeodesicFailure.derivative_agreement_does_not_force_jacobi_curvature",
-          "kind": "countermodel"
+          "kind": "premise_countermodel"
         }
       ],
       "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "9eea61335538"
     },
     {
       "id": "PS-SRC-016",
       "source_anchor": "theorem:bk4_observer_geometry_coevolution",
       "source_file": "book4.tex",
-      "source_line": 5542,
+      "source_line": 5676,
       "source_layer": "book4",
       "repair_owner": "book4",
       "downstream_consumers": [
-        "book5",
-        "book7"
+        "book4"
       ],
       "failure_mode": "missing_premise",
-      "summary": "Local Lipschitz regularity gives local existence and uniqueness of coupled trajectories but does not imply a fixed point, attraction, boundedness, or recursive stabilization; a coupled translation system has no stabilized state.",
-      "required_latex_repair": "Define recursive stabilization precisely and add a Lyapunov, contraction, dissipativity, compact-invariant-set, or other fixed-point/attractor hypothesis sufficient to prove it. Separate local trajectory existence from long-time stabilization.",
+      "summary": "Local Lipschitz regularity constructs unique local coupled trajectories but not equilibrium or attraction. Lean now separately proves that an explicit strict geometric contraction certificate drives nonnegative joint observer-geometry error to zero, while the translating-field countermodel preserves the missing-premise boundary.",
+      "required_latex_repair": "Canonical Book IV already separates Picard-Lindelof local well-posedness, joint equilibrium, and attraction. The Lean layer now models the stated additional contraction certificate and derives vanishing joint error without claiming that local regularity supplies it.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4ObserverGeometry.lean",
@@ -478,27 +728,68 @@
         },
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4ObserverGeometry.lean",
+          "declaration": "Book4ObserverGeometry.jointEquilibrium_iff",
+          "kind": "continuous_equilibrium_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4ObserverGeometry.lean",
+          "declaration": "Book4ObserverGeometry.equilibrium_constantTrajectory_solves",
+          "kind": "continuous_ode_solution"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4ObserverGeometry.lean",
+          "declaration": "Book4ObserverGeometry.exists_picardLindelof_certificate_of_locallyLipschitz",
+          "kind": "local_lipschitz_certificate_construction"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4ObserverGeometry.lean",
+          "declaration": "Book4ObserverGeometry.locallyLipschitz_finiteDimensional_local_existence",
+          "kind": "source_level_picard_lindelof_theorem"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4ObserverGeometry.lean",
+          "declaration": "Book4ObserverGeometry.picardLindelof_local_existence",
+          "kind": "mathlib_picard_lindelof_existence"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4ObserverGeometry.lean",
+          "declaration": "Book4ObserverGeometry.picardLindelof_local_uniqueness",
+          "kind": "mathlib_ode_uniqueness"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4ObserverGeometry.lean",
+          "declaration": "Book4ObserverGeometry.translatingVectorField_has_no_jointEquilibrium",
+          "kind": "continuous_countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4ObserverGeometry.lean",
           "declaration": "Book4ObserverGeometry.driftingSystem_has_no_stabilized_state",
           "kind": "countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4ObserverGeometry.lean",
+          "declaration": "Book4ObserverGeometry.CoupledAttractionCertificate.jointError_tendsto_zero",
+          "kind": "conditional_attraction_derivation"
         }
       ],
       "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "f087cf1dbb3e"
     },
     {
       "id": "PS-SRC-017",
       "source_anchor": "proposition:bk4_gauge_dictionary",
       "source_file": "book4.tex",
-      "source_line": 5934,
+      "source_line": 6072,
       "source_layer": "book4",
       "repair_owner": "book4",
       "downstream_consumers": [
-        "book7"
+        "book4"
       ],
       "failure_mode": "interpretive_only",
-      "summary": "Matching four symbolic names to four gauge-theory names does not make the correspondences structural identities; types, actions, covariance laws, curvature construction, and holonomy compatibility must be supplied.",
-      "required_latex_repair": "Define a typed functor or explicit equivalences preserving connection action, curvature, gauge transformations, and loop holonomy. Downgrade any entry lacking those preservation proofs from identity to interpretation.",
+      "summary": "The typed gauge dictionary remains supplied structural data rather than a consequence of shared names. Lean now additionally distinguishes observer-local views from a deduced global geometry: joint separation proves global uniqueness, coordinate views give one concrete assembly, and local inhabitation alone does not force global existence.",
+      "required_latex_repair": "Canonical Book IV already conditions the gauge interpretation on a structural certificate. The Lean layer now makes observer locality explicit and derives uniqueness of a compatible global geometry while leaving global existence as a separate gluing obligation.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Gauge.lean",
@@ -507,27 +798,63 @@
         },
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Gauge.lean",
+          "declaration": "Book4Gauge.StructuralGaugeCertificate.connectionAction_square",
+          "kind": "connection_action_compatibility"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Gauge.lean",
+          "declaration": "Book4Gauge.StructuralGaugeCertificate.curvature_square",
+          "kind": "curvature_construction_compatibility"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Gauge.lean",
+          "declaration": "Book4Gauge.StructuralGaugeCertificate.fieldAction_square",
+          "kind": "gauge_equivariance"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Gauge.lean",
+          "declaration": "Book4Gauge.StructuralGaugeCertificate.holonomy_square",
+          "kind": "holonomy_compatibility"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Gauge.lean",
           "declaration": "Book4Gauge.names_alone_do_not_supply_gauge_dictionary",
           "kind": "countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Gauge.lean",
+          "declaration": "Book4Gauge.ObserverAtlas.global_unique_of_local_compatibility",
+          "kind": "observer_local_global_uniqueness"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Gauge.lean",
+          "declaration": "Book4Gauge.coordinateObserverAtlas_assembles",
+          "kind": "coordinate_global_assembly"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Gauge.lean",
+          "declaration": "Book4Gauge.observer_local_types_do_not_force_global_existence",
+          "kind": "global_existence_countermodel"
         }
       ],
-      "lean_status": "typed_bridge_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "partially_discharged"
+      "lean_status": "conditional_kernel_proved",
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "056d11a98e0b"
     },
     {
       "id": "PS-SRC-018",
       "source_anchor": "corollary:bk4_wilson_loop",
       "source_file": "book4.tex",
-      "source_line": 5974,
+      "source_line": 6136,
       "source_layer": "book4",
       "repair_owner": "book4",
       "downstream_consumers": [
-        "book7"
+        "book4"
       ],
       "failure_mode": "missing_machinery",
-      "summary": "The finite noncommutative path-ordering kernel is certified, but the analytic path-ordered exponential requires a Lie-group representation, a connection one-form along a parameterized loop, convergence or ODE machinery, and a proved identification with the fuzzy boundary integral.",
-      "required_latex_repair": "Specify the gauge group and representation, parameterized loop, regularity of the pulled-back connection, definition of the ordered exponential as parallel transport, and the theorem relating symbolic boundary data to that holonomy.",
+      "summary": "The repaired conditional Wilson statement is fully represented: supplied Picard trajectories glue by overlap uniqueness; exact ordered increments telescope to holonomy; symbolic/Wilson identification requires an explicit compatibility witness; and observer-relative approximation converges only from declared smoothing, floor, admissibility, and vanishing error. Cross-observer comparison requires an intertwiner. A concrete constant-scalar Euler inhabitant proves the interface nonvacuous. Variable matrix solvers and closed-form rates are optional future inhabitants, not missing premises of this conditional theorem.",
+      "required_latex_repair": "Retain the specified representation, loop, and pulled-back connection. Globalize local Picard transport, then state any approximation through observer smoothing, observer resolution floor, admissible partition rule, observed error, and explicit cross-observer transport; do not imply an observer-free numerical limit.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Gauge.lean",
@@ -538,22 +865,92 @@
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Gauge.lean",
           "declaration": "Book4Gauge.two_segment_order_independent_iff",
           "kind": "noncommutative_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Gauge.lean",
+          "declaration": "Book4Gauge.WilsonTransportCertificate.trajectory_initial",
+          "kind": "analytic_transport_initial_condition"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Gauge.lean",
+          "declaration": "Book4Gauge.WilsonTransportCertificate.trajectory_hasDerivWithinAt",
+          "kind": "local_noncommutative_transport_ode"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Gauge.lean",
+          "declaration": "Book4Gauge.WilsonTransportCertificate.holonomy_eq_endpoint",
+          "kind": "analytic_holonomy_endpoint"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4WilsonGlobal.lean",
+          "declaration": "Book4WilsonGlobal.AnalyticWilsonContinuationTrace.globalTransport_eq_certified_trajectory",
+          "kind": "global_picard_continuation"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4WilsonGlobal.lean",
+          "declaration": "Book4WilsonGlobal.reverseOrderedIncrements_prod",
+          "kind": "exact_noncommutative_product_integration"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4WilsonGlobal.lean",
+          "declaration": "Book4WilsonGlobal.symbolic_loop_has_wilson_representation",
+          "kind": "explicit_wilson_compatibility"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4WilsonGlobal.lean",
+          "declaration": "Book4WilsonGlobal.endpoint_alone_does_not_identify_symbolic_loop",
+          "kind": "compatibility_countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4WilsonGlobal.lean",
+          "declaration": "Book4WilsonGlobal.ObserverWilsonApproximationCertificate.observed_approximation_tendsto",
+          "kind": "observer_relative_convergence"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4WilsonGlobal.lean",
+          "declaration": "Book4WilsonGlobal.ObserverWilsonApproximationCertificate.admissible_iff_visible_above_floor",
+          "kind": "observer_floor_admissibility"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4WilsonGlobal.lean",
+          "declaration": "Book4WilsonGlobal.CrossObserverWilsonTransport.transported_target_eq",
+          "kind": "cross_observer_transport"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4WilsonGlobal.lean",
+          "declaration": "Book4WilsonGlobal.shared_raw_endpoint_does_not_force_shared_observation",
+          "kind": "observer_presentation_countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4WilsonGlobal.lean",
+          "declaration": "Book4WilsonGlobal.positive_resolution_floor_not_unique",
+          "kind": "floor_nonuniqueness_countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4WilsonGlobal.lean",
+          "declaration": "Book4WilsonGlobal.scalarConstantEulerApproximation_tendsto",
+          "kind": "concrete_scalar_euler_convergence"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4WilsonGlobal.lean",
+          "declaration": "Book4WilsonGlobal.scalarConstantObserverCertificate_tendsto",
+          "kind": "concrete_observer_solver"
         }
       ],
-      "lean_status": "bridge_partially_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "partially_discharged"
+      "lean_status": "conditional_kernel_proved",
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "86a526d15620"
     },
     {
       "id": "PS-SRC-019",
       "source_anchor": "proposition:bk4_quantum_geometry",
       "source_file": "book4.tex",
-      "source_line": 6010,
+      "source_line": 6194,
       "source_layer": "book4",
       "repair_owner": "book4",
       "downstream_consumers": [
-        "book7",
-        "book9"
+        "book4"
       ],
       "failure_mode": "interpretive_only",
       "summary": "Noncommutative symbolic transport rigorously yields path dependence, but identifying symbolic fields with virtual particles and symbolic holonomy with quantum vacuum fluctuations is a modal transfer, not a consequence of the geometric kernel.",
@@ -573,30 +970,81 @@
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4QuantumGeometry.lean",
           "declaration": "Book4QuantumGeometry.path_dependence_alone_does_not_force_quantum_fluctuation",
           "kind": "countermodel"
+        },
+        {
+          "declaration": "Book4QuantumGeometry.certified_gauge_action_natural",
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4QuantumGeometry.lean",
+          "kind": "gauge_equivariance_kernel"
+        },
+        {
+          "declaration": "Book4QuantumGeometry.certified_curvature_natural",
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4QuantumGeometry.lean",
+          "kind": "curvature_naturality_kernel"
+        },
+        {
+          "declaration": "Book4QuantumGeometry.certified_holonomy_natural",
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4QuantumGeometry.lean",
+          "kind": "holonomy_naturality_kernel"
+        },
+        {
+          "declaration": "Book4QuantumGeometry.certified_quantum_fluctuation_iff_symbolic",
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4QuantumGeometry.lean",
+          "kind": "typed_quantum_bridge"
+        },
+        {
+          "declaration": "Book4QuantumGeometry.equivalences_alone_do_not_force_quantum_geometry_certificate",
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4QuantumGeometry.lean",
+          "kind": "countermodel"
         }
       ],
-      "lean_status": "typed_bridge_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "partially_discharged"
+      "lean_status": "conditional_kernel_proved",
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "9b137a665012"
     },
     {
       "id": "PS-SRC-020",
       "source_anchor": "theorem:bk4_ml_metric_learning",
       "source_file": "book4.tex",
-      "source_line": 3402,
+      "source_line": 3480,
       "source_layer": "book4",
       "repair_owner": "book4",
       "downstream_consumers": [
         "book7"
       ],
       "failure_mode": "missing_premise",
-      "summary": "Differentiability of the parameterized metric loss defines a gradient update but does not imply descent, convergence, identifiability of the observer metric, or preservation of positive definiteness for an unconstrained step.",
-      "required_latex_repair": "Specify the positive-definite parameterization and projection or retraction, smoothness and lower-bound assumptions on the loss, a step-size regime yielding descent, and the intended convergence target. Distinguish defining a learning flow from proving that it learns g_O.",
+      "summary": "The canonical proof now separates metric validity, descent, convergence, and identification. Lean realizes the complete architecture in a scalar positive-definite model: exponential log-parameterization preserves positivity; controlled quadratic descent has an exact recursive trajectory converging geometrically to the supplied target; injective readout is the additional premise that identifies that target as the observer metric. The oversized-step countermodel remains explicit.",
+      "required_latex_repair": "Repaired: the proof now states positive-definite parameterization or retraction, loss smoothness and lower boundedness, a descent step-size regime, a convergence condition, and a unique or equivalence-class identifiability target. It explicitly denies that differentiability alone establishes learning.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4MetricLearning.lean",
-          "declaration": "Book4MetricLearning.quadratic_gradient_step_decreases",
+          "declaration": "Book4MetricLearning.metricLearningStep_strict_descent",
           "kind": "conditional_descent_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4MetricLearning.lean",
+          "declaration": "Book4MetricLearning.learnedMetric_positive",
+          "kind": "positive_definite_parameterization"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4MetricLearning.lean",
+          "declaration": "Book4MetricLearning.learnedParameter_succ",
+          "kind": "recursive_update_realization"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4MetricLearning.lean",
+          "declaration": "Book4MetricLearning.learnedParameter_tendsto_target",
+          "kind": "geometric_convergence"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4MetricLearning.lean",
+          "declaration": "Book4MetricLearning.target_identified_from_equal_readout",
+          "kind": "identifiability_bridge"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4MetricLearning.lean",
+          "declaration": "Book4MetricLearning.certified_metric_learning",
+          "kind": "assembled_certificate"
         },
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4MetricLearning.lean",
@@ -604,73 +1052,116 @@
           "kind": "countermodel"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "positive_kernel_proved",
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "b640ac5f6893"
     },
     {
       "id": "PS-SRC-021",
       "source_anchor": "corollary:bk4_information_curvature",
       "source_file": "book4.tex",
-      "source_line": 3457,
+      "source_line": 3546,
       "source_layer": "book4",
       "repair_owner": "book4",
       "downstream_consumers": [
         "book7"
       ],
       "failure_mode": "counterexample",
-      "summary": "The displayed expectation of a product of log-likelihood Hessians is not a general Riemann curvature tensor: it can be positive when the first two indices coincide, whereas Riemann antisymmetry forces that component to vanish.",
-      "required_latex_repair": "Replace the formula with the standard Fisher metric definition and compute its Levi-Civita curvature using metric derivatives and Christoffel terms, or explicitly define the displayed quantity as a distinct fourth-order Hessian-moment tensor rather than R_O.",
+      "summary": "The canonical corollary now defines the Fisher metric by the expected score outer product and constructs information-geometric curvature through the Levi\u2013Civita Christoffel formula. The former Hessian-product display is renamed H_O and explicitly separated from R_O. Lean realizes the full finite-coordinate chain from a metric two-jet through Christoffel symbols and their derivatives to antisymmetric Riemann curvature; a flat/unit-Hessian countermodel prevents re-identification.",
+      "required_latex_repair": "Repaired: Fisher metric, Christoffel symbols, and Riemann curvature are separately defined; regularity, positive definiteness on the identifiable quotient, convergence of metric learning, and two coordinate derivatives are explicit premises. The Hessian moment remains a distinct statistical tensor.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4InformationCurvature.lean",
-          "declaration": "Book4InformationCurvature.fisherInformation_nonneg",
-          "kind": "positive_fisher_kernel"
+          "declaration": "Book4InformationCurvature.fisherMetric_symm",
+          "kind": "fisher_metric_symmetry"
         },
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4InformationCurvature.lean",
-          "declaration": "Book4InformationCurvature.unit_hessian_moment_cannot_be_riemann_diagonal",
-          "kind": "countermodel"
+          "declaration": "Book4InformationCurvature.fisherMetric_diagonal_nonneg",
+          "kind": "fisher_metric_positivity_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4InformationCurvature.lean",
+          "declaration": "Book4InformationCurvature.riemannCurvature_swap",
+          "kind": "christoffel_curvature_antisymmetry"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4InformationCurvature.lean",
+          "declaration": "Book4InformationCurvature.riemannCurvature_diagonal_zero",
+          "kind": "curvature_diagonal_law"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4InformationCurvature.lean",
+          "declaration": "Book4InformationCurvature.riemannCurvature_eq_zero_of_constant_jet",
+          "kind": "flat_metric_certificate"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4InformationCurvature.lean",
+          "declaration": "Book4InformationCurvature.hessianMoment_is_not_riemannCurvature",
+          "kind": "typed_countermodel"
         }
       ],
-      "lean_status": "countermodel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "positive_kernel_proved",
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "917bccf89701"
     },
     {
       "id": "PS-SRC-022",
       "source_anchor": "proposition:bk4_field_regularization",
       "source_file": "book4.tex",
-      "source_line": 3338,
+      "source_line": 3405,
       "source_layer": "book4",
       "repair_owner": "book4",
       "downstream_consumers": [
         "book7"
       ],
       "failure_mode": "missing_premise",
-      "summary": "A positive observer resolution or an unspecified kernel does not by itself impose a momentum cutoff or prove perturbative finiteness at every order. The proof separately assumes the required cutoff regime, while the proposition states the conclusion unconditionally.",
-      "required_latex_repair": "Move the observer-kernel cutoff regime into the proposition and specify a decay or compact-support condition on the Fourier multiplier. Qualify finiteness diagram-by-diagram at fixed perturbative order, or add the power-counting and renormalization hypotheses needed for a uniform all-orders claim.",
+      "summary": "The canonical proposition now conditions UV regularization on a compactly supported Fourier multiplier or explicit decay estimate and narrows finiteness to each fixed finite perturbative order. Lean lifts the former scalar gate to a linear idempotent operator on momentum-space fields, proves bounded support, counts the finite internal-momentum assignment space at each order, and supplies a countermodel showing fixed-order finiteness does not control the infinite all-orders series.",
+      "required_latex_repair": "Repaired: the cutoff or decay regime is in the proposition; compact-support field regularization and diagram-by-diagram fixed-order finiteness are explicit; all-orders convergence is denied without uniform power-counting, renormalization, or summability premises.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4FieldRegularization.lean",
+          "declaration": "Book4FieldRegularization.regularizeField_idempotent",
+          "kind": "operator_projection"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4FieldRegularization.lean",
+          "declaration": "Book4FieldRegularization.regularized_support_bounded",
+          "kind": "compact_support_certificate"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4FieldRegularization.lean",
+          "declaration": "Book4FieldRegularization.accessibleAssignment_card",
+          "kind": "fixed_order_assignment_count"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4FieldRegularization.lean",
           "declaration": "Book4FieldRegularization.perturbativeInsertion_eq_zero_of_high_mode",
-          "kind": "conditional_cutoff_kernel"
+          "kind": "high_mode_elimination"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4FieldRegularization.lean",
+          "declaration": "Book4FieldRegularization.fixed_orders_do_not_force_all_orders_control",
+          "kind": "all_orders_countermodel"
         },
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4FieldRegularization.lean",
           "declaration": "Book4FieldRegularization.resolution_scale_alone_does_not_force_suppression",
-          "kind": "countermodel"
+          "kind": "cutoff_law_countermodel"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "positive_kernel_proved",
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "774eda162ddb"
     },
     {
       "id": "PS-SRC-023",
       "source_anchor": "corollary:bk4_emergence_of_meaning",
       "source_file": "book4.tex",
-      "source_line": 3209,
+      "source_line": 3228,
       "source_layer": "book4",
       "repair_owner": "book4",
       "downstream_consumers": [
@@ -678,58 +1169,180 @@
         "book7"
       ],
       "failure_mode": "missing_premise",
-      "summary": "The freedom-life transition supplies increasing freedom and bounded fragmentation, but it does not imply that a separately introduced free-energy landscape is nonconstant. Therefore the proof's Step 1 and the claimed nontriviality of the meaning map need a bridge premise.",
-      "required_latex_repair": "Assume a finite or compact configuration domain with an attained free-energy ceiling, and explicitly require that some accessible configuration has energy strictly below that ceiling. If this is intended to follow from symbolic freedom, add and prove a theorem connecting the freedom measure to variation of the Book II free-energy functional.",
+      "summary": "Repaired: the freedom-life transition and the identity-relative meaning construction are connected by an explicit bridge rather than identified. The energetic realization now quantifies over accessible configurations, requires an attained finite ceiling and a strict-below-ceiling witness, and separates descent, convergence, interpretation, significance, and action.",
+      "required_latex_repair": "Completed: the corollary states the accessible-domain, attained-ceiling, and strict-below-ceiling premises; the proof treats gradient-flow convergence conditionally and distinguishes energetic value from interpretive significance and embodied action.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Meaning.lean",
+          "declaration": "Book4Meaning.meaningValue_nonneg",
+          "kind": "identity_relative_meaning_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Meaning.lean",
+          "declaration": "Book4Meaning.meaningValue_pos_iff",
+          "kind": "identity_relative_meaning_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Meaning.lean",
           "declaration": "Book4Meaning.exists_positive_meaning_iff",
-          "kind": "conditional_value_kernel"
+          "kind": "identity_relative_meaning_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Meaning.lean",
+          "declaration": "Book4Meaning.meaningValue_strict_preference_iff",
+          "kind": "identity_relative_meaning_kernel"
         },
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Meaning.lean",
           "declaration": "Book4Meaning.freedomLifeTransition_does_not_force_nonconstant_energy",
           "kind": "countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Meaning.lean",
+          "declaration": "Book4Meaning.identityMeaning_nonneg_on_accessible",
+          "kind": "identity_relative_meaning_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Meaning.lean",
+          "declaration": "Book4Meaning.identityMeaning_pos_iff_on_accessible",
+          "kind": "identity_relative_meaning_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Meaning.lean",
+          "declaration": "Book4Meaning.identityMeaning_is_nontrivial",
+          "kind": "identity_relative_meaning_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Meaning.lean",
+          "declaration": "Book4Meaning.identityMeaning_ceiling_witness_has_zero_value",
+          "kind": "identity_relative_meaning_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Meaning.lean",
+          "declaration": "Book4Meaning.identityMeaning_strict_preference_iff",
+          "kind": "identity_relative_meaning_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Meaning.lean",
+          "declaration": "Book4Meaning.preferentialFlow_meaning_nondecreasing",
+          "kind": "certified_flow_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Meaning.lean",
+          "declaration": "Book4Meaning.transition_with_bridge_generates_positive_meaning",
+          "kind": "identity_relative_meaning_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Meaning.lean",
+          "declaration": "Book4Meaning.retained_distinction_does_not_force_action_distinction",
+          "kind": "countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Meaning.lean",
+          "declaration": "Book4Meaning.value_map_does_not_determine_significance",
+          "kind": "countermodel"
         }
       ],
       "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "c809a8b69fa0"
     },
     {
       "id": "PS-SRC-024",
       "source_anchor": "theorem:bk4_quantum_measurement",
       "source_file": "book4.tex",
-      "source_line": 3320,
+      "source_line": 3354,
       "source_layer": "book4",
       "repair_owner": "book4",
       "downstream_consumers": [
         "book7"
       ],
       "failure_mode": "missing_premise",
-      "summary": "The displayed passage from a joint observer-environment density matrix to an expectation in one observer pure state is not valid for a general correlated or mixed joint state. It requires an explicit product-state or single-observer-support premise and a type-correct reduced density/operator formulation.",
-      "required_latex_repair": "State the Hilbert-space types of the density and metric operators. Use Tr(rho_O Tr_E(rho_OE-compatible observable)) or the standard reduced-state identity, and add the product/pure-state hypothesis if the result is to be written as a vector-state expectation in |psi_O>.",
+      "summary": "Repaired: the theorem now uses a type-correct reduced density operator and local observable identity valid for arbitrary correlated or mixed joint states. The pure-state vector expectation is an explicit specialization, while the quantum-to-geometric and resolution-kernel identifications remain supplied certificate data. A further constructive bridge now combines reduced-state readout weights with an independently supplied resolution response to produce a symmetric positive-semidefinite observer metric; non-identifiability of the response from density alone is proved.",
+      "required_latex_repair": "Completed: Hilbert-space and operator types, reduced-state identity, pure-state premise, and the separate geometric bridge are explicit.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4QuantumMeasurement.lean",
+          "declaration": "Book4QuantumMeasurement.jointExpectation_eq_sum_partialTrace",
+          "kind": "operator_partial_trace_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4QuantumMeasurement.lean",
+          "declaration": "Book4QuantumMeasurement.jointExpectation_nonneg",
+          "kind": "operator_partial_trace_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4QuantumMeasurement.lean",
           "declaration": "Book4QuantumMeasurement.jointExpectation_pureObserver",
-          "kind": "conditional_partial_trace_kernel"
+          "kind": "pure_state_specialization"
         },
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4QuantumMeasurement.lean",
           "declaration": "Book4QuantumMeasurement.joint_state_does_not_reduce_to_arbitrary_observer",
           "kind": "countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4QuantumMeasurement.lean",
+          "declaration": "Book4QuantumMeasurement.trace_partialTraceEnvironment",
+          "kind": "operator_partial_trace_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4QuantumMeasurement.lean",
+          "declaration": "Book4QuantumMeasurement.jointExpectation_local_eq_reduced",
+          "kind": "operator_partial_trace_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4QuantumMeasurement.lean",
+          "declaration": "Book4QuantumMeasurement.trace_pureStateDensity_mul",
+          "kind": "pure_state_specialization"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4QuantumMeasurement.lean",
+          "declaration": "Book4QuantumMeasurement.observerMetric_eq_reduced",
+          "kind": "operator_partial_trace_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4QuantumResolution.lean",
+          "declaration": "Book4QuantumResolution.inducedMetric_symmetric",
+          "kind": "quantum_resolution_metric_bridge"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4QuantumResolution.lean",
+          "declaration": "Book4QuantumResolution.inducedMetric_diagonal_nonneg",
+          "kind": "quantum_resolution_metric_bridge"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4QuantumResolution.lean",
+          "declaration": "Book4QuantumResolution.inducedMetric_zero_of_response_zero",
+          "kind": "quantum_resolution_metric_bridge"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4QuantumResolution.lean",
+          "declaration": "Book4QuantumResolution.inducedMetric_diagonal_pos_of_channel",
+          "kind": "quantum_resolution_metric_bridge"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4QuantumResolution.lean",
+          "declaration": "Book4QuantumResolution.quantum_resolution_constructs_observer_metric",
+          "kind": "quantum_resolution_metric_bridge"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4QuantumResolution.lean",
+          "declaration": "Book4QuantumResolution.reduced_state_does_not_determine_resolution_kernel",
+          "kind": "nonidentifiability_countermodel"
         }
       ],
       "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "0305c96db2f9"
     },
     {
       "id": "PS-SRC-025",
       "source_anchor": "lemma:bk4_statistical_mechanics",
       "source_file": "book4.tex",
-      "source_line": 3369,
+      "source_line": 3451,
       "source_layer": "book4",
       "repair_owner": "book4",
       "downstream_consumers": [
@@ -737,71 +1350,168 @@
         "book7"
       ],
       "failure_mode": "missing_premise",
-      "summary": "Closure and twice differentiability of the effective entropy do not derive the displayed observer-metric decomposition. The formula is a constitutive definition requiring an explicit coarse-graining map, ensemble weights, thermal sign convention, and positivity conditions.",
-      "required_latex_repair": "State the equation as an assumed/defined thermal closure or derive it from a specified effective potential and coarse-graining operator. Require beta nonzero (preferably positive), normalize the ensemble weights, state Hessian symmetry, and choose the entropy/free-energy sign so the correction preserves the desired metric positivity.",
+      "summary": "Repaired: a normalized finite coarse-graining now constructs the thermal observer metric from nonnegative ensemble weights, symmetric PSD microscopic metrics, a symmetric PSD entropy-response Hessian, and positive inverse temperature. Full quadratic-form positivity is proved; the constitutive identification is not inferred from entropy regularity alone.",
+      "required_latex_repair": "Completed: normalized weights, beta positivity, symmetry, PSD hypotheses, entropy sign convention, and the constitutive rather than automatic status of the closure are explicit.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4StatisticalMechanics.lean",
+          "declaration": "Book4StatisticalMechanics.thermalMetric_decomposition",
+          "kind": "normalized_coarse_graining"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4StatisticalMechanics.lean",
+          "declaration": "Book4StatisticalMechanics.ensembleMetric_symmetric",
+          "kind": "normalized_coarse_graining"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4StatisticalMechanics.lean",
+          "declaration": "Book4StatisticalMechanics.thermalMetric_symmetric",
+          "kind": "normalized_coarse_graining"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4StatisticalMechanics.lean",
           "declaration": "Book4StatisticalMechanics.thermalMetric_diagonal_nonneg",
-          "kind": "conditional_thermal_kernel"
+          "kind": "normalized_coarse_graining"
         },
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4StatisticalMechanics.lean",
           "declaration": "Book4StatisticalMechanics.entropy_regularity_alone_does_not_force_metric_decomposition",
           "kind": "countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4StatisticalMechanics.lean",
+          "declaration": "Book4StatisticalMechanics.coarseObserverMetric_symmetric",
+          "kind": "normalized_coarse_graining"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4StatisticalMechanics.lean",
+          "declaration": "Book4StatisticalMechanics.metricQuadratic_ensembleMetric",
+          "kind": "full_quadratic_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4StatisticalMechanics.lean",
+          "declaration": "Book4StatisticalMechanics.metricQuadratic_thermalMetric",
+          "kind": "full_quadratic_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4StatisticalMechanics.lean",
+          "declaration": "Book4StatisticalMechanics.coarseObserverMetric_psd",
+          "kind": "full_quadratic_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4StatisticalMechanics.lean",
+          "declaration": "Book4StatisticalMechanics.ensembleMetric_of_constant",
+          "kind": "normalized_coarse_graining"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "positive_kernel_proved",
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "a6ef3e7226bc"
     },
     {
       "id": "PS-SRC-026",
       "source_anchor": "proposition:bk4_holographic_emergence",
       "source_file": "book4.tex",
-      "source_line": 3494,
+      "source_line": 3614,
       "source_layer": "book4",
       "repair_owner": "book4",
       "downstream_consumers": [
         "book7"
       ],
       "failure_mode": "missing_premise",
-      "summary": "The RT area formula determines entropy from a supplied extremal surface, but a boundary observer metric alone does not select a unique bulk geometry. The proof introduces the load-bearing observer-relative AdS/CFT/RT regime as a separate assumption.",
-      "required_latex_repair": "Move the observer-relative RT regime into the proposition. Specify the boundary-to-bulk reconstruction map, existence/selection of the extremal surface, positivity of G_N, and whether uniqueness is assumed. Keep the information-curvature alignment conditional on repair of PS-SRC-021.",
+      "summary": "Repaired: RT emergence is an explicit variational reconstruction with admissible anchored fibers, selected minimizers, nonnegative area, and positive Newton constant. Entropy minimality is proved; uniqueness is conditional.",
+      "required_latex_repair": "Completed: reconstruction, admissibility, selection, positivity, and conditional uniqueness are explicit.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Holographic.lean",
+          "declaration": "Book4Holographic.observerSurfaceArea_nonneg",
+          "kind": "variational_rt_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Holographic.lean",
+          "declaration": "Book4Holographic.observerSurfaceArea_mono",
+          "kind": "variational_rt_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Holographic.lean",
+          "declaration": "Book4Holographic.rtEntropy_area_law",
+          "kind": "variational_rt_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Holographic.lean",
+          "declaration": "Book4Holographic.rtEntropy_nonneg",
+          "kind": "variational_rt_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Holographic.lean",
           "declaration": "Book4Holographic.rtEntropy_strictMono_area",
-          "kind": "conditional_rt_kernel"
+          "kind": "variational_rt_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Holographic.lean",
+          "declaration": "Book4Holographic.reconstruction_deterministic",
+          "kind": "variational_rt_kernel"
         },
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Holographic.lean",
           "declaration": "Book4Holographic.boundary_metric_alone_does_not_select_unique_bulk",
           "kind": "countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Holographic.lean",
+          "declaration": "Book4Holographic.reconstructedEntropy_nonneg",
+          "kind": "variational_rt_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Holographic.lean",
+          "declaration": "Book4Holographic.selectedSurface_minimizes_entropy",
+          "kind": "variational_rt_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Holographic.lean",
+          "declaration": "Book4Holographic.selectedSurface_unique_of_uniqueMinimizer",
+          "kind": "variational_rt_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Holographic.lean",
+          "declaration": "Book4Holographic.minimal_area_does_not_force_unique_surface",
+          "kind": "countermodel"
         }
       ],
       "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "5a2978bbbbb8"
     },
     {
       "id": "PS-SRC-027",
       "source_anchor": "corollary:bk5_reflective_hysteresis",
       "source_file": "book5.tex",
-      "source_line": 857,
+      "source_line": 942,
       "source_layer": "book5",
       "repair_owner": "book5",
       "downstream_consumers": [
         "book8"
       ],
       "failure_mode": "missing_premise",
-      "summary": "The corollary is valid for an explicitly stateful two-threshold transition law, but the cited critical-temperature and transactional-dynamics results do not themselves derive history dependence or activation barriers. The opening sentence supplies history dependence as an extra premise.",
-      "required_latex_repair": "State a regime-valued evolution with prior state as an argument, define the lower and upper switching rules, and either assume or derive the separated thresholds from a free-energy barrier model. Keep the corollary conditional until that bridge is proved.",
+      "summary": "Reflective hysteresis is rebuilt as an explicitly stateful Schmitt-style process. A positive half-width derives ordered thresholds around unity; a positive constant density derives barrier energy 2 \u03be b > 0; and every finite path inside the band preserves the incoming regime. The retained memoryless countermodel shows that history dependence cannot be recovered from the current coupling alone.",
+      "required_latex_repair": "Completed in the authoritative source: the regime-valued update takes prior state explicitly, thresholds are derived from a positive half-width, finite in-band path memory is stated, and the constant-density activation energy is proved positive. The cited temperature and transactional results remain motivation rather than silently supplying these premises.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5Hysteresis.lean",
-          "declaration": "Book5Hysteresis.in_band_remembers_history",
-          "kind": "conditional_hysteresis_kernel"
+          "declaration": "Book5Hysteresis.ActivationBarrier.energy_pos",
+          "kind": "positive_activation_barrier"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5Hysteresis.lean",
+          "declaration": "Book5Hysteresis.runHysteresis_in_band",
+          "kind": "finite_path_memory"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5Hysteresis.lean",
+          "declaration": "Book5Hysteresis.same_in_band_path_retains_distinct_histories",
+          "kind": "history_separation"
         },
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5Hysteresis.lean",
@@ -809,23 +1519,24 @@
           "kind": "countermodel"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "positive_kernel_proved",
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "ac465370934b"
     },
     {
       "id": "PS-SRC-028",
       "source_anchor": "theorem:bk5_enhanced_map_mad_duality_pr",
       "source_file": "book5.tex",
-      "source_line": 903,
+      "source_line": 1004,
       "source_layer": "book5",
       "repair_owner": "book5",
       "downstream_consumers": [
         "book8"
       ],
       "failure_mode": "missing_premise",
-      "summary": "The displayed reflection-versus-entropy inequalities establish only the sign of the local free-energy rate. Positive rate does not imply convergence to a bounded positive MAP limit, negative rate does not imply convergence to zero, and weak coupling does not imply epsilon_n tends to zero without separate dynamics.",
-      "required_latex_repair": "Add bounded monotone convergence or Lyapunov/compactness hypotheses for MAP, a coercive dissipation estimate for MAD convergence to zero, and an explicit contraction or decay law for the weak-coupling interaction term. Keep the three asymptotic conclusions conditional on those laws.",
+      "summary": "The repaired enhanced MAP--MAD dynamical theorem is now rebuilt as one typed Lean certificate. Classification premises, local rate inequalities, and temporal contraction laws are stored separately; the bundled theorem jointly proves MAP classification/positive rate/positive-target convergence/eventual viability, MAD classification/negative rate/zero-target convergence, and weak-coupling classification/vanishing residue. Countermodels retain the boundary that signs or labels alone do not produce asymptotics.",
+      "required_latex_repair": "Repaired in the authoritative source with explicit MAP target contraction, MAD zero-target contraction, and decoupling residue contraction. A continuous operator-level or Lyapunov lift remains future strengthening rather than a premise silently supplied by the parameter classifier.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5DualityProof.lean",
@@ -836,17 +1547,58 @@
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5DualityProof.lean",
           "declaration": "Book5DualityProof.positive_rate_alone_does_not_force_positive_limit",
           "kind": "logical_countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5DualityProof.lean",
+          "declaration": "Book5DualityProof.covenantTrajectory_tendsto_target",
+          "kind": "map_target_convergence"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5DualityProof.lean",
+          "declaration": "Book5DualityProof.map_target_eventually_viable",
+          "kind": "map_eventual_viability"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5DualityProof.lean",
+          "declaration": "Book5DualityProof.geometric_decoupling_vanishes",
+          "kind": "mad_and_decoupling_geometric_limit"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5DualityProof.lean",
+          "declaration": "Book5DualityProof.decoupling_without_contraction_can_persist",
+          "kind": "noncontractive_countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5DualityProof.lean",
+          "declaration": "Book5DualityProof.EnhancedDualityRealizationCertificate.map_realization",
+          "kind": "bundled_map_realization"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5DualityProof.lean",
+          "declaration": "Book5DualityProof.EnhancedDualityRealizationCertificate.mad_realization",
+          "kind": "bundled_mad_realization"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5DualityProof.lean",
+          "declaration": "Book5DualityProof.EnhancedDualityRealizationCertificate.decoupling_realization",
+          "kind": "bundled_decoupling_realization"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5DualityProof.lean",
+          "declaration": "Book5DualityProof.EnhancedDualityRealizationCertificate.enhanced_map_mad_dynamical_realization",
+          "kind": "full_repaired_theorem"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "premise_packaged",
+      "latex_status": "repaired",
+      "downstream_status": "blocked",
+      "source_statement_sha": "66f445c0ae3a"
     },
     {
       "id": "PS-SRC-029",
       "source_anchor": "theorem:bk5_rift_reflection_balance_in_strategy_space",
       "source_file": "book5.tex",
-      "source_line": 1062,
+      "source_line": 1170,
       "source_layer": "book5",
       "repair_owner": "book5",
       "downstream_consumers": [
@@ -854,87 +1606,125 @@
         "book8"
       ],
       "failure_mode": "missing_premise",
-      "summary": "Sub-maximal drift and positive cooperation determine the required reflection-capacity threshold but do not prove that the available strategy space contains an operator above it. The proof silently treats reflection capacity as unbounded/available.",
-      "required_latex_repair": "Add a richness or capacity-availability assumption on R(Sigma), and distinguish strict positive viability margin from exact local drift cancellation. Define Sigma_MAP^D by availability plus the threshold inequality before asserting nonemptiness.",
+      "summary": "The strategy-space theorem is rebuilt with typed drift and reflection operators, observer-assigned intensities, MAP membership, strategy-indexed reflection availability, and cooperation. Cofinal available capacity at one cooperative MAP strategy constructs the nonempty drift-indexed viable subset; uniform cofinality yields equality with the MAP set. Sub-maximal drift alone still cannot populate an inventory.",
+      "required_latex_repair": "Completed in the authoritative source: define each strategy\u2019s available reflection inventory and the drift-indexed viable MAP subset, assume positive cooperation plus cofinal capacity at an actual MAP strategy, and distinguish strict viability from exact cancellation. The named drift maximum remains a physical regime delimiter rather than an existence proof.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5StrategyBalance.lean",
-          "declaration": "Book5StrategyBalance.exists_available_balancing_strategy",
-          "kind": "conditional_strategy_kernel"
+          "declaration": "Book5StrategyBalance.OperatorStrategySpace.viableMAP_nonempty_of_richness",
+          "kind": "typed_inventory_nonempty_construction"
         },
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5StrategyBalance.lean",
-          "declaration": "Book5StrategyBalance.submaximal_drift_alone_does_not_supply_available_strategy",
-          "kind": "countermodel"
+          "declaration": "Book5StrategyBalance.OperatorStrategySpace.viableMAP_eq_isMAP_of_uniform_richness",
+          "kind": "uniform_inventory_equality"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5StrategyBalance.lean",
+          "declaration": "Book5StrategyBalance.OperatorStrategySpace.submaximal_drift_without_inventory_countermodel",
+          "kind": "empty_inventory_countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5StrategyBalance.lean",
+          "declaration": "Book5StrategyBalance.local_cancellation_is_not_strict_balance",
+          "kind": "strict_margin_countermodel"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "positive_kernel_proved",
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "19f275dc418a"
     },
     {
       "id": "PS-SRC-030",
       "source_anchor": "corollary:bk5_convergence_to_map",
       "source_file": "book5.tex",
-      "source_line": 1131,
+      "source_line": 1264,
       "source_layer": "book5",
       "repair_owner": "book5",
       "downstream_consumers": [
         "book8"
       ],
       "failure_mode": "missing_premise",
-      "summary": "Increasing drift and a qualitative MAP fitness advantage do not by themselves imply population mass converges to one on MAP strategies. A persistent quantitative fitness gap, invariant simplex dynamics, and exclusion of mutation/inflow are needed.",
-      "required_latex_repair": "State a quantitative replicator inequality or contraction for the non-MAP population mass, uniform after some time, and include the probability-simplex invariance and mutation assumptions. Then derive the epsilon-T limit from that contraction.",
+      "summary": "MAP convergence is rebuilt from a persistent quantitative aggregate fitness gap, which yields a contraction ratio q in [0,1), plus a mutation-free residual recurrence that excludes non-MAP inflow. Lean derives geometric residual decay, probability-simplex invariance, and convergence to MAP mass one. Increasing drift and even a strict gap with replenishment remain countermodels to the unsupported inference.",
+      "required_latex_repair": "Completed in the authoritative source: state the positive quantitative fitness gap, initial simplex bounds, and an exact mutation-free residual recurrence; derive q, simplex invariance, and the limit. Increasing drift remains motivation for the gap rather than a convergence premise.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5ConvergenceMAP.lean",
-          "declaration": "Book5ConvergenceMAP.mapShare_tendsto_one",
-          "kind": "conditional_replicator_kernel"
+          "declaration": "Book5ConvergenceMAP.PersistentMAPAdvantage.contraction_lt_one",
+          "kind": "fitness_gap_contraction"
         },
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5ConvergenceMAP.lean",
-          "declaration": "Book5ConvergenceMAP.increasing_drift_alone_does_not_force_map_convergence",
-          "kind": "countermodel"
+          "declaration": "Book5ConvergenceMAP.MAPPopulationOrbit.share_le_one",
+          "kind": "simplex_upper_invariance"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5ConvergenceMAP.lean",
+          "declaration": "Book5ConvergenceMAP.MAPPopulationOrbit.share_nonneg",
+          "kind": "simplex_lower_invariance"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5ConvergenceMAP.lean",
+          "declaration": "Book5ConvergenceMAP.MAPPopulationOrbit.share_tendsto_one",
+          "kind": "population_convergence"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5ConvergenceMAP.lean",
+          "declaration": "Book5ConvergenceMAP.MAPPopulationOrbit.fitness_gap_with_inflow_does_not_force_convergence",
+          "kind": "inflow_countermodel"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "positive_kernel_proved",
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "e55bd8dd7788"
     },
     {
       "id": "PS-SRC-031",
       "source_anchor": "proposition:bk5_symbolic_population_ess_map_equivalence_case2",
       "source_file": "book5.tex",
-      "source_line": 1226,
+      "source_line": 1380,
       "source_layer": "book5",
       "repair_owner": "book5",
       "downstream_consumers": [
         "book8"
       ],
       "failure_mode": "missing_premise",
-      "summary": "Convergence of population mass to MAP and MAP being a strong ESS do not establish equality or convergence of the abstract ESS and MAP strategy sets. The claim needs eventual two-sided inclusion (or uniform exclusion) and a defined metric/topology on strategy sets.",
-      "required_latex_repair": "Define the strategy-set metric and add hypotheses giving eventual ESS subset MAP and MAP subset ESS, or an equivalent quantitative Hausdorff exclusion bound. Connect population dynamics to those set-level statements explicitly.",
+      "summary": "ESS\u2013MAP convergence is rebuilt in an actual pseudo-metric strategy space with distinct ESS and MAP predicates. Independent ESS-to-MAP and MAP-to-ESS witnesses at shrinking tolerance bound the genuine Hausdorff distance and force its convergence to zero without finite-stage equality. One-sided inclusion and population concentration remain explicit countermodels.",
+      "required_latex_repair": "Completed in the authoritative source: parameterize the ESS sets along environments approaching critical drift, define the common metric strategy space, require both directed approximation laws at \u03b5_n \u2192 0, and derive the Hausdorff limit. The AI/human application explicitly requires a shared strategy-space model, MAP predicate, and both bridges rather than automatic class identification.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5ESSEquivalence.lean",
-          "declaration": "Book5ESSEquivalence.distance_tendsto_zero_of_eventually_identified",
-          "kind": "conditional_set_convergence_kernel"
+          "declaration": "Book5ESSEquivalence.TwoSidedStrategyApproximation.hausdorffDist_le",
+          "kind": "two_sided_hausdorff_bound"
         },
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5ESSEquivalence.lean",
-          "declaration": "Book5ESSEquivalence.population_concentration_alone_does_not_identify_strategy_sets",
-          "kind": "countermodel"
+          "declaration": "Book5ESSEquivalence.TwoSidedStrategyApproximation.hausdorffDist_tendsto_zero",
+          "kind": "metric_set_convergence"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5ESSEquivalence.lean",
+          "declaration": "Book5ESSEquivalence.one_sided_ess_to_map_does_not_identify_sets",
+          "kind": "one_sided_countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5ESSEquivalence.lean",
+          "declaration": "Book5ESSEquivalence.population_limit_does_not_supply_two_sided_approximation",
+          "kind": "population_to_set_countermodel"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "positive_kernel_proved",
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "99949450dddb"
     },
     {
       "id": "PS-SRC-032",
       "source_anchor": "axiom:bk5_srmf_operator_selection_evolution",
       "source_file": "book5.tex",
-      "source_line": 1370,
+      "source_line": 1549,
       "source_layer": "book5",
       "repair_owner": "book5",
       "downstream_consumers": [
@@ -954,17 +1744,33 @@
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5OperatorSelection.lean",
           "declaration": "Book5OperatorSelection.viability_alone_does_not_force_operator_argmin",
           "kind": "countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5StatefulOperatorLearning.lean",
+          "declaration": "Book5StatefulOperatorLearning.step_comparatorRegret_nonpos",
+          "kind": "stateful_regret_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5StatefulOperatorLearning.lean",
+          "declaration": "Book5StatefulOperatorLearning.boolFeedbackLaw_responds",
+          "kind": "feedback_sensitive_witness"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5StatefulOperatorLearning.lean",
+          "declaration": "Book5StatefulOperatorLearning.feedback_response_does_not_force_inventory_change",
+          "kind": "boundary_counterexample"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "bridge_partially_proved",
+      "latex_status": "repaired",
+      "downstream_status": "blocked",
+      "source_statement_sha": "40a5bd5962a3"
     },
     {
       "id": "PS-SRC-033",
       "source_anchor": "theorem:bk5__srmf_operator_adaptation",
       "source_file": "book5.tex",
-      "source_line": 1436,
+      "source_line": 1632,
       "source_layer": "book5",
       "repair_owner": "book5",
       "downstream_consumers": [
@@ -984,17 +1790,28 @@
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5OperatorAdaptation.lean",
           "declaration": "Book5OperatorAdaptation.below_threshold_alone_does_not_force_adaptation",
           "kind": "countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5StatefulOperatorLearning.lean",
+          "declaration": "Book5StatefulOperatorLearning.step_records_incumbent",
+          "kind": "stateful_history_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5StatefulOperatorLearning.lean",
+          "declaration": "Book5StatefulOperatorLearning.two_steps_retain_ordered_history",
+          "kind": "ordered_adaptation_history"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "bridge_partially_proved",
+      "latex_status": "repaired",
+      "downstream_status": "blocked",
+      "source_statement_sha": "8cdb72da18b0"
     },
     {
       "id": "PS-SRC-034",
       "source_anchor": "theorem:bk5_metabolic_constraints_reflective_accuracy",
       "source_file": "book5.tex",
-      "source_line": 1530,
+      "source_line": 1748,
       "source_layer": "book5",
       "repair_owner": "book5",
       "downstream_consumers": [
@@ -1002,57 +1819,84 @@
         "book9"
       ],
       "failure_mode": "missing_premise",
-      "summary": "A logarithmic recursion-depth budget does not by itself bound reflective fidelity. The result additionally requires a uniform bound on marginal fidelity gained per reflective level and calibrated positive constants connecting the geometric cost model to log(1 + MC).",
-      "required_latex_repair": "Promote the bounded marginal fidelity gain to an explicit hypothesis or earlier proposition, define the fidelity scale, and state positivity conditions for beta, c0, k, and MC. Keep the normalization from log_k(MC/c0 + 1) to log(1 + MC) explicit.",
+      "summary": "Reflective accuracy is rebuilt as a recursion-depth process. Zero-depth normalization plus uniform marginal gain telescopes to a linear depth bound; a positive geometric metabolic budget derives the dimensionless power constraint; and an explicit log-coordinate calibration yields the normalized logarithmic envelope with nonnegative \u03b2. Depth/capacity without marginal control remains a countermodel.",
+      "required_latex_repair": "Completed in the authoritative source: define depth-indexed fidelity, state zero normalization and uniform marginal gain, state positive geometric cost parameters and admissibility, and expose the depth-to-log calibration constant. \u03b2 is constructed from marginal gain and calibration rather than treated as universal.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5ReflectiveAccuracy.lean",
-          "declaration": "Book5ReflectiveAccuracy.fidelity_le_log_of_depth_bound",
-          "kind": "conditional_composition_kernel"
+          "declaration": "Book5ReflectiveAccuracy.ReflectiveFidelityProcess.fidelity_le_linear",
+          "kind": "marginal_gain_telescope"
         },
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5ReflectiveAccuracy.lean",
-          "declaration": "Book5ReflectiveAccuracy.capacity_alone_does_not_bound_unconstrained_fidelity",
-          "kind": "countermodel"
+          "declaration": "Book5ReflectiveAccuracy.GeometricRecursionBudget.power_le_capacity_ratio_add_one",
+          "kind": "geometric_power_budget"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5ReflectiveAccuracy.lean",
+          "declaration": "Book5ReflectiveAccuracy.ReflectiveAccuracyCertificate.fidelity_le_log_capacity",
+          "kind": "calibrated_log_accuracy_envelope"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5ReflectiveAccuracy.lean",
+          "declaration": "Book5ReflectiveAccuracy.depth_budget_without_marginal_control_countermodel",
+          "kind": "uncontrolled_fidelity_countermodel"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "positive_kernel_proved",
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "2fe8dcdc8fbc"
     },
     {
       "id": "PS-SRC-035",
       "source_anchor": "proposition:bk5_shade_transfers",
       "source_file": "book5.tex",
-      "source_line": 2700,
+      "source_line": 2963,
       "source_layer": "book5",
       "repair_owner": "book5",
       "downstream_consumers": [
         "book7"
       ],
       "failure_mode": "counterexample",
-      "summary": "Radial-order preservation does not imply preservation of radius or normalized shade; exact metric/radius preservation or commutation with the shade normalization is required. Moreover, golden multiplicative radius steps give constant increments in log-radius, not generally in the bounded shade sigma=s(r).",
-      "required_latex_repair": "Replace radial-order preservation with exact radial-metric preservation (or require s(T(r))=s(r)). Distinguish radial log-coordinate log r from bounded shade sigma=s(r); claim constant log(phi) increments only for log-radius unless a special normalization with the needed conjugacy is defined.",
+      "summary": "Shade transfer is rebuilt as a compositional commuting interface. Exact radius preservation suffices for every shade normalization and radial shadow price; shared-decoder faithful interfaces compose. Strict radial order and shade-only agreement remain countermodels to semantic or joint-control fidelity. Golden increments belong to log-radius, while extraction has unit growth rather than automatic zero shade.",
+      "required_latex_repair": "Completed in the authoritative source: require shade commutation or exact radius preservation, prove interface composition, distinguish joint shade/shadow-price control fidelity, locate constant golden increments in log-radius, and correct extraction from \u201cdesaturated centre\u201d to unit radial growth unless the incoming radius is zero.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5ShadeTransfer.lean",
-          "declaration": "Book5ShadeTransfer.radial_order_alone_does_not_preserve_shade",
-          "kind": "countermodel"
+          "declaration": "Book5ShadeTransfer.ShadeInterface.faithful_comp",
+          "kind": "compositional_shade_interface"
         },
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5ShadeTransfer.lean",
-          "declaration": "Book5ShadeTransfer.normalized_shade_is_not_multiplicative",
-          "kind": "countermodel"
+          "declaration": "Book5ShadeTransfer.faithfulControlTransport_components",
+          "kind": "joint_control_components"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5ShadeTransfer.lean",
+          "declaration": "Book5ShadeTransfer.radius_preservation_implies_control_fidelity",
+          "kind": "radius_to_control_fidelity"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5ShadeTransfer.lean",
+          "declaration": "Book5ShadeTransfer.shade_without_shadow_price_is_not_control_fidelity",
+          "kind": "shadow_price_countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5ShadeTransfer.lean",
+          "declaration": "Book5ShadeTransfer.monotone_encoding_not_semantically_faithful",
+          "kind": "monotonicity_countermodel"
         },
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5ShadeTransfer.lean",
           "declaration": "Book5ShadeTransfer.golden_logRadius_step",
-          "kind": "positive_kernel"
+          "kind": "log_radius_step"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "positive_kernel_proved",
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "dbf9f3265d8e"
     },
     {
       "id": "PS-SRC-036",
@@ -1065,8 +1909,8 @@
         "book9"
       ],
       "failure_mode": "missing_premise",
-      "summary": "The mutation-rate integral is a definition or constitutive bridge; it does not follow merely from drift generating a flow or bifurcation classification. The covariant curvature response, density regularity, measurability, and proportionality calibration must be supplied.",
-      "required_latex_repair": "State whether the displayed equation defines mu or is derived. If derived, add a local law equating bifurcation intensity with the norm of nabla_D kappa, specify its proportionality constant, and give the measure/integrability assumptions. Distinguish the drift field from its induced curvature response.",
+      "summary": "Calibrated constitutive kernel: a nonnegative normalized density integrates supplied drift-induced curvature response into a nonnegative mutation rate with a calibrated uniform bound. Drift alone does not determine the response or empirical bifurcation frequency.",
+      "required_latex_repair": "Completed in the canonical source with every constitutive, selection, typing, orientation, and regularity premise exposed; no stronger empirical or asymptotic claim is inferred from the Lean kernel.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6DriftMutation.lean",
@@ -1077,25 +1921,36 @@
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6DriftMutation.lean",
           "declaration": "Book6DriftMutation.drift_alone_does_not_determine_mutation_rate",
           "kind": "countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6DriftMutation.lean",
+          "declaration": "MutationConstitutiveCertificate.rate_nonneg",
+          "kind": "calibrated_nonnegative_rate"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6DriftMutation.lean",
+          "declaration": "MutationConstitutiveCertificate.rate_le_calibrated_uniform_bound",
+          "kind": "calibrated_uniform_bound"
         }
       ],
       "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "ef02baecf62e"
     },
     {
       "id": "PS-SRC-037",
       "source_anchor": "proposition:bk6_thermodynamic_interpretation",
       "source_file": "book6.tex",
-      "source_line": 376,
+      "source_line": 392,
       "source_layer": "book6",
       "repair_owner": "book6",
       "downstream_consumers": [
         "book9"
       ],
       "failure_mode": "missing_premise",
-      "summary": "Reflective entropy regulation and equilibrium production-dissipation balance do not derive a Maximum Entropy Production Principle. MEPP is an optimization law requiring an explicit feasible class, objective, existence assumptions, and a selection or dynamics bridge.",
-      "required_latex_repair": "State MEPP as an axiom/selection principle or supply dynamics proving convergence to a constrained maximizer. Define the optimization domain and topology, prove it is nonempty and compact or otherwise establish maximizer existence, and remove the circular appeal to the proposition inside its proof.",
+      "summary": "Finite constrained-MEPP kernel with an explicit selection bridge. A nonempty finite feasible class has a maximizer, eventual selection converges to it, and a two-state countermodel proves that argmax existence does not manufacture dynamics.",
+      "required_latex_repair": "Completed in the canonical source with every constitutive, selection, typing, orientation, and regularity premise exposed; no stronger empirical or asymptotic claim is inferred from the Lean kernel.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6ThermodynamicMutation.lean",
@@ -1106,17 +1961,28 @@
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6ThermodynamicMutation.lean",
           "declaration": "Book6ThermodynamicMutation.equilibrium_balance_alone_does_not_imply_mepp",
           "kind": "countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6ThermodynamicMutation.lean",
+          "declaration": "MEPPSelectionLaw.trajectory_tendsto",
+          "kind": "selection_dynamics_bridge"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6ThermodynamicMutation.lean",
+          "declaration": "argmax_exists_without_selection_dynamics",
+          "kind": "optimizer_without_dynamics_countermodel"
         }
       ],
       "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "386d38f4372e"
     },
     {
       "id": "PS-SRC-038",
       "source_anchor": "proposition:bk6_confidence_gradient",
       "source_file": "book6.tex",
-      "source_line": 652,
+      "source_line": 680,
       "source_layer": "book6",
       "repair_owner": "book6",
       "downstream_consumers": [
@@ -1124,8 +1990,8 @@
         "book9"
       ],
       "failure_mode": "missing_premise",
-      "summary": "Smoothness and regular confidence stratification ensure a gradient exists but do not imply a Markov process, confidence-biased jump moments, Kramers-Moyal truncation, or the displayed drift-diffusion-noise dynamics. Diffusion may also reverse the pure confidence-gradient direction.",
-      "required_latex_repair": "State the stochastic mutation model as an assumption or derive its generator from a specified transition kernel. Add finite-moment and truncation/control hypotheses, define whether nabla^2 is a Hessian or Laplacian, type P_lambda, and qualify directional claims when diffusion and noise are nonzero.",
+      "summary": "Typed confidence-gradient control retains diffusion, observer, and noise effects as a tangent perturbation. A directional inner-product bound proves weak or strict descent; uncontrolled diffusion can reverse it.",
+      "required_latex_repair": "Completed in the canonical source with every constitutive, selection, typing, orientation, and regularity premise exposed; no stronger empirical or asymptotic claim is inferred from the Lean kernel.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6ConfidenceGradient.lean",
@@ -1136,17 +2002,28 @@
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6ConfidenceGradient.lean",
           "declaration": "Book6ConfidenceGradient.regularity_alone_does_not_force_confidence_dynamics",
           "kind": "countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6ConfidenceGradient.lean",
+          "declaration": "confidenceVelocity_descends_of_perturbation_control",
+          "kind": "typed_perturbation_descent"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6ConfidenceGradient.lean",
+          "declaration": "confidenceVelocity_strictly_descends_of_strict_control",
+          "kind": "typed_strict_descent"
         }
       ],
       "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "113a669ed942"
     },
     {
       "id": "PS-SRC-039",
       "source_anchor": "axiom:bk6_thermodynamic_consistency",
       "source_file": "book6.tex",
-      "source_line": 1067,
+      "source_line": 1116,
       "source_layer": "book6",
       "repair_owner": "book6",
       "downstream_consumers": [
@@ -1154,8 +2031,8 @@
         "book9"
       ],
       "failure_mode": "counterexample",
-      "summary": "The displayed law dF=T dS-Pi dV+sum mu dN conflicts with the preceding definition F=E-T*S under the natural fixed-temperature interpretation. At fixed T, dF=dE-T dS, so substituting dE=T dS-Pi dV+chemical work cancels the entropy term. If T varies, an additional -S dT term is required (plus a finite cross term for finite increments). The adversarial orientation audit proves that the opposite sign is valid only for a differently oriented potential; for the same observable the candidate laws coincide only at dS=0. An omitted interface reconciles them only by the uniquely forced term T*dS.",
-      "required_latex_repair": "Decide whether the intended first law is for internal energy dE or for free energy dF. For dE, write dE=T dS-Pi dV+sum mu dN. For Helmholtz-like F=E-TS, write dF=-S dT-Pi dV+sum mu dN, reducing to -Pi dV+chemical work at fixed T. State differential versus finite-increment semantics.",
+      "summary": "Exact finite-increment identities distinguish the internal-energy first law from F=E-T*S. Fixed temperature cancels T*dS from dF; varying temperature adds -S*dT and the finite cross-term. Potential orientation, not verifier preference, fixes the sign.",
+      "required_latex_repair": "Completed in the canonical source with every constitutive, selection, typing, orientation, and regularity premise exposed; no stronger empirical or asymptotic claim is inferred from the Lean kernel.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6ThermodynamicConsistency.lean",
@@ -1173,9 +2050,10 @@
           "kind": "orientation_interface_audit"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "positive_kernel_proved",
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "b0ddf000658d"
     },
     {
       "id": "PS-SRC-040",
@@ -1189,8 +2067,8 @@
         "book9"
       ],
       "failure_mode": "missing_premise",
-      "summary": "Existing reintegration thresholds do not quantify how latent phase exposure changes the refinement contraction constant. A phase-to-rate sensitivity law is required; observable projection equality can hide loss of contraction, and canceling signed phases can still carry nonzero traversal exposure.",
-      "required_latex_repair": "Retain the ordered imaginary traversal witness through each SRMF handoff. Define phase exposure, its sensitivity contribution to the effective Lipschitz rate, and require both phase tolerance and effective rate below one at reintegration. Calibrate rather than assume any universal eleven-percent threshold.",
+      "summary": "The repaired proposition and Lean kernel retain the ordered phase traversal, define noncancelling absolute exposure, consume an observer-calibrated nonlinear phase-to-rate envelope, and derive strict contraction from an explicit sensitivity margin. Projection equality and signed cancellation remain countermodels; no universal phase percentage or response law is inferred.",
+      "required_latex_repair": "Completed conditionally in canonical Book IV and Lean: phase exposure, observer tolerance, calibrated response envelope, and contraction margin are distinct premises. Future empirical work may estimate the response law and constants for a concrete interface, but the mathematical implication is already represented.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4ImaginationGuard.lean",
@@ -1201,17 +2079,38 @@
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4ImaginationGuard.lean",
           "declaration": "Book4ImaginationGuard.projection_equality_can_hide_unsafe_phase",
           "kind": "countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4ImaginationGuard.lean",
+          "declaration": "Book4ImaginationGuard.opposite_phases_cancel_projection_not_exposure",
+          "kind": "cancellation_exposure_kernel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4ImaginationGuard.lean",
+          "declaration": "Book4ImaginationGuard.certifiedRate_lt_one_of_penalty_below_margin",
+          "kind": "calibrated_rate_bridge"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4ImaginationGuard.lean",
+          "declaration": "Book4ImaginationGuard.linearPhaseRateLaw_recovers_effectiveRate",
+          "kind": "linear_specialization"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4ImaginationGuard.lean",
+          "declaration": "Book4ImaginationGuard.zero_calibration_alone_does_not_determine_rate",
+          "kind": "countermodel"
         }
       ],
       "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "8ae4b55213a0"
     },
     {
       "id": "PS-SRC-041",
       "source_anchor": "axiom:bk6_confidence_stability_coupling",
       "source_file": "book6.tex",
-      "source_line": 1080,
+      "source_line": 1140,
       "source_layer": "book6",
       "repair_owner": "book6",
       "downstream_consumers": [
@@ -1219,8 +2118,8 @@
         "book9"
       ],
       "failure_mode": "missing_premise",
-      "summary": "Confidence and stability definitions do not imply the displayed evolution law. The quotient derivative requires a specified dependence of H_conf on Upsilon, a nonzero stability coordinate, differentiability, and an explicit coupling dynamics. Its sign is not uniformly stabilizing: a positive constant Hamiltonian yields positive velocity under the printed outer minus sign.",
-      "required_latex_repair": "Define H_conf as a differentiable function of Upsilon along the trajectory, restrict away from Upsilon=0 or regularize the quotient, and state the coupling equation as a constitutive law. Qualify stability increase/decrease by the sign of the quotient derivative.",
+      "summary": "A typed constitutive certificate supplies the nonzero stability coordinate, coupling orientation, quotient response, and velocity equation. Quotient-slope sign controls velocity sign; values alone do not create dynamics, and a constant positive Hamiltonian exposes the opposite-sign regime.",
+      "required_latex_repair": "Completed in canonical Book VI: every domain, constitutive, sign, coverage, invariance, and error-budget premise used by the conclusion is explicit, with the existing countermodels retained as scope boundaries.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6ConfidenceStability.lean",
@@ -1231,17 +2130,23 @@
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6ConfidenceStability.lean",
           "declaration": "Book6ConfidenceStability.values_alone_do_not_force_confidence_stability_coupling",
           "kind": "countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6ConfidenceStability.lean",
+          "declaration": "velocity_nonpos",
+          "kind": "typed_constitutive_sign_certificate"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "premise_packaged",
+      "latex_status": "repaired",
+      "downstream_status": "blocked",
+      "source_statement_sha": "2fd3bf8e50c1"
     },
     {
       "id": "PS-SRC-042",
       "source_anchor": "axiom:bk6_laplace_beltrami_observer_extension",
       "source_file": "book6.tex",
-      "source_line": 1109,
+      "source_line": 1182,
       "source_layer": "book6",
       "repair_owner": "book6",
       "downstream_consumers": [
@@ -1249,8 +2154,8 @@
         "book9"
       ],
       "failure_mode": "missing_premise",
-      "summary": "Observer-bounded curvature does not by itself provide a coherent Laplace-Beltrami extension or preserve divergence and entropy identities to order epsilon. Extension requires a specified fuzzy domain, outside-domain behavior, operator compatibility, norms, and explicit error certificates; errors accumulate across interfaces.",
-      "required_latex_repair": "Define the observer-admissible subtype and fuzzy ambient space, construct the extension operator and its domain, state boundary/fallback behavior, and give normed epsilon estimates for each preserved identity. Include accumulated rather than reset error across successive observer transports.",
+      "summary": "A coherent observer extension now carries an admissible subtype, explicit fallback, exact local agreement, separate divergence/entropy defects, and normed epsilon bounds. Interface errors accumulate; curvature boundedness alone supplies none of these identity certificates.",
+      "required_latex_repair": "Completed in canonical Book VI: every domain, constitutive, sign, coverage, invariance, and error-budget premise used by the conclusion is explicit, with the existing countermodels retained as scope boundaries.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6ObserverExtension.lean",
@@ -1261,11 +2166,22 @@
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6ObserverExtension.lean",
           "declaration": "Book6ObserverExtension.observer_bound_alone_does_not_force_identity_preservation",
           "kind": "countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6ObserverExtension.lean",
+          "declaration": "exists_total_extension",
+          "kind": "typed_total_extension"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6ObserverExtension.lean",
+          "declaration": "joint_defect_bound",
+          "kind": "identity_specific_error_certificate"
         }
       ],
       "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "3695e0cccb26"
     },
     {
       "id": "PS-SRC-043",
@@ -1279,7 +2195,7 @@
         "book9"
       ],
       "failure_mode": "missing_premise",
-      "summary": "The four-node diagram fixes a canonical direction, but observer-boundedness and differentiation constraints do not by themselves specify how signs and arrows transform between audience frames. Reversing presentation coordinates without an orientation witness can reverse a nonzero semantic change.",
+      "summary": "Lean now constructs the finite orientation-signposting kernel: a canonical four-stage direction is separated from audience coordinates; explicit source and target parity determine the relative sign, compose through intermediate frames, and recover on round trips. Observer-boundedness and differentiation still do not instantiate the semantic stage operators.",
       "required_latex_repair": "Declare the canonical cycle orientation separately from observer presentation coordinates. Supply frame encode/decode maps and require cross-observer comparisons to conjugate through the canonical frame; state whether reversal changes presentation only or authorizes reverse process traversal.",
       "lean_evidence": [
         {
@@ -1291,11 +2207,27 @@
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book8OrientationSignposting.lean",
           "declaration": "Book8OrientationSignposting.opposite_signs_agree_iff_zero",
           "kind": "sign_conflict_boundary"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book8OrientationSignposting.lean",
+          "declaration": "Book8OrientationSignposting.transport_eq_relativeSign_mul",
+          "kind": "constructed_relative_orientation_sign"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book8OrientationSignposting.lean",
+          "declaration": "Book8OrientationSignposting.transport_trans",
+          "kind": "orientation_transport_composition"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book8OrientationSignposting.lean",
+          "declaration": "Book8OrientationSignposting.transport_negative_of_opposite_orientation",
+          "kind": "witnessed_sign_reversal"
         }
       ],
       "lean_status": "conditional_kernel_proved",
       "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "downstream_status": "blocked",
+      "source_statement_sha": "c07f757a067b"
     },
     {
       "id": "PS-SRC-044",
@@ -1309,8 +2241,8 @@
         "book8"
       ],
       "failure_mode": "missing_premise",
-      "summary": "The scalar power integrand uses the norm of the confidence gradient and therefore cannot certify the separately asserted coherent alignment or direction toward identity. Opposite gradient orientations produce identical local and systemic scalar power.",
-      "required_latex_repair": "Define an oriented confidence-gradient field and an identity-directed reference field, then state coherent alignment through a positive inner product, cone condition, or transported orientation certificate. Keep this directional condition separate from positivity of the norm-valued power integral.",
+      "summary": "The scalar norm-valued power kernel is positive under positive basin factors, while direction toward identity is represented separately by a positive inner product with an explicit reference field. Gradient reversal preserves scalar magnitude, so orientation is not inferred from the norm.",
+      "required_latex_repair": "Canonical Book VII now separates scalar power magnitude from orientation and requires an explicit identity-directed pairing. Lean proves the finite local orientation certificate and retains the reversal countermodel; the manifold integral remains a conditional source-level generalization.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7SystemicPower.lean",
@@ -1321,11 +2253,17 @@
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7SystemicPower.lean",
           "declaration": "Book7SystemicPower.equal_power_does_not_determine_gradient_orientation",
           "kind": "orientation_countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7SystemicPower.lean",
+          "declaration": "Book7SystemicPower.orientedLocalPower_pos",
+          "kind": "orientation_sensitive_positive_kernel"
         }
       ],
       "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "a7c3634836ab"
     },
     {
       "id": "PS-SRC-045",
@@ -1355,13 +2293,14 @@
       ],
       "lean_status": "conditional_kernel_proved",
       "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "downstream_status": "blocked",
+      "source_statement_sha": "4ef869c5f96c"
     },
     {
       "id": "PS-SRC-046",
       "source_anchor": "corollary:bk7_bridge_no_interior_transition",
       "source_file": "book7.tex",
-      "source_line": 1866,
+      "source_line": 1863,
       "source_layer": "book7",
       "repair_owner": "book7",
       "downstream_consumers": [
@@ -1369,8 +2308,8 @@
         "book8"
       ],
       "failure_mode": "missing_premise",
-      "summary": "The no-transition corollary is valid from continuity of the effective geometry, but the numerical condition kappa below kappa-star does not itself establish that continuity. The proof depends on the Hilbert-Banach bridge furnishing a curvature-to-strict-convexity-to-C1-regularity implication.",
-      "required_latex_repair": "State the precise regularity theorem connecting uniform subcritical curvature on the closed sweep to strict convexity, unique minimizers, and continuity or C1 regularity of the effective geometry. Then cite that theorem as the bridge premise of the corollary.",
+      "summary": "Continuity excludes the defined interior transition. Lean now constructs the scalar Lp representation p(xi) = 2 + curvature(xi)/(threshold - curvature(xi)) directly from the curvature path, proving its Hilbert value at zero curvature, continuity, strict subcritical order, and absence of interior transitions. Identifying the complete G-valued geometry with this p-coordinate remains a separate scope statement.",
+      "required_latex_repair": "Canonical Book VII now names the missing curvature-to-strict-convexity/regularity bridge instead of silently inferring it. Constructing that analytic bridge for the intended geometry remains future work.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7NoInteriorTransition.lean",
@@ -1381,11 +2320,37 @@
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7NoInteriorTransition.lean",
           "declaration": "Book7NoInteriorTransition.continuity_from_threshold_bridge",
           "kind": "missing_bridge_boundary"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7NoInteriorTransition.lean",
+          "declaration": "Book7NoInteriorTransition.regularizedGeometry_continuousOn",
+          "kind": "explicit_resolvent_regularization_bridge"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7NoInteriorTransition.lean",
+          "declaration": "Book7NoInteriorTransition.regularizedGeometry_has_no_interior_transition",
+          "kind": "constructed_subcritical_no_transition"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7NoInteriorTransition.lean",
+          "declaration": "Book7NoInteriorTransition.subcriticalLpExponent_continuousOn",
+          "kind": "constructive_curvature_to_lp_representation"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7NoInteriorTransition.lean",
+          "declaration": "Book7NoInteriorTransition.subcriticalLpExponent_strict_order",
+          "kind": "subcritical_order_preservation"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7NoInteriorTransition.lean",
+          "declaration": "Book7NoInteriorTransition.subcriticalLpExponent_has_no_interior_transition",
+          "kind": "constructed_lp_no_transition"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "bridge_partially_proved",
+      "latex_status": "repaired",
+      "downstream_status": "blocked",
+      "source_statement_sha": "1561a295c096"
     },
     {
       "id": "PS-SRC-047",
@@ -1414,7 +2379,8 @@
       ],
       "lean_status": "conditional_kernel_proved",
       "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "downstream_status": "blocked",
+      "source_statement_sha": "df20137819ab"
     },
     {
       "id": "PS-SRC-048",
@@ -1443,7 +2409,8 @@
       ],
       "lean_status": "conditional_kernel_proved",
       "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "downstream_status": "blocked",
+      "source_statement_sha": "84bf5b572fe9"
     },
     {
       "id": "PS-SRC-049",
@@ -1467,7 +2434,8 @@
       ],
       "lean_status": "conditional_kernel_proved",
       "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "downstream_status": "blocked",
+      "source_statement_sha": "5f96f724bb62"
     },
     {
       "id": "PS-SRC-050",
@@ -1491,21 +2459,22 @@
       ],
       "lean_status": "conditional_kernel_proved",
       "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "downstream_status": "blocked",
+      "source_statement_sha": "e981e08c1e51"
     },
     {
       "id": "PS-SRC-051",
       "source_anchor": "theorem:bk7_pisu",
       "source_file": "book7.tex",
-      "source_line": 1399,
+      "source_line": 1365,
       "source_layer": "book7",
       "repair_owner": "book7",
       "downstream_consumers": [
         "book7"
       ],
       "failure_mode": "missing_premise",
-      "summary": "The displayed channel floors divide by N_I and N_K, so the theorem requires strictly positive allocation to both channels. Zero allocation is not covered by the real-valued formulas without an extended-real or explicit infinite-uncertainty convention.",
-      "required_latex_repair": "State N_I>0, N_K>0, positive bandwidth, positive resolution, and nonzero drift for the displayed finite formula, or define zero-channel uncertainty in the extended nonnegative reals. Clarify that exact equality occurs at the balanced split when all channel floors are simultaneously sharp.",
+      "summary": "Under positive channel allocations, bandwidth, resolution, and drift, the two channel floors plus coherence-window budget yield the PISU factor-two lower bound by AM-GM. Balanced allocation sharpens only the allocation step; full equality requires every supplied floor and budget inequality to be sharp.",
+      "required_latex_repair": "Canonical Book VII states the positive domain, both floor assumptions, budget premise, and separate equality conditions. Lean proves the finite real-valued AM-GM allocation kernel; zero allocations require a separate extended-real convention.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7PISU.lean",
@@ -1519,22 +2488,23 @@
         }
       ],
       "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "44d81e48c721"
     },
     {
       "id": "PS-SRC-052",
       "source_anchor": "corollary:bk7_procedural_detection",
       "source_file": "book7.tex",
-      "source_line": 1682,
+      "source_line": 1676,
       "source_layer": "book7",
       "repair_owner": "book7",
       "downstream_consumers": [
         "book7"
       ],
       "failure_mode": "missing_premise",
-      "summary": "Monotonic decrease of the fitted exponent does not entail decrease of the separately varying plotted residual norm; therefore it cannot by itself establish a strictly negative log-log slope.",
-      "required_latex_repair": "Add an explicit residual-monotonicity premise, or prove a theorem connecting the joint epsilon-dependence of E_epsilon and p(epsilon) to strict decrease of its p(epsilon)-norm. Keep this bridge separate from exponent ordering.",
+      "summary": "A decreasing fitted exponent and a decreasing residual observable are logically distinct. Lean proves negative log-log secant slope from explicit residual decrease and retains a countermodel showing exponent monotonicity alone does not orient the observable.",
+      "required_latex_repair": "Canonical Book VII now consumes exponent ordering and residual decrease as separate premises. A universal mechanism coupling them is not claimed or proved.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7ProceduralDetection.lean",
@@ -1548,8 +2518,9 @@
         }
       ],
       "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "a4fbbb663792"
     },
     {
       "id": "PS-SRC-053",
@@ -1573,7 +2544,8 @@
       ],
       "lean_status": "conditional_kernel_proved",
       "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "downstream_status": "blocked",
+      "source_statement_sha": "29186d0815bd"
     },
     {
       "id": "PS-SRC-054",
@@ -1602,7 +2574,8 @@
       ],
       "lean_status": "conditional_kernel_proved",
       "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "downstream_status": "blocked",
+      "source_statement_sha": "454ce1bcb4a1"
     },
     {
       "id": "PS-SRC-055",
@@ -1636,13 +2609,14 @@
       ],
       "lean_status": "conditional_kernel_proved",
       "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "downstream_status": "blocked",
+      "source_statement_sha": "f089765e8652"
     },
     {
       "id": "PS-SRC-056",
       "source_anchor": "lemma:bk6_grace_basin_correspondence",
       "source_file": "book6.tex",
-      "source_line": 1211,
+      "source_line": 1310,
       "source_layer": "book6",
       "repair_owner": "book6",
       "downstream_consumers": [
@@ -1650,8 +2624,8 @@
         "book9"
       ],
       "failure_mode": "missing_premise",
-      "summary": "The subcritical incoherence inequality does not itself place a state in any regulatory basin, and initial basin membership does not ensure that the grace image remains there without forward invariance.",
-      "required_latex_repair": "State a basin-coverage theorem connecting Upsilon_i(p,p)<gamma_crit to existence of q in E_R with p in R_B(q), and state that the grace flow maps every admitted basin into itself. Then the union-membership conclusion follows directly.",
+      "summary": "Subcritical basin coverage supplies a named admitted basin and forward invariance carries the grace image back into it. Empty-basin and exiting-grace countermodels prove that neither thresholding nor coverage alone suffices.",
+      "required_latex_repair": "Completed in canonical Book VI: every domain, constitutive, sign, coverage, invariance, and error-budget premise used by the conclusion is explicit, with the existing countermodels retained as scope boundaries.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6GraceBasin.lean",
@@ -1669,9 +2643,10 @@
           "kind": "invariance_countermodel"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "premise_packaged",
+      "latex_status": "repaired",
+      "downstream_status": "blocked",
+      "source_statement_sha": "ebd15d955b6f"
     },
     {
       "id": "PS-SRC-057",
@@ -1700,21 +2675,22 @@
       ],
       "lean_status": "conditional_kernel_proved",
       "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "downstream_status": "blocked",
+      "source_statement_sha": "ddeb7ba3bbde"
     },
     {
       "id": "PS-SRC-058",
       "source_anchor": "lemma:bk7_noncontextuality_forces_hilbert",
       "source_file": "book7.tex",
-      "source_line": 1886,
+      "source_line": 1883,
       "source_layer": "book7",
       "repair_owner": "book7",
       "downstream_consumers": [
         "book7"
       ],
       "failure_mode": "missing_premise",
-      "summary": "Hilbertian geometry and canonical orthogonal complementation do not by themselves determine that the observer coherence functional is frame-independent. The proof requires a bridge identifying PS-C3-prime noncontextuality with the parallelogram/inner-product property, in addition to the Lp characterization.",
-      "required_latex_repair": "State and prove a coherence representation theorem connecting frame-independent projector values to canonical orthogonal complementation or the parallelogram law under explicit regularity and dimensional hypotheses. Cite the precise Lp characterization theorem separately.",
+      "summary": "Lean now separates affine from metric reconstruction: additive noncontextual transports form commuting squares, but an explicit L1 countermodel proves this does not imply the metric parallelogram law. A genuine coordinate-free quadratic form canonically polarizes to a symmetric bilinear coupling with the same diagonal; its energy satisfies the metric parallelogram law. Nonnegative readouts alone need not be quadratic. The exact quadratic-readout certificate is now characterized by degree-two scaling plus additive and homogeneous polarization, and those laws construct the quadratic form and its symmetric bilinear representation. An explicit rank-two quartic frame function is nonnegative, ray-invariant, and normalized on every orthogonal pair yet is not quadratic, so frame rank two cannot supply the bridge. The remaining bridge is specifically a frame-rank-at-least-three derivation of those laws from the intended noncontextual coherence axioms; the Lp characterization then selects p=2.",
+      "required_latex_repair": "Canonical Book VII now states both representation bridges explicitly and no longer imports Appendix C backward. Establishing the coherence representation theorem for the intended observer model remains outside this kernel.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7NoncontextualHilbert.lean",
@@ -1730,17 +2706,58 @@
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7NoncontextualHilbert.lean",
           "declaration": "Book7NoncontextualHilbert.l1_parallelogram_fails",
           "kind": "concrete_nonhilbert_witness"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7NoncontextualHilbert.lean",
+          "declaration": "Book7NoncontextualHilbert.commuting_transport_does_not_force_metric_parallelogram",
+          "kind": "affine_metric_gap_countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7NoncontextualHilbert.lean",
+          "declaration": "Book7NoncontextualHilbert.quadraticEnergy_parallelogram",
+          "kind": "quadratic_sufficiency_construction"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7NoncontextualHilbert.lean",
+          "declaration": "Book7NoncontextualHilbert.innerProductSpace_exists_of_metric_parallelogram",
+          "kind": "inner_product_reconstruction"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuadraticPolarization.lean",
+          "declaration": "Book7QuadraticPolarization.quadraticForm_has_symmetric_bilinear_representation",
+          "kind": "coordinate_free_polarization"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuadraticPolarization.lean",
+          "declaration": "Book7QuadraticPolarization.nonnegative_readout_does_not_force_quadratic",
+          "kind": "quadratic_existence_countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuadraticPolarization.lean",
+          "declaration": "Book7QuadraticPolarization.QuadraticReadoutLaws.toQuadraticForm_apply",
+          "kind": "exact_quadratic_certificate_construction"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuadraticPolarization.lean",
+          "declaration": "Book7QuadraticPolarization.certified_readout_has_symmetric_bilinear_representation",
+          "kind": "certified_polarization_reconstruction"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7GleasonBoundary.lean",
+          "declaration": "Book7GleasonBoundary.rank_two_frame_axioms_do_not_force_born",
+          "kind": "rank_two_gleason_countermodel"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "bridge_partially_proved",
+      "latex_status": "repaired",
+      "downstream_status": "blocked",
+      "source_statement_sha": "5caef0a23f10"
     },
     {
       "id": "PS-SRC-059",
       "source_anchor": "theorem:bk6_thermodynamic_map_duality",
       "source_file": "book6.tex",
-      "source_line": 1168,
+      "source_line": 1255,
       "source_layer": "book6",
       "repair_owner": "book6",
       "downstream_consumers": [
@@ -1748,8 +2765,8 @@
         "book9"
       ],
       "failure_mode": "missing_premise",
-      "summary": "The named stationarity, conservation, irreversibility, and Laplace-extension axioms do not specify the displayed mean-drift decomposition, its inverse-temperature coefficient, or the positive sign of the reflective deviation. The proof narrates rather than derives this constitutive law.",
-      "required_latex_repair": "State an explicit averaged Fokker-Planck or constitutive balance axiom from which the projected potential term and reflection residual follow, including sign conventions. Then derive the displayed identity by integration and boundary conditions rather than qualitative labels alone.",
+      "summary": "An explicit averaged constitutive balance derives the oriented thermodynamic--MAP identity and zero residual. Qualitative equilibrium and conservation flags remain countermodels to deriving its inverse-temperature coefficient or reflective sign by narration alone.",
+      "required_latex_repair": "Completed in canonical Book VI: every domain, constitutive, sign, coverage, invariance, and error-budget premise used by the conclusion is explicit, with the existing countermodels retained as scope boundaries.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6ThermodynamicMAP.lean",
@@ -1760,17 +2777,28 @@
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6ThermodynamicMAP.lean",
           "declaration": "Book6ThermodynamicMAP.equilibrium_flags_alone_do_not_force_duality",
           "kind": "constitutive_countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6ThermodynamicMAP.lean",
+          "declaration": "thermodynamicMAPDuality",
+          "kind": "averaged_constitutive_bridge"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6ThermodynamicMAP.lean",
+          "declaration": "dualityResidual_eq_zero",
+          "kind": "oriented_zero_residual"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "premise_packaged",
+      "latex_status": "repaired",
+      "downstream_status": "blocked",
+      "source_statement_sha": "f42b1e589035"
     },
     {
       "id": "PS-SRC-060",
       "source_anchor": "theorem:bk7_observer_relative_free_energy_minimization_as_lp_regression",
       "source_file": "book7.tex",
-      "source_line": 607,
+      "source_line": 631,
       "source_layer": "book7",
       "repair_owner": "book7",
       "downstream_consumers": [
@@ -1778,8 +2806,8 @@
         "appendix"
       ],
       "failure_mode": "missing_premise",
-      "summary": "Bounded-below observer-relative free energy and reflective descent do not identify that objective with a particular finite Lp residual loss, do not determine p, and do not upgrade an orbit minimum to a basin-global argmin. The proof introduces a likelihood interpretation and regularization correspondence without an explicit representation theorem.",
-      "required_latex_repair": "State the sampling/model map and an explicit positive affine representation of observer-relative free energy by the selected Lp loss (globally on the feasible basin, or only along the reflective orbit if that is the intended SRV claim). State a separate noise/regularization selection law for p and distinguish orbit-local from basin-global minimization. Appendix SRV traces should validate this Book 7 law downstream, not supply it as a premise.",
+      "summary": "Free-energy minimization and Lp regression have identical minimizers under an explicit positive affine representation. An orbit-local representation supports only trace-local order, descent, and minimizer equivalence; bounded descent alone neither constructs the representation nor selects p.",
+      "required_latex_repair": "Canonical Book VII now states the global and orbit-local representation premises separately and preserves the bounded-descent countermodel. Identifying the intended physical free energy with such a representation remains an external analytic or empirical bridge.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7LpRegression.lean",
@@ -1797,9 +2825,10 @@
           "kind": "missing_bridge_countermodel"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "bridge_partially_proved",
+      "latex_status": "repaired",
+      "downstream_status": "blocked",
+      "source_statement_sha": "0cc8a6bbb33a"
     },
     {
       "id": "PS-SRC-061",
@@ -1813,8 +2842,8 @@
         "appendix"
       ],
       "failure_mode": "missing_premise",
-      "summary": "The proof assumes rather than derives that reflective fixed points are exactly zero-defect states and that Caristi-style summable displacement drives contextuality defect to zero. Convergence of the orbit does not alone identify its limit without defect continuity and vanishing. Finally, Hilbert geometry and noncontextuality do not themselves prove the Gleason uniqueness theorem selecting the Born functional.",
-      "required_latex_repair": "State explicit fixed-point/zero-defect and asymptotic-defect hypotheses (or prove sufficient descent forcing defect to zero), including continuity at the orbit limit. Keep the Gleason uniqueness theorem as an explicit bridge. To preserve layering, Book 7 should prove the conditional collapse kernel; Appendix C should later instantiate or validate the Born bridge rather than serve as a premise imported backward into Book 7.",
+      "summary": "Defect convergence identifies the Hilbert fixed point under explicit premises. Lean constructs the finite squared-amplitude Born model and now also glues covered, normalized, overlap-compatible frame readouts into a unique global assignment. Local amplitude calibration identifies that global assignment as Born; gluing alone has a countermodel. Lean now proves that any genuine real quadratic form canonically polarizes to a symmetric bilinear representation and that a supplied finite quadratic operator representation is exactly a trace representation. Nonnegative readouts alone need not be quadratic. The explicit certificate laws construct and round-trip the quadratic-form witness. A rank-two quartic countermodel proves the frame-rank restriction is necessary. The positive quantum target is phase-faithful rather than merely real-quadratic: Lean proves complex operator expectations scale by conjugate(a)*a and are invariant under unit global phase, while the imaginary unit refutes ordinary a-squared scaling. Explicit conjugate-linear/linear cross laws now construct a genuine Hermitian sesquilinear form, recover the readout diagonally, and force modulus-squared scaling. This is a conditional reconstruction interface. The requested direct bridge from the existing FrameReadoutSystem is now formally refuted: its fields admit a covered, normalized, noncontextual singleton-frame system with constant glued value one, while every Hermitian diagonal vanishes at zero. The refuted FrameReadoutSystem arrow and its countermodel are preserved. The nearest richer existing candidate, QuantumResolutionCertificate, also admits a normalized non-Hermitian reduced matrix whose expectation is non-real, refuting its bare arrow. This witness forces exactly reduced-state Hermiticity; with only `C.reducedState.IsHermitian`, Lean directly constructs the existing HermitianReadoutCertificate. The observer-level reverse lift remains refuted. The forward direction is now explicit: normalized pureStateDensity is Hermitian upstream, lowers with a supplied response kernel into QuantumResolutionCertificate, and constructs the HermitianReadoutCertificate. Global phase is forgotten by this lowering, and distinct normalized source vectors produce equal densities and equal observer-resolution certificates. Thus Hermiticity is preserved from the richer source construction but is not recoverable from arbitrary resolved data.",
+      "required_latex_repair": "Canonical Book VII separates geometric collapse, finite non-contextual gluing, and Born-readout identification while keeping Appendix C downstream. The remaining repair is the general Gleason step deriving a quadratic or trace representation from weaker frame-measure hypotheses.",
       "lean_evidence": [
         {
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7BornCollapse.lean",
@@ -1830,11 +2859,147 @@
           "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7BornCollapse.lean",
           "declaration": "Book7BornCollapse.hilbert_collapse_alone_does_not_determine_readout",
           "kind": "born_uniqueness_countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7BornCollapse.lean",
+          "declaration": "Book7BornCollapse.finiteBornValue_sum_one",
+          "kind": "constructive_finite_born_normalization"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7BornCollapse.lean",
+          "declaration": "Book7BornCollapse.zero_curvature_hilbert_finiteBorn",
+          "kind": "curvature_hilbert_measurement_bridge"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7BornCollapse.lean",
+          "declaration": "Book7BornCollapse.finite_probability_has_born_representation",
+          "kind": "constructive_fixed_basis_born_representation"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7BornCollapse.lean",
+          "declaration": "Book7BornCollapse.amplitudeOfProbability_normalized",
+          "kind": "normalized_amplitude_lift"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7BornCollapse.lean",
+          "declaration": "Book7BornCollapse.normalization_alone_does_not_force_finiteBorn",
+          "kind": "finite_uniqueness_countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7FrameMeasure.lean",
+          "declaration": "Book7FrameMeasure.FrameReadoutSystem.globalValue_unique",
+          "kind": "finite_noncontextual_gluing_uniqueness"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7FrameMeasure.lean",
+          "declaration": "Book7FrameMeasure.FrameReadoutSystem.globalValue_eq_finiteBorn",
+          "kind": "local_to_global_born_bridge"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7FrameMeasure.lean",
+          "declaration": "Book7FrameMeasure.noncontextual_gluing_alone_does_not_force_born",
+          "kind": "quadratic_representation_countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuadraticTrace.lean",
+          "declaration": "Book7QuadraticTrace.quadratic_eq_trace_pureStateDensity_mul",
+          "kind": "quadratic_trace_equivalence"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuadraticTrace.lean",
+          "declaration": "Book7QuadraticTrace.FrameReadoutSystem.globalValue_eq_trace_of_quadratic",
+          "kind": "global_quadratic_to_trace_transport"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuadraticPolarization.lean",
+          "declaration": "Book7QuadraticPolarization.quadraticForm_has_symmetric_bilinear_representation",
+          "kind": "quadratic_to_symmetric_bilinear"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuadraticPolarization.lean",
+          "declaration": "Book7QuadraticPolarization.nonnegative_readout_does_not_force_quadratic",
+          "kind": "nonnegative_nonquadratic_countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuadraticPolarization.lean",
+          "declaration": "Book7QuadraticPolarization.QuadraticReadoutLaws.toQuadraticForm_apply",
+          "kind": "quadratic_witness_construction"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuadraticPolarization.lean",
+          "declaration": "Book7QuadraticPolarization.certified_readout_has_symmetric_bilinear_representation",
+          "kind": "quadratic_to_bilinear_transport"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7GleasonBoundary.lean",
+          "declaration": "Book7GleasonBoundary.rank_two_frame_axioms_do_not_force_born",
+          "kind": "frame_rank_boundary_countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuantumGleason.lean",
+          "declaration": "Book7QuantumGleason.vectorExpectation_smul",
+          "kind": "complex_modulus_squared_scaling"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuantumGleason.lean",
+          "declaration": "Book7QuantumGleason.vectorExpectation_globalPhase",
+          "kind": "global_phase_invariance"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuantumGleason.lean",
+          "declaration": "Book7QuantumGleason.complex_phase_refutes_real_degreeTwo",
+          "kind": "phase_flattening_counterexample"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuantumGleason.lean",
+          "declaration": "Book7QuantumGleason.HermitianReadoutCertificate.value_smul",
+          "kind": "hermitian_modulus_scaling"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuantumGleason.lean",
+          "declaration": "Book7QuantumGleason.hermitian_reconstruction_from_certificate",
+          "kind": "conditional_hermitian_reconstruction"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuantumGleason.lean",
+          "declaration": "Book7QuantumGleason.completeFrameCoherence_does_not_supply_hermitian_certificate",
+          "kind": "direct_bridge_countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuantumGleason.lean",
+          "declaration": "Book7QuantumGleason.quantumResolution_without_matrixHermiticity_does_not_supply_certificate",
+          "kind": "richer_source_countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuantumGleason.lean",
+          "declaration": "Book7QuantumGleason.quantumResolution_to_hermitian_certificate",
+          "kind": "minimal_hermitian_source_bridge"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuantumGleason.lean",
+          "declaration": "Book7QuantumGleason.quantumResolution_does_not_force_reducedState_isHermitian",
+          "kind": "hermiticity_provenance_countermodel"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuantumGleason.lean",
+          "declaration": "Book7QuantumGleason.pureState_forward_chain",
+          "kind": "richer_source_forward_lowering"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuantumGleason.lean",
+          "declaration": "Book7QuantumGleason.pureStateToResolution_globalPhase",
+          "kind": "observer_lowering_phase_loss"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuantumGleason.lean",
+          "declaration": "Book7QuantumGleason.pureState_lowering_not_injective",
+          "kind": "observer_lowering_noninjective"
         }
       ],
-      "lean_status": "conditional_kernel_proved",
-      "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "lean_status": "bridge_partially_proved",
+      "latex_status": "repaired",
+      "downstream_status": "blocked",
+      "source_statement_sha": "127b405ebd78"
     },
     {
       "id": "PS-SRC-062",
@@ -1869,7 +3034,8 @@
       ],
       "lean_status": "conditional_kernel_proved",
       "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "downstream_status": "blocked",
+      "source_statement_sha": "f3c316f887db"
     },
     {
       "id": "PS-SRC-063",
@@ -1904,7 +3070,8 @@
       ],
       "lean_status": "conditional_kernel_proved",
       "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "downstream_status": "blocked",
+      "source_statement_sha": "06cfb77e6de5"
     },
     {
       "id": "PS-SRC-064",
@@ -1938,7 +3105,8 @@
       ],
       "lean_status": "conditional_kernel_proved",
       "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "downstream_status": "blocked",
+      "source_statement_sha": "cd2e1db55b2f"
     },
     {
       "id": "PS-SRC-065",
@@ -1972,7 +3140,8 @@
       ],
       "lean_status": "conditional_kernel_proved",
       "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "downstream_status": "blocked",
+      "source_statement_sha": "dc25864ffc21"
     },
     {
       "id": "PS-SRC-066",
@@ -2006,7 +3175,54 @@
       ],
       "lean_status": "conditional_kernel_proved",
       "latex_status": "unresolved",
-      "downstream_status": "blocked"
+      "downstream_status": "blocked",
+      "source_statement_sha": "f34ddc83a955"
+    },
+    {
+      "id": "PS-SRC-067",
+      "source_anchor": "theorem:bk4_symbolic_stokes",
+      "source_file": "book4.tex",
+      "source_line": 5937,
+      "source_layer": "book4",
+      "repair_owner": "book4",
+      "downstream_consumers": [
+        "book4",
+        "book7"
+      ],
+      "failure_mode": "missing_machinery",
+      "summary": "Fuzzy Stokes has a typed certificate, finite telescoping model, analytic Green--Stokes realization on oriented rectangular charts, finite oriented-atlas assembly with explicit overlap cancellation, and gauge-curvature transport. Downstream Book IV prose now preserves the interaction residue and does not infer surface independence, homotopy invariance, nonzero monodromy, or measurability from Stokes alone. No Book VII consumer introduces a stronger dependency.",
+      "required_latex_repair": "Completed: the theorem types its forms and densities, retains orientation, integrability, and interaction residue, and downstream consumers state the extra hypotheses required for surface independence and nontrivial holonomy. Arbitrary-manifold instantiation remains a formal generalization beyond the proved rectangular-chart and finite-atlas realization, not a hidden premise in the source proof.",
+      "lean_evidence": [
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4FuzzyStokes.lean",
+          "declaration": "Book4FuzzyStokes.RectangleFuzzyStokesData.rectangle_stokes",
+          "kind": "mathlib_analytic_stokes_bridge"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4FuzzyStokes.lean",
+          "declaration": "Book4FuzzyStokes.RectangleFuzzyStokesData.analytic_fuzzy_stokes",
+          "kind": "analytic_fuzzy_stokes"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4FuzzyStokes.lean",
+          "declaration": "Book4FuzzyStokes.FuzzyStokesAtlasCertificate.assembled_fuzzy_stokes",
+          "kind": "finite_oriented_atlas_assembly"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4FuzzyStokes.lean",
+          "declaration": "Book4FuzzyStokes.RectangleFuzzyStokesData.analytic_curvature_transports_through_gauge",
+          "kind": "gauge_curvature_bridge"
+        },
+        {
+          "file": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4FuzzyStokes.lean",
+          "declaration": "Book4FuzzyStokes.integrated_zero_does_not_force_form_zero",
+          "kind": "cancellation_countermodel"
+        }
+      ],
+      "lean_status": "typed_bridge_proved",
+      "latex_status": "repaired",
+      "downstream_status": "discharged",
+      "source_statement_sha": "6ad2ec21bdbe"
     }
   ]
 }

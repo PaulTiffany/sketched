@@ -56,4 +56,115 @@ theorem local_cancellation_is_not_strict_balance :
       ¬ Balances drift strategy := by
   norm_num [Balances]
 
+
+/-! ## Operator inventory reconstruction
+
+The source speaks about drift and reflection *operators* available to a strategy.
+The scalar kernel above checks the final inequality; this layer retains the typed
+operators and constructs the viable MAP subset from an explicit availability
+law. -/
+
+/-- A typed strategy space with observer-assigned operator intensities and a
+strategy-indexed inventory of available reflection operators. -/
+structure OperatorStrategySpace (StrategyT DriftT ReflectionT : Type*) where
+  isMAP : Set StrategyT
+  driftIntensity : DriftT → ℝ
+  reflectionCapacity : ReflectionT → ℝ
+  cooperation : StrategyT → ℝ
+  available : StrategyT → ReflectionT → Prop
+
+namespace OperatorStrategySpace
+
+variable {StrategyT DriftT ReflectionT : Type*} (S : OperatorStrategySpace StrategyT DriftT ReflectionT)
+
+/-- A particular available reflection operator strictly overcomes a drift for a
+particular strategy. -/
+def OperatorBalances (drift : DriftT) (strategy : StrategyT) (reflection : ReflectionT) : Prop :=
+  S.available strategy reflection ∧
+    S.driftIntensity drift <
+      S.reflectionCapacity reflection * S.cooperation strategy
+
+/-- The source's drift-indexed MAP subset, now defined by MAP membership plus an
+actual available balancing reflection witness. -/
+def viableMAP (drift : DriftT) : Set StrategyT :=
+  {strategy | strategy ∈ S.isMAP ∧
+    ∃ reflection, S.OperatorBalances drift strategy reflection}
+
+/-- Availability is load-bearing. Cofinality says that for every requested
+finite capacity, the strategy inventory contains a stronger reflection
+operator. -/
+def ReflectionCofinalAt (strategy : StrategyT) : Prop :=
+  ∀ threshold : ℝ, ∃ reflection : ReflectionT,
+    S.available strategy reflection ∧
+      threshold < S.reflectionCapacity reflection
+
+/-- Richness is asserted only for at least one cooperative MAP strategy. This is
+exactly enough for the nonemptiness conclusion printed in the source. -/
+structure MAPReflectionRichness where
+  strategy : StrategyT
+  map_mem : strategy ∈ S.isMAP
+  cooperation_pos : 0 < S.cooperation strategy
+  reflection_cofinal : S.ReflectionCofinalAt strategy
+
+/-- Cofinal availability supplies a reflection operator beyond the exact
+cooperation-adjusted threshold. -/
+theorem exists_operator_balance_of_cofinal
+    {drift : DriftT} {strategy : StrategyT}
+    (hCooperation : 0 < S.cooperation strategy)
+    (hCofinal : S.ReflectionCofinalAt strategy) :
+    ∃ reflection, S.OperatorBalances drift strategy reflection := by
+  obtain ⟨reflection, hAvailable, hCapacity⟩ :=
+    hCofinal (S.driftIntensity drift / S.cooperation strategy)
+  refine ⟨reflection, hAvailable, ?_⟩
+  exact (div_lt_iff₀ hCooperation).mp hCapacity
+
+/-- The rebuilt existence theorem: a rich operator inventory constructs a
+nonempty drift-indexed MAP subset. A named upper drift bound is not used because
+cofinality already answers every finite observed drift intensity. -/
+theorem viableMAP_nonempty_of_richness
+    (richness : MAPReflectionRichness S) (drift : DriftT) :
+    (S.viableMAP drift).Nonempty := by
+  refine ⟨richness.strategy, richness.map_mem, ?_⟩
+  exact S.exists_operator_balance_of_cofinal
+    richness.cooperation_pos richness.reflection_cofinal
+
+/-- Every member of the constructed subset carries the advertised operator
+witness; this is an elimination theorem, not a second existence assumption. -/
+theorem mem_viableMAP_iff (drift : DriftT) (strategy : StrategyT) :
+    strategy ∈ S.viableMAP drift ↔
+      strategy ∈ S.isMAP ∧
+        ∃ reflection, S.available strategy reflection ∧
+          S.driftIntensity drift <
+            S.reflectionCapacity reflection * S.cooperation strategy := by
+  rfl
+
+/-- A uniform richness law upgrades the result from nonemptiness to equality:
+every MAP strategy is viable against the observed drift. -/
+theorem viableMAP_eq_isMAP_of_uniform_richness
+    (hCooperation : ∀ strategy ∈ S.isMAP, 0 < S.cooperation strategy)
+    (hCofinal : ∀ strategy ∈ S.isMAP, S.ReflectionCofinalAt strategy)
+    (drift : DriftT) :
+    S.viableMAP drift = S.isMAP := by
+  ext strategy
+  constructor
+  · exact fun h => h.1
+  · intro hMAP
+    exact ⟨hMAP, S.exists_operator_balance_of_cofinal
+      (hCooperation strategy hMAP) (hCofinal strategy hMAP)⟩
+
+/-- Positive cooperation and a sub-maximal drift label still do not manufacture
+an available reflection operator in the typed setting. -/
+theorem submaximal_drift_without_inventory_countermodel :
+    let S : OperatorStrategySpace Unit Unit Empty :=
+      { isMAP := Set.univ
+        driftIntensity := fun _ => 0
+        reflectionCapacity := Empty.elim
+        cooperation := fun _ => 1
+        available := fun _ r => Empty.elim r }
+    S.driftIntensity () < 1 ∧
+      0 < S.cooperation () ∧
+      (S.viableMAP ()).Nonempty = False := by
+  norm_num [viableMAP, OperatorBalances]
+
+end OperatorStrategySpace
 end ForcingAnalysis.Book5StrategyBalance

@@ -61,32 +61,150 @@ re-reads chart-comparison content over a certified chart complex:
     always misses some point of its domain -- the honest kernel of
     "some state is inaccessible to the observer".
 
-Anchors that are purely categorical/narrative (the category of structures
-itself, the observer gradient, observable gradation, the operators-as-
-bounded-approximations proposition depending on an undefined notion,
-pre-geometric nature, symbolic primacy, emergence events, the dual horizon
-postulate, semantic non-integrability as a bare premise, the symbolic
-category/reflexive-update-map/linear-reflexive-map cluster, feature maps,
-horizon structures, the metric/coupling-matrix identification, Newtonian
-incompleteness's ill-typed accessibility clause, the quantum category error
-and symbolic-quantum incompatibility, the thermodynamics/necessity theorem
-mixing curvature with dimension growth, symbolic primacy, and the SRMF /
-SRMF-energy pair requiring vector-calculus and Dirichlet-energy integrals),
-that require genuine Riemannian curvature, connection, or parallel-transport
-machinery (the drift field, observer horizon structure, symbolic hypothesis,
-the contradiction resolution principle, the symbolic connection and Riemann
-tensor themselves, local semantic independence, curvature-as-holonomy,
-curvature-and-semantic-entanglement, the curvature-projection-residue
-corollary, resolution cost, symbolic-emergence-and-curvature, and the
-dimensional-bounds-on-emergence and non-Euclidean-necessity corollaries),
-are left unformalized and listed as open anchors in the accompanying
-proposal, rather than forced into decorative theorems.
--/
+Anchors that remain purely narrative (the observer gradient, the
+operators-as-bounded-approximations proposition depending on an undefined
+notion, symbolic primacy, emergence events, the dual horizon postulate,
+feature maps, and the remaining taxonomic cluster), or that require genuine
+Riemannian curvature, connection, parallel transport, vector calculus, or
+Dirichlet-energy integrals, are left unformalized and listed as open anchors
+rather than forced into decorative theorems. The category of structures is
+represented only as an ambient assumption interface; a separate
+`OperationalStage` carries drift and reflection jointly, so list order cannot
+be mistaken for ontological or temporal precedence. Stagewise application
+order likewise does not impose a chicken-and-egg origin order.-/
 
 import Mathlib
 import ForcingAnalysis.FracturedAtlas
 
 namespace ForcingAnalysis.ScholiumC
+
+/- ================================================================
+   definition:bk1_let_cats_be_the_category
+   ================================================================ -/
+
+/-- The category-level data named by
+`definition:bk1_let_cats_be_the_category`.
+
+This does not replace `catS` by `Type`: it records an arbitrary category
+whose objects carry ordinal emergence stages, whose inhabited hom-sets
+respect that order, whose pre-structured void is certified initial, and
+which admits all diagrams at the displayed universe size. Smooth,
+topological, and Riemannian structure are deliberately not fields here;
+those belong to the later realization bridge from structural colimits to
+the symbolic manifold. -/
+structure CategoryOfStructures (C : Type u)
+    [CategoryTheory.Category.{v} C] where
+  stage : C -> Ordinal.{u}
+  emergence_order :
+    forall {X Y : C}, Nonempty (Quiver.Hom X Y) -> stage X <= stage Y
+  empty : C
+  empty_isInitial : CategoryTheory.Limits.IsInitial empty
+  hasColimits : CategoryTheory.Limits.HasColimitsOfSize.{v, v} C
+
+namespace CategoryOfStructures
+
+/-- The pre-structured void supplies a unique morphism into every
+structure. This is the operational content of the source's initial-object
+clause, with existence and uniqueness retained together. -/
+theorem existsUnique_from_empty {C : Type u}
+    [CategoryTheory.Category.{v} C]
+    (S : CategoryOfStructures C) (X : C) :
+    ExistsUnique (fun _f : Quiver.Hom S.empty X => True) := by
+  refine ExistsUnique.intro (S.empty_isInitial.to X) trivial ?_
+  intro g _
+  exact S.empty_isInitial.hom_ext g (S.empty_isInitial.to X)
+
+/-- Every diagram at the certified universe size has a colimit cocone.
+This exposes the source's cocompleteness assumption without collapsing the
+ambient category to `Type` or identifying the later proto-symbolic colimit
+with a quotient prematurely. -/
+theorem exists_colimit_cocone {C : Type u}
+    [CategoryTheory.Category.{v} C]
+    (S : CategoryOfStructures C) (J : Type v)
+    [CategoryTheory.Category.{v} J]
+    (F : CategoryTheory.Functor J C) :
+    Exists (fun t : CategoryTheory.Limits.Cocone F =>
+      Nonempty (CategoryTheory.Limits.IsColimit t)) := by
+  letI := S.hasColimits
+  refine Exists.intro (CategoryTheory.Limits.colimit.cocone F) ?_
+  exact Nonempty.intro (CategoryTheory.Limits.colimit.isColimit F)
+
+/-- Any emergence-compatible morphism points weakly forward in ordinal
+stage. Keeping this witness separate from the categorical composition
+laws prevents later colimit or manifold constructions from silently
+forgetting the source's directed orientation. -/
+theorem hom_advances_stage {C : Type u}
+    [CategoryTheory.Category.{v} C]
+    (S : CategoryOfStructures C) {X Y : C} (f : Quiver.Hom X Y) :
+    S.stage X <= S.stage Y :=
+  S.emergence_order (Nonempty.intro f)
+
+end CategoryOfStructures
+
+/- ================================================================
+   definition:bk1_pre_geometric_operators_and_stages
+   axiom:bk1_observable_gradation_of_pre_geometric_operations
+   ================================================================ -/
+
+/-- Operational data are carried by a stage transition, not generated by
+bare category structure. drift maps encoded prior history into the current
+stage; stabilize is an idempotent endomorphism of that stage. They are
+supplied together: neither is derived from nor ontologically prior to the
+other. catS is the habitat of their co-emergent operation. -/
+structure OperationalStage {C : Type u} [CategoryTheory.Category.{v} C]
+    (S : CategoryOfStructures C) where
+  prior : C
+  current : C
+  drift : Quiver.Hom prior current
+  stabilize : Quiver.Hom current current
+  stabilize_idempotent :
+    CategoryTheory.CategoryStruct.comp stabilize stabilize = stabilize
+
+namespace OperationalStage
+
+/-- Drift and reflection are jointly available in every operational stage.
+This is a single-witness co-emergence statement: it does not construct one
+operator from the other and does not choose a chicken-and-egg direction. -/
+theorem operators_coemerge {C : Type u} [CategoryTheory.Category.{v} C]
+    {S : CategoryOfStructures C} (E : OperationalStage S) :
+    And (Nonempty (Quiver.Hom E.prior E.current))
+      (Nonempty (Quiver.Hom E.current E.current)) :=
+  And.intro (Nonempty.intro E.drift) (Nonempty.intro E.stabilize)
+/-- A drift operation is emergence-oriented because its morphism is carried
+by the staged category; the orientation is witnessed by the operation rather
+than inferred from list order or from cocompleteness alone. -/
+theorem drift_advances_stage {C : Type u} [CategoryTheory.Category.{v} C]
+    {S : CategoryOfStructures C} (E : OperationalStage S) :
+    S.stage E.prior <= S.stage E.current :=
+  S.emergence_order (Nonempty.intro E.drift)
+
+/-- The source's stage composite is typed operationally as drift followed by
+reflection. This application order does not impose an origin order: the
+construction consumes the co-emergent pair, and the ambient category selects
+neither member. -/
+def composite {C : Type u} [CategoryTheory.Category.{v} C]
+    {S : CategoryOfStructures C} (E : OperationalStage S) :
+    Quiver.Hom E.prior E.current :=
+  CategoryTheory.CategoryStruct.comp E.drift E.stabilize
+
+/-- A bounded observer first receives an operational difference through an
+explicit observation map. Detectability is a witness, not a consequence of
+having objects, morphisms, an initial object, or colimits. -/
+structure Observation {C : Type u} [CategoryTheory.Category.{v} C]
+    {S : CategoryOfStructures C} (E : OperationalStage S) where
+  Signal : Type w
+  zero : Signal
+  observe : Quiver.Hom E.prior E.current -> Signal
+  drift_visible : Not (observe E.drift = zero)
+
+/-- Observer-visible drift is nontrivial exactly because the observation
+certificate retains the operational witness. -/
+theorem observed_drift_ne_zero {C : Type u} [CategoryTheory.Category.{v} C]
+    {S : CategoryOfStructures C} {E : OperationalStage S}
+    (O : Observation E) : Not (O.observe E.drift = O.zero) :=
+  O.drift_visible
+
+end OperationalStage
 
 /- ================================================================
    definition:bk1_proto_symbolic_space, lemma:bk1_universality_of_proto_symbolic_space,

@@ -423,9 +423,10 @@
       "lean": [
         "Book7B.srmfRegulation_exists",
         "Book7B.budgetLimitedObjective_not_unique",
-        "Book7B.budgetLimited_uniqueMinimizer_of_injectiveCost"
+        "Book7B.budgetLimited_uniqueMinimizer_of_injectiveCost",
+        "Book7B.budgetLimited_existsUniqueMinimizer_of_compact"
       ],
-      "note": "Existence over a nonempty finite feasible regulator set follows from finite argmin selection. The source's displayed objective is candidate-independent, and a concrete Bool model proves it has two distinct tied minimizers. Uniqueness is recovered under the explicit missing no-ties condition that the candidate-dependent cost is injective on the feasible set."
+      "note": "Source-level analytic kernel: for any chosen topology on the regulator space, a nonempty compact admissible set and lower-semicontinuous candidate-dependent cost attain a minimum; strict convexity, including convexity of the admissible set, makes it unique. This directly supports the printed weak-star theorem when its compactness and semicontinuity premises are supplied. The finite no-ties theorem is retained, and the constant-objective Bool model records why the superseded source failed."
     },
     {
       "atlas_id": "proposition:bk7_power_from_coherent_confidence_regulation",
@@ -435,20 +436,27 @@
         "Book7SystemicPower.systemicPower_pos",
         "Book7SystemicPower.high_confidence_alone_does_not_force_power",
         "Book7SystemicPower.gradient_reversal_preserves_unoriented_power",
-        "Book7SystemicPower.equal_power_does_not_determine_gradient_orientation"
+        "Book7SystemicPower.equal_power_does_not_determine_gradient_orientation",
+        "Book7SystemicPower.orientedLocalPower_pos"
       ],
-      "note": "Finite regulatory-basin kernel: strictly positive density, confidence, gradient magnitude, and operational volume force positive systemic power. Maximal confidence alone gives zero power on a flat landscape. Because the printed integrand uses a gradient norm, opposite gradient orientations have identical scalar power; coherent alignment remains an explicit premise."
+      "note": "Repaired source and finite kernel separate scalar magnitude from direction: positive norm-valued power follows from positive basin factors, while positive identity-directed power requires an explicit positive inner product with the reference direction. Gradient reversal preserves scalar magnitude but reverses orientation."
     },
     {
       "atlas_id": "corollary:bk7_bridge_no_interior_transition",
-      "coverage": "conditional",
+      "coverage": "partial",
       "lean": [
         "Book7NoInteriorTransition.continuousOn_no_discrete_phase_transition",
         "Book7NoInteriorTransition.continuous_closed_sweep_has_no_interior_transition",
         "Book7NoInteriorTransition.continuous_reparameterization_preserves_no_transition",
-        "Book7NoInteriorTransition.continuity_from_threshold_bridge"
+        "Book7NoInteriorTransition.continuity_from_threshold_bridge",
+        "Book7NoInteriorTransition.regularizedGeometry_continuousOn",
+        "Book7NoInteriorTransition.regularizedGeometry_has_no_interior_transition",
+        "Book7NoInteriorTransition.subcriticalLpExponent_zero_curvature",
+        "Book7NoInteriorTransition.subcriticalLpExponent_continuousOn",
+        "Book7NoInteriorTransition.subcriticalLpExponent_strict_order",
+        "Book7NoInteriorTransition.subcriticalLpExponent_has_no_interior_transition"
       ],
-      "note": "Topological kernel: continuity of effective geometry on the closed sub-sweep excludes a discrete phase transition defined as failure of relative continuity; continuous reparameterization preserves the certificate. The source claim that kappa below threshold supplies this continuity remains conditional on an explicit curvature-to-regularity bridge."
+      "note": "Constructive scalar Lp representation: p(xi) = 2 + curvature(xi)/(threshold - curvature(xi)) is Hilbertian at zero curvature, continuous for a continuous subcritical curvature path, strictly order-preserving when the threshold is positive, and has no interior transition. A more general signal-resolvent instance is also proved. Identifying the complete G-valued effective geometry with its scalar p-coordinate remains explicit scope, not an automatic equivalence."
     },
     {
       "atlas_id": "theorem:bk7_pisu",
@@ -474,18 +482,29 @@
     },
     {
       "atlas_id": "lemma:bk7_noncontextuality_forces_hilbert",
-      "coverage": "conditional",
+      "coverage": "partial",
       "lean": [
         "Book7NoncontextualHilbert.l2_parallelogram",
         "Book7NoncontextualHilbert.l1_parallelogram_fails",
         "Book7NoncontextualHilbert.noncontextual_iff_hilbert_crossSection",
-        "Book7NoncontextualHilbert.hilbert_geometry_alone_does_not_force_noncontextuality"
+        "Book7NoncontextualHilbert.hilbert_geometry_alone_does_not_force_noncontextuality",
+        "Book7NoncontextualHilbert.translate_square_commutes",
+        "Book7NoncontextualHilbert.commuting_transport_does_not_force_metric_parallelogram",
+        "Book7NoncontextualHilbert.quadraticEnergy_parallelogram",
+        "Book7NoncontextualHilbert.innerProductSpace_exists_of_metric_parallelogram",
+        "Book7QuadraticPolarization.quadraticForm_has_symmetric_bilinear_representation",
+        "Book7QuadraticPolarization.associated_diagonal_nonnegative",
+        "Book7QuadraticPolarization.nonnegative_readout_does_not_force_quadratic",
+        "Book7QuadraticPolarization.QuadraticReadoutLaws.toQuadraticForm_apply",
+        "Book7QuadraticPolarization.QuadraticReadoutLaws.roundtrip_value",
+        "Book7QuadraticPolarization.certified_readout_has_symmetric_bilinear_representation",
+        "Book7GleasonBoundary.rank_two_frame_axioms_do_not_force_born"
       ],
-      "note": "Two-dimensional geometric kernel: the Euclidean squared norm satisfies the parallelogram identity universally, while L1 fails on the coordinate basis. Noncontextuality iff p=2 follows by composing explicit coherence-to-parallelogram and Lp-to-p=2 bridges. Hilbert exponent data alone does not determine an unconstrained coherence functional."
+      "note": "Rank-two reconstruction boundary: additive transports form commuting affine squares, but the L1 countermodel proves affine path independence does not imply the metric parallelogram law. A genuine coordinate-free quadratic form now canonically constructs its symmetric bilinear polarization, whose diagonal recovers the form exactly; a supplied symmetric bilinear coupling then yields the metric parallelogram law. The exact readout interface is now proved equivalent to a quadratic-form witness: degree-two scaling plus additive and homogeneous polarization. An explicit rank-two frame function now proves that nonnegativity, ray invariance, and orthogonal-pair normalization still do not force those laws. The remaining bridge is therefore specifically a frame-rank-at-least-three derivation of the certificate laws from noncontextual frame coherence; the Lp parallelogram characterization then selects p=2."
     },
     {
       "atlas_id": "theorem:bk7_observer_relative_free_energy_minimization_as_lp_regression",
-      "coverage": "conditional",
+      "coverage": "partial",
       "lean": [
         "Book7LpRegression.regressionLoss_eq_sum",
         "Book7LpRegression.freeEnergy_minimization_iff_lp_regression",
@@ -497,7 +516,7 @@
     },
     {
       "atlas_id": "theorem:bk7_born_collapse",
-      "coverage": "conditional",
+      "coverage": "partial",
       "lean": [
         "Book7BornCollapse.defect_eq_zero_iff_hilbertFrame",
         "Book7BornCollapse.unique_stable_crossSection",
@@ -505,9 +524,52 @@
         "Book7BornCollapse.collapse_limit_eq_hilbertFrame",
         "Book7BornCollapse.collapse_tendsto_hilbertFrame",
         "Book7BornCollapse.born_readout_at_hilbert",
-        "Book7BornCollapse.hilbert_collapse_alone_does_not_determine_readout"
+        "Book7BornCollapse.hilbert_collapse_alone_does_not_determine_readout",
+        "Book7BornCollapse.finiteBornValue_nonneg",
+        "Book7BornCollapse.finiteBornValue_sum_one",
+        "Book7BornCollapse.amplitudeCalibratedReadout_unique",
+        "Book7BornCollapse.zero_curvature_hilbert_finiteBorn",
+        "Book7BornCollapse.finiteBornValue_amplitudeOfProbability",
+        "Book7BornCollapse.finite_probability_has_born_representation",
+        "Book7BornCollapse.amplitudeOfProbability_normalized",
+        "Book7BornCollapse.normalization_alone_does_not_force_finiteBorn",
+        "Book7FrameMeasure.FrameReadoutSystem.globalValue_eq_local",
+        "Book7FrameMeasure.FrameReadoutSystem.globalValue_nonnegative",
+        "Book7FrameMeasure.FrameReadoutSystem.globalValue_normalized_on_frame",
+        "Book7FrameMeasure.FrameReadoutSystem.globalValue_unique",
+        "Book7FrameMeasure.FrameReadoutSystem.globalValue_eq_finiteBorn",
+        "Book7FrameMeasure.noncontextual_gluing_alone_does_not_force_born",
+        "Book7QuadraticTrace.quadratic_eq_trace_pureStateDensity_mul",
+        "Book7QuadraticTrace.FrameReadoutSystem.globalValue_eq_trace_of_quadratic",
+        "Book7QuadraticTrace.gluing_requires_quadratic_existence_bridge",
+        "Book7QuadraticPolarization.quadraticForm_has_symmetric_bilinear_representation",
+        "Book7QuadraticPolarization.associated_diagonal_nonnegative",
+        "Book7QuadraticPolarization.nonnegative_readout_does_not_force_quadratic",
+        "Book7QuadraticPolarization.QuadraticReadoutLaws.toQuadraticForm_apply",
+        "Book7QuadraticPolarization.QuadraticReadoutLaws.roundtrip_value",
+        "Book7QuadraticPolarization.certified_readout_has_symmetric_bilinear_representation",
+        "Book7GleasonBoundary.rank_two_frame_axioms_do_not_force_born",
+        "Book7QuantumGleason.vectorExpectation_smul",
+        "Book7QuantumGleason.vectorExpectation_globalPhase",
+        "Book7QuantumGleason.complex_phase_refutes_real_degreeTwo",
+        "Book7QuantumGleason.operatorQuantumRayReadout_globalPhase",
+        "Book7QuantumGleason.HermitianReadoutCertificate.toSesquilinear_apply",
+        "Book7QuantumGleason.HermitianReadoutCertificate.toSesquilinear_isSymm",
+        "Book7QuantumGleason.HermitianReadoutCertificate.toSesquilinear_diagonal",
+        "Book7QuantumGleason.HermitianReadoutCertificate.value_smul",
+        "Book7QuantumGleason.hermitian_reconstruction_from_certificate",
+        "Book7QuantumGleason.completeFrameCoherence_does_not_supply_hermitian_certificate",
+        "Book7QuantumGleason.quantumResolution_to_hermitian_certificate",
+        "Book7QuantumGleason.quantumResolution_without_matrixHermiticity_does_not_supply_certificate",
+        "Book7QuantumGleason.quantumResolution_does_not_force_reducedState_isHermitian",
+        "Book7QuantumGleason.pureStateDensity_isHermitian",
+        "Book7QuantumGleason.pureStateToResolution_reducedState_isHermitian",
+        "Book7QuantumGleason.pureState_forward_chain",
+        "Book7QuantumGleason.pureStateDensity_globalPhase",
+        "Book7QuantumGleason.pureStateToResolution_globalPhase",
+        "Book7QuantumGleason.pureState_lowering_not_injective"
       ],
-      "note": "Conditional Book 7 kernel: supplied exponent/defect and fixed-point bridges make the Hilbert frame the unique stable cross-section and every non-Hilbert defect positive. Any convergent orbit whose continuous defect tends to zero must converge to that frame. Born readout requires a separate Gleason-style uniqueness bridge; a countermodel shows Hilbert collapse alone does not determine a probability functional. Appendix C remains a downstream validator rather than a Book 7 premise."
+      "note": "Constructive finite measurement and cross-frame gluing plus guarded general collapse: covered normalized local frame measures agreeing on overlaps glue to a unique nonnegative global assignment. Local squared-amplitude calibration identifies that assignment as Born, while a countermodel shows gluing alone does not. Every finite nonnegative probability vector also lifts through square-root amplitudes to an exact fixed-basis Born representation, and zero curvature joins p=2 to it. A genuine quadratic form canonically polarizes to a symmetric bilinear representation, and a supplied finite operator representation is exactly trace form. Nonnegative readouts alone do not force quadratic scaling. The exact quadratic-readout certificate laws now construct that witness and round-trip pointwise. A rank-two quartic countermodel proves the usual frame-rank restriction is essential. The positive quantum target is phase-corrected: complex expectations scale by conjugate(a)*a and are invariant under global unit phase, so the real quadratic kernel is only a shadow. Explicit cross laws now construct a genuine Hermitian sesquilinear form, recover the readout diagonally, and force modulus-squared scaling. Those cross laws remain a certificate, not a consequence of the existing frame-coherence structure: an explicit covered, normalized, noncontextual singleton-frame system has constant glued value one and therefore cannot be the diagonal of any Hermitian form, which must vanish at zero. The direct FrameReadoutSystem bridge is refuted and its countermodel preserved. The nearest richer lake object, QuantumResolutionCertificate, is also refuted in bare form by a normalized non-Hermitian reduced matrix with non-real expectation. That witness forces exactly matrix Hermiticity; adding only `reducedState.IsHermitian` makes the single direct implication to the existing HermitianReadoutCertificate elaborate. The reverse observer-resolution lift remains refuted. In the forward direction, the existing pureStateDensity construction is Hermitian, lowers with any observer response kernel to a normalized QuantumResolutionCertificate, and then constructs the HermitianReadoutCertificate. This lowering is concretely non-injective: distinct normalized vectors related by global phase produce the same density and the same resolved certificate. Hermiticity therefore belongs to the richer source construction and is preserved forward, but is not reconstructible from an arbitrary observer-resolution certificate."
     }
   ]
 }

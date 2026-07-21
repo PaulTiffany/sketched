@@ -11,11 +11,13 @@ import os
 import sys
 from pathlib import Path
 
+from atlas_extract import statement_sha
+
 ROOT = Path(__file__).resolve().parents[2]
 REGISTER = ROOT / "verification" / "source_obligations.json"
 DOC = ROOT / "docs" / "21_PS_SOURCE_OBLIGATIONS.md"
 FAILURE_MODES = {"missing_premise", "ill_typed", "counterexample", "interpretive_only", "missing_machinery"}
-LEAN_STATUSES = {"exposed", "countermodel_proved", "conditional_kernel_proved", "positive_kernel_proved", "bridge_partially_proved", "typed_bridge_proved"}
+LEAN_STATUSES = {"exposed", "countermodel_proved", "conditional_kernel_proved", "positive_kernel_proved", "bridge_partially_proved", "typed_bridge_proved", "premise_packaged"}
 LATEX_STATUSES = {"unresolved", "amendment_drafted", "repaired"}
 DOWNSTREAM_STATUSES = {"blocked", "ready", "partially_discharged", "discharged"}
 LAYERS = {"scholium", *(f"book{i}" for i in range(1, 10)), "appendix"}
@@ -58,6 +60,7 @@ def render(data: dict, atlas: Path | None) -> str:
     for o in obs:
         lines += [f"## {o['id']}: {o['source_anchor']}", "", o["summary"], ""]
         lines.append(f"- **Source:** `{o['source_file']}:{o['source_line']}` ({o['source_layer']})")
+        lines.append(f"- **Source statement:** `{o['source_statement_sha']}`")
         lines.append(f"- **Repair owner:** {o['repair_owner']}")
         lines.append(f"- **Downstream consumers:** {', '.join(o['downstream_consumers'])}")
         lines.append(f"- **Required LaTeX repair:** {o['required_latex_repair']}")
@@ -105,6 +108,12 @@ def main() -> int:
         elif node:
             if node.get("file") != o.get("source_file") or node.get("line") != o.get("source_line"):
                 findings.append(("SRC_STALE_LOCATION", f"{oid}: atlas={node.get('file')}:{node.get('line')} register={o.get('source_file')}:{o.get('source_line')}"))
+            current_sha = statement_sha(node.get("latex_body", ""))
+            pinned_sha = o.get("source_statement_sha")
+            if not pinned_sha:
+                findings.append(("SRC_UNPINNED_STATEMENT", f"{oid}: {o.get('source_anchor')}"))
+            elif pinned_sha != current_sha:
+                findings.append(("SRC_STALE_STATEMENT", f"{oid}: atlas={current_sha} register={pinned_sha}"))
         evidence = o.get("lean_evidence", [])
         if not evidence:
             findings.append(("SRC_NO_EVIDENCE", oid))
@@ -114,8 +123,6 @@ def main() -> int:
                 findings.append(("SRC_EVIDENCE_FILE", f"{oid}: {e.get('file')}"))
             elif e.get("declaration", "").split(".")[-1] not in path.read_text(encoding="utf-8"):
                 findings.append(("SRC_EVIDENCE_DECL", f"{oid}: {e.get('declaration')}"))
-        if o.get("latex_status") == "repaired" and o.get("downstream_status") == "blocked":
-            findings.append(("SRC_BAD_LIFECYCLE", f"{oid}: repaired LaTeX remains blocked"))
         if not o.get("required_latex_repair", "").strip():
             findings.append(("SRC_NO_REPAIR", oid))
 

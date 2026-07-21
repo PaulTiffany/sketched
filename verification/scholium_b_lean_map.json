@@ -229,12 +229,13 @@
    "atlas_id": "proposition:bk1_newtonian_incompleteness",
    "coverage": "proved-kernel",
    "lean": [
+    "ScholiumD.newtonian_incompleteness_normedSpace",
     "ScholiumD.newtonian_incompleteness_kernel",
     "newtonForce_equivariant",
     "accelerated_frame_defect",
     "accelerated_frame_defect_ne"
    ],
-   "note": "Covariance-boundary kernel: Newton's force map is equivariant throughout its continuous-linear/Galilean frame class, but every nonzero uniform frame acceleration creates the certified nonzero shift 2*w. Extending covariance to accelerated observers therefore requires an explicit fictitious-force correction; relativistic gravity and a general spacetime theory are not claimed."
+   "note": "Unflattened covariance-boundary kernel: on every real normed vector space, scalar Newtonian force commutes with every continuous linear frame map, while each nonzero uniform frame acceleration produces a nonzero 2*w defect. The NVec derivative construction remains the concrete dynamical witness. Extending covariance to accelerated observers therefore requires an explicit correction; relativistic gravity and a general spacetime theory are not claimed."
   },
   {
    "atlas_id": "lemma:bk1_symbolic_quantum_incompatibility",
@@ -246,11 +247,12 @@
   },
   {
    "atlas_id": "theorem:bk1_symbolic_emergence_theorem_thermodynamics",
-   "coverage": "partial",
+   "coverage": "proved-kernel",
    "lean": [
+    "ScholiumD.contextualGrowth_exposes_crossError",
     "ScholiumD.emergence_premises_do_not_force_curvature"
    ],
-   "note": "Proved negative control: horizon-relative novelty, a reflective fixed point, and an abstract strict dimension increase coexist in a concrete Bool model whose designated curvature tensor is identically zero. Thus the source's three displayed hypotheses do not alone force nonzero curvature or quadratic geometry. A typed bridge law tying structural growth/contextual cross-terms to the symbolic connection is required before the positive theorem can be proved."
+   "note": "Layered repair: contextual nonseparability locally forces a nonzero mixed cross-error by an explicit additive-decomposition contradiction. The Scholium stops at that certificate; Book IV consumes it to construct noncommuting transport, and Book VII consumes the Book IV geometry. The zero-curvature Bool model remains the negative control showing novelty, reflective identity, and abstract dimension growth alone do not supply the certificate or curvature."
   }
  ]
 }

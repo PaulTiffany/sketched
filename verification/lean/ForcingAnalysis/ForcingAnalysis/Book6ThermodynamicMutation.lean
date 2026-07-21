@@ -51,4 +51,40 @@ theorem equilibrium_balance_alone_does_not_imply_mepp :
     have h := certificate.maximal true (by simp)
     norm_num at h
 
+
+/-- An explicit dynamics-to-optimizer bridge for MEPP. -/
+structure MEPPSelectionLaw {State : Type*} [DecidableEq State]
+    (feasible : Finset State) (entropyProduction : State → ℝ) where
+  trajectory : ℕ → State
+  selected : State
+  selected_mepp : IsConstrainedMEPP feasible entropyProduction selected
+  eventually_selected : ∀ᶠ n in Filter.atTop, trajectory n = selected
+
+namespace MEPPSelectionLaw
+
+/-- The supplied selection dynamics converges to its constrained maximizer. -/
+theorem trajectory_tendsto {State : Type*} [DecidableEq State]
+    [TopologicalSpace State] [DiscreteTopology State]
+    {feasible : Finset State} {entropyProduction : State → ℝ}
+    (L : MEPPSelectionLaw feasible entropyProduction) :
+    Filter.Tendsto L.trajectory Filter.atTop (nhds L.selected) := by
+  exact Filter.Tendsto.congr' (Filter.EventuallyEq.symm L.eventually_selected) tendsto_const_nhds
+
+end MEPPSelectionLaw
+
+/-- Maximizer existence does not manufacture a dynamics selecting it. -/
+theorem argmax_exists_without_selection_dynamics :
+    let feasible : Finset Bool := {false, true}
+    let production : Bool → ℝ := fun state => if state then 1 else 0
+    (∃ selected, IsConstrainedMEPP feasible production selected) ∧
+      ¬ Filter.Tendsto (fun _ : ℕ => false) Filter.atTop (nhds true) := by
+  dsimp
+  constructor
+  · exact exists_constrained_mepp _ _ (by simp)
+  · intro hselect
+    have hstay : Filter.Tendsto (fun _ : ℕ => false) Filter.atTop (nhds false) :=
+      tendsto_const_nhds
+    have : false = true := tendsto_nhds_unique hstay hselect
+    exact Bool.noConfusion this
+
 end ForcingAnalysis.Book6ThermodynamicMutation

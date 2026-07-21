@@ -22,6 +22,19 @@ theorem energy_rate_linear_spectral_bound
     _ ≤ rho * normA + rho * normB := add_le_add hA hB
     _ = rho * (normA + normB) := by ring
 
+/-- Source-level normed residual theorem. The energy-rate defect need not be a
+scalar: in any seminormed additive state space, the two residual controls
+combine at first order in the coupling spectral radius. -/
+theorem energy_rate_norm_linear_spectral_bound
+    {E : Type*} [SeminormedAddCommGroup E]
+    {residualA residualB : E} {rho normA normB : ℝ}
+    (hA : ‖residualA‖ ≤ rho * normA)
+    (hB : ‖residualB‖ ≤ rho * normB) :
+    ‖residualA + residualB‖ ≤ rho * (normA + normB) := by
+  calc
+    ‖residualA + residualB‖ ≤ ‖residualA‖ + ‖residualB‖ := norm_add_le _ _
+    _ ≤ rho * normA + rho * normB := add_le_add hA hB
+    _ = rho * (normA + normB) := by ring
 /-- The displayed quadratic conclusion does not follow from the displayed
 linear residual hypotheses, even when epsilon is the maximum squared norm. -/
 theorem linear_residual_bounds_do_not_imply_quadratic_bound :

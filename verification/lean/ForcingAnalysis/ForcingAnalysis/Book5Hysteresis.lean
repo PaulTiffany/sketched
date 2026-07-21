@@ -75,4 +75,77 @@ theorem memoryless_classifier_cannot_remember_history :
   rw [hMap] at hMad
   contradiction
 
+
+/-! ### Activation-barrier construction and path memory -/
+
+/-- A positive half-width around the neutral coupling value constructs the two
+switching thresholds rather than postulating their separation independently. -/
+structure ActivationBarrier where
+  halfWidth : ℝ
+  halfWidth_pos : 0 < halfWidth
+  density : ℝ
+  density_pos : 0 < density
+
+noncomputable def ActivationBarrier.thresholds (B : ActivationBarrier) :
+    HysteresisThresholds where
+  lower := 1 - B.halfWidth
+  upper := 1 + B.halfWidth
+  lower_lt_one := by linarith [B.halfWidth_pos]
+  one_lt_upper := by linarith [B.halfWidth_pos]
+
+noncomputable def ActivationBarrier.energy (B : ActivationBarrier) : ℝ :=
+  B.density * (B.thresholds.upper - B.thresholds.lower)
+
+theorem ActivationBarrier.threshold_gap (B : ActivationBarrier) :
+    B.thresholds.upper - B.thresholds.lower = 2 * B.halfWidth := by
+  unfold ActivationBarrier.thresholds
+  ring
+
+theorem ActivationBarrier.energy_eq (B : ActivationBarrier) :
+    B.energy = 2 * B.density * B.halfWidth := by
+  rw [ActivationBarrier.energy, B.threshold_gap]
+  ring
+
+theorem ActivationBarrier.energy_pos (B : ActivationBarrier) :
+    0 < B.energy := by
+  rw [B.energy_eq]
+  exact mul_pos (mul_pos (by norm_num) B.density_pos) B.halfWidth_pos
+
+/-- Execute a finite coupling history through the stateful transition law. -/
+noncomputable def runHysteresis (thresholds : HysteresisThresholds)
+    (initial : CovenantMode) (history : List ℝ) : CovenantMode :=
+  history.foldl (fun mode coupling => hysteresisStep thresholds coupling mode) initial
+
+theorem runHysteresis_in_band (thresholds : HysteresisThresholds)
+    (initial : CovenantMode) (history : List ℝ)
+    (hband : ∀ coupling ∈ history,
+      thresholds.lower ≤ coupling ∧ coupling ≤ thresholds.upper) :
+    runHysteresis thresholds initial history = initial := by
+  induction history generalizing initial with
+  | nil => rfl
+  | cons coupling rest ih =>
+      simp only [runHysteresis, List.foldl_cons]
+      have hc := hband coupling (by simp)
+      have hstep : hysteresisStep thresholds coupling initial = initial := by
+        cases initial
+        · exact map_persists_in_band thresholds hc.1 hc.2
+        · exact mad_persists_in_band thresholds hc.1 hc.2
+      rw [hstep]
+      apply ih
+      intro x hx
+      exact hband x (by simp [hx])
+
+/-- Two systems exposed to the same entirely in-band history retain distinct
+incoming regimes. Hysteresis is therefore path-state memory, not a one-point
+classifier artifact. -/
+theorem same_in_band_path_retains_distinct_histories
+    (thresholds : HysteresisThresholds) (history : List ℝ)
+    (hband : ∀ coupling ∈ history,
+      thresholds.lower ≤ coupling ∧ coupling ≤ thresholds.upper) :
+    runHysteresis thresholds .map history ≠
+      runHysteresis thresholds .madOrDecoupled history := by
+  rw [runHysteresis_in_band thresholds .map history hband,
+      runHysteresis_in_band thresholds .madOrDecoupled history hband]
+  decide
+
 end ForcingAnalysis.Book5Hysteresis

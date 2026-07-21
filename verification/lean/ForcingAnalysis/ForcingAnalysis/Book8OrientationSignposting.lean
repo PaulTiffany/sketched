@@ -89,4 +89,58 @@ theorem displayedNext_differs_across_orientations :
     displayedNext .aligned .observe ≠ displayedNext .reversed .observe := by
   decide
 
+
+/-- The signed parity carried by an audience orientation witness. -/
+def orientationSign : Orientation → ℝ
+  | .aligned => 1
+  | .reversed => -1
+
+/-- Encoding is multiplication by the witnessed orientation parity. -/
+theorem encode_eq_orientationSign_mul (orientation : Orientation) (change : ℝ) :
+    encode orientation change = orientationSign orientation * change := by
+  cases orientation <;> simp [encode, orientationSign]
+
+/-- Relative source-to-target parity, derived from both witnesses. -/
+def relativeSign (source target : Orientation) : ℝ :=
+  orientationSign target * orientationSign source
+
+/-- Cross-frame transport has the uniquely determined relative sign. -/
+theorem transport_eq_relativeSign_mul
+    (source target : Orientation) (displayedChange : ℝ) :
+    transport source target displayedChange =
+      relativeSign source target * displayedChange := by
+  cases source <;> cases target <;>
+    simp [transport, encode, relativeSign, orientationSign]
+
+/-- Orientation transport composes coherently through an intermediate frame. -/
+theorem transport_trans
+    (source middle target : Orientation) (displayedChange : ℝ) :
+    transport middle target (transport source middle displayedChange) =
+      transport source target displayedChange := by
+  cases source <;> cases middle <;> cases target <;>
+    simp [transport, encode]
+
+/-- Reverse comparison recovers the original signed display. -/
+theorem transport_roundtrip
+    (source target : Orientation) (displayedChange : ℝ) :
+    transport target source (transport source target displayedChange) =
+      displayedChange := by
+  rw [transport_trans]
+  cases source <;> simp [transport, encode]
+
+/-- A witnessed same orientation preserves a positive sign. -/
+theorem transport_positive_of_same_orientation
+    {source target : Orientation} {displayedChange : ℝ}
+    (horientation : source = target) (hchange : 0 < displayedChange) :
+    0 < transport source target displayedChange := by
+  subst target
+  cases source <;> simpa [transport, encode] using hchange
+
+/-- A witnessed opposite orientation reverses a positive sign. -/
+theorem transport_negative_of_opposite_orientation
+    {source target : Orientation} {displayedChange : ℝ}
+    (horientation : source ≠ target) (hchange : 0 < displayedChange) :
+    transport source target displayedChange < 0 := by
+  cases source <;> cases target <;>
+    simp_all [transport, encode]
 end ForcingAnalysis.Book8OrientationSignposting

@@ -5,7 +5,7 @@ The Lean kernels, the finite model checker, the numeric witness, and the
 witness/ TypeScript implement *statements* of the paper, transcribed by
 hand. A green `lake build` proves the transcription, not its currency: if
 the paper's statement changes, the artifact keeps verifying the previous
-version in silence. This audit makes that staleness a loud finding — and
+version in silence. This audit makes that staleness a loud finding â€” and
 makes the cure a human act.
 
 Reads verification/bindings.json. Each binding pins (artifact file,
@@ -15,7 +15,7 @@ and is checked against the current atlas.json:
   BINDING_NODE_UNKNOWN  math_id resolves to no atlas node (renamed or
                         removed; run tools/atlas_diff.py for
                         RENAME_CANDIDATEs)
-  BINDING_STALE         the node's statement changed since attestation —
+  BINDING_STALE         the node's statement changed since attestation â€”
                         re-read the artifact against the new statement,
                         then re-anchor via the attestation protocol below
   BINDING_UNSTAMPED     statement_sha is null (never attested)
@@ -36,11 +36,14 @@ Attestation protocol (the anchor side of the drift contract):
             Absent one, it writes a proposed receipt enumerating the moves
             and exits nonzero: detection is mechanical, discharge is not.
             A receipt is accepted only with human-supplied status,
-            attested_by ("human"), and attested_at — the machine never
+            attested_by ("human"), and attested_at â€” the machine never
             fills those fields.
   --adopt ID  records an accepted receipt as the attestation of bindings
             whose current anchors it covers (used for the genesis receipt,
             whose anchors were bootstrap-stamped before the protocol).
+  --refresh-reserved  mechanically refreshes hashes only for bindings that
+            have no attested_in receipt. This records source currency without
+            creating human authority. Accepted bindings remain receipt-gated.
 
 Bindings without attested_in are reported as a [RESERVED] info line, not a
 finding: the seat is held open for the human signature.
@@ -191,7 +194,7 @@ def audit(
             findings.append((
                 "BINDING_STALE",
                 f"{label}: '{mid}' statement is now {atlas_shas[mid]}, attested at "
-                f"{b['statement_sha']} — re-read the artifact, then re-anchor (--stamp)",
+                f"{b['statement_sha']} â€” re-read the artifact, then re-anchor (--stamp)",
             ))
     return findings, skipped, unattested
 
@@ -247,6 +250,18 @@ def adopt(bindings: list[dict], receipt: dict) -> int:
     return n
 
 
+def refresh_reserved(bindings: list[dict], atlas_shas: dict[str, str]) -> list[str]:
+    """Refresh current hashes only where no human attestation is claimed."""
+    log = []
+    for b in bindings:
+        mid = b["math_id"]
+        if (not b.get("attested_in") and mid in atlas_shas
+                and b["statement_sha"] != atlas_shas[mid]):
+            log.append(f"{mid}: {b['statement_sha']} -> {atlas_shas[mid]} ({b['artifact']})")
+            b["statement_sha"] = atlas_shas[mid]
+    return log
+
+
 def proposed_receipt(moves: list[tuple[str, str | None, str]], paper: str) -> dict:
     return {
         "schema": SCHEMA,
@@ -272,7 +287,7 @@ def load_atlas() -> tuple[dict[str, str] | None, str]:
 
 def main() -> int:
     if not BINDINGS.is_file():
-        print("bindings.json absent — packet mode; binding staleness audit skipped")
+        print("bindings.json absent â€” packet mode; binding staleness audit skipped")
         return 0
     atlas_shas, paper = load_atlas()
     if atlas_shas is None:
@@ -283,6 +298,15 @@ def main() -> int:
     atlas_shas = {**atlas_shas, **external_shas}
     receipts, receipt_findings = load_receipts()
 
+    if "--refresh-reserved" in sys.argv:
+        log = refresh_reserved(doc["bindings"], atlas_shas)
+        BINDINGS.write_text(json.dumps(doc, indent=2) + "\n", encoding="utf-8")
+        for line in log:
+            print(f"  {line}")
+        print(f"mechanically refreshed {len(log)} reserved bindings; "
+              "no human attestation created")
+        return 0
+
     if "--adopt" in sys.argv:
         idx = sys.argv.index("--adopt")
         if idx + 1 >= len(sys.argv):
@@ -290,7 +314,7 @@ def main() -> int:
         rid = sys.argv[idx + 1]
         r = receipts.get(rid)
         if r is None or r["status"] != "accepted":
-            print(f"receipt '{rid}' is missing, malformed, or not accepted — "
+            print(f"receipt '{rid}' is missing, malformed, or not accepted â€” "
                   "adoption is a judgment record and needs the human signature first")
             return 1
         n = adopt(doc["bindings"], r)
@@ -312,7 +336,7 @@ def main() -> int:
             for m, f, t in moves:
                 print(f"  pending: {m}: {f} -> {t}")
             print(f"\nanchors are reserved for judgment: no accepted receipt covers "
-                  f"these {len(moves)} moves.\nwrote {out} — review the bound artifacts "
+                  f"these {len(moves)} moves.\nwrote {out} â€” review the bound artifacts "
                   "against the new statements, then accept it by hand and rerun --stamp.")
             return 1
         log = apply_stamp(doc["bindings"], r, atlas_shas)

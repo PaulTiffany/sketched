@@ -1,1105 +1,1190 @@
 {
-    "schema":  "sketched.book4a-lean-map.v1",
-    "source":  "Principia Symbolica Book 4 first half (modal transference, chromatic wheel, perception covenants)",
-    "boundary":  "Mappings certify only the static/algebraic/finite kernel. Manifold, Hilbert-space, PDE, categorical, and asymptotic material is not certified; conditional and partial rows do not promote the full prose statement to a Lean theorem.",
-    "entries":  [
-                    {
-                        "atlas_id":  "proposition:bk4_holographic_emergence",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4Holographic.observerSurfaceArea_nonneg",
-                                     "Book4Holographic.observerSurfaceArea_mono",
-                                     "Book4Holographic.rtEntropy_area_law",
-                                     "Book4Holographic.rtEntropy_nonneg",
-                                     "Book4Holographic.rtEntropy_strictMono_area",
-                                     "Book4Holographic.reconstruction_deterministic",
-                                     "Book4Holographic.boundary_metric_alone_does_not_select_unique_bulk"
-                                 ],
-                        "note":  "Finite observer-relative RT kernel: the discretized surface area is nonnegative and monotone in metric-volume weights; positive Newton constant makes RT entropy nonnegative and strictly increasing with area. Boundary-to-bulk reconstruction is explicit bridge data. A two-reconstruction countermodel proves the boundary metric alone does not select a unique bulk geometry."
-                    },
-                    {
-                        "atlas_id":  "lemma:bk4_statistical_mechanics",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4StatisticalMechanics.thermalMetric_decomposition",
-                                     "Book4StatisticalMechanics.ensembleMetric_symmetric",
-                                     "Book4StatisticalMechanics.thermalMetric_symmetric",
-                                     "Book4StatisticalMechanics.thermalMetric_diagonal_nonneg",
-                                     "Book4StatisticalMechanics.entropy_regularity_alone_does_not_force_metric_decomposition"
-                                 ],
-                        "note":  "Finite thermal closure kernel: weighted microscopic metric averages preserve symmetry; the explicit ensemble-plus-inverse-temperature entropy-Hessian construction has the printed decomposition, preserves symmetry, and has nonnegative diagonal under positive temperature and nonnegative component hypotheses. A scalar countermodel shows entropy regularity alone does not identify an independently supplied observer metric with this closure."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_quantum_measurement",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4QuantumMeasurement.jointExpectation_eq_sum_partialTrace",
-                                     "Book4QuantumMeasurement.jointExpectation_nonneg",
-                                     "Book4QuantumMeasurement.jointExpectation_pureObserver",
-                                     "Book4QuantumMeasurement.joint_state_does_not_reduce_to_arbitrary_observer"
-                                 ],
-                        "note":  "Finite diagonal quantum kernel: environmental partial trace is exact regrouping of the joint expectation and preserves nonnegativity. Reduction to a single observer-state expectation is proved under explicit support of the joint density on that observer. A two-observer countermodel shows that a general joint state does not reduce to an arbitrarily chosen observer state."
-                    },
-                    {
-                        "atlas_id":  "corollary:bk4_emergence_of_meaning",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4Meaning.meaningValue_nonneg",
-                                     "Book4Meaning.meaningValue_pos_iff",
-                                     "Book4Meaning.exists_positive_meaning_iff",
-                                     "Book4Meaning.meaningValue_strict_preference_iff",
-                                     "Book4Meaning.freedomLifeTransition_does_not_force_nonconstant_energy"
-                                 ],
-                        "note":  "Conditional value-map kernel: contrast from a supplied energy ceiling is nonnegative, is positive exactly below the ceiling, is nontrivial exactly when some configuration lies strictly below it, and reverses free-energy order into preference order. A concrete freedom-life transition with constant free energy shows that the prior transition theorem alone does not establish the proof sketch\u0027s nonconstant-landscape premise."
-                    },
-                    {
-                        "atlas_id":  "proposition:bk4_field_regularization",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4FieldRegularization.cutoffMode_eq_self",
-                                     "Book4FieldRegularization.cutoffMode_eq_zero",
-                                     "Book4FieldRegularization.cutoffMode_abs_le",
-                                     "Book4FieldRegularization.perturbativeInsertion_eq_zero_of_high_mode",
-                                     "Book4FieldRegularization.accessibleBand_card",
-                                     "Book4FieldRegularization.resolution_scale_alone_does_not_force_suppression"
-                                 ],
-                        "note":  "Explicit hard-cutoff kernel: accessible modes are unchanged, modes above the observer cutoff vanish, amplitudes do not grow, any finite-order insertion containing a high mode is zero, and the accessible natural-momentum band is finite. A constant-kernel countermodel proves that observer resolution alone does not entail suppression; uniform all-orders finiteness requires the printed cutoff-regime premise plus diagrammatic/renormalization hypotheses."
-                    },
-                    {
-                        "atlas_id":  "corollary:bk4_information_curvature",
-                        "coverage":  "partial",
-                        "lean":  [
-                                     "Book4InformationCurvature.fisherInformation_nonneg",
-                                     "Book4InformationCurvature.curvature_diagonal_zero",
-                                     "Book4InformationCurvature.unit_hessian_moment_cannot_be_riemann_diagonal",
-                                     "Book4InformationCurvature.unit_second_hessian_moment"
-                                 ],
-                        "note":  "Finite Fisher kernel: expected squared score is nonnegative. Tensor audit: curvature antisymmetry forces R(x,x,z,w)=0, while the displayed identical-Hessian product equals one for a unit one-sample Hessian, so the source formula cannot be a general Riemann curvature identity."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_ml_metric_learning",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4MetricLearning.gradientStep_eq_self_iff",
-                                     "Book4MetricLearning.quadratic_gradient_step_decreases",
-                                     "Book4MetricLearning.differentiability_alone_does_not_guarantee_descent"
-                                 ],
-                        "note":  "Scalar parameter kernel: for nonzero learning rate, a gradient step is stationary exactly at zero gradient; the quadratic metric-loss model strictly descends for 0\u003ceta\u003c1. An eta=2 countermodel shows differentiability and a positive learning rate alone do not guarantee descent or learning convergence."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_observer_geometry_coevolution",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4ObserverGeometry.recursivelyStabilized_iff",
-                                     "Book4ObserverGeometry.exists_recursively_stabilized_system",
-                                     "Book4ObserverGeometry.driftingSystem_has_no_stabilized_state"
-                                 ],
-                        "note":  "Discrete coupled-update kernel: recursive stabilization is exactly the conjunction of observer and geometry fixed-point equations, and an identity feedback system stabilizes every chosen state. A translating coupled system has no stabilized state, so coupled regular evolution alone does not imply attraction or stabilization."
-                    },
-                    {
-                        "atlas_id":  "proposition:bk4_geodesic_failure",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4GeodesicFailure.observerCurvature_nonneg",
-                                     "Book4GeodesicFailure.observerCurvature_eq_zero_iff",
-                                     "Book4GeodesicFailure.curvature_error_bound",
-                                     "Book4GeodesicFailure.derivative_agreement_does_not_force_jacobi_curvature"
-                                 ],
-                        "note":  "Scalar norm-square kernel: observer curvature is nonnegative, vanishes exactly with the observer second derivative, and an epsilon derivative approximation gives an epsilon times combined-magnitude curvature error bound. A countermodel shows derivative agreement alone does not establish the Jacobi equation or a Riemann-curvature identification."
-                    },
-                    {
-                        "atlas_id":  "proposition:bk4_fuzzy_connection",
-                        "coverage":  "partial",
-                        "lean":  [
-                                     "Book4FuzzyConnection.flatConnection_torsion_zero",
-                                     "Book4FuzzyConnection.flatConnection_torsion_control",
-                                     "Book4FuzzyConnection.flat_parallel_transport_exact",
-                                     "Book4FuzzyConnection.torsion_control_of_approx_symmetric"
-                                 ],
-                        "note":  "Constant-field affine kernel: a bilinear flat connection has exactly zero torsion and identity parallel transport, hence satisfies every nonnegative observer tolerance; approximate lower-index symmetry yields the finite torsion bound. Global chart patching, manifold parallel transport, and observer computability remain outside this kernel."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_existence_of_symbolic_ident",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4A.stability_lower_bound"
-                                 ],
-                        "note":  "Only the threshold consequence of the stated inequality (stability bound strictly above a critical error threshold) is modeled; the existence quantifier over observation windows and the membrane/stability apparatus are not."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_recursive_identity_encod",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4A.RecursiveEncoding",
-                                     "Book4A.RecursiveEncoding.ofChainedApprox",
-                                     "Book4A.recursive_encoding_partial_sum_le_total"
-                                 ],
-                        "note":  "The encoding hierarchy is modeled as a sequence in a symbolic metric space whose successive distances are bounded by a summable distortion budget. Concrete membrane-valued encoding maps remain abstracted to their metric images."
-                    },
-                    {
-                        "atlas_id":  "lemma:bk4_convergence_of_recursive_enco",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4A.recursive_encoding_partial_sum_le_total",
-                                     "Book4A.RecursiveEncoding.cauchySeq",
-                                     "Book4A.RecursiveEncoding.exists_limit_with_tail_bound",
-                                     "Book4A.RecursiveEncoding.exists_fixed_limit_with_tail_bound",
-                                     "Book4A.chainedApprox_yields_recursiveEncoding_limit"
-                                 ],
-                        "note":  "Summable successive distortion makes the recursive encoding Cauchy. Completeness supplies an actual limiting representation E_i^(infinity), with distance from level n bounded by the remaining tail sum. If each level is obtained by a continuous refinement R from the previous level, uniqueness of limits proves R(E_i^(infinity)) = E_i^(infinity)."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_identity_operators",
-                        "coverage":  "partial",
-                        "lean":  [
-                                     "Book4A.operator_noncommutativity_witness"
-                                 ],
-                        "note":  "Only an abstract noncommutativity witness is modeled, not the four named operators (persistence, reflection, integration, differentiation) themselves."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_operator_algebra_of_identit",
-                        "coverage":  "partial",
-                        "lean":  [
-                                     "Book4A.operator_noncommutativity_witness"
-                                 ],
-                        "note":  "Noncommutativity is an existence claim, not a universal one: witnessed on Bool by two concrete functions whose compositions differ in the two orders. The specific P, R, J, D operators and the near-commutation clause are not modeled."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_self_reference_operator",
-                        "coverage":  "definition",
-                        "lean":  [
-                                     "Book4A.selfReferenceIterate_succ"
-                                 ],
-                        "note":  "S_1 = R, S_n = R o S_(n-1) modeled literally as Function.iterate; selfReferenceIterate_succ certifies the recursive step."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_fixed_points_of_self_refere",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4A.selfReference_fixed_point",
-                                     "Book4A.ContractionRefinement.selfReference_dist_ttprLimit_le",
-                                     "Book4A.ContractionRefinement.selfReference_fixed_iff_eq_ttprLimit",
-                                     "Book4A.ContractionRefinement.tendsto_selfReferenceIterate"
-                                 ],
-                        "note":  "A fixed point of R remains fixed under every S_n. Under the explicit nonempty complete-metric contraction specialization, the TTPR identity is the unique fixed point, every recursive self-reference sequence converges to it, and its distance is bounded by kappa^n times the initial distortion."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_formation_differentiation_boundaries",
-                        "coverage":  "proved-kernel",
-                        "lean":  [
-                                     "Book4A.boundary_forms_dichotomy"
-                                 ],
-                        "note":  "The scalar threshold comparison (curvature divergence vs. critical threshold) as an exhaustive dichotomy. The divergence operator and submanifold structure are not modeled."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_symbolic_curvature",
-                        "coverage":  "definition",
-                        "lean":  [
-                                     "Book4A.kappa_nonneg",
-                                     "Book4A.kappa_scale",
-                                     "Book4A.kappa_reflexive_vanishing",
-                                     "Book4A.kappa_observer_dependent"
-                                 ],
-                        "note":  "Curvature modeled concretely as kappa K R lam s := K * (R lam s - s)^2, honestly degree-two in the symbolic argument per the definition\u0027s own stipulation. The second-order observer derivation delta_O^2 is not modeled, only its residual."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_symbolic_curvature_properties",
-                        "coverage":  "proved-kernel",
-                        "lean":  [
-                                     "Book4A.kappa_nonneg",
-                                     "Book4A.kappa_scale",
-                                     "Book4A.kappa_reflexive_vanishing",
-                                     "Book4A.kappa_observer_dependent"
-                                 ],
-                        "note":  "All four clauses reached: non-negativity, scale invariance by alpha^2 (given linear action of the reflexive operator), reflexive vanishing, and observer dependence as an explicit existence witness (the clause is stated \u0027in general\u0027, not as a universal inequality)."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_symbolic_transition_rate",
-                        "coverage":  "proved-kernel",
-                        "lean":  [
-                                     "Book4A.transitionRate_pos"
-                                 ],
-                        "note":  "Only strict positivity of the Arrhenius form (given a positive prefactor) is modeled; the free-energy-barrier interpretation is not."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_emergence_through_timescale_separation",
-                        "coverage":  "proved-kernel",
-                        "lean":  [
-                                     "Book4A.timescaleSeparation_micro_lt_observation"
-                                 ],
-                        "note":  "The three-way strict inequality kept as a structure with transitivity as its consequence."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_symbolic_auto_encoder",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4A.SymbolicAutoEncoder",
-                                     "Book4A.SymbolicAutoEncoder.reconstructionDistance",
-                                     "Book4A.autoEncoder_finite_sum_le",
-                                     "Book4A.SymbolicAutoEncoder.exact_reconstruction_of_eps_eq_zero",
-                                     "Book4A.SymbolicAutoEncoder.encode_injective_of_eps_eq_zero"
-                                 ],
-                        "note":  "Actual encoder and decoder maps are modeled with a uniform metric reconstruction bound. The scalar summary retains the finite-sample total-error theorem; in a genuine metric space, zero error budget forces exact decoding and injectivity of the encoder."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_auto_encoding_and_identity",
-                        "coverage":  "proved-kernel",
-                        "lean":  [
-                                     "Book4A.autoEncoderPattern_pos",
-                                     "Book4A.SymbolicAutoEncoder.identityPattern",
-                                     "Book4A.SymbolicAutoEncoder.identityPattern_eq_one_iff",
-                                     "Book4A.SymbolicAutoEncoder.exact_reconstruction_of_eps_eq_zero",
-                                     "Book4A.SymbolicAutoEncoder.encode_injective_of_eps_eq_zero"
-                                 ],
-                        "note":  "The metric identity kernel is complete: the exponential pattern is always positive and, at nonzero sensitivity, has maximal weight one exactly when decoding reconstructs the identity. A zero reconstruction budget yields exact reconstruction and prevents distinct identities from sharing a code."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_imaginary_symbolic_distance",
-                        "coverage":  "definition",
-                        "lean":  [
-                                     "Book4A.complexSymbolicDistance_re",
-                                     "Book4A.complexSymbolicDistance_im",
-                                     "Book4A.complexSymbolicDistance_re_le_abs"
-                                 ],
-                        "note":  "The complex pair D_O^C = d_Re + i*d_Im modeled directly as a complex number, with its real/imaginary projections and the standard |Re z| \u003c= norm z bound. The Hermitian bundle and parallel transport it is derived from are not modeled."
-                    },
-                    {
-                        "atlas_id":  "proposition:bk4_imaginative_continuity_principle",
-                        "coverage":  "proved-kernel",
-                        "lean":  [
-                                     "Book4A.reintegrableIdentity_iff",
-                                     "Book4A.ReintegrableIdentity.mono_thresholds",
-                                     "Book4A.not_reintegrableIdentity_iff",
-                                     "Book4A.uncanny_recognition_countermodel"
-                                 ],
-                        "note":  "The real/imaginary threshold kernel is complete: reintegration is exactly the conjunction of the two strict bounds, persists under enlarged observer tolerances, and fails exactly when either threshold is breached. The uncanny-recognition witness shows the imaginary failure mode is nonvacuous even when the real mismatch is resolved."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_event_horizon_wheel",
-                        "coverage":  "definition",
-                        "lean":  [
-                                     "Book4A.quadrant_exhaustive",
-                                     "Book4A.quadrants_disjoint"
-                                 ],
-                        "note":  "The four open modes (cut by the sign pair of Re/Im) modeled directly as the four open sign-quadrants of R x R."
-                    },
-                    {
-                        "atlas_id":  "proposition:bk4_wheel_refines_signature",
-                        "coverage":  "proved-kernel",
-                        "lean":  [
-                                     "Book4A.quadrant_exhaustive",
-                                     "Book4A.quadrants_disjoint"
-                                 ],
-                        "note":  "Exhaustiveness and mutual exclusivity of the four quadrant classes, the honest kernel of \u0027the fourfold partition is the image ... under sign-extraction.\u0027"
-                    },
-                    {
-                        "atlas_id":  "proposition:bk4_spiral_transition",
-                        "coverage":  "proved-kernel",
-                        "lean":  [
-                                     "Book4A.spiralMagnitude_recurrence",
-                                     "Book4A.spiralPhase_recurrence"
-                                 ],
-                        "note":  "The per-step magnitude and phase recurrences for the orbit r_n, theta_n. The identification with an actual complex power mu^n and the \u0027adjacent iff alpha within one quadrant\u0027 clause are not modeled."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_golden_event_horizon_spiral",
-                        "coverage":  "proved-kernel",
-                        "lean":  [
-                                     "Book4A.goldenRatio_sq",
-                                     "Book4A.goldenRatio_pos",
-                                     "Book4A.goldenSpiral_recurrence",
-                                     "Book4A.goldenSpiral_ratio_eq",
-                                     "Book4A.goldenSpiral_ratio_tendsto"
-                                 ],
-                        "note":  "The algebraic/growth kernel is complete: phi^2=phi+1 forces the balanced Fibonacci-type recurrence on phi^n*r0; phi is positive; and for nonzero r0 every consecutive-radius ratio is exactly phi, hence tends to phi. Polar-manifold interpretation and quadrant terminology remain explanatory rather than additional formal claims."
-                    },
-                    {
-                        "atlas_id":  "axiom:bk4_refinement_contraction",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4A.contractionRefinement_iterate"
-                                 ],
-                        "note":  "The Lipschitz contraction law kept as a structure field; the genuine consequence proved is the finite n-step contraction bound dist(R^[n] s, R^[n] s\u0027) \u003c= kappa^n * dist s s\u0027, by induction."
-                    },
-                    {
-                        "atlas_id":  "proposition:bk4_ttpr_convergence",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4A.contractionRefinement_iterate",
-                                     "Book4A.ContractionRefinement.ttprLimit_fixed",
-                                     "Book4A.ContractionRefinement.fixed_eq_ttprLimit",
-                                     "Book4A.ContractionRefinement.tendsto_iterate_ttprLimit",
-                                     "Book4D.CertifiedTTPR.limit_fixed",
-                                     "Book4D.CertifiedTTPR.fixed_eq_limit",
-                                     "Book4D.CertifiedTTPR.tendsto_iterate_limit",
-                                     "Book4D.CertifiedTTPR.iterate_dist_limit_le"
-                                 ],
-                        "note":  "Banach convergence is now lifted into an operational CertifiedTTPR: the same map carries pointwise fuzzy derivatives and perturbation budgets while its contraction certificate yields a unique fixed identity, global convergence, and a geometric distance bound. Completeness and nonemptiness remain explicit."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_drift_reflection_imbalance",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4A.imbalanced_drift_exceeds_reflect"
-                                 ],
-                        "note":  "Only the pointwise threshold consequence is modeled (drift-imbalance with theta\u003e1 forces drift to strictly exceed reflection outright); the iff-characterization of fragmentation and the probability-space apparatus it is embedded in are not."
-                    },
-                    {
-                        "atlas_id":  "corollary:bk4_chromatic_transference_of_wheel",
-                        "coverage":  "proved-kernel",
-                        "lean":  [
-                                     "Book4A.adjacent_rotate",
-                                     "Book4A.opposite_involutive",
-                                     "Book4A.opposite_add",
-                                     "Book4A.swapPerm_breaks_adjacency"
-                                 ],
-                        "note":  "Flagship cyclic-structure anchor: the wheel modeled concretely as ZMod 12, with rotation genuinely preserving adjacency and commuting with diametric opposition (an involution), plus an explicit countermodel that a non-rotation bijection can break adjacency -- the honest content of \u0027the wheel is preserved ... not [by] any one carrier\u0027 holding specifically for structured (rotation) transferences."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_identity_resolution",
-                        "coverage":  "proved-kernel",
-                        "lean":  [
-                                     "Book4C.identityResolution_gt_one_iff"
-                                 ],
-                        "note":  "the ratio R_n = I(...)/I(...) clearing 1 is exactly numerator clearing denominator; mutual information itself is not modeled, only the ratio algebra it feeds."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_recursive_identity_enhancem",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4C.identityResolution_threshold_persists",
-                                     "Book4C.identityResolution_gt_one_iff"
-                                 ],
-                        "note":  "monotone persistence of R_n\u003e1 past a critical depth n_c, given monotonicity as a hypothesis; the mutual-information characterization of *why* R is monotone (additional contextual information at each encoding level) is not derived."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_sr_initialization_map",
-                        "coverage":  "partial",
-                        "lean":  [
-                                     "Book4C.convexCombination_mem_Icc"
-                                 ],
-                        "note":  "I_0, M_0 as w-weighted readings, discretized to a finite weighted sum; the observer-kernel convolution and gradient-norm construction are not modeled."
-                    },
-                    {
-                        "atlas_id":  "proposition:bk4_bounded_sr_initial_state",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4C.convexCombination_mem_Icc"
-                                 ],
-                        "note":  "the [0,1]-boundedness claim reduced to its honest convex-combination content, given [0,1]-valued readings and a normalized weight simplex as hypotheses; the epsilon_O-kernel-norm clause is dropped."
-                    },
-                    {
-                        "atlas_id":  "lemma:bk4_srmf_constrained_action_norm",
-                        "coverage":  "proved-kernel",
-                        "lean":  [
-                                     "Book4C.srmfActionNorm_bound"
-                                 ],
-                        "note":  "abstract normed-space triangle/homogeneity bound on a ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ x + b ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ y + c ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ z given each generator\u0027s norm is budget-bounded by B; the Lie-algebra exponential map Lambda_O itself is not modeled, only its stated linear consequence."
-                    },
-                    {
-                        "atlas_id":  "proposition:bk4_imagination_bridges_wheel",
-                        "coverage":  "partial",
-                        "lean":  [
-                                     "Book4C.reintegrable_of_smaller_gap",
-                                     "Book4D.EmergenceOperatorFamily.canonicalOrder_recognized",
-                                     "Book4D.EmergenceOperatorFamily.swapped_middle_executes",
-                                     "Book4D.EmergenceOperatorFamily.swapped_middle_unrecognized",
-                                     "Book4D.EmergenceOperatorFamily.identityFamily_not_emergent",
-                                     "Book4D.CertifiedTTDC.decision_eq_stage_iff",
-                                     "Book4D.CertifiedTTDC.decision_eq_abstain_iff",
-                                     "Book4D.CertifiedTTDC.execute_of_contract",
-                                     "Book4D.CertifiedTTDC.execute_of_not_contract",
-                                     "Book4D.CertifiedTTDC.execute_satisfies_postcondition",
-                                     "Book4D.CertifiedTTDC.stage_ne_abstain",
-                                     "Book4D.CertifiedTTDC.install_ttdc",
-                                     "Book4D.TTDCToTTIEImagination.staged_output_mem_initial",
-                                     "Book4D.TTDCToTTIEImagination.staged_then_ttie_iterate_mem_envelope",
-                                     "Book4D.TTDCToTTIEImagination.staged_then_ttie_iterate_mem_accessibleLimit",
-                                     "Book4D.TTIEToTTCSImagination.selected_samples_accessible",
-                                     "Book4D.TTIEToTTCSImagination.exists_accessible_sample",
-                                     "Book4D.TTIEToTTCSImagination.expanded_then_sampled_mem_Icc",
-                                     "Book4D.TTCSToTTPRImagination.refinement_iterate_mem_Icc",
-                                     "Book4D.TTCSToTTPRImagination.tendsto_refinement_from_sample",
-                                     "Book4D.TTCSToTTPRImagination.limit_mem_Icc",
-                                     "Book4D.TTPRToTTDCImagination.returnState_eq_limit",
-                                     "Book4D.TTPRToTTDCImagination.stage_or_abstain",
-                                     "Book4D.TTPRToTTDCImagination.abstaining_return_is_fixed",
-                                     "Book4D.ImaginationHorn.staged_sample_accessible",
-                                     "Book4D.ImaginationHorn.one_pass_refinement_mem_Icc",
-                                     "Book4D.ImaginationHorn.one_pass_tendsto_limit",
-                                     "Book4ImaginationGuard.phaseBudget_append",
-                                     "Book4ImaginationGuard.effectiveRate_lt_one_iff_phase_penalty_below_margin",
-                                     "Book4ImaginationGuard.eleven_percent_phase_ends_near_boundary_contraction",
-                                     "Book4ImaginationGuard.projection_equality_can_hide_unsafe_phase"
-                                 ],
-                        "note":  "The reintegrability threshold remains modeled. Phase programs execute in arbitrary orders and recognition remains separate. All four directional scalar handoffs are now explicit. TTDC stages only under its contract; TTIE accepts that postcondition and expands it; TTCS selects nonempty finite evidence traced to the accessible region; TTPR preserves the sampling corridor and converges to its unique identity; and that exact identity returns to a fresh TTDC stage-or-abstain decision. ImaginationHorn bundles these obligations for one traced pass only. It does not infer reverse bridges, indefinite sustainability, or nontrivial emergence. A swapped order remains executable but unrecognized, and a canonical identity loop remains non-emergent. Phase-aware reintegration now retains the complete traversal witness, budgets absolute intermediate phase exposure, connects that exposure to effective contraction margin, and rejects observable-equal projections whose latent traversal has lost strict contraction."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_symbolic_identity_continuit",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4C.lipschitzPath_uniform"
-                                 ],
-                        "note":  "uniform continuity from a bounded-velocity (Lipschitz) path, with an explicit delta witness in terms of the Lipschitz constant; bounded free energy/drift variance is discretized to the single Lipschitz bound."
-                    },
-                    {
-                        "atlas_id":  "lemma:bk4_ttie_expansion_rate",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4C.ttieExpansionBound_le_cs",
-                                     "Book4D.CertifiedTTIE.step_dist_le_coherenceSpeed"
-                                 ],
-                        "note":  "given the stated rate bound as a hypothesis, it is shown to never exceed c_s itself; the sup-based definition of Delta_max(epsilon) and the C1-C3 constraints it is derived from are not modeled."
-                    },
-                    {
-                        "atlas_id":  "corollary:bk4_symbolic_lightcone",
-                        "coverage":  "partial",
-                        "lean":  [
-                                     "Book4C.coherenceCone_mono",
-                                     "Book4D.CertifiedTTIE.iterate_mem_envelope",
-                                     "Book4D.CertifiedTTIE.iterate_mem_accessibleLimit"
-                                 ],
-                        "note":  "the coherence-cone\u0027s admissible-distance radius is monotone in elapsed time for cs \u003e= 0; the full causal-consistency argument for bounded observers is not modeled."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_test_time_integrative_expansion",
-                        "coverage":  "partial",
-                        "lean":  [
-                                     "Book4C.ttieMetric_exists_of_glued",
-                                     "Book4C.ttieMetric_presupposition_fails_on_dual_horizon",
-                                     "Book4D.CertifiedTTIE.iterate_mem_envelope_of_mem",
-                                     "Book4D.CertifiedTTIE.iterate_mem_envelope",
-                                     "Book4D.CertifiedTTIE.exists_newly_accessible",
-                                     "Book4D.CertifiedTTIE.accessibleLimit_least",
-                                     "Book4D.CertifiedTTIE.exists_envelope_ssubset_accessibleLimit"
-                                 ],
-                        "note":  "The metric presupposition remains discharged through chart gluing. CertifiedTTIE now supplies an operational fuzzy map, a nested accessible-state envelope, staged reachability of every iterate, genuine strict expansion, coherence-speed control, and the least union-limit of finite stages. Full manifold constraints C1-C3 remain outside the scalar kernel."
-                    },
-                    {
-                        "atlas_id":  "lemma:bk4_ttcs_stability",
-                        "coverage":  "partial",
-                        "lean":  [
-                                     "Book4C.ttcs_sample_average_le",
-                                     "Book4D.CertifiedTTCS.output_le_upper",
-                                     "Book4D.CertifiedTTCS.output_mem_Icc",
-                                     "Book4D.CertifiedTTCS.iterate_succ_mem_Icc",
-                                     "Book4D.CertifiedTTCS.output_eq_of_sample_constant",
-                                     "Book4D.CertifiedTTCS.output_reindex",
-                                     "Book4D.CertifiedTTCS.alternative_output_dist_le"
-                                 ],
-                        "note":  "discrete finite-sample analogue of the expected-curvature bound: if every sample is at most M, the average is at most M. The exponentially-weighted distribution tilde-p and Delta_max(epsilon) are not modeled."
-                    },
-                    {
-                        "atlas_id":  "corollary:bk4_coherence_preservation",
-                        "coverage":  "partial",
-                        "lean":  [
-                                     "Book4C.ttcs_sample_average_ge",
-                                     "Book4D.CertifiedTTCS.lower_le_output",
-                                     "Book4D.CertifiedTTCS.output_mem_Icc",
-                                     "Book4D.CertifiedTTCS.iterate_succ_mem_Icc",
-                                     "Book4D.CertifiedTTCS.output_eq_of_sample_constant",
-                                     "Book4D.CertifiedTTCS.output_reindex",
-                                     "Book4D.CertifiedTTCS.alternative_output_dist_le"
-                                 ],
-                        "note":  "A CertifiedTTCS derives its coherence floor from pointwise sample bounds and proves every positive iterate remains in the closed coherence corridor. The N -\u003e infinity limit and weak-* convergence remain open."
-                    },
-                    {
-                        "atlas_id":  "proposition:bk4_neighborhood_completeness",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4C.neighborhoodCompleteness"
-                                 ],
-                        "note":  "a closed subset of a complete metric space is complete; the coherence/drift neighborhood\u0027s closedness is kept as a named hypothesis rather than derived from the coherence and drift-bound constraints, which are not modeled."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_symbolic_work_functional",
-                        "coverage":  "definition",
-                        "lean":  [
-                                     "Book4C.work2",
-                                     "Book4C.work3"
-                                 ],
-                        "note":  "discretized symbolic work along 2- and 3-point refinement paths; the free-energy gradient field and continuous line integral are not modeled."
-                    },
-                    {
-                        "atlas_id":  "proposition:bk4_symbolic_work_path_dependence",
-                        "coverage":  "proved-kernel",
-                        "lean":  [
-                                     "Book4C.symbolicWork_path_dependent_example",
-                                     "Book4C.symbolicWork_path_independent_of_constant"
-                                 ],
-                        "note":  "an explicit numeric countermodel shows discretization-dependence for a non-constant force (work3 id 0 1 2 != work2 id 0 2), paired with the constant-force case where the two discretizations DO agree -- the honest boundary the source\u0027s \u0027in general\u0027 qualifier hides."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_fragmentation_measure",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4C.FragmentationMeasure",
-                                     "Book4C.fragMeasure",
-                                     "Book4C.fragMeasure_mem_Icc",
-                                     "Book4C.fragMeasure_eq_zero_iff"
-                                 ],
-                        "note":  "mutual information I and entropy H kept as named hypotheses (0 \u003c= I \u003c= H, H \u003e 0, the data-processing content of \u0027optimal partition\u0027); the argmax-over-partitions construction itself is not modeled."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_symbolic_identity_carrie",
-                        "coverage":  "partial",
-                        "lean":  [
-                                     "Book4C.symbolicIdentityCarrier_component_le_one"
-                                 ],
-                        "note":  "the normalization condition integral of Psi_i = 1, discretized to a finite sum, forces every component reading into [0,1]; the stability functional Upsilon_i and temporal tracking relation T_{Delta t} are not modeled."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_reflexive_operator",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4C.ReflexiveOperatorFamily",
-                                     "Book4C.reflexiveOperator_tendsto_self"
-                                 ],
-                        "note":  "only the Approximation Property\u0027s O(lambda) displacement budget is modeled, yielding a genuine squeeze-theorem convergence R_lambda(s) -\u003e s as lambda -\u003e 0; Coherence Preservation and Temporal Consistency clauses are not modeled."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_fuzzy_symbolic_substitution",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4D.fuzzySubstitutionBound_eps_pos",
-                                     "Book4D.fuzzySubstitutionBound_compose"
-                                 ],
-                        "note":  "The observer-differenced displacement bound below epsilon_O(x) is the diff\u003ceps field of FuzzySubstitutionBound; only the scalar bound is modeled, not the map u or the tangent-space structure."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_tilda_substitution",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4D.fuzzySubstitutionBound_eps_pos",
-                                     "Book4D.fuzzySubstitutionBound_compose"
-                                 ],
-                        "note":  "Same FuzzySubstitutionBound scalar law, instantiated at the tilda-substitution\u0027s own N_O-fold observer bound."
-                    },
-                    {
-                        "atlas_id":  "corollary:bk4_validity_of_tilda_substit",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4D.fuzzySubstitutionBound_eps_pos",
-                                     "Book4D.fuzzySubstitutionBound_compose"
-                                 ],
-                        "note":  "The commutator norm bound is the same diff\u003ceps scalar shape; fuzzySubstitutionBound_compose gives the honest composition consequence (consistency up to the sum of thresholds)."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_observer_differentiable_",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4D.identity_odifferentiableAt",
-                                     "Book4D.const_odifferentiableAt",
-                                     "Book4D.odifferentiableAt_mono_eps",
-                                     "Book4D.odifferentiableAt_iff_ratio_form"
-                                 ],
-                        "note":  "ODifferentiableAt is the linear-bound reading, specialized to Real -\u003e Real and a single scalar tangent direction (T_p M not modeled)."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_observer_valid_different",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4D.odifferentiableAt_iff_ratio_form",
-                                     "Book4D.odifferentiableAt_mono_eps"
-                                 ],
-                        "note":  "The ratio/limit phrasing, proved equivalent to ODifferentiableAt\u0027s linear-bound phrasing."
-                    },
-                    {
-                        "atlas_id":  "lemma:bk4_convergence_of_symbolic_drift",
-                        "coverage":  "partial",
-                        "lean":  [
-                                     "Book4D.symbolicDrift_geometric_contraction_tendsto_zero"
-                                 ],
-                        "note":  "Transfinite/ordinal indexing dropped; kept the honest countable kernel -- a nonnegative sequence contracting geometrically at a fixed rate r\u003c1 tends to 0, via tendsto_pow_atTop_nhds_zero_of_abs_lt_one and squeeze_zero."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_observer_metric",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4D.observerMetric_self_nonneg",
-                                     "Book4D.observerMetric_self_eq_zero_iff",
-                                     "Book4D.observerMetric_symm",
-                                     "Book4D.rescaleKernel",
-                                     "Book4D.observerMetric_rescale_invariant"
-                                 ],
-                        "note":  "Honest 1-dimensional kernel: g_O(v,w) is K(v)*K(w). Coordinate rescaling x -\u003e a*x acts by the pullback kernel K_a(x)=K(x/a), making the pairing exactly invariant on correspondingly rescaled vectors for nonzero a."
-                    },
-                    {
-                        "atlas_id":  "lemma:bk4_observer_metric_properties",
-                        "coverage":  "proved-kernel",
-                        "lean":  [
-                                     "Book4D.observerMetric_self_nonneg",
-                                     "Book4D.observerMetric_self_eq_zero_iff",
-                                     "Book4D.observerMetric_symm",
-                                     "Book4D.rescaleKernel_mul",
-                                     "Book4D.observerMetric_rescale_invariant"
-                                 ],
-                        "note":  "All three clauses are proved in the one-dimensional kernel: nonnegativity with the exact zero case, symmetry, and scale invariance under the explicit pullback action of nonzero coordinate rescalings. Rescaling kernels compose multiplicatively."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_fuzzy_symbolic_geometry_theorem",
-                        "coverage":  "partial",
-                        "lean":  [
-                                     "Book4D.chart_glued_yields_single_geometry",
-                                     "Book4D.chart_geometry_exists_iff_glued"
-                                 ],
-                        "note":  "Only consequence 2 (\"admits an observer-relative differentiable structure\") is covered, re-read over FracturedAtlas.ChartComplex with Glued as the named hypothesis consuming the source\u0027s chart-convergence condition. Consequences 1 and 3 (perceiving a smooth manifold; reflection-induced stabilization fields) are not modeled."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_restated_fuzzy_symbolic_geometry_theorem",
-                        "coverage":  "partial",
-                        "lean":  [
-                                     "Book4D.chart_glued_yields_single_geometry",
-                                     "Book4D.chart_geometry_exists_iff_glued"
-                                 ],
-                        "note":  "Same as theorem:bk4_fuzzy_symbolic_geometry_theorem: only the \"admits a pulled-back C^k differentiable structure\" consequence is covered via ChartComplex + Glued."
-                    },
-                    {
-                        "atlas_id":  "corollary:bk4_smoothness_as_epistemic_phenomenon",
-                        "coverage":  "partial",
-                        "lean":  [
-                                     "Book4D.dual_horizon_no_single_smoothness",
-                                     "Book4D.odifferentiableAt_mono_eps"
-                                 ],
-                        "note":  "Clause 3 (different observers may perceive different structures on the same system) is the dual-horizon fracture instance; clauses 2 and 4 (dependence on resolution threshold; classical case as the eps-\u003e0 limit) are the honest monotonicity-in-eps content of odifferentiableAt_mono_eps. Clause 1 (smoothness as a resolution artifact, stated narratively) is not separately modeled."
-                    },
-                    {
-                        "atlas_id":  "corollary:bk4_fuzzy_multivariable_chain",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4D.jacobianChain_idealized_forces_zero_tensor"
-                                 ],
-                        "note":  "The stated Frobenius-norm bound is kept as the JacobianChainBound.tNorm_bound field; the theorem draws its honest consequence at the unbounded-observer idealization."
-                    },
-                    {
-                        "atlas_id":  "corollary:bk4_emergence_of_classical_ge",
-                        "coverage":  "partial",
-                        "lean":  [
-                                     "Book4D.jacobianChain_idealized_forces_zero_tensor"
-                                 ],
-                        "note":  "The categorical-functor limit claim itself is not modeled; the idealized-observer (epsO=0 forces the coupling tensor to vanish) is the same limiting-classical-geometry content in the one place it is a genuine inequality rather than narrative."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_fuzzy_exponential_rule",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4D.observer_correction_zero_iff_classical"
-                                 ],
-                        "note":  "Instance: observerValue := D_O(e^g(x)), classicalValue := e^g(x)*D_O(g(x)), correction := C_O(x). The stated equation is exactly the defining hypothesis heq; the theorem gives \"the symbolic curvature term vanishes iff the exponential rule is exactly classical.\""
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_fuzzy_logarithmic_rule",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4D.observer_correction_zero_iff_classical"
-                                 ],
-                        "note":  "Instance: observerValue := D_O(ln(g(x))), classicalValue := D_O(g(x))/g(x), correction := D_O(x) (the divergence term)."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_fuzzy_jacobian",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4D.observer_correction_zero_iff_classical"
-                                 ],
-                        "note":  "Instance with M a matrix additive group: observerValue := J_O(f)(p), classicalValue := the classical partials matrix, correction := C_O(p)."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_fuzzy_divergence",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4D.observer_correction_zero_iff_classical"
-                                 ],
-                        "note":  "Instance: observerValue := div_O V(p), classicalValue := sum of classical partials, correction := R_O(p) (the symbolic curvature scalar); correction=0 recovers exact conservation of meaning volume."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_symbolic_vector_field",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4D.observer_correction_zero_iff_classical",
-                                     "Book4Fz.controlledVectorFieldPerturbation_apply",
-                                     "Book4Fz.controlledVectorFieldPerturbation_zero",
-                                     "Book4Fz.controlledVectorFieldPerturbation_add",
-                                     "Book4Fz.controlledVectorFieldPerturbation_eq_self_of_direction_zero",
-                                     "Book4Fz.controlledVectorFieldPerturbation_eq_self_iff",
-                                     "Book4Fz.isObserverIntegralCurve_iff",
-                                     "Book4Fz.IsObserverIntegralCurve.controlledPerturbation_of_direction_zero",
-                                     "Book4Fz.observerIntegralCurve_perturbation_iff",
-                                     "Book4Fz.IsObserverFlow.isObserverIntegralCurve",
-                                     "Book4Fz.IsObserverFlow.zero_eq_id",
-                                     "Book4Fz.IsObserverFlow.add_eq_comp",
-                                     "Book4Fz.IsObserverFlow.controlledPerturbation_of_reachable_zero",
-                                     "Book4Fz.observerFlow_perturbation_iff"
-                                 ],
-                        "note":  "Instance: observerValue := V(f)(p), classicalValue := V(p)*grad_O f(p), correction := eps_O*\u003cV(p), E_O(p)\u003e (the additional uncertainty term)."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_fuzzy_vector_field",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4D.observer_correction_zero_iff_classical",
-                                     "Book4Fz.controlledVectorFieldPerturbation_apply",
-                                     "Book4Fz.controlledVectorFieldPerturbation_zero",
-                                     "Book4Fz.controlledVectorFieldPerturbation_add",
-                                     "Book4Fz.controlledVectorFieldPerturbation_eq_self_of_direction_zero",
-                                     "Book4Fz.controlledVectorFieldPerturbation_eq_self_iff",
-                                     "Book4Fz.isObserverIntegralCurve_iff",
-                                     "Book4Fz.IsObserverIntegralCurve.controlledPerturbation_of_direction_zero",
-                                     "Book4Fz.observerIntegralCurve_perturbation_iff",
-                                     "Book4Fz.IsObserverFlow.isObserverIntegralCurve",
-                                     "Book4Fz.IsObserverFlow.zero_eq_id",
-                                     "Book4Fz.IsObserverFlow.add_eq_comp",
-                                     "Book4Fz.IsObserverFlow.controlledPerturbation_of_reachable_zero",
-                                     "Book4Fz.observerFlow_perturbation_iff"
-                                 ],
-                        "note":  "The residual Lie-derivative law is retained, and the native manifold tangent-field layer now gives explicit amplitude-controlled perturbation with zero and additive control laws."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_fuzzy_integral_operator",
-                        "coverage":  "definition",
-                        "lean":  [
-                                     "Book4D.observer_correction_zero_iff_classical"
-                                 ],
-                        "note":  "Instance: observerValue := the fuzzy path integral, classicalValue := the K_O-convolved line integral, correction := E_acc(gamma,f) (Symbolic Memory Distortion)."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_symbolic_memory_distortion",
-                        "coverage":  "definition",
-                        "lean":  [
-                                     "Book4D.observer_correction_zero_iff_classical"
-                                 ],
-                        "note":  "E_acc is exactly the `correction` slot consumed by definition:bk4_fuzzy_integral_operator\u0027s and theorem:bk4_fuzzy_fundamental\u0027s instantiations; no independent equation of its own beyond that role."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_fuzzy_fundamental",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4D.observer_correction_zero_iff_classical"
-                                 ],
-                        "note":  "Both clauses instantiate the generic law: (1) observerValue := D_O(int_O f), classicalValue := f(x), correction := kappa_O(f, int f); (2) observerValue := int_O^gamma D_O f, classicalValue := f(gamma(b))-f(gamma(a)), correction := H_O(gamma,f)."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_symbolic_holonomy_term",
-                        "coverage":  "definition",
-                        "lean":  [
-                                     "Book4D.observer_correction_zero_iff_classical"
-                                 ],
-                        "note":  "H_O(gamma,f) is exactly the `correction` slot consumed by theorem:bk4_fuzzy_fundamental clause 2 and theorem:bk4_symbolic_stokes; no independent equation of its own."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_symbolic_covariant",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4D.observer_correction_zero_iff_classical"
-                                 ],
-                        "note":  "Instance: observerValue := D_O f, classicalValue := df, correction := i*A_O wedge f; M taken as the complex-valued (or form-valued) additive group, correction=0 is the trivial-connection case."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_symbolic_stokes",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4D.observer_correction_zero_iff_classical"
-                                 ],
-                        "note":  "Instance: observerValue := the boundary circulation integral, classicalValue := the curvature surface integral, correction := I_O(f,Omega) (the O-Interaction Residue); correction=0 is exactly the theorem\u0027s own \"collapses to classical Stokes\" clause."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_fuzzy_divergence_operator",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4D.observer_correction_zero_iff_classical"
-                                 ],
-                        "note":  "Same equation as theorem:bk4_fuzzy_divergence, restated as the operator\u0027s own definition."
-                    },
-                    {
-                        "atlas_id":  "definition:bk4_fuzzy_curl_operator",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4D.observer_correction_zero_iff_classical"
-                                 ],
-                        "note":  "Instance: observerValue := curl_O V, classicalValue := d(omega_V), correction := i*A_O wedge omega_V; M taken as the complex-valued additive group."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_fuzzy_divergence_theorem",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4D.observer_correction_zero_iff_classical"
-                                 ],
-                        "note":  "Instance: observerValue := the fuzzy boundary flux integral, classicalValue := the fuzzy volume-divergence integral, correction := H_O(Omega,V) (Boundary Holonomy Term)."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_fuzzy_curl_theorem",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4D.observer_correction_zero_iff_classical"
-                                 ],
-                        "note":  "Instance: observerValue := the fuzzy circulation integral, classicalValue := the fuzzy curl-flux surface integral, correction := T_O(S,V) (Torsion-Flux Anomaly)."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_fuzzy_helmholtz_decomposition",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4D.observer_correction_zero_iff_classical"
-                                 ],
-                        "note":  "Instance: observerValue := V, classicalValue := -grad_O Phi + curl_O A, correction := H_O (the Observer-Relative Harmonic Field)."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_paradoxical_arrow_of_time",
-                        "coverage":  "partial",
-                        "lean":  [
-                                     "ScholiumDyn.recordedCombinedStep_eq_iff",
-                                     "ScholiumDyn.base_cancellation_not_full_equilibrium",
-                                     "ScholiumDyn.no_full_equilibrium_of_trace_production",
-                                     "Book4D.CertifiedTTDC.recordedExecute_eq_iff",
-                                     "Book4D.CertifiedTTDC.abstention_base_inert_but_recorded",
-                                     "Book4Fz.IsObserverFlow.neg_comp_self",
-                                     "Book4Fz.IsObserverFlow.self_comp_neg",
-                                     "Book4Fz.IsObserverFlow.bijective",
-                                     "Book4Fz.crossObserverTimeConsistent_refl",
-                                     "Book4Fz.CrossObserverTimeConsistent.trans",
-                                     "Book4Fz.CrossObserverTimeConsistent.reparam_zero",
-                                     "Book4Fz.CrossObserverTimeConsistent.reparam_add"
-                                 ],
-                        "note":  "The observer-memory kernel is formalized on a reflective state carrying a visible coordinate and monotone trace count. Visible drift/reflection cancellation or TTDC abstention can leave the base coordinate fixed, while positive trace production proves the full observer-state changed. This establishes the discrete irreversibility mechanism; the thermodynamic entropy-production and continuous dual-horizon claims remain open."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_ttpr_symbolic_stability",
-                        "coverage":  "proved-kernel",
-                        "lean":  [
-                                     "Book4Ref.ttpr_fixed_point",
-                                     "Book4Ref.ttpr_fixed_point_in_envelope"
-                                 ],
-                        "note":  "TTPR fixed-point + envelope membership (all three clauses); the constraint-space manifold form stays open."
-                    },
-                    {
-                        "atlas_id":  "lemma:bk4_ttpr_interpretability_preserved",
-                        "coverage":  "proved-kernel",
-                        "lean":  [
-                                     "Book4Ref.ttpr_iterates_in_envelope"
-                                 ],
-                        "note":  "Every refinement iterate stays in a preserved envelope."
-                    },
-                    {
-                        "atlas_id":  "axiom:bk4_bounded_accessibility",
-                        "coverage":  "proved-kernel",
-                        "lean":  [
-                                     "Book4Ref.coherence_neighborhood_nonempty"
-                                 ],
-                        "note":  "The coherence neighborhood contains its coherent centre: bounded accessibility realized."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_test_time_differentiation_c",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4Ref.ttdc_iff_jump"
-                                 ],
-                        "note":  "TTDC iff the resolution jump reaches the threshold; the recursion-depth dynamics stay open."
-                    },
-                    {
-                        "atlas_id":  "lemma:bk4_scalar_from_identity_collapse",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4Ref.collapse_limit_unique"
-                                 ],
-                        "note":  "The collapsed observable O = lim R_n(I) is unique."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_curvature_continuity",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4Ref.curvature_inherits_continuity"
-                                 ],
-                        "note":  "Curvature inherits continuity from its generating operators; the differentiability/manifold clauses stay open."
-                    },
-                    {
-                        "atlas_id":  "axiom:bk4_membrane_coupling_response",
-                        "coverage":  "proved-kernel",
-                        "lean":  [
-                                     "Book4Ref.coupled_drift_additive"
-                                 ],
-                        "note":  "The coupled drift D + G(Omega) reduces to base drift iff the response vanishes."
-                    },
-                    {
-                        "atlas_id":  "lemma:bk4_observer_relative_smoothness",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4Fz.substituted_drift_continuous",
-                                     "Book4Fz.substituted_drift_differentiable",
-                                     "Book4Fz.hasFDerivAt_substituted_drift",
-                                     "Book4Fz.substituted_drift_contMDiff",
-                                     "Book4Fz.substituted_drift_mdifferentiable",
-                                     "Book4Fz.mfderiv_substituted_drift",
-                                     "Book4Fz.substituted_drift_conjugacy",
-                                     "Book4Fz.substituted_drift_iterate_conjugacy",
-                                     "Book4Fz.hasFDerivAt_observerTransition",
-                                     "Book4Fz.observerTransition_cocycle",
-                                     "Book4Fz.observerTangentTransition_cocycle",
-                                     "Book4Fz.observerTangentTransition_self",
-                                     "Book4Fz.localObserver_coordinate_mem_overlap",
-                                     "Book4Fz.localObserverCoordinateOverlap_iff",
-                                     "Book4Fz.localObserverTransition_mem_target",
-                                     "Book4Fz.hasFDerivAt_localObserverTransition",
-                                     "Book4Fz.localObserverTransition_cocycle",
-                                     "Book4Fz.localObserverTangentTransition_cocycle",
-                                     "Book4Fz.topologicalObserverOverlap_isOpen",
-                                     "Book4Fz.topologicalObserverCoordinateOverlap_isOpen",
-                                     "Book4Fz.TopologicalObserverTangentAtlas.iUnion_source_eq_univ",
-                                     "Book4Fz.TopologicalObserverTangentAtlas.exists_chart_mem_nhds",
-                                     "Book4Fz.TopologicalObserverTangentAtlas.coordinateOverlap_isOpen",
-                                     "Book4Fz.TopologicalObserverTangentAtlas.atlas_eq_range",
-                                     "Book4Fz.TopologicalObserverTangentAtlas.mem_chartAt_source",
-                                     "Book4Fz.TopologicalObserverTangentAtlas.isManifold_zero",
-                                     "Book4Fz.ContDiffObserverTangentAtlas.transition_contDiffOn",
-                                     "Book4Fz.ContDiffObserverTangentAtlas.isManifold",
-                                     "Book4Fz.ContDiffObserverTangentAtlas.isManifold_one",
-                                     "Book4Fz.fderiv_localObserverTransition",
-                                     "Book4Fz.C1ObserverTangentAtlas.localTransition_contDiffOn",
-                                     "Book4Fz.C1ObserverTangentAtlas.isManifold"
-                                 ],
-                        "note":  "Pushforward drift is continuous and Frechet differentiable with exact ordered Jacobian and finite-iterate conjugacy. Local observer charts now carry explicit source and target sets, exact overlap membership, target preservation, transition Jacobians, and coordinate/tangent cocycles on triple overlaps. Native topological chart domains and all pairwise coordinate overlaps are open, and a covering atlas supplies an open chart neighborhood at every point. The covering atlas is now assembled into mathlib\u0027s native ChartedSpace and certified as an IsManifold at C^0. A strengthened regular-atlas contract couples every transition Jacobian to overlap-wide C^n regularity. At C^1, chartwise regularity of each chart and inverse now derives pairwise transition regularity automatically, identifies the computed fderiv with tangent transport, and assembles the mathlib manifold without a duplicate transition obligation."
-                    },
-                    {
-                        "atlas_id":  "lemma:bk4_local_differentiability_substituted_drift",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4Fz.substituted_drift_continuous",
-                                     "Book4Fz.substituted_drift_differentiable",
-                                     "Book4Fz.hasFDerivAt_substituted_drift",
-                                     "Book4Fz.substituted_drift_contMDiff",
-                                     "Book4Fz.substituted_drift_mdifferentiable",
-                                     "Book4Fz.mfderiv_substituted_drift",
-                                     "Book4Fz.hasFDerivAt_observerTransition",
-                                     "Book4Fz.observerTangentTransition_cocycle",
-                                     "Book4Fz.localObserverCoordinateOverlap_iff",
-                                     "Book4Fz.hasFDerivAt_localObserverTransition",
-                                     "Book4Fz.localObserverTangentTransition_cocycle",
-                                     "Book4Fz.topologicalObserverCoordinateOverlap_isOpen",
-                                     "Book4Fz.TopologicalObserverTangentAtlas.iUnion_source_eq_univ",
-                                     "Book4Fz.TopologicalObserverTangentAtlas.exists_chart_mem_nhds"
-                                 ],
-                        "note":  "The substituted drift is Frechet differentiable on normed model spaces. Explicit local chart domains now support exact overlap membership and transition Jacobians, with consistent tangent transport across triple overlaps."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_compatibility_drift_reflective_operations",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4Fz.substituted_drift_reflection_continuous",
-                                     "Book4Fz.drift_reflection_continuous",
-                                     "Book4Fz.hasFDerivAt_drift_reflection",
-                                     "Book4Fz.hasFDerivAt_substituted_drift_reflection",
-                                     "Book4Fz.drift_reflection_contMDiff",
-                                     "Book4Fz.substituted_drift_reflection_contMDiff",
-                                     "Book4Fz.mfderiv_substituted_drift_reflection"
-                                 ],
-                        "note":  "The drift-reflection operation and its observer substitution are native C-n manifold maps; their exact ordered Frechet and manifold derivatives are kernel-derived."
-                    },
-                    {
-                        "atlas_id":  "axiom:bk4_observer_locality",
-                        "coverage":  "proved-kernel",
-                        "lean":  [
-                                     "Book4Fz.local_kernel_vanishes_offdiagonal"
-                                 ],
-                        "note":  "An observer kernel supported in B x B vanishes outside it."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_self_authorship_and_freedom",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4Fz.self_authorship_fixed_point"
-                                 ],
-                        "note":  "The constraint-refinement sequence converges to a unique fixed-point constraint map; the group-action structure stays open."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_categorical_equivalence_observer_relative_structures",
-                        "coverage":  "partial",
-                        "lean":  [
-                                     "Book4Fz.crossObserverTimeConsistent_refl",
-                                     "Book4Fz.CrossObserverTimeConsistent.trans",
-                                     "Book4Fz.CrossObserverTimeConsistent.symm"
-                                 ],
-                        "note":  "Compatible observer state-and-clock transports satisfy identity, composition, and inverse laws, giving a concrete groupoid kernel. The stated functor from symbolic systems, its essential surjectivity, and a Mathlib CategoryTheory natural transformation remain open."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_emergence_criterion",
-                        "coverage":  "partial",
-                        "lean":  [
-                                     "Book4Ref.emergenceMeasure_pos_iff",
-                                     "Book4Ref.finite_emergence_criterion"
-                                 ],
-                        "note":  "Finite Book-3-to-Book-4 kernel: an active membrane response changes a coupled drift, collective-information surplus is exactly positive emergence measure, and Book 3 symbiotic stability yields positive curvature. The continuous order-parameter ODE and genuine mutual-information semantics remain open."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_emergent_abstraction",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4Ref.abstractionSurplus_pos_iff",
-                                     "Book4Ref.emergent_abstraction_positive_measure"
-                                 ],
-                        "note":  "The exact finite hierarchy inequality is encoded as positive top-level abstraction surplus and, when the hierarchy cost accounts for individual membrane contributions, implies positive emergence measure. Genuine mutual-information semantics and the auto-encoder latent-space construction remain open."
-                    },
-                    {
-                        "atlas_id":  "lemma:bk4_properties_of_ttcs",
-                        "coverage":  "partial",
-                        "lean":  [
-                                     "Book4C.ttcsWeight_strictAnti",
-                                     "Book4C.ttcs_properties",
-                                     "Book4C.ttcs_sample_average_ge",
-                                     "Book4D.CertifiedTTCS.output_mem_Icc"
-                                 ],
-                        "note":  "Finite operational TTCS: positive inverse temperature strictly favors lower free energy; admissible samples explicitly retain the coherence threshold and observer leash; certified averages remain in the coherence corridor. Global non-ergodicity and entropy-process semantics remain open."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_ttcs_convergence",
-                        "coverage":  "partial",
-                        "lean":  [
-                                     "Book4C.ttcsEmpiricalObservableAverage_const",
-                                     "Book4C.ttcs_const_empirical_tendsto"
-                                 ],
-                        "note":  "Deterministic Dirac specialization: for every real observable, empirical evaluations of a sampler concentrated at one admissible state equal and converge to that state\u0027s Dirac evaluation. General stochastic sampling, probability measures on the symbolic manifold, and the weak-* law of large numbers remain open."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_symbolic_link_activation",
-                        "coverage":  "partial",
-                        "lean":  [
-                                     "Book4C.mem_ttcsActivatedCloud",
-                                     "Book4C.ttcs_link_activation",
-                                     "Book4C.ttcsWeight_strictAnti"
-                                 ],
-                        "note":  "Finite operational activation: an indexed TTCS family produces an explicit nonempty observer-relative cloud; all samples are coherent and observer-bounded, and lower free energy is strictly preferred. The narrative reference/presence interpretation and stochastic entropy balance remain open."
-                    },
-                    {
-                        "atlas_id":  "proposition:bk4_homological_extension",
-                        "coverage":  "partial",
-                        "lean":  [
-                                     "Book4Ref.FiniteHomologicalExtension.finrank_eq_add",
-                                     "Book4Ref.FiniteHomologicalExtension.finrank_le_old_add_bound"
-                                 ],
-                        "note":  "Finite algebraic kernel: a supplied linear equivalence realizes extended homology as old times new, yielding exact rank addition and the stated new-Betti total-rank bound. Construction from manifold expansion, homology functors, and derivation of the curvature-controlled bound remain open."
-                    },
-                    {
-                        "atlas_id":  "lemma:bk4_spectral_stability_homological_extensions",
-                        "coverage":  "partial",
-                        "lean":  [
-                                     "Book4Ref.exists_adjacent_rank_stabilization",
-                                     "Book4Ref.FiniteHomologicalExtension.finrank_le_old_add_bound"
-                                 ],
-                        "note":  "Finite-rank stabilization engine: a nonincreasing page-rank sequence bounded by beta-zero must have adjacent equal ranks by stage beta-zero, sharper than the stated beta-zero-plus-one bound. An actual spectral sequence, equality of pages rather than ranks, and the resulting filtration-length construction remain open."
-                    },
-                    {
-                        "atlas_id":  "theorem:bk4_topological_persistence_under_refinement",
-                        "coverage":  "partial",
-                        "lean":  [
-                                     "Book4Ref.essential_feature_preserved",
-                                     "Book4Ref.bottleneck_le_curvature_scaled"
-                                 ],
-                        "note":  "Quantitative scalar kernels for clauses 2-3: an epsilon bottleneck bound lifts to C*epsilon*(1+kappaMax), and any feature more than epsilon above the observer threshold remains essential after an epsilon perturbation. Persistence diagrams, their interleaving, and derivation of the base bottleneck estimate remain open."
-                    },
-                    {
-                        "atlas_id":  "corollary:bk4_homological_coherence_observer_bounds",
-                        "coverage":  "conditional",
-                        "lean":  [
-                                     "Book4Ref.homological_complexity_le_observer_capacity",
-                                     "Book4Ref.FiniteHomologicalExtension.finrank_le_old_add_bound"
-                                 ],
-                        "note":  "Finite aggregation kernel: degreewise realized homology ranks bounded by curvature-controlled allowances have total complexity within capacity whenever the allowance sum fits the observer capacity. Deriving those allowances from geometry and formalizing observer capacity semantically remain open."
-                    }
-                ]
+  "schema": "sketched.book4a-lean-map.v1",
+  "source": "Principia Symbolica Book 4 first half (modal transference, chromatic wheel, perception covenants)",
+  "boundary": "Mappings certify only the static/algebraic/finite kernel. Manifold, Hilbert-space, PDE, categorical, and asymptotic material is not certified; conditional and partial rows do not promote the full prose statement to a Lean theorem.",
+  "entries": [
+    {
+      "atlas_id": "proposition:bk4_holographic_emergence",
+      "coverage": "conditional",
+      "lean": [
+        "Book4Holographic.observerSurfaceArea_nonneg",
+        "Book4Holographic.observerSurfaceArea_mono",
+        "Book4Holographic.rtEntropy_area_law",
+        "Book4Holographic.rtEntropy_nonneg",
+        "Book4Holographic.rtEntropy_strictMono_area",
+        "Book4Holographic.reconstruction_deterministic",
+        "Book4Holographic.boundary_metric_alone_does_not_select_unique_bulk",
+        "Book4Holographic.reconstructedEntropy_nonneg",
+        "Book4Holographic.selectedSurface_minimizes_entropy",
+        "Book4Holographic.selectedSurface_unique_of_uniqueMinimizer",
+        "Book4Holographic.minimal_area_does_not_force_unique_surface"
+      ],
+      "note": "Rebuilt variational RT reconstruction with admissible anchored-surface fibers, selected area minimizers, nonnegative area, and positive Newton constant. Entropy minimality is proved. Uniqueness requires a separate witness; countermodels refute uniqueness from boundary metric or minimality alone."
+    },
+    {
+      "atlas_id": "lemma:bk4_statistical_mechanics",
+      "coverage": "proved",
+      "lean": [
+        "Book4StatisticalMechanics.thermalMetric_decomposition",
+        "Book4StatisticalMechanics.ensembleMetric_symmetric",
+        "Book4StatisticalMechanics.thermalMetric_symmetric",
+        "Book4StatisticalMechanics.thermalMetric_diagonal_nonneg",
+        "Book4StatisticalMechanics.entropy_regularity_alone_does_not_force_metric_decomposition",
+        "Book4StatisticalMechanics.coarseObserverMetric_symmetric",
+        "Book4StatisticalMechanics.metricQuadratic_ensembleMetric",
+        "Book4StatisticalMechanics.metricQuadratic_thermalMetric",
+        "Book4StatisticalMechanics.coarseObserverMetric_psd",
+        "Book4StatisticalMechanics.ensembleMetric_of_constant"
+      ],
+      "note": "Rebuilt normalized thermal coarse-graining: nonnegative weights sum to one; microscopic metrics and the entropy-response Hessian are symmetric PSD; beta is positive. Lean proves the complete quadratic-form decomposition and PSD of the constructed observer metric, plus preservation of a constant microscopic metric. Entropy regularity alone still cannot identify an independent observer metric with this constitutive closure."
+    },
+    {
+      "atlas_id": "theorem:bk4_quantum_measurement",
+      "coverage": "conditional",
+      "lean": [
+        "Book4QuantumMeasurement.jointExpectation_eq_sum_partialTrace",
+        "Book4QuantumMeasurement.jointExpectation_nonneg",
+        "Book4QuantumMeasurement.jointExpectation_pureObserver",
+        "Book4QuantumMeasurement.joint_state_does_not_reduce_to_arbitrary_observer",
+        "Book4QuantumMeasurement.trace_partialTraceEnvironment",
+        "Book4QuantumMeasurement.jointExpectation_local_eq_reduced",
+        "Book4QuantumMeasurement.trace_pureStateDensity_mul",
+        "Book4QuantumMeasurement.observerMetric_eq_reduced",
+        "Book4QuantumResolution.inducedMetric_symmetric",
+        "Book4QuantumResolution.inducedMetric_diagonal_nonneg",
+        "Book4QuantumResolution.inducedMetric_zero_of_response_zero",
+        "Book4QuantumResolution.inducedMetric_diagonal_pos_of_channel",
+        "Book4QuantumResolution.quantum_resolution_constructs_observer_metric",
+        "Book4QuantumResolution.reduced_state_does_not_determine_resolution_kernel"
+      ],
+      "note": "Rebuilt finite-dimensional quantum kernel: complex joint operators admit a genuine environmental partial trace retaining observer coherences. Local observables satisfy the exact joint/reduced expectation identity for correlated and mixed states. Pure-state bra-ket expectation is a proved specialization. An explicit certificate, rather than partial trace alone, bridges the reduced operator expectation to the observer-induced metric; the arbitrary-vector countermodel remains. Constructive quantum-resolution bridge: the reduced-state diagonal supplies normalized nonnegative channel weights, while an independent response kernel maps tangent directions into observer channels. Their weighted pullback constructs a symmetric positive-semidefinite observer metric and detects nonzero responses on positive-weight channels. A countermodel proves that the reduced state alone cannot identify the response kernel or metric."
+    },
+    {
+      "atlas_id": "corollary:bk4_emergence_of_meaning",
+      "coverage": "conditional",
+      "lean": [
+        "Book4Meaning.meaningValue_nonneg",
+        "Book4Meaning.meaningValue_pos_iff",
+        "Book4Meaning.exists_positive_meaning_iff",
+        "Book4Meaning.meaningValue_strict_preference_iff",
+        "Book4Meaning.freedomLifeTransition_does_not_force_nonconstant_energy",
+        "Book4Meaning.identityMeaning_nonneg_on_accessible",
+        "Book4Meaning.identityMeaning_pos_iff_on_accessible",
+        "Book4Meaning.identityMeaning_is_nontrivial",
+        "Book4Meaning.identityMeaning_ceiling_witness_has_zero_value",
+        "Book4Meaning.identityMeaning_strict_preference_iff",
+        "Book4Meaning.preferentialFlow_meaning_nondecreasing",
+        "Book4Meaning.transition_with_bridge_generates_positive_meaning",
+        "Book4Meaning.retained_distinction_does_not_force_action_distinction",
+        "Book4Meaning.value_map_does_not_determine_significance"
+      ],
+      "note": "Rebuilt identity-relative meaning kernel: accessible configurations carry an attained ceiling and a strict-below-ceiling witness, yielding a nonnegative, nonconstant U \u00d7 I \u2192 \u211d value map. A flow certificate separates descent from convergence and local minimality; an explicit bridge separates freedom/life from the energy domain. Countermodels separate energetic value, interpretive significance, retained distinction, and embodied action."
+    },
+    {
+      "atlas_id": "proposition:bk4_field_regularization",
+      "coverage": "conditional",
+      "lean": [
+        "Book4FieldRegularization.cutoffMode_eq_self",
+        "Book4FieldRegularization.cutoffMode_eq_zero",
+        "Book4FieldRegularization.cutoffMode_abs_le",
+        "Book4FieldRegularization.perturbativeInsertion_eq_zero_of_high_mode",
+        "Book4FieldRegularization.accessibleBand_card",
+        "Book4FieldRegularization.resolution_scale_alone_does_not_force_suppression",
+        "Book4FieldRegularization.regularizeField_passband",
+        "Book4FieldRegularization.regularizeField_stopband",
+        "Book4FieldRegularization.regularizeField_add",
+        "Book4FieldRegularization.regularizeField_smul",
+        "Book4FieldRegularization.regularizeField_idempotent",
+        "Book4FieldRegularization.regularized_support_bounded",
+        "Book4FieldRegularization.accessibleAssignment_card",
+        "Book4FieldRegularization.fixedOrderDiagram_zero",
+        "Book4FieldRegularization.fixed_orders_do_not_force_all_orders_control"
+      ],
+      "note": "A certified compact Fourier multiplier acts linearly and idempotently on the whole field, preserves its passband, kills its stopband, and bounds support. Each fixed-order diagram has exactly (cutoff+1)^order accessible momentum assignments. Unit finite coefficients give unbounded all-orders partial sums, so diagram-wise finiteness does not prove perturbative-series convergence; resolution scale alone also supplies no cutoff law."
+    },
+    {
+      "atlas_id": "corollary:bk4_information_curvature",
+      "coverage": "conditional",
+      "lean": [
+        "Book4InformationCurvature.fisherInformation_nonneg",
+        "Book4InformationCurvature.curvature_diagonal_zero",
+        "Book4InformationCurvature.unit_hessian_moment_cannot_be_riemann_diagonal",
+        "Book4InformationCurvature.unit_second_hessian_moment",
+        "Book4InformationCurvature.fisherMetric_symm",
+        "Book4InformationCurvature.fisherMetric_diagonal_nonneg",
+        "Book4InformationCurvature.riemannCurvature_swap",
+        "Book4InformationCurvature.riemannCurvature_diagonal_zero",
+        "Book4InformationCurvature.christoffel_eq_zero_of_dMetric_zero",
+        "Book4InformationCurvature.riemannCurvature_eq_zero_of_constant_jet",
+        "Book4InformationCurvature.unit_hessianMoment_diagonal",
+        "Book4InformationCurvature.hessianMoment_is_not_riemannCurvature"
+      ],
+      "note": "Finite-coordinate Fisher\u2013Levi-Civita realization: the Fisher score outer product is symmetric with nonnegative diagonal; an explicit metric two-jet constructs Christoffel symbols, their derivatives, and Riemann curvature with the required antisymmetry and diagonal vanishing. Constant metric jets are flat. The former Hessian-product expression is retained as a distinct Hessian-moment tensor, with a unit countermodel proving it is not generally Riemann curvature."
+    },
+    {
+      "atlas_id": "theorem:bk4_ml_metric_learning",
+      "coverage": "conditional",
+      "lean": [
+        "Book4MetricLearning.gradientStep_eq_self_iff",
+        "Book4MetricLearning.quadratic_gradient_step_decreases",
+        "Book4MetricLearning.differentiability_alone_does_not_guarantee_descent",
+        "Book4MetricLearning.positiveMetric_pos",
+        "Book4MetricLearning.metricLearningStep_strict_descent",
+        "Book4MetricLearning.learnedParameter_zero",
+        "Book4MetricLearning.learnedParameter_succ",
+        "Book4MetricLearning.learnedMetric_positive",
+        "Book4MetricLearning.learnedParameter_tendsto_target",
+        "Book4MetricLearning.target_identified_from_equal_readout",
+        "Book4MetricLearning.positiveMetric_injective",
+        "Book4MetricLearning.certified_metric_learning"
+      ],
+      "note": "Complete scalar realization: exponential log-parameterization preserves positive metric validity; the translated quadratic loss has strict one-step descent for 0<eta<1; the exact recursive trajectory converges geometrically to its supplied target; and an injective readout separately supplies identifiability. The eta=2 countermodel retains the boundary that differentiability alone proves none of descent, convergence, or learning."
+    },
+    {
+      "atlas_id": "theorem:bk4_observer_geometry_coevolution",
+      "coverage": "conditional",
+      "lean": [
+        "Book4ObserverGeometry.recursivelyStabilized_iff",
+        "Book4ObserverGeometry.exists_recursively_stabilized_system",
+        "Book4ObserverGeometry.driftingSystem_has_no_stabilized_state",
+        "Book4ObserverGeometry.jointEquilibrium_iff",
+        "Book4ObserverGeometry.equilibrium_constantTrajectory_solves",
+        "Book4ObserverGeometry.exists_picardLindelof_certificate_of_locallyLipschitz",
+        "Book4ObserverGeometry.locallyLipschitz_finiteDimensional_local_existence",
+        "Book4ObserverGeometry.picardLindelof_local_existence",
+        "Book4ObserverGeometry.picardLindelof_local_uniqueness",
+        "Book4ObserverGeometry.translatingVectorField_has_no_jointEquilibrium",
+        "Book4ObserverGeometry.CoupledAttractionCertificate.jointError_tendsto_zero"
+      ],
+      "note": "Mathlib Picard-Lindelof gives local existence and uniqueness for the locally Lipschitz finite-dimensional product field. Joint equilibrium yields a constant solution; translation is a countermodel to equilibrium from regularity alone. A separate coupled-attraction certificate now proves geometric joint error tends to zero, making the attraction clause a conditional derivation rather than an open or automatic consequence."
+    },
+    {
+      "atlas_id": "proposition:bk4_geodesic_failure",
+      "coverage": "conditional",
+      "lean": [
+        "Book4GeodesicFailure.JacobiCertificate.observer_diagnostic_certificate",
+        "Book4GeodesicFailure.derivative_agreement_does_not_force_jacobi_curvature"
+      ],
+      "note": "The repaired proposition is realized at its exact conditional strength by one common-fibre Jacobi certificate: its displayed convention fixes acceleration as negative curvature action, observer approximation gives the magnitude-sensitive squared-norm bound, and uniform magnitude bounds give 2 B epsilon. The countermodel proves approximation alone cannot manufacture the Jacobi premise."
+    },
+    {
+      "atlas_id": "proposition:bk4_fuzzy_connection",
+      "coverage": "conditional",
+      "lean": [
+        "Book4FuzzyConnection.flatConnection_torsion_zero",
+        "Book4FuzzyConnection.flatConnection_torsion_control",
+        "Book4FuzzyConnection.flat_parallel_transport_exact",
+        "Book4FuzzyConnection.torsion_control_of_approx_symmetric",
+        "Book4AssembledConnection.globalNablaAt_eq_of_local_eq",
+        "Book4AssembledConnection.certified_coefficient_transformation",
+        "Book4AssembledConnection.assembledTorsionAt_eq_zero_of_local_symmetric",
+        "Book4AssembledConnection.discreteParallelTransport_append",
+        "Book4AssembledConnection.ObserverFloorRegularity.coefficient_uses_observer_floor",
+        "Book4AssembledConnection.EffectiveParallelTransportCertificate.solves_observer_floor_transport",
+        "Book4AssembledConnection.EffectiveParallelTransportCertificate.eq_certified_trajectory",
+        "Book4AssembledConnection.EffectiveParallelTransportCertificate.observed_endpoint_error_tendsto_zero",
+        "Book4AssembledConnection.EffectiveParallelTransportCertificate.observed_endpoint_tendsto",
+        "Book4AssembledConnection.observer_floor_can_change_visible_path",
+        "Book4AssembledConnection.step_size_matters"
+      ],
+      "note": "Conditional assembled fuzzy-connection kernel: local coefficients glue with Hessian-aware overlap data and local symmetry transfers to global torsion-freeness. Analytic transport consumes an explicit observer-floor regularization plus separately supplied existence, uniqueness, admissibility, and effective-error evidence; observed endpoint convergence follows. Countermodels show neither finite Euler steps nor an unspecified floor yields observer-free smoothness."
+    },
+    {
+      "atlas_id": "theorem:bk4_existence_of_symbolic_ident",
+      "coverage": "conditional",
+      "lean": [
+        "Book4A.stability_lower_bound"
+      ],
+      "note": "Only the threshold consequence of the stated inequality (stability bound strictly above a critical error threshold) is modeled; the existence quantifier over observation windows and the membrane/stability apparatus are not."
+    },
+    {
+      "atlas_id": "definition:bk4_recursive_identity_encod",
+      "coverage": "conditional",
+      "lean": [
+        "Book4A.RecursiveEncoding",
+        "Book4A.RecursiveEncoding.ofChainedApprox",
+        "Book4A.recursive_encoding_partial_sum_le_total"
+      ],
+      "note": "The encoding hierarchy is modeled as a sequence in a symbolic metric space whose successive distances are bounded by a summable distortion budget. Concrete membrane-valued encoding maps remain abstracted to their metric images."
+    },
+    {
+      "atlas_id": "lemma:bk4_convergence_of_recursive_enco",
+      "coverage": "conditional",
+      "lean": [
+        "Book4A.recursive_encoding_partial_sum_le_total",
+        "Book4A.RecursiveEncoding.cauchySeq",
+        "Book4A.RecursiveEncoding.exists_limit_with_tail_bound",
+        "Book4A.RecursiveEncoding.exists_fixed_limit_with_tail_bound",
+        "Book4A.chainedApprox_yields_recursiveEncoding_limit"
+      ],
+      "note": "Summable successive distortion makes the recursive encoding Cauchy. Completeness supplies an actual limiting representation E_i^(infinity), with distance from level n bounded by the remaining tail sum. If each level is obtained by a continuous refinement R from the previous level, uniqueness of limits proves R(E_i^(infinity)) = E_i^(infinity)."
+    },
+    {
+      "atlas_id": "definition:bk4_identity_operators",
+      "coverage": "partial",
+      "lean": [
+        "Book4A.operator_noncommutativity_witness"
+      ],
+      "note": "Only an abstract noncommutativity witness is modeled, not the four named operators (persistence, reflection, integration, differentiation) themselves."
+    },
+    {
+      "atlas_id": "theorem:bk4_operator_algebra_of_identit",
+      "coverage": "partial",
+      "lean": [
+        "Book4A.operator_noncommutativity_witness"
+      ],
+      "note": "Noncommutativity is an existence claim, not a universal one: witnessed on Bool by two concrete functions whose compositions differ in the two orders. The specific P, R, J, D operators and the near-commutation clause are not modeled."
+    },
+    {
+      "atlas_id": "definition:bk4_self_reference_operator",
+      "coverage": "definition",
+      "lean": [
+        "Book4A.selfReferenceIterate_succ"
+      ],
+      "note": "S_1 = R, S_n = R o S_(n-1) modeled literally as Function.iterate; selfReferenceIterate_succ certifies the recursive step."
+    },
+    {
+      "atlas_id": "theorem:bk4_fixed_points_of_self_refere",
+      "coverage": "conditional",
+      "lean": [
+        "Book4A.selfReference_fixed_point",
+        "Book4A.ContractionRefinement.selfReference_dist_ttprLimit_le",
+        "Book4A.ContractionRefinement.selfReference_fixed_iff_eq_ttprLimit",
+        "Book4A.ContractionRefinement.tendsto_selfReferenceIterate"
+      ],
+      "note": "A fixed point of R remains fixed under every S_n. Under the explicit nonempty complete-metric contraction specialization, the TTPR identity is the unique fixed point, every recursive self-reference sequence converges to it, and its distance is bounded by kappa^n times the initial distortion."
+    },
+    {
+      "atlas_id": "theorem:bk4_formation_differentiation_boundaries",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book4A.boundary_forms_dichotomy"
+      ],
+      "note": "The scalar threshold comparison (curvature divergence vs. critical threshold) as an exhaustive dichotomy. The divergence operator and submanifold structure are not modeled."
+    },
+    {
+      "atlas_id": "definition:bk4_symbolic_curvature",
+      "coverage": "definition",
+      "lean": [
+        "Book4A.kappa_nonneg",
+        "Book4A.kappa_scale",
+        "Book4A.kappa_reflexive_vanishing",
+        "Book4A.kappa_observer_dependent"
+      ],
+      "note": "Curvature modeled concretely as kappa K R lam s := K * (R lam s - s)^2, honestly degree-two in the symbolic argument per the definition's own stipulation. The second-order observer derivation delta_O^2 is not modeled, only its residual."
+    },
+    {
+      "atlas_id": "theorem:bk4_symbolic_curvature_properties",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book4A.kappa_nonneg",
+        "Book4A.kappa_scale",
+        "Book4A.kappa_reflexive_vanishing",
+        "Book4A.kappa_observer_dependent"
+      ],
+      "note": "All four clauses reached: non-negativity, scale invariance by alpha^2 (given linear action of the reflexive operator), reflexive vanishing, and observer dependence as an explicit existence witness (the clause is stated 'in general', not as a universal inequality)."
+    },
+    {
+      "atlas_id": "definition:bk4_symbolic_transition_rate",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book4A.transitionRate_pos"
+      ],
+      "note": "Only strict positivity of the Arrhenius form (given a positive prefactor) is modeled; the free-energy-barrier interpretation is not."
+    },
+    {
+      "atlas_id": "theorem:bk4_emergence_through_timescale_separation",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book4A.timescaleSeparation_micro_lt_observation"
+      ],
+      "note": "The three-way strict inequality kept as a structure with transitivity as its consequence."
+    },
+    {
+      "atlas_id": "definition:bk4_symbolic_auto_encoder",
+      "coverage": "conditional",
+      "lean": [
+        "Book4A.SymbolicAutoEncoder",
+        "Book4A.SymbolicAutoEncoder.reconstructionDistance",
+        "Book4A.autoEncoder_finite_sum_le",
+        "Book4A.SymbolicAutoEncoder.exact_reconstruction_of_eps_eq_zero",
+        "Book4A.SymbolicAutoEncoder.encode_injective_of_eps_eq_zero"
+      ],
+      "note": "Actual encoder and decoder maps are modeled with a uniform metric reconstruction bound. The scalar summary retains the finite-sample total-error theorem; in a genuine metric space, zero error budget forces exact decoding and injectivity of the encoder."
+    },
+    {
+      "atlas_id": "theorem:bk4_auto_encoding_and_identity",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book4A.autoEncoderPattern_pos",
+        "Book4A.SymbolicAutoEncoder.identityPattern",
+        "Book4A.SymbolicAutoEncoder.identityPattern_eq_one_iff",
+        "Book4A.SymbolicAutoEncoder.exact_reconstruction_of_eps_eq_zero",
+        "Book4A.SymbolicAutoEncoder.encode_injective_of_eps_eq_zero"
+      ],
+      "note": "The metric identity kernel is complete: the exponential pattern is always positive and, at nonzero sensitivity, has maximal weight one exactly when decoding reconstructs the identity. A zero reconstruction budget yields exact reconstruction and prevents distinct identities from sharing a code."
+    },
+    {
+      "atlas_id": "definition:bk4_imaginary_symbolic_distance",
+      "coverage": "definition",
+      "lean": [
+        "Book4A.complexSymbolicDistance_re",
+        "Book4A.complexSymbolicDistance_im",
+        "Book4A.complexSymbolicDistance_re_le_abs"
+      ],
+      "note": "The complex pair D_O^C = d_Re + i*d_Im modeled directly as a complex number, with its real/imaginary projections and the standard |Re z| <= norm z bound. The Hermitian bundle and parallel transport it is derived from are not modeled."
+    },
+    {
+      "atlas_id": "proposition:bk4_imaginative_continuity_principle",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book4A.reintegrableIdentity_iff",
+        "Book4A.ReintegrableIdentity.mono_thresholds",
+        "Book4A.not_reintegrableIdentity_iff",
+        "Book4A.uncanny_recognition_countermodel"
+      ],
+      "note": "The real/imaginary threshold kernel is complete: reintegration is exactly the conjunction of the two strict bounds, persists under enlarged observer tolerances, and fails exactly when either threshold is breached. The uncanny-recognition witness shows the imaginary failure mode is nonvacuous even when the real mismatch is resolved."
+    },
+    {
+      "atlas_id": "definition:bk4_event_horizon_wheel",
+      "coverage": "definition",
+      "lean": [
+        "Book4A.quadrant_exhaustive",
+        "Book4A.quadrants_disjoint"
+      ],
+      "note": "The four open modes (cut by the sign pair of Re/Im) modeled directly as the four open sign-quadrants of R x R."
+    },
+    {
+      "atlas_id": "proposition:bk4_wheel_refines_signature",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book4A.quadrant_exhaustive",
+        "Book4A.quadrants_disjoint"
+      ],
+      "note": "Exhaustiveness and mutual exclusivity of the four quadrant classes, the honest kernel of 'the fourfold partition is the image ... under sign-extraction.'"
+    },
+    {
+      "atlas_id": "proposition:bk4_spiral_transition",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book4A.spiralMagnitude_recurrence",
+        "Book4A.spiralPhase_recurrence"
+      ],
+      "note": "The per-step magnitude and phase recurrences for the orbit r_n, theta_n. The identification with an actual complex power mu^n and the 'adjacent iff alpha within one quadrant' clause are not modeled."
+    },
+    {
+      "atlas_id": "theorem:bk4_golden_event_horizon_spiral",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book4A.goldenRatio_sq",
+        "Book4A.goldenRatio_pos",
+        "Book4A.goldenSpiral_recurrence",
+        "Book4A.goldenSpiral_ratio_eq",
+        "Book4A.goldenSpiral_ratio_tendsto"
+      ],
+      "note": "The algebraic/growth kernel is complete: phi^2=phi+1 forces the balanced Fibonacci-type recurrence on phi^n*r0; phi is positive; and for nonzero r0 every consecutive-radius ratio is exactly phi, hence tends to phi. Polar-manifold interpretation and quadrant terminology remain explanatory rather than additional formal claims."
+    },
+    {
+      "atlas_id": "axiom:bk4_refinement_contraction",
+      "coverage": "conditional",
+      "lean": [
+        "Book4A.contractionRefinement_iterate"
+      ],
+      "note": "The Lipschitz contraction law kept as a structure field; the genuine consequence proved is the finite n-step contraction bound dist(R^[n] s, R^[n] s') <= kappa^n * dist s s', by induction."
+    },
+    {
+      "atlas_id": "proposition:bk4_ttpr_convergence",
+      "coverage": "conditional",
+      "lean": [
+        "Book4A.contractionRefinement_iterate",
+        "Book4A.ContractionRefinement.ttprLimit_fixed",
+        "Book4A.ContractionRefinement.fixed_eq_ttprLimit",
+        "Book4A.ContractionRefinement.tendsto_iterate_ttprLimit",
+        "Book4D.CertifiedTTPR.limit_fixed",
+        "Book4D.CertifiedTTPR.fixed_eq_limit",
+        "Book4D.CertifiedTTPR.tendsto_iterate_limit",
+        "Book4D.CertifiedTTPR.iterate_dist_limit_le"
+      ],
+      "note": "Banach convergence is now lifted into an operational CertifiedTTPR: the same map carries pointwise fuzzy derivatives and perturbation budgets while its contraction certificate yields a unique fixed identity, global convergence, and a geometric distance bound. Completeness and nonemptiness remain explicit."
+    },
+    {
+      "atlas_id": "theorem:bk4_drift_reflection_imbalance",
+      "coverage": "conditional",
+      "lean": [
+        "Book4A.imbalanced_drift_exceeds_reflect"
+      ],
+      "note": "Only the pointwise threshold consequence is modeled (drift-imbalance with theta>1 forces drift to strictly exceed reflection outright); the iff-characterization of fragmentation and the probability-space apparatus it is embedded in are not."
+    },
+    {
+      "atlas_id": "corollary:bk4_chromatic_transference_of_wheel",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book4A.adjacent_rotate",
+        "Book4A.opposite_involutive",
+        "Book4A.opposite_add",
+        "Book4A.swapPerm_breaks_adjacency"
+      ],
+      "note": "Flagship cyclic-structure anchor: the wheel modeled concretely as ZMod 12, with rotation genuinely preserving adjacency and commuting with diametric opposition (an involution), plus an explicit countermodel that a non-rotation bijection can break adjacency -- the honest content of 'the wheel is preserved ... not [by] any one carrier' holding specifically for structured (rotation) transferences."
+    },
+    {
+      "atlas_id": "definition:bk4_identity_resolution",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book4C.identityResolution_gt_one_iff"
+      ],
+      "note": "the ratio R_n = I(...)/I(...) clearing 1 is exactly numerator clearing denominator; mutual information itself is not modeled, only the ratio algebra it feeds."
+    },
+    {
+      "atlas_id": "theorem:bk4_recursive_identity_enhancem",
+      "coverage": "conditional",
+      "lean": [
+        "Book4C.identityResolution_threshold_persists",
+        "Book4C.identityResolution_gt_one_iff"
+      ],
+      "note": "monotone persistence of R_n>1 past a critical depth n_c, given monotonicity as a hypothesis; the mutual-information characterization of *why* R is monotone (additional contextual information at each encoding level) is not derived."
+    },
+    {
+      "atlas_id": "definition:bk4_sr_initialization_map",
+      "coverage": "partial",
+      "lean": [
+        "Book4C.convexCombination_mem_Icc"
+      ],
+      "note": "I_0, M_0 as w-weighted readings, discretized to a finite weighted sum; the observer-kernel convolution and gradient-norm construction are not modeled."
+    },
+    {
+      "atlas_id": "proposition:bk4_bounded_sr_initial_state",
+      "coverage": "conditional",
+      "lean": [
+        "Book4C.convexCombination_mem_Icc"
+      ],
+      "note": "the [0,1]-boundedness claim reduced to its honest convex-combination content, given [0,1]-valued readings and a normalized weight simplex as hypotheses; the epsilon_O-kernel-norm clause is dropped."
+    },
+    {
+      "atlas_id": "lemma:bk4_srmf_constrained_action_norm",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book4C.srmfActionNorm_bound"
+      ],
+      "note": "abstract normed-space triangle/homogeneity bound on a \u00c3\u0192\u00c6\u2019\u00c3\u2020\u00e2\u20ac\u2122\u00c3\u0192\u00e2\u20ac\u0161\u00c3\u201a\u00c2\u00a2\u00c3\u0192\u00c6\u2019\u00c3\u201a\u00c2\u00a2\u00c3\u0192\u00c2\u00a2\u00c3\u00a2\u00e2\u20ac\u0161\u00c2\u00ac\u00c3\u2026\u00c2\u00a1\u00c3\u0192\u00e2\u20ac\u0161\u00c3\u201a\u00c2\u00ac\u00c3\u0192\u00c6\u2019\u00c3\u00a2\u00e2\u201a\u00ac\u00c5\u00a1\u00c3\u0192\u00e2\u20ac\u0161\u00c3\u201a\u00c2\u00a2 x + b \u00c3\u0192\u00c6\u2019\u00c3\u2020\u00e2\u20ac\u2122\u00c3\u0192\u00e2\u20ac\u0161\u00c3\u201a\u00c2\u00a2\u00c3\u0192\u00c6\u2019\u00c3\u201a\u00c2\u00a2\u00c3\u0192\u00c2\u00a2\u00c3\u00a2\u00e2\u20ac\u0161\u00c2\u00ac\u00c3\u2026\u00c2\u00a1\u00c3\u0192\u00e2\u20ac\u0161\u00c3\u201a\u00c2\u00ac\u00c3\u0192\u00c6\u2019\u00c3\u00a2\u00e2\u201a\u00ac\u00c5\u00a1\u00c3\u0192\u00e2\u20ac\u0161\u00c3\u201a\u00c2\u00a2 y + c \u00c3\u0192\u00c6\u2019\u00c3\u2020\u00e2\u20ac\u2122\u00c3\u0192\u00e2\u20ac\u0161\u00c3\u201a\u00c2\u00a2\u00c3\u0192\u00c6\u2019\u00c3\u201a\u00c2\u00a2\u00c3\u0192\u00c2\u00a2\u00c3\u00a2\u00e2\u20ac\u0161\u00c2\u00ac\u00c3\u2026\u00c2\u00a1\u00c3\u0192\u00e2\u20ac\u0161\u00c3\u201a\u00c2\u00ac\u00c3\u0192\u00c6\u2019\u00c3\u00a2\u00e2\u201a\u00ac\u00c5\u00a1\u00c3\u0192\u00e2\u20ac\u0161\u00c3\u201a\u00c2\u00a2 z given each generator's norm is budget-bounded by B; the Lie-algebra exponential map Lambda_O itself is not modeled, only its stated linear consequence."
+    },
+    {
+      "atlas_id": "proposition:bk4_imagination_bridges_wheel",
+      "coverage": "conditional",
+      "lean": [
+        "Book4C.reintegrable_of_smaller_gap",
+        "Book4D.EmergenceOperatorFamily.canonicalOrder_recognized",
+        "Book4D.EmergenceOperatorFamily.swapped_middle_executes",
+        "Book4D.EmergenceOperatorFamily.swapped_middle_unrecognized",
+        "Book4D.EmergenceOperatorFamily.identityFamily_not_emergent",
+        "Book4D.CertifiedTTDC.decision_eq_stage_iff",
+        "Book4D.CertifiedTTDC.decision_eq_abstain_iff",
+        "Book4D.CertifiedTTDC.execute_of_contract",
+        "Book4D.CertifiedTTDC.execute_of_not_contract",
+        "Book4D.CertifiedTTDC.execute_satisfies_postcondition",
+        "Book4D.CertifiedTTDC.stage_ne_abstain",
+        "Book4D.CertifiedTTDC.install_ttdc",
+        "Book4D.TTDCToTTIEImagination.staged_output_mem_initial",
+        "Book4D.TTDCToTTIEImagination.staged_then_ttie_iterate_mem_envelope",
+        "Book4D.TTDCToTTIEImagination.staged_then_ttie_iterate_mem_accessibleLimit",
+        "Book4D.TTIEToTTCSImagination.selected_samples_accessible",
+        "Book4D.TTIEToTTCSImagination.exists_accessible_sample",
+        "Book4D.TTIEToTTCSImagination.expanded_then_sampled_mem_Icc",
+        "Book4D.TTCSToTTPRImagination.refinement_iterate_mem_Icc",
+        "Book4D.TTCSToTTPRImagination.tendsto_refinement_from_sample",
+        "Book4D.TTCSToTTPRImagination.limit_mem_Icc",
+        "Book4D.TTPRToTTDCImagination.returnState_eq_limit",
+        "Book4D.TTPRToTTDCImagination.stage_or_abstain",
+        "Book4D.TTPRToTTDCImagination.abstaining_return_is_fixed",
+        "Book4D.ImaginationHorn.staged_sample_accessible",
+        "Book4D.ImaginationHorn.one_pass_refinement_mem_Icc",
+        "Book4D.ImaginationHorn.one_pass_tendsto_limit",
+        "Book4ImaginationGuard.phaseBudget_append",
+        "Book4ImaginationGuard.effectiveRate_lt_one_iff_phase_penalty_below_margin",
+        "Book4ImaginationGuard.eleven_percent_phase_ends_near_boundary_contraction",
+        "Book4ImaginationGuard.projection_equality_can_hide_unsafe_phase"
+      ],
+      "note": "Exact conditional phase-rate kernel: ordered latent segments define noncancelling absolute exposure; a calibrated nonlinear response envelope plus observer-specific margin forces strict contraction. Linear response is one specialization. Equal visible projections and canceling signed phases do not erase exposure, while zero calibration alone does not determine the response away from zero."
+    },
+    {
+      "atlas_id": "theorem:bk4_symbolic_identity_continuit",
+      "coverage": "conditional",
+      "lean": [
+        "Book4C.lipschitzPath_uniform"
+      ],
+      "note": "uniform continuity from a bounded-velocity (Lipschitz) path, with an explicit delta witness in terms of the Lipschitz constant; bounded free energy/drift variance is discretized to the single Lipschitz bound."
+    },
+    {
+      "atlas_id": "lemma:bk4_ttie_expansion_rate",
+      "coverage": "conditional",
+      "lean": [
+        "Book4C.ttieExpansionBound_le_cs",
+        "Book4D.CertifiedTTIE.step_dist_le_coherenceSpeed"
+      ],
+      "note": "given the stated rate bound as a hypothesis, it is shown to never exceed c_s itself; the sup-based definition of Delta_max(epsilon) and the C1-C3 constraints it is derived from are not modeled."
+    },
+    {
+      "atlas_id": "corollary:bk4_symbolic_lightcone",
+      "coverage": "partial",
+      "lean": [
+        "Book4C.coherenceCone_mono",
+        "Book4D.CertifiedTTIE.iterate_mem_envelope",
+        "Book4D.CertifiedTTIE.iterate_mem_accessibleLimit"
+      ],
+      "note": "the coherence-cone's admissible-distance radius is monotone in elapsed time for cs >= 0; the full causal-consistency argument for bounded observers is not modeled."
+    },
+    {
+      "atlas_id": "definition:bk4_test_time_integrative_expansion",
+      "coverage": "partial",
+      "lean": [
+        "Book4C.ttieMetric_exists_of_glued",
+        "Book4C.ttieMetric_presupposition_fails_on_dual_horizon",
+        "Book4D.CertifiedTTIE.iterate_mem_envelope_of_mem",
+        "Book4D.CertifiedTTIE.iterate_mem_envelope",
+        "Book4D.CertifiedTTIE.exists_newly_accessible",
+        "Book4D.CertifiedTTIE.accessibleLimit_least",
+        "Book4D.CertifiedTTIE.exists_envelope_ssubset_accessibleLimit"
+      ],
+      "note": "The metric presupposition remains discharged through chart gluing. CertifiedTTIE now supplies an operational fuzzy map, a nested accessible-state envelope, staged reachability of every iterate, genuine strict expansion, coherence-speed control, and the least union-limit of finite stages. Full manifold constraints C1-C3 remain outside the scalar kernel."
+    },
+    {
+      "atlas_id": "lemma:bk4_ttcs_stability",
+      "coverage": "partial",
+      "lean": [
+        "Book4C.ttcs_sample_average_le",
+        "Book4D.CertifiedTTCS.output_le_upper",
+        "Book4D.CertifiedTTCS.output_mem_Icc",
+        "Book4D.CertifiedTTCS.iterate_succ_mem_Icc",
+        "Book4D.CertifiedTTCS.output_eq_of_sample_constant",
+        "Book4D.CertifiedTTCS.output_reindex",
+        "Book4D.CertifiedTTCS.alternative_output_dist_le"
+      ],
+      "note": "discrete finite-sample analogue of the expected-curvature bound: if every sample is at most M, the average is at most M. The exponentially-weighted distribution tilde-p and Delta_max(epsilon) are not modeled."
+    },
+    {
+      "atlas_id": "corollary:bk4_coherence_preservation",
+      "coverage": "partial",
+      "lean": [
+        "Book4C.ttcs_sample_average_ge",
+        "Book4D.CertifiedTTCS.lower_le_output",
+        "Book4D.CertifiedTTCS.output_mem_Icc",
+        "Book4D.CertifiedTTCS.iterate_succ_mem_Icc",
+        "Book4D.CertifiedTTCS.output_eq_of_sample_constant",
+        "Book4D.CertifiedTTCS.output_reindex",
+        "Book4D.CertifiedTTCS.alternative_output_dist_le"
+      ],
+      "note": "A CertifiedTTCS derives its coherence floor from pointwise sample bounds and proves every positive iterate remains in the closed coherence corridor. The N -> infinity limit and weak-* convergence remain open."
+    },
+    {
+      "atlas_id": "proposition:bk4_neighborhood_completeness",
+      "coverage": "conditional",
+      "lean": [
+        "Book4C.neighborhoodCompleteness"
+      ],
+      "note": "a closed subset of a complete metric space is complete; the coherence/drift neighborhood's closedness is kept as a named hypothesis rather than derived from the coherence and drift-bound constraints, which are not modeled."
+    },
+    {
+      "atlas_id": "definition:bk4_symbolic_work_functional",
+      "coverage": "definition",
+      "lean": [
+        "Book4C.work2",
+        "Book4C.work3"
+      ],
+      "note": "discretized symbolic work along 2- and 3-point refinement paths; the free-energy gradient field and continuous line integral are not modeled."
+    },
+    {
+      "atlas_id": "proposition:bk4_symbolic_work_path_dependence",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book4C.symbolicWork_path_dependent_example",
+        "Book4C.symbolicWork_path_independent_of_constant"
+      ],
+      "note": "an explicit numeric countermodel shows discretization-dependence for a non-constant force (work3 id 0 1 2 != work2 id 0 2), paired with the constant-force case where the two discretizations DO agree -- the honest boundary the source's 'in general' qualifier hides."
+    },
+    {
+      "atlas_id": "definition:bk4_fragmentation_measure",
+      "coverage": "conditional",
+      "lean": [
+        "Book4C.FragmentationMeasure",
+        "Book4C.fragMeasure",
+        "Book4C.fragMeasure_mem_Icc",
+        "Book4C.fragMeasure_eq_zero_iff"
+      ],
+      "note": "mutual information I and entropy H kept as named hypotheses (0 <= I <= H, H > 0, the data-processing content of 'optimal partition'); the argmax-over-partitions construction itself is not modeled."
+    },
+    {
+      "atlas_id": "definition:bk4_symbolic_identity_carrie",
+      "coverage": "partial",
+      "lean": [
+        "Book4C.symbolicIdentityCarrier_component_le_one"
+      ],
+      "note": "the normalization condition integral of Psi_i = 1, discretized to a finite sum, forces every component reading into [0,1]; the stability functional Upsilon_i and temporal tracking relation T_{Delta t} are not modeled."
+    },
+    {
+      "atlas_id": "definition:bk4_reflexive_operator",
+      "coverage": "conditional",
+      "lean": [
+        "Book4C.ReflexiveOperatorFamily",
+        "Book4C.reflexiveOperator_tendsto_self"
+      ],
+      "note": "only the Approximation Property's O(lambda) displacement budget is modeled, yielding a genuine squeeze-theorem convergence R_lambda(s) -> s as lambda -> 0; Coherence Preservation and Temporal Consistency clauses are not modeled."
+    },
+    {
+      "atlas_id": "definition:bk4_fuzzy_symbolic_substitution",
+      "coverage": "conditional",
+      "lean": [
+        "Book4D.fuzzySubstitutionBound_eps_pos",
+        "Book4D.fuzzySubstitutionBound_compose"
+      ],
+      "note": "The observer-differenced displacement bound below epsilon_O(x) is the diff<eps field of FuzzySubstitutionBound; only the scalar bound is modeled, not the map u or the tangent-space structure."
+    },
+    {
+      "atlas_id": "definition:bk4_tilda_substitution",
+      "coverage": "conditional",
+      "lean": [
+        "Book4D.fuzzySubstitutionBound_eps_pos",
+        "Book4D.fuzzySubstitutionBound_compose"
+      ],
+      "note": "Same FuzzySubstitutionBound scalar law, instantiated at the tilda-substitution's own N_O-fold observer bound."
+    },
+    {
+      "atlas_id": "corollary:bk4_validity_of_tilda_substit",
+      "coverage": "conditional",
+      "lean": [
+        "Book4D.fuzzySubstitutionBound_eps_pos",
+        "Book4D.fuzzySubstitutionBound_compose"
+      ],
+      "note": "The commutator norm bound is the same diff<eps scalar shape; fuzzySubstitutionBound_compose gives the honest composition consequence (consistency up to the sum of thresholds)."
+    },
+    {
+      "atlas_id": "definition:bk4_observer_differentiable_",
+      "coverage": "conditional",
+      "lean": [
+        "Book4D.identity_odifferentiableAt",
+        "Book4D.const_odifferentiableAt",
+        "Book4D.odifferentiableAt_mono_eps",
+        "Book4D.odifferentiableAt_iff_ratio_form"
+      ],
+      "note": "ODifferentiableAt is the linear-bound reading, specialized to Real -> Real and a single scalar tangent direction (T_p M not modeled)."
+    },
+    {
+      "atlas_id": "definition:bk4_observer_valid_different",
+      "coverage": "conditional",
+      "lean": [
+        "Book4D.odifferentiableAt_iff_ratio_form",
+        "Book4D.odifferentiableAt_mono_eps"
+      ],
+      "note": "The ratio/limit phrasing, proved equivalent to ODifferentiableAt's linear-bound phrasing."
+    },
+    {
+      "atlas_id": "lemma:bk4_convergence_of_symbolic_drift",
+      "coverage": "partial",
+      "lean": [
+        "Book4D.symbolicDrift_geometric_contraction_tendsto_zero"
+      ],
+      "note": "Transfinite/ordinal indexing dropped; kept the honest countable kernel -- a nonnegative sequence contracting geometrically at a fixed rate r<1 tends to 0, via tendsto_pow_atTop_nhds_zero_of_abs_lt_one and squeeze_zero."
+    },
+    {
+      "atlas_id": "definition:bk4_observer_metric",
+      "coverage": "conditional",
+      "lean": [
+        "Book4D.observerMetric_self_nonneg",
+        "Book4D.observerMetric_self_eq_zero_iff",
+        "Book4D.observerMetric_symm",
+        "Book4D.rescaleKernel",
+        "Book4D.observerMetric_rescale_invariant"
+      ],
+      "note": "Honest 1-dimensional kernel: g_O(v,w) is K(v)*K(w). Coordinate rescaling x -> a*x acts by the pullback kernel K_a(x)=K(x/a), making the pairing exactly invariant on correspondingly rescaled vectors for nonzero a."
+    },
+    {
+      "atlas_id": "lemma:bk4_observer_metric_properties",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book4D.observerMetric_self_nonneg",
+        "Book4D.observerMetric_self_eq_zero_iff",
+        "Book4D.observerMetric_symm",
+        "Book4D.rescaleKernel_mul",
+        "Book4D.observerMetric_rescale_invariant"
+      ],
+      "note": "All three clauses are proved in the one-dimensional kernel: nonnegativity with the exact zero case, symmetry, and scale invariance under the explicit pullback action of nonzero coordinate rescalings. Rescaling kernels compose multiplicatively."
+    },
+    {
+      "atlas_id": "theorem:bk4_fuzzy_symbolic_geometry_theorem",
+      "coverage": "partial",
+      "lean": [
+        "Book4D.chart_glued_yields_single_geometry",
+        "Book4D.chart_geometry_exists_iff_glued"
+      ],
+      "note": "Only consequence 2 (\"admits an observer-relative differentiable structure\") is covered, re-read over FracturedAtlas.ChartComplex with Glued as the named hypothesis consuming the source's chart-convergence condition. Consequences 1 and 3 (perceiving a smooth manifold; reflection-induced stabilization fields) are not modeled."
+    },
+    {
+      "atlas_id": "theorem:bk4_restated_fuzzy_symbolic_geometry_theorem",
+      "coverage": "partial",
+      "lean": [
+        "Book4D.chart_glued_yields_single_geometry",
+        "Book4D.chart_geometry_exists_iff_glued"
+      ],
+      "note": "Same as theorem:bk4_fuzzy_symbolic_geometry_theorem: only the \"admits a pulled-back C^k differentiable structure\" consequence is covered via ChartComplex + Glued."
+    },
+    {
+      "atlas_id": "corollary:bk4_smoothness_as_epistemic_phenomenon",
+      "coverage": "partial",
+      "lean": [
+        "Book4D.dual_horizon_no_single_smoothness",
+        "Book4D.odifferentiableAt_mono_eps"
+      ],
+      "note": "Clause 3 (different observers may perceive different structures on the same system) is the dual-horizon fracture instance; clauses 2 and 4 (dependence on resolution threshold; classical case as the eps->0 limit) are the honest monotonicity-in-eps content of odifferentiableAt_mono_eps. Clause 1 (smoothness as a resolution artifact, stated narratively) is not separately modeled."
+    },
+    {
+      "atlas_id": "corollary:bk4_fuzzy_multivariable_chain",
+      "coverage": "conditional",
+      "lean": [
+        "Book4D.jacobianChain_idealized_forces_zero_tensor"
+      ],
+      "note": "The stated Frobenius-norm bound is kept as the JacobianChainBound.tNorm_bound field; the theorem draws its honest consequence at the unbounded-observer idealization."
+    },
+    {
+      "atlas_id": "corollary:bk4_emergence_of_classical_ge",
+      "coverage": "partial",
+      "lean": [
+        "Book4D.jacobianChain_idealized_forces_zero_tensor"
+      ],
+      "note": "The categorical-functor limit claim itself is not modeled; the idealized-observer (epsO=0 forces the coupling tensor to vanish) is the same limiting-classical-geometry content in the one place it is a genuine inequality rather than narrative."
+    },
+    {
+      "atlas_id": "theorem:bk4_fuzzy_exponential_rule",
+      "coverage": "conditional",
+      "lean": [
+        "Book4D.observer_correction_zero_iff_classical"
+      ],
+      "note": "Instance: observerValue := D_O(e^g(x)), classicalValue := e^g(x)*D_O(g(x)), correction := C_O(x). The stated equation is exactly the defining hypothesis heq; the theorem gives \"the symbolic curvature term vanishes iff the exponential rule is exactly classical.\""
+    },
+    {
+      "atlas_id": "theorem:bk4_fuzzy_logarithmic_rule",
+      "coverage": "conditional",
+      "lean": [
+        "Book4D.observer_correction_zero_iff_classical"
+      ],
+      "note": "Instance: observerValue := D_O(ln(g(x))), classicalValue := D_O(g(x))/g(x), correction := D_O(x) (the divergence term)."
+    },
+    {
+      "atlas_id": "theorem:bk4_fuzzy_jacobian",
+      "coverage": "conditional",
+      "lean": [
+        "Book4D.observer_correction_zero_iff_classical"
+      ],
+      "note": "Instance with M a matrix additive group: observerValue := J_O(f)(p), classicalValue := the classical partials matrix, correction := C_O(p)."
+    },
+    {
+      "atlas_id": "theorem:bk4_fuzzy_divergence",
+      "coverage": "conditional",
+      "lean": [
+        "Book4D.observer_correction_zero_iff_classical"
+      ],
+      "note": "Instance: observerValue := div_O V(p), classicalValue := sum of classical partials, correction := R_O(p) (the symbolic curvature scalar); correction=0 recovers exact conservation of meaning volume."
+    },
+    {
+      "atlas_id": "definition:bk4_symbolic_vector_field",
+      "coverage": "conditional",
+      "lean": [
+        "Book4D.observer_correction_zero_iff_classical",
+        "Book4Fz.controlledVectorFieldPerturbation_apply",
+        "Book4Fz.controlledVectorFieldPerturbation_zero",
+        "Book4Fz.controlledVectorFieldPerturbation_add",
+        "Book4Fz.controlledVectorFieldPerturbation_eq_self_of_direction_zero",
+        "Book4Fz.controlledVectorFieldPerturbation_eq_self_iff",
+        "Book4Fz.isObserverIntegralCurve_iff",
+        "Book4Fz.IsObserverIntegralCurve.controlledPerturbation_of_direction_zero",
+        "Book4Fz.observerIntegralCurve_perturbation_iff",
+        "Book4Fz.IsObserverFlow.isObserverIntegralCurve",
+        "Book4Fz.IsObserverFlow.zero_eq_id",
+        "Book4Fz.IsObserverFlow.add_eq_comp",
+        "Book4Fz.IsObserverFlow.controlledPerturbation_of_reachable_zero",
+        "Book4Fz.observerFlow_perturbation_iff"
+      ],
+      "note": "Instance: observerValue := V(f)(p), classicalValue := V(p)*grad_O f(p), correction := eps_O*<V(p), E_O(p)> (the additional uncertainty term)."
+    },
+    {
+      "atlas_id": "definition:bk4_fuzzy_vector_field",
+      "coverage": "conditional",
+      "lean": [
+        "Book4D.observer_correction_zero_iff_classical",
+        "Book4Fz.controlledVectorFieldPerturbation_apply",
+        "Book4Fz.controlledVectorFieldPerturbation_zero",
+        "Book4Fz.controlledVectorFieldPerturbation_add",
+        "Book4Fz.controlledVectorFieldPerturbation_eq_self_of_direction_zero",
+        "Book4Fz.controlledVectorFieldPerturbation_eq_self_iff",
+        "Book4Fz.isObserverIntegralCurve_iff",
+        "Book4Fz.IsObserverIntegralCurve.controlledPerturbation_of_direction_zero",
+        "Book4Fz.observerIntegralCurve_perturbation_iff",
+        "Book4Fz.IsObserverFlow.isObserverIntegralCurve",
+        "Book4Fz.IsObserverFlow.zero_eq_id",
+        "Book4Fz.IsObserverFlow.add_eq_comp",
+        "Book4Fz.IsObserverFlow.controlledPerturbation_of_reachable_zero",
+        "Book4Fz.observerFlow_perturbation_iff"
+      ],
+      "note": "The residual Lie-derivative law is retained, and the native manifold tangent-field layer now gives explicit amplitude-controlled perturbation with zero and additive control laws."
+    },
+    {
+      "atlas_id": "definition:bk4_fuzzy_integral_operator",
+      "coverage": "definition",
+      "lean": [
+        "Book4D.observer_correction_zero_iff_classical"
+      ],
+      "note": "Instance: observerValue := the fuzzy path integral, classicalValue := the K_O-convolved line integral, correction := E_acc(gamma,f) (Symbolic Memory Distortion)."
+    },
+    {
+      "atlas_id": "definition:bk4_symbolic_memory_distortion",
+      "coverage": "definition",
+      "lean": [
+        "Book4D.observer_correction_zero_iff_classical"
+      ],
+      "note": "E_acc is exactly the `correction` slot consumed by definition:bk4_fuzzy_integral_operator's and theorem:bk4_fuzzy_fundamental's instantiations; no independent equation of its own beyond that role."
+    },
+    {
+      "atlas_id": "theorem:bk4_fuzzy_fundamental",
+      "coverage": "conditional",
+      "lean": [
+        "Book4D.observer_correction_zero_iff_classical"
+      ],
+      "note": "Both clauses instantiate the generic law: (1) observerValue := D_O(int_O f), classicalValue := f(x), correction := kappa_O(f, int f); (2) observerValue := int_O^gamma D_O f, classicalValue := f(gamma(b))-f(gamma(a)), correction := H_O(gamma,f)."
+    },
+    {
+      "atlas_id": "definition:bk4_symbolic_holonomy_term",
+      "coverage": "definition",
+      "lean": [
+        "Book4D.observer_correction_zero_iff_classical"
+      ],
+      "note": "H_O(gamma,f) is exactly the `correction` slot consumed by theorem:bk4_fuzzy_fundamental clause 2 and theorem:bk4_symbolic_stokes; no independent equation of its own."
+    },
+    {
+      "atlas_id": "definition:bk4_symbolic_covariant",
+      "coverage": "conditional",
+      "lean": [
+        "Book4D.observer_correction_zero_iff_classical"
+      ],
+      "note": "Instance: observerValue := D_O f, classicalValue := df, correction := i*A_O wedge f; M taken as the complex-valued (or form-valued) additive group, correction=0 is the trivial-connection case."
+    },
+    {
+      "atlas_id": "theorem:bk4_symbolic_stokes",
+      "coverage": "conditional",
+      "lean": [
+        "Book4FuzzyStokes.FuzzyStokesCertificate.fuzzy_stokes",
+        "Book4FuzzyStokes.FuzzyStokesCertificate.classical_recovery",
+        "Book4FuzzyStokes.FuzzyStokesCertificate.integrated_residue_zero_of_classical_recovery",
+        "Book4FuzzyStokes.FuzzyStokesCertificate.interactionForm_eq_zero_of_classical_recovery",
+        "Book4FuzzyStokes.integrated_zero_does_not_force_form_zero",
+        "Book4FuzzyStokes.sum_stripExteriorDerivative",
+        "Book4FuzzyStokes.discrete_fuzzy_stokes",
+        "Book4FuzzyStokes.discrete_classical_recovery",
+        "Book4FuzzyStokes.RectangleFuzzyStokesData.exteriorDensity_integrable",
+        "Book4FuzzyStokes.RectangleFuzzyStokesData.rectangle_stokes",
+        "Book4FuzzyStokes.RectangleFuzzyStokesData.analytic_fuzzy_stokes",
+        "Book4FuzzyStokes.RectangleFuzzyStokesData.analytic_classical_recovery",
+        "Book4FuzzyStokes.RectangleFuzzyStokesData.analytic_curvature_transports_through_gauge",
+        "Book4FuzzyStokes.FuzzyStokesAtlasCertificate.assembled_fuzzy_stokes",
+        "Book4FuzzyStokes.FuzzyStokesAtlasCertificate.assembled_classical_recovery"
+      ],
+      "note": "Typed general certificate; a finite oriented-strip realization; and now a genuine analytic Green--Stokes realization on oriented rectangular charts derived from mathlib planar divergence. Finite chart assembly makes overlap-boundary cancellation explicit, and the analytic curvature carrier transports through Book4Gauge curvature naturality. Integrated recovery remains distinct from pointwise vanishing via the proved cancellation countermodel."
+    },
+    {
+      "atlas_id": "definition:bk4_fuzzy_divergence_operator",
+      "coverage": "conditional",
+      "lean": [
+        "Book4D.observer_correction_zero_iff_classical"
+      ],
+      "note": "Same equation as theorem:bk4_fuzzy_divergence, restated as the operator's own definition."
+    },
+    {
+      "atlas_id": "definition:bk4_fuzzy_curl_operator",
+      "coverage": "conditional",
+      "lean": [
+        "Book4D.observer_correction_zero_iff_classical"
+      ],
+      "note": "Instance: observerValue := curl_O V, classicalValue := d(omega_V), correction := i*A_O wedge omega_V; M taken as the complex-valued additive group."
+    },
+    {
+      "atlas_id": "theorem:bk4_fuzzy_divergence_theorem",
+      "coverage": "conditional",
+      "lean": [
+        "Book4D.observer_correction_zero_iff_classical"
+      ],
+      "note": "Instance: observerValue := the fuzzy boundary flux integral, classicalValue := the fuzzy volume-divergence integral, correction := H_O(Omega,V) (Boundary Holonomy Term)."
+    },
+    {
+      "atlas_id": "theorem:bk4_fuzzy_curl_theorem",
+      "coverage": "conditional",
+      "lean": [
+        "Book4D.observer_correction_zero_iff_classical"
+      ],
+      "note": "Instance: observerValue := the fuzzy circulation integral, classicalValue := the fuzzy curl-flux surface integral, correction := T_O(S,V) (Torsion-Flux Anomaly)."
+    },
+    {
+      "atlas_id": "theorem:bk4_fuzzy_helmholtz_decomposition",
+      "coverage": "conditional",
+      "lean": [
+        "Book4D.observer_correction_zero_iff_classical"
+      ],
+      "note": "Instance: observerValue := V, classicalValue := -grad_O Phi + curl_O A, correction := H_O (the Observer-Relative Harmonic Field)."
+    },
+    {
+      "atlas_id": "theorem:bk4_paradoxical_arrow_of_time",
+      "coverage": "partial",
+      "lean": [
+        "ScholiumDyn.recordedCombinedStep_eq_iff",
+        "ScholiumDyn.base_cancellation_not_full_equilibrium",
+        "ScholiumDyn.no_full_equilibrium_of_trace_production",
+        "Book4D.CertifiedTTDC.recordedExecute_eq_iff",
+        "Book4D.CertifiedTTDC.abstention_base_inert_but_recorded",
+        "Book4Fz.IsObserverFlow.neg_comp_self",
+        "Book4Fz.IsObserverFlow.self_comp_neg",
+        "Book4Fz.IsObserverFlow.bijective",
+        "Book4Fz.crossObserverTimeConsistent_refl",
+        "Book4Fz.CrossObserverTimeConsistent.trans",
+        "Book4Fz.CrossObserverTimeConsistent.reparam_zero",
+        "Book4Fz.CrossObserverTimeConsistent.reparam_add"
+      ],
+      "note": "The observer-memory kernel is formalized on a reflective state carrying a visible coordinate and monotone trace count. Visible drift/reflection cancellation or TTDC abstention can leave the base coordinate fixed, while positive trace production proves the full observer-state changed. This establishes the discrete irreversibility mechanism; the thermodynamic entropy-production and continuous dual-horizon claims remain open."
+    },
+    {
+      "atlas_id": "theorem:bk4_ttpr_symbolic_stability",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book4Ref.ttpr_fixed_point",
+        "Book4Ref.ttpr_fixed_point_in_envelope"
+      ],
+      "note": "TTPR fixed-point + envelope membership (all three clauses); the constraint-space manifold form stays open."
+    },
+    {
+      "atlas_id": "lemma:bk4_ttpr_interpretability_preserved",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book4Ref.ttpr_iterates_in_envelope"
+      ],
+      "note": "Every refinement iterate stays in a preserved envelope."
+    },
+    {
+      "atlas_id": "axiom:bk4_bounded_accessibility",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book4Ref.coherence_neighborhood_nonempty"
+      ],
+      "note": "The coherence neighborhood contains its coherent centre: bounded accessibility realized."
+    },
+    {
+      "atlas_id": "theorem:bk4_test_time_differentiation_c",
+      "coverage": "conditional",
+      "lean": [
+        "Book4Ref.ttdc_iff_jump"
+      ],
+      "note": "TTDC iff the resolution jump reaches the threshold; the recursion-depth dynamics stay open."
+    },
+    {
+      "atlas_id": "lemma:bk4_scalar_from_identity_collapse",
+      "coverage": "conditional",
+      "lean": [
+        "Book4Ref.collapse_limit_unique"
+      ],
+      "note": "The collapsed observable O = lim R_n(I) is unique."
+    },
+    {
+      "atlas_id": "theorem:bk4_curvature_continuity",
+      "coverage": "conditional",
+      "lean": [
+        "Book4Ref.curvature_inherits_continuity"
+      ],
+      "note": "Curvature inherits continuity from its generating operators; the differentiability/manifold clauses stay open."
+    },
+    {
+      "atlas_id": "axiom:bk4_membrane_coupling_response",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book4Ref.coupled_drift_additive"
+      ],
+      "note": "The coupled drift D + G(Omega) reduces to base drift iff the response vanishes."
+    },
+    {
+      "atlas_id": "lemma:bk4_observer_relative_smoothness",
+      "coverage": "conditional",
+      "lean": [
+        "Book4Fz.substituted_drift_continuous",
+        "Book4Fz.substituted_drift_differentiable",
+        "Book4Fz.hasFDerivAt_substituted_drift",
+        "Book4Fz.substituted_drift_contMDiff",
+        "Book4Fz.substituted_drift_mdifferentiable",
+        "Book4Fz.mfderiv_substituted_drift",
+        "Book4Fz.substituted_drift_conjugacy",
+        "Book4Fz.substituted_drift_iterate_conjugacy",
+        "Book4Fz.hasFDerivAt_observerTransition",
+        "Book4Fz.observerTransition_cocycle",
+        "Book4Fz.observerTangentTransition_cocycle",
+        "Book4Fz.observerTangentTransition_self",
+        "Book4Fz.localObserver_coordinate_mem_overlap",
+        "Book4Fz.localObserverCoordinateOverlap_iff",
+        "Book4Fz.localObserverTransition_mem_target",
+        "Book4Fz.hasFDerivAt_localObserverTransition",
+        "Book4Fz.localObserverTransition_cocycle",
+        "Book4Fz.localObserverTangentTransition_cocycle",
+        "Book4Fz.topologicalObserverOverlap_isOpen",
+        "Book4Fz.topologicalObserverCoordinateOverlap_isOpen",
+        "Book4Fz.TopologicalObserverTangentAtlas.iUnion_source_eq_univ",
+        "Book4Fz.TopologicalObserverTangentAtlas.exists_chart_mem_nhds",
+        "Book4Fz.TopologicalObserverTangentAtlas.coordinateOverlap_isOpen",
+        "Book4Fz.TopologicalObserverTangentAtlas.atlas_eq_range",
+        "Book4Fz.TopologicalObserverTangentAtlas.mem_chartAt_source",
+        "Book4Fz.TopologicalObserverTangentAtlas.isManifold_zero",
+        "Book4Fz.ContDiffObserverTangentAtlas.transition_contDiffOn",
+        "Book4Fz.ContDiffObserverTangentAtlas.isManifold",
+        "Book4Fz.ContDiffObserverTangentAtlas.isManifold_one",
+        "Book4Fz.fderiv_localObserverTransition",
+        "Book4Fz.C1ObserverTangentAtlas.localTransition_contDiffOn",
+        "Book4Fz.C1ObserverTangentAtlas.isManifold"
+      ],
+      "note": "Pushforward drift is continuous and Frechet differentiable with exact ordered Jacobian and finite-iterate conjugacy. Local observer charts now carry explicit source and target sets, exact overlap membership, target preservation, transition Jacobians, and coordinate/tangent cocycles on triple overlaps. Native topological chart domains and all pairwise coordinate overlaps are open, and a covering atlas supplies an open chart neighborhood at every point. The covering atlas is now assembled into mathlib's native ChartedSpace and certified as an IsManifold at C^0. A strengthened regular-atlas contract couples every transition Jacobian to overlap-wide C^n regularity. At C^1, chartwise regularity of each chart and inverse now derives pairwise transition regularity automatically, identifies the computed fderiv with tangent transport, and assembles the mathlib manifold without a duplicate transition obligation."
+    },
+    {
+      "atlas_id": "lemma:bk4_local_differentiability_substituted_drift",
+      "coverage": "conditional",
+      "lean": [
+        "Book4Fz.substituted_drift_continuous",
+        "Book4Fz.substituted_drift_differentiable",
+        "Book4Fz.hasFDerivAt_substituted_drift",
+        "Book4Fz.substituted_drift_contMDiff",
+        "Book4Fz.substituted_drift_mdifferentiable",
+        "Book4Fz.mfderiv_substituted_drift",
+        "Book4Fz.hasFDerivAt_observerTransition",
+        "Book4Fz.observerTangentTransition_cocycle",
+        "Book4Fz.localObserverCoordinateOverlap_iff",
+        "Book4Fz.hasFDerivAt_localObserverTransition",
+        "Book4Fz.localObserverTangentTransition_cocycle",
+        "Book4Fz.topologicalObserverCoordinateOverlap_isOpen",
+        "Book4Fz.TopologicalObserverTangentAtlas.iUnion_source_eq_univ",
+        "Book4Fz.TopologicalObserverTangentAtlas.exists_chart_mem_nhds"
+      ],
+      "note": "The substituted drift is Frechet differentiable on normed model spaces. Explicit local chart domains now support exact overlap membership and transition Jacobians, with consistent tangent transport across triple overlaps."
+    },
+    {
+      "atlas_id": "theorem:bk4_compatibility_drift_reflective_operations",
+      "coverage": "conditional",
+      "lean": [
+        "Book4Fz.substituted_drift_reflection_continuous",
+        "Book4Fz.drift_reflection_continuous",
+        "Book4Fz.hasFDerivAt_drift_reflection",
+        "Book4Fz.hasFDerivAt_substituted_drift_reflection",
+        "Book4Fz.drift_reflection_contMDiff",
+        "Book4Fz.substituted_drift_reflection_contMDiff",
+        "Book4Fz.mfderiv_substituted_drift_reflection"
+      ],
+      "note": "The drift-reflection operation and its observer substitution are native C-n manifold maps; their exact ordered Frechet and manifold derivatives are kernel-derived."
+    },
+    {
+      "atlas_id": "axiom:bk4_observer_locality",
+      "coverage": "proved-kernel",
+      "lean": [
+        "Book4Fz.local_kernel_vanishes_offdiagonal"
+      ],
+      "note": "An observer kernel supported in B x B vanishes outside it."
+    },
+    {
+      "atlas_id": "theorem:bk4_self_authorship_and_freedom",
+      "coverage": "conditional",
+      "lean": [
+        "Book4Fz.self_authorship_fixed_point"
+      ],
+      "note": "The constraint-refinement sequence converges to a unique fixed-point constraint map; the group-action structure stays open."
+    },
+    {
+      "atlas_id": "theorem:bk4_categorical_equivalence_observer_relative_structures",
+      "coverage": "partial",
+      "lean": [
+        "Book4Fz.crossObserverTimeConsistent_refl",
+        "Book4Fz.CrossObserverTimeConsistent.trans",
+        "Book4Fz.CrossObserverTimeConsistent.symm"
+      ],
+      "note": "Compatible observer state-and-clock transports satisfy identity, composition, and inverse laws, giving a concrete groupoid kernel. The stated functor from symbolic systems, its essential surjectivity, and a Mathlib CategoryTheory natural transformation remain open."
+    },
+    {
+      "atlas_id": "theorem:bk4_emergence_criterion",
+      "coverage": "partial",
+      "lean": [
+        "Book4Ref.emergenceMeasure_pos_iff",
+        "Book4Ref.finite_emergence_criterion"
+      ],
+      "note": "Finite Book-3-to-Book-4 kernel: an active membrane response changes a coupled drift, collective-information surplus is exactly positive emergence measure, and Book 3 symbiotic stability yields positive curvature. The continuous order-parameter ODE and genuine mutual-information semantics remain open."
+    },
+    {
+      "atlas_id": "theorem:bk4_emergent_abstraction",
+      "coverage": "conditional",
+      "lean": [
+        "Book4Ref.abstractionSurplus_pos_iff",
+        "Book4Ref.emergent_abstraction_positive_measure"
+      ],
+      "note": "The exact finite hierarchy inequality is encoded as positive top-level abstraction surplus and, when the hierarchy cost accounts for individual membrane contributions, implies positive emergence measure. Genuine mutual-information semantics and the auto-encoder latent-space construction remain open."
+    },
+    {
+      "atlas_id": "lemma:bk4_properties_of_ttcs",
+      "coverage": "partial",
+      "lean": [
+        "Book4C.ttcsWeight_strictAnti",
+        "Book4C.ttcs_properties",
+        "Book4C.ttcs_sample_average_ge",
+        "Book4D.CertifiedTTCS.output_mem_Icc"
+      ],
+      "note": "Finite operational TTCS: positive inverse temperature strictly favors lower free energy; admissible samples explicitly retain the coherence threshold and observer leash; certified averages remain in the coherence corridor. Global non-ergodicity and entropy-process semantics remain open."
+    },
+    {
+      "atlas_id": "theorem:bk4_ttcs_convergence",
+      "coverage": "partial",
+      "lean": [
+        "Book4C.ttcsEmpiricalObservableAverage_const",
+        "Book4C.ttcs_const_empirical_tendsto"
+      ],
+      "note": "Deterministic Dirac specialization: for every real observable, empirical evaluations of a sampler concentrated at one admissible state equal and converge to that state's Dirac evaluation. General stochastic sampling, probability measures on the symbolic manifold, and the weak-* law of large numbers remain open."
+    },
+    {
+      "atlas_id": "theorem:bk4_symbolic_link_activation",
+      "coverage": "partial",
+      "lean": [
+        "Book4C.mem_ttcsActivatedCloud",
+        "Book4C.ttcs_link_activation",
+        "Book4C.ttcsWeight_strictAnti"
+      ],
+      "note": "Finite operational activation: an indexed TTCS family produces an explicit nonempty observer-relative cloud; all samples are coherent and observer-bounded, and lower free energy is strictly preferred. The narrative reference/presence interpretation and stochastic entropy balance remain open."
+    },
+    {
+      "atlas_id": "proposition:bk4_homological_extension",
+      "coverage": "partial",
+      "lean": [
+        "Book4Ref.FiniteHomologicalExtension.finrank_eq_add",
+        "Book4Ref.FiniteHomologicalExtension.finrank_le_old_add_bound"
+      ],
+      "note": "Finite algebraic kernel: a supplied linear equivalence realizes extended homology as old times new, yielding exact rank addition and the stated new-Betti total-rank bound. Construction from manifold expansion, homology functors, and derivation of the curvature-controlled bound remain open."
+    },
+    {
+      "atlas_id": "lemma:bk4_spectral_stability_homological_extensions",
+      "coverage": "partial",
+      "lean": [
+        "Book4Ref.exists_adjacent_rank_stabilization",
+        "Book4Ref.FiniteHomologicalExtension.finrank_le_old_add_bound"
+      ],
+      "note": "Finite-rank stabilization engine: a nonincreasing page-rank sequence bounded by beta-zero must have adjacent equal ranks by stage beta-zero, sharper than the stated beta-zero-plus-one bound. An actual spectral sequence, equality of pages rather than ranks, and the resulting filtration-length construction remain open."
+    },
+    {
+      "atlas_id": "theorem:bk4_topological_persistence_under_refinement",
+      "coverage": "partial",
+      "lean": [
+        "Book4Ref.essential_feature_preserved",
+        "Book4Ref.bottleneck_le_curvature_scaled"
+      ],
+      "note": "Quantitative scalar kernels for clauses 2-3: an epsilon bottleneck bound lifts to C*epsilon*(1+kappaMax), and any feature more than epsilon above the observer threshold remains essential after an epsilon perturbation. Persistence diagrams, their interleaving, and derivation of the base bottleneck estimate remain open."
+    },
+    {
+      "atlas_id": "corollary:bk4_homological_coherence_observer_bounds",
+      "coverage": "conditional",
+      "lean": [
+        "Book4Ref.homological_complexity_le_observer_capacity",
+        "Book4Ref.FiniteHomologicalExtension.finrank_le_old_add_bound"
+      ],
+      "note": "Finite aggregation kernel: degreewise realized homology ranks bounded by curvature-controlled allowances have total complexity within capacity whenever the allowance sum fits the observer capacity. Deriving those allowances from geometry and formalizing observer capacity semantically remain open."
+    }
+  ]
 }

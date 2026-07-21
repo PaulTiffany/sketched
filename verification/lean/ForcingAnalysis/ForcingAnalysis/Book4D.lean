@@ -97,6 +97,7 @@ import ForcingAnalysis.Book4A
 import ForcingAnalysis.Book4C
 import ForcingAnalysis.ScholiumDynamics
 import ForcingAnalysis.ScholiumC
+import ForcingAnalysis.ScholiumD
 import ForcingAnalysis.AtlasHolonomy
 
 namespace ForcingAnalysis.Book4D
@@ -1704,6 +1705,6 @@ theorem contextualStructuralGrowth_induces_curvature
           (crossErrorTransport (ForcingAnalysis.ScholiumC.crossTerm U ξ χ))
           contextTransport := by
   obtain ⟨ξ, χ, hcross⟩ :=
-    (nonseparable_iff_exists_crossError U).mp hgrowth
+    ForcingAnalysis.ScholiumD.contextualGrowth_exposes_crossError U hgrowth
   exact ⟨ξ, χ, contextual_crossError_induces_curvature U hcross hε⟩
 end ForcingAnalysis.Book4D

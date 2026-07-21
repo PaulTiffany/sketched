@@ -412,9 +412,15 @@
         "Book8OrientationSignposting.transport_preserves_canonical_change",
         "Book8OrientationSignposting.opposite_signs_agree_iff_zero",
         "Book8OrientationSignposting.reversed_display_of_positive",
-        "Book8OrientationSignposting.displayedNext_differs_across_orientations"
+        "Book8OrientationSignposting.displayedNext_differs_across_orientations",
+        "Book8OrientationSignposting.encode_eq_orientationSign_mul",
+        "Book8OrientationSignposting.transport_eq_relativeSign_mul",
+        "Book8OrientationSignposting.transport_trans",
+        "Book8OrientationSignposting.transport_roundtrip",
+        "Book8OrientationSignposting.transport_positive_of_same_orientation",
+        "Book8OrientationSignposting.transport_negative_of_opposite_orientation"
       ],
-      "note": "Proves the exact four-stage directed cycle and separates canonical direction from audience display orientation. Explicit conjugation preserves canonical changes across aligned/reversed frames; raw opposite signs agree only at zero. Observer bounds, differentiability, and semantic stage operators remain premises rather than consequences of the finite cycle."
+      "note": "Constructs the exact four-stage directed cycle and separates it from audience display orientation. Explicit parity witnesses derive relative signs, compose through intermediate frames, recover on round trips, and determine preservation versus reversal of positive change. Observer bounds, differentiability, and semantic stage operators remain premises rather than consequences of this finite signposting kernel."
     },
     {
       "atlas_id": "corollary:bk8_emergent_cognitive_scaffold",

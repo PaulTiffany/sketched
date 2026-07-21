@@ -65,4 +65,27 @@ theorem equilibrium_flags_alone_do_not_force_duality :
   · simp [AllFlags]
   · norm_num [ThermodynamicMAPDuality]
 
+/-- The missing averaged constitutive bridge: after boundary terms have been
+accounted for, projected force equals mean drift minus reflective deviation. -/
+structure AveragedConstitutiveLaw where
+  balance : MeanBalance
+  averaged_balance :
+    balance.meanDrift - balance.meanReflectionDeviation =
+      balance.inverseTemperature * balance.meanProjectedGradient
+
+namespace AveragedConstitutiveLaw
+
+/-- The explicit averaged balance, unlike qualitative equilibrium flags,
+derives the thermodynamic--MAP identity with its orientation fixed. -/
+theorem thermodynamicMAPDuality (L : AveragedConstitutiveLaw) :
+    ThermodynamicMAPDuality L.balance := by
+  rw [ThermodynamicMAPDuality]
+  linarith [L.averaged_balance]
+
+/-- The constitutive law is equivalently a zero oriented residual. -/
+theorem dualityResidual_eq_zero (L : AveragedConstitutiveLaw) :
+    dualityResidual L.balance = 0 :=
+  (duality_iff_residual_zero L.balance).mp L.thermodynamicMAPDuality
+
+end AveragedConstitutiveLaw
 end ForcingAnalysis.Book6ThermodynamicMAP

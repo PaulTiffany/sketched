@@ -57,4 +57,28 @@ theorem values_alone_do_not_force_confidence_stability_coupling :
     (0 : ℝ) ≠ stabilityVelocity 1 1 0 1 := by
   norm_num [stabilityVelocity, quotientSlope]
 
+/-- A confidence--stability law must supply the nonzero coordinate, coupling
+orientation, quotient response, and actual velocity equation. -/
+structure ConfidenceStabilityCertificate where
+  coupling : ℝ
+  hamiltonian : ℝ
+  hamiltonianDerivative : ℝ
+  stability : ℝ
+  velocity : ℝ
+  stability_ne_zero : stability ≠ 0
+  coupling_nonneg : 0 ≤ coupling
+  constitutive : velocity =
+    stabilityVelocity coupling hamiltonian hamiltonianDerivative stability
+
+namespace ConfidenceStabilityCertificate
+
+/-- A certified nonnegative quotient slope forces nonpositive stability
+velocity under the displayed outer-minus orientation. -/
+theorem velocity_nonpos (C : ConfidenceStabilityCertificate)
+    (hslope : 0 ≤ quotientSlope C.hamiltonian C.hamiltonianDerivative C.stability) :
+    C.velocity ≤ 0 := by
+  rw [C.constitutive]
+  exact stabilityVelocity_nonpos_of_quotientSlope_nonneg C.coupling_nonneg hslope
+
+end ConfidenceStabilityCertificate
 end ForcingAnalysis.Book6ConfidenceStability

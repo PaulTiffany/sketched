@@ -7,14 +7,15 @@
     "receipt": "selfcompile/lean_receipt.json",
     "principia_atlas": "C:\\src\\principia\\bib\\principia_atlas.json"
   },
-  "verified_declarations": 1358,
+  "verified_declarations": 1737,
   "mapped_anchors": 104,
-  "mapped_declarations": 177,
+  "mapped_declarations": 233,
   "coverage_counts": {
-    "conditional": 54,
+    "conditional": 43,
     "definition": 5,
-    "partial": 10,
-    "proved-kernel": 35
+    "partial": 12,
+    "proved": 6,
+    "proved-kernel": 38
   },
   "atlas": {
     "book5_nodes": 235,
@@ -24,19 +25,27 @@
   "entries": [
     {
       "atlas_id": "corollary:bk5_convergence_to_map",
-      "coverage": "conditional",
+      "coverage": "proved",
       "lean": [
         "Book5ConvergenceMAP.mapShare_zero",
         "Book5ConvergenceMAP.mapShare_succ",
         "Book5ConvergenceMAP.mapShare_tendsto_one",
-        "Book5ConvergenceMAP.increasing_drift_alone_does_not_force_map_convergence"
+        "Book5ConvergenceMAP.increasing_drift_alone_does_not_force_map_convergence",
+        "Book5ConvergenceMAP.PersistentMAPAdvantage.contraction_nonneg",
+        "Book5ConvergenceMAP.PersistentMAPAdvantage.contraction_lt_one",
+        "Book5ConvergenceMAP.MAPPopulationOrbit.residual_eq_pow",
+        "Book5ConvergenceMAP.MAPPopulationOrbit.share_le_one",
+        "Book5ConvergenceMAP.MAPPopulationOrbit.share_nonneg",
+        "Book5ConvergenceMAP.MAPPopulationOrbit.share_eq_mapShare",
+        "Book5ConvergenceMAP.MAPPopulationOrbit.share_tendsto_one",
+        "Book5ConvergenceMAP.MAPPopulationOrbit.fitness_gap_with_inflow_does_not_force_convergence"
       ],
-      "note": "Explicit two-strategy replicator contraction: each step retains a fixed fraction q in [0,1) of the remaining non-MAP population, yielding geometric convergence of MAP share to one. A constant one-half population under strictly increasing drift proves that drift growth alone does not supply the persistent fitness/contraction bridge.",
+      "note": "A persistent quantitative MAP fitness advantage yields a contraction ratio q in [0,1). A mutation-free aggregate population orbit explicitly excludes non-MAP inflow through its residual recurrence. Lean derives the geometric residual, proves every share remains in [0,1], and proves convergence to MAP mass one. Countermodels show that increasing drift alone\u2014or even a strict fitness gap with replenishing inflow\u2014does not force convergence.",
       "atlas": {
         "type": "corollary",
         "name": "Convergence to MAP",
         "file": "book5.tex",
-        "line": 1131,
+        "line": 1264,
         "proof_status": "proven"
       },
       "theorems": [
@@ -87,25 +96,126 @@
           ],
           "sorry": false,
           "status": "P"
+        },
+        {
+          "name": "Book5ConvergenceMAP.PersistentMAPAdvantage.contraction_nonneg",
+          "file": "Book5ConvergenceMAP.lean",
+          "statement": "Nonnegative non-MAP fitness and positive MAP fitness make the residual selection ratio nonnegative.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5ConvergenceMAP.PersistentMAPAdvantage.contraction_lt_one",
+          "file": "Book5ConvergenceMAP.lean",
+          "statement": "A strict persistent MAP fitness advantage makes the residual selection ratio contractive.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5ConvergenceMAP.MAPPopulationOrbit.residual_eq_pow",
+          "file": "Book5ConvergenceMAP.lean",
+          "statement": "The mutation-free residual recurrence determines geometric non-MAP mass decay.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5ConvergenceMAP.MAPPopulationOrbit.share_le_one",
+          "file": "Book5ConvergenceMAP.lean",
+          "statement": "The quantitative population law preserves the upper probability-simplex face.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5ConvergenceMAP.MAPPopulationOrbit.share_nonneg",
+          "file": "Book5ConvergenceMAP.lean",
+          "statement": "The quantitative population law preserves nonnegative MAP share.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5ConvergenceMAP.MAPPopulationOrbit.share_eq_mapShare",
+          "file": "Book5ConvergenceMAP.lean",
+          "statement": "The certified population orbit coincides with the explicit geometric contraction trajectory.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5ConvergenceMAP.MAPPopulationOrbit.share_tendsto_one",
+          "file": "Book5ConvergenceMAP.lean",
+          "statement": "Persistent quantitative advantage plus no inflow forces MAP population mass to one.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5ConvergenceMAP.MAPPopulationOrbit.fitness_gap_with_inflow_does_not_force_convergence",
+          "file": "Book5ConvergenceMAP.lean",
+          "statement": "Countermodel: replenishing non-MAP inflow can hold population share fixed despite a strict fitness gap.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
         }
       ]
     },
     {
       "atlas_id": "theorem:bk5_rift_reflection_balance_in_strategy_space",
-      "coverage": "conditional",
+      "coverage": "proved",
       "lean": [
         "Book5StrategyBalance.balance_iff_capacity_above_threshold",
         "Book5StrategyBalance.isolated_strategy_cannot_balance_positive_drift",
         "Book5StrategyBalance.exists_available_balancing_strategy",
         "Book5StrategyBalance.submaximal_drift_alone_does_not_supply_available_strategy",
-        "Book5StrategyBalance.local_cancellation_is_not_strict_balance"
+        "Book5StrategyBalance.local_cancellation_is_not_strict_balance",
+        "Book5StrategyBalance.OperatorStrategySpace.exists_operator_balance_of_cofinal",
+        "Book5StrategyBalance.OperatorStrategySpace.viableMAP_nonempty_of_richness",
+        "Book5StrategyBalance.OperatorStrategySpace.mem_viableMAP_iff",
+        "Book5StrategyBalance.OperatorStrategySpace.viableMAP_eq_isMAP_of_uniform_richness",
+        "Book5StrategyBalance.OperatorStrategySpace.submaximal_drift_without_inventory_countermodel"
       ],
-      "note": "Strategy-space balance kernel: positive cooperation converts strict viability into reflection capacity above drift divided by cooperation; isolated strategies cannot balance nonnegative drift. Existence follows from an explicit available-strategy witness. Sub-maximal drift alone does not populate the strategy inventory, and exact cancellation has no strict viability margin.",
+      "note": "Typed operator-inventory reconstruction: drift and reflection operators remain distinct carrier types with observer-assigned intensities, MAP membership, strategy-indexed availability, and cooperation. Cofinal reflection capacity at one cooperative MAP strategy constructs a nonempty viable MAP subset; uniform cofinality proves equality with the MAP set. Countermodels retain that sub-maximal drift and positive cooperation do not populate an empty inventory, while exact cancellation lacks strict margin.",
       "atlas": {
         "type": "theorem",
-        "name": "Drift-Reflection Balance in Strategy Space",
+        "name": "Drift--Reflection Balance in Strategy Space",
         "file": "book5.tex",
-        "line": 1062,
+        "line": 1170,
         "proof_status": "proven"
       },
       "theorems": [
@@ -168,6 +278,66 @@
           ],
           "sorry": false,
           "status": "P"
+        },
+        {
+          "name": "Book5StrategyBalance.OperatorStrategySpace.exists_operator_balance_of_cofinal",
+          "file": "Book5StrategyBalance.lean",
+          "statement": "Cofinal available reflection capacity supplies an operator beyond the cooperation-adjusted drift threshold.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5StrategyBalance.OperatorStrategySpace.viableMAP_nonempty_of_richness",
+          "file": "Book5StrategyBalance.lean",
+          "statement": "One cooperative MAP strategy with cofinal inventory constructs a nonempty drift-indexed viable subset.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5StrategyBalance.OperatorStrategySpace.mem_viableMAP_iff",
+          "file": "Book5StrategyBalance.lean",
+          "statement": "Membership in the constructed subset exposes MAP status and an actual available balancing operator.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5StrategyBalance.OperatorStrategySpace.viableMAP_eq_isMAP_of_uniform_richness",
+          "file": "Book5StrategyBalance.lean",
+          "statement": "Uniform positive cooperation and cofinal inventories make every MAP strategy viable.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5StrategyBalance.OperatorStrategySpace.submaximal_drift_without_inventory_countermodel",
+          "file": "Book5StrategyBalance.lean",
+          "statement": "Countermodel: a sub-maximal drift and positive cooperation cannot populate an empty typed reflection inventory.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
         }
       ]
     },
@@ -181,14 +351,24 @@
         "Book5DualityProof.mad_rate_negative",
         "Book5DualityProof.positive_rate_alone_does_not_force_positive_limit",
         "Book5DualityProof.negative_rate_alone_does_not_force_zero_limit",
-        "Book5DualityProof.decoupling_consumes_vanishing_interaction"
+        "Book5DualityProof.decoupling_consumes_vanishing_interaction",
+        "Book5DualityProof.covenantTrajectory_tendsto_target",
+        "Book5DualityProof.map_target_eventually_viable",
+        "Book5DualityProof.covenantTrajectory_orientation_dual",
+        "Book5DualityProof.mad_target_eventually_collapsed",
+        "Book5DualityProof.geometric_decoupling_vanishes",
+        "Book5DualityProof.decoupling_without_contraction_can_persist",
+        "Book5DualityProof.EnhancedDualityRealizationCertificate.map_realization",
+        "Book5DualityProof.EnhancedDualityRealizationCertificate.mad_realization",
+        "Book5DualityProof.EnhancedDualityRealizationCertificate.decoupling_realization",
+        "Book5DualityProof.EnhancedDualityRealizationCertificate.enhanced_map_mad_dynamical_realization"
       ],
-      "note": "Variational sign kernel: reflection production exceeding thermal entropy cost is exactly positive free-energy rate, and the reverse inequality is exactly negative rate. The printed MAP/MAD limit claims require additional boundedness or dissipation laws; weak-coupling decoupling consumes an explicit vanishing-interaction hypothesis.",
+      "note": "A typed realization certificate keeps parameter classification and temporal laws as distinct premises, then jointly proves all three source clauses: MAP classification, positive rate, convergence to a positive target, and eventual viability; MAD classification, negative rate, and zero-target convergence; weak-coupling classification and vanishing residue. Countermodels still show classification alone supplies no dynamics.",
       "atlas": {
         "type": "theorem",
-        "name": "Enhanced MAP-MAD Duality Proof",
+        "name": "Enhanced MAP--MAD Dynamical Realization",
         "file": "book5.tex",
-        "line": 903,
+        "line": 1004,
         "proof_status": "proven"
       },
       "theorems": [
@@ -267,12 +447,132 @@
           ],
           "sorry": false,
           "status": "P"
+        },
+        {
+          "name": "Book5DualityProof.covenantTrajectory_tendsto_target",
+          "file": "Book5DualityProof.lean",
+          "statement": "A supplied contractive covenant law converges to its oriented free-energy target.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5DualityProof.map_target_eventually_viable",
+          "file": "Book5DualityProof.lean",
+          "statement": "A positive MAP target under contractive feedback yields eventual positive free energy.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5DualityProof.covenantTrajectory_orientation_dual",
+          "file": "Book5DualityProof.lean",
+          "statement": "Reversing target and initial orientation reflects the whole trajectory, not merely its final sign.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5DualityProof.mad_target_eventually_collapsed",
+          "file": "Book5DualityProof.lean",
+          "statement": "A negative MAD target under contractive feedback yields eventual negative free energy.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5DualityProof.geometric_decoupling_vanishes",
+          "file": "Book5DualityProof.lean",
+          "statement": "Contractive transport forces the residual interaction to vanish geometrically.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5DualityProof.decoupling_without_contraction_can_persist",
+          "file": "Book5DualityProof.lean",
+          "statement": "Countermodel: unit gain preserves a nonzero interaction residue forever.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5DualityProof.EnhancedDualityRealizationCertificate.map_realization",
+          "file": "Book5DualityProof.lean",
+          "statement": "The MAP certificate jointly realizes classification, positive rate, target convergence, and eventual viability.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5DualityProof.EnhancedDualityRealizationCertificate.mad_realization",
+          "file": "Book5DualityProof.lean",
+          "statement": "The MAD certificate jointly realizes classification, negative rate, and zero-target convergence.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5DualityProof.EnhancedDualityRealizationCertificate.decoupling_realization",
+          "file": "Book5DualityProof.lean",
+          "statement": "The weak-coupling certificate jointly realizes decoupled classification and vanishing interaction residue.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5DualityProof.EnhancedDualityRealizationCertificate.enhanced_map_mad_dynamical_realization",
+          "file": "Book5DualityProof.lean",
+          "statement": "One typed certificate realizes all three clauses of the repaired enhanced MAP--MAD theorem.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
         }
       ]
     },
     {
       "atlas_id": "corollary:bk5_reflective_hysteresis",
-      "coverage": "conditional",
+      "coverage": "proved",
       "lean": [
         "Book5Hysteresis.HysteresisThresholds.lower_lt_upper",
         "Book5Hysteresis.below_lower_switches_from_map",
@@ -280,14 +580,19 @@
         "Book5Hysteresis.map_persists_in_band",
         "Book5Hysteresis.mad_persists_in_band",
         "Book5Hysteresis.in_band_remembers_history",
-        "Book5Hysteresis.memoryless_classifier_cannot_remember_history"
+        "Book5Hysteresis.memoryless_classifier_cannot_remember_history",
+        "Book5Hysteresis.ActivationBarrier.threshold_gap",
+        "Book5Hysteresis.ActivationBarrier.energy_eq",
+        "Book5Hysteresis.ActivationBarrier.energy_pos",
+        "Book5Hysteresis.runHysteresis_in_band",
+        "Book5Hysteresis.same_in_band_path_retains_distinct_histories"
       ],
-      "note": "Stateful two-threshold kernel: lower < 1 < upper implies an ordered hysteresis band; crossing below switches MAP out, crossing above switches into MAP, and either regime persists inside the band. Thus the same in-band coupling has different outcomes by incoming history. A memoryless classifier cannot express this behavior.",
+      "note": "A constructed stateful Schmitt-style law now derives separated thresholds 1 - b and 1 + b from a positive half-width b. Crossing either boundary changes regime, while every finite path confined to the band preserves its incoming regime, so identical observations retain distinct histories. A positive constant barrier density gives activation energy 2 \u03be b > 0. The memoryless countermodel remains, showing why prior state is load-bearing rather than notation.",
       "atlas": {
         "type": "corollary",
         "name": "Reflective Hysteresis",
         "file": "book5.tex",
-        "line": 857,
+        "line": 942,
         "proof_status": "proven"
       },
       "theorems": [
@@ -374,24 +679,92 @@
           ],
           "sorry": false,
           "status": "P"
+        },
+        {
+          "name": "Book5Hysteresis.ActivationBarrier.threshold_gap",
+          "file": "Book5Hysteresis.lean",
+          "statement": "A positive half-width constructs a threshold separation of exactly twice that width.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5Hysteresis.ActivationBarrier.energy_eq",
+          "file": "Book5Hysteresis.lean",
+          "statement": "Constant barrier density turns the constructed threshold gap into activation energy 2 \u03be b.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5Hysteresis.ActivationBarrier.energy_pos",
+          "file": "Book5Hysteresis.lean",
+          "statement": "Positive density and positive half-width force strictly positive activation energy.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5Hysteresis.runHysteresis_in_band",
+          "file": "Book5Hysteresis.lean",
+          "statement": "Every finite observation path confined to the hysteresis band preserves its incoming regime.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5Hysteresis.same_in_band_path_retains_distinct_histories",
+          "file": "Book5Hysteresis.lean",
+          "statement": "The same finite in-band path retains distinct MAP and non-MAP histories.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
         }
       ]
     },
     {
       "atlas_id": "proposition:bk5_transactional_covenant_dynamics",
-      "coverage": "conditional",
+      "coverage": "proved-kernel",
       "lean": [
         "Book5TransitionDynamics.mapStep_strict_growth",
         "Book5TransitionDynamics.madStep_strict_decay",
         "Book5TransitionDynamics.mapStep_at_boundary",
-        "Book5TransitionDynamics.crossing_alone_does_not_force_growth"
+        "Book5TransitionDynamics.crossing_alone_does_not_force_growth",
+        "Book5TransitionDynamics.expEvolution_zero",
+        "Book5TransitionDynamics.expEvolution_hasDerivAt",
+        "Book5TransitionDynamics.expEvolution_add",
+        "Book5TransitionDynamics.mapStep_eq_expEvolution",
+        "Book5TransitionDynamics.madStep_eq_expEvolution",
+        "Book5TransitionDynamics.solution_eq_shifted_expEvolution",
+        "Book5TransitionDynamics.exact_step_of_constant_rate_ode",
+        "Book5TransitionDynamics.constant_rate_ode_solution_unique"
       ],
-      "note": "For the exact exponential step law, positive MAP energy strictly grows above Lambda=1, positive MAD energy remains positive but strictly decays beyond |Lambda|=1, and the MAP update is identity at the boundary. A countermodel separates boundary crossing from the load-bearing evolution law.",
+      "note": "The supplied constant-rate ODE now determines the exact law, not merely one constructed example. An integrating-factor proof shows every global solution has the shifted exponential form, yields the exact adjacent-step update, and proves uniqueness from one shared value. MAP growth, MAD positivity/decay, and the boundary identity follow as before. A crossing alone still does not generate the ODE; time-varying coupling requires a separately supplied integral-rate law.",
       "atlas": {
         "type": "proposition",
         "name": "Transitional Covenant Dynamics",
         "file": "book5.tex",
-        "line": 796,
+        "line": 855,
         "proof_status": "argued_demonstratio"
       },
       "theorems": [
@@ -442,56 +815,126 @@
           ],
           "sorry": false,
           "status": "P"
+        },
+        {
+          "name": "Book5TransitionDynamics.expEvolution_zero",
+          "file": "Book5TransitionDynamics.lean",
+          "statement": "Constant-rate free-energy evolution starts at the supplied initial value.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5TransitionDynamics.expEvolution_hasDerivAt",
+          "file": "Book5TransitionDynamics.lean",
+          "statement": "The constructed exponential trajectory satisfies the stated constant-rate differential law.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5TransitionDynamics.expEvolution_add",
+          "file": "Book5TransitionDynamics.lean",
+          "statement": "Constant-rate covenant evolution composes exactly across adjacent time steps.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5TransitionDynamics.mapStep_eq_expEvolution",
+          "file": "Book5TransitionDynamics.lean",
+          "statement": "The MAP exponential step is evaluation of the positive-oriented continuous evolution.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5TransitionDynamics.madStep_eq_expEvolution",
+          "file": "Book5TransitionDynamics.lean",
+          "statement": "The MAD exponential step is evaluation of the negative-oriented continuous evolution.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5TransitionDynamics.solution_eq_shifted_expEvolution",
+          "file": "Book5TransitionDynamics.lean",
+          "statement": "Every global solution of the supplied constant-rate ODE is the shifted exponential determined by any reference value.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5TransitionDynamics.exact_step_of_constant_rate_ode",
+          "file": "Book5TransitionDynamics.lean",
+          "statement": "Every solution of the supplied constant-rate ODE obeys the source's exact adjacent-step law.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5TransitionDynamics.constant_rate_ode_solution_unique",
+          "file": "Book5TransitionDynamics.lean",
+          "statement": "Two solutions of the same constant-rate ODE that agree once agree everywhere.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
         }
       ]
     },
     {
       "atlas_id": "theorem:bk5_enhanced_map_mad_duality",
-      "coverage": "conditional",
+      "coverage": "proved-kernel",
       "lean": [
-        "Book5EnhancedDuality.classify_map",
-        "Book5EnhancedDuality.classify_mad",
-        "Book5EnhancedDuality.classify_decoupled",
+        "Book5EnhancedDuality.existsUnique_regimeCondition",
         "Book5EnhancedDuality.classify_neg_of_strong",
         "Book5EnhancedDuality.positive_regime_parameters_do_not_force_viability"
       ],
-      "note": "Strong coupling is classified by polarity, weak coupling decouples, equality remains an explicit critical regime, and polarity reversal exchanges MAP/MAD. A countermodel shows these parameter conditions do not themselves entail the source's free-energy limits without a dynamics bridge.",
+      "note": "The four source conditions are formalized as a regime predicate, and every coupling/threshold/polarity triple satisfies exactly one condition. Threshold equality and strong zero polarity remain critical; reversal of nonzero polarity exchanges MAP and MAD. The paired countermodel enforces the source boundary that classification alone supplies no free-energy dynamics.",
       "atlas": {
         "type": "theorem",
-        "name": "Enhanced MAP-MAD Duality",
+        "name": "Enhanced MAP--MAD Regime Classification",
         "file": "book5.tex",
-        "line": 701,
+        "line": 747,
         "proof_status": "proven"
       },
       "theorems": [
         {
-          "name": "Book5EnhancedDuality.classify_map",
+          "name": "Book5EnhancedDuality.existsUnique_regimeCondition",
           "file": "Book5EnhancedDuality.lean",
-          "statement": "Strong coupling with positive polarity is classified as MAP.",
-          "axioms": [
-            "propext",
-            "Classical.choice",
-            "Quot.sound"
-          ],
-          "sorry": false,
-          "status": "P"
-        },
-        {
-          "name": "Book5EnhancedDuality.classify_mad",
-          "file": "Book5EnhancedDuality.lean",
-          "statement": "Strong coupling with negative polarity is classified as MAD.",
-          "axioms": [
-            "propext",
-            "Classical.choice",
-            "Quot.sound"
-          ],
-          "sorry": false,
-          "status": "P"
-        },
-        {
-          "name": "Book5EnhancedDuality.classify_decoupled",
-          "file": "Book5EnhancedDuality.lean",
-          "statement": "Subcritical coupling is classified as decoupled independently of polarity.",
+          "statement": "Every coupling/threshold/polarity triple satisfies exactly one MAP, MAD, decoupled, or critical regime condition.",
           "axioms": [
             "propext",
             "Classical.choice",
@@ -528,18 +971,19 @@
     },
     {
       "atlas_id": "theorem:bk5_reflective_equilibrium_conservation",
-      "coverage": "conditional",
+      "coverage": "proved-kernel",
       "lean": [
         "Book5EquilibriumConservation.energy_rate_linear_spectral_bound",
+        "Book5EquilibriumConservation.energy_rate_norm_linear_spectral_bound",
         "Book5EquilibriumConservation.linear_residual_bounds_do_not_imply_quadratic_bound",
         "Book5EquilibriumConservation.energy_rate_quadratic_spectral_bound"
       ],
-      "note": "The displayed residual hypotheses yield a linear rho bound by the triangle inequality. A concrete countermodel refutes the stated rho-squared conclusion; that conclusion is recovered when both residuals are assumed quadratic-order.",
+      "note": "The repaired source-level statement is proved over arbitrary seminormed additive residual spaces: two order-rho residual controls yield the linear rho bound by the norm triangle inequality. The scalar theorem is retained as a specialization, and the historical countermodel records why the superseded rho-squared form failed.",
       "atlas": {
         "type": "theorem",
         "name": "Reflective Equilibrium Conservation",
         "file": "book5.tex",
-        "line": 499,
+        "line": 530,
         "proof_status": "proven"
       },
       "theorems": [
@@ -547,6 +991,18 @@
           "name": "Book5EquilibriumConservation.energy_rate_linear_spectral_bound",
           "file": "Book5EquilibriumConservation.lean",
           "statement": "The two linear drift/reflection residual estimates give a linear spectral-radius bound on total energy-rate defect.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5EquilibriumConservation.energy_rate_norm_linear_spectral_bound",
+          "file": "Book5EquilibriumConservation.lean",
+          "statement": "The source-level linear conservation estimate holds for residuals in every seminormed additive state space.",
           "axioms": [
             "propext",
             "Classical.choice",
@@ -594,7 +1050,7 @@
         "type": "theorem",
         "name": "MAP Dominance",
         "file": "book5.tex",
-        "line": 395,
+        "line": 426,
         "proof_status": "proven"
       },
       "theorems": [
@@ -640,11 +1096,10 @@
       "atlas_id": "proposition:bk5_reflective_drift_alignment_in_map",
       "coverage": "conditional",
       "lean": [
-        "Book5.driftReflectionContribution_pos_iff",
-        "Book5.reflective_drift_alignment_positive",
-        "Book5.positive_coupling_above_critical_insufficient"
+        "Book5AlignmentDynamics.ReflectiveAlignmentCertificate.realizes_reflective_drift_alignment",
+        "Book5AlignmentDynamics.positive_margin_without_contraction_does_not_align"
       ],
-      "note": "In the scalar worst-case model, positive contribution is exactly restorative strength exceeding the combined drift burden. A countermodel shows the proposition's stated positive-polarity and kappa-critical conditions alone are insufficient without that drift-relative margin.",
+      "note": "One retained certificate distinguishes the fixed MAP classification threshold from the drift-relative restoration margin, then supplies the contractive temporal law. It jointly proves MAP classification, strict positive margin, vanishing alignment error, convergence of realized contribution to the margin, and eventual positivity. Unit gain remains a countermodel to alignment from margin alone.",
       "atlas": {
         "type": "proposition",
         "name": "Reflective Drift Alignment in MAP",
@@ -654,9 +1109,9 @@
       },
       "theorems": [
         {
-          "name": "Book5.driftReflectionContribution_pos_iff",
-          "file": "Book5Alignment.lean",
-          "statement": "Positive net reflective contribution is exactly the scalar covenant-stability margin.",
+          "name": "Book5AlignmentDynamics.ReflectiveAlignmentCertificate.realizes_reflective_drift_alignment",
+          "file": "Book5AlignmentDynamics.lean",
+          "statement": "One certificate jointly realizes MAP classification, the distinct drift-relative margin, convergence, and eventual positive contribution.",
           "axioms": [
             "propext",
             "Classical.choice",
@@ -666,21 +1121,9 @@
           "status": "P"
         },
         {
-          "name": "Book5.reflective_drift_alignment_positive",
-          "file": "Book5Alignment.lean",
-          "statement": "Conditional reflective drift alignment: restorative covenant strength above the combined drift burden yields strictly positive net contribution.",
-          "axioms": [
-            "propext",
-            "Classical.choice",
-            "Quot.sound"
-          ],
-          "sorry": false,
-          "status": "P"
-        },
-        {
-          "name": "Book5.positive_coupling_above_critical_insufficient",
-          "file": "Book5Alignment.lean",
-          "statement": "Countermodel: positive polarity and coupling above kappa-critical do not imply positive contribution without a bound relating drift to restorative strength.",
+          "name": "Book5AlignmentDynamics.positive_margin_without_contraction_does_not_align",
+          "file": "Book5AlignmentDynamics.lean",
+          "statement": "Countermodel: positive covenant margin with unit feedback gain can retain nonzero alignment error forever.",
           "axioms": [
             "propext",
             "Classical.choice",
@@ -894,7 +1337,7 @@
         "type": "definition",
         "name": "Balanced Two-Step Symbolic Memory Closure",
         "file": "book5.tex",
-        "line": 1565,
+        "line": 1828,
         "proof_status": "definitional"
       },
       "theorems": [
@@ -935,7 +1378,7 @@
         "type": "lemma",
         "name": "Balanced Observer Normalization Selects the Closure Matrix",
         "file": "book5.tex",
-        "line": 1585,
+        "line": 1848,
         "proof_status": "proven"
       },
       "theorems": [
@@ -965,7 +1408,7 @@
         "type": "theorem",
         "name": "Golden Ratio as Spectral Invariant of Balanced Recursive Memory",
         "file": "book5.tex",
-        "line": 1623,
+        "line": 1886,
         "proof_status": "proven"
       },
       "theorems": [
@@ -1006,7 +1449,7 @@
         "type": "definition",
         "name": "Symbolic Regime Detection Experiment",
         "file": "book5.tex",
-        "line": 2473,
+        "line": 2736,
         "proof_status": "definitional"
       },
       "theorems": [
@@ -1036,7 +1479,7 @@
         "type": "theorem",
         "name": "$\\sqrt{2}$ as the First Orthogonal Fracture Constant",
         "file": "book5.tex",
-        "line": 1889,
+        "line": 2152,
         "proof_status": "proven"
       },
       "theorems": [
@@ -1082,7 +1525,7 @@
         "type": "theorem",
         "name": "\\(\\ell_p\\)-Norm Fracture Hierarchy",
         "file": "book5.tex",
-        "line": 2038,
+        "line": 2301,
         "proof_status": "proven"
       },
       "theorems": [
@@ -1171,7 +1614,7 @@
         "type": "proposition",
         "name": "Complementary Constants: Fracture vs Resonance",
         "file": "book5.tex",
-        "line": 1935,
+        "line": 2198,
         "proof_status": "proven"
       },
       "theorems": [
@@ -1200,7 +1643,7 @@
         "type": "theorem",
         "name": "Fundamental Dichotomy of Symbolic Constants",
         "file": "book5.tex",
-        "line": 1993,
+        "line": 2256,
         "proof_status": "argued_demonstratio"
       },
       "theorems": [
@@ -1232,7 +1675,7 @@
         "type": "theorem",
         "name": "Symbolic Norm Spectrum",
         "file": "book5.tex",
-        "line": 2316,
+        "line": 2579,
         "proof_status": "proven"
       },
       "theorems": [
@@ -1299,7 +1742,7 @@
         "type": "proposition",
         "name": "Complete Symbolic Regime Classification",
         "file": "book5.tex",
-        "line": 2396,
+        "line": 2659,
         "proof_status": "proven"
       },
       "theorems": [
@@ -1355,7 +1798,7 @@
         "type": "theorem",
         "name": "Product Theorem of the Symbolic-Geometric Interface",
         "file": "book5.tex",
-        "line": 2492,
+        "line": 2755,
         "proof_status": "proven"
       },
       "theorems": [
@@ -1421,7 +1864,7 @@
         "type": "definition",
         "name": "Two-Way Street reciprocity tensor",
         "file": "book5.tex",
-        "line": 2577,
+        "line": 2840,
         "proof_status": "definitional"
       },
       "theorems": [
@@ -1464,7 +1907,7 @@
         "type": "theorem",
         "name": "Golden Rule Reciprocity",
         "file": "book5.tex",
-        "line": 2601,
+        "line": 2864,
         "proof_status": "proven"
       },
       "theorems": [
@@ -1659,7 +2102,7 @@
         "type": "axiom",
         "name": "Reflective Equilibrium Stability",
         "file": "book5.tex",
-        "line": 485,
+        "line": 516,
         "proof_status": "definitional"
       },
       "theorems": [
@@ -1691,7 +2134,7 @@
         "type": "proposition",
         "name": "MAP-MAD Dichotomy",
         "file": "book5.tex",
-        "line": 369,
+        "line": 400,
         "proof_status": "argued_demonstratio"
       },
       "theorems": [
@@ -1812,7 +2255,7 @@
         "type": "theorem",
         "name": "MAP-MAD Critical Temperature",
         "file": "book5.tex",
-        "line": 822,
+        "line": 907,
         "proof_status": "proven"
       },
       "theorems": [
@@ -1856,7 +2299,7 @@
         "type": "proposition",
         "name": "Symbolic Integrability Classes",
         "file": "book5.tex",
-        "line": 2078,
+        "line": 2341,
         "proof_status": "proven"
       },
       "theorems": [
@@ -1924,7 +2367,7 @@
         "type": "theorem",
         "name": "Fundamental Theorem of Norm-Induced Symbolic Fracture",
         "file": "book5.tex",
-        "line": 2255,
+        "line": 2518,
         "proof_status": "proven"
       },
       "theorems": [
@@ -1995,7 +2438,7 @@
         "type": "theorem",
         "name": "Symbolic Torsion Phase Diagram",
         "file": "book5.tex",
-        "line": 2103,
+        "line": 2366,
         "proof_status": "proven"
       },
       "theorems": [
@@ -2100,7 +2543,7 @@
         "type": "proposition",
         "name": "Effective Support-Dimension Diagnostic",
         "file": "book5.tex",
-        "line": 2203,
+        "line": 2466,
         "proof_status": "proven"
       },
       "theorems": [
@@ -2155,7 +2598,7 @@
         {
           "name": "Book5.effectiveSupportDimensionInfinity_log_ratio",
           "file": "Book5NormInfinity.lean",
-          "statement": "The logarithmic infinity ratio yields effective support dimension two.",
+          "statement": "The logarithmic infinity ratio yields effective support frame rank two.",
           "axioms": [
             "propext",
             "Classical.choice",
@@ -2180,7 +2623,7 @@
         "type": "lemma",
         "name": "Shortest Path Representability Criterion",
         "file": "book5.tex",
-        "line": 2143,
+        "line": 2406,
         "proof_status": "proven"
       },
       "theorems": [
@@ -2249,7 +2692,7 @@
         "type": "corollary",
         "name": "Symbolic Decoherence Theory",
         "file": "book5.tex",
-        "line": 2178,
+        "line": 2441,
         "proof_status": "proven"
       },
       "theorems": [
@@ -2328,7 +2771,7 @@
         "type": "lemma",
         "name": "$\\varphi$ as Balanced Memory Resonance",
         "file": "book5.tex",
-        "line": 2370,
+        "line": 2633,
         "proof_status": "proven"
       },
       "theorems": [
@@ -2383,7 +2826,7 @@
         "type": "corollary",
         "name": "The $\\varphi$-Centrality Principle",
         "file": "book5.tex",
-        "line": 2457,
+        "line": 2720,
         "proof_status": "proven"
       },
       "theorems": [
@@ -2439,7 +2882,7 @@
         "type": "theorem",
         "name": "Symbolic Manifold Spectral Decomposition",
         "file": "book5.tex",
-        "line": 2427,
+        "line": 2690,
         "proof_status": "proven"
       },
       "theorems": [
@@ -2770,7 +3213,7 @@
         "type": "definition",
         "name": "Covenant Resilience Index",
         "file": "book5.tex",
-        "line": 423,
+        "line": 454,
         "proof_status": "definitional"
       },
       "theorems": [
@@ -2799,7 +3242,7 @@
         "type": "lemma",
         "name": "Multi-Membrane MAP Extension",
         "file": "book5.tex",
-        "line": 430,
+        "line": 461,
         "proof_status": "proven"
       },
       "theorems": [
@@ -2829,7 +3272,7 @@
         "type": "corollary",
         "name": "MAP Evolutionary Advantage",
         "file": "book5.tex",
-        "line": 447,
+        "line": 478,
         "proof_status": "proven"
       },
       "theorems": [
@@ -2870,7 +3313,7 @@
         "type": "definition",
         "name": "Reflective-Drift Coupling Tensor",
         "file": "book5.tex",
-        "line": 470,
+        "line": 501,
         "proof_status": "definitional"
       },
       "theorems": [
@@ -2899,7 +3342,7 @@
         "type": "definition",
         "name": "Spectral Radius of Coupling Tensor",
         "file": "book5.tex",
-        "line": 477,
+        "line": 508,
         "proof_status": "definitional"
       },
       "theorems": [
@@ -2928,7 +3371,7 @@
         "type": "proposition",
         "name": "Viability Domain Preservation",
         "file": "book5.tex",
-        "line": 563,
+        "line": 609,
         "proof_status": "proven"
       },
       "theorems": [
@@ -2956,7 +3399,7 @@
         "type": "theorem",
         "name": "Reflective Stability Criterion",
         "file": "book5.tex",
-        "line": 654,
+        "line": 700,
         "proof_status": "proven"
       },
       "theorems": [
@@ -2986,7 +3429,7 @@
         "type": "definition",
         "name": "Reflective Coupling Stability Parameter",
         "file": "book5.tex",
-        "line": 727,
+        "line": 786,
         "proof_status": "definitional"
       },
       "theorems": [
@@ -3027,7 +3470,7 @@
         "type": "definition",
         "name": "Symbolic Bifurcation Manifold",
         "file": "book5.tex",
-        "line": 736,
+        "line": 795,
         "proof_status": "definitional"
       },
       "theorems": [
@@ -3056,7 +3499,7 @@
         "type": "lemma",
         "name": "Symbolic Divergence Bounds",
         "file": "book5.tex",
-        "line": 754,
+        "line": 813,
         "proof_status": "proven"
       },
       "theorems": [
@@ -3086,7 +3529,7 @@
         "type": "proposition",
         "name": "Multi-Agent MAP-MAD Classification",
         "file": "book5.tex",
-        "line": 883,
+        "line": 984,
         "proof_status": "argued_demonstratio"
       },
       "theorems": [
@@ -3128,7 +3571,7 @@
         "type": "definition",
         "name": "Symbolic Strategy",
         "file": "book5.tex",
-        "line": 969,
+        "line": 1077,
         "proof_status": "definitional"
       },
       "theorems": [
@@ -3169,7 +3612,7 @@
         "type": "definition",
         "name": "Strategy Space",
         "file": "book5.tex",
-        "line": 979,
+        "line": 1087,
         "proof_status": "definitional"
       },
       "theorems": [
@@ -3199,7 +3642,7 @@
         "type": "definition",
         "name": "Symbolic Fitness",
         "file": "book5.tex",
-        "line": 983,
+        "line": 1091,
         "proof_status": "definitional"
       },
       "theorems": [
@@ -3240,7 +3683,7 @@
         "type": "definition",
         "name": "Symbolic ESS",
         "file": "book5.tex",
-        "line": 991,
+        "line": 1099,
         "proof_status": "definitional"
       },
       "theorems": [
@@ -3269,7 +3712,7 @@
         "type": "lemma",
         "name": "MAP Fitness Advantage",
         "file": "book5.tex",
-        "line": 999,
+        "line": 1107,
         "proof_status": "proven"
       },
       "theorems": [
@@ -3298,7 +3741,7 @@
         "type": "lemma",
         "name": "Covenant Non-Invasibility",
         "file": "book5.tex",
-        "line": 1025,
+        "line": 1133,
         "proof_status": "proven"
       },
       "theorems": [
@@ -3328,7 +3771,7 @@
         "type": "proposition",
         "name": "Symbolic ESS via MAP",
         "file": "book5.tex",
-        "line": 1096,
+        "line": 1229,
         "proof_status": "proven"
       },
       "theorems": [
@@ -3368,7 +3811,7 @@
         "type": "lemma",
         "name": "MAP Population Stability",
         "file": "book5.tex",
-        "line": 1154,
+        "line": 1308,
         "proof_status": "proven"
       },
       "theorems": [
@@ -3397,7 +3840,7 @@
         "type": "theorem",
         "name": "MAP as Strong ESS",
         "file": "book5.tex",
-        "line": 1178,
+        "line": 1332,
         "proof_status": "proven"
       },
       "theorems": [
@@ -3426,7 +3869,7 @@
         "type": "definition",
         "name": "Symbolic Invasion Barrier",
         "file": "book5.tex",
-        "line": 1198,
+        "line": 1352,
         "proof_status": "definitional"
       },
       "theorems": [
@@ -3455,7 +3898,7 @@
         "type": "lemma",
         "name": "MAP Invasion Barrier Strength",
         "file": "book5.tex",
-        "line": 1204,
+        "line": 1358,
         "proof_status": "proven"
       },
       "theorems": [
@@ -3485,7 +3928,7 @@
         "type": "definition",
         "name": "Process Free Energy $\\Fproc$",
         "file": "book5.tex",
-        "line": 1321,
+        "line": 1500,
         "proof_status": "definitional"
       },
       "theorems": [
@@ -3526,7 +3969,7 @@
         "type": "proposition",
         "name": "Fixed Metabolic Capacity",
         "file": "book5.tex",
-        "line": 1334,
+        "line": 1513,
         "proof_status": "proven"
       },
       "theorems": [
@@ -3556,7 +3999,7 @@
         "type": "definition",
         "name": "Metabolic Capacity $\\MC$",
         "file": "book5.tex",
-        "line": 1346,
+        "line": 1525,
         "proof_status": "definitional"
       },
       "theorems": [
@@ -3597,7 +4040,7 @@
         "type": "axiom",
         "name": "Metabolically Bounded Reflection",
         "file": "book5.tex",
-        "line": 1412,
+        "line": 1608,
         "proof_status": "definitional"
       },
       "theorems": [
@@ -3626,7 +4069,7 @@
         "type": "corollary",
         "name": "",
         "file": "book5.tex",
-        "line": 1419,
+        "line": 1615,
         "proof_status": "proven"
       },
       "theorems": [
@@ -3655,7 +4098,7 @@
         "type": "definition",
         "name": "Operator Viability Set $\\mathcal{V}_{\\text{op}}$",
         "file": "book5.tex",
-        "line": 1454,
+        "line": 1672,
         "proof_status": "definitional"
       },
       "theorems": [
@@ -3684,7 +4127,7 @@
         "type": "definition",
         "name": "Operator Complexity, Stability Margin, Maintenance Cost",
         "file": "book5.tex",
-        "line": 1475,
+        "line": 1693,
         "proof_status": "definitional"
       },
       "theorems": [
@@ -3713,7 +4156,7 @@
         "type": "theorem",
         "name": "Complexity-Stability Tradeoff",
         "file": "book5.tex",
-        "line": 1484,
+        "line": 1702,
         "proof_status": "proven"
       },
       "theorems": [
@@ -3742,7 +4185,7 @@
         "type": "corollary",
         "name": "Complexity Stability Tradeoff",
         "file": "book5.tex",
-        "line": 1503,
+        "line": 1721,
         "proof_status": "proven"
       },
       "theorems": [
@@ -3771,7 +4214,7 @@
         "type": "corollary",
         "name": "Symbolic Eigenlife",
         "file": "book5.tex",
-        "line": 1690,
+        "line": 1953,
         "proof_status": "proven"
       },
       "theorems": [
@@ -3802,7 +4245,7 @@
         "type": "definition",
         "name": "The MAD--MAP--MAS Band",
         "file": "book5.tex",
-        "line": 1714,
+        "line": 1977,
         "proof_status": "definitional"
       },
       "theorems": [
@@ -3857,7 +4300,7 @@
         "type": "theorem",
         "name": "MAD--MAP--MAS Trichotomy",
         "file": "book5.tex",
-        "line": 1729,
+        "line": 1992,
         "proof_status": "proven"
       },
       "theorems": [
@@ -3910,7 +4353,7 @@
         "type": "theorem",
         "name": "Golden Ratio as Balanced Scale-Resonant Curvature Ratio",
         "file": "book5.tex",
-        "line": 1768,
+        "line": 2031,
         "proof_status": "proven"
       },
       "theorems": [
@@ -3940,7 +4383,7 @@
         "type": "proposition",
         "name": "Golden Ratio as Thermodynamic Optimum in the Balanced Regime",
         "file": "book5.tex",
-        "line": 1839,
+        "line": 2102,
         "proof_status": "proven"
       },
       "theorems": [
@@ -3981,7 +4424,7 @@
         "type": "definition",
         "name": "Diagonal Transition",
         "file": "book5.tex",
-        "line": 1884,
+        "line": 2147,
         "proof_status": "definitional"
       },
       "theorems": [
@@ -4010,7 +4453,7 @@
         "type": "definition",
         "name": "Symbolic Integrability Class",
         "file": "book5.tex",
-        "line": 2017,
+        "line": 2280,
         "proof_status": "definitional"
       },
       "theorems": [
@@ -4040,7 +4483,7 @@
         "type": "definition",
         "name": "Symbolic Curvature Control Parameter",
         "file": "book5.tex",
-        "line": 2024,
+        "line": 2287,
         "proof_status": "definitional"
       },
       "theorems": [
@@ -4083,7 +4526,7 @@
         "type": "definition",
         "name": "Symbolic Compression Experiment",
         "file": "book5.tex",
-        "line": 2245,
+        "line": 2508,
         "proof_status": "definitional"
       },
       "theorems": [
@@ -4136,7 +4579,7 @@
         "type": "definition",
         "name": "Symbolic Curvature Operator Spectrum",
         "file": "book5.tex",
-        "line": 2350,
+        "line": 2613,
         "proof_status": "definitional"
       },
       "theorems": [
@@ -4165,7 +4608,7 @@
         "type": "proposition",
         "name": "Operator Evolution",
         "file": "book5.tex",
-        "line": 1312,
+        "line": 1491,
         "proof_status": "proven"
       },
       "theorems": [
@@ -4194,7 +4637,7 @@
         "type": "theorem",
         "name": "Operator Convergence",
         "file": "book5.tex",
-        "line": 1385,
+        "line": 1581,
         "proof_status": "proven"
       },
       "theorems": [
@@ -4223,7 +4666,7 @@
         "type": "lemma",
         "name": "Recursive Flow Convergence",
         "file": "book5.tex",
-        "line": 539,
+        "line": 585,
         "proof_status": "proven"
       },
       "theorems": [
@@ -4252,7 +4695,7 @@
         "type": "proposition",
         "name": "",
         "file": "book5.tex",
-        "line": 1460,
+        "line": 1678,
         "proof_status": "proven"
       },
       "theorems": [
@@ -4281,7 +4724,7 @@
         "type": "proposition",
         "name": "",
         "file": "book5.tex",
-        "line": 1358,
+        "line": 1537,
         "proof_status": "proven"
       },
       "theorems": [
@@ -4310,7 +4753,7 @@
         "type": "corollary",
         "name": "Spectral Radius Optimality",
         "file": "book5.tex",
-        "line": 635,
+        "line": 681,
         "proof_status": "proven"
       },
       "theorems": [
@@ -4330,16 +4773,21 @@
     },
     {
       "atlas_id": "proposition:bk5_symbolic_population_ess_map_equivalence_case2",
-      "coverage": "conditional",
+      "coverage": "proved",
       "lean": [
-        "Book5ESSEquivalence.distance_tendsto_zero_of_eventually_identified"
+        "Book5ESSEquivalence.distance_tendsto_zero_of_eventually_identified",
+        "Book5ESSEquivalence.TwoSidedStrategyApproximation.hausdorffDist_le",
+        "Book5ESSEquivalence.TwoSidedStrategyApproximation.hausdorffDist_tendsto_zero",
+        "Book5ESSEquivalence.TwoSidedStrategyApproximation.of_eventual_equality",
+        "Book5ESSEquivalence.one_sided_ess_to_map_does_not_identify_sets",
+        "Book5ESSEquivalence.population_limit_does_not_supply_two_sided_approximation"
       ],
-      "note": "Finite discrete strategy-set kernel: eventual two-sided ESS-to-MAP identification yields distance convergence to zero; population concentration alone does not imply equality of the abstract sets.",
+      "note": "Genuine metric reconstruction: ESS and MAP remain distinct set-valued predicates in an arbitrary pseudo-metric strategy space. Two independent directed witness laws at tolerance \u03b5_n bound the actual Hausdorff distance; \u03b5_n \u2192 0 yields convergence without finite-stage equality. One-sided inclusion and population-mass convergence countermodels show neither supplies two-sided set approximation.",
       "atlas": {
         "type": "proposition",
-        "name": "Symbolic Population ESS-MAP Equivalence",
+        "name": "Symbolic Population ESS--MAP Approximation",
         "file": "book5.tex",
-        "line": 1226,
+        "line": 1380,
         "proof_status": "proven"
       },
       "theorems": [
@@ -4354,24 +4802,88 @@
           ],
           "sorry": false,
           "status": "P"
+        },
+        {
+          "name": "Book5ESSEquivalence.TwoSidedStrategyApproximation.hausdorffDist_le",
+          "file": "Book5ESSEquivalence.lean",
+          "statement": "Two directed metric transports bound the genuine ESS--MAP Hausdorff distance.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5ESSEquivalence.TwoSidedStrategyApproximation.hausdorffDist_tendsto_zero",
+          "file": "Book5ESSEquivalence.lean",
+          "statement": "Shrinking two-sided strategy tolerance forces Hausdorff convergence without finite-stage equality.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5ESSEquivalence.TwoSidedStrategyApproximation.of_eventual_equality",
+          "file": "Book5ESSEquivalence.lean",
+          "statement": "Literal set equality is a sufficient zero-tolerance boundary, not a premise of metric convergence.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5ESSEquivalence.one_sided_ess_to_map_does_not_identify_sets",
+          "file": "Book5ESSEquivalence.lean",
+          "statement": "Countermodel: ESS-to-MAP inclusion does not supply the reverse strategy transport.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5ESSEquivalence.population_limit_does_not_supply_two_sided_approximation",
+          "file": "Book5ESSEquivalence.lean",
+          "statement": "Countermodel: population-mass convergence does not identify or approximate the abstract ESS set.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
         }
       ]
     },
     {
       "atlas_id": "axiom:bk5_srmf_operator_selection_evolution",
-      "coverage": "conditional",
+      "coverage": "partial",
       "lean": [
         "Book5OperatorSelection.exists_process_minimizer",
         "Book5OperatorSelection.selected_le_incumbent",
         "Book5OperatorSelection.rejects_strictly_suboptimal_incumbent",
-        "Book5OperatorSelection.viability_alone_does_not_force_operator_argmin"
+        "Book5OperatorSelection.viability_alone_does_not_force_operator_argmin",
+        "Book5StatefulOperatorLearning.step_current",
+        "Book5StatefulOperatorLearning.step_comparatorRegret_nonpos",
+        "Book5StatefulOperatorLearning.boolFeedbackLaw_responds",
+        "Book5StatefulOperatorLearning.feedback_response_does_not_force_inventory_change"
       ],
-      "note": "Finite optimization kernel: a nonempty operator inventory has a process-free-energy minimizer, whose certificate dominates every incumbent and rejects strictly suboptimal choices. Viability alone does not imply that selection law; SRMF dynamics remain an explicit bridge.",
+      "note": "Conditional stateful selection kernel: a supplied feedback-indexed learning law updates an admissible inventory, selects a certified process-free-energy minimizer, records the incumbent, and has nonpositive one-step comparator regret. A concrete law responds to feedback without forcing inventory change. Viability alone neither supplies this law nor proves fair or asymptotic convergence.",
       "atlas": {
         "type": "axiom",
-        "name": "SRMF for Operator Selection and Evolution",
+        "name": "Stateful SRMF Operator Selection and Evolution",
         "file": "book5.tex",
-        "line": 1370,
+        "line": 1549,
         "proof_status": "definitional"
       },
       "theorems": [
@@ -4422,26 +4934,76 @@
           ],
           "sorry": false,
           "status": "P"
+        },
+        {
+          "name": "Book5StatefulOperatorLearning.step_current",
+          "file": "Book5StatefulOperatorLearning.lean",
+          "statement": "A learning step installs the feedback-selected operator as the new incumbent.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5StatefulOperatorLearning.step_comparatorRegret_nonpos",
+          "file": "Book5StatefulOperatorLearning.lean",
+          "statement": "Certified selection has nonpositive regret against every operator in the updated inventory.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5StatefulOperatorLearning.boolFeedbackLaw_responds",
+          "file": "Book5StatefulOperatorLearning.lean",
+          "statement": "A concrete feedback-sensitive law routes one persistent state to distinct future operators.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5StatefulOperatorLearning.feedback_response_does_not_force_inventory_change",
+          "file": "Book5StatefulOperatorLearning.lean",
+          "statement": "Feedback-sensitive selection can occur while the supplied operator inventory remains fixed.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
         }
       ]
     },
     {
       "atlas_id": "theorem:bk5__srmf_operator_adaptation",
-      "coverage": "conditional",
+      "coverage": "partial",
       "lean": [
         "Book5OperatorAdaptation.refinementVelocity_eq_of_below",
         "Book5OperatorAdaptation.refinementVelocity_pos",
         "Book5OperatorAdaptation.gradientStep_displacement",
         "Book5OperatorAdaptation.quadratic_processFreeEnergy_descent",
         "Book5OperatorAdaptation.process_descent_can_increase_execution_cost",
-        "Book5OperatorAdaptation.below_threshold_alone_does_not_force_adaptation"
+        "Book5OperatorAdaptation.below_threshold_alone_does_not_force_adaptation",
+        "Book5StatefulOperatorLearning.step_records_incumbent",
+        "Book5StatefulOperatorLearning.two_steps_retain_ordered_history"
       ],
-      "note": "Explicit adaptation-law kernel: below-threshold effectiveness creates deficit-proportional refinement pressure under a positive feedback gain; a stable gradient step descends quadratic process free energy; and execution cost may rise while total process energy falls. The threshold inequality alone does not force an update.",
+      "note": "Conditional adaptation kernel: an explicit positive-gain law converts effectiveness shortfall into proportional pressure, and an explicit gradient step descends quadratic process free energy for step size in [0,2]. Stateful execution retains ordered incumbents, while a countermodel shows the threshold inequality alone cannot force motion. General steepest descent, calibration, and continuous or asymptotic evolution remain premises rather than consequences.",
       "atlas": {
         "type": "theorem",
-        "name": "SRMF Operator Adaptation",
+        "name": "Certified SRMF Operator Adaptation",
         "file": "book5.tex",
-        "line": 1436,
+        "line": 1632,
         "proof_status": "proven"
       },
       "theorems": [
@@ -4516,23 +5078,52 @@
           ],
           "sorry": false,
           "status": "P"
+        },
+        {
+          "name": "Book5StatefulOperatorLearning.step_records_incumbent",
+          "file": "Book5StatefulOperatorLearning.lean",
+          "statement": "A learning step retains the previous incumbent in ordered history.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5StatefulOperatorLearning.two_steps_retain_ordered_history",
+          "file": "Book5StatefulOperatorLearning.lean",
+          "statement": "Two feedback steps retain both prior incumbents in temporal order.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
         }
       ]
     },
     {
       "atlas_id": "theorem:bk5_metabolic_constraints_reflective_accuracy",
-      "coverage": "conditional",
+      "coverage": "proved",
       "lean": [
         "Book5ReflectiveAccuracy.fidelity_le_log_of_depth_bound",
         "Book5ReflectiveAccuracy.fidelityEnvelope_nonneg",
-        "Book5ReflectiveAccuracy.capacity_alone_does_not_bound_unconstrained_fidelity"
+        "Book5ReflectiveAccuracy.capacity_alone_does_not_bound_unconstrained_fidelity",
+        "Book5ReflectiveAccuracy.ReflectiveFidelityProcess.fidelity_le_linear",
+        "Book5ReflectiveAccuracy.GeometricRecursionBudget.power_le_capacity_ratio_add_one",
+        "Book5ReflectiveAccuracy.ReflectiveAccuracyCertificate.beta_nonneg",
+        "Book5ReflectiveAccuracy.ReflectiveAccuracyCertificate.fidelity_le_log_capacity",
+        "Book5ReflectiveAccuracy.depth_budget_without_marginal_control_countermodel"
       ],
-      "note": "Composition kernel: bounded marginal fidelity per reflective level plus a logarithmic metabolic recursion-depth bound yields the printed logarithmic accuracy envelope. Metabolic capacity alone cannot constrain an otherwise unrestricted fidelity value.",
+      "note": "Depth-indexed reconstruction: a reflective fidelity process with zero-depth normalization and uniform marginal gain telescopes to a linear depth bound. A positive geometric recursion budget derives the dimensionless power bound. An explicit log-coordinate calibration composes these into the source envelope with nonnegative \u03b2. A countermodel shows depth and capacity cannot bound unrestricted fidelity.",
       "atlas": {
         "type": "theorem",
         "name": "Metabolic Constraints on Reflective Accuracy",
         "file": "book5.tex",
-        "line": 1530,
+        "line": 1748,
         "proof_status": "proven"
       },
       "theorems": [
@@ -4571,26 +5162,92 @@
           ],
           "sorry": false,
           "status": "P"
+        },
+        {
+          "name": "Book5ReflectiveAccuracy.ReflectiveFidelityProcess.fidelity_le_linear",
+          "file": "Book5ReflectiveAccuracy.lean",
+          "statement": "Uniform marginal fidelity control telescopes over every finite reflective depth.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5ReflectiveAccuracy.GeometricRecursionBudget.power_le_capacity_ratio_add_one",
+          "file": "Book5ReflectiveAccuracy.lean",
+          "statement": "Positive geometric recursion cost yields the dimensionless power budget before logarithmic calibration.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5ReflectiveAccuracy.ReflectiveAccuracyCertificate.beta_nonneg",
+          "file": "Book5ReflectiveAccuracy.lean",
+          "statement": "Marginal gain and log-coordinate calibration construct a nonnegative source coefficient beta.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5ReflectiveAccuracy.ReflectiveAccuracyCertificate.fidelity_le_log_capacity",
+          "file": "Book5ReflectiveAccuracy.lean",
+          "statement": "The process, metabolic budget, and explicit calibration compose into the logarithmic fidelity envelope.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5ReflectiveAccuracy.depth_budget_without_marginal_control_countermodel",
+          "file": "Book5ReflectiveAccuracy.lean",
+          "statement": "Countermodel: an admissible metabolic depth does not bound an unrestricted fidelity process.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
         }
       ]
     },
     {
       "atlas_id": "proposition:bk5_shade_transfers",
-      "coverage": "conditional",
+      "coverage": "proved",
       "lean": [
         "Book5ShadeTransfer.shade_preserved_of_radius_preserved",
         "Book5ShadeTransfer.radial_order_alone_does_not_preserve_shade",
         "Book5ShadeTransfer.golden_logRadius_step",
         "Book5ShadeTransfer.normalized_shade_is_not_multiplicative",
         "Book5ShadeTransfer.balanced_reciprocity_paints_golden_rate",
-        "Book5ShadeTransfer.extraction_has_unit_radial_rate"
+        "Book5ShadeTransfer.extraction_has_unit_radial_rate",
+        "Book5ShadeTransfer.ShadeInterface.faithful_comp",
+        "Book5ShadeTransfer.ShadeInterface.identity_faithful",
+        "Book5ShadeTransfer.faithfulControlTransport_components",
+        "Book5ShadeTransfer.radius_preservation_implies_control_fidelity",
+        "Book5ShadeTransfer.shade_without_shadow_price_is_not_control_fidelity",
+        "Book5ShadeTransfer.monotone_encoding_not_semantically_faithful"
       ],
-      "note": "Exact radius preservation transports shade, but radial-order preservation alone does not. Golden spiral steps add log(phi) to log-radius; bounded normalized shade is not multiplicative. Balanced reciprocity has rate phi, while zero reciprocal weight has unit radial rate.",
+      "note": "Commuting-interface reconstruction: shade fidelity means decoding after representation transport equals source shade, and faithful interfaces compose. Exact radius preservation constructs fidelity for both shade and any radial shadow price. Countermodels show strict order preservation is not semantic fidelity and matching shade alone does not preserve the joint control signal. Golden steps are constant in log-radius, not bounded shade.",
       "atlas": {
         "type": "proposition",
-        "name": "Shade transfers, and the golden spiral paints equal shade-steps",
+        "name": "Faithful shade and shadow-price transfer",
         "file": "book5.tex",
-        "line": 2700,
+        "line": 2963,
         "proof_status": "proven"
       },
       "theorems": [
@@ -4656,6 +5313,68 @@
             "propext",
             "Classical.choice",
             "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5ShadeTransfer.ShadeInterface.faithful_comp",
+          "file": "Book5ShadeTransfer.lean",
+          "statement": "Faithful shade interfaces compose through a shared observer-readable intermediate decoder.",
+          "axioms": [],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5ShadeTransfer.ShadeInterface.identity_faithful",
+          "file": "Book5ShadeTransfer.lean",
+          "statement": "Identity representation is a faithful shade-transport boundary.",
+          "axioms": [],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5ShadeTransfer.faithfulControlTransport_components",
+          "file": "Book5ShadeTransfer.lean",
+          "statement": "Joint control fidelity exposes both shade and shadow-price preservation.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5ShadeTransfer.radius_preservation_implies_control_fidelity",
+          "file": "Book5ShadeTransfer.lean",
+          "statement": "Exact radius transport preserves every radial shade normalization and shadow-price readout.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5ShadeTransfer.shade_without_shadow_price_is_not_control_fidelity",
+          "file": "Book5ShadeTransfer.lean",
+          "statement": "Countermodel: identical shade can conceal a changed shadow price.",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "sorry": false,
+          "status": "P"
+        },
+        {
+          "name": "Book5ShadeTransfer.monotone_encoding_not_semantically_faithful",
+          "file": "Book5ShadeTransfer.lean",
+          "statement": "Countermodel: strictly monotone representation transport need not commute with shade semantics.",
+          "axioms": [
+            "propext"
           ],
           "sorry": false,
           "status": "P"

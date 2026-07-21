@@ -74,6 +74,7 @@ are recorded with reasons in the accompanying proposal.
 import Mathlib
 import ForcingAnalysis.FracturedAtlas
 import ForcingAnalysis.Newton
+import ForcingAnalysis.ScholiumC
 
 namespace ForcingAnalysis.ScholiumD
 
@@ -532,6 +533,23 @@ theorem newtonian_incompleteness_kernel
       a + (2 : ℝ) • w ≠ a := by
   exact ⟨ForcingAnalysis.newtonForce_equivariant m,
     ForcingAnalysis.accelerated_frame_defect_ne hw⟩
+/-- The source-level covariance boundary without the earlier three-coordinate
+specialization: on every real normed vector space, scalar Newtonian force
+commutes with every continuous linear frame map, while every nonzero uniform
+frame acceleration produces a nonzero `2 • w` defect. -/
+theorem newtonian_incompleteness_normedSpace
+    {V : Type*} [NormedAddCommGroup V] [NormedSpace ℝ V]
+    (m : ℝ) {a w : V} (hw : w ≠ 0) :
+    (∀ L : V →L[ℝ] V, L (m • a) = m • L a) ∧
+      a + (2 : ℝ) • w ≠ a := by
+  constructor
+  · intro L
+    exact L.map_smul m a
+  · intro h
+    have h0 : (2 : ℝ) • w = 0 := by
+      have := congrArg (fun z => z - a) h
+      simpa [add_comm, add_sub_cancel_right] using this
+    exact hw (by simpa [smul_eq_zero] using h0)
 /- ================================================================
    lemma:bk1_symbolic_quantum_incompatibility
    ================================================================ -/
@@ -600,4 +618,23 @@ theorem emergence_premises_do_not_force_curvature :
       reflexiveIdentity := ⟨false, rfl⟩
       structuralGrowth := by omega }
   exact ⟨E, fun _ _ _ => rfl⟩
+/-- Contextual structural growth has a Scholium-local certificate: failure of
+additive state/context separation exposes a nonzero mixed cross-error. This
+result deliberately stops before Book 4 geometry; Book 4 consumes the
+certificate to construct noncommuting transports. -/
+theorem contextualGrowth_exposes_crossError
+    (U : ℝ → ℝ → ℝ)
+    (hgrowth : ¬ ∃ f : ℝ → ℝ, ∃ g : ℝ → ℝ,
+      U = fun ξ χ => f ξ + g χ) :
+    ∃ ξ χ, ForcingAnalysis.ScholiumC.crossTerm U ξ χ ≠ 0 := by
+  by_contra hcross
+  push Not at hcross
+  apply hgrowth
+  refine ⟨fun ξ => U ξ 0, fun χ => U 0 χ - U 0 0, ?_⟩
+  funext ξ χ
+  have hξχ := hcross ξ χ
+  dsimp [ForcingAnalysis.ScholiumC.crossTerm] at hξχ ⊢
+  rw [← sub_eq_zero]
+  abel_nf at hξχ ⊢
+  exact hξχ
 end ForcingAnalysis.ScholiumD

@@ -10,8 +10,8 @@ not a human attestation and does not itself count as mapped coverage.
 - Claims: **476**
 - Mapped: **476**
 - Open: **0**
-- SHA bindings: **988** (0 human-attested; 988 reserved)
-- Unresolved source obligations: **66**
+- SHA bindings: **1295** (0 human-attested; 1295 reserved)
+- Unresolved source obligations: **15**
 
 | book | open claim | source | bound artifacts | dependencies |
 |---|---|---|---:|---|

@@ -56,4 +56,43 @@ theorem drift_alone_does_not_determine_mutation_rate :
       mutationRate density unitResponse = 1 := by
   simp [mutationRate]
 
+
+/-- Constitutive bridge from drift-induced curvature response to mutation rate.
+The response field and proportionality scale are data, not consequences of a
+drift label. -/
+structure MutationConstitutiveCertificate {Point Tangent : Type*}
+    [Fintype Point] [SeminormedAddCommGroup Tangent] where
+  density : Point → ℝ
+  curvatureResponse : Point → Tangent
+  calibration : ℝ
+  density_nonneg : ∀ point, 0 ≤ density point
+  density_normalized : ∑ point, density point = 1
+  calibration_nonneg : 0 ≤ calibration
+
+namespace MutationConstitutiveCertificate
+
+noncomputable def rate {Point Tangent : Type*} [Fintype Point]
+    [SeminormedAddCommGroup Tangent]
+    (C : MutationConstitutiveCertificate (Point := Point) (Tangent := Tangent)) : ℝ :=
+  C.calibration * mutationRate C.density C.curvatureResponse
+
+theorem rate_nonneg {Point Tangent : Type*} [Fintype Point]
+    [SeminormedAddCommGroup Tangent]
+    (C : MutationConstitutiveCertificate (Point := Point) (Tangent := Tangent)) :
+    0 ≤ C.rate :=
+  mul_nonneg C.calibration_nonneg
+    (mutationRate_nonneg C.density_nonneg C.curvatureResponse)
+
+theorem rate_le_calibrated_uniform_bound
+    {Point Tangent : Type*} [Fintype Point]
+    [SeminormedAddCommGroup Tangent]
+    (C : MutationConstitutiveCertificate (Point := Point) (Tangent := Tangent))
+    {bound : ℝ} (hbound : ∀ point, ‖C.curvatureResponse point‖ ≤ bound) :
+    C.rate ≤ C.calibration * bound := by
+  exact mul_le_mul_of_nonneg_left
+    (mutationRate_le_uniform_curvature_bound C.density_nonneg
+      C.density_normalized hbound)
+    C.calibration_nonneg
+
+end MutationConstitutiveCertificate
 end ForcingAnalysis.Book6DriftMutation

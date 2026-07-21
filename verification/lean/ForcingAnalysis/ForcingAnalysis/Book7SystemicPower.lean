@@ -67,4 +67,20 @@ theorem equal_power_does_not_determine_gradient_orientation :
       (-1 : ℝ) ≠ 1 := by
   norm_num [unorientedLocalPower, localPower]
 
+/-- Orientation-sensitive local power keeps the component of the confidence
+gradient directed toward an explicit identity reference field. -/
+def orientedLocalPower {V : Type*} [NormedAddCommGroup V]
+    [InnerProductSpace ℝ V]
+    (confidence : ℝ) (gradient identityDirection : V) (volume : ℝ) : ℝ :=
+  confidence * inner ℝ gradient identityDirection * volume
+
+/-- Positive confidence and volume generate positive oriented power exactly
+when the gradient has a certified positive identity-directed component. -/
+theorem orientedLocalPower_pos {V : Type*} [NormedAddCommGroup V]
+    [InnerProductSpace ℝ V]
+    {confidence volume : ℝ} {gradient identityDirection : V}
+    (hconfidence : 0 < confidence) (hvolume : 0 < volume)
+    (haligned : 0 < inner ℝ gradient identityDirection) :
+    0 < orientedLocalPower confidence gradient identityDirection volume := by
+  exact mul_pos (mul_pos hconfidence haligned) hvolume
 end ForcingAnalysis.Book7SystemicPower

@@ -7,7 +7,7 @@ Claim-bearing atlas nodes (theorem/proposition/lemma/corollary/axiom) per book, 
 - Books with claim surface: **13**
 - Claim-bearing nodes: **476**
 - Mapped: **476** (476/476)
-- Unresolved source obligations: **66** (58 downstream-blocking)
+- Unresolved source obligations: **40** (40 downstream-blocking)
 
 | book | claims | mapped | bound | open | next |
 |---|---|---|---|---|---|

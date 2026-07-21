@@ -450,9 +450,11 @@
         "Book6DriftMutation.mutationRate_eq_weighted_curvature_change",
         "Book6DriftMutation.mutationRate_nonneg",
         "Book6DriftMutation.mutationRate_le_uniform_curvature_bound",
-        "Book6DriftMutation.drift_alone_does_not_determine_mutation_rate"
+        "Book6DriftMutation.drift_alone_does_not_determine_mutation_rate",
+        "Book6DriftMutation.MutationConstitutiveCertificate.rate_nonneg",
+        "Book6DriftMutation.MutationConstitutiveCertificate.rate_le_calibrated_uniform_bound"
       ],
-      "note": "Finite weighted-integral kernel: mutation rate is the density-weighted norm of curvature change along drift; it is nonnegative and inherits a uniform curvature-response bound under normalized density. Drift alone does not determine that response."
+      "note": "Calibrated constitutive kernel: a nonnegative normalized density integrates supplied drift-induced curvature response into a nonnegative mutation rate with a calibrated uniform bound. Drift alone does not determine the response or empirical bifurcation frequency."
     },
     {
       "atlas_id": "proposition:bk6_thermodynamic_interpretation",
@@ -460,9 +462,11 @@
       "lean": [
         "Book6ThermodynamicMutation.mem_feasibleStates_iff",
         "Book6ThermodynamicMutation.exists_constrained_mepp",
-        "Book6ThermodynamicMutation.equilibrium_balance_alone_does_not_imply_mepp"
+        "Book6ThermodynamicMutation.equilibrium_balance_alone_does_not_imply_mepp",
+        "Book6ThermodynamicMutation.MEPPSelectionLaw.trajectory_tendsto",
+        "Book6ThermodynamicMutation.argmax_exists_without_selection_dynamics"
       ],
-      "note": "Finite constrained-MEPP kernel: reflected entropy thresholding defines feasibility and every nonempty finite feasible population has an entropy-production maximizer. Production-dissipation balance at one equilibrium does not itself prove maximality."
+      "note": "Finite constrained-MEPP kernel with an explicit selection bridge. A nonempty finite feasible class has a maximizer, eventual selection converges to it, and a two-state countermodel proves that argmax existence does not manufacture dynamics."
     },
     {
       "atlas_id": "proposition:bk6_confidence_gradient",
@@ -472,9 +476,11 @@
         "Book6ConfidenceGradient.pure_confidence_drift_descends",
         "Book6ConfidenceGradient.pure_confidence_drift_strict",
         "Book6ConfidenceGradient.diffusion_can_reverse_confidence_drift",
-        "Book6ConfidenceGradient.regularity_alone_does_not_force_confidence_dynamics"
+        "Book6ConfidenceGradient.regularity_alone_does_not_force_confidence_dynamics",
+        "Book6ConfidenceGradient.confidenceVelocity_descends_of_perturbation_control",
+        "Book6ConfidenceGradient.confidenceVelocity_strictly_descends_of_strict_control"
       ],
-      "note": "Scalar chart kernel for the printed drift-diffusion-noise decomposition. Pure positive confidence drift descends strictly away from critical points, but diffusion can reverse direction. Smooth regular stratification alone does not force the stochastic mutation law."
+      "note": "Typed confidence-gradient control retains diffusion, observer, and noise effects as a tangent perturbation. A directional inner-product bound proves weak or strict descent; uncontrolled diffusion can reverse it."
     },
     {
       "atlas_id": "axiom:bk6_thermodynamic_consistency",
@@ -488,7 +494,7 @@
         "Book6ThermodynamicConsistency.printed_and_derived_laws_agree_iff_entropy_static",
         "Book6ThermodynamicConsistency.interface_term_reconciles_printed_law_iff"
       ],
-      "note": "Exact finite-increment identities for F=E-T*S. At fixed T, substituting dE=T*dS-P*dV+chemical work cancels the entropy term; varying T adds -S*dT and a finite cross term. A concrete counterexample refutes the printed +T*dS free-energy law under its natural reading. The adversarial orientation audit derives the entropy sign from a parameterized potential and proves the unique T*dS interface term required to reconcile the two candidate laws."
+      "note": "Exact finite-increment identities distinguish the internal-energy first law from F=E-T*S. Fixed temperature cancels T*dS from dF; varying temperature adds -S*dT and the finite cross-term. Potential orientation, not verifier preference, fixes the sign."
     },
     {
       "atlas_id": "axiom:bk6_confidence_stability_coupling",
@@ -497,9 +503,10 @@
         "Book6ConfidenceStability.stabilityVelocity_eq",
         "Book6ConfidenceStability.stabilityVelocity_nonpos_of_quotientSlope_nonneg",
         "Book6ConfidenceStability.constant_hamiltonian_gives_positive_stabilityVelocity",
-        "Book6ConfidenceStability.values_alone_do_not_force_confidence_stability_coupling"
+        "Book6ConfidenceStability.values_alone_do_not_force_confidence_stability_coupling",
+        "Book6ConfidenceStability.ConfidenceStabilityCertificate.velocity_nonpos"
       ],
-      "note": "Scalar quotient-response kernel: the printed velocity is negative coupling times the slope of H_conf/Upsilon. Its sign depends on that slope; a positive constant Hamiltonian produces positive velocity. Confidence and stability values alone do not supply the dynamics."
+      "note": "A typed constitutive certificate supplies the nonzero stability coordinate, coupling orientation, quotient response, and velocity equation. Quotient-slope sign controls velocity sign; values alone do not create dynamics, and a constant positive Hamiltonian exposes the opposite-sign regime."
     },
     {
       "atlas_id": "axiom:bk6_laplace_beltrami_observer_extension",
@@ -508,9 +515,11 @@
         "Book6ObserverExtension.observerExtension_agrees",
         "Book6ObserverExtension.exists_observerExtension",
         "Book6ObserverExtension.observer_error_accumulates",
-        "Book6ObserverExtension.observer_bound_alone_does_not_force_identity_preservation"
+        "Book6ObserverExtension.observer_bound_alone_does_not_force_identity_preservation",
+        "Book6ObserverExtension.ObserverOperatorExtensionCertificate.exists_total_extension",
+        "Book6ObserverExtension.ObserverOperatorExtensionCertificate.joint_defect_bound"
       ],
-      "note": "Typed observer-local extension kernel: a local field extends after an outside-domain fallback is supplied and agrees exactly on admitted points. Approximation errors accumulate across interfaces. Curvature bounds alone do not imply preservation of arbitrary divergence or entropy identities."
+      "note": "A coherent observer extension now carries an admissible subtype, explicit fallback, exact local agreement, separate divergence/entropy defects, and normed epsilon bounds. Interface errors accumulate; curvature boundedness alone supplies none of these identity certificates."
     },
     {
       "atlas_id": "lemma:bk6_grace_basin_correspondence",
@@ -521,7 +530,7 @@
         "Book6GraceBasin.subcriticality_alone_does_not_force_basin_membership",
         "Book6GraceBasin.coverage_without_invariance_does_not_force_grace_membership"
       ],
-      "note": "Set-theoretic operational kernel: subcritical coverage by some admitted regulatory basin plus forward invariance of each basin under grace yields membership of the grace image in the regulatory union. Separate countermodels show neither the threshold inequality alone nor initial coverage without invariance is sufficient."
+      "note": "Subcritical basin coverage supplies a named admitted basin and forward invariance carries the grace image back into it. Empty-basin and exiting-grace countermodels prove that neither thresholding nor coverage alone suffices."
     },
     {
       "atlas_id": "theorem:bk6_thermodynamic_map_duality",
@@ -530,9 +539,11 @@
         "Book6ThermodynamicMAP.duality_iff_residual_zero",
         "Book6ThermodynamicMAP.reflectionDeviation_eq",
         "Book6ThermodynamicMAP.duality_of_reflectionDeviation_eq",
-        "Book6ThermodynamicMAP.equilibrium_flags_alone_do_not_force_duality"
+        "Book6ThermodynamicMAP.equilibrium_flags_alone_do_not_force_duality",
+        "Book6ThermodynamicMAP.AveragedConstitutiveLaw.thermodynamicMAPDuality",
+        "Book6ThermodynamicMAP.AveragedConstitutiveLaw.dualityResidual_eq_zero"
       ],
-      "note": "Oriented scalar mean-balance kernel: the printed duality is equivalent to zero residual and to the rearranged reflection-deviation equation. Both directions are proved algebraically. A countermodel shows qualitative equilibrium, conservation, irreversibility, and extension flags alone do not determine the constitutive equation or its coefficients."
+      "note": "An explicit averaged constitutive balance derives the oriented thermodynamic--MAP identity and zero residual. Qualitative equilibrium and conservation flags remain countermodels to deriving its inverse-temperature coefficient or reflective sign by narration alone."
     }
   ]
 }

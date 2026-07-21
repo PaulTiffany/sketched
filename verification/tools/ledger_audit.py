@@ -10,6 +10,10 @@ to atlas nodes via \\ref, and checks:
                         token not mentioned in the row's Consumes cell
   UNMATCHED_ROW         row that joins to no atlas node (info)
   UNLEDGERED            provable atlas node with no ledger row (info)
+  UNANCHORED_DEBT       named M/C/O prose debt with no atlas node (info)
+
+Informational diagnostics remain visible but do not fail the audit. Pass
+``--strict-info`` to promote them to failures for inventory-consolidation work.
 """
 
 from __future__ import annotations
@@ -24,8 +28,9 @@ ATLAS = ROOT / "verification" / "atlas.json"
 
 
 def resolve_tex() -> Path:
-    if len(sys.argv) > 1:
-        return Path(sys.argv[1]).resolve()
+    source_args = [arg for arg in sys.argv[1:] if not arg.startswith("--")]
+    if source_args:
+        return Path(source_args[0]).resolve()
     candidates = sorted(
         ROOT.glob("forcing_correspondence_v*.tex"),
         key=lambda p: int(re.search(r"v(\d+)", p.stem).group(1)),
@@ -107,6 +112,7 @@ def assumption_closure(node_id: str, nodes: dict, memo: dict) -> set:
 
 
 def main() -> int:
+    strict_info = "--strict-info" in sys.argv[1:]
     tex = TEX.read_text(encoding="utf-8")
     atlas = json.loads(ATLAS.read_text(encoding="utf-8"))
     nodes = {n["id"]: n for n in atlas["nodes"]}
@@ -186,12 +192,17 @@ def main() -> int:
         "UNANCHORED_DEBT",
     ]
     findings.sort(key=lambda f: order.index(f[0]))
-    for code, msg in findings:
+    informational = {"UNMATCHED_ROW", "UNLEDGERED", "UNANCHORED_DEBT"}
+    errors = [(code, msg) for code, msg in findings if code not in informational]
+    info = [(code, msg) for code, msg in findings if code in informational]
+    for code, msg in errors:
         print(f"[{code}] {msg}")
-    print(f"\n{len(findings)} findings.")
+    for code, msg in info:
+        print(f"[{code}] {msg}")
+    print(f"\n{len(errors)} errors; {len(info)} informational diagnostics.")
 
     ATLAS.write_text(json.dumps(atlas, indent=2), encoding="utf-8")
-    return 0
+    return 1 if errors or (strict_info and info) else 0
 
 
 if __name__ == "__main__":

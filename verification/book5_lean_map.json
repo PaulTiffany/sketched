@@ -5,26 +5,39 @@
     "entries":  [
                     {
                         "atlas_id":  "corollary:bk5_convergence_to_map",
-                        "coverage":  "conditional",
+                        "coverage":  "proved",
                         "lean":  [
                                      "Book5ConvergenceMAP.mapShare_zero",
                                      "Book5ConvergenceMAP.mapShare_succ",
                                      "Book5ConvergenceMAP.mapShare_tendsto_one",
-                                     "Book5ConvergenceMAP.increasing_drift_alone_does_not_force_map_convergence"
+                                     "Book5ConvergenceMAP.increasing_drift_alone_does_not_force_map_convergence",
+                                     "Book5ConvergenceMAP.PersistentMAPAdvantage.contraction_nonneg",
+                                     "Book5ConvergenceMAP.PersistentMAPAdvantage.contraction_lt_one",
+                                     "Book5ConvergenceMAP.MAPPopulationOrbit.residual_eq_pow",
+                                     "Book5ConvergenceMAP.MAPPopulationOrbit.share_le_one",
+                                     "Book5ConvergenceMAP.MAPPopulationOrbit.share_nonneg",
+                                     "Book5ConvergenceMAP.MAPPopulationOrbit.share_eq_mapShare",
+                                     "Book5ConvergenceMAP.MAPPopulationOrbit.share_tendsto_one",
+                                     "Book5ConvergenceMAP.MAPPopulationOrbit.fitness_gap_with_inflow_does_not_force_convergence"
                                  ],
-                        "note":  "Explicit two-strategy replicator contraction: each step retains a fixed fraction q in [0,1) of the remaining non-MAP population, yielding geometric convergence of MAP share to one. A constant one-half population under strictly increasing drift proves that drift growth alone does not supply the persistent fitness/contraction bridge."
+                        "note":  "A persistent quantitative MAP fitness advantage yields a contraction ratio q in [0,1). A mutation-free aggregate population orbit explicitly excludes non-MAP inflow through its residual recurrence. Lean derives the geometric residual, proves every share remains in [0,1], and proves convergence to MAP mass one. Countermodels show that increasing drift alone—or even a strict fitness gap with replenishing inflow—does not force convergence."
                     },
                     {
                         "atlas_id":  "theorem:bk5_rift_reflection_balance_in_strategy_space",
-                        "coverage":  "conditional",
+                        "coverage":  "proved",
                         "lean":  [
                                      "Book5StrategyBalance.balance_iff_capacity_above_threshold",
                                      "Book5StrategyBalance.isolated_strategy_cannot_balance_positive_drift",
                                      "Book5StrategyBalance.exists_available_balancing_strategy",
                                      "Book5StrategyBalance.submaximal_drift_alone_does_not_supply_available_strategy",
-                                     "Book5StrategyBalance.local_cancellation_is_not_strict_balance"
+                                     "Book5StrategyBalance.local_cancellation_is_not_strict_balance",
+                                     "Book5StrategyBalance.OperatorStrategySpace.exists_operator_balance_of_cofinal",
+                                     "Book5StrategyBalance.OperatorStrategySpace.viableMAP_nonempty_of_richness",
+                                     "Book5StrategyBalance.OperatorStrategySpace.mem_viableMAP_iff",
+                                     "Book5StrategyBalance.OperatorStrategySpace.viableMAP_eq_isMAP_of_uniform_richness",
+                                     "Book5StrategyBalance.OperatorStrategySpace.submaximal_drift_without_inventory_countermodel"
                                  ],
-                        "note":  "Strategy-space balance kernel: positive cooperation converts strict viability into reflection capacity above drift divided by cooperation; isolated strategies cannot balance nonnegative drift. Existence follows from an explicit available-strategy witness. Sub-maximal drift alone does not populate the strategy inventory, and exact cancellation has no strict viability margin."
+                        "note":  "Typed operator-inventory reconstruction: drift and reflection operators remain distinct carrier types with observer-assigned intensities, MAP membership, strategy-indexed availability, and cooperation. Cofinal reflection capacity at one cooperative MAP strategy constructs a nonempty viable MAP subset; uniform cofinality proves equality with the MAP set. Countermodels retain that sub-maximal drift and positive cooperation do not populate an empty inventory, while exact cancellation lacks strict margin."
                     },
                     {
                         "atlas_id":  "theorem:bk5_enhanced_map_mad_duality_pr",
@@ -36,13 +49,23 @@
                                      "Book5DualityProof.mad_rate_negative",
                                      "Book5DualityProof.positive_rate_alone_does_not_force_positive_limit",
                                      "Book5DualityProof.negative_rate_alone_does_not_force_zero_limit",
-                                     "Book5DualityProof.decoupling_consumes_vanishing_interaction"
+                                     "Book5DualityProof.decoupling_consumes_vanishing_interaction",
+                                     "Book5DualityProof.covenantTrajectory_tendsto_target",
+                                     "Book5DualityProof.map_target_eventually_viable",
+                                     "Book5DualityProof.covenantTrajectory_orientation_dual",
+                                     "Book5DualityProof.mad_target_eventually_collapsed",
+                                     "Book5DualityProof.geometric_decoupling_vanishes",
+                                     "Book5DualityProof.decoupling_without_contraction_can_persist",
+                                     "Book5DualityProof.EnhancedDualityRealizationCertificate.map_realization",
+                                     "Book5DualityProof.EnhancedDualityRealizationCertificate.mad_realization",
+                                     "Book5DualityProof.EnhancedDualityRealizationCertificate.decoupling_realization",
+                                     "Book5DualityProof.EnhancedDualityRealizationCertificate.enhanced_map_mad_dynamical_realization"
                                  ],
-                        "note":  "Variational sign kernel: reflection production exceeding thermal entropy cost is exactly positive free-energy rate, and the reverse inequality is exactly negative rate. The printed MAP/MAD limit claims require additional boundedness or dissipation laws; weak-coupling decoupling consumes an explicit vanishing-interaction hypothesis."
+                        "note":  "A typed realization certificate keeps parameter classification and temporal laws as distinct premises, then jointly proves all three source clauses: MAP classification, positive rate, convergence to a positive target, and eventual viability; MAD classification, negative rate, and zero-target convergence; weak-coupling classification and vanishing residue. Countermodels still show classification alone supplies no dynamics."
                     },
                     {
                         "atlas_id":  "corollary:bk5_reflective_hysteresis",
-                        "coverage":  "conditional",
+                        "coverage":  "proved",
                         "lean":  [
                                      "Book5Hysteresis.HysteresisThresholds.lower_lt_upper",
                                      "Book5Hysteresis.below_lower_switches_from_map",
@@ -50,42 +73,54 @@
                                      "Book5Hysteresis.map_persists_in_band",
                                      "Book5Hysteresis.mad_persists_in_band",
                                      "Book5Hysteresis.in_band_remembers_history",
-                                     "Book5Hysteresis.memoryless_classifier_cannot_remember_history"
+                                     "Book5Hysteresis.memoryless_classifier_cannot_remember_history",
+                                     "Book5Hysteresis.ActivationBarrier.threshold_gap",
+                                     "Book5Hysteresis.ActivationBarrier.energy_eq",
+                                     "Book5Hysteresis.ActivationBarrier.energy_pos",
+                                     "Book5Hysteresis.runHysteresis_in_band",
+                                     "Book5Hysteresis.same_in_band_path_retains_distinct_histories"
                                  ],
-                        "note":  "Stateful two-threshold kernel: lower \u003c 1 \u003c upper implies an ordered hysteresis band; crossing below switches MAP out, crossing above switches into MAP, and either regime persists inside the band. Thus the same in-band coupling has different outcomes by incoming history. A memoryless classifier cannot express this behavior."
+                        "note":  "A constructed stateful Schmitt-style law now derives separated thresholds 1 - b and 1 + b from a positive half-width b. Crossing either boundary changes regime, while every finite path confined to the band preserves its incoming regime, so identical observations retain distinct histories. A positive constant barrier density gives activation energy 2 ξ b \u003e 0. The memoryless countermodel remains, showing why prior state is load-bearing rather than notation."
                     },
                     {
                         "atlas_id":  "proposition:bk5_transactional_covenant_dynamics",
-                        "coverage":  "conditional",
+                        "coverage":  "proved-kernel",
                         "lean":  [
                                      "Book5TransitionDynamics.mapStep_strict_growth",
                                      "Book5TransitionDynamics.madStep_strict_decay",
                                      "Book5TransitionDynamics.mapStep_at_boundary",
-                                     "Book5TransitionDynamics.crossing_alone_does_not_force_growth"
+                                     "Book5TransitionDynamics.crossing_alone_does_not_force_growth",
+                                     "Book5TransitionDynamics.expEvolution_zero",
+                                     "Book5TransitionDynamics.expEvolution_hasDerivAt",
+                                     "Book5TransitionDynamics.expEvolution_add",
+                                     "Book5TransitionDynamics.mapStep_eq_expEvolution",
+                                     "Book5TransitionDynamics.madStep_eq_expEvolution",
+                                     "Book5TransitionDynamics.solution_eq_shifted_expEvolution",
+                                     "Book5TransitionDynamics.exact_step_of_constant_rate_ode",
+                                     "Book5TransitionDynamics.constant_rate_ode_solution_unique"
                                  ],
-                        "note":  "For the exact exponential step law, positive MAP energy strictly grows above Lambda=1, positive MAD energy remains positive but strictly decays beyond |Lambda|=1, and the MAP update is identity at the boundary. A countermodel separates boundary crossing from the load-bearing evolution law."
+                        "note":  "The supplied constant-rate ODE now determines the exact law, not merely one constructed example. An integrating-factor proof shows every global solution has the shifted exponential form, yields the exact adjacent-step update, and proves uniqueness from one shared value. MAP growth, MAD positivity/decay, and the boundary identity follow as before. A crossing alone still does not generate the ODE; time-varying coupling requires a separately supplied integral-rate law."
                     },
                     {
                         "atlas_id":  "theorem:bk5_enhanced_map_mad_duality",
-                        "coverage":  "conditional",
+                        "coverage":  "proved-kernel",
                         "lean":  [
-                                     "Book5EnhancedDuality.classify_map",
-                                     "Book5EnhancedDuality.classify_mad",
-                                     "Book5EnhancedDuality.classify_decoupled",
+                                     "Book5EnhancedDuality.existsUnique_regimeCondition",
                                      "Book5EnhancedDuality.classify_neg_of_strong",
                                      "Book5EnhancedDuality.positive_regime_parameters_do_not_force_viability"
                                  ],
-                        "note":  "Strong coupling is classified by polarity, weak coupling decouples, equality remains an explicit critical regime, and polarity reversal exchanges MAP/MAD. A countermodel shows these parameter conditions do not themselves entail the source\u0027s free-energy limits without a dynamics bridge."
+                        "note":  "The four source conditions are formalized as a regime predicate, and every coupling/threshold/polarity triple satisfies exactly one condition. Threshold equality and strong zero polarity remain critical; reversal of nonzero polarity exchanges MAP and MAD. The paired countermodel enforces the source boundary that classification alone supplies no free-energy dynamics."
                     },
                     {
                         "atlas_id":  "theorem:bk5_reflective_equilibrium_conservation",
-                        "coverage":  "conditional",
+                        "coverage":  "proved-kernel",
                         "lean":  [
                                      "Book5EquilibriumConservation.energy_rate_linear_spectral_bound",
+                                     "Book5EquilibriumConservation.energy_rate_norm_linear_spectral_bound",
                                      "Book5EquilibriumConservation.linear_residual_bounds_do_not_imply_quadratic_bound",
                                      "Book5EquilibriumConservation.energy_rate_quadratic_spectral_bound"
                                  ],
-                        "note":  "The displayed residual hypotheses yield a linear rho bound by the triangle inequality. A concrete countermodel refutes the stated rho-squared conclusion; that conclusion is recovered when both residuals are assumed quadratic-order."
+                        "note":  "The repaired source-level statement is proved over arbitrary seminormed additive residual spaces: two order-rho residual controls yield the linear rho bound by the norm triangle inequality. The scalar theorem is retained as a specialization, and the historical countermodel records why the superseded rho-squared form failed."
                     },
                     {
                         "atlas_id":  "theorem:bk5__map_dominance",
@@ -101,11 +136,10 @@
                         "atlas_id":  "proposition:bk5_reflective_drift_alignment_in_map",
                         "coverage":  "conditional",
                         "lean":  [
-                                     "Book5.driftReflectionContribution_pos_iff",
-                                     "Book5.reflective_drift_alignment_positive",
-                                     "Book5.positive_coupling_above_critical_insufficient"
+                                     "Book5AlignmentDynamics.ReflectiveAlignmentCertificate.realizes_reflective_drift_alignment",
+                                     "Book5AlignmentDynamics.positive_margin_without_contraction_does_not_align"
                                  ],
-                        "note":  "In the scalar worst-case model, positive contribution is exactly restorative strength exceeding the combined drift burden. A countermodel shows the proposition\u0027s stated positive-polarity and kappa-critical conditions alone are insufficient without that drift-relative margin."
+                        "note":  "One retained certificate distinguishes the fixed MAP classification threshold from the drift-relative restoration margin, then supplies the contractive temporal law. It jointly proves MAP classification, strict positive margin, vanishing alignment error, convergence of realized contribution to the margin, and eventual positivity. Unit gain remains a countermodel to alignment from margin alone."
                     },
                     {
                         "atlas_id":  "axiom:bk5_adaptation",
@@ -909,58 +943,80 @@
                     },
                     {
                         "atlas_id":  "proposition:bk5_symbolic_population_ess_map_equivalence_case2",
-                        "coverage":  "conditional",
+                        "coverage":  "proved",
                         "lean":  [
-                                     "Book5ESSEquivalence.distance_tendsto_zero_of_eventually_identified"
+                                     "Book5ESSEquivalence.distance_tendsto_zero_of_eventually_identified",
+                                     "Book5ESSEquivalence.TwoSidedStrategyApproximation.hausdorffDist_le",
+                                     "Book5ESSEquivalence.TwoSidedStrategyApproximation.hausdorffDist_tendsto_zero",
+                                     "Book5ESSEquivalence.TwoSidedStrategyApproximation.of_eventual_equality",
+                                     "Book5ESSEquivalence.one_sided_ess_to_map_does_not_identify_sets",
+                                     "Book5ESSEquivalence.population_limit_does_not_supply_two_sided_approximation"
                                  ],
-                        "note":  "Finite discrete strategy-set kernel: eventual two-sided ESS-to-MAP identification yields distance convergence to zero; population concentration alone does not imply equality of the abstract sets."
+                        "note":  "Genuine metric reconstruction: ESS and MAP remain distinct set-valued predicates in an arbitrary pseudo-metric strategy space. Two independent directed witness laws at tolerance ε_n bound the actual Hausdorff distance; ε_n → 0 yields convergence without finite-stage equality. One-sided inclusion and population-mass convergence countermodels show neither supplies two-sided set approximation."
                     },
                     {
                         "atlas_id":  "axiom:bk5_srmf_operator_selection_evolution",
-                        "coverage":  "conditional",
+                        "coverage":  "partial",
                         "lean":  [
                                      "Book5OperatorSelection.exists_process_minimizer",
                                      "Book5OperatorSelection.selected_le_incumbent",
                                      "Book5OperatorSelection.rejects_strictly_suboptimal_incumbent",
-                                     "Book5OperatorSelection.viability_alone_does_not_force_operator_argmin"
+                                     "Book5OperatorSelection.viability_alone_does_not_force_operator_argmin",
+                                     "Book5StatefulOperatorLearning.step_current",
+                                     "Book5StatefulOperatorLearning.step_comparatorRegret_nonpos",
+                                     "Book5StatefulOperatorLearning.boolFeedbackLaw_responds",
+                                     "Book5StatefulOperatorLearning.feedback_response_does_not_force_inventory_change"
                                  ],
-                        "note":  "Finite optimization kernel: a nonempty operator inventory has a process-free-energy minimizer, whose certificate dominates every incumbent and rejects strictly suboptimal choices. Viability alone does not imply that selection law; SRMF dynamics remain an explicit bridge."
+                        "note":  "Conditional stateful selection kernel: a supplied feedback-indexed learning law updates an admissible inventory, selects a certified process-free-energy minimizer, records the incumbent, and has nonpositive one-step comparator regret. A concrete law responds to feedback without forcing inventory change. Viability alone neither supplies this law nor proves fair or asymptotic convergence."
                     },
                     {
                         "atlas_id":  "theorem:bk5__srmf_operator_adaptation",
-                        "coverage":  "conditional",
+                        "coverage":  "partial",
                         "lean":  [
                                      "Book5OperatorAdaptation.refinementVelocity_eq_of_below",
                                      "Book5OperatorAdaptation.refinementVelocity_pos",
                                      "Book5OperatorAdaptation.gradientStep_displacement",
                                      "Book5OperatorAdaptation.quadratic_processFreeEnergy_descent",
                                      "Book5OperatorAdaptation.process_descent_can_increase_execution_cost",
-                                     "Book5OperatorAdaptation.below_threshold_alone_does_not_force_adaptation"
+                                     "Book5OperatorAdaptation.below_threshold_alone_does_not_force_adaptation",
+                                     "Book5StatefulOperatorLearning.step_records_incumbent",
+                                     "Book5StatefulOperatorLearning.two_steps_retain_ordered_history"
                                  ],
-                        "note":  "Explicit adaptation-law kernel: below-threshold effectiveness creates deficit-proportional refinement pressure under a positive feedback gain; a stable gradient step descends quadratic process free energy; and execution cost may rise while total process energy falls. The threshold inequality alone does not force an update."
+                        "note":  "Conditional adaptation kernel: an explicit positive-gain law converts effectiveness shortfall into proportional pressure, and an explicit gradient step descends quadratic process free energy for step size in [0,2]. Stateful execution retains ordered incumbents, while a countermodel shows the threshold inequality alone cannot force motion. General steepest descent, calibration, and continuous or asymptotic evolution remain premises rather than consequences."
                     },
                     {
                         "atlas_id":  "theorem:bk5_metabolic_constraints_reflective_accuracy",
-                        "coverage":  "conditional",
+                        "coverage":  "proved",
                         "lean":  [
                                      "Book5ReflectiveAccuracy.fidelity_le_log_of_depth_bound",
                                      "Book5ReflectiveAccuracy.fidelityEnvelope_nonneg",
-                                     "Book5ReflectiveAccuracy.capacity_alone_does_not_bound_unconstrained_fidelity"
+                                     "Book5ReflectiveAccuracy.capacity_alone_does_not_bound_unconstrained_fidelity",
+                                     "Book5ReflectiveAccuracy.ReflectiveFidelityProcess.fidelity_le_linear",
+                                     "Book5ReflectiveAccuracy.GeometricRecursionBudget.power_le_capacity_ratio_add_one",
+                                     "Book5ReflectiveAccuracy.ReflectiveAccuracyCertificate.beta_nonneg",
+                                     "Book5ReflectiveAccuracy.ReflectiveAccuracyCertificate.fidelity_le_log_capacity",
+                                     "Book5ReflectiveAccuracy.depth_budget_without_marginal_control_countermodel"
                                  ],
-                        "note":  "Composition kernel: bounded marginal fidelity per reflective level plus a logarithmic metabolic recursion-depth bound yields the printed logarithmic accuracy envelope. Metabolic capacity alone cannot constrain an otherwise unrestricted fidelity value."
+                        "note":  "Depth-indexed reconstruction: a reflective fidelity process with zero-depth normalization and uniform marginal gain telescopes to a linear depth bound. A positive geometric recursion budget derives the dimensionless power bound. An explicit log-coordinate calibration composes these into the source envelope with nonnegative β. A countermodel shows depth and capacity cannot bound unrestricted fidelity."
                     },
                     {
                         "atlas_id":  "proposition:bk5_shade_transfers",
-                        "coverage":  "conditional",
+                        "coverage":  "proved",
                         "lean":  [
                                      "Book5ShadeTransfer.shade_preserved_of_radius_preserved",
                                      "Book5ShadeTransfer.radial_order_alone_does_not_preserve_shade",
                                      "Book5ShadeTransfer.golden_logRadius_step",
                                      "Book5ShadeTransfer.normalized_shade_is_not_multiplicative",
                                      "Book5ShadeTransfer.balanced_reciprocity_paints_golden_rate",
-                                     "Book5ShadeTransfer.extraction_has_unit_radial_rate"
+                                     "Book5ShadeTransfer.extraction_has_unit_radial_rate",
+                                     "Book5ShadeTransfer.ShadeInterface.faithful_comp",
+                                     "Book5ShadeTransfer.ShadeInterface.identity_faithful",
+                                     "Book5ShadeTransfer.faithfulControlTransport_components",
+                                     "Book5ShadeTransfer.radius_preservation_implies_control_fidelity",
+                                     "Book5ShadeTransfer.shade_without_shadow_price_is_not_control_fidelity",
+                                     "Book5ShadeTransfer.monotone_encoding_not_semantically_faithful"
                                  ],
-                        "note":  "Exact radius preservation transports shade, but radial-order preservation alone does not. Golden spiral steps add log(phi) to log-radius; bounded normalized shade is not multiplicative. Balanced reciprocity has rate phi, while zero reciprocal weight has unit radial rate."
+                        "note":  "Commuting-interface reconstruction: shade fidelity means decoding after representation transport equals source shade, and faithful interfaces compose. Exact radius preservation constructs fidelity for both shade and any radial shadow price. Countermodels show strict order preservation is not semantic fidelity and matching shade alone does not preserve the joint control signal. Golden steps are constant in log-radius, not bounded shade."
                     }
                 ]
 }

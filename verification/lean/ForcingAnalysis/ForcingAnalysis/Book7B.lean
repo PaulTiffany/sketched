@@ -372,6 +372,24 @@ theorem budgetLimited_uniqueMinimizer_of_injectiveCost
   apply hinj hy hh
   exact le_antisymm (hymin h hh) (hmin y hy)
 
+/-- Analytic source-level repair of **lemma:bk7_budgetlimited_minimizer**.
+A nonempty compact admissible regulator class and a lower-semicontinuous
+candidate-dependent cost supply existence; strict convexity supplies
+uniqueness. This is the ordinary compact-topological kernel of the printed
+weak-star theorem, without pretending that Lean has manufactured a weak-star
+topology or proved compactness of a derivative-bounded regulator class. -/
+theorem budgetLimited_existsUniqueMinimizer_of_compact
+    {E : Type*} [TopologicalSpace E] [AddCommMonoid E] [Module ℝ E]
+    (admissible : Set E) (hne : admissible.Nonempty)
+    (hcompact : IsCompact admissible) (cost : E → ℝ)
+    (hlsc : LowerSemicontinuousOn cost admissible)
+    (hstrict : StrictConvexOn ℝ admissible cost) :
+    ∃! x : E, x ∈ admissible ∧ IsMinOn cost admissible x := by
+  obtain ⟨x, hx, hxmin⟩ := hlsc.exists_isMinOn hne hcompact
+  refine ⟨x, ⟨hx, hxmin⟩, ?_⟩
+  rintro y ⟨hy, hymin⟩
+  exact hstrict.eq_of_isMinOn hymin hxmin hy hx
+
 /- ================================================================
    definition:bk7_reciprocity_domain,
    proposition:bk7_structural_properties_of_reciprocity_domain,

@@ -129,6 +129,17 @@ class BindingAuditTests(unittest.TestCase):
         self.assertEqual(covered["attested_in"], "attest-test")
         self.assertNotIn("attested_in", uncovered)
 
+    def test_refresh_reserved_moves_only_unattested_bindings(self) -> None:
+        reserved = {"artifact": "a", "declares": "d", "math_id": "lem:a",
+                    "statement_sha": "1" * 12}
+        attested = {"artifact": "b", "declares": "d", "math_id": "lem:b",
+                    "statement_sha": "3" * 12, "attested_in": "attest-test"}
+        log = audit.refresh_reserved(
+            [reserved, attested], {"lem:a": "2" * 12, "lem:b": "4" * 12})
+        self.assertEqual(len(log), 1)
+        self.assertEqual(reserved["statement_sha"], "2" * 12)
+        self.assertEqual(attested["statement_sha"], "3" * 12)
+
     def test_absent_statement_source_skips_instead_of_failing(self) -> None:
         bindings, shas, unavailable = load_repo_state()
         external = [b for b in bindings if b.get("source")]

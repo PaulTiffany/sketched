@@ -147,7 +147,7 @@
     },
     {
       "id": "LPS-P5",
-      "statement": "Countermodel: the zero frame map makes the square commute for every q, F, u and is not Lorentz — the nondegeneracy hypothesis of LPS-P4 is not removable. Preservation/reflection asymmetry is real in the physics instance too.",
+      "statement": "Countermodel: the zero frame map makes the square commute for every q, F, u and is not Lorentz \u2014 the nondegeneracy hypothesis of LPS-P4 is not removable. Preservation/reflection asymmetry is real in the physics instance too.",
       "domain": "physics",
       "status": "P",
       "hypotheses": [],
@@ -183,7 +183,7 @@
     },
     {
       "id": "LPS-S1",
-      "statement": "Conformance contract: lorentz_witness.py implements the SAME conventions as Lorentz.lean — signature (+,-,-,-), covariant F, inverse-free actF = (eta Lam eta) F (eta Lam^T eta), force = q (eta F) u. Divergent verdicts between the witness and the Lean statements indicate a transcription defect, not physics.",
+      "statement": "Conformance contract: lorentz_witness.py implements the SAME conventions as Lorentz.lean \u2014 signature (+,-,-,-), covariant F, inverse-free actF = (eta Lam eta) F (eta Lam^T eta), force = q (eta F) u. Divergent verdicts between the witness and the Lean statements indicate a transcription defect, not physics.",
       "domain": "conformance",
       "status": "S",
       "hypotheses": [],
@@ -310,7 +310,7 @@
     },
     {
       "id": "LPS-P9",
-      "statement": "Cross-observer material persistence and the preservation/reflection separation: stability transports forward along any certified transport (stable_preserved); across an admissible class it also descends refinement (material_persistence, the bk8 materiality reading — class-relative, not all-observers); reflection holds given a certified transport back (reflects_of_inverse); and the projective example preserves WITHOUT reflecting (preserves_not_reflects), so the separation is strict. Nonvacuity of the transport class is mirrored: idTransport (exact) + ProjectiveExample.proj (projective).",
+      "statement": "Cross-observer material persistence and the preservation/reflection separation: stability transports forward along any certified transport (stable_preserved); across an admissible class it also descends refinement (material_persistence, the bk8 materiality reading \u2014 class-relative, not all-observers); reflection holds given a certified transport back (reflects_of_inverse); and the projective example preserves WITHOUT reflecting (preserves_not_reflects), so the separation is strict. Nonvacuity of the transport class is mirrored: idTransport (exact) + ProjectiveExample.proj (projective).",
       "domain": "witness",
       "status": "P",
       "hypotheses": [
@@ -335,7 +335,7 @@
     },
     {
       "id": "LPS-P10",
-      "statement": "Countermodels (regression): (1) agreement_not_persistent — a stability assignment on which ALL observers agree at ALL conditions, including the coarse anchor, yet stability fails below it: cross-observer agreement at a condition does not imply M-Pers; (2) no_witness_realization — no witness system realizes that pattern, so witness restriction is strictly more than agreement; (3) NaturalityGap.naturality_defect — a stability-preserving pre-transport whose observer-refinement square does not commute: the naturality law of CertifiedTransport is not free (echoes proof:bk4_persistence_reflection_noncommutativity).",
+      "statement": "Countermodels (regression): (1) agreement_not_persistent \u2014 a stability assignment on which ALL observers agree at ALL conditions, including the coarse anchor, yet stability fails below it: cross-observer agreement at a condition does not imply M-Pers; (2) no_witness_realization \u2014 no witness system realizes that pattern, so witness restriction is strictly more than agreement; (3) NaturalityGap.naturality_defect \u2014 a stability-preserving pre-transport whose observer-refinement square does not commute: the naturality law of CertifiedTransport is not free (echoes proof:bk4_persistence_reflection_noncommutativity).",
       "domain": "witness",
       "status": "P",
       "hypotheses": [],
@@ -1410,15 +1410,19 @@
     },
     {
       "id": "LPS-P37",
-      "statement": "Scholium Symbolicum first half (cross-book meta-commentary) static/finite kernel (API Sonnet fleet worker draft, lead-verified): 17 theorems over 22 anchors; 45 anchors left honestly open (manifold/Hilbert/PDE/categorical/asymptotic/narrative families). Full per-anchor honesty notes live in verification/scholium_a_lean_map.json and the module header of ScholiumA.lean.",
+      "statement": "Scholium Symbolicum first-half finite/operational kernels. The spinor-like anchor now has a partial reader-operated phase certificate: inert co-emergent drift/reflection data becomes an enacted operation only through an explicit reader action certified faithful; half-cycle orientation is distinguished and the double cycle returns. The ZMod 4 witness proves both operations nonidentity.",
       "domain": "scholiuma",
       "status": "P",
       "hypotheses": [
-        "continuum/categorical content is NOT formalized; static and finite-discrete kernels only",
-        "modeling laws are structure fields or explicit hypotheses"
+        "the reader/operator and operate action are explicit data; the process description does not enact itself",
+        "the recursive phase certificate is finite and observer-relative, not a smooth spinor bundle",
+        "drift and reflection are jointly supplied and both nonidentity in the concrete witness",
+        "curvature coupling, general minimal period, and covariant transport remain open"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumA.lean",
       "declares": [
+        "zmod4_pair_nontrivial",
+        "components",
         "chainedApprox_telescope",
         "contradictionIntensity_eq",
         "contradictionIntensity_zero_of_lam_one",
@@ -1441,8 +1445,8 @@
       "depends_on": [],
       "consumes": [],
       "falsifier": "any of the declared kernels failing on its stated hypotheses; see per-anchor notes",
-      "evidence": "API Sonnet worker (scoped atlas slice, zero corpus reads) drafted; lead rebuilt, validated proposal mechanically, wired; lake build ForcingAnalysis; regenerated selfcompile/lean_receipt.json; no sorry",
-      "next": "45 open anchors stay on the open claim surface"
+      "evidence": "targeted ScholiumA build; concrete decide/norm_num witness; aggregate receipt and binding audits; no sorry",
+      "next": "Connect reader-enacted phase residue to curvature/holonomy only after supplying the geometric realization and observer transport laws."
     },
     {
       "id": "LPS-P38",
@@ -2106,15 +2110,22 @@
     },
     {
       "id": "LPS-P59",
-      "statement": "Scholium remainder A static/finite kernel (round-3 API Sonnet fleet worker, lead-verified; v4 prompt with the FracturedAtlas chart-complex license, the Tendsto license, and the discrete-skeleton recipe): 11 theorems over 15 anchors; 36 anchors left honestly open with per-anchor reasons. Per-anchor honesty notes live in the per-book coverage maps and the module header of ScholiumC.lean.",
+      "statement": "Scholium remainder A operational/category kernel: catS is retained only as a typed habitat. An OperationalStage supplies drift and idempotent reflection jointly, proves their co-emergence without chicken-and-egg precedence, retains drift orientation, and requires an explicit observer witness for detectability. The concrete Nat-directed quotient remains a downstream model.",
       "domain": "r3/scholiuma",
       "status": "P",
       "hypotheses": [
-        "continuum/Hilbert/PDE-on-manifold content stays open; chart-complex restatements carry Glued as a named hypothesis where the source consumes compatibility",
-        "modeling laws are structure fields or explicit hypotheses"
+        "drift and reflection are fields of one OperationalStage witness; neither is derived from the other",
+        "application order in the composite is not interpreted as ontological origin order",
+        "catS, observer detection, stage continuity, and geometric realization remain distinct supplied interfaces"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumC.lean",
       "declares": [
+        "observed_drift_ne_zero",
+        "drift_advances_stage",
+        "operators_coemerge",
+        "CategoryOfStructures.hom_advances_stage",
+        "CategoryOfStructures.exists_colimit_cocone",
+        "CategoryOfStructures.existsUnique_from_empty",
         "colimit_universal_property",
         "consistent_unique",
         "crossTerm_ne_zero_exists",
@@ -2131,8 +2142,8 @@
       "depends_on": [],
       "consumes": [],
       "falsifier": "any declared kernel failing on its stated hypotheses; see per-anchor notes",
-      "evidence": "round-3 fleet (scoped atlas slice, zero corpus reads, DAG-width import discipline) drafted; lead rebuilt all eight from clean tree, validated proposals mechanically, wired serially; lake build ForcingAnalysis; regenerated lean_receipt.json; no sorry",
-      "next": "36 open anchors stay on the open claim surface"
+      "evidence": "targeted ScholiumC build; aggregate receipt, binding, ledger, and source audits; no sorry",
+      "next": "Connect the jointly supplied operational pair to recursive orientation/phase recurrence without treating the existing ZMod4 periodicity witness as full curvature-coupled spinor geometry."
     },
     {
       "id": "LPS-P60",
@@ -2294,7 +2305,7 @@
     },
     {
       "id": "LPS-P64",
-      "statement": "Book 7 + dual-horizon + books 2-3 remainders static/finite kernel (round-3 API Sonnet fleet worker, lead-verified; v4 prompt with the FracturedAtlas chart-complex license, the Tendsto license, and the discrete-skeleton recipe): 26 theorems over 36 anchors; 61 anchors left honestly open with per-anchor reasons. Per-anchor honesty notes live in the per-book coverage maps and the module header of Book7B.lean.",
+      "statement": "Book7B.lean: the budget-limited minimizer now has both a finite no-ties kernel and the source-level analytic theorem. In any supplied topology, nonempty compactness and lower semicontinuity give a minimizer; strict convexity on the admissible set makes it unique. The constant-objective countermodel preserves the historical source failure.",
       "domain": "r3/book7dh",
       "status": "P",
       "hypotheses": [
@@ -2328,14 +2339,17 @@
         "shiftedFib_ratio_tendsto_goldenRatio",
         "srmfRegulation_exists",
         "symbolicEffort_eq_two_iff",
-        "symbolicEffort_ge_two"
+        "symbolicEffort_ge_two",
+        "budgetLimitedObjective_not_unique",
+        "budgetLimited_uniqueMinimizer_of_injectiveCost",
+        "budgetLimited_existsUniqueMinimizer_of_compact"
       ],
       "implementation_source": null,
       "depends_on": [],
       "consumes": [],
-      "falsifier": "any declared kernel failing on its stated hypotheses; see per-anchor notes",
+      "falsifier": "A compact nonempty admissible class with a lower-semicontinuous strictly convex cost having no minimizer or two distinct minimizers would refute the analytic kernel. A constant candidate-independent objective remains a countermodel to uniqueness without strict convexity.",
       "evidence": "round-3 fleet (scoped atlas slice, zero corpus reads, DAG-width import discipline) drafted; lead rebuilt all eight from clean tree, validated proposals mechanically, wired serially; lake build ForcingAnalysis; regenerated lean_receipt.json; no sorry",
-      "next": "61 open anchors stay on the open claim surface"
+      "next": "Instantiate the abstract topology with a concrete weak-star regulator space only when the derivative-bounded class and its compactness proof are available; the theorem itself does not manufacture that analytic model."
     },
     {
       "id": "LPS-P65",
@@ -2694,30 +2708,41 @@
     },
     {
       "id": "LPS-P79",
-      "statement": "Book3CanonicalLife.lean (GPT-authored, verified + wired lead session): backfilling bindings/ledger for anchors already present in the coverage maps. [theorem:bk3_symbolic_life_satisfies_canonical_definitions, conditional] All named external life clauses follow from an explicit LifeCorrespondence witness. A concrete positive-persistence system paired with a false regeneration clause proves that Book 3's three numeric persistence fields alone do not supply the semantic correspondence.",
+      "statement": "Book III canonical-life correspondence: one operational symbolic organism and inspectable witness construct the declared structural substrate translation plus all Koshland, NASA, and textbook clauses, including evolutionary adaptation. An explicit morphology bridge proves regenerative coherence improvement equivalent to reduced target-form error; target revision remains proto-self-authorship, not Book IX freedom.",
       "domain": "book3canonicallife",
       "status": "P",
       "hypotheses": [
-        "see per-anchor coverage-map notes for the exact scope of each conditional/partial grade"
+        "persistent symbolic-life witness",
+        "typed symbolic organism operations",
+        "inspectable repair, reproduction, heredity, variation, differential-fitness, and response witnesses",
+        "explicit coherence-to-target-morphology representation when the morphology equivalence is used"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3CanonicalLife.lean",
       "declares": [
         "persistentLife_satisfies_canonical",
-        "persistence_alone_does_not_supply_correspondence"
+        "persistence_alone_does_not_supply_correspondence",
+        "operational_correspondence",
+        "repair_improves_iff_morphological_error_decreases",
+        "operational_substrate_translation",
+        "operational_symbolic_life_realizes_canonical_demarcations"
       ],
       "implementation_source": null,
       "depends_on": [],
       "consumes": [],
-      "falsifier": "a change to any listed theorem statement that breaks the stated inequality/equivalence.",
-      "next": null
+      "falsifier": "An operational witness satisfying the listed fields but failing a named canonical clause or substrate-translation component; failure of the morphology equivalence under its two representation equalities; or persistence alone forcing regeneration despite the countermodel.",
+      "next": "Book IX may consume explicit target revision as material for self-authorship, but must add the volitional and authority premises required for freedom."
     },
     {
       "id": "LPS-P80",
-      "statement": "Book3Helmholtz.lean (GPT-authored, verified + wired lead session): backfilling bindings/ledger for anchors already present in the coverage maps. [lemma:bk3_helmholtz_decomposition_refinement_field, partial] Finite-dimensional Hilbert kernel relative to a chosen gradient-like subspace: orthogonal projection gives an exact and unique integrative/differentiative split, with the simplified harmonic component set to zero. The manifold differential operators and global Hodge hypotheses are not asserted.",
+      "statement": "Book3Helmholtz.lean: finite and conditional global Hodge--Helmholtz kernels retaining exact, coexact, and harmonic refinement channels, cohomological vanishing, energy separation, and operational readout.",
       "domain": "book3helmholtz",
       "status": "P",
       "hypotheses": [
-        "see per-anchor coverage-map notes for the exact scope of each conditional/partial grade"
+        "finite model: selected orthogonal exact/coexact subspaces",
+        "global certificate: compact, connected, oriented, smooth Riemannian membrane without boundary",
+        "explicit unique orthogonal Hodge decomposition and faithful first-cohomology class map",
+        "linear operational readout for perceptual or computational exposure",
+        "carrier-indexed linear instruments; injectivity or another explicit faithfulness witness for detection claims"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3Helmholtz.lean",
       "declares": [
@@ -2725,21 +2750,33 @@
         "integrativeComponent_mem",
         "differentiativeComponent_mem_orthogonal",
         "components_inner_eq_zero",
-        "finite_helmholtz_unique"
+        "finite_helmholtz_unique",
+        "components",
+        "refinement_energy_decomposes",
+        "harmonic_eq_zero_of_subsingleton_cohomology",
+        "operational_readout_reconstructs",
+        "harmonic_channel_can_be_operationally_detected",
+        "multimodal_readout_reconstructs",
+        "faithful_readout_detects_harmonic",
+        "unfaithful_readout_can_erase_harmonic"
       ],
       "implementation_source": null,
       "depends_on": [],
       "consumes": [],
-      "falsifier": "a change to any listed theorem statement that breaks the stated inequality/equivalence.",
-      "next": null
+      "falsifier": "A certified field failing reconstruction or sector orthogonality; squared energy failing to separate; trivial certified first cohomology retaining nonzero harmonic content; or a linear readout failing to preserve the three-channel sum. An unfaithful instrument being treated as evidence that an unseen harmonic residue is absent.",
+      "next": "Instantiate the operational readout with calibrated Cost of Cacophony sonification only under an explicit empirical calibration certificate."
     },
     {
       "id": "LPS-P81",
-      "statement": "Book4StatisticalMechanics.lean (GPT-authored, verified + wired lead session): backfilling bindings/ledger for anchors already present in the coverage maps. [lemma:bk4_statistical_mechanics, conditional] Finite thermal closure kernel: weighted microscopic metric averages preserve symmetry; the explicit ensemble-plus-inverse-temperature entropy-Hessian construction has the printed decomposition, preserves symmetry, and has nonnegative diagonal under positive temperature and nonnegative component hypotheses. A scalar countermodel shows entropy regularity alone does not identify an independently supplied observer metric with this closure.",
+      "statement": "Book4StatisticalMechanics.lean: normalized coarse-graining and full thermal quadratic-form positivity. [lemma:bk4_statistical_mechanics, proved] Rebuilt normalized thermal coarse-graining: nonnegative weights sum to one; microscopic metrics and the entropy-response Hessian are symmetric PSD; beta is positive. Lean proves the complete quadratic-form decomposition and PSD of the constructed observer metric, plus preservation of a constant microscopic metric. Entropy regularity alone still cannot identify an independent observer metric with this constitutive closure.",
       "domain": "book4statisticalmechanics",
       "status": "P",
       "hypotheses": [
-        "see per-anchor coverage-map notes for the exact scope of each conditional/partial grade"
+        "finite microstate and macro-coordinate families",
+        "normalized nonnegative ensemble weights",
+        "symmetric PSD microscopic metrics",
+        "symmetric PSD entropy-response Hessian",
+        "positive inverse temperature and declared entropy sign"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4StatisticalMechanics.lean",
       "declares": [
@@ -2747,42 +2784,58 @@
         "ensembleMetric_symmetric",
         "thermalMetric_symmetric",
         "thermalMetric_diagonal_nonneg",
-        "entropy_regularity_alone_does_not_force_metric_decomposition"
+        "entropy_regularity_alone_does_not_force_metric_decomposition",
+        "coarseObserverMetric_symmetric",
+        "metricQuadratic_ensembleMetric",
+        "metricQuadratic_thermalMetric",
+        "coarseObserverMetric_psd",
+        "ensembleMetric_of_constant"
       ],
       "implementation_source": null,
       "depends_on": [],
       "consumes": [],
-      "falsifier": "A scalar countermodel shows entropy regularity alone does not identify an independently supplied observer metric with this closure.",
+      "falsifier": "Twice differentiable entropy alone permits an independently supplied observer metric unequal to the proposed thermal closure.",
       "next": null
     },
     {
       "id": "LPS-P82",
-      "statement": "Book4QuantumMeasurement.lean (GPT-authored, verified + wired lead session): backfilling bindings/ledger for anchors already present in the coverage maps. [theorem:bk4_quantum_measurement, conditional] Finite diagonal quantum kernel: environmental partial trace is exact regrouping of the joint expectation and preserves nonnegativity. Reduction to a single observer-state expectation is proved under explicit support of the joint density on that observer. A two-observer countermodel shows that a general joint state does not reduce to an arbitrarily chosen observer state.",
+      "statement": "Book4QuantumMeasurement.lean: complex operator partial trace, exact local-observable reduction, pure-state specialization, and explicit quantum-to-geometric bridge. [theorem:bk4_quantum_measurement, proved] Rebuilt finite-dimensional quantum kernel: complex joint operators admit a genuine environmental partial trace retaining observer coherences. Local observables satisfy the exact joint/reduced expectation identity for correlated and mixed states. Pure-state bra-ket expectation is a proved specialization. An explicit certificate, rather than partial trace alone, bridges the reduced operator expectation to the observer-induced metric; the arbitrary-vector countermodel remains.",
       "domain": "book4quantummeasurement",
       "status": "P",
       "hypotheses": [
-        "see per-anchor coverage-map notes for the exact scope of each conditional/partial grade"
+        "finite observer and environment bases",
+        "joint density operator",
+        "local observer metric operator",
+        "explicit reduced-expectation-to-geometry certificate"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4QuantumMeasurement.lean",
       "declares": [
         "jointExpectation_eq_sum_partialTrace",
         "jointExpectation_nonneg",
         "jointExpectation_pureObserver",
-        "joint_state_does_not_reduce_to_arbitrary_observer"
+        "joint_state_does_not_reduce_to_arbitrary_observer",
+        "trace_partialTraceEnvironment",
+        "jointExpectation_local_eq_reduced",
+        "trace_pureStateDensity_mul",
+        "observerMetric_eq_reduced"
       ],
       "implementation_source": null,
       "depends_on": [],
       "consumes": [],
-      "falsifier": "A two-observer countermodel shows that a general joint state does not reduce to an arbitrarily chosen observer state.",
+      "falsifier": "A general correlated or mixed joint state need not reduce to expectation at an arbitrarily selected pure observer vector; partial trace alone does not construct the geometric identification or resolution kernel.",
       "next": null
     },
     {
       "id": "LPS-P83",
-      "statement": "Book4Meaning.lean (GPT-authored, verified + wired lead session): backfilling bindings/ledger for anchors already present in the coverage maps. [corollary:bk4_emergence_of_meaning, conditional] Conditional value-map kernel: contrast from a supplied energy ceiling is nonnegative, is positive exactly below the ceiling, is nontrivial exactly when some configuration lies strictly below it, and reverses free-energy order into preference order. A concrete freedom-life transition with constant free energy shows that the prior transition theorem alone does not establish the proof sketch's nonconstant-landscape premise.",
+      "statement": "Book4Meaning.lean: identity-relative accessible energetic domain, nontrivial value map, certified preferential flow, explicit freedom-to-energy bridge, and typed interpretation/action separation. [corollary:bk4_emergence_of_meaning, proved] Rebuilt identity-relative meaning kernel: accessible configurations carry an attained ceiling and a strict-below-ceiling witness, yielding a nonnegative, nonconstant U \u00d7 I \u2192 \u211d value map. A flow certificate separates descent from convergence and local minimality; an explicit bridge separates freedom/life from the energy domain. Countermodels separate energetic value, interpretive significance, retained distinction, and embodied action.",
       "domain": "book4meaning",
       "status": "P",
       "hypotheses": [
-        "see per-anchor coverage-map notes for the exact scope of each conditional/partial grade"
+        "identity-relative accessible domain",
+        "attained finite energy ceiling",
+        "accessible strict-below-ceiling witness",
+        "explicit freedom-life-to-energy bridge",
+        "separate convergence and local-minimum certificate for preferential flows"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Meaning.lean",
       "declares": [
@@ -2790,21 +2843,33 @@
         "meaningValue_pos_iff",
         "exists_positive_meaning_iff",
         "meaningValue_strict_preference_iff",
-        "freedomLifeTransition_does_not_force_nonconstant_energy"
+        "freedomLifeTransition_does_not_force_nonconstant_energy",
+        "identityMeaning_nonneg_on_accessible",
+        "identityMeaning_pos_iff_on_accessible",
+        "identityMeaning_is_nontrivial",
+        "identityMeaning_ceiling_witness_has_zero_value",
+        "identityMeaning_strict_preference_iff",
+        "preferentialFlow_meaning_nondecreasing",
+        "transition_with_bridge_generates_positive_meaning",
+        "retained_distinction_does_not_force_action_distinction",
+        "value_map_does_not_determine_significance"
       ],
       "implementation_source": null,
       "depends_on": [],
       "consumes": [],
-      "falsifier": "A concrete freedom-life transition with constant free energy shows that the prior transition theorem alone does not establish the proof sketch's nonconstant-landscape premise.",
+      "falsifier": "A freedom-life transition admits a constant unrelated energy landscape; a constant action policy erases retained interpretive distinctions; and identical value maps can carry opposite significance predicates.",
       "next": null
     },
     {
       "id": "LPS-P84",
-      "statement": "Book4FieldRegularization.lean (GPT-authored, verified + wired lead session): backfilling bindings/ledger for anchors already present in the coverage maps. [proposition:bk4_field_regularization, conditional] Explicit hard-cutoff kernel: accessible modes are unchanged, modes above the observer cutoff vanish, amplitudes do not grow, any finite-order insertion containing a high mode is zero, and the accessible natural-momentum band is finite. A constant-kernel countermodel proves that observer resolution alone does not entail suppression; uniform all-orders finiteness requires the printed cutoff-regime premise plus diagrammatic/renormalization hypotheses.",
+      "statement": "Book4FieldRegularization.lean: operator-level compact Fourier cutoff, field projection, bounded support, and fixed-order diagram assignment realization. All-orders convergence remains a separate obligation. [proposition:bk4_field_regularization, conditional]",
       "domain": "book4fieldregularization",
       "status": "P",
       "hypotheses": [
-        "see per-anchor coverage-map notes for the exact scope of each conditional/partial grade"
+        "certified compactly supported Fourier multiplier",
+        "finite perturbative order",
+        "finitely many internal momentum labels",
+        "separate uniform estimates for any all-orders claim"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4FieldRegularization.lean",
       "declares": [
@@ -2813,58 +2878,90 @@
         "cutoffMode_abs_le",
         "perturbativeInsertion_eq_zero_of_high_mode",
         "accessibleBand_card",
-        "resolution_scale_alone_does_not_force_suppression"
+        "resolution_scale_alone_does_not_force_suppression",
+        "regularizeField_passband",
+        "regularizeField_stopband",
+        "regularizeField_add",
+        "regularizeField_smul",
+        "regularizeField_idempotent",
+        "regularized_support_bounded",
+        "accessibleAssignment_card",
+        "fixedOrderDiagram_zero",
+        "fixed_orders_do_not_force_all_orders_control"
       ],
       "implementation_source": null,
       "depends_on": [],
       "consumes": [],
-      "falsifier": "A constant-kernel countermodel proves that observer resolution alone does not entail suppression; uniform all-orders finiteness requires the printed cutoff-regime premise plus diagrammatic/renormalization hypotheses.",
+      "falsifier": "Positive resolution with a constant multiplier leaves all modes unsuppressed; finite unit coefficients at every order have unbounded partial sums.",
       "next": null
     },
     {
       "id": "LPS-P85",
-      "statement": "Book4InformationCurvature.lean (GPT-authored, verified + wired lead session): backfilling bindings/ledger for anchors already present in the coverage maps. [corollary:bk4_information_curvature, partial] Finite Fisher kernel: expected squared score is nonnegative. Tensor audit: curvature antisymmetry forces R(x,x,z,w)=0, while the displayed identical-Hessian product equals one for a unit one-sample Hessian, so the source formula cannot be a general Riemann curvature identity.",
+      "statement": "Book4InformationCurvature.lean: finite-coordinate Fisher metric and Levi\u2013Civita curvature realization. The old Hessian-product display survives only as a separately typed moment tensor and countermodel. [corollary:bk4_information_curvature, conditional]",
       "domain": "book4informationcurvature",
       "status": "P",
       "hypotheses": [
-        "see per-anchor coverage-map notes for the exact scope of each conditional/partial grade"
+        "finite coordinate chart",
+        "nonnegative statistical weights",
+        "regular positive-definite metric two-jet with inverse data",
+        "two metric derivatives for Christoffel curvature"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4InformationCurvature.lean",
       "declares": [
         "fisherInformation_nonneg",
         "curvature_diagonal_zero",
         "unit_hessian_moment_cannot_be_riemann_diagonal",
-        "unit_second_hessian_moment"
+        "unit_second_hessian_moment",
+        "fisherMetric_symm",
+        "fisherMetric_diagonal_nonneg",
+        "riemannCurvature_swap",
+        "riemannCurvature_diagonal_zero",
+        "christoffel_eq_zero_of_dMetric_zero",
+        "riemannCurvature_eq_zero_of_constant_jet",
+        "unit_hessianMoment_diagonal",
+        "hessianMoment_is_not_riemannCurvature"
       ],
       "implementation_source": null,
       "depends_on": [],
       "consumes": [],
-      "falsifier": "Tensor audit: curvature antisymmetry forces R(x,x,z,w)=0, while the displayed identical-Hessian product equals one for a unit one-sample Hessian, so the source formula cannot be a general Riemann curvature identity.",
+      "falsifier": "A constant one-dimensional metric jet is flat while the one-sample unit Hessian moment equals one, so the Hessian moment cannot generally be Riemann curvature.",
       "next": null
     },
     {
       "id": "LPS-P86",
-      "statement": "Book4MetricLearning.lean (GPT-authored, verified + wired lead session): backfilling bindings/ledger for anchors already present in the coverage maps. [theorem:bk4_ml_metric_learning, conditional] Scalar parameter kernel: for nonzero learning rate, a gradient step is stationary exactly at zero gradient; the quadratic metric-loss model strictly descends for 0<eta<1. An eta=2 countermodel shows differentiability and a positive learning rate alone do not guarantee descent or learning convergence.",
+      "statement": "Book4MetricLearning.lean: complete scalar realization of observer-metric learning. Log-parameterization preserves positive metric validity; a controlled quadratic update strictly descends and converges geometrically; injective readout supplies the separate identifiability bridge. [theorem:bk4_ml_metric_learning, conditional]",
       "domain": "book4metriclearning",
       "status": "P",
       "hypotheses": [
-        "see per-anchor coverage-map notes for the exact scope of each conditional/partial grade"
+        "scalar log-parameterized positive metric",
+        "realizable quadratic parameter loss",
+        "step size 0 < eta < 1",
+        "injective observation readout for identification"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4MetricLearning.lean",
       "declares": [
         "gradientStep_eq_self_iff",
         "quadratic_gradient_step_decreases",
-        "differentiability_alone_does_not_guarantee_descent"
+        "differentiability_alone_does_not_guarantee_descent",
+        "positiveMetric_pos",
+        "metricLearningStep_strict_descent",
+        "learnedParameter_zero",
+        "learnedParameter_succ",
+        "learnedMetric_positive",
+        "learnedParameter_tendsto_target",
+        "target_identified_from_equal_readout",
+        "positiveMetric_injective",
+        "certified_metric_learning"
       ],
       "implementation_source": null,
       "depends_on": [],
       "consumes": [],
-      "falsifier": "An eta=2 countermodel shows differentiability and a positive learning rate alone do not guarantee descent or learning convergence.",
+      "falsifier": "An eta=2 differentiable quadratic update increases loss; a noninjective readout can observationally identify distinct parameters.",
       "next": null
     },
     {
       "id": "LPS-P87",
-      "statement": "Book4ObserverGeometry.lean (GPT-authored, verified + wired lead session): backfilling bindings/ledger for anchors already present in the coverage maps. [theorem:bk4_observer_geometry_coevolution, conditional] Discrete coupled-update kernel: recursive stabilization is exactly the conjunction of observer and geometry fixed-point equations, and an identity feedback system stabilizes every chosen state. A translating coupled system has no stabilized state, so coupled regular evolution alone does not imply attraction or stabilization.",
+      "statement": "Book4ObserverGeometry.lean: recovered source-level co-evolution. Local Lipschitz regularity constructs a quantitative Picard--Lindelof certificate; finite-dimensional completeness yields a positive local interval and coupled ODE trajectory; certified solutions are unique, while equilibrium and attraction remain separate claims.",
       "domain": "book4observergeometry",
       "status": "P",
       "hypotheses": [
@@ -2874,34 +2971,49 @@
       "declares": [
         "recursivelyStabilized_iff",
         "exists_recursively_stabilized_system",
-        "driftingSystem_has_no_stabilized_state"
+        "driftingSystem_has_no_stabilized_state",
+        "jointEquilibrium_iff",
+        "equilibrium_constantTrajectory_solves",
+        "exists_picardLindelof_certificate_of_locallyLipschitz",
+        "locallyLipschitz_finiteDimensional_local_existence",
+        "picardLindelof_local_existence",
+        "picardLindelof_local_uniqueness",
+        "translatingVectorField_has_no_jointEquilibrium",
+        "CoupledAttractionCertificate.jointError_tendsto_zero"
       ],
       "implementation_source": null,
       "depends_on": [],
       "consumes": [],
-      "falsifier": "A translating coupled system has no stabilized state, so coupled regular evolution alone does not imply attraction or stabilization.",
-      "next": null
+      "falsifier": "A locally Lipschitz product field failing to yield a positive-radius Picard certificate; a finite-dimensional certified field lacking a local trajectory; or two certified solutions with equal initial data disagreeing locally.",
+      "next": "Attraction remains a distinct downstream theorem requiring contraction, Lyapunov, dissipativity, or invariant-compactness data; do not infer it from Picard--Lindelof."
     },
     {
       "id": "LPS-P88",
-      "statement": "Book4GeodesicFailure.lean (GPT-authored, verified + wired lead session): backfilling bindings/ledger for anchors already present in the coverage maps. [proposition:bk4_geodesic_failure, conditional] Scalar norm-square kernel: observer curvature is nonnegative, vanishes exactly with the observer second derivative, and an epsilon derivative approximation gives an epsilon times combined-magnitude curvature error bound. A countermodel shows derivative agreement alone does not establish the Jacobi equation or a Riemann-curvature identification.",
+      "statement": "Complete conditional Jacobi-deviation diagnostic: one common-fibre certificate fixes the curvature-action orientation and proves both the magnitude-sensitive observer error estimate and its uniform 2 B epsilon corollary.",
       "domain": "book4geodesicfailure",
       "status": "P",
       "hypotheses": [
-        "see per-anchor coverage-map notes for the exact scope of each conditional/partial grade"
+        "normed common fibre",
+        "explicit Jacobi equation with stated sign convention",
+        "observer-to-covariant acceleration error bound",
+        "uniform derivative magnitude bounds for the corollary"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4GeodesicFailure.lean",
       "declares": [
         "observerCurvature_nonneg",
         "observerCurvature_eq_zero_iff",
         "curvature_error_bound",
-        "derivative_agreement_does_not_force_jacobi_curvature"
+        "JacobiCertificate.acceleration_eq_neg_curvature",
+        "norm_sq_error_bound",
+        "norm_sq_error_bound_of_uniform",
+        "derivative_agreement_does_not_force_jacobi_curvature",
+        "JacobiCertificate.observer_diagnostic_certificate"
       ],
       "implementation_source": null,
       "depends_on": [],
       "consumes": [],
-      "falsifier": "A countermodel shows derivative agreement alone does not establish the Jacobi equation or a Riemann-curvature identification.",
-      "next": null
+      "falsifier": "A stated Jacobi certificate violating the oriented acceleration identity or either norm bound; or approximation alone forcing the Jacobi equation despite the countermodel.",
+      "next": "Constructing particular C2 Jacobi fields is a downstream instantiation problem, not a missing premise of this conditional proposition."
     },
     {
       "id": "LPS-P89",
@@ -2926,7 +3038,7 @@
     },
     {
       "id": "LPS-P90",
-      "statement": "Book4QuantumGeometry.lean (GPT-authored, verified + wired lead session): backfilling bindings/ledger for anchors already present in the coverage maps. [proposition:bk4_quantum_geometry, conditional] Finite holonomy kernel: two-segment symbolic path dependence is exactly noncommutation of transports. A quantum-fluctuation conclusion follows only through an explicit modal bridge preserving that predicate; a logical countermodel shows path dependence alone does not manufacture the physical reading.",
+      "statement": "Book4QuantumGeometry.lean: finite holonomy path dependence is exactly noncommutation. The strengthened structural certificate now carries reversible state/gauge/curvature/holonomy translations, gauge-action equivariance, curvature and holonomy naturality, and equivalence of the declared symbolic and target fluctuation predicates. Carrier equivalences alone are insufficient, as witnessed by incompatible True/False predicates. The theorem remains conditional on constructing and validating a target-model certificate; it does not manufacture virtual-particle ontology.",
       "domain": "book4quantumgeometry",
       "status": "P",
       "hypotheses": [
@@ -2937,17 +3049,22 @@
         "twoSegmentPathDependent_iff_noncommute",
         "noncommuting_transport_is_path_dependent",
         "quantum_fluctuation_of_symbolic_path_dependence",
-        "path_dependence_alone_does_not_force_quantum_fluctuation"
+        "path_dependence_alone_does_not_force_quantum_fluctuation",
+        "certified_gauge_action_natural",
+        "certified_curvature_natural",
+        "certified_holonomy_natural",
+        "certified_quantum_fluctuation_iff_symbolic",
+        "equivalences_alone_do_not_force_quantum_geometry_certificate"
       ],
       "implementation_source": null,
       "depends_on": [],
       "consumes": [],
-      "falsifier": "A quantum-fluctuation conclusion follows only through an explicit modal bridge preserving that predicate; a logical countermodel shows path dependence alone does not manufacture the physical reading.",
+      "falsifier": "A target model with non-natural gauge action, curvature, or holonomy, or with a fluctuation predicate not equivalent on translated holonomy, fails the certificate; reversible carriers alone do not repair that failure.",
       "next": null
     },
     {
       "id": "LPS-P91",
-      "statement": "Book4Gauge.lean (GPT-authored, verified + wired lead session): backfilling bindings/ledger for anchors already present in the coverage maps. [proposition:bk4_gauge_dictionary, conditional] A structural gauge dictionary is explicit data of reversible translations; its derivative and curvature correspondences are therefore bijective. A Unit-to-Empty countermodel proves that merely listing paired names cannot manufacture such a dictionary. [corollary:bk4_wilson_loop, proved-kernel] Finite noncommutative Wilson kernel: path ordering is list multiplication, concatenated paths compose in order, the empty loop is identity, and reversing two segments preserves holonomy exactly when they commute. Analytic path-ordered exponentials are not asserted.",
+      "statement": "Book4Gauge.lean: a full structural gauge certificate carries commuting connection, curvature, gauge-action, and holonomy laws. Separately, a supplied Picard--Lindelof certificate constructs local noncommutative transport satisfying U'=-a(t)U and defines analytic holonomy as its endpoint; finite ordered products retain their exact order laws.",
       "domain": "book4gauge",
       "status": "P",
       "hypotheses": [
@@ -2957,63 +3074,85 @@
       "declares": [
         "derivative_correspondence_bijective",
         "curvature_correspondence_bijective",
+        "StructuralGaugeCertificate.connectionAction_square",
+        "StructuralGaugeCertificate.curvature_square",
+        "StructuralGaugeCertificate.fieldAction_square",
+        "StructuralGaugeCertificate.holonomy_square",
         "names_alone_do_not_supply_gauge_dictionary",
         "pathOrderedProduct_nil",
         "pathOrderedProduct_append",
-        "two_segment_order_independent_iff"
+        "two_segment_order_independent_iff",
+        "WilsonTransportCertificate.trajectory_initial",
+        "WilsonTransportCertificate.trajectory_hasDerivWithinAt",
+        "WilsonTransportCertificate.holonomy_eq_endpoint",
+        "ObserverAtlas.global_unique_of_local_compatibility",
+        "coordinateObserverAtlas_assembles",
+        "observer_local_types_do_not_force_global_existence"
       ],
       "implementation_source": null,
       "depends_on": [],
       "consumes": [],
-      "falsifier": "A Unit-to-Empty countermodel proves that merely listing paired names cannot manufacture such a dictionary.",
-      "next": null
+      "falsifier": "Failure of any structural commuting square, failure of the chosen trajectory to satisfy U'=-a(t)U, or treating a local interval or sampled SRV/Lp sweep as global [0,1] continuation without coverage, overlap compatibility, and endpoint-composition witnesses.",
+      "next": "Assemble local transport certificates across [0,1] using an SRV/Lp trace carrying a finite cover, compatible overlaps, and endpoint composition; then prove trace/Wilson representation and refined ordered-product convergence. Do not identify analytic and symbolic holonomy without the structural holonomy square."
     },
     {
       "id": "LPS-P92",
-      "statement": "Book5TransitionDynamics.lean (GPT-authored, verified + wired lead session): backfilling bindings/ledger for anchors already present in the coverage maps. [proposition:bk5_transactional_covenant_dynamics, conditional] For the exact exponential step law, positive MAP energy strictly grows above Lambda=1, positive MAD energy remains positive but strictly decays beyond |Lambda|=1, and the MAP update is identity at the boundary. A countermodel separates boundary crossing from the load-bearing evolution law.",
+      "statement": "Book5TransitionDynamics.lean: the supplied constant-rate ODE has the unique shifted-exponential solution determined by any reference value; every solution obeys the exact MAP/MAD step law and adjacent-step composition, while boundary crossing remains classification rather than dynamics.",
       "domain": "book5transitiondynamics",
       "status": "P",
       "hypotheses": [
-        "see per-anchor coverage-map notes for the exact scope of each conditional/partial grade"
+        "a globally differentiable real free-energy trajectory",
+        "the supplied constant rate law F-prime = rate times F",
+        "one reference value for uniqueness"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5TransitionDynamics.lean",
       "declares": [
         "mapStep_strict_growth",
         "madStep_strict_decay",
         "mapStep_at_boundary",
-        "crossing_alone_does_not_force_growth"
+        "crossing_alone_does_not_force_growth",
+        "expEvolution_zero",
+        "expEvolution_hasDerivAt",
+        "expEvolution_add",
+        "mapStep_eq_expEvolution",
+        "madStep_eq_expEvolution",
+        "solution_eq_shifted_expEvolution",
+        "exact_step_of_constant_rate_ode",
+        "constant_rate_ode_solution_unique"
       ],
       "implementation_source": null,
       "depends_on": [],
       "consumes": [],
-      "falsifier": "A countermodel separates boundary crossing from the load-bearing evolution law.",
-      "next": null
+      "falsifier": "A solution of F-prime = rate times F failing the shifted exponential identity, two solutions agreeing once but later diverging, or a boundary crossing determining dynamics without the ODE premise.",
+      "next": "Add a time-varying integral-rate theorem only after supplying the regularity and fundamental-theorem-of-calculus hypotheses for the rate."
     },
     {
       "id": "LPS-P93",
-      "statement": "Book5EnhancedDuality.lean (GPT-authored, verified + wired lead session): backfilling bindings/ledger for anchors already present in the coverage maps. [theorem:bk5_enhanced_map_mad_duality, conditional] Strong coupling is classified by polarity, weak coupling decouples, equality remains an explicit critical regime, and polarity reversal exchanges MAP/MAD. A countermodel shows these parameter conditions do not themselves entail the source's free-energy limits without a dynamics bridge.",
+      "statement": "Exact MAP--MAD parameter classification: every coupling/threshold/polarity triple satisfies exactly one MAP, MAD, decoupled, or critical condition; threshold equality and strong zero polarity remain critical, and nonzero polarity reversal exchanges MAP and MAD.",
       "domain": "book5enhancedduality",
       "status": "P",
       "hypotheses": [
-        "see per-anchor coverage-map notes for the exact scope of each conditional/partial grade"
+        "real-valued coupling magnitude, critical threshold, and polarity",
+        "linear-order trichotomy only; no temporal dynamics inferred"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5EnhancedDuality.lean",
       "declares": [
         "classify_map",
         "classify_mad",
         "classify_decoupled",
+        "existsUnique_regimeCondition",
         "classify_neg_of_strong",
         "positive_regime_parameters_do_not_force_viability"
       ],
       "implementation_source": null,
       "depends_on": [],
       "consumes": [],
-      "falsifier": "A countermodel shows these parameter conditions do not themselves entail the source's free-energy limits without a dynamics bridge.",
-      "next": null
+      "falsifier": "A real parameter triple satisfying zero or multiple regime conditions, failure of polarity reversal at strong nonzero polarity, or classification alone forcing viability despite the explicit countermodel.",
+      "next": "Consume a separately declared evolution law only where later asymptotic claims require it."
     },
     {
       "id": "LPS-P94",
-      "statement": "Book5EquilibriumConservation.lean (GPT-authored, verified + wired lead session): backfilling bindings/ledger for anchors already present in the coverage maps. [theorem:bk5_reflective_equilibrium_conservation, conditional] The displayed residual hypotheses yield a linear rho bound by the triangle inequality. A concrete countermodel refutes the stated rho-squared conclusion; that conclusion is recovered when both residuals are assumed quadratic-order.",
+      "statement": "Book5EquilibriumConservation.lean: the repaired first-order reflective-equilibrium conservation bound is proved over arbitrary seminormed additive residual spaces. Scalar and quadratic-order specializations remain, while the countermodel records why the superseded rho-squared conclusion did not follow from linear hypotheses.",
       "domain": "book5equilibriumconservation",
       "status": "P",
       "hypotheses": [
@@ -3023,12 +3162,13 @@
       "declares": [
         "energy_rate_linear_spectral_bound",
         "linear_residual_bounds_do_not_imply_quadratic_bound",
-        "energy_rate_quadratic_spectral_bound"
+        "energy_rate_quadratic_spectral_bound",
+        "energy_rate_norm_linear_spectral_bound"
       ],
       "implementation_source": null,
       "depends_on": [],
       "consumes": [],
-      "falsifier": "A concrete countermodel refutes the stated rho-squared conclusion; that conclusion is recovered when both residuals are assumed quadratic-order.",
+      "falsifier": "A pair of residuals satisfying the stated norm controls whose sum violates the linear rho bound would refute the theorem; the norm triangle inequality rules this out. The historical quadratic form remains refuted under only linear residual hypotheses.",
       "next": null
     },
     {
@@ -3072,12 +3212,16 @@
     },
     {
       "id": "LPS-P97",
-      "statement": "Book4Holographic.lean: finite Ryu-Takayanagi area-law kernel with an explicit boundary-to-bulk reconstruction bridge and a non-uniqueness countermodel when that bridge is absent.",
+      "statement": "Rebuilt variational RT reconstruction with admissible anchored-surface fibers, selected area minimizers, nonnegative area, and positive Newton constant. Entropy minimality is proved. Uniqueness requires a separate witness; countermodels refute uniqueness from boundary metric or minimality alone.",
       "domain": "book4holographic",
       "status": "P",
       "hypotheses": [
-        "positive Newton constant for positivity and strict monotonicity",
-        "a supplied RT reconstruction bridge for boundary-to-bulk determination"
+        "observer-relative RT regime",
+        "admissible anchored surface fiber",
+        "selected area minimizer",
+        "nonnegative area",
+        "positive Newton constant",
+        "separate uniqueness witness"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4Holographic.lean",
       "declares": [
@@ -3087,23 +3231,28 @@
         "rtEntropy_nonneg",
         "rtEntropy_strictMono_area",
         "reconstruction_deterministic",
-        "boundary_metric_alone_does_not_select_unique_bulk"
+        "boundary_metric_alone_does_not_select_unique_bulk",
+        "reconstructedEntropy_nonneg",
+        "selectedSurface_minimizes_entropy",
+        "selectedSurface_unique_of_uniqueMinimizer",
+        "minimal_area_does_not_force_unique_surface"
       ],
       "implementation_source": null,
       "depends_on": [],
       "consumes": [],
-      "falsifier": "A counterexample to area monotonicity under pointwise metric-volume growth, or unique bulk selection from boundary data without reconstruction structure.",
+      "falsifier": "Distinct admissible surfaces can share minimal area, and distinct reconstruction maps can select different bulk surfaces.",
       "next": null
     },
     {
       "id": "LPS-P98",
-      "statement": "Book5Hysteresis.lean: a stateful two-threshold switch realizes reflective hysteresis and isolates prior-state memory as load-bearing structure.",
+      "statement": "Book5Hysteresis.lean: a positive-width activation barrier constructs a stateful Schmitt law whose finite in-band paths preserve incoming history.",
       "domain": "book5",
       "status": "P",
       "hypotheses": [
-        "lower critical threshold below one",
-        "upper critical threshold above one",
-        "stateful regime update"
+        "positive activation half-width",
+        "positive constant barrier density",
+        "stateful regime update",
+        "finite path remains inside the threshold band"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5Hysteresis.lean",
       "declares": [
@@ -3113,7 +3262,12 @@
         "map_persists_in_band",
         "mad_persists_in_band",
         "in_band_remembers_history",
-        "memoryless_classifier_cannot_remember_history"
+        "memoryless_classifier_cannot_remember_history",
+        "ActivationBarrier.threshold_gap",
+        "ActivationBarrier.energy_eq",
+        "ActivationBarrier.energy_pos",
+        "runHysteresis_in_band",
+        "same_in_band_path_retains_distinct_histories"
       ],
       "implementation_source": null,
       "depends_on": [
@@ -3121,17 +3275,19 @@
         "LPS-P92"
       ],
       "consumes": [],
-      "falsifier": "An in-band coupling that erases the incoming regime, or hysteresis produced by a coupling-only classifier without state.",
+      "falsifier": "A memoryless classifier cannot retain distinct histories at the same observation; without positive width or density the claimed positive activation energy need not hold.",
       "next": null
     },
     {
       "id": "LPS-P99",
-      "statement": "Book5DualityProof.lean: source-bound variational sign kernel separating local MAP/MAD rates from unproved asymptotic convergence.",
+      "statement": "Book5DualityProof.lean: a typed certificate separately records parameter classification and contractive dynamics, then jointly realizes the repaired MAP, MAD, and decoupling clauses with their rate signs and asymptotic conclusions.",
       "domain": "book5",
       "status": "P",
       "hypotheses": [
-        "the displayed process free-energy balance",
-        "explicit asymptotic laws for any convergence conclusion"
+        "strong/weak coupling and polarity premises for classification",
+        "reflection/entropy inequalities for local rate signs",
+        "separately supplied strict contractions for MAP, MAD, and residue dynamics",
+        "a positive MAP target"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5DualityProof.lean",
       "declares": [
@@ -3141,24 +3297,36 @@
         "mad_rate_negative",
         "positive_rate_alone_does_not_force_positive_limit",
         "negative_rate_alone_does_not_force_zero_limit",
-        "decoupling_consumes_vanishing_interaction"
+        "decoupling_consumes_vanishing_interaction",
+        "covenantTrajectory_tendsto_target",
+        "map_target_eventually_viable",
+        "covenantTrajectory_orientation_dual",
+        "mad_target_eventually_collapsed",
+        "geometric_decoupling_vanishes",
+        "decoupling_without_contraction_can_persist",
+        "map_realization",
+        "mad_realization",
+        "decoupling_realization",
+        "enhanced_map_mad_dynamical_realization"
       ],
       "implementation_source": null,
       "depends_on": [
         "LPS-P93"
       ],
       "consumes": [],
-      "falsifier": "A derivation of the claimed limits from rate sign alone without boundedness, compactness, or dissipation structure.",
-      "next": null
+      "falsifier": "Any certified regime failing its classification, rate sign, or stated asymptotic conclusion; or classification alone implying dynamics despite the retained countermodels.",
+      "next": "Continuous operator-level or Lyapunov realizations are future strengthening, not missing premises of the repaired discrete theorem."
     },
     {
       "id": "LPS-P100",
-      "statement": "Book5StrategyBalance.lean: source-bound capacity/cooperation threshold with explicit strategy-availability premise.",
+      "statement": "Book5StrategyBalance.lean: a typed, strategy-indexed operator inventory and cofinal-capacity law construct the source viable MAP subset.",
       "domain": "book5",
       "status": "P",
       "hypotheses": [
-        "positive cooperation",
-        "an available capacity above threshold for existence"
+        "typed drift and reflection operator carriers",
+        "positive cooperation at a MAP strategy",
+        "strategy-indexed available reflection inventory",
+        "cofinal available reflection capacity"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5StrategyBalance.lean",
       "declares": [
@@ -3166,7 +3334,12 @@
         "isolated_strategy_cannot_balance_positive_drift",
         "exists_available_balancing_strategy",
         "submaximal_drift_alone_does_not_supply_available_strategy",
-        "local_cancellation_is_not_strict_balance"
+        "local_cancellation_is_not_strict_balance",
+        "OperatorStrategySpace.exists_operator_balance_of_cofinal",
+        "OperatorStrategySpace.viableMAP_nonempty_of_richness",
+        "OperatorStrategySpace.mem_viableMAP_iff",
+        "OperatorStrategySpace.viableMAP_eq_isMAP_of_uniform_richness",
+        "OperatorStrategySpace.submaximal_drift_without_inventory_countermodel"
       ],
       "implementation_source": null,
       "depends_on": [
@@ -3174,41 +3347,54 @@
         "LPS-P17"
       ],
       "consumes": [],
-      "falsifier": "A restricted empty strategy inventory producing a balancing witness, or exact cancellation satisfying strict positive margin.",
+      "falsifier": "An empty reflection inventory yielding a viable MAP witness, or the cofinal-capacity construction failing to exceed a finite cooperation-adjusted drift threshold.",
       "next": null
     },
     {
       "id": "LPS-P101",
-      "statement": "Book5ConvergenceMAP.lean: source-bound geometric population convergence under an explicit persistent MAP contraction.",
+      "statement": "Book5ConvergenceMAP.lean: a quantitative fitness gap constructs a contraction ratio, while a mutation-free simplex orbit derives geometric residual decay and MAP convergence.",
       "domain": "book5",
       "status": "P",
       "hypotheses": [
-        "fixed contraction factor q with 0 <= q < 1",
-        "a replicator/fitness bridge producing that contraction"
+        "strict persistent MAP aggregate fitness advantage",
+        "positive MAP and nonnegative non-MAP fitness",
+        "initial MAP share in the probability interval",
+        "exact residual recurrence excluding non-MAP inflow"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5ConvergenceMAP.lean",
       "declares": [
         "mapShare_zero",
         "mapShare_succ",
         "mapShare_tendsto_one",
-        "increasing_drift_alone_does_not_force_map_convergence"
+        "increasing_drift_alone_does_not_force_map_convergence",
+        "PersistentMAPAdvantage.contraction_nonneg",
+        "PersistentMAPAdvantage.contraction_lt_one",
+        "MAPPopulationOrbit.residual_eq_pow",
+        "MAPPopulationOrbit.share_le_one",
+        "MAPPopulationOrbit.share_nonneg",
+        "MAPPopulationOrbit.share_eq_mapShare",
+        "MAPPopulationOrbit.share_tendsto_one",
+        "MAPPopulationOrbit.fitness_gap_with_inflow_does_not_force_convergence"
       ],
       "implementation_source": null,
       "depends_on": [
         "LPS-P100"
       ],
       "consumes": [],
-      "falsifier": "A q-contractive non-MAP remainder that fails to vanish, or increasing drift alone forcing MAP share without a fitness bridge.",
+      "falsifier": "A certified mutation-free orbit leaving the probability interval or failing to converge, or a replenished fixed-share process satisfying the no-inflow recurrence.",
       "next": null
     },
     {
       "id": "LPS-P102",
-      "statement": "Book5ESSEquivalence.lean: source-bound ESS-MAP set convergence under eventual two-sided critical identification.",
+      "statement": "Book5ESSEquivalence.lean: shrinking two-sided transports in a genuine metric strategy space force ESS\u2013MAP Hausdorff convergence without identity collapse.",
       "domain": "book5",
       "status": "P",
       "hypotheses": [
-        "finite strategy type",
-        "eventual ESS subset MAP and MAP subset ESS"
+        "pseudo-metric strategy space",
+        "distinct ESS sequence and MAP set predicates",
+        "nonnegative tolerance tending to zero",
+        "ESS-to-MAP witnesses at tolerance",
+        "MAP-to-ESS witnesses at tolerance"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5ESSEquivalence.lean",
       "declares": [
@@ -3216,14 +3402,19 @@
         "CriticalIdentification.sets_eq",
         "CriticalIdentification.distance_zero",
         "distance_tendsto_zero_of_eventually_identified",
-        "population_concentration_alone_does_not_identify_strategy_sets"
+        "population_concentration_alone_does_not_identify_strategy_sets",
+        "TwoSidedStrategyApproximation.hausdorffDist_le",
+        "TwoSidedStrategyApproximation.hausdorffDist_tendsto_zero",
+        "TwoSidedStrategyApproximation.of_eventual_equality",
+        "one_sided_ess_to_map_does_not_identify_sets",
+        "population_limit_does_not_supply_two_sided_approximation"
       ],
       "implementation_source": null,
       "depends_on": [
         "LPS-P101"
       ],
       "consumes": [],
-      "falsifier": "Population concentration alone identifying unequal abstract ESS and MAP strategy sets, or eventual two-sided identification failing to force zero distance.",
+      "falsifier": "A certified two-sided shrinking approximation whose Hausdorff distance does not vanish, or one directed inclusion logically producing the missing reverse transport.",
       "next": null
     },
     {
@@ -3281,38 +3472,46 @@
     },
     {
       "id": "LPS-P105",
-      "statement": "Book5ReflectiveAccuracy.lean: source-bound composition of per-level fidelity and metabolic recursion-depth bounds.",
+      "statement": "Book5ReflectiveAccuracy.lean: a depth-indexed fidelity process, geometric metabolic budget, and explicit log calibration construct the reflective-accuracy envelope.",
       "domain": "book5",
       "status": "P",
       "hypotheses": [
-        "nonnegative marginal fidelity coefficient",
-        "fidelity bounded linearly by attainable recursion depth",
-        "recursion depth bounded by log(1 + metabolic capacity)"
+        "zero-depth fidelity normalization",
+        "uniform nonnegative marginal fidelity gain",
+        "positive base cost and growth",
+        "nonnegative metabolic capacity and geometric cost admissibility",
+        "explicit nonnegative depth-to-log calibration"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5ReflectiveAccuracy.lean",
       "declares": [
         "fidelity_le_log_of_depth_bound",
         "fidelityEnvelope_nonneg",
-        "capacity_alone_does_not_bound_unconstrained_fidelity"
+        "capacity_alone_does_not_bound_unconstrained_fidelity",
+        "ReflectiveFidelityProcess.fidelity_le_linear",
+        "GeometricRecursionBudget.power_le_capacity_ratio_add_one",
+        "ReflectiveAccuracyCertificate.beta_nonneg",
+        "ReflectiveAccuracyCertificate.fidelity_le_log_capacity",
+        "depth_budget_without_marginal_control_countermodel"
       ],
       "implementation_source": null,
       "depends_on": [
         "LPS-P104"
       ],
       "consumes": [],
-      "falsifier": "Linear per-level fidelity and logarithmically bounded depth failing to compose, or capacity alone constraining an unrestricted fidelity coordinate.",
+      "falsifier": "A certified process exceeding its telescoped marginal bound, a geometric budget violating its power bound, or an envelope derived without marginal control or calibration.",
       "next": null
     },
     {
       "id": "LPS-P106",
-      "statement": "Book5ShadeTransfer.lean: source-bound radial shade transport, golden log-radius increments, and reciprocity-rate endpoints.",
+      "statement": "Book5ShadeTransfer.lean: compositional commuting interfaces preserve observer-readable shade and shadow-price control signals across representation changes.",
       "domain": "book5",
       "status": "P",
       "hypotheses": [
-        "exact radius preservation for shade invariance",
-        "positive initial golden-spiral radius",
-        "bounded shade normalization distinguished from log-radius",
-        "Book 5 reciprocity kernel"
+        "source and carrier shade decoders",
+        "commuting decoder-after-encode law",
+        "shared intermediate decoder for composition",
+        "exact radius witness for normalization-independent control fidelity",
+        "positive initial radius for log-radius step"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5ShadeTransfer.lean",
       "declares": [
@@ -3321,76 +3520,90 @@
         "golden_logRadius_step",
         "normalized_shade_is_not_multiplicative",
         "balanced_reciprocity_paints_golden_rate",
-        "extraction_has_unit_radial_rate"
+        "extraction_has_unit_radial_rate",
+        "ShadeInterface.faithful_comp",
+        "ShadeInterface.identity_faithful",
+        "faithfulControlTransport_components",
+        "radius_preservation_implies_control_fidelity",
+        "shade_without_shadow_price_is_not_control_fidelity",
+        "monotone_encoding_not_semantically_faithful"
       ],
       "implementation_source": null,
       "depends_on": [
         "LPS-P105"
       ],
       "consumes": [],
-      "falsifier": "Radial order alone preserving values, normalized shade inheriting multiplicative radius scaling, or golden/balanced and extraction rates differing from phi and one.",
+      "falsifier": "A faithful interface chain breaking shade commutation, an exact radius transport changing a radial control signal, or monotonicity alone implying semantic fidelity.",
       "next": null
     },
     {
       "id": "LPS-P107",
-      "statement": "Book6DriftMutation.lean: finite weighted curvature-change mutation-rate kernel and uniform stability bound.",
+      "statement": "Book6DriftMutation.lean: calibrated constitutive drift--curvature mutation-rate certificate.",
       "domain": "book6",
       "status": "P",
       "hypotheses": [
         "finite symbolic state space",
         "nonnegative normalized density",
         "supplied directional curvature response",
-        "uniform response bound for the global estimate"
+        "uniform response bound for the global estimate",
+        "nonnegative calibration coefficient"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6DriftMutation.lean",
       "declares": [
         "mutationRate_eq_weighted_curvature_change",
         "mutationRate_nonneg",
         "mutationRate_le_uniform_curvature_bound",
-        "drift_alone_does_not_determine_mutation_rate"
+        "drift_alone_does_not_determine_mutation_rate",
+        "MutationConstitutiveCertificate.rate_nonneg",
+        "MutationConstitutiveCertificate.rate_le_calibrated_uniform_bound"
       ],
       "implementation_source": null,
       "depends_on": [
         "LPS-P106"
       ],
       "consumes": [],
-      "falsifier": "A nonnegative density producing negative rate, a normalized weighted average exceeding its uniform response bound, or drift alone uniquely fixing an unspecified curvature response.",
+      "falsifier": "A certified nonnegative normalized density and calibration producing negative rate, a calibrated weighted average exceeding its uniform response bound, or drift alone uniquely fixing an unspecified curvature response.",
       "next": null
     },
     {
       "id": "LPS-P108",
-      "statement": "Book6ThermodynamicMutation.lean: finite reflectively constrained maximum-entropy-production kernel.",
+      "statement": "Book6ThermodynamicMutation.lean: constrained MEPP optimizer plus explicit selection-dynamics boundary.",
       "domain": "book6",
       "status": "P",
       "hypotheses": [
         "finite available state population",
         "explicit reflected-entropy feasibility threshold",
         "nonempty feasible set",
-        "real-valued entropy production objective"
+        "real-valued entropy production objective",
+        "eventual-selection law when convergence is claimed"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6ThermodynamicMutation.lean",
       "declares": [
         "mem_feasibleStates_iff",
         "exists_constrained_mepp",
-        "equilibrium_balance_alone_does_not_imply_mepp"
+        "equilibrium_balance_alone_does_not_imply_mepp",
+        "MEPPSelectionLaw.trajectory_tendsto",
+        "argmax_exists_without_selection_dynamics"
       ],
       "implementation_source": null,
       "depends_on": [
         "LPS-P107"
       ],
       "consumes": [],
-      "falsifier": "A nonempty finite feasible set lacking a production maximizer, or equilibrium production-dissipation equality logically forcing constrained maximality.",
+      "falsifier": "A nonempty finite feasible set lacking a production maximizer, eventual equality failing to imply convergence in the discrete topology, or maximizer existence alone forcing a trajectory to select it.",
       "next": null
     },
     {
       "id": "LPS-P109",
-      "statement": "Book6ConfidenceGradient.lean: scalar confidence drift-diffusion-fluctuation law with directional bounds and countermodels.",
+      "statement": "Book6ConfidenceGradient.lean: typed confidence-gradient perturbation control with strict and weak descent.",
       "domain": "book6",
       "status": "P",
       "hypotheses": [
         "explicit confidence-driven velocity law",
         "nonnegative or positive drift coefficient for descent",
-        "zero diffusion and fluctuation for pure descent"
+        "zero diffusion and fluctuation for pure descent",
+        "typed tangent perturbation",
+        "directional perturbation bound for full-law descent"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book6ConfidenceGradient.lean",
       "declares": [
@@ -3398,19 +3611,21 @@
         "pure_confidence_drift_descends",
         "pure_confidence_drift_strict",
         "diffusion_can_reverse_confidence_drift",
-        "regularity_alone_does_not_force_confidence_dynamics"
+        "regularity_alone_does_not_force_confidence_dynamics",
+        "confidenceVelocity_descends_of_perturbation_control",
+        "confidenceVelocity_strictly_descends_of_strict_control"
       ],
       "implementation_source": null,
       "depends_on": [
         "LPS-P108"
       ],
       "consumes": [],
-      "falsifier": "Pure positive drift increasing confidence away from a critical point, diffusion being unable to reverse total velocity, or regular stratification alone forcing a stochastic evolution equation.",
+      "falsifier": "The directional perturbation bound holding while confidence increases, its strict form failing to give strict descent, or regularity alone forcing a stochastic evolution law.",
       "next": null
     },
     {
       "id": "LPS-P110",
-      "statement": "Book6ThermodynamicConsistency.lean: exact and orientation-parameterized free-energy increments, adversarial candidate-law comparison, and unique interface reconciliation term.",
+      "statement": "Book6ThermodynamicConsistency.lean: internal-energy/free-energy separation with orientation-derived signs and exact finite increments.",
       "domain": "book6",
       "status": "P",
       "hypotheses": [
@@ -3433,12 +3648,12 @@
         "LPS-P109"
       ],
       "consumes": [],
-      "falsifier": "The exact algebraic increments failing, or the printed positive T*dS free-energy law following from F=E-T*S at fixed energy and temperature.",
+      "falsifier": "F=E-T*S yielding a positive fixed-temperature entropy increment, the energy first law failing to cancel T*dS from dF, or varying temperature lacking the -S*dT and finite cross terms.",
       "next": null
     },
     {
       "id": "LPS-P111",
-      "statement": "Book4ImaginationGuard.lean: traversal-witness phase budget connected quantitatively to effective contraction and reintegration safety.",
+      "statement": "Book4ImaginationGuard.lean: ordered phase exposure and a calibrated phase-to-rate response certify reintegration without flattening cancellation.",
       "domain": "book4",
       "status": "P",
       "hypotheses": [
@@ -3452,19 +3667,24 @@
         "phaseBudget_append",
         "effectiveRate_lt_one_iff_phase_penalty_below_margin",
         "eleven_percent_phase_ends_near_boundary_contraction",
-        "projection_equality_can_hide_unsafe_phase"
+        "projection_equality_can_hide_unsafe_phase",
+        "opposite_phases_cancel_projection_not_exposure",
+        "phaseBudget_nonneg",
+        "certifiedRate_lt_one_of_penalty_below_margin",
+        "linearPhaseRateLaw_recovers_effectiveRate",
+        "zero_calibration_alone_does_not_determine_rate"
       ],
       "implementation_source": null,
       "depends_on": [
         "LPS-P110"
       ],
       "consumes": [],
-      "falsifier": "Phase exposure exceeding unused margin while preserving strict contraction, eleven percent not closing an eighty-nine-percent base margin, or observable equality determining latent traversal safety.",
+      "falsifier": "A canceling signed traversal having zero absolute exposure; a certified response exceeding its envelope; an envelope below one failing to imply contraction; or zero-exposure calibration uniquely determining the off-zero rate.",
       "next": null
     },
     {
       "id": "LPS-P112",
-      "statement": "Book6ConfidenceStability.lean: scalar confidence-Hamiltonian quotient response and sign classification.",
+      "statement": "Book6ConfidenceStability.lean: certified quotient-response dynamics with explicit sign boundary.",
       "domain": "book6",
       "status": "P",
       "hypotheses": [
@@ -3477,7 +3697,8 @@
         "stabilityVelocity_eq",
         "stabilityVelocity_nonpos_of_quotientSlope_nonneg",
         "constant_hamiltonian_gives_positive_stabilityVelocity",
-        "values_alone_do_not_force_confidence_stability_coupling"
+        "values_alone_do_not_force_confidence_stability_coupling",
+        "ConfidenceStabilityCertificate.velocity_nonpos"
       ],
       "implementation_source": null,
       "depends_on": [
@@ -3489,7 +3710,7 @@
     },
     {
       "id": "LPS-P113",
-      "statement": "Book6ObserverExtension.lean: typed observer-local extension with exact domain agreement and accumulated interface-error bounds.",
+      "statement": "Book6ObserverExtension.lean: typed total extension with identity-specific observer error certificates.",
       "domain": "book6",
       "status": "P",
       "hypotheses": [
@@ -3503,7 +3724,9 @@
         "observerExtension_agrees",
         "exists_observerExtension",
         "observer_error_accumulates",
-        "observer_bound_alone_does_not_force_identity_preservation"
+        "observer_bound_alone_does_not_force_identity_preservation",
+        "ObserverOperatorExtensionCertificate.exists_total_extension",
+        "ObserverOperatorExtensionCertificate.joint_defect_bound"
       ],
       "implementation_source": null,
       "depends_on": [
@@ -3529,7 +3752,13 @@
         "transport_preserves_canonical_change",
         "opposite_signs_agree_iff_zero",
         "reversed_display_of_positive",
-        "displayedNext_differs_across_orientations"
+        "displayedNext_differs_across_orientations",
+        "encode_eq_orientationSign_mul",
+        "transport_eq_relativeSign_mul",
+        "transport_trans",
+        "transport_roundtrip",
+        "transport_positive_of_same_orientation",
+        "transport_negative_of_opposite_orientation"
       ],
       "implementation_source": null,
       "depends_on": [
@@ -3557,7 +3786,8 @@
         "systemicPower_pos",
         "high_confidence_alone_does_not_force_power",
         "gradient_reversal_preserves_unoriented_power",
-        "equal_power_does_not_determine_gradient_orientation"
+        "equal_power_does_not_determine_gradient_orientation",
+        "orientedLocalPower_pos"
       ],
       "implementation_source": null,
       "depends_on": [
@@ -3608,21 +3838,28 @@
         "effective geometry continuous on the closed sub-sweep",
         "phase transition represented as relative discontinuity",
         "continuous observer reparameterization",
-        "explicit curvature-to-regularity bridge when starting from kappa below threshold"
+        "explicit curvature-to-regularity bridge when starting from kappa below threshold",
+        "or the constructed curvature-indexed Lp coordinate with a continuous curvature path and positive margin"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7NoInteriorTransition.lean",
       "declares": [
         "continuousOn_no_discrete_phase_transition",
         "continuous_closed_sweep_has_no_interior_transition",
         "continuous_reparameterization_preserves_no_transition",
-        "continuity_from_threshold_bridge"
+        "continuity_from_threshold_bridge",
+        "regularizedGeometry_continuousOn",
+        "regularizedGeometry_has_no_interior_transition",
+        "subcriticalLpExponent_zero_curvature",
+        "subcriticalLpExponent_continuousOn",
+        "subcriticalLpExponent_strict_order",
+        "subcriticalLpExponent_has_no_interior_transition"
       ],
       "implementation_source": null,
       "depends_on": [
         "LPS-P115"
       ],
       "consumes": [],
-      "falsifier": "A continuous effective geometry with a relative discontinuity at an admitted point, continuous reparameterization destroying continuity, or a threshold conclusion without its regularity bridge.",
+      "falsifier": "A continuous effective geometry with a relative discontinuity at an admitted point, continuous reparameterization destroying continuity, the constructed curvature-indexed p-coordinate failing continuity under a continuous subcritical curvature path, or failing strict order under a positive threshold.",
       "next": null
     },
     {
@@ -3838,7 +4075,7 @@
     },
     {
       "id": "LPS-P126",
-      "statement": "Book6GraceBasin.lean: grace remains in the regulatory union under subcritical coverage and basin invariance.",
+      "statement": "Book6GraceBasin.lean: certified subcritical coverage followed by grace-basin invariance.",
       "domain": "book6",
       "status": "P",
       "hypotheses": [
@@ -3893,7 +4130,8 @@
       "domain": "book7",
       "status": "P",
       "hypotheses": [
-        "frame-independent coherence iff the effective geometry has the parallelogram property",
+        "additive transports commute around affine squares",
+        "a symmetric bilinear energy representation supplies the metric parallelogram law",
         "the relevant Lp geometry has the parallelogram property iff p=2"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7NoncontextualHilbert.lean",
@@ -3901,7 +4139,11 @@
         "l2_parallelogram",
         "l1_parallelogram_fails",
         "noncontextual_iff_hilbert_crossSection",
-        "hilbert_geometry_alone_does_not_force_noncontextuality"
+        "hilbert_geometry_alone_does_not_force_noncontextuality",
+        "translate_square_commutes",
+        "commuting_transport_does_not_force_metric_parallelogram",
+        "quadraticEnergy_parallelogram",
+        "innerProductSpace_exists_of_metric_parallelogram"
       ],
       "implementation_source": null,
       "depends_on": [
@@ -3938,7 +4180,7 @@
     },
     {
       "id": "LPS-P130",
-      "statement": "Book6ThermodynamicMAP.lean: oriented mean-balance residual for thermodynamic-MAP duality.",
+      "statement": "Book6ThermodynamicMAP.lean: explicit averaged constitutive law deriving oriented MAP duality.",
       "domain": "book6",
       "status": "P",
       "hypotheses": [
@@ -3949,7 +4191,9 @@
         "duality_iff_residual_zero",
         "reflectionDeviation_eq",
         "duality_of_reflectionDeviation_eq",
-        "equilibrium_flags_alone_do_not_force_duality"
+        "equilibrium_flags_alone_do_not_force_duality",
+        "AveragedConstitutiveLaw.thermodynamicMAPDuality",
+        "AveragedConstitutiveLaw.dualityResidual_eq_zero"
       ],
       "implementation_source": null,
       "depends_on": [
@@ -3997,7 +4241,9 @@
         "zero contextuality defect iff exponent p=2 iff the unique Hilbert frame",
         "reflective fixed point iff zero contextuality defect",
         "the convergent orbit has continuous defect tending to zero",
-        "the Born readout additionally requires an explicit Gleason-style uniqueness bridge"
+        "finite squared-amplitude readout with normalized amplitudes",
+        "pointwise amplitude calibration for finite uniqueness",
+        "the general Born readout additionally requires an explicit Gleason-style uniqueness bridge"
       ],
       "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7BornCollapse.lean",
       "declares": [
@@ -4007,7 +4253,15 @@
         "collapse_limit_eq_hilbertFrame",
         "collapse_tendsto_hilbertFrame",
         "born_readout_at_hilbert",
-        "hilbert_collapse_alone_does_not_determine_readout"
+        "hilbert_collapse_alone_does_not_determine_readout",
+        "finiteBornValue_nonneg",
+        "finiteBornValue_sum_one",
+        "amplitudeCalibratedReadout_unique",
+        "zero_curvature_hilbert_finiteBorn",
+        "finiteBornValue_amplitudeOfProbability",
+        "finite_probability_has_born_representation",
+        "amplitudeOfProbability_normalized",
+        "normalization_alone_does_not_force_finiteBorn"
       ],
       "implementation_source": null,
       "depends_on": [
@@ -4015,7 +4269,7 @@
         "LPS-P128"
       ],
       "consumes": [],
-      "falsifier": "A non-Hilbert frame with zero defect, a second reflective fixed point, a convergent zero-defect orbit limiting away from the Hilbert frame, or Hilbert collapse alone selecting a unique readout despite the exhibited countermodel.",
+      "falsifier": "A non-Hilbert frame with zero defect, a second reflective fixed point, a convergent zero-defect orbit limiting away from the Hilbert frame, Hilbert collapse alone selecting a unique readout, a normalized finite Born model failing probability normalization, or normalization alone forcing the squared-amplitude assignment despite the exhibited countermodel.",
       "next": null
     },
     {
@@ -4153,6 +4407,628 @@
       "consumes": [],
       "falsifier": "A witnessed memory act preserving history, a positive iterate returning to initial history, visible-coordinate return implying full-state return, or every bare test-time update being irreversible despite the reversible Bool witness.",
       "next": null
+    },
+    {
+      "id": "LPS-P138",
+      "statement": "Book4ImaginaryRegulationCurvature.lean: imagination and regulation form an order-sensitive reintegration interface. The defect norm is latent traversal cost; observer-accessible material gravity weights the realized cost. Positive curvature cost follows exactly when positive material weight meets a noncommuting traversal, but geometric curvature is identified with that cost only through an explicit CurvatureCostCertificate.",
+      "domain": "book4",
+      "status": "P",
+      "hypotheses": [
+        "imagination and regulation are typed endomaps on one normed state carrier",
+        "reintegration defect compares the two operational orders",
+        "material gravity is a supplied nonnegative observer-accessible weight",
+        "geometric/observer curvature equals weighted traversal cost only under an explicit certificate",
+        "forward recurrence separately uses a supplied positive oriented residue"
+      ],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4ImaginaryRegulationCurvature.lean",
+      "declares": [
+        "reintegrationResidue_iff_noncommuting",
+        "residue_implies_imaginationActive",
+        "imagination_alone_does_not_force_residue",
+        "curvature_alone_does_not_force_imagination",
+        "operationalControl_components",
+        "accumulatedResidue_succ",
+        "accumulatedResidue_strictMono",
+        "accumulatedResidue_ne_initial",
+        "imaginaryTraversalCost_nonneg",
+        "imaginaryTraversalCost_eq_zero_iff",
+        "imaginaryTraversalCost_pos_iff",
+        "weightedTraversalCost_nonneg",
+        "weightedTraversalCost_pos_iff",
+        "weightedTraversalCost_mono_gravity",
+        "zero_gravity_zero_cost",
+        "CurvatureCostCertificate.curvature_nonneg",
+        "CurvatureCostCertificate.curvature_pos_iff",
+        "CurvatureCostCertificate.curvature_zero_of_free_reintegration",
+        "active_imagination_can_have_zero_traversalCost"
+      ],
+      "implementation_source": null,
+      "depends_on": [
+        "LPS-P83",
+        "LPS-P117"
+      ],
+      "consumes": [],
+      "falsifier": "A commuting traversal with positive cost; positive weighted cost without both positive material weight and residue; larger weight lowering fixed-residue cost; weightless traversal charging cost; active imagination necessarily charging cost; or curvature-cost identity inferred without its explicit bridge.",
+      "next": "Calibrate material weight and the curvature-cost bridge against a genuine observer geometry before transporting this authorial kernel into a source-level theorem; no Einstein equation, mass identity, or consciousness ontology is claimed."
+    },
+    {
+      "id": "LPS-P139",
+      "statement": "Book5StatefulOperatorLearning.lean: feedback-indexed inventory evolution, certified minimizer selection, comparator regret, and ordered policy memory form one stateful SRMF learning step.",
+      "domain": "book5",
+      "status": "P",
+      "hypotheses": [
+        "finite nonempty updated operator inventory",
+        "feedback-indexed real-valued process objective",
+        "explicit minimizer certificate for each transition",
+        "inventory update and selection policy supplied independently of viability"
+      ],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5StatefulOperatorLearning.lean",
+      "declares": [
+        "step_current",
+        "step_records_incumbent",
+        "step_comparatorRegret_nonpos",
+        "boolFeedbackLaw_responds",
+        "two_steps_retain_ordered_history",
+        "feedback_response_does_not_force_inventory_change"
+      ],
+      "implementation_source": null,
+      "depends_on": [
+        "LPS-P103",
+        "LPS-P104"
+      ],
+      "consumes": [],
+      "falsifier": "A certified step selecting outside its updated inventory, positive comparator regret against an available operator, failure to retain incumbent history, or feedback-sensitive selection logically forcing inventory change.",
+      "next": null
+    },
+    {
+      "id": "LPS-P140",
+      "statement": "Book4AssembledConnection.lean: point-dependent connection gluing, Hessian-aware overlap transport, global torsion transfer, ordered finite transport, and observer-floor-certified analytic/effective parallel transport.",
+      "domain": "book4",
+      "status": "P",
+      "hypotheses": [
+        "finite chart inventory and pointwise partition of unity",
+        "continuous bilinear local coefficients",
+        "explicit Jacobian cocycle and Hessian correction for affine overlap transport",
+        "finite ordered duration-position-velocity path",
+        "positive observer resolution floor and smoothing map yielding a smooth observed path",
+        "explicit trajectory existence, ODE law, uniqueness, admissibility, and vanishing effective error bound"
+      ],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4AssembledConnection.lean",
+      "declares": [
+        "globalNablaAt_apply",
+        "globalNablaAt_eq_of_local_eq",
+        "assembledTorsionAt_eq_zero_of_local_symmetric",
+        "certified_coefficient_transformation",
+        "certified_jacobian_cocycle",
+        "discreteParallelTransport_append",
+        "singleton_globalNablaAt",
+        "step_size_matters",
+        "coefficient_uses_observer_floor",
+        "solves_observer_floor_transport",
+        "eq_certified_trajectory",
+        "observed_endpoint_error_tendsto_zero",
+        "observed_endpoint_tendsto",
+        "observer_floor_can_change_visible_path"
+      ],
+      "implementation_source": null,
+      "depends_on": [
+        "LPS-P84"
+      ],
+      "consumes": [],
+      "falsifier": "Locally agreeing coefficients failing to glue; affine overlap transport dropping its Hessian correction; a certified trajectory violating the observer-floor ODE or uniqueness; admissible observed endpoint error failing to vanish; or finite Euler transport alone manufacturing an analytic certificate.",
+      "next": "Instantiate the conditional certificate with concrete observer smoothing moduli and a verified numerical solver when an operational implementation supplies them."
+    },
+    {
+      "id": "LPS-P141",
+      "statement": "ScholiumQuantumTensorNoGo.lean: a nontrivial finite-dimensional carrier cannot close its self-tensor product losslessly through a linear equivalence; dimension one is the sharp boundary.",
+      "domain": "scholium",
+      "status": "P",
+      "hypotheses": [
+        "field-valued finite-dimensional vector space",
+        "strictly greater than one finite dimension",
+        "lossless closure interpreted as a linear equivalence from the tensor square to the original carrier"
+      ],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumQuantumTensorNoGo.lean",
+      "declares": [
+        "no_self_tensor_linearEquiv",
+        "no_lossless_tensor_closure",
+        "self_tensor_linearEquiv_exists_dim_one",
+        "self_tensor_finrank_eq_forces_one"
+      ],
+      "implementation_source": null,
+      "depends_on": [],
+      "consumes": [],
+      "falsifier": "A dimension-greater-than-one finite carrier linearly equivalent to its tensor square, or failure of the dimension-one positive boundary.",
+      "next": "The theorem does not prohibit controlled or enlarged-system Hamiltonian updates."
+    },
+    {
+      "id": "LPS-P142",
+      "statement": "Book2CycleConsistency.lean: finite closed cycles expose entropy-temperature holonomy, and a continuous parameterized boundary trace now satisfies the repaired thermodynamic identity under pointwise first variation, interval integrability, and vanishing closed balance.",
+      "domain": "book2",
+      "status": "P",
+      "hypotheses": [
+        "finite closed-cycle hypotheses for the discrete kernel",
+        "continuous boundary parameter and interval-integrable balance/exchange terms for the analytic path kernel",
+        "pointwise first-variation decomposition and vanishing closed balance"
+      ],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book2CycleConsistency.lean",
+      "declares": [
+        "cycleWork_eq_zero",
+        "entropyTemperatureHolonomy_eq_zero_of_integrable",
+        "thermodynamic_consistency_of_closed_integrable_cycle",
+        "consistency_iff_zero_entropyTemperatureHolonomy",
+        "closed_cycle_can_have_nonzero_entropyTemperatureHolonomy",
+        "path_thermodynamic_consistency"
+      ],
+      "implementation_source": null,
+      "depends_on": [
+        "LPS-P78"
+      ],
+      "consumes": [],
+      "falsifier": "A path satisfying the pointwise first-variation identity and zero balance whose integrated free-energy variation differs from the negative entropy-temperature exchange; or treating bounded curvature alone as integrability.",
+      "next": "Lift the path theorem to differential one-forms on the intended smooth hypothesis manifold; use a separately typed Stokes certificate before converting boundary exchange to an interior integral."
+    },
+    {
+      "id": "LPS-P143",
+      "statement": "End-to-end reflective drift alignment: a single certificate retains the fixed MAP classifier, the separate drift-relative stability margin, and a contractive reflective update, then proves vanishing error, convergence to the positive margin, and eventual positive aligned contribution.",
+      "domain": "book5",
+      "status": "P",
+      "hypotheses": [
+        "scalar covenant snapshot satisfying the Book 5 drift-relative stability margin",
+        "geometric reflective update with feedback gain of absolute value below one",
+        "realized contribution defined as covenant margin minus alignment-error magnitude"
+      ],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book5AlignmentDynamics.lean",
+      "declares": [
+        "alignmentError_succ",
+        "alignmentError_tendsto_zero",
+        "realizedContribution_tendsto_margin",
+        "eventually_realizedContribution_pos",
+        "margin_sub_realizedContribution",
+        "ReflectiveAlignmentCertificate.realizes_reflective_drift_alignment",
+        "positive_margin_without_contraction_does_not_align"
+      ],
+      "implementation_source": null,
+      "depends_on": [
+        "LPS-P78",
+        "LPS-P93"
+      ],
+      "consumes": [],
+      "falsifier": "A retained certificate satisfying MAP classification, strict drift-relative margin, and contraction while failing convergence or eventual positivity; or positive margin alone forcing alignment in the unit-gain countermodel.",
+      "next": "Lift the scalar contraction to a coupled membrane operator only as a stronger downstream realization, not as a premise of this repaired scalar proposition."
+    },
+    {
+      "id": "LPS-P144",
+      "statement": "Scholium-local emergence certificate: contextual nonseparability forces a nonzero mixed state-context cross-error. Book IV consumes that certificate to construct noncommuting transport, while a separate zero-curvature model shows novelty, reflective identity, and dimension growth alone are insufficient.",
+      "domain": "scholium",
+      "status": "P",
+      "hypotheses": [
+        "a real-valued state-context update",
+        "failure of additive separation into independent state and context contributions"
+      ],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumD.lean",
+      "declares": [
+        "contextualGrowth_exposes_crossError",
+        "emergence_premises_do_not_force_curvature"
+      ],
+      "implementation_source": null,
+      "depends_on": [],
+      "consumes": [],
+      "falsifier": "A contextually nonseparable update whose mixed cross-error vanishes everywhere, or derivation of nonzero curvature from novelty, reflection, and dimension growth in the compiled zero-curvature model.",
+      "next": "Book IV supplies the downstream transport geometry; smooth bilinear lowest-order identification requires an explicit local expansion theorem."
+    },
+    {
+      "id": "LPS-P145",
+      "statement": "Generic Newtonian covariance boundary: scalar force commutes with every continuous linear frame map on an arbitrary real normed vector space, while every nonzero uniform frame acceleration produces a nonzero 2*w defect; the NVec derivative construction witnesses the accelerated trajectory concretely.",
+      "domain": "scholium",
+      "status": "P",
+      "hypotheses": [
+        "real normed vector space",
+        "continuous linear change of frame",
+        "nonzero uniform frame acceleration"
+      ],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/ScholiumD.lean",
+      "declares": [
+        "newtonian_incompleteness_normedSpace",
+        "newtonian_incompleteness_kernel"
+      ],
+      "implementation_source": null,
+      "depends_on": [],
+      "consumes": [],
+      "falsifier": "A continuous linear map failing to commute with scalar Newtonian force, or a nonzero frame acceleration whose 2*w defect vanishes.",
+      "next": "Retain the NVec accelerated_frame_defect theorem as the differentiable trajectory realization; do not promote this covariance boundary to a general spacetime or gravity theory."
+    },
+    {
+      "id": "LPS-P146",
+      "statement": "Fuzzy Stokes is realized at four connected levels: typed boundary/interior certificate, finite telescoping strip, analytic oriented rectangular chart via mathlib planar divergence, and finite oriented-atlas assembly with explicit overlap cancellation; analytic curvature transports through the Book IV structural gauge dictionary.",
+      "domain": "book4",
+      "status": "P",
+      "hypotheses": [
+        "additive one-form, two-form, and value carriers",
+        "a classical Stokes bridge for the covariant one-form",
+        "a typed curvature-plus-interaction decomposition",
+        "injectivity/no-cancellation only when pointwise recovery is claimed"
+      ],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4FuzzyStokes.lean",
+      "declares": [
+        "FuzzyStokesCertificate.fuzzy_stokes",
+        "FuzzyStokesCertificate.classical_recovery",
+        "FuzzyStokesCertificate.integrated_residue_zero_of_classical_recovery",
+        "FuzzyStokesCertificate.interactionForm_eq_zero_of_classical_recovery",
+        "cancellingInteraction_ne_zero",
+        "cancellingInteraction_integral_eq_zero",
+        "integrated_zero_does_not_force_form_zero",
+        "sum_stripExteriorDerivative",
+        "discrete_fuzzy_stokes",
+        "discrete_classical_recovery",
+        "exteriorDensity_integrable",
+        "rectangle_stokes",
+        "analytic_fuzzy_stokes",
+        "analytic_classical_recovery",
+        "analytic_curvature_transports_through_gauge",
+        "assembled_fuzzy_stokes",
+        "assembled_classical_recovery"
+      ],
+      "implementation_source": null,
+      "depends_on": [
+        "LPS-P58"
+      ],
+      "consumes": [],
+      "falsifier": "Failure of the boundary identity under the stated Stokes and decomposition laws; failure of oriented finite-strip telescoping; or inference of pointwise-zero interaction from zero integral in the explicit two-cell cancellation model.",
+      "next": "General de Rham Stokes on arbitrary smooth manifolds with boundary is not presently supplied by mathlib; extend the analytic chart family and discharge concrete atlas overlap-cancellation certificates as needed."
+    },
+    {
+      "id": "LPS-P147",
+      "statement": "Global Wilson continuation and its approximation are observer-relative: Picard charts glue by overlap uniqueness, exact transports compose to holonomy, and certified approximation converges only after an observer supplies smoothing, a positive resolution floor, admissibility, and a vanishing observed-error bound; cross-observer comparison requires explicit transport. The constant scalar case is concretely inhabited by explicit Euler products converging to exp(-a), with convergence carried through continuous observer smoothing.",
+      "domain": "book4",
+      "status": "P",
+      "hypotheses": [
+        "finite chart cover of [0,1]",
+        "one shared continuous coefficient field with local Picard certificates",
+        "equality of local trajectories on overlaps",
+        "group-valued exact segment transports",
+        "observer smoothing and positive resolution floor",
+        "eventual floor-admissibility and a vanishing observed-error bound",
+        "explicit cross-observer intertwining transport when observations are compared"
+      ],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4WilsonGlobal.lean",
+      "declares": [
+        "chartAt_mem",
+        "globalTransport_eq_local",
+        "globalHolonomy_eq_endpoint_of_initial_eq_one",
+        "globalTransport_eq_certified_trajectory",
+        "local_trajectory_hasDerivWithinAt",
+        "reverseOrderedIncrements_prod",
+        "exact_partition_transport_eq_holonomy",
+        "wilsonObservable_eq_trace",
+        "symbolic_loop_has_wilson_representation",
+        "endpoint_alone_does_not_identify_symbolic_loop",
+        "observed_error_tendsto_zero",
+        "observed_approximation_tendsto",
+        "admissible_iff_visible_above_floor",
+        "transported_target_eq",
+        "transported_approximation_eq",
+        "shared_raw_endpoint_does_not_force_shared_observation",
+        "positive_resolution_floor_not_unique",
+        "scalarConstantEulerApproximation_tendsto",
+        "scalarConstantObserverCertificate_tendsto"
+      ],
+      "implementation_source": null,
+      "depends_on": [
+        "LPS-P59"
+      ],
+      "consumes": [],
+      "falsifier": "A glued value depending on chart choice; exact increments failing to compose; observed convergence failing under the stated error certificate; cross-observer identity inferred without transport; or positivity selecting a unique floor despite the explicit countermodel.",
+      "next": "The repaired conditional theorem is discharged. Future extension may instantiate the interface with variable matrix coefficients and a computable rate; that is new solver work, not debt in the current Wilson representation theorem."
+    },
+    {
+      "id": "LPS-P148",
+      "statement": "Conditional symbolic-network assembly retains all source witnesses: selected regions are compressed into nodes, every selected edge has a conceptual-bridge certificate, and a positive node-coherence floor below global stability forces strict network stability. Sustained growth remains contextual and does not identify the compression policy.",
+      "domain": "book3",
+      "status": "P",
+      "hypotheses": [
+        "sustained-growth trace",
+        "finite indexed region family and total compression operator",
+        "bridge certificate for every selected edge",
+        "positive node-coherence floor bounded above by stage stability"
+      ],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3NetworkEmergence.lean",
+      "declares": [
+        "runNetworkEmergence_stability_pos_from_floor",
+        "runNetworkEmergence_realizes_assembly",
+        "same_growth_allows_distinct_nodes"
+      ],
+      "implementation_source": null,
+      "depends_on": [],
+      "consumes": [],
+      "falsifier": "A process satisfying the retained compression, bridge, and positive-floor laws whose assembled network lacks a named node, bridge-backed edge, or strictly positive stability; or growth alone uniquely determining compression despite the explicit paired model.",
+      "next": "Instantiate the abstract assembly certificate with concrete high-coherence selectors and compression operators without identifying them as consequences of growth."
+    },
+    {
+      "id": "LPS-P149",
+      "statement": "Conditional symbolic-membrane well-posedness constructs canonical drift, permeability, and exponential stability data on a supplied smooth relatively compact connected domain; a positive budget cannot manufacture that domain.",
+      "domain": "book3",
+      "status": "P",
+      "hypotheses": [
+        "nonempty connected open carrier with compact closure and smooth boundary",
+        "supplied smooth global drift and Hamiltonian",
+        "regularity calculus closed under x \u21a6 exp(-alpha f(x))",
+        "positive perturbation budget and alpha"
+      ],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book3WellPosedness.lean",
+      "declares": [
+        "conditional_symbolic_membrane_wellposed",
+        "perturbation_budget_does_not_supply_domain"
+      ],
+      "implementation_source": null,
+      "depends_on": [],
+      "consumes": [],
+      "falsifier": "A supplied domain satisfying the hypotheses failing to carry the canonical zero-deviation, zero-permeability, positive smooth stability data; or a positive scalar budget creating a nonempty carrier in Empty.",
+      "next": "Instantiate the abstract supplied-domain interface with additional concrete manifold charts when required; do not reinterpret the budget as a geometric existence theorem."
+    },
+    {
+      "id": "LPS-P150",
+      "statement": "Thermodynamic consistency of hypothesis surfaces is characterized by vanishing observer-accounting residue on pulled-back boundary one-forms and transported to interior two-forms only through an explicit oriented Stokes calculus.",
+      "domain": "book2",
+      "status": "P",
+      "hypotheses": [
+        "additive real modules of boundary one-forms and interior two-forms kept as distinct types",
+        "oriented closed surface certificate",
+        "linear boundary and interior integration with exterior derivative",
+        "degree-correct Stokes identity",
+        "pulled-back thermodynamic first-variation identity",
+        "zero observer-energy/temperature-entropy residue for consistency"
+      ],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book2HypothesisSurfaceStokes.lean",
+      "declares": [
+        "boundary_balance_with_residue",
+        "boundary_consistency_iff_residue_zero",
+        "boundary_thermodynamic_consistency",
+        "interior_thermodynamic_consistency",
+        "interior_consistency_iff_residue_zero",
+        "scalar_closed_surface_consistent",
+        "bounded_curvature_does_not_zero_residue"
+      ],
+      "implementation_source": null,
+      "depends_on": [],
+      "consumes": [],
+      "falsifier": "A first-variation certificate violating the residue balance; zero residue failing to imply boundary or Stokes-transported interior consistency; or bounded curvature alone forcing zero residue despite the explicit scalar countermodel.",
+      "next": "Advanced anti-flattening frontier closed. Future work may instantiate the abstract form carriers with a concrete mathlib manifold de Rham complex without changing the conditional theorem."
+    },
+    {
+      "id": "LPS-P151",
+      "statement": "Constructive quantum-resolution bridge: the reduced-state diagonal supplies normalized nonnegative channel weights, while an independent response kernel maps tangent directions into observer channels. Their weighted pullback constructs a symmetric positive-semidefinite observer metric and detects nonzero responses on positive-weight channels. A countermodel proves that the reduced state alone cannot identify the response kernel or metric.",
+      "domain": "book4quantumresolution",
+      "status": "P",
+      "hypotheses": [
+        "finite observer channel basis",
+        "reduced operator with normalized nonnegative diagonal readout weights",
+        "independently supplied tangent-to-channel response kernel"
+      ],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book4QuantumResolution.lean",
+      "declares": [
+        "inducedMetric_symmetric",
+        "inducedMetric_diagonal_nonneg",
+        "inducedMetric_zero_of_response_zero",
+        "inducedMetric_diagonal_pos_of_channel",
+        "quantum_resolution_constructs_observer_metric",
+        "reduced_state_does_not_determine_resolution_kernel"
+      ],
+      "implementation_source": null,
+      "depends_on": [
+        "LPS-P82"
+      ],
+      "consumes": [],
+      "falsifier": "One reduced state supports both a blind response and a detecting response, inducing different metrics; therefore density data alone cannot recover resolution.",
+      "next": "Add a physical channel/tomography law when a concrete quantum process is intended to identify the response kernel."
+    },
+    {
+      "id": "LPS-P152",
+      "statement": "Finite non-contextual frame gluing: covered normalized local readouts agreeing on overlaps determine a unique nonnegative global assignment; local squared-amplitude calibration identifies it as Born, while gluing alone does not force the quadratic law.",
+      "domain": "book7",
+      "status": "P",
+      "hypotheses": [
+        "every outcome is covered by at least one finite frame",
+        "local readouts are nonnegative and normalized",
+        "readouts agree wherever two frames overlap",
+        "Born identification additionally assumes local squared-amplitude calibration"
+      ],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7FrameMeasure.lean",
+      "declares": [
+        "globalValue_eq_local",
+        "globalValue_nonnegative",
+        "globalValue_normalized_on_frame",
+        "globalValue_unique",
+        "globalValue_eq_finiteBorn",
+        "noncontextual_gluing_alone_does_not_force_born"
+      ],
+      "implementation_source": null,
+      "depends_on": ["LPS-P132"],
+      "consumes": [],
+      "falsifier": "Compatible covered local restrictions disagree with the constructed global value, fail global uniqueness or frame normalization, calibrated locals fail to yield Born values, or non-contextual gluing alone forces Born despite the exhibited countermodel.",
+      "next": "Derive a quadratic or trace representation from weaker Gleason hypotheses rather than assuming local amplitude calibration."
+    },
+    {
+      "id": "LPS-P153",
+      "statement": "Finite quadratic-to-trace transport: a supplied quadratic operator representation of a glued frame measure is exactly its pure-state trace representation; non-contextual gluing does not construct the operator witness.",
+      "domain": "book7",
+      "status": "P",
+      "hypotheses": ["a finite outcome basis", "a supplied ray map and matrix operator", "pointwise quadratic representation of the global frame measure"],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuadraticTrace.lean",
+      "declares": ["quadratic_eq_trace_pureStateDensity_mul", "globalValue_eq_trace_of_quadratic", "gluing_requires_quadratic_existence_bridge"],
+      "implementation_source": null,
+      "depends_on": ["LPS-P152"],
+      "consumes": [],
+      "falsifier": "A supplied quadratic value differs from the corresponding pure-state trace, transport fails pointwise, or non-contextual gluing alone constructs the missing operator despite the inherited countermodel.",
+      "next": "Construct the positive operator witness from weaker Gleason frame-measure hypotheses."
+    },
+    {
+      "id": "LPS-P154",
+      "statement": "Observer reconstruction separates latent pairwise conflict rho, the conservative screening statistic rho-hat, and reintegration residue rho_O: routing transports through a certified error margin, while equal rho-hat does not identify latent geometry and a fixed regime does not determine rho_O.",
+      "domain": "book7",
+      "status": "P",
+      "hypotheses": ["a witnessed maximizing pair for the observed regime index", "a uniform reconstruction-error bound", "a routing margin strictly larger than that error"],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7RegimeReconstruction.lean",
+      "declares": ["latent_critical_within_error", "latent_critical_lt_of_rhoHat_margin", "lt_latent_critical_of_margin", "same_rhoHat_does_not_identify_latent", "regime_does_not_determine_rhoO", "reframe_rhoHat", "reframe_order_iff", "reframe_threshold_iff", "ordinal_agreement_does_not_identify_scale"],
+      "implementation_source": null,
+      "depends_on": ["LPS-P153"],
+      "consumes": [],
+      "falsifier": "A margin exceeding reconstruction error reverses the latent threshold decision, rho-hat uniquely identifies latent conflict despite the countermodel, fixing the regime estimator forces a unique reintegration residue, or order-isomorphic reframing changes rankings or transported threshold decisions.",
+      "next": "Connect a domain-calibrated reconstruction certificate to the positive-operator existence hypotheses without identifying the screening statistic with the operator."
+    },
+    {
+      "id": "LPS-P155",
+      "statement": "Event Horizon tetrad reconstruction: every scalar field on BH/WH input-output corners has an exact affine-bilinear expansion; its mixed coefficient vanishes exactly under additive separability, but this finite reconstruction does not force a Hilbert metric.",
+      "domain": "book7-support",
+      "status": "P",
+      "hypotheses": ["two explicitly typed BH/WH axes", "all four input-output quadrant values are available"],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7EventHorizonTetrad.lean",
+      "declares": ["reconstructedValue_eq", "mixedCoefficient_eq_zero_iff_separable", "nonzero_mixedCoefficient_iff_nonseparable", "tetrad_reconstruction_does_not_force_hilbert_metric"],
+      "implementation_source": "C:/Users/paulc/Giants/Github/GiantsDev/Giants/MagicBeans/Beanbag/EventHorizonBean/EventHorizon-2-MagicBean.txt",
+      "depends_on": ["LPS-P128"],
+      "consumes": [],
+      "falsifier": "A quadrant value is not recovered by the expansion, zero mixed coefficient coexists with nonseparability, or exhaustive tetrad reconstruction forces the metric parallelogram identity despite the inherited L1 countermodel.",
+      "next": "Add positivity, symmetry, homogeneity, and coherence-to-energy premises before using the tetrad interaction coordinate as a metric quadratic representation."
+    },
+    {
+      "id": "LPS-P156",
+      "statement": "Hope as directed change under boundedness: bounded capacity with unbounded drive guarantees a breach; Hope witnesses a viable residual-reducing transition, while shared good remains an additional observer and authority judgment.",
+      "domain": "book9-support",
+      "status": "P",
+      "hypotheses": ["capacity has a global finite ceiling", "drive is unbounded above", "Hope includes an explicit viable residual-reducing successor"],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book9HopeDriver.lean",
+      "declares": ["residual_pos_iff", "bounded_capacity_unbounded_drive_produces_breach", "hope_drives_change", "hope_alone_does_not_force_shared_good"],
+      "implementation_source": null,
+      "depends_on": ["LPS-P155"],
+      "consumes": [],
+      "falsifier": "Bounded capacity and unbounded drive coexist without any breach, a Hope witness lacks a viable residual-reducing transition, or Hope logically forces shared good despite the explicit countermodel.",
+      "next": "Bind Hope to its exact Book IX or Titans source language, then add explicit observer, consent, cost, and shared-good bridges without identifying physical and social mechanisms."
+    },
+    {
+      "id": "LPS-P157",
+      "statement": "Coordinate-free quadratic polarization: every genuine real quadratic readout canonically yields a symmetric bilinear coupling with the same diagonal; nonnegativity transports to that diagonal, while nonnegative readouts alone need not be quadratic.",
+      "domain": "book7",
+      "status": "P",
+      "hypotheses": ["a genuine Mathlib real QuadraticForm", "positive-semidefinite diagonal additionally assumes pointwise nonnegativity"],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuadraticPolarization.lean",
+      "declares": ["quadraticForm_has_symmetric_bilinear_representation", "associated_diagonal_nonnegative", "nonnegative_readout_does_not_force_quadratic"],
+      "implementation_source": null,
+      "depends_on": ["LPS-P128", "LPS-P153"],
+      "consumes": [],
+      "falsifier": "A real quadratic form fails to equal the diagonal of its canonical symmetric polarization, nonnegative quadratic data yield a negative diagonal, or every nonnegative readout is forced to obey quadratic scaling despite the absolute-value countermodel.",
+      "next": "Derive the QuadraticForm witness from the intended noncontextual frame-measure axioms; polarization and subsequent Hilbert/trace transport are now constructive once that witness exists."
+    },
+    {
+      "id": "LPS-P158",
+      "statement": "Exact quadratic-readout interface: degree-two scaling plus additive and homogeneous polarization construct a genuine real quadratic form; every quadratic form supplies those laws, the round trip preserves all values, and canonical symmetric bilinear representation follows.",
+      "domain": "book7",
+      "status": "P",
+      "hypotheses": ["degree-two scalar homogeneity", "additivity of the polarization in one argument", "scalar homogeneity of the polarization in one argument"],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuadraticPolarization.lean",
+      "declares": ["QuadraticReadoutLaws.toQuadraticForm_apply", "QuadraticReadoutLaws.roundtrip_value", "certified_readout_has_symmetric_bilinear_representation"],
+      "implementation_source": null,
+      "depends_on": ["LPS-P157"],
+      "consumes": [],
+      "falsifier": "The three certificate laws fail to construct a quadratic form with the original values, the round trip changes a readout, or a certified readout lacks the canonical symmetric bilinear representation.",
+      "next": "Derive the three certificate laws from normalized noncontextual frame measures under the frame-rank and regularity hypotheses of a valid Gleason theorem."
+    },
+    {
+      "id": "LPS-P159",
+      "statement": "Explicit rank-two Gleason obstruction: a nonnegative ray-invariant quartic frame function is normalized on every orthogonal pair yet violates the quadratic parallelogram identity and admits no quadratic/Born representation.",
+      "domain": "book7",
+      "status": "P",
+      "hypotheses": ["real rank-two coordinate model", "nonzero rays for frame normalization and scaling invariance"],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7GleasonBoundary.lean",
+      "declares": ["quarticFrameValue_nonnegative", "quarticFrameValue_smul", "quartic_orthogonal_pair_normalized", "quadraticForm_parallelogram", "quartic_frame_function_is_not_quadratic", "rank_two_frame_axioms_do_not_force_born"],
+      "implementation_source": null,
+      "depends_on": ["LPS-P158"],
+      "consumes": [],
+      "falsifier": "The quartic function becomes negative, changes under nonzero ray scaling, fails orthogonal-pair normalization, admits a quadratic representation, or rank-two frame axioms force Born despite the explicit witness.",
+      "next": "Begin the positive Gleason reconstruction only in real or complex frame rank at least three, with the required boundedness/regularity and complete frame quantifiers explicit."
+    },
+    {
+      "id": "LPS-P160",
+      "statement": "Phase-faithful quantum readout kernel: finite complex operator expectations scale by conjugate(a) times a, are invariant under global unit phase, and cannot be faithfully replaced by ordinary real a-squared quadratic scaling.",
+      "domain": "book7",
+      "status": "P",
+      "hypotheses": ["finite complex coordinate carrier", "a supplied operator matrix", "global-phase invariance additionally assumes conjugate(u) times u equals one"],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuantumGleason.lean",
+      "declares": ["vectorExpectation_smul", "vectorExpectation_globalPhase", "complex_phase_refutes_real_degreeTwo", "operatorQuantumRayReadout_globalPhase"],
+      "implementation_source": null,
+      "depends_on": ["LPS-P159"],
+      "consumes": [],
+      "falsifier": "Complex operator expectation violates conjugate-modulus scaling, changes under unit global phase, or ordinary a-squared scaling agrees with the complex law at the imaginary unit.",
+      "next": "Construct the Hermitian/sesquilinear polarization interface, then derive it from complete overlapping frame contexts at the first sufficient frame rank."
+    },
+    {
+      "id": "LPS-P161",
+      "statement": "Dashed Hermitian reconstruction interface: explicit conjugate-linear/linear cross laws, Hermitian exchange, and diagonal recovery construct a genuine complex Hermitian sesquilinear form and force modulus-squared scaling of the observed readout.",
+      "domain": "book7",
+      "status": "P",
+      "hypotheses": ["a supplied complex cross term", "additivity and conjugate homogeneity in the first argument", "additivity and homogeneity in the second argument", "Hermitian exchange", "diagonal recovery"],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuantumGleason.lean",
+      "declares": ["HermitianReadoutCertificate.toSesquilinear_apply", "HermitianReadoutCertificate.toSesquilinear_isSymm", "HermitianReadoutCertificate.toSesquilinear_diagonal", "HermitianReadoutCertificate.value_smul", "hermitian_reconstruction_from_certificate"],
+      "implementation_source": null,
+      "depends_on": ["LPS-P160"],
+      "consumes": [],
+      "falsifier": "The supplied cross laws fail to define a sesquilinear form, Hermitian exchange fails to induce symmetry, the diagonal fails to recover the readout, or certified diagonal values violate conjugate-modulus scaling.",
+      "next": "The attempted direct bridge is now refuted for the existing source type by LPS-P162. Strengthen or replace the coherence structure only where its intended complete-frame semantics can be expressed strongly enough for the bridge type to become inhabited."
+    },
+    {
+      "id": "LPS-P162",
+      "statement": "The direct bridge from the existing covered, normalized, noncontextual FrameReadoutSystem to a Hermitian reconstruction certificate is false: a singleton-frame constant-one system satisfies every current field but its glued value cannot be a Hermitian diagonal because it does not vanish at zero.",
+      "domain": "book7",
+      "status": "P",
+      "hypotheses": ["exactly the existing FrameReadoutSystem fields", "the existing HermitianReadoutCertificate target"],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuantumGleason.lean",
+      "declares": ["completeFrameCoherence_does_not_supply_hermitian_certificate"],
+      "implementation_source": null,
+      "depends_on": ["LPS-P161"],
+      "consumes": [],
+      "falsifier": "A Hermitian certificate exists whose diagonal equals the glued constant-one readout, despite sesquilinearity forcing its value at zero to vanish.",
+      "next": "The next source candidate is the existing QuantumResolutionCertificate: its bare arrow is refuted, while the minimally refined arrow carrying reducedState.IsHermitian is proved in LPS-P163."
+    },
+    {
+      "id": "LPS-P163",
+      "statement": "The nearest richer existing source contract has an exact boundary: QuantumResolutionCertificate alone does not supply a Hermitian readout certificate, as witnessed by a normalized non-Hermitian reduced matrix with non-real expectation; requiring only that its already-carried reduced matrix is Hermitian makes the direct certificate implication constructive.",
+      "domain": "book7",
+      "status": "P",
+      "hypotheses": ["an existing QuantumResolutionCertificate", "for the positive arrow only, its reducedState satisfies Matrix.IsHermitian"],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuantumGleason.lean",
+      "declares": ["quantumResolution_to_hermitian_certificate", "quantumResolution_without_matrixHermiticity_does_not_supply_certificate"],
+      "implementation_source": null,
+      "depends_on": ["LPS-P162"],
+      "consumes": [],
+      "falsifier": "The non-Hermitian normalized witness nevertheless has a Hermitian diagonal representation, or a Hermitian reduced matrix fails to construct the existing HermitianReadoutCertificate.",
+      "next": "Preserve the conditional bridge: provenance inspection and LPS-P164 establish that reducedState.IsHermitian is the precise remaining typed boundary of the present upstream contract."
+    },
+    {
+      "id": "LPS-P164",
+      "statement": "Reduced-state Hermiticity is not derivable from the present QuantumResolutionCertificate contract: the preserved normalized non-Hermitian witness gives an explicit certificate whose reducedState is not Matrix.IsHermitian.",
+      "domain": "book7",
+      "status": "P",
+      "hypotheses": ["exactly the existing QuantumResolutionCertificate fields"],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuantumGleason.lean",
+      "declares": ["quantumResolution_does_not_force_reducedState_isHermitian"],
+      "implementation_source": null,
+      "depends_on": ["LPS-P163"],
+      "consumes": [],
+      "falsifier": "Every QuantumResolutionCertificate has a Hermitian reducedState, contradicting the explicit normalized witness.",
+      "next": "Interpret this as an observer-boundary theorem: preserve the refuted reverse lift and use the proved pure-state lowering as the concrete richer-source provenance of Hermiticity."
+    },
+    {
+      "id": "LPS-P165",
+      "statement": "Observer-boundary lowering: a normalized pure-state density is Hermitian upstream, lowers with a supplied observer response into QuantumResolutionCertificate, and constructs the existing Hermitian readout certificate; global-phase-related distinct normalized vectors produce the same density and the same lowered observer certificate.",
+      "domain": "book7",
+      "status": "P",
+      "hypotheses": ["a normalized finite complex pure-state vector", "a supplied observer response kernel", "unit-modulus phase for the loss theorem"],
+      "formal_source": "verification/lean/ForcingAnalysis/ForcingAnalysis/Book7QuantumGleason.lean",
+      "declares": ["pureStateDensity_isHermitian", "pureStateToResolution_reducedState_isHermitian", "pureState_forward_chain", "pureStateDensity_globalPhase", "pureStateToResolution_globalPhase", "pureState_lowering_not_injective"],
+      "implementation_source": null,
+      "depends_on": ["LPS-P164"],
+      "consumes": [],
+      "falsifier": "Pure-state density is non-Hermitian, its normalized lowering fails the observer certificate, the forward Hermitian certificate cannot be constructed, or global-phase-distinct source vectors remain distinguishable in the lowered density/certificate.",
+      "next": "Preserve the directionality: richer pure-state structure lowers to observer resolution with explicit global-phase loss; arbitrary resolved data do not invert that map."
     }
   ]
 }

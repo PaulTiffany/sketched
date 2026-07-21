@@ -1,6 +1,8 @@
 /- Book6ConfidenceGradient.lean — confidence-driven mutation velocity kernel. -/
 import Mathlib
 
+open scoped RealInnerProductSpace
+
 namespace ForcingAnalysis.Book6ConfidenceGradient
 
 /-- Scalar chart of the printed confidence-gradient mutation law. -/
@@ -47,5 +49,34 @@ the printed mutation dynamics: a stationary path can violate its velocity law. -
 theorem regularity_alone_does_not_force_confidence_dynamics :
     (0 : ℝ) ≠ confidenceDrivenVelocity 1 0 1 0 0 := by
   norm_num [confidenceDrivenVelocity]
+
+
+/-- Typed confidence-gradient velocity with all diffusion/noise effects retained
+as a perturbation vector. -/
+def confidenceVelocity {V : Type*} [NormedAddCommGroup V] [InnerProductSpace ℝ V]
+    (drift : ℝ) (gradient perturbation : V) : V :=
+  (-drift) • gradient + perturbation
+
+/-- Directional confidence descent holds exactly under a quantitative bound on
+the perturbation component along the gradient. -/
+theorem confidenceVelocity_descends_of_perturbation_control
+    {V : Type*} [NormedAddCommGroup V] [InnerProductSpace ℝ V]
+    {drift : ℝ} {gradient perturbation : V}
+    (hcontrol : inner ℝ perturbation gradient ≤ drift * ‖gradient‖ ^ 2) :
+    inner ℝ (confidenceVelocity drift gradient perturbation) gradient ≤ 0 := by
+  rw [confidenceVelocity, inner_add_left, real_inner_smul_left]
+  rw [real_inner_self_eq_norm_sq]
+  nlinarith
+
+/-- If perturbation is strictly dominated in the gradient direction, descent
+is strict without pretending diffusion or noise vanished. -/
+theorem confidenceVelocity_strictly_descends_of_strict_control
+    {V : Type*} [NormedAddCommGroup V] [InnerProductSpace ℝ V]
+    {drift : ℝ} {gradient perturbation : V}
+    (hcontrol : inner ℝ perturbation gradient < drift * ‖gradient‖ ^ 2) :
+    inner ℝ (confidenceVelocity drift gradient perturbation) gradient < 0 := by
+  rw [confidenceVelocity, inner_add_left, real_inner_smul_left]
+  rw [real_inner_self_eq_norm_sq]
+  nlinarith
 
 end ForcingAnalysis.Book6ConfidenceGradient
