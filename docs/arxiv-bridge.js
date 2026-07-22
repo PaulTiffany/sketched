@@ -1,10 +1,13 @@
 (()=>{'use strict';
-const nativeFetch=window.fetch.bind(window);
+if(/\/pdf\.html$/i.test(location.pathname))return;
+const nativeFetch=window.fetch.bind(window),JINA='https://r.jina.ai/';
 function arxiv(raw){
   try{
-    const u=new URL(String(raw||''),location.href);
+    let value=String(raw||'').trim();
+    if(value.startsWith(JINA))value=value.slice(JINA.length);
+    const u=new URL(value,location.href);
     if(!/(^|\.)arxiv\.org$/i.test(u.hostname))return null;
-    const m=u.pathname.match(/^\/(abs|pdf|html)\/(.+)$/i);
+    const m=u.pathname.match(/^\/(abs|pdf|html)\/([^?#]+)$/i);
     if(!m)return null;
     const id=decodeURIComponent(m[2]).replace(/\.pdf$/i,'').replace(/\/$/,'');
     if(!id)return null;
@@ -12,52 +15,45 @@ function arxiv(raw){
       id,
       kind:m[1].toLowerCase(),
       abs:`https://arxiv.org/abs/${id}`,
-      pdf:`https://arxiv.org/pdf/${id}`,
+      pdf:`https://arxiv.org/pdf/${id}.pdf`,
+      pdfBare:`https://arxiv.org/pdf/${id}`,
+      exportPdf:`https://export.arxiv.org/pdf/${id}.pdf`,
       html:`https://arxiv.org/html/${id}`,
-      reader:`https://r.jina.ai/https://arxiv.org/pdf/${id}`
+      readers:[
+        `${JINA}https://arxiv.org/pdf/${id}.pdf`,
+        `${JINA}https://arxiv.org/pdf/${id}`,
+        `${JINA}https://arxiv.org/html/${id}`,
+        `${JINA}https://arxiv.org/abs/${id}`
+      ]
     };
   }catch{return null}
 }
-function jinaTarget(raw){
-  const s=String(raw||'');
-  const prefix='https://r.jina.ai/';
-  if(!s.startsWith(prefix))return null;
-  return arxiv(s.slice(prefix.length));
-}
+window.Z0Arxiv={parse:arxiv};
 window.fetch=async(input,init)=>{
   const raw=typeof input==='string'||input instanceof URL?String(input):input?.url||'';
-  const paper=arxiv(raw)||jinaTarget(raw);
+  const paper=arxiv(raw);
   if(!paper)return nativeFetch(input,init);
-  const isPaperPage=/^https?:\/\/([^/]+\.)?arxiv\.org\/(abs|html)\//i.test(raw);
-  const isJinaArxiv=raw.startsWith('https://r.jina.ai/')&&!!jinaTarget(raw);
-  if(!isPaperPage&&!isJinaArxiv)return nativeFetch(input,init);
-  try{
-    const response=await nativeFetch(paper.reader,{...init,headers:{...(init?.headers||{}),Accept:'text/plain'}});
-    if(response.ok)return response;
-  }catch{}
-  if(isJinaArxiv)return nativeFetch(`https://r.jina.ai/${paper.abs}`,init);
+  const direct=/^https?:\/\/([^/]+\.)?arxiv\.org\/(abs|pdf|html)\//i.test(raw);
+  const jina=raw.startsWith(JINA);
+  if(!direct&&!jina)return nativeFetch(input,init);
+  let lastError;
+  for(const url of paper.readers){
+    try{
+      const response=await nativeFetch(url,{...init,headers:{...(init?.headers||{}),Accept:'text/plain'}});
+      if(response.ok)return response;
+      lastError=new Error(`Reader ${response.status}`);
+    }catch(error){lastError=error}
+  }
+  if(jina&&lastError)throw lastError;
   return nativeFetch(input,init);
 };
-function syncFrame(){
-  const frame=document.getElementById('browserFrame');
-  if(!frame)return;
-  const paper=arxiv(frame.getAttribute('src')||frame.src);
-  if(!paper)return;
-  frame.dataset.z0Arxiv=paper.id;
-  frame.title=`arXiv ${paper.id} PDF`;
-  if(paper.kind!=='pdf'&&frame.getAttribute('src')!==paper.pdf)frame.setAttribute('src',paper.pdf);
-  window.dispatchEvent(new CustomEvent('z0:arxiv-paper',{detail:paper}));
-}
 function install(){
-  const frame=document.getElementById('browserFrame');
-  if(frame)new MutationObserver(syncFrame).observe(frame,{attributes:true,attributeFilter:['src']});
-  syncFrame();
-  const form=document.getElementById('urlForm');
-  const input=document.getElementById('urlInput');
+  const form=document.getElementById('urlForm'),input=document.getElementById('urlInput');
   form?.addEventListener('submit',()=>{
     const paper=arxiv(input?.value);
     if(!paper)return;
     document.getElementById('stageState')?.setAttribute('data-arxiv',paper.id);
+    window.dispatchEvent(new CustomEvent('z0:arxiv-paper',{detail:paper}));
   },true);
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
