@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Z0 OmegaClaw</title>
+<link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+<header><div><strong>Z0 OmegaClaw</strong><div id="state">real-tab companion</div></div><button id="setup">SETUP</button></header>
+<section class="page"><div class="eyebrow">CURRENT SURFACE</div><div id="title">No readable tab yet.</div><div id="url"></div><div class="actions"><button id="read">READ TAB</button><button id="mark">MARK SELECTION</button><button id="clear">CLEAR MARKS</button></div></section>
+<main id="messages" aria-live="polite"></main>
+<form id="composer"><textarea id="prompt" placeholder="Ask about this page or selected passage…" aria-label="Message Omega"></textarea><button>SEND</button></form>
+<dialog id="settings"><form method="dialog"><div class="dialog-head"><strong>Omega route</strong><button value="close">CLOSE</button></div><label>OpenRouter key<input id="key" type="password" autocomplete="off" placeholder="sk-or-v1-…"></label><label>Free model<input id="model" value="openrouter/free"></label><p>The key stays in extension-local storage. Requests are sent directly to OpenRouter.</p><div class="actions"><button type="button" id="save">SAVE</button><button type="button" id="forget">FORGET KEY</button></div></form></dialog>
+<script src="sidepanel.js"></script>
+</body>
+</html>
