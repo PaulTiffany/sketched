@@ -1,13 +1,17 @@
 (()=>{'use strict';
-const STORE='z0.presenter-field.v1',CFG='z0.omegaclaw.runtime.v1',SENTINEL='__REAL_OMEGACLAW__';
-let cfg={mode:'direct',endpoint:'',token:'',directKey:null,directModel:''};
-try{cfg={...cfg,...JSON.parse(localStorage.getItem(CFG)||'{}')}}catch{}
-const saveCfg=()=>localStorage.setItem(CFG,JSON.stringify(cfg));
+const STORE='z0.presenter-field.v1',CFG='z0.omegaclaw.runtime.v1',SESSION='z0.omegaclaw.session.v1',TOKEN='z0.omegaclaw.token.v1',DIRECT_KEY='z0.omegaclaw.direct-key.v1',DIRECT_MODEL='z0.omegaclaw.direct-model.v1',SENTINEL='__REAL_OMEGACLAW__';
+let cfg={mode:'direct',endpoint:''};
+try{const stored=JSON.parse(localStorage.getItem(CFG)||'{}');cfg={...cfg,mode:stored.mode||'direct',endpoint:stored.endpoint||''};if(stored.token&&!sessionStorage.getItem(TOKEN))sessionStorage.setItem(TOKEN,stored.token);if(stored.directKey&&!sessionStorage.getItem(DIRECT_KEY))sessionStorage.setItem(DIRECT_KEY,stored.directKey);if(stored.directModel&&!sessionStorage.getItem(DIRECT_MODEL))sessionStorage.setItem(DIRECT_MODEL,stored.directModel)}catch{}
+const saveCfg=()=>localStorage.setItem(CFG,JSON.stringify({mode:cfg.mode,endpoint:cfg.endpoint}));
+const getToken=()=>sessionStorage.getItem(TOKEN)||'';
+const setToken=value=>{value=String(value||'').trim();value?sessionStorage.setItem(TOKEN,value):sessionStorage.removeItem(TOKEN)};
 const getState=()=>{try{return JSON.parse(localStorage.getItem(STORE)||'{}')}catch{return{}}};
 const setState=state=>localStorage.setItem(STORE,JSON.stringify(state));
+const sessionId=()=>{let id=localStorage.getItem(SESSION)||'';if(!id){id=crypto.randomUUID?.()||`z0-${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;localStorage.setItem(SESSION,id)}return id};
+saveCfg();
 if(cfg.mode==='omegaclaw'){
   const state=getState();
-  if(state.key!==SENTINEL){cfg.directKey=state.key||null;cfg.directModel=state.model||'';saveCfg()}
+  if(state.key!==SENTINEL){if(state.key)sessionStorage.setItem(DIRECT_KEY,state.key);if(state.model)sessionStorage.setItem(DIRECT_MODEL,state.model)}
   state.key=SENTINEL;state.model='runtime/omegaclaw';setState(state);
 }
 const nativeFetch=window.fetch.bind(window);
@@ -28,26 +32,26 @@ NativeWorker.prototype.postMessage=function(message,...rest){
   if(cfg.mode!=='omegaclaw'||message?.type!=='infer')return nativePost.call(this,message,...rest);
   runTurn(this,message);return undefined;
 };
-function headers(){const h={'Content-Type':'application/json'};if(cfg.token)h.Authorization=`Bearer ${cfg.token}`;return h}
+function headers(){const h={'Content-Type':'application/json'},token=getToken();if(token)h.Authorization=`Bearer ${token}`;return h}
 function endpoint(path){return String(cfg.endpoint||'').replace(/\/+$/,'')+path}
 function textOf(content){if(typeof content==='string')return content;if(Array.isArray(content))return content.map(x=>x?.text||'').join('\n');return''}
 function extractJson(raw){let s=String(raw||'').trim().replace(/^```(?:json)?/i,'').replace(/```$/,'').trim(),a=s.indexOf('{'),b=s.lastIndexOf('}');if(a<0||b<=a)throw Error('OmegaClaw did not return the Z0 JSON contract');return JSON.parse(s.slice(a,b+1))}
 function surfaceFrom(message){const state=getState(),messages=Array.isArray(message.messages)?message.messages:[],joined=messages.map(x=>textOf(x.content)).join('\n');const page=(joined.match(/PAGE:\s*([^\n]+)/i)||[])[1]||'';const pdfText=(joined.match(/PAGE TEXT:\n([\s\S]*)/i)||[])[1]||'';return{url:state.url||'',title:state.pageTitle||'',page,selection:state.sharedText||'',text:(pdfText||state.pageText||joined).slice(0,24000)}}
-function instructionFrom(message){const messages=Array.isArray(message.messages)?message.messages:[];for(let i=messages.length-1;i>=0;i--){const text=textOf(messages[i].content).trim();if(text&&!/^(PRESENTED PAGE|CURRENT PDF)/.test(text))return text.slice(0,4000)}return'Observe the current surface, answer the presenter, and create a sparse useful Z0 performance.'}
+function instructionFrom(message){if(message?.source==='make')return'MAKE: create the strongest sparse presenter overlay for the current surface. Use vectors to guide audience attention.';const state=getState(),history=Array.isArray(state.messages)?state.messages:[];for(let i=history.length-1;i>=0;i--){if(history[i]?.kind==='human'){const text=String(history[i].text||'').replace(/^\[voice\]\s*/i,'').trim();if(text)return text.slice(0,4000)}}return'Observe the current surface, answer the presenter, and create a sparse useful Z0 performance.'}
 async function runTurn(worker,message){const started=Date.now();worker.onmessage?.({data:{type:'status',value:'thinking'}});try{
-  if(!cfg.endpoint)throw Error('Set the OmegaClaw Space endpoint in Ω SETUP');
+  if(!cfg.endpoint)throw Error('Set the OmegaClaw Space endpoint in CLAW SETUP');
   const health=await nativeFetch(endpoint('/health'),{headers:headers()});if(!health.ok)throw Error(`OmegaClaw health ${health.status}`);const hd=await health.json();if(!hd.agent_connected)throw Error('OmegaClaw is waking; retry in a moment');
-  const submitted=await nativeFetch(endpoint('/api/turn'),{method:'POST',headers:headers(),body:JSON.stringify({instruction:instructionFrom(message),surface:surfaceFrom(message),session_id:localStorage.getItem('z0.omegaclaw.session')||''})});
+  const submitted=await nativeFetch(endpoint('/api/turn'),{method:'POST',headers:headers(),body:JSON.stringify({instruction:instructionFrom(message),surface:surfaceFrom(message),session_id:sessionId()})});
   const sd=await submitted.json().catch(()=>({}));if(!submitted.ok)throw Error(sd.detail||`OmegaClaw submit ${submitted.status}`);const id=sd.request_id;
   let result=null;for(let i=0;i<120;i++){await new Promise(r=>setTimeout(r,i?1500:400));const r=await nativeFetch(endpoint(`/api/turn/${encodeURIComponent(id)}`),{headers:headers()});const d=await r.json().catch(()=>({}));if(!r.ok)throw Error(d.detail||`OmegaClaw poll ${r.status}`);if(d.status==='complete'){result=d;break}if(d.status==='error')throw Error(d.error||'OmegaClaw turn failed')}
   if(!result)throw Error('OmegaClaw turn timed out');const packet=extractJson(result.text);worker.onmessage?.({data:{type:'result',packet,served:'asi-alliance/OmegaClaw-Core',elapsed:Date.now()-started}});
  }catch(error){worker.onmessage?.({data:{type:'error',message:String(error?.message||error)}})}finally{worker.onmessage?.({data:{type:'done'}})}}
 async function health(){if(!cfg.endpoint)return{ok:false,label:'endpoint not set'};try{const r=await nativeFetch(endpoint('/health'),{headers:headers()});const d=await r.json();return{ok:r.ok&&d.runtime==='asi-alliance/OmegaClaw-Core'&&d.agent_connected,label:d.agent_connected?'official runtime connected':'runtime waking',data:d}}catch(error){return{ok:false,label:error.message}}}
-function restoreDirect(){const state=getState();state.key=cfg.directKey||null;state.model=cfg.directModel||'';setState(state)}
-function addRuntimeCard(){const settings=document.querySelector('.settings');if(!settings||document.querySelector('#realRuntimeCard'))return;const card=document.createElement('div');card.className='card';card.id='realRuntimeCard';card.innerHTML=`<div class="eyebrow">cognitive runtime</div><select id="runtimeMode"><option value="direct">DIRECT MODEL · browser inference</option><option value="omegaclaw">REAL OMEGACLAW · official runtime</option></select><label class="muted">OmegaClaw Space endpoint<input id="runtimeEndpoint" type="url" placeholder="https://username-z0-omegaclaw.hf.space" style="width:100%;margin-top:.3rem;padding:.55rem;border-radius:.5rem;background:#fff;color:#111"></label><label class="muted">Optional access token<input id="runtimeToken" type="password" autocomplete="off" style="width:100%;margin-top:.3rem;padding:.55rem;border-radius:.5rem;background:#fff;color:#111"></label><div class="actions"><button class="action good" id="runtimeTest">TEST RUNTIME</button><button class="action primary" id="runtimeApply">APPLY & RELOAD</button></div><div class="mono" id="runtimeResult">Not tested.</div>`;settings.prepend(card);
-  const mode=card.querySelector('#runtimeMode'),ep=card.querySelector('#runtimeEndpoint'),token=card.querySelector('#runtimeToken'),result=card.querySelector('#runtimeResult');mode.value=cfg.mode;ep.value=cfg.endpoint||'';token.value=cfg.token||'';
-  card.querySelector('#runtimeTest').onclick=async()=>{cfg.endpoint=ep.value.trim();cfg.token=token.value.trim();saveCfg();result.textContent='Testing…';const h=await health();result.textContent=h.ok?`VERIFIED\n${h.data.runtime}\n${h.data.transport}`:`NOT CONNECTED\n${h.label}`};
-  card.querySelector('#runtimeApply').onclick=()=>{const next=mode.value;cfg.endpoint=ep.value.trim();cfg.token=token.value.trim();if(next==='direct'&&cfg.mode==='omegaclaw')restoreDirect();cfg.mode=next;saveCfg();location.reload()};
+function restoreDirect(){const state=getState();state.key=sessionStorage.getItem(DIRECT_KEY)||null;state.model=sessionStorage.getItem(DIRECT_MODEL)||'';setState(state)}
+function addRuntimeCard(){const settings=document.querySelector('.settings');if(!settings||document.querySelector('#realRuntimeCard'))return;const card=document.createElement('div');card.className='card';card.id='realRuntimeCard';card.innerHTML=`<div class="eyebrow">cognitive runtime</div><select id="runtimeMode"><option value="direct">DIRECT MODEL · browser inference</option><option value="omegaclaw">REAL OMEGACLAW · official runtime</option></select><label class="muted">OmegaClaw Space endpoint<input id="runtimeEndpoint" type="url" placeholder="https://username-z0-omegaclaw.hf.space" style="width:100%;margin-top:.3rem;padding:.55rem;border-radius:.5rem;background:#fff;color:#111"></label><label class="muted">Optional access token · this tab only<input id="runtimeToken" type="password" autocomplete="off" style="width:100%;margin-top:.3rem;padding:.55rem;border-radius:.5rem;background:#fff;color:#111"></label><div class="actions"><button class="action good" id="runtimeTest">TEST RUNTIME</button><button class="action primary" id="runtimeApply">APPLY & RELOAD</button></div><div class="mono" id="runtimeResult">Not tested.</div>`;settings.prepend(card);
+  const mode=card.querySelector('#runtimeMode'),ep=card.querySelector('#runtimeEndpoint'),token=card.querySelector('#runtimeToken'),result=card.querySelector('#runtimeResult');mode.value=cfg.mode;ep.value=cfg.endpoint||'';token.value=getToken();
+  card.querySelector('#runtimeTest').onclick=async()=>{cfg.endpoint=ep.value.trim();setToken(token.value);saveCfg();result.textContent='Testing…';const h=await health();result.textContent=h.ok?`VERIFIED\n${h.data.runtime}\n${h.data.transport}`:`NOT CONNECTED\n${h.label}`};
+  card.querySelector('#runtimeApply').onclick=()=>{const next=mode.value;cfg.endpoint=ep.value.trim();setToken(token.value);if(next==='direct'&&cfg.mode==='omegaclaw')restoreDirect();cfg.mode=next;saveCfg();location.reload()};
   const rewrite=()=>{if(cfg.mode!=='omegaclaw')return;const s=document.querySelector('#omegaState'),b=document.querySelector('#omegaStatus'),setup=document.querySelector('#setupButton');if(s&&/awake|asleep|working/.test(s.textContent||''))s.textContent=(s.textContent==='working'?'OmegaClaw working':'OmegaClaw · '+(latestWorker?'awake':'asleep'));if(b)b.textContent=(b.textContent.includes('working')?'Real OmegaClaw is working':latestWorker?'Real OmegaClaw is awake':'Real OmegaClaw is asleep');if(setup)setup.textContent='CLAW SETUP'};new MutationObserver(rewrite).observe(document.body,{subtree:true,childList:true,characterData:true});rewrite();
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',addRuntimeCard,{once:true});else addRuntimeCard();

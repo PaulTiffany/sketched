@@ -1,4 +1,4 @@
-const CACHE='z0-shell-v5';
+const CACHE='z0-shell-v6';
 const SHELL=['./','./index.html','./manifest.webmanifest','./z0-icon.svg','./pdf.html','./pdf-support.js','./arxiv-bridge.js','./omegaclaw-runtime.js'];
 const decorate=async response=>{
   const type=response.headers.get('content-type')||'';
@@ -12,7 +12,13 @@ const decorate=async response=>{
   return new Response(html,{status:response.status,statusText:response.statusText,headers});
 };
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting()))});
-self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim()))});
+self.addEventListener('activate',event=>{event.waitUntil((async()=>{
+  const keys=await caches.keys();
+  await Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)));
+  await self.clients.claim();
+  const clients=await self.clients.matchAll({type:'window'});
+  await Promise.all(clients.map(client=>client.navigate(client.url)));
+})())});
 self.addEventListener('fetch',event=>{
   const request=event.request;
   if(request.method!=='GET')return;
