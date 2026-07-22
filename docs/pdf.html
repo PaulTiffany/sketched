@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Z0 PDF Presenter</title>
+<style>
+:root{color-scheme:dark;--bg:#101820;--panel:#162530;--border:#8fa8ba;--text:#fff;--accent:#ffd166}
+*{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;overflow:hidden;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}
+body{display:grid;grid-template-rows:auto minmax(0,1fr)}
+header{display:flex;align-items:center;justify-content:center;gap:.4rem;min-height:52px;padding:.3rem;border-bottom:2px solid var(--border);background:var(--panel)}
+button,input{min-width:44px;min-height:44px;border:2px solid var(--border);border-radius:.5rem;background:#263846;color:#fff;font:800 .8rem ui-monospace,monospace}
+button:focus-visible,input:focus-visible{outline:3px solid #fff;outline-offset:2px}input{width:4.5rem;text-align:center;background:#fff;color:#111}.status{min-width:7rem;text-align:center;font:800 .72rem ui-monospace,monospace;color:#e7f3fa}
+main{min-height:0;overflow:auto;display:grid;place-items:start center;padding:.5rem;background:#39444c}
+canvas{display:block;max-width:100%;height:auto;background:#fff;box-shadow:0 4px 24px #0009}
+#error{display:none;max-width:42rem;margin:2rem;padding:1rem;border:2px solid #ff9aa8;border-radius:.7rem;background:#5b1723;color:#fff;line-height:1.5}
+#error.show{display:block}
+@media(max-width:480px){header{gap:.25rem;padding-inline:.2rem}.status{min-width:5.5rem}button{padding-inline:.35rem}}
+</style>
+</head>
+<body>
+<header aria-label="PDF controls">
+<button id="prev" aria-label="Previous page">◀</button>
+<label><span class="status">PAGE</span> <input id="page" inputmode="numeric" value="1" aria-label="Page number"></label>
+<span class="status" id="count">/ …</span>
+<button id="next" aria-label="Next page">▶</button>
+<button id="fit" aria-label="Fit page width">FIT</button>
+</header>
+<main id="viewport"><canvas id="pdfCanvas" aria-label="Rendered PDF page"></canvas><div id="error" role="alert"></div></main>
+<script type="module">
+import * as pdfjsLib from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs';
+pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';
+const params=new URLSearchParams(location.search),src=params.get('src'),canvas=document.querySelector('#pdfCanvas'),ctx=canvas.getContext('2d'),viewportEl=document.querySelector('#viewport'),pageInput=document.querySelector('#page'),count=document.querySelector('#count'),error=document.querySelector('#error');
+let pdf=null,pageNumber=Math.max(1,Number(params.get('page'))||1),renderTask=null,lastWidth=0;
+function fail(message){error.textContent=message;error.classList.add('show');canvas.hidden=true;parent.postMessage({type:'z0-pdf-error',message},location.origin)}
+async function render(){if(!pdf)return;pageNumber=Math.min(pdf.numPages,Math.max(1,pageNumber));pageInput.value=pageNumber;count.textContent=`/ ${pdf.numPages}`;const page=await pdf.getPage(pageNumber),base=page.getViewport({scale:1}),available=Math.max(280,viewportEl.clientWidth-16),scale=Math.min(2.4,available/base.width),view=page.getViewport({scale}),dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.floor(view.width*dpr);canvas.height=Math.floor(view.height*dpr);canvas.style.width=`${Math.floor(view.width)}px`;canvas.style.height=`${Math.floor(view.height)}px`;ctx.setTransform(dpr,0,0,dpr,0,0);if(renderTask)try{renderTask.cancel()}catch{}renderTask=page.render({canvasContext:ctx,viewport:view});await renderTask.promise;const textContent=await page.getTextContent(),text=textContent.items.map(item=>item.str).join(' ').replace(/\s+/g,' ').trim();let image='';try{image=canvas.toDataURL('image/jpeg',.78)}catch{}parent.postMessage({type:'z0-pdf-page',src,page:pageNumber,pages:pdf.numPages,text,image},location.origin);history.replaceState({},'',`?src=${encodeURIComponent(src)}&page=${pageNumber}`);viewportEl.scrollTop=0}
+async function open(){if(!src){fail('No PDF URL was supplied.');return}try{pdf=await pdfjsLib.getDocument({url:src,withCredentials:false}).promise;pageNumber=Math.min(pdf.numPages,pageNumber);await render()}catch(e){fail(`This PDF could not be rendered inside Z0: ${e?.message||e}`)}}
+document.querySelector('#prev').onclick=()=>{pageNumber--;render()};document.querySelector('#next').onclick=()=>{pageNumber++;render()};document.querySelector('#fit').onclick=render;pageInput.onchange=()=>{pageNumber=Number(pageInput.value)||1;render()};addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='PageUp'){pageNumber--;render()}if(e.key==='ArrowRight'||e.key==='PageDown'){pageNumber++;render()}});new ResizeObserver(()=>{const w=viewportEl.clientWidth;if(Math.abs(w-lastWidth)>24){lastWidth=w;render()}}).observe(viewportEl);open();
+</script>
+</body>
+</html>
