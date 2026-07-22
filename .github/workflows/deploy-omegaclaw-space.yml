@@ -11,17 +11,76 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: deploy-real-omegaclaw-space
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: ${{ vars.HF_SPACE_ID != '' }}
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Install Hugging Face client
-        run: python -m pip install --disable-pip-version-check "huggingface_hub>=0.34,<2"
+
+      - name: Validate deployment configuration
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_SPACE_ID: ${{ vars.HF_SPACE_ID }}
+        run: |
+          if [ -z "${HF_TOKEN}" ]; then
+            echo "::error title=Missing HF_TOKEN::Add a Hugging Face write token at Settings → Secrets and variables → Actions → Secrets."
+            exit 1
+          fi
+          if [ -z "${HF_SPACE_ID}" ]; then
+            echo "::error title=Missing HF_SPACE_ID::Add a repository variable such as your-hf-username/z0-omegaclaw."
+            exit 1
+          fi
+          if [[ ! "${HF_SPACE_ID}" =~ ^[A-Za-z0-9._-]+/[A-Za-z0-9._-]+$ ]]; then
+            echo "::error title=Invalid HF_SPACE_ID::Expected namespace/space-name, received '${HF_SPACE_ID}'."
+            exit 1
+          fi
+          echo "Target Space: https://huggingface.co/spaces/${HF_SPACE_ID}"
+
+      - name: Install pinned Hugging Face client
+        run: python -m pip install --disable-pip-version-check "huggingface_hub==1.24.0"
+
+      - name: Authenticate Hugging Face token
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_SPACE_ID: ${{ vars.HF_SPACE_ID }}
+        run: |
+          python - <<'PY'
+          import os
+          import sys
+          from huggingface_hub import HfApi, __version__
+          from huggingface_hub.errors import HfHubHTTPError
+
+          token = os.environ["HF_TOKEN"].strip()
+          repo_id = os.environ["HF_SPACE_ID"].strip()
+          api = HfApi(token=token)
+          print(f"huggingface_hub={__version__}")
+          print(f"target={repo_id}")
+          try:
+              identity = api.whoami(token=token)
+          except HfHubHTTPError as exc:
+              status = getattr(exc.response, "status_code", "unknown")
+              print(f"::error title=Hugging Face authentication failed::HF_TOKEN was rejected with HTTP {status}. Create a User Access Token with Write permission and replace the GitHub secret.")
+              sys.exit(1)
+          username = identity.get("name") or identity.get("fullname") or "unknown"
+          orgs = [org.get("name", "") for org in identity.get("orgs", []) if isinstance(org, dict)]
+          print(f"authenticated_as={username}")
+          if orgs:
+              print("organizations=" + ",".join(filter(None, orgs)))
+          namespace = repo_id.split("/", 1)[0]
+          allowed = {str(username).lower(), *(str(org).lower() for org in orgs)}
+          if allowed and namespace.lower() not in allowed:
+              print(f"::warning title=Space namespace may be wrong::Token belongs to '{username}', but HF_SPACE_ID targets namespace '{namespace}'.")
+          PY
+
       - name: Create or update Docker Space
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
@@ -29,23 +88,50 @@ jobs:
         run: |
           python - <<'PY'
           import os
+          import sys
+          from pathlib import Path
           from huggingface_hub import HfApi
+          from huggingface_hub.errors import HfHubHTTPError
 
-          token = os.environ["HF_TOKEN"]
-          repo_id = os.environ["HF_SPACE_ID"]
+          token = os.environ["HF_TOKEN"].strip()
+          repo_id = os.environ["HF_SPACE_ID"].strip()
+          folder = Path("omegaclaw-space")
           api = HfApi(token=token)
-          api.create_repo(
-              repo_id=repo_id,
-              repo_type="space",
-              space_sdk="docker",
-              private=False,
-              exist_ok=True,
-          )
-          api.upload_folder(
-              repo_id=repo_id,
-              repo_type="space",
-              folder_path="omegaclaw-space",
-              commit_message="Deploy Z0 real OmegaClaw runtime",
-          )
+
+          if not folder.is_dir():
+              print("::error title=Missing deployment package::omegaclaw-space directory was not checked out.")
+              sys.exit(1)
+
+          try:
+              created = api.create_repo(
+                  repo_id=repo_id,
+                  token=token,
+                  repo_type="space",
+                  space_sdk="docker",
+                  private=False,
+                  exist_ok=True,
+              )
+              print(f"Space ready: {created}")
+          except HfHubHTTPError as exc:
+              status = getattr(exc.response, "status_code", "unknown")
+              detail = getattr(exc.response, "text", "")[:800].replace("\n", " ")
+              print(f"::error title=Space creation failed::HTTP {status}: {detail}")
+              raise
+
+          try:
+              commit = api.upload_folder(
+                  repo_id=repo_id,
+                  token=token,
+                  repo_type="space",
+                  folder_path=str(folder),
+                  commit_message="Deploy Z0 real OmegaClaw runtime",
+              )
+              print(f"Uploaded commit: {commit.commit_url}")
+          except HfHubHTTPError as exc:
+              status = getattr(exc.response, "status_code", "unknown")
+              detail = getattr(exc.response, "text", "")[:800].replace("\n", " ")
+              print(f"::error title=Space upload failed::HTTP {status}: {detail}")
+              raise
+
           print(f"Deployed https://huggingface.co/spaces/{repo_id}")
           PY
