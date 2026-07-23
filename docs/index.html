@@ -6,6 +6,7 @@
 <meta name="theme-color" content="#07090a">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="pedagogy.css">
+<link rel="stylesheet" href="inference-menu.css">
 <title>Z0 · Automatic Textbook</title>
 </head>
 <body>
@@ -65,36 +66,63 @@
 </aside>
 </div>
 
-<div class="setup" id="setup" role="dialog" aria-modal="true" aria-label="Inference connectors">
-  <div class="setup-card connector-card">
-    <div class="setup-heading">
-      <div><span class="eyebrow">Inference is a replaceable knob</span><h2>Choose the inference behind the page</h2></div>
-      <button class="round" id="closeSetup" aria-label="Close inference connectors">CLOSE</button>
+<div class="setup" id="setup" role="dialog" aria-modal="true" aria-label="Inference settings">
+  <div class="setup-card inference-shell">
+    <header class="setup-heading">
+      <div><span class="eyebrow">Inference</span><h2>Choose the model behind the page</h2></div>
+      <button class="round" id="closeSetup" aria-label="Close inference settings">CLOSE</button>
+    </header>
+
+    <div class="connection-summary" id="connectionSummary">
+      <strong>No active inference</strong><span>OpenRouter is the primary path: sign in, then choose a model.</span>
     </div>
-    <div class="connection-summary" id="connectionSummary"><strong>No active inference</strong><span>Connect an account, direct provider, local model, or compatible endpoint.</span></div>
-    <div class="provider-grid" id="providerGrid"></div>
-    <section class="connector-form" id="connectorForm">
-      <div class="connector-form-head"><div><span class="eyebrow">Selected connector</span><h3 id="connectorTitle">OpenRouter</h3></div><button class="danger-link" id="disconnectInference" hidden>DISCONNECT</button></div>
-      <p id="connectorDescription"></p>
-      <button type="button" class="account-action" id="oauthAction">CONNECT OPENROUTER ACCOUNT</button>
-      <label id="secretLabel">API or authorization key
-        <input id="apiKey" type="password" autocomplete="off" placeholder="Kept only in this tab">
-        <a id="keyHelp" class="field-help" href="#" target="_blank" rel="noopener" hidden>Open provider key page ↗</a>
-      </label>
-      <label id="baseLabel">Endpoint base URL
-        <input id="baseUrl" type="url" inputmode="url" placeholder="https://your-gateway.example/v1">
-      </label>
-      <label>Model
-        <div class="model-row"><input id="modelId" type="text" list="modelSuggestions" autocomplete="off" placeholder="Detect or enter a model"><button type="button" id="detectModels">DETECT</button></div>
-        <datalist id="modelSuggestions"></datalist>
-        <small id="catalogStatus">Model discovery is optional.</small>
-      </label>
-      <div class="privacy-note">
-        <strong>Connection boundary</strong>
-        <span>Provider credentials live in session storage and disappear when this tab closes. Z0 stores only the provider, endpoint, and model choice. OpenAI secret keys are intentionally not requested directly in this static browser app; use OpenRouter or your own compatible relay.</span>
+
+    <button class="openrouter-choice provider-card selected" id="openrouterChoice" data-provider="openrouter">
+      <span><strong>OpenRouter</strong><small>Sign in once, choose a provider, then choose a model.</small></span><b>PRIMARY</b>
+    </button>
+
+    <section class="openrouter-panel" id="openrouterPanel">
+      <div class="account-state" id="openrouterAccountState"><strong>Not connected</strong><span>Sign in to OpenRouter to load the model catalog.</span></div>
+      <div class="account-actions">
+        <button type="button" class="account-action" id="oauthAction">SIGN IN WITH OPENROUTER</button>
+        <button type="button" class="danger-link" id="openrouterDisconnect" hidden>DISCONNECT</button>
       </div>
-      <div class="setup-actions"><button class="human-action" id="useConnector">USE THIS CONNECTOR</button></div>
+      <details class="manual-key">
+        <summary>Use an OpenRouter key instead</summary>
+        <label>OpenRouter key<input id="manualOpenRouterKey" type="password" autocomplete="off" placeholder="Kept only in this tab"></label>
+      </details>
+
+      <div class="openrouter-browser" id="openrouterBrowser" hidden>
+        <div class="model-toolbar">
+          <label class="search-field"><span>Search models</span><input id="modelSearch" type="search" placeholder="Claude, Gemini, Llama…"></label>
+          <label><span>Provider</span><select id="modelProviderFilter"><option value="all">All providers</option></select></label>
+        </div>
+        <div class="model-filters">
+          <label><input id="reliableJson" type="checkbox" checked> Reliable lesson JSON</label>
+          <label><input id="freeOnly" type="checkbox"> Free only</label>
+          <button type="button" id="refreshOpenRouterModels">REFRESH</button>
+        </div>
+        <div class="model-results" id="modelResults"><div class="model-empty">Connect OpenRouter to load models.</div></div>
+        <div class="selected-model" id="selectedModel"><strong>No model selected</strong><span>Choose one model from the catalog.</span></div>
+      </div>
     </section>
+
+    <details class="other-inference" id="otherInference">
+      <summary>Other inference <span>local models and advanced direct connectors</span></summary>
+      <p class="secondary-warning">These adapters are dormant until selected and are not all equally field-tested. OpenRouter remains the supported primary path.</p>
+      <div class="provider-grid" id="providerGrid"></div>
+      <section class="connector-form" id="otherConnectorForm" hidden>
+        <div class="connector-form-head"><div><span class="eyebrow">Advanced connector</span><h3 id="connectorTitle">Local inference</h3></div><button class="danger-link" id="disconnectInference" hidden>DISCONNECT</button></div>
+        <p id="connectorDescription"></p>
+        <label id="secretLabel">API key<input id="apiKey" type="password" autocomplete="off" placeholder="Kept only in this tab"><a id="keyHelp" class="field-help" href="#" target="_blank" rel="noopener" hidden>Open provider key page ↗</a></label>
+        <label id="baseLabel">Endpoint base URL<input id="baseUrl" type="url" inputmode="url" placeholder="https://your-gateway.example/v1"></label>
+        <label>Model<div class="model-row"><input id="modelId" type="text" list="modelSuggestions" autocomplete="off" placeholder="Detect or enter a model"><button type="button" id="detectModels">DETECT</button></div><datalist id="modelSuggestions"></datalist></label>
+      </section>
+    </details>
+
+    <div id="catalogStatus" class="catalog-status">Connect OpenRouter to browse text models.</div>
+    <div class="setup-actions"><button class="human-action" id="useConnector" disabled>USE SELECTED MODEL</button></div>
+    <p class="privacy-note"><strong>Connection boundary</strong><span>Credentials remain in this tab. Only the selected connector sends requests. Model and provider preference may persist locally.</span></p>
     <p class="ethics"><strong>Z0 voice provenance:</strong> generated locally from oscillators and noise. No recordings, actors, cloned voices, or downloaded voice models.</p>
   </div>
 </div>
