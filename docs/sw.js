@@ -1,4 +1,4 @@
-const CACHE='z0-shell-v5';
+const CACHE='z0-shell-v6';
 const SHELL=['./','./index.html','./manifest.webmanifest','./z0-icon.svg','./pdf.html','./pdf-support.js','./arxiv-bridge.js','./omegaclaw-runtime.js'];
 const decorate=async response=>{
   const type=response.headers.get('content-type')||'';
