@@ -6,6 +6,7 @@
 <meta name="theme-color" content="#07090a">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="pedagogy.css">
+<link rel="stylesheet" href="providers.css">
 <title>Z0 · Automatic Textbook</title>
 </head>
 <body>
@@ -64,7 +65,6 @@
   <p class="eula-note">Content B remains a reserved authorship seat for OmegaClaw under the EULA. OmegaClaw is not a runtime, model option, or participant in this interface.</p>
 </aside>
 </div>
-
 <div class="setup" id="setup" role="dialog" aria-modal="true" aria-label="Inference connectors">
   <div class="setup-card connector-card">
     <div class="setup-heading">
@@ -99,6 +99,8 @@
   </div>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<button id="saveSetup" hidden aria-hidden="true"></button>
 <script src="pedagogy.js"></script>
+<script src="providers.js"></script>
 </body>
 </html>
