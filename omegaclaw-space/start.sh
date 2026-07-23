@@ -4,6 +4,13 @@ set -euo pipefail
 : "${OPENROUTER_API_KEY:?OPENROUTER_API_KEY Space secret is required}"
 
 PORT="${PORT:-7860}"
+MAX_LOOPS="${OMEGACLAW_MAX_LOOPS:-1}"
+
+if [[ ! "${MAX_LOOPS}" =~ ^[0-9]+$ ]] || (( MAX_LOOPS < 1 || MAX_LOOPS > 12 )); then
+  echo "OMEGACLAW_MAX_LOOPS must be an integer from 1 through 12" >&2
+  exit 64
+fi
+
 MODEL_ARGS=()
 if [[ -n "${OMEGACLAW_MODEL:-}" ]]; then
   MODEL_ARGS+=("model=${OMEGACLAW_MODEL}")
@@ -32,4 +39,6 @@ exec /PeTTa/repos/OmegaClaw-Core/entrypoint.sh \
   "embeddingprovider=Local" \
   "securityPolicyPath=/PeTTa/repos/OmegaClaw-Core/profile/policy.yaml" \
   "memoryDirectory=\$MEMORY_DIR" \
+  "maxNewInputLoops=${MAX_LOOPS}" \
+  "maxWakeLoops=0" \
   "${MODEL_ARGS[@]}"
