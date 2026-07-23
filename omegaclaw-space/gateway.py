@@ -6,7 +6,7 @@ import time
 import uuid
 from collections import defaultdict, deque
 from dataclasses import dataclass
-from typing import Any
+from typing import Any, Coroutine
 
 from fastapi import FastAPI, Header, HTTPException, Query, Request, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
@@ -33,7 +33,7 @@ This is a compact public-facing brief, not the manuscript or version of record.
 """.strip()
 PAPER_BRIEF = os.getenv("PAPER_PUBLIC_BRIEF", BUILTIN_PAPER_BRIEF).strip()[:16000]
 
-app = FastAPI(title="AGI-26 OmegaClaw Room", version="0.2.0")
+app = FastAPI(title="AGI-26 OmegaClaw Room", version="0.2.1")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[ALLOWED_ORIGIN],
@@ -72,8 +72,15 @@ results: dict[str, dict[str, Any]] = {}
 rate_buckets: dict[str, deque[float]] = defaultdict(deque)
 room_rate_buckets: dict[str, deque[float]] = defaultdict(deque)
 messages: deque[dict[str, Any]] = deque(maxlen=ROOM_HISTORY_LIMIT)
+background_tasks: set[asyncio.Task[Any]] = set()
 message_sequence = 0
 ROOM_EPOCH = uuid.uuid4().hex
+last_omega_event: dict[str, Any] = {
+    "status": "idle",
+    "request_id": "",
+    "updated_at": int(time.time() * 1000),
+    "error": "",
+}
 
 
 def _client_key(request: Request) -> str:
@@ -97,6 +104,19 @@ def _consume_limit(buckets: dict[str, deque[float]], key: str, limit: int, detai
     if len(bucket) >= limit:
         raise HTTPException(status_code=429, detail=detail)
     bucket.append(now)
+
+
+def _spawn(coro: Coroutine[Any, Any, Any]) -> asyncio.Task[Any]:
+    """Retain background work until completion.
+
+    asyncio's event loop keeps only weak references to Tasks. Holding each task in
+    this set prevents a completed OmegaClaw provider turn from disappearing before
+    its reply is appended to the shared room.
+    """
+    task = asyncio.create_task(coro)
+    background_tasks.add(task)
+    task.add_done_callback(background_tasks.discard)
+    return task
 
 
 def _surface_text(surface: dict[str, Any]) -> str:
@@ -206,16 +226,38 @@ async def _agent_roundtrip(request_id: str, prompt_text: str) -> str:
 
 async def _answer_room_message(name: str, text: str) -> None:
     request_id = uuid.uuid4().hex
+    last_omega_event.update(
+        status="running",
+        request_id=request_id,
+        updated_at=int(time.time() * 1000),
+        error="",
+    )
     try:
         raw = await _agent_roundtrip(request_id, _paper_prompt(name, text))
-        await _append_message("OmegaClaw", _extract_reply(raw), "omega")
+        reply = _extract_reply(raw)
+        message = await _append_message("OmegaClaw", reply, "omega")
+        last_omega_event.update(
+            status="appended",
+            request_id=request_id,
+            message_id=message["id"],
+            updated_at=int(time.time() * 1000),
+            error="",
+        )
     except Exception as exc:
         detail = str(exc)
-        if "waking" in detail.lower() or "disconnected" in detail.lower():
-            detail = "I am waking up on Hugging Face. Mention @OmegaClaw again in a moment."
-        else:
-            detail = "I could not complete that turn. Please try once more."
-        await _append_message("OmegaClaw", detail, "omega")
+        public_detail = (
+            "I am waking up on Hugging Face. Mention @OmegaClaw again in a moment."
+            if "waking" in detail.lower() or "disconnected" in detail.lower()
+            else "I could not complete that turn. Please try once more."
+        )
+        message = await _append_message("OmegaClaw", public_detail, "omega")
+        last_omega_event.update(
+            status="error_appended",
+            request_id=request_id,
+            message_id=message["id"],
+            updated_at=int(time.time() * 1000),
+            error=detail[:500],
+        )
 
 
 @app.on_event("startup")
@@ -238,6 +280,8 @@ async def health() -> dict[str, Any]:
         "busy": turn_lock.locked(),
         "public_profile": True,
         "room_messages": len(messages),
+        "background_tasks": len(background_tasks),
+        "last_omega_event": last_omega_event,
     }
 
 
@@ -251,6 +295,7 @@ async def get_room_messages(after: int = Query(default=0, ge=0)) -> dict[str, An
         "busy": turn_lock.locked(),
         "room_epoch": ROOM_EPOCH,
         "latest_id": message_sequence,
+        "last_omega_event": last_omega_event,
     }
 
 
@@ -271,14 +316,17 @@ async def post_room_message(
 
     message = await _append_message(name, text, "human")
     omega_queued = False
+    omega_request_id = ""
     if _calls_omega(text):
         _consume_limit(rate_buckets, client_key, RATE_LIMIT, "Public OmegaClaw turn limit reached")
         omega_queued = True
-        asyncio.create_task(_answer_room_message(name, text))
+        task = _spawn(_answer_room_message(name, text))
+        omega_request_id = str(id(task))
 
     return {
         "message": message,
         "omega_queued": omega_queued,
+        "omega_request_id": omega_request_id,
         "agent_connected": agent is not None,
     }
 
@@ -294,7 +342,7 @@ async def submit_turn(
     if agent is None:
         raise HTTPException(status_code=503, detail="OmegaClaw is waking or disconnected")
     request_id = uuid.uuid4().hex
-    asyncio.create_task(_run_turn(request_id, turn))
+    _spawn(_run_turn(request_id, turn))
     return {"request_id": request_id, "status": "queued"}
 
 
