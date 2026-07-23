@@ -1,9 +1,15 @@
 FROM singularitynet/omegaclaw:latest
 
 USER root
-RUN python3 -m pip install --no-cache-dir --break-system-packages \
-    fastapi==0.116.1 \
-    uvicorn[standard]==0.35.0
+
+# The official OmegaClaw image includes Python but not pip. Install the
+# distro-provided pip first, then add only the small HTTP/WebSocket gateway.
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends python3-pip \
+    && rm -rf /var/lib/apt/lists/* \
+    && python3 -m pip install --no-cache-dir --break-system-packages \
+        fastapi==0.116.1 \
+        "uvicorn[standard]==0.35.0"
 
 WORKDIR /app
 COPY gateway.py /app/gateway.py
