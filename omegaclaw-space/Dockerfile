@@ -2,14 +2,30 @@ FROM singularitynet/omegaclaw:latest
 
 USER root
 
-# The official OmegaClaw image includes Python but not pip. Install the
-# distro-provided pip first, then add only the small HTTP/WebSocket gateway.
+# The official OmegaClaw runtime image includes Python but omits pip.
 RUN apt-get update \
     && apt-get install -y --no-install-recommends python3-pip \
     && rm -rf /var/lib/apt/lists/* \
     && python3 -m pip install --no-cache-dir --break-system-packages \
         fastapi==0.116.1 \
         "uvicorn[standard]==0.35.0"
+
+# OmegaClaw starts its governed outbound proxy as www-data. Hugging Face
+# Spaces does not allow that unprivileged process to open /dev/stdout or
+# /dev/stderr, so preserve the proxy and redirect only its logs to writable
+# regular files. Patch both templates and scripts because nginx.conf is
+# generated at container startup.
+RUN find /opt/nginx -type f -exec sed -i \
+        -e 's#/dev/stderr#/tmp/omegaclaw-nginx-error.log#g' \
+        -e 's#/dev/stdout#/tmp/omegaclaw-nginx-access.log#g' \
+        {} + \
+    && touch /tmp/omegaclaw-nginx-error.log /tmp/omegaclaw-nginx-access.log \
+    && chown www-data:www-data \
+        /tmp/omegaclaw-nginx-error.log \
+        /tmp/omegaclaw-nginx-access.log \
+    && chmod 0660 \
+        /tmp/omegaclaw-nginx-error.log \
+        /tmp/omegaclaw-nginx-access.log
 
 WORKDIR /app
 COPY gateway.py /app/gateway.py
