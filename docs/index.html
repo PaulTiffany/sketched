@@ -16,7 +16,7 @@
   <select id="chapterSelect" aria-label="Choose chapter"><option>Opening book…</option></select>
   <span class="top-status" id="topStatus">canonical text loading</span>
   <button class="round mobile-only" id="toolsButton" aria-label="Open pedagogy tools">TOOLS</button>
-  <button class="round" id="setupButton">INFERENCE</button>
+  <button class="round inference-button" id="setupButton">INFERENCE</button>
 </header>
 <aside class="rail" id="rail">
   <span class="eyebrow">Canonical source</span>
@@ -64,15 +64,38 @@
   <p class="eula-note">Content B remains a reserved authorship seat for OmegaClaw under the EULA. OmegaClaw is not a runtime, model option, or participant in this interface.</p>
 </aside>
 </div>
-<div class="setup" id="setup" role="dialog" aria-modal="true" aria-label="Inference settings">
-  <div class="setup-card">
-    <span class="eyebrow">Inference is a replaceable knob</span>
-    <h2>Connect a text model</h2>
-    <p>One browser session, one provider key. The key stays in session storage and is sent only to the provider.</p>
-    <label>OpenRouter API key<input id="apiKey" type="password" autocomplete="off" placeholder="sk-or-v1-…"></label>
-    <label>Model<input id="modelId" type="text" value="openrouter/free"></label>
+
+<div class="setup" id="setup" role="dialog" aria-modal="true" aria-label="Inference connectors">
+  <div class="setup-card connector-card">
+    <div class="setup-heading">
+      <div><span class="eyebrow">Inference is a replaceable knob</span><h2>Choose the inference behind the page</h2></div>
+      <button class="round" id="closeSetup" aria-label="Close inference connectors">CLOSE</button>
+    </div>
+    <div class="connection-summary" id="connectionSummary"><strong>No active inference</strong><span>Connect an account, direct provider, local model, or compatible endpoint.</span></div>
+    <div class="provider-grid" id="providerGrid"></div>
+    <section class="connector-form" id="connectorForm">
+      <div class="connector-form-head"><div><span class="eyebrow">Selected connector</span><h3 id="connectorTitle">OpenRouter</h3></div><button class="danger-link" id="disconnectInference" hidden>DISCONNECT</button></div>
+      <p id="connectorDescription"></p>
+      <button type="button" class="account-action" id="oauthAction">CONNECT OPENROUTER ACCOUNT</button>
+      <label id="secretLabel">API or authorization key
+        <input id="apiKey" type="password" autocomplete="off" placeholder="Kept only in this tab">
+        <a id="keyHelp" class="field-help" href="#" target="_blank" rel="noopener" hidden>Open provider key page ↗</a>
+      </label>
+      <label id="baseLabel">Endpoint base URL
+        <input id="baseUrl" type="url" inputmode="url" placeholder="https://your-gateway.example/v1">
+      </label>
+      <label>Model
+        <div class="model-row"><input id="modelId" type="text" list="modelSuggestions" autocomplete="off" placeholder="Detect or enter a model"><button type="button" id="detectModels">DETECT</button></div>
+        <datalist id="modelSuggestions"></datalist>
+        <small id="catalogStatus">Model discovery is optional.</small>
+      </label>
+      <div class="privacy-note">
+        <strong>Connection boundary</strong>
+        <span>Provider credentials live in session storage and disappear when this tab closes. Z0 stores only the provider, endpoint, and model choice. OpenAI secret keys are intentionally not requested directly in this static browser app; use OpenRouter or your own compatible relay.</span>
+      </div>
+      <div class="setup-actions"><button class="human-action" id="useConnector">USE THIS CONNECTOR</button></div>
+    </section>
     <p class="ethics"><strong>Z0 voice provenance:</strong> generated locally from oscillators and noise. No recordings, actors, cloned voices, or downloaded voice models.</p>
-    <div class="setup-actions"><button id="closeSetup">CANCEL</button><button class="human-action" id="saveSetup">CONNECT</button></div>
   </div>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
