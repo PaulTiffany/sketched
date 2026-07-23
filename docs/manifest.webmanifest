@@ -1,13 +1,13 @@
 {
-  "name": "Z0 / Sketched",
+  "name": "Z0 Automatic Textbook",
   "short_name": "Z0",
-  "description": "A free presenter surface where human and Omega annotate pages, camera, and shared screens.",
+  "description": "A local-first automatic textbook with human annotation, bounded inference, audited claim anchors, and sample-free synthetic voice.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#050607",
-  "theme_color": "#050607",
+  "background_color": "#07090a",
+  "theme_color": "#07090a",
   "icons": [
     {
       "src": "z0-icon.svg",
@@ -15,14 +15,5 @@
       "type": "image/svg+xml",
       "purpose": "any maskable"
     }
-  ],
-  "share_target": {
-    "action": "./",
-    "method": "GET",
-    "params": {
-      "title": "shared_title",
-      "text": "shared_text",
-      "url": "shared_url"
-    }
-  }
+  ]
 }
