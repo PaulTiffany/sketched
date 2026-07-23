@@ -5,16 +5,21 @@ set -euo pipefail
 
 PORT="${PORT:-7860}"
 MAX_LOOPS="${OMEGACLAW_MAX_LOOPS:-1}"
+MODEL="${OMEGACLAW_MODEL:-openrouter/free}"
 
 if [[ ! "${MAX_LOOPS}" =~ ^[0-9]+$ ]] || (( MAX_LOOPS < 1 || MAX_LOOPS > 12 )); then
   echo "OMEGACLAW_MAX_LOOPS must be an integer from 1 through 12" >&2
   exit 64
 fi
 
-MODEL_ARGS=()
-if [[ -n "${OMEGACLAW_MODEL:-}" ]]; then
-  MODEL_ARGS+=("model=${OMEGACLAW_MODEL}")
+if [[ -z "${MODEL}" ]]; then
+  echo "OMEGACLAW_MODEL must not be empty" >&2
+  exit 64
 fi
+
+# The agent channel is loopback-only in gateway.py. Do not pass a shared
+# secret through OmegaClaw configuration because upstream logs config values.
+unset OMEGACLAW_WS_TOKEN || true
 
 python3 -m uvicorn gateway:app --host 0.0.0.0 --port "${PORT}" &
 GATEWAY_PID=$!
@@ -34,11 +39,11 @@ done
 exec /PeTTa/repos/OmegaClaw-Core/entrypoint.sh \
   "commchannel=websocket" \
   "WS_URL=ws://127.0.0.1:${PORT}/agent" \
-  "WS_TOKEN=${OMEGACLAW_WS_TOKEN:-}" \
+  "WS_TOKEN=" \
   "provider=OpenRouter" \
+  "model=${MODEL}" \
   "embeddingprovider=Local" \
   "securityPolicyPath=/PeTTa/repos/OmegaClaw-Core/profile/policy.yaml" \
   "memoryDirectory=\$MEMORY_DIR" \
   "maxNewInputLoops=${MAX_LOOPS}" \
-  "maxWakeLoops=0" \
-  "${MODEL_ARGS[@]}"
+  "maxWakeLoops=0"
