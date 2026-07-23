@@ -5,7 +5,10 @@ set -euo pipefail
 
 PORT="${PORT:-7860}"
 MAX_LOOPS="${OMEGACLAW_MAX_LOOPS:-1}"
-MODEL="${OMEGACLAW_MODEL:-openrouter/free}"
+# OmegaClaw needs an agent-capable model, not merely a cheap chat model.
+# gpt-oss-20b supports native tool/function calling and structured outputs
+# while remaining extremely inexpensive on OpenRouter.
+MODEL="${OMEGACLAW_MODEL:-openai/gpt-oss-20b}"
 
 if [[ ! "${MAX_LOOPS}" =~ ^[0-9]+$ ]] || (( MAX_LOOPS < 1 || MAX_LOOPS > 12 )); then
   echo "OMEGACLAW_MAX_LOOPS must be an integer from 1 through 12" >&2
