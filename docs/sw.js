@@ -1,4 +1,4 @@
-const CACHE='z0-shell-v10';
+const CACHE='z0-shell-v11';
 const SHELL=['./','./index.html','./manifest.webmanifest','./z0-icon.svg','./pedagogy.css','./providers.css','./pedagogy.js','./providers.js'];
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting()));
