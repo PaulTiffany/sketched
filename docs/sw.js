@@ -1,10 +1,12 @@
-const CACHE='z0-shell-v7';
-const SHELL=['./','./index.html','./manifest.webmanifest','./z0-icon.svg','./pdf.html','./pdf-support.js','./arxiv-bridge.js','./omegaclaw-runtime.js'];
+const CACHE='z0-shell-v8';
+const SHELL=['./','./index.html','./manifest.webmanifest','./z0-icon.svg','./pdf.html','./pdf-support.js','./arxiv-bridge.js'];
+const OMEGACLAW_SCRIPT=/<script\s+src=["'](?:\.\/)?omegaclaw-runtime\.js["']\s*><\/script>/gi;
+const RETIRE_OMEGACLAW=`<script>(()=>{try{const store='z0.presenter-field.v1',config='z0.omegaclaw.runtime.v1',sentinel='__REAL_OMEGACLAW__';const state=JSON.parse(localStorage.getItem(store)||'{}');const cfg=JSON.parse(localStorage.getItem(config)||'{}');if(state.key===sentinel||state.model==='runtime/omegaclaw'){state.key=cfg.directKey||null;state.model=cfg.directModel||'';localStorage.setItem(store,JSON.stringify(state))}localStorage.removeItem(config);localStorage.removeItem('z0.omegaclaw.session')}catch{}})();<\/script>`;
 const decorate=async response=>{
   const type=response.headers.get('content-type')||'';
   if(!type.includes('text/html'))return response;
-  let html=await response.text();
-  if(!html.includes('omegaclaw-runtime.js'))html=html.replace('<script>','<script src="omegaclaw-runtime.js"></script><script>');
+  let html=(await response.text()).replace(OMEGACLAW_SCRIPT,'');
+  if(!html.includes("localStorage.removeItem('z0.omegaclaw.session')"))html=html.replace('<script>',RETIRE_OMEGACLAW+'<script>');
   if(!html.includes('pdf-support.js'))html=html.replace('</body>','<script src="pdf-support.js"></script></body>');
   if(!html.includes('arxiv-bridge.js'))html=html.replace('</body>','<script src="arxiv-bridge.js"></script></body>');
   const headers=new Headers(response.headers);
