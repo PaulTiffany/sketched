@@ -1,6 +1,7 @@
 (()=>{'use strict';
 const CONFIG_KEY='z0.inference.connector.v1';
 const LEGACY_KEY='z0.openrouter.key';
+const LEGACY_MODEL='z0.openrouter.model';
 const SECRET_KEY='z0.inference.secret.openrouter';
 const $=selector=>document.querySelector(selector);
 const $$=selector=>[...document.querySelectorAll(selector)];
@@ -18,7 +19,7 @@ const perMillion=value=>Number(value||0)*1_000_000;
 const price=value=>{const n=Number(value||0);if(n===0)return'free';if(n<.01)return'<$0.01';return'$'+n.toFixed(n<1?2:1)};
 const context=value=>{const n=Number(value||0);if(!n)return'';return n>=1e6?(n/1e6).toFixed(n%1e6?1:0)+'M':Math.round(n/1000)+'K'};
 function record(row){const input=row.architecture?.input_modalities||[],output=row.architecture?.output_modalities||[],params=row.supported_parameters||[];const prompt=perMillion(row.pricing?.prompt),completion=perMillion(row.pricing?.completion);return{id:row.id,name:row.name||row.id,description:row.description||'',provider:providerName(row.id),text:input.includes('text')&&output.includes('text'),vision:input.includes('image'),structured:params.includes('structured_outputs')||params.includes('response_format'),context:Number(row.context_length||0),prompt,completion,free:prompt===0&&completion===0,variable:row.id==='openrouter/free'}}
-function saveSelection(){if(!selected)return;const hiddenModel=$('#modelId');if(hiddenModel)hiddenModel.value=selected;$('#openrouterChoice')?.click();setTimeout(()=>$('#useConnector')?.click(),0)}
+function saveSelection(){if(!selected)return;config={...config,provider:'openrouter',base:'https://openrouter.ai/api/v1',model:selected};localStorage.setItem(CONFIG_KEY,JSON.stringify(config));localStorage.setItem(LEGACY_MODEL,selected);$('#setup').classList.remove('open');location.reload()}
 function filters(){return{query:String($('#modelSearch')?.value||'').trim().toLowerCase(),provider:$('#modelProviderFilter')?.value||'all',free:Boolean($('#freeOnly')?.checked),reliable:$('#reliableJson')?.checked!==false}}
 function visible(){const f=filters();return models.filter(model=>(f.provider==='all'||model.provider===f.provider)&&(!f.free||model.free)&&(!f.reliable||model.structured)&&(!f.query||`${model.name} ${model.id} ${model.description}`.toLowerCase().includes(f.query)))}
 function renderProviderFilter(){const select=$('#modelProviderFilter');if(!select)return;const current=select.value||'all',counts=new Map();models.forEach(model=>counts.set(model.provider,(counts.get(model.provider)||0)+1));select.innerHTML='<option value="all">All providers</option>'+[...counts].sort((a,b)=>a[0].localeCompare(b[0])).map(([name,count])=>`<option value="${esc(name)}">${esc(name)} (${count})</option>`).join('');if([...select.options].some(option=>option.value===current))select.value=current}
