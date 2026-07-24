@@ -5,15 +5,15 @@ set -euo pipefail
 
 PORT="${PORT:-7860}"
 REQUESTED_MAX_LOOPS="${OMEGACLAW_MAX_LOOPS:-3}"
-REQUESTED_WAKE_LOOPS="${OMEGACLAW_MAX_WAKE_LOOPS:-0}"
+REQUESTED_WAKE_LOOPS="${OMEGACLAW_MAX_WAKE_LOOPS:-1}"
 MODEL="${OMEGACLAW_MODEL:-openai/gpt-oss-20b}"
 
 if [[ ! "${REQUESTED_MAX_LOOPS}" =~ ^[0-9]+$ ]] || (( REQUESTED_MAX_LOOPS < 1 || REQUESTED_MAX_LOOPS > 3 )); then
   echo "OMEGACLAW_MAX_LOOPS must be an integer from 1 through 3" >&2
   exit 64
 fi
-if [[ ! "${REQUESTED_WAKE_LOOPS}" =~ ^[0-9]+$ ]] || (( REQUESTED_WAKE_LOOPS < 0 || REQUESTED_WAKE_LOOPS > 4 )); then
-  echo "OMEGACLAW_MAX_WAKE_LOOPS must be an integer from 0 through 4" >&2
+if [[ ! "${REQUESTED_WAKE_LOOPS}" =~ ^[0-9]+$ ]] || (( REQUESTED_WAKE_LOOPS < 0 || REQUESTED_WAKE_LOOPS > 1 )); then
+  echo "OMEGACLAW_MAX_WAKE_LOOPS must be 0 or 1" >&2
   exit 64
 fi
 if [[ -z "${MODEL}" ]]; then
@@ -21,14 +21,12 @@ if [[ -z "${MODEL}" ]]; then
   exit 64
 fi
 
-# A human message may use up to three provider calls for bounded recall,
-# symbolic reasoning, repair, and one final send. Autonomous wake calls stay
-# disabled regardless of a stale Space variable.
+# Human messages may use up to three provider calls for bounded recall,
+# symbolic reasoning, repair, and one final send. One periodic maintenance
+# wake is allowed between human messages; successful public send still ends
+# the active human-triggered deliberation immediately.
 MAX_LOOPS="${REQUESTED_MAX_LOOPS}"
-WAKE_LOOPS=0
-if (( REQUESTED_WAKE_LOOPS != WAKE_LOOPS )); then
-  echo "Public room profile overrides OMEGACLAW_MAX_WAKE_LOOPS=${REQUESTED_WAKE_LOOPS}; using ${WAKE_LOOPS}" >&2
-fi
+WAKE_LOOPS="${REQUESTED_WAKE_LOOPS}"
 
 export OMEGACLAW_EFFECTIVE_MODEL="${MODEL}"
 export OMEGACLAW_EFFECTIVE_MAX_LOOPS="${MAX_LOOPS}"
