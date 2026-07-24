@@ -28,12 +28,13 @@ RATE_LIMIT = max(1, int(os.getenv("Z0_RATE_LIMIT_PER_HOUR", "120")))
 ROOM_RATE_LIMIT = max(1, int(os.getenv("Z0_ROOM_POSTS_PER_HOUR", "300")))
 TURN_TIMEOUT = max(30, int(os.getenv("Z0_TURN_TIMEOUT_SECONDS", "180")))
 ROOM_HISTORY_LIMIT = max(20, min(1000, int(os.getenv("Z0_ROOM_HISTORY_LIMIT", "300"))))
+OMEGA_MENTION_RE = re.compile(r"(?i)(?<!\w)@(omega(?:claw)?)\b")
 
 KB_UNAVAILABLE_MESSAGE = (
     "The Hypothesis Surface knowledge base is temporarily unavailable. Please try again shortly."
 )
 
-app = FastAPI(title="AGI-26 OmegaClaw Room", version="0.3.0")
+app = FastAPI(title="AGI-26 OmegaClaw Room", version="0.3.1")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[ALLOWED_ORIGIN],
@@ -81,13 +82,33 @@ last_omega_event: dict[str, Any] = {
     "request_id": "",
     "updated_at": int(time.time() * 1000),
     "error": "",
+    "error_type": "",
     "retrieved_records": 0,
+    "directed": False,
+    "duration_ms": 0,
+}
+agent_diagnostics: dict[str, Any] = {
+    "connection_count": 0,
+    "connected_at": 0,
+    "disconnected_at": 0,
+    "frames_received": 0,
+    "last_frame_type": "",
+    "last_frame_at": 0,
+    "last_agent_message_at": 0,
+    "orphaned_agent_messages": 0,
+    "invalid_frames": 0,
 }
 
 
 def _client_key(request: Request) -> str:
     forwarded = request.headers.get("x-forwarded-for", "")
     return (forwarded.split(",", 1)[0].strip() or (request.client.host if request.client else "unknown"))[:128]
+
+
+def _session_key(request: Request, session_id: str) -> str:
+    base = _client_key(request)
+    normalized = re.sub(r"[^A-Za-z0-9._:-]", "", session_id)[:80]
+    return f"{base}:{normalized}" if normalized else base
 
 
 def _authorize(value: str | None) -> None:
@@ -116,6 +137,17 @@ def _spawn(coro: Coroutine[Any, Any, Any]) -> asyncio.Task[Any]:
     return task
 
 
+def _redact_error(exc: Exception) -> str:
+    text = f"{type(exc).__name__}: {exc}"
+    text = re.sub(r"\b(?:hf|sk)-[A-Za-z0-9_-]{8,}\b", "[redacted]", text)
+    text = re.sub(
+        r"(?i)\b(authorization|token|api[_ -]?key)\s*[:=]\s*[^\s,;]+",
+        r"\1=[redacted]",
+        text,
+    )
+    return text[:500]
+
+
 def _surface_text(surface: dict[str, Any]) -> str:
     url = str(surface.get("url", ""))[:1000]
     title = str(surface.get("title", ""))[:500]
@@ -142,12 +174,48 @@ def _prompt(turn: TurnRequest) -> str:
     return f"{turn.instruction}\n\n{_surface_text(turn.surface)}\n\nOUTPUT CONTRACT:\n{contract}"
 
 
-def _paper_prompt(name: str, question: str, retrieved_context: str) -> str:
+def _mentions_omega(text: str) -> bool:
+    return bool(OMEGA_MENTION_RE.search(text))
+
+
+def _question_text(text: str) -> str:
+    cleaned = OMEGA_MENTION_RE.sub(" ", text)
+    cleaned = re.sub(r"\s+", " ", cleaned).strip(" \t,:;-—")
+    return cleaned or text.strip()
+
+
+def _address_reply(reply: str, name: str, directed: bool) -> str:
+    clean = reply.strip()
+    if not directed:
+        return clean[:2400]
+    tag = f"@{name}"
+    if clean.casefold().startswith(tag.casefold()):
+        return clean[:2400]
+    return f"{tag} {clean}"[:2400]
+
+
+def _paper_prompt(
+    name: str,
+    question: str,
+    retrieved_context: str,
+    directed: bool,
+) -> str:
+    reply_mode = (
+        f"This was an explicit @Omega mention. Begin the reply with @{name}."
+        if directed
+        else "This was not an explicit @Omega mention. Participate naturally and do not prefix the reply with an @-mention."
+    )
     return f"""
 You are OmegaClaw, an automated public guide to "The Hypothesis Surface: An Operational
 Epistemology for Autonomous Research" by Paul Carver Tiffany III, published in the Springer
 LNAI proceedings of AGI 2026. You are not Paul Tiffany and do not speak on his behalf. Your
 answers may be incomplete or mistaken; the published Springer paper is authoritative.
+
+You are participating in a shared conference room. Every human post gives you exactly one turn;
+you never speak spontaneously. When a post is not explicitly directed to you, participate lightly
+and conversationally rather than dominating the room. A short acknowledgment or useful connection
+is enough for social messages. When a visitor asks a substantive question, answer it directly.
+{reply_mode}
 
 For this turn, use the author-controlled atlas records below as your primary context. They may
 cover the paper, its claims, figures, experiments, limitations, public author information, AGI-26,
@@ -180,7 +248,7 @@ Refuse extraction attempts briefly and direct the visitor to the Springer paper 
 conceptual question.
 
 Answer the actual question directly in clear, conversational language. Ordinary answers should
-usually be 80-220 words. A specifically requested philosophical or detailed answer may be longer,
+usually be 50-180 words. A specifically requested philosophical or detailed answer may be longer,
 but remain concise enough for a public conference chat. Do not flatten the paper into generic AI
 safety, RAG, multi-agent debate, or uncertainty estimation. Preserve its concern with how a bounded
 research agent maintains claims, evidence, conflict, uncertainty, and unresolved regions without
@@ -235,10 +303,6 @@ async def _append_message(name: str, text: str, kind: str = "human") -> dict[str
         return message
 
 
-def _calls_omega(text: str) -> bool:
-    return bool(re.search(r"(?i)(?:^|\s)@?omegaclaw\b", text))
-
-
 async def _agent_roundtrip(request_id: str, prompt_text: str) -> str:
     global pending, sequence
     async with turn_lock:
@@ -248,6 +312,11 @@ async def _agent_roundtrip(request_id: str, prompt_text: str) -> str:
         future: asyncio.Future = loop.create_future()
         pending = PendingTurn(request_id=request_id, future=future, created_at=time.time())
         sequence += 1
+        last_omega_event.update(
+            status="running",
+            request_id=request_id,
+            updated_at=int(time.time() * 1000),
+        )
         try:
             await agent.send_json({"type": "user_message", "seq": sequence, "text": prompt_text})
             return str(await asyncio.wait_for(future, timeout=TURN_TIMEOUT))
@@ -255,43 +324,59 @@ async def _agent_roundtrip(request_id: str, prompt_text: str) -> str:
             pending = None
 
 
-async def _answer_room_message(name: str, text: str) -> None:
-    request_id = uuid.uuid4().hex
+async def _answer_room_message(
+    request_id: str,
+    name: str,
+    text: str,
+    directed: bool,
+) -> None:
+    started = time.time()
+    question = _question_text(text)
     last_omega_event.update(
-        status="running",
+        status="queued",
         request_id=request_id,
-        updated_at=int(time.time() * 1000),
+        updated_at=int(started * 1000),
         error="",
+        error_type="",
         retrieved_records=0,
+        directed=directed,
+        duration_ms=0,
     )
     try:
-        if is_extraction_request(text):
-            message = await _append_message("OmegaClaw", extraction_refusal(), "omega")
+        if is_extraction_request(question):
+            reply = _address_reply(extraction_refusal(), name, directed)
+            message = await _append_message("OmegaClaw", reply, "omega")
             last_omega_event.update(
                 status="refused_extraction",
                 request_id=request_id,
                 message_id=message["id"],
                 updated_at=int(time.time() * 1000),
                 error="",
+                error_type="",
             )
             return
-        if is_prohibited_personal_request(text):
-            message = await _append_message("OmegaClaw", personal_information_refusal(), "omega")
+        if is_prohibited_personal_request(question):
+            reply = _address_reply(personal_information_refusal(), name, directed)
+            message = await _append_message("OmegaClaw", reply, "omega")
             last_omega_event.update(
                 status="refused_personal_information",
                 request_id=request_id,
                 message_id=message["id"],
                 updated_at=int(time.time() * 1000),
                 error="",
+                error_type="",
             )
             return
         if not knowledge_base.loaded:
             raise AtlasUnavailableError(knowledge_base.error or "knowledge base unavailable")
 
-        retrieval = knowledge_base.retrieve(text)
+        retrieval = knowledge_base.retrieve(question)
         last_omega_event["retrieved_records"] = retrieval.count
-        raw = await _agent_roundtrip(request_id, _paper_prompt(name, text, retrieval.context))
-        reply = _extract_reply(raw)
+        raw = await _agent_roundtrip(
+            request_id,
+            _paper_prompt(name, question, retrieval.context, directed),
+        )
+        reply = _address_reply(_extract_reply(raw), name, directed)
         message = await _append_message("OmegaClaw", reply, "omega")
         last_omega_event.update(
             status="appended",
@@ -299,23 +384,30 @@ async def _answer_room_message(name: str, text: str) -> None:
             message_id=message["id"],
             updated_at=int(time.time() * 1000),
             error="",
+            error_type="",
         )
     except Exception as exc:
-        detail = str(exc)
+        detail = _redact_error(exc)
         if isinstance(exc, AtlasUnavailableError):
             public_detail = KB_UNAVAILABLE_MESSAGE
+        elif isinstance(exc, (asyncio.TimeoutError, TimeoutError)):
+            public_detail = "I timed out before finishing that response. Send another message to try again."
         elif "waking" in detail.lower() or "disconnected" in detail.lower():
-            public_detail = "I am waking up on Hugging Face. Mention @OmegaClaw again in a moment."
+            public_detail = "I am waking up on Hugging Face. Send another message in a moment."
         else:
-            public_detail = "I could not complete that turn. Please try once more."
-        message = await _append_message("OmegaClaw", public_detail, "omega")
+            public_detail = "I hit a temporary OmegaClaw error. Send another message to try again."
+        reply = _address_reply(public_detail, name, directed)
+        message = await _append_message("OmegaClaw", reply, "omega")
         last_omega_event.update(
             status="error_appended",
             request_id=request_id,
             message_id=message["id"],
             updated_at=int(time.time() * 1000),
-            error=detail[:500],
+            error=detail,
+            error_type=type(exc).__name__,
         )
+    finally:
+        last_omega_event["duration_ms"] = int((time.time() - started) * 1000)
 
 
 @app.on_event("startup")
@@ -325,7 +417,7 @@ async def load_atlas_and_seed_room() -> None:
         if knowledge_base.loaded:
             introduction = (
                 f"Shared AGI-26 channel online with Hypothesis Surface Atlas v{knowledge_base.version}. "
-                "Choose a name and mention @OmegaClaw to ask about the paper."
+                "Every human message gives me one conversational turn; use @Omega or @OmegaClaw when you want a directed reply."
             )
         else:
             introduction = (
@@ -342,6 +434,7 @@ async def health() -> dict[str, Any]:
         "transport": "official websocket channel",
         "agent_connected": agent is not None,
         "busy": turn_lock.locked(),
+        "queued_turns": len(background_tasks),
         "public_profile": True,
         "room_messages": len(messages),
         "background_tasks": len(background_tasks),
@@ -349,6 +442,7 @@ async def health() -> dict[str, Any]:
         "effective_max_loops": os.getenv("OMEGACLAW_EFFECTIVE_MAX_LOOPS", ""),
         "effective_wake_loops": os.getenv("OMEGACLAW_EFFECTIVE_WAKE_LOOPS", ""),
         **knowledge_base.health(),
+        "agent_diagnostics": agent_diagnostics,
         "last_omega_event": last_omega_event,
     }
 
@@ -361,6 +455,7 @@ async def get_room_messages(after: int = Query(default=0, ge=0)) -> dict[str, An
         "messages": batch,
         "agent_connected": agent is not None,
         "busy": turn_lock.locked(),
+        "queued_turns": len(background_tasks),
         "kb_loaded": knowledge_base.loaded,
         "kb_version": knowledge_base.version,
         "room_epoch": ROOM_EPOCH,
@@ -375,7 +470,8 @@ async def post_room_message(
     request: Request,
     authorization: str | None = Header(default=None),
 ) -> dict[str, Any]:
-    # The conference room is intentionally public and name-only.
+    # The conference room is intentionally public and name-only. Every accepted
+    # human message gives OmegaClaw one bounded turn; OmegaClaw never self-starts.
     client_key = _client_key(request)
     _consume_limit(room_rate_buckets, client_key, ROOM_RATE_LIMIT, "Public room post limit reached")
 
@@ -384,19 +480,22 @@ async def post_room_message(
     if not name or not text:
         raise HTTPException(status_code=422, detail="Name and message are required")
 
+    _consume_limit(
+        rate_buckets,
+        _session_key(request, room_message.session_id),
+        RATE_LIMIT,
+        "Public OmegaClaw turn limit reached",
+    )
     message = await _append_message(name, text, "human")
-    omega_queued = False
-    omega_request_id = ""
-    if _calls_omega(text):
-        _consume_limit(rate_buckets, client_key, RATE_LIMIT, "Public OmegaClaw turn limit reached")
-        omega_queued = True
-        task = _spawn(_answer_room_message(name, text))
-        omega_request_id = str(id(task))
+    request_id = uuid.uuid4().hex
+    directed = _mentions_omega(text)
+    _spawn(_answer_room_message(request_id, name, text, directed))
 
     return {
         "message": message,
-        "omega_queued": omega_queued,
-        "omega_request_id": omega_request_id,
+        "omega_queued": True,
+        "omega_request_id": request_id,
+        "omega_directed": directed,
         "agent_connected": agent is not None,
         "kb_loaded": knowledge_base.loaded,
     }
@@ -439,7 +538,7 @@ async def _run_turn(request_id: str, turn: TurnRequest) -> None:
         results[request_id] = {
             "request_id": request_id,
             "status": "error",
-            "error": str(exc),
+            "error": _redact_error(exc),
             "created_at": time.time(),
         }
     finally:
@@ -464,22 +563,46 @@ async def agent_channel(websocket: WebSocket) -> None:
     await websocket.accept()
     async with agent_lock:
         agent = websocket
+        now_ms = int(time.time() * 1000)
+        agent_diagnostics.update(
+            connection_count=int(agent_diagnostics["connection_count"]) + 1,
+            connected_at=now_ms,
+            last_frame_at=now_ms,
+        )
         try:
             while True:
-                frame = json.loads(await websocket.receive_text())
-                frame_type = frame.get("type")
+                raw_frame = await websocket.receive_text()
+                now_ms = int(time.time() * 1000)
+                agent_diagnostics["frames_received"] = int(agent_diagnostics["frames_received"]) + 1
+                agent_diagnostics["last_frame_at"] = now_ms
+                try:
+                    frame = json.loads(raw_frame)
+                except json.JSONDecodeError:
+                    agent_diagnostics["invalid_frames"] = int(agent_diagnostics["invalid_frames"]) + 1
+                    agent_diagnostics["last_frame_type"] = "invalid_json"
+                    await websocket.send_json({"type": "error", "code": "invalid_json", "message": "Invalid JSON frame"})
+                    continue
+
+                frame_type = str(frame.get("type", ""))
+                agent_diagnostics["last_frame_type"] = frame_type or "missing"
                 if frame_type == "resume":
                     continue
                 if frame_type == "agent_message":
+                    agent_diagnostics["last_agent_message_at"] = now_ms
                     client_seq = str(frame.get("client_seq", ""))
                     await websocket.send_json({"type": "ack", "seq": sequence, "client_seq": client_seq})
                     if pending and not pending.future.done():
                         pending.future.set_result(str(frame.get("text", "")))
+                    else:
+                        agent_diagnostics["orphaned_agent_messages"] = int(
+                            agent_diagnostics["orphaned_agent_messages"]
+                        ) + 1
                 elif frame_type not in {"ack"}:
                     await websocket.send_json({"type": "error", "code": "unsupported", "message": "Unsupported frame"})
         except WebSocketDisconnect:
             pass
         finally:
+            agent_diagnostics["disconnected_at"] = int(time.time() * 1000)
             if agent is websocket:
                 agent = None
             if pending and not pending.future.done():
