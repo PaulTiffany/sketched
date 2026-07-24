@@ -131,7 +131,7 @@ COPY public_prompt_OpenRouter.txt /PeTTa/repos/OmegaClaw-Core/memory/prompt_Open
 COPY start.sh /app/start.sh
 
 # Align the gateway and retrieval service with the bounded agent harness and
-# Hypothesis Surface Atlas v1.6.0. Source replacements are asserted so drift
+# Hypothesis Surface Atlas v1.7.0. Source replacements are asserted so drift
 # fails the image build instead of silently weakening the deployment.
 RUN python3 - <<'PY'
 from pathlib import Path
@@ -140,7 +140,7 @@ atlas_path = Path('/app/atlas.py')
 atlas_text = atlas_path.read_text(encoding='utf-8')
 atlas_replacements = {
     'expected_version=os.getenv("HYPOTHESIS_SURFACE_ATLAS_VERSION", "1.4.1")':
-        'expected_version=os.getenv("HYPOTHESIS_SURFACE_ATLAS_VERSION", "1.6.0")',
+        'expected_version=os.getenv("HYPOTHESIS_SURFACE_ATLAS_VERSION", "1.7.0")',
     '''        tokens = set(query_tokens)
         if tokens & {"email", "contact", "orcid", "linkedin", "github"}:''':
         '''        tokens = set(query_tokens)
@@ -158,6 +158,23 @@ atlas_replacements = {
         if tokens & {"demonstrate", "demonstrates", "demonstrated", "propose", "proposes", "proposed", "empirical", "theoretical", "proof", "proved", "future"}:
             if record.record_id == "demonstrated-proposed-future-map":
                 score += 30.0
+        if tokens & {"companion", "gauge", "covariance", "stokes", "fftc", "residue", "cohomology", "rayleigh", "chern", "proof"}:
+            if record.source_kind == "public-github-companions":
+                score += 24.0
+        if tokens & {"grace", "beauty", "frame", "basis", "parlance"}:
+            if record.record_id == "author-parlance-grace-beauty-frame-construction":
+                score += 36.0
+            elif record.source_kind == "public-github-companions":
+                score += 10.0
+        if tokens & {"pipeline", "run", "rerun", "reproduce", "reproduction", "parameter", "parameters", "code", "scorecard"}:
+            if record.source_kind == "public-github-companions":
+                score += 20.0
+        if tokens & {"v2", "axis", "falsified", "falsification", "goldilocks", "u-shaped", "u-shape"}:
+            if record.source_kind == "public-github-companions":
+                score += 22.0
+        if tokens & {"sonification", "notebook"}:
+            if record.record_id == "github-companion-repository-boundary":
+                score += 40.0
         if tokens & {"email", "contact", "orcid", "linkedin", "github"}:''',
 }
 for old, new in atlas_replacements.items():
@@ -174,7 +191,7 @@ gateway_replacements = {
     'ROOM_HISTORY_LIMIT = max(20, min(1000, int(os.getenv("Z0_ROOM_HISTORY_LIMIT", "300"))))':
         'ROOM_HISTORY_LIMIT = max(20, min(1000, int(os.getenv("Z0_ROOM_HISTORY_LIMIT", "300"))))\nROOM_LOOKBACK_LIMIT = max(0, min(10, int(os.getenv("Z0_ROOM_LOOKBACK_ENTRIES", "5"))))',
     'app = FastAPI(title="AGI-26 OmegaClaw Room", version="0.3.2")':
-        'app = FastAPI(title="AGI-26 OmegaClaw Room", version="0.5.0")',
+        'app = FastAPI(title="AGI-26 OmegaClaw Room", version="0.5.1")',
     'Every human post gives you one bounded turn;':
         'Every human post grants up to three bounded deliberation loops;',
     '''record with general model knowledge. If the records do not support a confident answer, say so.''':
@@ -185,10 +202,19 @@ synthetic illustrative scenario as an experiment performed in the Springer paper
 worked_interpretation_of_reported_result may explain reported numbers but does not add new evidence.
 
 A retrieval packet is a turn-specific selection, not the complete atlas inventory. Do not infer that
-worked examples, figure descriptions, experiment records, or status boundaries are absent merely
-because they were not retrieved in another turn. For questions about what you know, have, lack,
-need, or can explain, obey the agent capability inventory and distinguish a retrieval gap from a
-true atlas absence.''',
+worked examples, figure descriptions, experiment records, formal companions, public glossary terms,
+or status boundaries are absent merely because they were not retrieved in another turn. For questions
+about what you know, have, lack, need, or can explain, obey the agent capability inventory and
+distinguish a retrieval gap from a true atlas absence.
+
+Public GitHub companion records are secondary to the Springer paper and must retain their source and
+chronology. F1/F2/F3 may deepen formally scoped arguments; camera-ready scorecards support the
+published evaluation; later integration-v2 findings may narrow or falsify operational predictions but
+must not be silently rewritten into the Springer paper. You may explain public code, commands, and
+reference outputs, but this chat does not execute repository code and you must never claim a fresh run.
+Sonification and iteration-as-operator materials are deliberately outside your atlas and service. Do
+not summarize, infer, reconstruct, or describe them; say only that they are outside the current guide's
+scope and may be presented through a separate future interface chosen by Paul.''',
     '''def _paper_prompt(
     name: str,
     question: str,
@@ -316,10 +342,11 @@ RUN chmod 0755 /app/start.sh \
     && grep -Fq 'five room entries immediately preceding' /PeTTa/repos/OmegaClaw-Core/memory/prompt_OpenRouter.txt \
     && grep -Fq 'change-state! &loops 0' /PeTTa/repos/OmegaClaw-Core/src/channels.metta \
     && grep -Fq '(change-state! &loops (+ 1 (maxWakeLoops)))' /PeTTa/repos/OmegaClaw-Core/src/loop.metta \
-    && grep -Fq 'agent-capability-inventory' /app/atlas.py \
+    && grep -Fq 'public-github-companions' /app/atlas.py \
+    && grep -Fq 'Sonification and iteration-as-operator materials' /app/gateway.py \
     && grep -Fq 'BEGIN RECENT ROOM CONTEXT' /app/gateway.py \
     && grep -Fq 'room_lookback_entries' /app/gateway.py \
-    && grep -Fq '"1.6.0"' /app/atlas.py
+    && grep -Fq '"1.7.0"' /app/atlas.py
 
 ENV PORT=7860 \
     Z0_ALLOWED_ORIGIN=https://paultiffany.github.io \
@@ -331,7 +358,7 @@ ENV PORT=7860 \
     OMEGACLAW_MAX_WAKE_LOOPS=1 \
     HYPOTHESIS_SURFACE_ATLAS_REPO=PaulTiffany/hypothesis-surface-atlas \
     HYPOTHESIS_SURFACE_ATLAS_REVISION=main \
-    HYPOTHESIS_SURFACE_ATLAS_VERSION=1.6.0 \
+    HYPOTHESIS_SURFACE_ATLAS_VERSION=1.7.0 \
     IMPORT_KB_ON_START=0
 
 EXPOSE 7860
