@@ -2,14 +2,33 @@ FROM singularitynet/omegaclaw:latest
 
 USER root
 
-# The official OmegaClaw runtime image includes Python but omits pip.
+# The official OmegaClaw runtime image includes a mutually compatible
+# huggingface_hub / transformers / sentence_transformers stack. Install only
+# the gateway dependencies; replacing huggingface_hub independently breaks the
+# local embedding runtime.
 RUN apt-get update \
     && apt-get install -y --no-install-recommends python3-pip \
     && rm -rf /var/lib/apt/lists/* \
     && python3 -m pip install --no-cache-dir --break-system-packages \
         fastapi==0.116.1 \
-        "uvicorn[standard]==0.35.0" \
-        huggingface_hub==1.1.7
+        "uvicorn[standard]==0.35.0"
+
+# Both the private-atlas loader and OmegaClaw local embeddings must import
+# successfully in the final dependency environment. Catch compatibility drift
+# during the image build rather than after the Space starts.
+RUN python3 - <<'PY'
+from importlib.metadata import version
+
+from huggingface_hub import is_offline_mode, snapshot_download
+from sentence_transformers import SentenceTransformer
+
+assert callable(snapshot_download)
+assert callable(is_offline_mode)
+assert SentenceTransformer is not None
+print('huggingface_hub', version('huggingface_hub'))
+print('transformers', version('transformers'))
+print('sentence-transformers', version('sentence-transformers'))
+PY
 
 # OmegaClaw starts its governed outbound proxy as www-data. Hugging Face
 # Spaces does not allow that unprivileged process to open /dev/stdout or
@@ -169,6 +188,7 @@ PY
 
 RUN chmod 0755 /app/start.sh \
     && python3 -m py_compile /app/atlas.py /app/gateway.py \
+    && python3 -c 'from huggingface_hub import snapshot_download; from sentence_transformers import SentenceTransformer' \
     && grep -Fq 'one periodic maintenance wake is allowed' /PeTTa/repos/OmegaClaw-Core/memory/prompt_OpenRouter.txt \
     && grep -Fq 'change-state! &loops 0' /PeTTa/repos/OmegaClaw-Core/src/channels.metta \
     && grep -Fq '(change-state! &loops (+ 1 (maxWakeLoops)))' /PeTTa/repos/OmegaClaw-Core/src/loop.metta \
