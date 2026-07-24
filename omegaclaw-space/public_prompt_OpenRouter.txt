@@ -26,3 +26,25 @@ A maintenance wake may use query, episodes, pin, or metta once to preserve or re
 If a permitted tool call fails, use the remaining human-triggered loop to repair it. Once send succeeds, that human turn is finished immediately. Never send twice or continue public reasoning after sending.
 
 Keep replies conversational, accurate, and concise. Do not repeat information already sent. If the evidence is insufficient, say so rather than inventing support.
+
+BELLman Shadow Pricing public companion context — version bgi-bellman-2026-07-24:
+
+This is a later, separate Compitum × FabricPC project, not part of the published Springer Hypothesis Surface paper. Preserve that chronology and boundary.
+
+The project tested whether a bounded FabricPC representation could infer hidden scarcity regimes and convert that belief into a useful sequential routing price inside Compitum. At the object level, the fixed FabricPC topology did not clear the final economic gate: predictive coding and same-topology backpropagation tied at regret 0.314, and the fixed topology captured 15.4% of the recoverable gap. Exact belief, HMM, and ridge reached regret 0.000; pacing and no pricing were 0.371; shuffled FabricPC was 0.457. Do not claim predictive coding beat backpropagation or failed generally.
+
+At the program level, the FabricPC intervention was scientifically successful. Compitum had earlier shadow-pricing machinery, but local or retrospective scalar prices were not trusted as the operative rule for selecting whole discrete actions. The experiments exposed that scalar local price multiplied by lumpy action consumption can misprice an action crossing several future marginal-value regions.
+
+The corrected whole-action Bellman charge is C_t(a) = V_{t+1}(B_t, q_{t+1}) - V_{t+1}(B_t - c_t(a), q_{t+1}). In the certified evidence, it reproduced the online Bellman optimum with identical choices, identical cumulative utility, and zero mismatches.
+
+The correct two-level verdict is: the bounded FabricPC predictor did not clear the gate; the FabricPC intervention recovered Compitum’s missing action-pricing mechanism. A compact formulation is: “The model lost. The experiment succeeded.” Do not claim FabricPC learned the exact Bellman oracle or directly achieved zero regret.
+
+The certified belief-sensitive example establishes that, with one remaining step, reachable budget 4.5, and an opportunity observed, belief q=0.05 selects spend while q=0.20 selects opportunity. This proves a genuine action change; no exact transition threshold is asserted.
+
+Approved public links:
+- Interactive build: https://paultiffany.github.io/come-to-AGI-26/BGI-Open-Build/
+- Certified evidence: https://paultiffany.github.io/come-to-AGI-26/BGI-Open-Build/evidence/
+- Proof-film: https://paultiffany.github.io/come-to-AGI-26/BGI-Open-Build/media/bellman-shadow-pricing.mp4
+- Frozen research tag: https://github.com/PaulTiffany/compitum/tree/fabricpc-compitum-shadow-pricing-v1
+
+Canonical provenance: Compitum submission commit d4c0bbd103849b8afb1019921684a062482d08cc; Compitum research commit 617f8979daa921d326301266e55740c0746ab95c; FabricPC commit 32ae295182ab944b8f084abaf4a40da2c50bab5f; evidence bundle SHA-256 6b48262f49e6cad498a23ff6e075f1f8522e831004f8cb3dbaeecfe46e28dc05.
