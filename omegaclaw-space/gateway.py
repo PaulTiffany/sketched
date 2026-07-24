@@ -26,7 +26,7 @@ ACCESS_TOKEN = os.getenv("Z0_ACCESS_TOKEN", "").strip()
 WS_TOKEN = os.getenv("OMEGACLAW_WS_TOKEN", "").strip()
 RATE_LIMIT = max(1, int(os.getenv("Z0_RATE_LIMIT_PER_HOUR", "120")))
 ROOM_RATE_LIMIT = max(1, int(os.getenv("Z0_ROOM_POSTS_PER_HOUR", "300")))
-TURN_TIMEOUT = max(30, int(os.getenv("Z0_TURN_TIMEOUT_SECONDS", "180")))
+TURN_TIMEOUT = min(60, max(30, int(os.getenv("Z0_TURN_TIMEOUT_SECONDS", "60"))))
 ROOM_HISTORY_LIMIT = max(20, min(1000, int(os.getenv("Z0_ROOM_HISTORY_LIMIT", "300"))))
 OMEGA_MENTION_RE = re.compile(r"(?i)(?<!\w)@(omega(?:claw)?)\b")
 
@@ -34,7 +34,7 @@ KB_UNAVAILABLE_MESSAGE = (
     "The Hypothesis Surface knowledge base is temporarily unavailable. Please try again shortly."
 )
 
-app = FastAPI(title="AGI-26 OmegaClaw Room", version="0.3.1")
+app = FastAPI(title="AGI-26 OmegaClaw Room", version="0.3.2")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[ALLOWED_ORIGIN],
@@ -201,9 +201,9 @@ def _paper_prompt(
     directed: bool,
 ) -> str:
     reply_mode = (
-        f"This was an explicit @Omega mention. Begin the reply with @{name}."
+        "The gateway will add the visitor's @-mention after you send; do not add an @-mention yourself."
         if directed
-        else "This was not an explicit @Omega mention. Participate naturally and do not prefix the reply with an @-mention."
+        else "Participate naturally and do not prefix the reply with an @-mention."
     )
     return f"""
 You are OmegaClaw, an automated public guide to "The Hypothesis Surface: An Operational
@@ -211,7 +211,7 @@ Epistemology for Autonomous Research" by Paul Carver Tiffany III, published in t
 LNAI proceedings of AGI 2026. You are not Paul Tiffany and do not speak on his behalf. Your
 answers may be incomplete or mistaken; the published Springer paper is authoritative.
 
-You are participating in a shared conference room. Every human post gives you exactly one turn;
+You are participating in a shared conference room. Every human post gives you one bounded turn;
 you never speak spontaneously. When a post is not explicitly directed to you, participate lightly
 and conversationally rather than dominating the room. A short acknowledgment or useful connection
 is enough for social messages. When a visitor asks a substantive question, answer it directly.
@@ -261,9 +261,9 @@ BEGIN RETRIEVED ATLAS CONTEXT
 {retrieved_context}
 END RETRIEVED ATLAS CONTEXT
 
-Return exactly one compact JSON object with keys reply, channel, operators, visual, and sound.
-Set channel to "voice" and set operators, visual, and sound to empty arrays. Do not include Markdown
-fences or commentary outside the JSON object.
+The retrieved atlas context is complete for this turn. Do not call query, remember, shell, websearch,
+or any other tool. Call the send skill exactly once with only the visitor-facing reply text. Do not
+return JSON, do not use Markdown fences, and do not issue multiple commands.
 """.strip()
 
 
@@ -435,6 +435,7 @@ async def health() -> dict[str, Any]:
         "agent_connected": agent is not None,
         "busy": turn_lock.locked(),
         "queued_turns": len(background_tasks),
+        "turn_timeout_seconds": TURN_TIMEOUT,
         "public_profile": True,
         "room_messages": len(messages),
         "background_tasks": len(background_tasks),
