@@ -28,38 +28,38 @@ RUN find /opt/nginx -type f -exec sed -i \
         /tmp/omegaclaw-nginx-error.log \
         /tmp/omegaclaw-nginx-access.log
 
-# Patch the upstream loop for this human-triggered public profile:
-# - maxWakeLoops=0 truly means no autonomous provider calls;
-# - a successful public send ends the current deliberation immediately;
+# Patch the upstream harness for this bounded public profile:
+# - preserve upstream wake-counter semantics, where 1 + maxWakeLoops is
+#   decremented before the provider branch; maxWakeLoops=1 therefore yields
+#   exactly one maintenance provider call;
+# - a successful public send ends the active human-triggered deliberation;
 # - only read-only recall, short-term state, MeTTa reasoning, and send are
 #   advertised; persistent remember is disabled as defense in depth.
 RUN python3 - <<'PY'
 from pathlib import Path
+import re
 
 loop_path = Path('/PeTTa/repos/OmegaClaw-Core/src/loop.metta')
 loop_text = loop_path.read_text(encoding='utf-8')
-old_wake = '(change-state! &loops (+ 1 (maxWakeLoops)))'
-new_wake = '(change-state! &loops (maxWakeLoops))'
-if loop_text.count(old_wake) != 1:
-    raise SystemExit(f'expected exactly one upstream wake-loop expression, found {loop_text.count(old_wake)}')
-loop_path.write_text(loop_text.replace(old_wake, new_wake), encoding='utf-8')
+native_wake = '(change-state! &loops (+ 1 (maxWakeLoops)))'
+if loop_text.count(native_wake) != 1:
+    raise SystemExit(
+        f'expected exactly one native upstream wake-counter expression, found {loop_text.count(native_wake)}'
+    )
 
 channels_path = Path('/PeTTa/repos/OmegaClaw-Core/src/channels.metta')
 channels_text = channels_path.read_text(encoding='utf-8')
-old_send = '''(= (send $msg)
-   (if (!= $msg (get-state &lastsend))
-       (progn (change-state! &lastsend $msg)
-              (let $safemsg (string-replace $msg  "\\n" "\\\\n")
-                   (let $temp (cut) (commChannelSend $safemsg)))) _))'''
-new_send = '''(= (send $msg)
-   (if (!= $msg (get-state &lastsend))
-       (progn (change-state! &lastsend $msg)
-              (change-state! &loops 0)
-              (let $safemsg (string-replace $msg  "\\n" "\\\\n")
-                   (let $temp (cut) (commChannelSend $safemsg)))) _))'''
-if channels_text.count(old_send) != 1:
-    raise SystemExit(f'expected exactly one upstream send definition, found {channels_text.count(old_send)}')
-channels_path.write_text(channels_text.replace(old_send, new_send), encoding='utf-8')
+if '(change-state! &loops 0)' not in channels_text:
+    pattern = r'(\(progn\s+\(change-state!\s+&lastsend\s+\$msg\))'
+    channels_text, count = re.subn(
+        pattern,
+        r'\1\n              (change-state! &loops 0)',
+        channels_text,
+        count=1,
+    )
+    if count != 1:
+        raise SystemExit(f'could not structurally patch upstream send definition; matches={count}')
+channels_path.write_text(channels_text, encoding='utf-8')
 
 skills_path = Path('/PeTTa/repos/OmegaClaw-Core/src/skills.metta')
 skills_text = skills_path.read_text(encoding='utf-8')
@@ -72,7 +72,7 @@ limited_skills = '''(= (getSkills)
     "- Search episode history around an explicit timestamp: episodes time_string"
     "- Pin short-term working state for the current turn: pin string"
     "- Execute bounded MeTTa or NAL reasoning: metta sexpression"
-    "- Send the single public reply and end the turn: send string"))
+    "- Send the single public reply and end the active human turn: send string"))
 
 
 '''
@@ -80,21 +80,26 @@ skills_path.write_text(skills_text[:start] + limited_skills + skills_text[end:],
 
 memory_path = Path('/PeTTa/repos/OmegaClaw-Core/src/memory.metta')
 memory_text = memory_path.read_text(encoding='utf-8')
-old_remember = '''(= (remember $str)
-   (progn (py-call (lib_chromadb.remember $str (embed $str) (get_time_as_string)))
-          REMEMBER-SUCCESS))'''
-new_remember = '''(= (remember $str)
-   REMEMBER-DISABLED-IN-PUBLIC-ROOM)'''
-if memory_text.count(old_remember) != 1:
-    raise SystemExit(f'expected exactly one upstream remember definition, found {memory_text.count(old_remember)}')
-memory_path.write_text(memory_text.replace(old_remember, new_remember), encoding='utf-8')
+if 'REMEMBER-DISABLED-IN-PUBLIC-ROOM' not in memory_text:
+    pattern = r'\(=\s*\(remember\s+\$str\)\s*\(progn.*?REMEMBER-SUCCESS\)\)'
+    memory_text, count = re.subn(
+        pattern,
+        '(= (remember $str)\n   REMEMBER-DISABLED-IN-PUBLIC-ROOM)',
+        memory_text,
+        count=1,
+        flags=re.DOTALL,
+    )
+    if count != 1:
+        raise SystemExit(f'could not structurally disable upstream remember; matches={count}')
+memory_path.write_text(memory_text, encoding='utf-8')
 
-for path, required, forbidden in (
-    (loop_path, new_wake, old_wake),
+checks = (
+    (loop_path, native_wake, None),
     (channels_path, '(change-state! &loops 0)', None),
-    (skills_path, 'Send the single public reply and end the turn', 'Execute shell command'),
+    (skills_path, 'Send the single public reply and end the active human turn', 'Execute shell command'),
     (memory_path, 'REMEMBER-DISABLED-IN-PUBLIC-ROOM', 'lib_chromadb.remember $str'),
-):
+)
+for path, required, forbidden in checks:
     text = path.read_text(encoding='utf-8')
     if required not in text or (forbidden and forbidden in text):
         raise SystemExit(f'OmegaClaw public-profile patch verification failed for {path}')
@@ -137,7 +142,7 @@ gateway_replacements = {
     'TURN_TIMEOUT = min(60, max(30, int(os.getenv("Z0_TURN_TIMEOUT_SECONDS", "60"))))':
         'TURN_TIMEOUT = min(120, max(45, int(os.getenv("Z0_TURN_TIMEOUT_SECONDS", "90"))))',
     'app = FastAPI(title="AGI-26 OmegaClaw Room", version="0.3.2")':
-        'app = FastAPI(title="AGI-26 OmegaClaw Room", version="0.4.1")',
+        'app = FastAPI(title="AGI-26 OmegaClaw Room", version="0.4.2")',
     'Every human post gives you one bounded turn;':
         'Every human post grants up to three bounded deliberation loops;',
     '''record with general model knowledge. If the records do not support a confident answer, say so.''':
@@ -152,7 +157,8 @@ return JSON, do not use Markdown fences, and do not issue multiple commands.''':
         '''The retrieved atlas context is primary for this turn. You may use at most one read-only query or
 episodes call when prior room context materially matters, pin short-term state, or use bounded metta
 reasoning. Do not use remember, shell, files, or web tools. Call send exactly once when ready; a
-successful send ends the turn immediately. Do not return JSON or Markdown fences.''',
+successful send ends the active human turn immediately. Between human messages, one bounded
+maintenance wake may refine compact internal state without sending publicly. Do not return JSON or Markdown fences.''',
 }
 for old, new in gateway_replacements.items():
     if gateway_text.count(old) != 1:
@@ -163,8 +169,9 @@ PY
 
 RUN chmod 0755 /app/start.sh \
     && python3 -m py_compile /app/atlas.py /app/gateway.py \
-    && grep -Fq 'Once send succeeds, the turn is finished immediately.' /PeTTa/repos/OmegaClaw-Core/memory/prompt_OpenRouter.txt \
+    && grep -Fq 'one periodic maintenance wake is allowed' /PeTTa/repos/OmegaClaw-Core/memory/prompt_OpenRouter.txt \
     && grep -Fq 'change-state! &loops 0' /PeTTa/repos/OmegaClaw-Core/src/channels.metta \
+    && grep -Fq '(change-state! &loops (+ 1 (maxWakeLoops)))' /PeTTa/repos/OmegaClaw-Core/src/loop.metta \
     && grep -Fq 'worked-examples' /app/atlas.py \
     && grep -Fq 'synthetic illustrative scenario' /app/gateway.py \
     && grep -Fq '"1.5.0"' /app/atlas.py
@@ -175,7 +182,7 @@ ENV PORT=7860 \
     Z0_ROOM_POSTS_PER_HOUR=300 \
     Z0_TURN_TIMEOUT_SECONDS=90 \
     OMEGACLAW_MAX_LOOPS=3 \
-    OMEGACLAW_MAX_WAKE_LOOPS=0 \
+    OMEGACLAW_MAX_WAKE_LOOPS=1 \
     HYPOTHESIS_SURFACE_ATLAS_REPO=PaulTiffany/hypothesis-surface-atlas \
     HYPOTHESIS_SURFACE_ATLAS_REVISION=main \
     HYPOTHESIS_SURFACE_ATLAS_VERSION=1.5.0 \
