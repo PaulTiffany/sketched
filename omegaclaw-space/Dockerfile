@@ -37,7 +37,8 @@ RUN chmod 0755 /app/start.sh \
 
 ENV PORT=7860 \
     Z0_ALLOWED_ORIGIN=https://paultiffany.github.io \
-    Z0_RATE_LIMIT_PER_HOUR=12 \
+    Z0_RATE_LIMIT_PER_HOUR=120 \
+    Z0_ROOM_POSTS_PER_HOUR=300 \
     HYPOTHESIS_SURFACE_ATLAS_REPO=PaulTiffany/hypothesis-surface-atlas \
     HYPOTHESIS_SURFACE_ATLAS_REVISION=main \
     HYPOTHESIS_SURFACE_ATLAS_VERSION=1.4.1 \
