@@ -171,8 +171,10 @@ gateway_text = gateway_path.read_text(encoding='utf-8')
 gateway_replacements = {
     'TURN_TIMEOUT = min(60, max(30, int(os.getenv("Z0_TURN_TIMEOUT_SECONDS", "60"))))':
         'TURN_TIMEOUT = min(120, max(45, int(os.getenv("Z0_TURN_TIMEOUT_SECONDS", "90"))))',
+    'ROOM_HISTORY_LIMIT = max(20, min(1000, int(os.getenv("Z0_ROOM_HISTORY_LIMIT", "300"))))':
+        'ROOM_HISTORY_LIMIT = max(20, min(1000, int(os.getenv("Z0_ROOM_HISTORY_LIMIT", "300"))))\nROOM_LOOKBACK_LIMIT = max(0, min(10, int(os.getenv("Z0_ROOM_LOOKBACK_ENTRIES", "5"))))',
     'app = FastAPI(title="AGI-26 OmegaClaw Room", version="0.3.2")':
-        'app = FastAPI(title="AGI-26 OmegaClaw Room", version="0.4.3")',
+        'app = FastAPI(title="AGI-26 OmegaClaw Room", version="0.5.0")',
     'Every human post gives you one bounded turn;':
         'Every human post grants up to three bounded deliberation loops;',
     '''record with general model knowledge. If the records do not support a confident answer, say so.''':
@@ -187,30 +189,136 @@ worked examples, figure descriptions, experiment records, or status boundaries a
 because they were not retrieved in another turn. For questions about what you know, have, lack,
 need, or can explain, obey the agent capability inventory and distinguish a retrieval gap from a
 true atlas absence.''',
+    '''def _paper_prompt(
+    name: str,
+    question: str,
+    retrieved_context: str,
+    directed: bool,
+) -> str:''':
+        '''def _paper_prompt(
+    name: str,
+    question: str,
+    retrieved_context: str,
+    recent_room_context: str,
+    directed: bool,
+) -> str:''',
+    '''Visitor name: {name}
+Visitor question: {question}
+
+BEGIN RETRIEVED ATLAS CONTEXT''':
+        '''Visitor name: {name}
+Visitor question: {question}
+
+BEGIN RECENT ROOM CONTEXT
+The following are the {ROOM_LOOKBACK_LIMIT} entries immediately preceding this human post. Use them
+only for conversational continuity, callbacks, and attribution; they are not authoritative evidence
+about the paper. Do not repeat them unless relevant.
+{recent_room_context}
+END RECENT ROOM CONTEXT
+
+BEGIN RETRIEVED ATLAS CONTEXT''',
     '''The retrieved atlas context is complete for this turn. Do not call query, remember, shell, websearch,
 or any other tool. Call the send skill exactly once with only the visitor-facing reply text. Do not
 return JSON, do not use Markdown fences, and do not issue multiple commands.''':
-        '''The retrieved atlas context is primary for this turn. You may use at most one read-only query or
-episodes call when prior room context materially matters, pin short-term state, or use bounded metta
-reasoning. Do not use remember, shell, files, or web tools. Call send exactly once when ready; a
-successful send ends the active human turn immediately. Between human messages, one bounded
-maintenance wake may refine compact internal state without sending publicly. Do not return JSON or Markdown fences.''',
+        '''The retrieved atlas context and recent-room excerpt are primary for this turn. Do not spend a loop
+calling query or episodes when those supplied contexts are enough. You may use at most one targeted
+read-only query or episodes call only when the visitor explicitly refers to older discussion beyond
+the excerpt; pin short-term state or use bounded metta reasoning when useful. Do not use remember,
+shell, files, or web tools. Call send exactly once when ready; a successful send ends the active
+human turn immediately. Between human messages, one bounded maintenance wake may refine compact
+internal state without sending publicly. Do not return JSON or Markdown fences.''',
+    '''async def _answer_room_message(
+    request_id: str,
+    name: str,
+    text: str,
+    directed: bool,
+) -> None:''':
+        '''async def _answer_room_message(
+    request_id: str,
+    name: str,
+    text: str,
+    directed: bool,
+    message_id: int,
+) -> None:''',
+    '''        retrieval = knowledge_base.retrieve(question)
+        last_omega_event["retrieved_records"] = retrieval.count
+        raw = await _agent_roundtrip(
+            request_id,
+            _paper_prompt(name, question, retrieval.context, directed),
+        )''':
+        '''        retrieval = knowledge_base.retrieve(question)
+        recent_room_context = await _recent_room_context(message_id)
+        last_omega_event["retrieved_records"] = retrieval.count
+        raw = await _agent_roundtrip(
+            request_id,
+            _paper_prompt(name, question, retrieval.context, recent_room_context, directed),
+        )''',
+    '''    _spawn(_answer_room_message(request_id, name, text, directed))''':
+        '''    _spawn(_answer_room_message(request_id, name, text, directed, int(message["id"])))''',
+    '''        "turn_timeout_seconds": TURN_TIMEOUT,
+        "public_profile": True,''':
+        '''        "turn_timeout_seconds": TURN_TIMEOUT,
+        "room_lookback_entries": ROOM_LOOKBACK_LIMIT,
+        "public_profile": True,''',
 }
 for old, new in gateway_replacements.items():
     if gateway_text.count(old) != 1:
         raise SystemExit(f'expected exactly one gateway fragment, found {gateway_text.count(old)}: {old[:80]}')
     gateway_text = gateway_text.replace(old, new)
+
+address_block = '''def _address_reply(reply: str, name: str, directed: bool) -> str:
+    clean = reply.strip()
+    if not directed:
+        return clean[:2400]
+    tag = f"@{name}"
+    if clean.casefold().startswith(tag.casefold()):
+        return clean[:2400]
+    return f"{tag} {clean}"[:2400]
+'''
+recent_helper = '''def _address_reply(reply: str, name: str, directed: bool) -> str:
+    clean = reply.strip()
+    if not directed:
+        return clean[:2400]
+    tag = f"@{name}"
+    if clean.casefold().startswith(tag.casefold()):
+        return clean[:2400]
+    return f"{tag} {clean}"[:2400]
+
+
+async def _recent_room_context(before_message_id: int) -> str:
+    if ROOM_LOOKBACK_LIMIT == 0:
+        return "No recent room context supplied."
+    async with room_lock:
+        recent = [
+            message
+            for message in messages
+            if int(message.get("id", 0)) < before_message_id
+        ][-ROOM_LOOKBACK_LIMIT:]
+    if not recent:
+        return "No earlier room entries."
+    lines: list[str] = []
+    for message in recent:
+        speaker = " ".join(str(message.get("name", "Visitor")).split())[:32]
+        kind = str(message.get("kind", "human"))
+        body = " ".join(str(message.get("text", "")).split())[:600]
+        lines.append(f"{speaker} [{kind}]: {body}")
+    return "\\n".join(lines)
+'''
+if gateway_text.count(address_block) != 1:
+    raise SystemExit(f'expected one address block, found {gateway_text.count(address_block)}')
+gateway_text = gateway_text.replace(address_block, recent_helper)
 gateway_path.write_text(gateway_text, encoding='utf-8')
 PY
 
 RUN chmod 0755 /app/start.sh \
     && python3 -m py_compile /app/atlas.py /app/gateway.py \
     && python3 -c 'from huggingface_hub import snapshot_download; from sentence_transformers import SentenceTransformer' \
-    && grep -Fq 'one periodic maintenance wake is allowed' /PeTTa/repos/OmegaClaw-Core/memory/prompt_OpenRouter.txt \
+    && grep -Fq 'five room entries immediately preceding' /PeTTa/repos/OmegaClaw-Core/memory/prompt_OpenRouter.txt \
     && grep -Fq 'change-state! &loops 0' /PeTTa/repos/OmegaClaw-Core/src/channels.metta \
     && grep -Fq '(change-state! &loops (+ 1 (maxWakeLoops)))' /PeTTa/repos/OmegaClaw-Core/src/loop.metta \
     && grep -Fq 'agent-capability-inventory' /app/atlas.py \
-    && grep -Fq 'turn-specific selection' /app/gateway.py \
+    && grep -Fq 'BEGIN RECENT ROOM CONTEXT' /app/gateway.py \
+    && grep -Fq 'room_lookback_entries' /app/gateway.py \
     && grep -Fq '"1.6.0"' /app/atlas.py
 
 ENV PORT=7860 \
@@ -218,6 +326,7 @@ ENV PORT=7860 \
     Z0_RATE_LIMIT_PER_HOUR=120 \
     Z0_ROOM_POSTS_PER_HOUR=300 \
     Z0_TURN_TIMEOUT_SECONDS=90 \
+    Z0_ROOM_LOOKBACK_ENTRIES=5 \
     OMEGACLAW_MAX_LOOPS=3 \
     OMEGACLAW_MAX_WAKE_LOOPS=1 \
     HYPOTHESIS_SURFACE_ATLAS_REPO=PaulTiffany/hypothesis-surface-atlas \
