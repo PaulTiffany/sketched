@@ -8,7 +8,8 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && python3 -m pip install --no-cache-dir --break-system-packages \
         fastapi==0.116.1 \
-        "uvicorn[standard]==0.35.0"
+        "uvicorn[standard]==0.35.0" \
+        huggingface_hub==1.24.0
 
 # OmegaClaw starts its governed outbound proxy as www-data. Hugging Face
 # Spaces does not allow that unprivileged process to open /dev/stdout or
@@ -28,13 +29,18 @@ RUN find /opt/nginx -type f -exec sed -i \
         /tmp/omegaclaw-nginx-access.log
 
 WORKDIR /app
+COPY atlas.py /app/atlas.py
 COPY gateway.py /app/gateway.py
 COPY start.sh /app/start.sh
-RUN chmod 0755 /app/start.sh
+RUN chmod 0755 /app/start.sh \
+    && python3 -m py_compile /app/atlas.py /app/gateway.py
 
 ENV PORT=7860 \
     Z0_ALLOWED_ORIGIN=https://paultiffany.github.io \
     Z0_RATE_LIMIT_PER_HOUR=12 \
+    HYPOTHESIS_SURFACE_ATLAS_REPO=PaulTiffany/hypothesis-surface-atlas \
+    HYPOTHESIS_SURFACE_ATLAS_REVISION=main \
+    HYPOTHESIS_SURFACE_ATLAS_VERSION=1.4.1 \
     IMPORT_KB_ON_START=0
 
 EXPOSE 7860
