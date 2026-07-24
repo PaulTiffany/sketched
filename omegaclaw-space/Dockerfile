@@ -106,20 +106,46 @@ COPY gateway.py /app/gateway.py
 COPY public_prompt_OpenRouter.txt /PeTTa/repos/OmegaClaw-Core/memory/prompt_OpenRouter.txt
 COPY start.sh /app/start.sh
 
-# Align the per-turn gateway contract with the bounded agent harness. The
-# source replacement is asserted so upstream/local drift fails the image build.
+# Align the gateway and retrieval service with the bounded agent harness and
+# Hypothesis Surface Atlas v1.5.0. Source replacements are asserted so drift
+# fails the image build instead of silently weakening the deployment.
 RUN python3 - <<'PY'
 from pathlib import Path
 
-path = Path('/app/gateway.py')
-text = path.read_text(encoding='utf-8')
-replacements = {
+atlas_path = Path('/app/atlas.py')
+atlas_text = atlas_path.read_text(encoding='utf-8')
+atlas_replacements = {
+    'expected_version=os.getenv("HYPOTHESIS_SURFACE_ATLAS_VERSION", "1.4.1")':
+        'expected_version=os.getenv("HYPOTHESIS_SURFACE_ATLAS_VERSION", "1.5.0")',
+    '''        tokens = set(query_tokens)
+        if tokens & {"email", "contact", "orcid", "linkedin", "github"}:''':
+        '''        tokens = set(query_tokens)
+        if tokens & {"example", "worked", "concrete", "calculate", "numeric", "practice", "walkthrough"}:
+            if record.source_kind == "worked-examples":
+                score += 24.0
+        if tokens & {"email", "contact", "orcid", "linkedin", "github"}:''',
+}
+for old, new in atlas_replacements.items():
+    if atlas_text.count(old) != 1:
+        raise SystemExit(f'expected exactly one atlas fragment, found {atlas_text.count(old)}: {old[:80]}')
+    atlas_text = atlas_text.replace(old, new)
+atlas_path.write_text(atlas_text, encoding='utf-8')
+
+gateway_path = Path('/app/gateway.py')
+gateway_text = gateway_path.read_text(encoding='utf-8')
+gateway_replacements = {
     'TURN_TIMEOUT = min(60, max(30, int(os.getenv("Z0_TURN_TIMEOUT_SECONDS", "60"))))':
         'TURN_TIMEOUT = min(120, max(45, int(os.getenv("Z0_TURN_TIMEOUT_SECONDS", "90"))))',
     'app = FastAPI(title="AGI-26 OmegaClaw Room", version="0.3.2")':
-        'app = FastAPI(title="AGI-26 OmegaClaw Room", version="0.4.0")',
+        'app = FastAPI(title="AGI-26 OmegaClaw Room", version="0.4.1")',
     'Every human post gives you one bounded turn;':
         'Every human post grants up to three bounded deliberation loops;',
+    '''record with general model knowledge. If the records do not support a confident answer, say so.''':
+        '''record with general model knowledge. If the records do not support a confident answer, say so.
+
+Worked-example records are pedagogical. Preserve their status and boundaries. Never present a
+synthetic illustrative scenario as an experiment performed in the Springer paper. A
+worked_interpretation_of_reported_result may explain reported numbers but does not add new evidence.''',
     '''The retrieved atlas context is complete for this turn. Do not call query, remember, shell, websearch,
 or any other tool. Call the send skill exactly once with only the visitor-facing reply text. Do not
 return JSON, do not use Markdown fences, and do not issue multiple commands.''':
@@ -128,17 +154,20 @@ episodes call when prior room context materially matters, pin short-term state, 
 reasoning. Do not use remember, shell, files, or web tools. Call send exactly once when ready; a
 successful send ends the turn immediately. Do not return JSON or Markdown fences.''',
 }
-for old, new in replacements.items():
-    if text.count(old) != 1:
-        raise SystemExit(f'expected exactly one gateway fragment, found {text.count(old)}: {old[:80]}')
-    text = text.replace(old, new)
-path.write_text(text, encoding='utf-8')
+for old, new in gateway_replacements.items():
+    if gateway_text.count(old) != 1:
+        raise SystemExit(f'expected exactly one gateway fragment, found {gateway_text.count(old)}: {old[:80]}')
+    gateway_text = gateway_text.replace(old, new)
+gateway_path.write_text(gateway_text, encoding='utf-8')
 PY
 
 RUN chmod 0755 /app/start.sh \
     && python3 -m py_compile /app/atlas.py /app/gateway.py \
     && grep -Fq 'Once send succeeds, the turn is finished immediately.' /PeTTa/repos/OmegaClaw-Core/memory/prompt_OpenRouter.txt \
-    && grep -Fq 'change-state! &loops 0' /PeTTa/repos/OmegaClaw-Core/src/channels.metta
+    && grep -Fq 'change-state! &loops 0' /PeTTa/repos/OmegaClaw-Core/src/channels.metta \
+    && grep -Fq 'worked-examples' /app/atlas.py \
+    && grep -Fq 'synthetic illustrative scenario' /app/gateway.py \
+    && grep -Fq '"1.5.0"' /app/atlas.py
 
 ENV PORT=7860 \
     Z0_ALLOWED_ORIGIN=https://paultiffany.github.io \
@@ -149,7 +178,7 @@ ENV PORT=7860 \
     OMEGACLAW_MAX_WAKE_LOOPS=0 \
     HYPOTHESIS_SURFACE_ATLAS_REPO=PaulTiffany/hypothesis-surface-atlas \
     HYPOTHESIS_SURFACE_ATLAS_REVISION=main \
-    HYPOTHESIS_SURFACE_ATLAS_VERSION=1.4.1 \
+    HYPOTHESIS_SURFACE_ATLAS_VERSION=1.5.0 \
     IMPORT_KB_ON_START=0
 
 EXPOSE 7860
