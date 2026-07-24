@@ -4,15 +4,15 @@ set -euo pipefail
 : "${OPENROUTER_API_KEY:?OPENROUTER_API_KEY Space secret is required}"
 
 PORT="${PORT:-7860}"
-REQUESTED_MAX_LOOPS="${OMEGACLAW_MAX_LOOPS:-2}"
-WAKE_LOOPS="${OMEGACLAW_MAX_WAKE_LOOPS:-1}"
+REQUESTED_MAX_LOOPS="${OMEGACLAW_MAX_LOOPS:-1}"
+REQUESTED_WAKE_LOOPS="${OMEGACLAW_MAX_WAKE_LOOPS:-0}"
 MODEL="${OMEGACLAW_MODEL:-openai/gpt-oss-20b}"
 
 if [[ ! "${REQUESTED_MAX_LOOPS}" =~ ^[0-9]+$ ]] || (( REQUESTED_MAX_LOOPS < 1 || REQUESTED_MAX_LOOPS > 12 )); then
   echo "OMEGACLAW_MAX_LOOPS must be an integer from 1 through 12" >&2
   exit 64
 fi
-if [[ ! "${WAKE_LOOPS}" =~ ^[0-9]+$ ]] || (( WAKE_LOOPS < 0 || WAKE_LOOPS > 4 )); then
+if [[ ! "${REQUESTED_WAKE_LOOPS}" =~ ^[0-9]+$ ]] || (( REQUESTED_WAKE_LOOPS < 0 || REQUESTED_WAKE_LOOPS > 4 )); then
   echo "OMEGACLAW_MAX_WAKE_LOOPS must be an integer from 0 through 4" >&2
   exit 64
 fi
@@ -21,13 +21,16 @@ if [[ -z "${MODEL}" ]]; then
   exit 64
 fi
 
-# The previously working Chalked/OmegaBoi runtime used two new-input loops.
-# One loop can ingest/act without reaching the final channel emission, so keep
-# the hosted public profile bounded but never below the proven value of two.
-MAX_LOOPS="${REQUESTED_MAX_LOOPS}"
-if (( MAX_LOOPS < 2 )); then
-  echo "OMEGACLAW_MAX_LOOPS=${MAX_LOOPS} is below the proven response envelope; using 2" >&2
-  MAX_LOOPS=2
+# This public room gives OmegaClaw exactly one bounded provider turn for each
+# accepted human post. The current upstream loop otherwise continues calling
+# the provider after a successful send and accumulates its full prompt history.
+MAX_LOOPS=1
+WAKE_LOOPS=0
+if (( REQUESTED_MAX_LOOPS != MAX_LOOPS )); then
+  echo "Public room profile overrides OMEGACLAW_MAX_LOOPS=${REQUESTED_MAX_LOOPS}; using ${MAX_LOOPS}" >&2
+fi
+if (( REQUESTED_WAKE_LOOPS != WAKE_LOOPS )); then
+  echo "Public room profile overrides OMEGACLAW_MAX_WAKE_LOOPS=${REQUESTED_WAKE_LOOPS}; using ${WAKE_LOOPS}" >&2
 fi
 
 export OMEGACLAW_EFFECTIVE_MODEL="${MODEL}"
