@@ -131,7 +131,7 @@ COPY public_prompt_OpenRouter.txt /PeTTa/repos/OmegaClaw-Core/memory/prompt_Open
 COPY start.sh /app/start.sh
 
 # Align the gateway and retrieval service with the bounded agent harness and
-# Hypothesis Surface Atlas v1.5.0. Source replacements are asserted so drift
+# Hypothesis Surface Atlas v1.6.0. Source replacements are asserted so drift
 # fails the image build instead of silently weakening the deployment.
 RUN python3 - <<'PY'
 from pathlib import Path
@@ -140,13 +140,24 @@ atlas_path = Path('/app/atlas.py')
 atlas_text = atlas_path.read_text(encoding='utf-8')
 atlas_replacements = {
     'expected_version=os.getenv("HYPOTHESIS_SURFACE_ATLAS_VERSION", "1.4.1")':
-        'expected_version=os.getenv("HYPOTHESIS_SURFACE_ATLAS_VERSION", "1.5.0")',
+        'expected_version=os.getenv("HYPOTHESIS_SURFACE_ATLAS_VERSION", "1.6.0")',
     '''        tokens = set(query_tokens)
         if tokens & {"email", "contact", "orcid", "linkedin", "github"}:''':
         '''        tokens = set(query_tokens)
-        if tokens & {"example", "worked", "concrete", "calculate", "numeric", "practice", "walkthrough"}:
+        if tokens & {"example", "examples", "worked", "concrete", "calculate", "numeric", "practice", "walkthrough"}:
             if record.source_kind == "worked-examples":
                 score += 24.0
+        if tokens & {"need", "needs", "capable", "capability", "service", "perform", "sufficient", "missing", "wish"}:
+            if record.record_id == "agent-capability-inventory":
+                score += 38.0
+            elif record.source_kind == "public-agent-context":
+                score += 10.0
+        if tokens & {"figure", "figures", "visual", "diagram", "table", "tables"}:
+            if record.source_kind == "figures-experiments":
+                score += 22.0
+        if tokens & {"demonstrate", "demonstrates", "demonstrated", "propose", "proposes", "proposed", "empirical", "theoretical", "proof", "proved", "future"}:
+            if record.record_id == "demonstrated-proposed-future-map":
+                score += 30.0
         if tokens & {"email", "contact", "orcid", "linkedin", "github"}:''',
 }
 for old, new in atlas_replacements.items():
@@ -161,7 +172,7 @@ gateway_replacements = {
     'TURN_TIMEOUT = min(60, max(30, int(os.getenv("Z0_TURN_TIMEOUT_SECONDS", "60"))))':
         'TURN_TIMEOUT = min(120, max(45, int(os.getenv("Z0_TURN_TIMEOUT_SECONDS", "90"))))',
     'app = FastAPI(title="AGI-26 OmegaClaw Room", version="0.3.2")':
-        'app = FastAPI(title="AGI-26 OmegaClaw Room", version="0.4.2")',
+        'app = FastAPI(title="AGI-26 OmegaClaw Room", version="0.4.3")',
     'Every human post gives you one bounded turn;':
         'Every human post grants up to three bounded deliberation loops;',
     '''record with general model knowledge. If the records do not support a confident answer, say so.''':
@@ -169,7 +180,13 @@ gateway_replacements = {
 
 Worked-example records are pedagogical. Preserve their status and boundaries. Never present a
 synthetic illustrative scenario as an experiment performed in the Springer paper. A
-worked_interpretation_of_reported_result may explain reported numbers but does not add new evidence.''',
+worked_interpretation_of_reported_result may explain reported numbers but does not add new evidence.
+
+A retrieval packet is a turn-specific selection, not the complete atlas inventory. Do not infer that
+worked examples, figure descriptions, experiment records, or status boundaries are absent merely
+because they were not retrieved in another turn. For questions about what you know, have, lack,
+need, or can explain, obey the agent capability inventory and distinguish a retrieval gap from a
+true atlas absence.''',
     '''The retrieved atlas context is complete for this turn. Do not call query, remember, shell, websearch,
 or any other tool. Call the send skill exactly once with only the visitor-facing reply text. Do not
 return JSON, do not use Markdown fences, and do not issue multiple commands.''':
@@ -192,9 +209,9 @@ RUN chmod 0755 /app/start.sh \
     && grep -Fq 'one periodic maintenance wake is allowed' /PeTTa/repos/OmegaClaw-Core/memory/prompt_OpenRouter.txt \
     && grep -Fq 'change-state! &loops 0' /PeTTa/repos/OmegaClaw-Core/src/channels.metta \
     && grep -Fq '(change-state! &loops (+ 1 (maxWakeLoops)))' /PeTTa/repos/OmegaClaw-Core/src/loop.metta \
-    && grep -Fq 'worked-examples' /app/atlas.py \
-    && grep -Fq 'synthetic illustrative scenario' /app/gateway.py \
-    && grep -Fq '"1.5.0"' /app/atlas.py
+    && grep -Fq 'agent-capability-inventory' /app/atlas.py \
+    && grep -Fq 'turn-specific selection' /app/gateway.py \
+    && grep -Fq '"1.6.0"' /app/atlas.py
 
 ENV PORT=7860 \
     Z0_ALLOWED_ORIGIN=https://paultiffany.github.io \
@@ -205,7 +222,7 @@ ENV PORT=7860 \
     OMEGACLAW_MAX_WAKE_LOOPS=1 \
     HYPOTHESIS_SURFACE_ATLAS_REPO=PaulTiffany/hypothesis-surface-atlas \
     HYPOTHESIS_SURFACE_ATLAS_REVISION=main \
-    HYPOTHESIS_SURFACE_ATLAS_VERSION=1.5.0 \
+    HYPOTHESIS_SURFACE_ATLAS_VERSION=1.6.0 \
     IMPORT_KB_ON_START=0
 
 EXPOSE 7860
