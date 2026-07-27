@@ -88,10 +88,11 @@ _original_score = _gateway.knowledge_base._score
 def _score_with_family(
     self: Any,
     record: Any,
-    query_tokens: list[str],
-    query_normalized: str,
+    normalized_query: str,
+    query_tokens: Any,
+    bigrams: set[str],
 ) -> float:
-    score = _original_score(record, query_tokens, query_normalized)
+    score = _original_score(record, normalized_query, query_tokens, bigrams)
     if record.source_kind == "family-atlas" and set(query_tokens) & _FAMILY_QUERY_TOKENS:
         score += 18.0
     return score
