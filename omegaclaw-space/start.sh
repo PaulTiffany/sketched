@@ -36,7 +36,7 @@ export OMEGACLAW_EFFECTIVE_WAKE_LOOPS="${WAKE_LOOPS}"
 # secret through OmegaClaw configuration because upstream logs config values.
 unset OMEGACLAW_WS_TOKEN || true
 
-python3 -m uvicorn gateway_family_policy:app --host 0.0.0.0 --port "${PORT}" &
+python3 -m uvicorn gateway:app --host 0.0.0.0 --port "${PORT}" &
 GATEWAY_PID=$!
 
 cleanup() {
