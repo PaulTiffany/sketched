@@ -1,0 +1,62 @@
+name: Delete OmegaClaw Hugging Face resources
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/delete-omegaclaw-huggingface.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  delete:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Delete OmegaClaw Space and atlas dataset
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          test -n "${HF_TOKEN}" || { echo "Missing HF_TOKEN" >&2; exit 1; }
+          python -m pip install --disable-pip-version-check "huggingface_hub==1.24.0"
+          python - <<'PY'
+          import os
+          from huggingface_hub import HfApi
+          from huggingface_hub.errors import RepositoryNotFoundError
+
+          token = os.environ["HF_TOKEN"].strip()
+          api = HfApi(token=token)
+          targets = [
+              ("PaulTiffany/z0-omegaclaw", "space"),
+              ("PaulTiffany/hypothesis-surface-atlas", "dataset"),
+          ]
+
+          for repo_id, repo_type in targets:
+              print(f"Deleting {repo_type}: {repo_id}")
+              api.delete_repo(
+                  repo_id=repo_id,
+                  repo_type=repo_type,
+                  token=token,
+                  missing_ok=True,
+              )
+
+          for repo_id, repo_type in targets:
+              try:
+                  api.repo_info(repo_id=repo_id, repo_type=repo_type, token=token)
+              except RepositoryNotFoundError:
+                  print(f"Verified deleted: {repo_type} {repo_id}")
+              else:
+                  raise SystemExit(f"Deletion verification failed: {repo_type} {repo_id}")
+          PY
+
+      - name: Remove this one-time workflow
+        run: |
+          rm .github/workflows/delete-omegaclaw-huggingface.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Delete OmegaClaw Hugging Face resources"
+          git push
